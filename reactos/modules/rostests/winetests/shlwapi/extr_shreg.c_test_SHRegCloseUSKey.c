@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/ * HUSKEY ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pSHRegCloseUSKey (int /*<<< orphan*/ *) ; 
- scalar_t__ pSHRegOpenUSKeyW (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int * HUSKEY ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int KEY_ALL_ACCESS ;
+ int KEY_QUERY_VALUE ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pSHRegCloseUSKey (int *) ;
+ scalar_t__ pSHRegOpenUSKeyW (char const*,int ,int *,int **,int ) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_SHRegCloseUSKey(void)
 {
@@ -37,17 +37,17 @@ __attribute__((used)) static void test_SHRegCloseUSKey(void)
         return;
     }
 
-    ret = pSHRegCloseUSKey(NULL);
+    ret = pSHRegCloseUSKey(((void*)0));
     ok(ret == ERROR_INVALID_PARAMETER, "got %d\n", ret);
 
-    ret = pSHRegOpenUSKeyW(localW, KEY_ALL_ACCESS, NULL, &key, FALSE);
+    ret = pSHRegOpenUSKeyW(localW, KEY_ALL_ACCESS, ((void*)0), &key, FALSE);
     ok(ret == ERROR_SUCCESS, "got %d\n", ret);
 
     ret = pSHRegCloseUSKey(key);
     ok(ret == ERROR_SUCCESS, "got %d\n", ret);
 
-    /* Test with limited rights, specially without KEY_SET_VALUE */
-    ret = pSHRegOpenUSKeyW(localW, KEY_QUERY_VALUE, NULL, &key, FALSE);
+
+    ret = pSHRegOpenUSKeyW(localW, KEY_QUERY_VALUE, ((void*)0), &key, FALSE);
     ok(ret == ERROR_SUCCESS, "got %d\n", ret);
 
     ret = pSHRegCloseUSKey(key);

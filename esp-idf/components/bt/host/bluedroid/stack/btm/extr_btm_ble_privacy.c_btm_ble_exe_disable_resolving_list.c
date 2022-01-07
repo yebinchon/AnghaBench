@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* supports_ble_privacy ) () ;} ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  btm_ble_suspend_resolving_list_activity () ; 
- int /*<<< orphan*/  btm_ble_vendor_enable_irk_feature (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  btsnd_hcic_ble_set_addr_resolution_enable (int /*<<< orphan*/ ) ; 
- TYPE_1__* controller_get_interface () ; 
- int /*<<< orphan*/  stub1 () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* supports_ble_privacy ) () ;} ;
+typedef int BOOLEAN ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int btm_ble_suspend_resolving_list_activity () ;
+ int btm_ble_vendor_enable_irk_feature (int ) ;
+ int btsnd_hcic_ble_set_addr_resolution_enable (int ) ;
+ TYPE_1__* controller_get_interface () ;
+ int stub1 () ;
 
 BOOLEAN btm_ble_exe_disable_resolving_list(void)
 {

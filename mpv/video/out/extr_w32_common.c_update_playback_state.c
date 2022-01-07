@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct voctrl_playback_state {scalar_t__ paused; int /*<<< orphan*/  percent_pos; int /*<<< orphan*/  taskbar_progress; int /*<<< orphan*/  playing; } ;
-struct vo_w32_state {int /*<<< orphan*/  window; int /*<<< orphan*/  taskbar_list3; int /*<<< orphan*/  tbtnCreated; struct voctrl_playback_state current_pstate; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ITaskbarList3_SetProgressState (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITaskbarList3_SetProgressValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TBPF_NOPROGRESS ; 
- int /*<<< orphan*/  TBPF_NORMAL ; 
- int /*<<< orphan*/  TBPF_PAUSED ; 
+
+
+
+struct voctrl_playback_state {scalar_t__ paused; int percent_pos; int taskbar_progress; int playing; } ;
+struct vo_w32_state {int window; int taskbar_list3; int tbtnCreated; struct voctrl_playback_state current_pstate; } ;
+
+
+ int ITaskbarList3_SetProgressState (int ,int ,int ) ;
+ int ITaskbarList3_SetProgressValue (int ,int ,int ,int) ;
+ int TBPF_NOPROGRESS ;
+ int TBPF_NORMAL ;
+ int TBPF_PAUSED ;
 
 __attribute__((used)) static void update_playback_state(struct vo_w32_state *w32)
 {

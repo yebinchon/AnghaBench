@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint32_t ;
-typedef  size_t uint16_t ;
-struct TYPE_5__ {scalar_t__ family; int /*<<< orphan*/  ip6; int /*<<< orphan*/  ip4; } ;
-struct TYPE_6__ {int /*<<< orphan*/  port; TYPE_1__ ip; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * public_key; TYPE_2__ ip_port; } ;
-typedef  TYPE_3__ Node_format ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- size_t PACKED_NODE_SIZE_IP4 ; 
- size_t PACKED_NODE_SIZE_IP6 ; 
- int SIZE_IP4 ; 
- int SIZE_IP6 ; 
- scalar_t__ TCP_INET ; 
- scalar_t__ TCP_INET6 ; 
- int /*<<< orphan*/  TOX_AF_INET ; 
- int /*<<< orphan*/  TOX_AF_INET6 ; 
- int /*<<< orphan*/  TOX_TCP_INET ; 
- int /*<<< orphan*/  TOX_TCP_INET6 ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+typedef size_t uint16_t ;
+struct TYPE_5__ {scalar_t__ family; int ip6; int ip4; } ;
+struct TYPE_6__ {int port; TYPE_1__ ip; } ;
+struct TYPE_7__ {int * public_key; TYPE_2__ ip_port; } ;
+typedef TYPE_3__ Node_format ;
+
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ size_t PACKED_NODE_SIZE_IP4 ;
+ size_t PACKED_NODE_SIZE_IP6 ;
+ int SIZE_IP4 ;
+ int SIZE_IP6 ;
+ scalar_t__ TCP_INET ;
+ scalar_t__ TCP_INET6 ;
+ int TOX_AF_INET ;
+ int TOX_AF_INET6 ;
+ int TOX_TCP_INET ;
+ int TOX_TCP_INET6 ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int memcpy (int *,int *,int) ;
 
 int pack_nodes(uint8_t *data, uint16_t length, const Node_format *nodes, uint16_t number)
 {
@@ -45,7 +45,7 @@ int pack_nodes(uint8_t *data, uint16_t length, const Node_format *nodes, uint16_
         int ipv6 = -1;
         uint8_t net_family;
 
-        // FIXME use functions to convert endianness
+
         if (nodes[i].ip_port.ip.family == AF_INET) {
             ipv6 = 0;
             net_family = TOX_AF_INET;

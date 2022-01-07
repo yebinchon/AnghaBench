@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  json_config_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * json_fetch_config (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int json_config_t ;
+
+
+ int * json_fetch_config (int *) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int lua_gettop (int *) ;
+ int lua_pushnil (int *) ;
 
 __attribute__((used)) static json_config_t *json_arg_init(lua_State *l, int args)
 {

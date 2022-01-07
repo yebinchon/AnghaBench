@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int x; int y; } ;
 struct TYPE_7__ {int mb_stride; int mb_w; int mb_size; int mb_h; TYPE_2__* mv; scalar_t__ top; } ;
-typedef  TYPE_1__ MVInfo ;
-typedef  TYPE_2__ MV ;
+typedef TYPE_1__ MVInfo ;
+typedef TYPE_2__ MV ;
 
-/* Variables and functions */
- void* mid_pred (int,int,int) ; 
- TYPE_2__ zero_mv ; 
+
+ void* mid_pred (int,int,int) ;
+ TYPE_2__ zero_mv ;
 
 __attribute__((used)) static MV mvi_predict(MVInfo *mvi, int mb_x, int mb_y, MV diff)
 {
@@ -36,8 +36,8 @@ __attribute__((used)) static MV mvi_predict(MVInfo *mvi, int mb_x, int mb_y, MV 
         pred_mv = mvi->mv[mb_x];
     } else {
         MV A = mvi->mv[mvi->mb_stride + mb_x - 1];
-        MV B = mvi->mv[                 mb_x    ];
-        MV C = mvi->mv[                 mb_x + 1];
+        MV B = mvi->mv[ mb_x ];
+        MV C = mvi->mv[ mb_x + 1];
         pred_mv.x = mid_pred(A.x, B.x, C.x);
         pred_mv.y = mid_pred(A.y, B.y, C.y);
     }

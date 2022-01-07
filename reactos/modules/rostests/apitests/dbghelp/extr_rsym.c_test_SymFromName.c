@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Name; int /*<<< orphan*/  Tag; int /*<<< orphan*/  Address; int /*<<< orphan*/  Flags; int /*<<< orphan*/  ModBase; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  SYMBOL_INFO ;
-typedef  TYPE_1__* PSYMBOL_INFO ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ DWORD64 ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_PSYM (char*) ; 
- int MAX_SYM_NAME ; 
- int /*<<< orphan*/  SYMFLAG_FUNCTION ; 
- int /*<<< orphan*/  SymFromName (int /*<<< orphan*/ ,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  SymTagFunction ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok_hex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_int (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_str (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ok_ulonglong (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  supports_rsym (int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Name; int Tag; int Address; int Flags; int ModBase; } ;
+typedef int TCHAR ;
+typedef int SYMBOL_INFO ;
+typedef TYPE_1__* PSYMBOL_INFO ;
+typedef int HANDLE ;
+typedef scalar_t__ DWORD64 ;
+typedef int BOOL ;
+
+
+ int INIT_PSYM (char*) ;
+ int MAX_SYM_NAME ;
+ int SYMFLAG_FUNCTION ;
+ int SymFromName (int ,char*,TYPE_1__*) ;
+ int SymTagFunction ;
+ int TRUE ;
+ int ok_hex (int ,int ) ;
+ int ok_int (int ,int ) ;
+ int ok_str (int ,char*) ;
+ int ok_ulonglong (int ,scalar_t__) ;
+ int skip (char*) ;
+ int supports_rsym (int ,scalar_t__) ;
 
 __attribute__((used)) static void test_SymFromName(HANDLE hProc, DWORD64 BaseAddress)
 {

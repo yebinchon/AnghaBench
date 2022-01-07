@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct item {int size; int delta; int plus_unsure; int minus_unsure; TYPE_2__* right; TYPE_1__* left; } ;
 struct TYPE_4__ {scalar_t__ plus_unsure; scalar_t__ minus_unsure; scalar_t__ delta; scalar_t__ size; } ;
 struct TYPE_3__ {scalar_t__ plus_unsure; scalar_t__ minus_unsure; scalar_t__ delta; scalar_t__ size; } ;
 
-/* Variables and functions */
- int NODE_TYPE_MINUS ; 
- int NODE_TYPE_PLUS ; 
- int NODE_TYPE_S (struct item*) ; 
- int NODE_TYPE_SURE ; 
- int NODE_TYPE_T (struct item*) ; 
- int NODE_TYPE_UNSURE ; 
- int NODE_TYPE_ZERO ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int NODE_TYPE_MINUS ;
+ int NODE_TYPE_PLUS ;
+ int NODE_TYPE_S (struct item*) ;
+ int NODE_TYPE_SURE ;
+ int NODE_TYPE_T (struct item*) ;
+ int NODE_TYPE_UNSURE ;
+ int NODE_TYPE_ZERO ;
+ int assert (int) ;
 
 void update_counters (struct item *T) {
   if (!T) { return; }

@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  commandList; int /*<<< orphan*/  cxt; scalar_t__ commandCollectionInhibited; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * procedures; int /*<<< orphan*/ * operators; int /*<<< orphan*/  address; } ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int commandList; int cxt; scalar_t__ commandCollectionInhibited; } ;
+struct TYPE_7__ {int * procedures; int * operators; int address; } ;
 struct TYPE_8__ {TYPE_1__ createopc; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * parsetree; TYPE_2__ d; int /*<<< orphan*/  in_extension; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  MemoryContext ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/  CreateOpClassStmt ;
-typedef  TYPE_3__ CollectedCommand ;
+struct TYPE_9__ {int * parsetree; TYPE_2__ d; int in_extension; int type; } ;
+typedef int Oid ;
+typedef int Node ;
+typedef int MemoryContext ;
+typedef int List ;
+typedef int CreateOpClassStmt ;
+typedef TYPE_3__ CollectedCommand ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectAddressSet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OperatorClassRelationId ; 
- int /*<<< orphan*/  SCT_CreateOpClass ; 
- scalar_t__ copyObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  creating_extension ; 
- TYPE_6__* currentEventTriggerState ; 
- int /*<<< orphan*/  lappend (int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_3__* palloc0 (int) ; 
+
+ int MemoryContextSwitchTo (int ) ;
+ int ObjectAddressSet (int ,int ,int ) ;
+ int OperatorClassRelationId ;
+ int SCT_CreateOpClass ;
+ scalar_t__ copyObject (int *) ;
+ int creating_extension ;
+ TYPE_6__* currentEventTriggerState ;
+ int lappend (int ,TYPE_3__*) ;
+ TYPE_3__* palloc0 (int) ;
 
 void
 EventTriggerCollectCreateOpClass(CreateOpClassStmt *stmt, Oid opcoid,
-								 List *operators, List *procedures)
+         List *operators, List *procedures)
 {
-	MemoryContext oldcxt;
-	CollectedCommand *command;
+ MemoryContext oldcxt;
+ CollectedCommand *command;
 
-	/* ignore if event trigger context not set, or collection disabled */
-	if (!currentEventTriggerState ||
-		currentEventTriggerState->commandCollectionInhibited)
-		return;
 
-	oldcxt = MemoryContextSwitchTo(currentEventTriggerState->cxt);
+ if (!currentEventTriggerState ||
+  currentEventTriggerState->commandCollectionInhibited)
+  return;
 
-	command = palloc0(sizeof(CollectedCommand));
-	command->type = SCT_CreateOpClass;
-	command->in_extension = creating_extension;
-	ObjectAddressSet(command->d.createopc.address,
-					 OperatorClassRelationId, opcoid);
-	command->d.createopc.operators = operators;
-	command->d.createopc.procedures = procedures;
-	command->parsetree = (Node *) copyObject(stmt);
+ oldcxt = MemoryContextSwitchTo(currentEventTriggerState->cxt);
 
-	currentEventTriggerState->commandList =
-		lappend(currentEventTriggerState->commandList, command);
+ command = palloc0(sizeof(CollectedCommand));
+ command->type = SCT_CreateOpClass;
+ command->in_extension = creating_extension;
+ ObjectAddressSet(command->d.createopc.address,
+      OperatorClassRelationId, opcoid);
+ command->d.createopc.operators = operators;
+ command->d.createopc.procedures = procedures;
+ command->parsetree = (Node *) copyObject(stmt);
 
-	MemoryContextSwitchTo(oldcxt);
+ currentEventTriggerState->commandList =
+  lappend(currentEventTriggerState->commandList, command);
+
+ MemoryContextSwitchTo(oldcxt);
 }

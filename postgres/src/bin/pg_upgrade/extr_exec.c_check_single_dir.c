@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  subDirName ;
-struct stat {int /*<<< orphan*/  st_mode; } ;
 
-/* Variables and functions */
- int MAXPGPATH ; 
- int /*<<< orphan*/  PG_FATAL ; 
- int /*<<< orphan*/  S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  report_status (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,char*,char const*) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int subDirName ;
+struct stat {int st_mode; } ;
+
+
+ int MAXPGPATH ;
+ int PG_FATAL ;
+ int S_ISDIR (int ) ;
+ int errno ;
+ int report_status (int ,char*,char*,...) ;
+ int snprintf (char*,int,char*,char const*,char*,char const*) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static void
 check_single_dir(const char *pg_data, const char *subdir)
 {
-	struct stat statBuf;
-	char		subDirName[MAXPGPATH];
+ struct stat statBuf;
+ char subDirName[MAXPGPATH];
 
-	snprintf(subDirName, sizeof(subDirName), "%s%s%s", pg_data,
-	/* Win32 can't stat() a directory with a trailing slash. */
-			 *subdir ? "/" : "",
-			 subdir);
+ snprintf(subDirName, sizeof(subDirName), "%s%s%s", pg_data,
 
-	if (stat(subDirName, &statBuf) != 0)
-		report_status(PG_FATAL, "check for \"%s\" failed: %s\n",
-					  subDirName, strerror(errno));
-	else if (!S_ISDIR(statBuf.st_mode))
-		report_status(PG_FATAL, "\"%s\" is not a directory\n",
-					  subDirName);
+    *subdir ? "/" : "",
+    subdir);
+
+ if (stat(subDirName, &statBuf) != 0)
+  report_status(PG_FATAL, "check for \"%s\" failed: %s\n",
+       subDirName, strerror(errno));
+ else if (!S_ISDIR(statBuf.st_mode))
+  report_status(PG_FATAL, "\"%s\" is not a directory\n",
+       subDirName);
 }

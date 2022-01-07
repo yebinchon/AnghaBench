@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  backlog ; 
- int /*<<< orphan*/  default_udp_socket ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  init_udp_port (scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ server_socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  settings_addr ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tl_udp_server ; 
- int /*<<< orphan*/  tl_udp_server_methods ; 
- scalar_t__ usfd ; 
+ int assert (int ) ;
+ int backlog ;
+ int default_udp_socket ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int init_udp_port (scalar_t__,int,int *,int *,int) ;
+ scalar_t__ server_socket (int,int ,int ,int) ;
+ int settings_addr ;
+ int stderr ;
+ int tl_udp_server ;
+ int tl_udp_server_methods ;
+ scalar_t__ usfd ;
 
 void add_udp_socket (int port, int mode) {
   if (!usfd) {

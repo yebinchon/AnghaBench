@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int flagword ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_16__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ asection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABBREV_SECTION ; 
- int /*<<< orphan*/  ARANGES_SECTION ; 
- int /*<<< orphan*/  EH_FRAME_SECTION ; 
- int /*<<< orphan*/  FRAME_SECTION ; 
- int /*<<< orphan*/  INFO_SECTION ; 
- int /*<<< orphan*/  LINE_SECTION ; 
- int /*<<< orphan*/  LOC_SECTION ; 
- int /*<<< orphan*/  MACINFO_SECTION ; 
- int /*<<< orphan*/  PUBNAMES_SECTION ; 
- int /*<<< orphan*/  RANGES_SECTION ; 
- int SEC_HAS_CONTENTS ; 
- int /*<<< orphan*/  STR_SECTION ; 
- int bfd_get_section_flags (int /*<<< orphan*/ *,TYPE_1__*) ; 
- void* bfd_get_section_size (TYPE_1__*) ; 
- TYPE_1__* dwarf_abbrev_section ; 
- void* dwarf_abbrev_size ; 
- TYPE_1__* dwarf_aranges_section ; 
- void* dwarf_aranges_size ; 
- TYPE_1__* dwarf_eh_frame_section ; 
- void* dwarf_eh_frame_size ; 
- TYPE_1__* dwarf_frame_section ; 
- void* dwarf_frame_size ; 
- TYPE_1__* dwarf_info_section ; 
- void* dwarf_info_size ; 
- TYPE_1__* dwarf_line_section ; 
- void* dwarf_line_size ; 
- TYPE_1__* dwarf_loc_section ; 
- void* dwarf_loc_size ; 
- TYPE_1__* dwarf_macinfo_section ; 
- void* dwarf_macinfo_size ; 
- TYPE_1__* dwarf_pubnames_section ; 
- void* dwarf_pubnames_size ; 
- TYPE_1__* dwarf_ranges_section ; 
- void* dwarf_ranges_size ; 
- TYPE_1__* dwarf_str_section ; 
- void* dwarf_str_size ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int flagword ;
+typedef int bfd ;
+struct TYPE_16__ {int name; } ;
+typedef TYPE_1__ asection ;
+
+
+ int ABBREV_SECTION ;
+ int ARANGES_SECTION ;
+ int EH_FRAME_SECTION ;
+ int FRAME_SECTION ;
+ int INFO_SECTION ;
+ int LINE_SECTION ;
+ int LOC_SECTION ;
+ int MACINFO_SECTION ;
+ int PUBNAMES_SECTION ;
+ int RANGES_SECTION ;
+ int SEC_HAS_CONTENTS ;
+ int STR_SECTION ;
+ int bfd_get_section_flags (int *,TYPE_1__*) ;
+ void* bfd_get_section_size (TYPE_1__*) ;
+ TYPE_1__* dwarf_abbrev_section ;
+ void* dwarf_abbrev_size ;
+ TYPE_1__* dwarf_aranges_section ;
+ void* dwarf_aranges_size ;
+ TYPE_1__* dwarf_eh_frame_section ;
+ void* dwarf_eh_frame_size ;
+ TYPE_1__* dwarf_frame_section ;
+ void* dwarf_frame_size ;
+ TYPE_1__* dwarf_info_section ;
+ void* dwarf_info_size ;
+ TYPE_1__* dwarf_line_section ;
+ void* dwarf_line_size ;
+ TYPE_1__* dwarf_loc_section ;
+ void* dwarf_loc_size ;
+ TYPE_1__* dwarf_macinfo_section ;
+ void* dwarf_macinfo_size ;
+ TYPE_1__* dwarf_pubnames_section ;
+ void* dwarf_pubnames_size ;
+ TYPE_1__* dwarf_ranges_section ;
+ void* dwarf_ranges_size ;
+ TYPE_1__* dwarf_str_section ;
+ void* dwarf_str_size ;
+ scalar_t__ strcmp (int ,int ) ;
 
 __attribute__((used)) static void
 dwarf2_locate_sections (bfd *ignore_abfd, asection *sectp, void *ignore_ptr)

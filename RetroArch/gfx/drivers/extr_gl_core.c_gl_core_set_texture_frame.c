@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_6__ {scalar_t__ menu_linear_filter; } ;
 struct TYPE_7__ {TYPE_1__ bools; } ;
-typedef  TYPE_2__ settings_t ;
+typedef TYPE_2__ settings_t ;
 struct TYPE_8__ {float menu_texture_alpha; scalar_t__ menu_texture; } ;
-typedef  TYPE_3__ gl_core_t ;
-typedef  int /*<<< orphan*/  GLenum ;
+typedef TYPE_3__ gl_core_t ;
+typedef int GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_BLUE ; 
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_NEAREST ; 
- int /*<<< orphan*/  GL_PIXEL_UNPACK_BUFFER ; 
- int /*<<< orphan*/  GL_RED ; 
- int /*<<< orphan*/  GL_RGBA ; 
- int /*<<< orphan*/  GL_RGBA4 ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_SWIZZLE_B ; 
- int /*<<< orphan*/  GL_TEXTURE_SWIZZLE_R ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  GL_UNPACK_ALIGNMENT ; 
- int /*<<< orphan*/  GL_UNPACK_ROW_LENGTH ; 
- int /*<<< orphan*/  GL_UNSIGNED_BYTE ; 
- int /*<<< orphan*/  GL_UNSIGNED_SHORT_4_4_4_4 ; 
- TYPE_2__* config_get_ptr () ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glDeleteTextures (int,scalar_t__*) ; 
- int /*<<< orphan*/  glGenTextures (int,scalar_t__*) ; 
- int /*<<< orphan*/  glPixelStorei (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  glTexParameteri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexStorage2D (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  glTexSubImage2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void const*) ; 
- int /*<<< orphan*/  gl_core_context_bind_hw_render (TYPE_3__*,int) ; 
+
+ int GL_BLUE ;
+ int GL_CLAMP_TO_EDGE ;
+ int GL_LINEAR ;
+ int GL_NEAREST ;
+ int GL_PIXEL_UNPACK_BUFFER ;
+ int GL_RED ;
+ int GL_RGBA ;
+ int GL_RGBA4 ;
+ int GL_RGBA8 ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_SWIZZLE_B ;
+ int GL_TEXTURE_SWIZZLE_R ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int GL_UNPACK_ALIGNMENT ;
+ int GL_UNPACK_ROW_LENGTH ;
+ int GL_UNSIGNED_BYTE ;
+ int GL_UNSIGNED_SHORT_4_4_4_4 ;
+ TYPE_2__* config_get_ptr () ;
+ int glBindBuffer (int ,int ) ;
+ int glBindTexture (int ,scalar_t__) ;
+ int glDeleteTextures (int,scalar_t__*) ;
+ int glGenTextures (int,scalar_t__*) ;
+ int glPixelStorei (int ,unsigned int) ;
+ int glTexParameteri (int ,int ,int ) ;
+ int glTexStorage2D (int ,int,int ,unsigned int,unsigned int) ;
+ int glTexSubImage2D (int ,int ,int ,int ,unsigned int,unsigned int,int ,int ,void const*) ;
+ int gl_core_context_bind_hw_render (TYPE_3__*,int) ;
 
 __attribute__((used)) static void gl_core_set_texture_frame(void *data,
       const void *frame, bool rgb32, unsigned width, unsigned height,
@@ -60,12 +60,12 @@ __attribute__((used)) static void gl_core_set_texture_frame(void *data,
 {
    GLenum menu_filter;
    settings_t *settings = config_get_ptr();
-   unsigned base_size   = rgb32 ? sizeof(uint32_t) : sizeof(uint16_t);
-   gl_core_t *gl        = (gl_core_t*)data;
+   unsigned base_size = rgb32 ? sizeof(uint32_t) : sizeof(uint16_t);
+   gl_core_t *gl = (gl_core_t*)data;
    if (!gl)
       return;
 
-   gl_core_context_bind_hw_render(gl, false);
+   gl_core_context_bind_hw_render(gl, 0);
    menu_filter = settings->bools.menu_linear_filter ? GL_LINEAR : GL_NEAREST;
 
    if (gl->menu_texture)
@@ -92,5 +92,5 @@ __attribute__((used)) static void gl_core_set_texture_frame(void *data,
 
    glBindTexture(GL_TEXTURE_2D, 0);
    gl->menu_texture_alpha = alpha;
-   gl_core_context_bind_hw_render(gl, true);
+   gl_core_context_bind_hw_render(gl, 1);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  NVGcontext ;
 
-/* Variables and functions */
- float NVG_CLOSE ; 
- int /*<<< orphan*/  NVG_COUNTOF (float*) ; 
- int /*<<< orphan*/  nvg__appendCommands (int /*<<< orphan*/ *,float*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int NVGcontext ;
+
+
+ float NVG_CLOSE ;
+ int NVG_COUNTOF (float*) ;
+ int nvg__appendCommands (int *,float*,int ) ;
 
 void nvgClosePath(NVGcontext* ctx)
 {
-	float vals[] = { NVG_CLOSE };
-	nvg__appendCommands(ctx, vals, NVG_COUNTOF(vals));
+ float vals[] = { NVG_CLOSE };
+ nvg__appendCommands(ctx, vals, NVG_COUNTOF(vals));
 }

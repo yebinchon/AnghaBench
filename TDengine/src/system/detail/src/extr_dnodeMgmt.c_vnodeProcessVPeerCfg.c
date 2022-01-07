@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {void* maxSessions; int /*<<< orphan*/  replications; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {void* maxSessions; int replications; } ;
 struct TYPE_16__ {scalar_t__ status; TYPE_2__ cfg; } ;
 struct TYPE_15__ {void* vnode; void* ip; } ;
 struct TYPE_11__ {void* totalBlocks; } ;
-struct TYPE_13__ {int replications; void* maxSessions; void* rowsInFileBlock; int /*<<< orphan*/  blocksPerMeter; void* commitTime; void* daysToKeep; void* daysToKeep2; void* daysToKeep1; void* daysPerFile; TYPE_1__ cacheNumOfBlocks; void* cacheBlockSize; void* vgId; } ;
+struct TYPE_13__ {int replications; void* maxSessions; void* rowsInFileBlock; int blocksPerMeter; void* commitTime; void* daysToKeep; void* daysToKeep2; void* daysToKeep1; void* daysPerFile; TYPE_1__ cacheNumOfBlocks; void* cacheBlockSize; void* vgId; } ;
 struct TYPE_14__ {TYPE_6__* vpeerDesc; TYPE_3__ cfg; void* vnode; } ;
-typedef  TYPE_3__ SVnodeCfg ;
-typedef  TYPE_4__ SVPeersMsg ;
-typedef  int /*<<< orphan*/  SMgmtObj ;
+typedef TYPE_3__ SVnodeCfg ;
+typedef TYPE_4__ SVPeersMsg ;
+typedef int SMgmtObj ;
 
-/* Variables and functions */
- int TSDB_MAX_VNODES ; 
- scalar_t__ TSDB_STATUS_CREATING ; 
- int /*<<< orphan*/  dError (char*,int) ; 
- int /*<<< orphan*/  dTrace (char*,int,...) ; 
- void* htonl (void*) ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vnodeCleanUpOneVnode (int) ; 
- int /*<<< orphan*/  vnodeConfigVPeers (int,int,TYPE_6__*) ; 
- int vnodeCreateVnode (int,TYPE_3__*,TYPE_6__*) ; 
- TYPE_7__* vnodeList ; 
- int /*<<< orphan*/  vnodeOpenVnode (int) ; 
- int /*<<< orphan*/  vnodeRemoveVnode (int) ; 
- int /*<<< orphan*/  vnodeSaveVnodeCfg (int,TYPE_3__*,TYPE_6__*) ; 
- int /*<<< orphan*/  vnodeUpdateHeadFile (int,void*,void*) ; 
+
+ int TSDB_MAX_VNODES ;
+ scalar_t__ TSDB_STATUS_CREATING ;
+ int dError (char*,int) ;
+ int dTrace (char*,int,...) ;
+ void* htonl (void*) ;
+ int htons (int ) ;
+ int vnodeCleanUpOneVnode (int) ;
+ int vnodeConfigVPeers (int,int,TYPE_6__*) ;
+ int vnodeCreateVnode (int,TYPE_3__*,TYPE_6__*) ;
+ TYPE_7__* vnodeList ;
+ int vnodeOpenVnode (int) ;
+ int vnodeRemoveVnode (int) ;
+ int vnodeSaveVnodeCfg (int,TYPE_3__*,TYPE_6__*) ;
+ int vnodeUpdateHeadFile (int,void*,void*) ;
 
 int vnodeProcessVPeerCfg(char *msg, int msgLen, SMgmtObj *pMgmtObj) {
   SVPeersMsg *pMsg = (SVPeersMsg *)msg;
-  int         i, vnode;
+  int i, vnode;
 
   vnode = htonl(pMsg->vnode);
   if (vnode >= TSDB_MAX_VNODES) {

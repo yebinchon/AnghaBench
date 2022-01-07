@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* (* GetString ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_RENDERER ; 
- int /*<<< orphan*/  GL_VENDOR ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strstr (char const*,char*) ; 
- char* stub1 (int /*<<< orphan*/ ) ; 
- char* stub2 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* (* GetString ) (int ) ;} ;
+typedef TYPE_1__ GL ;
+
+
+ int GL_RENDERER ;
+ int GL_VENDOR ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strstr (char const*,char*) ;
+ char* stub1 (int ) ;
+ char* stub2 (int ) ;
 
 __attribute__((used)) static bool is_software_gl(GL *gl)
 {

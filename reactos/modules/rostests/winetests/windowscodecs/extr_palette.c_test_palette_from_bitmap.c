@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  color ;
-typedef  int WICColor ;
-typedef  int WICBitmapPaletteType ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IWICPalette ;
-typedef  int /*<<< orphan*/  IWICBitmapSource ;
-typedef  int /*<<< orphan*/  IWICBitmap ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int E_INVALIDARG ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GUID_WICPixelFormat24bppRGB ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmap_Release (int /*<<< orphan*/ *) ; 
- int IWICImagingFactory_CreateBitmapFromMemory (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IWICImagingFactory_CreatePalette (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int IWICPalette_GetColorCount (int /*<<< orphan*/ *,int*) ; 
- int IWICPalette_GetColors (int /*<<< orphan*/ *,int,int*,int*) ; 
- int IWICPalette_GetType (int /*<<< orphan*/ *,int*) ; 
- int IWICPalette_InitializeFromBitmap (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IWICPalette_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int WICBitmapPaletteTypeCustom ; 
- int /*<<< orphan*/  factory ; 
- int /*<<< orphan*/ * init_bitmap (int*,int*,int*) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
+
+
+
+typedef int color ;
+typedef int WICColor ;
+typedef int WICBitmapPaletteType ;
+typedef int UINT ;
+typedef int IWICPalette ;
+typedef int IWICBitmapSource ;
+typedef int IWICBitmap ;
+typedef int HRESULT ;
+typedef int BYTE ;
+
+
+ int E_INVALIDARG ;
+ int FALSE ;
+ int GUID_WICPixelFormat24bppRGB ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int IWICBitmap_Release (int *) ;
+ int IWICImagingFactory_CreateBitmapFromMemory (int ,int,int,int *,int,int,int *,int **) ;
+ int IWICImagingFactory_CreatePalette (int ,int **) ;
+ int IWICPalette_GetColorCount (int *,int*) ;
+ int IWICPalette_GetColors (int *,int,int*,int*) ;
+ int IWICPalette_GetType (int *,int*) ;
+ int IWICPalette_InitializeFromBitmap (int *,int *,int,int ) ;
+ int IWICPalette_Release (int *) ;
+ int S_OK ;
+ int TRUE ;
+ int WICBitmapPaletteTypeCustom ;
+ int factory ;
+ int * init_bitmap (int*,int*,int*) ;
+ int memset (int*,int,int) ;
+ int ok (int,char*,int,...) ;
 
 __attribute__((used)) static void test_palette_from_bitmap(void)
 {
@@ -70,7 +70,7 @@ __attribute__((used)) static void test_palette_from_bitmap(void)
     hr = IWICPalette_InitializeFromBitmap(palette, (IWICBitmapSource *)bitmap, 257, FALSE);
     ok(hr == E_INVALIDARG, "expected E_INVALIDARG, got %#x\n", hr);
 
-    hr = IWICPalette_InitializeFromBitmap(palette, NULL, 16, FALSE);
+    hr = IWICPalette_InitializeFromBitmap(palette, ((void*)0), 16, FALSE);
     ok(hr == E_INVALIDARG, "expected E_INVALIDARG, got %#x\n", hr);
 
     hr = IWICPalette_InitializeFromBitmap(palette, (IWICBitmapSource *)bitmap, 2, FALSE);
@@ -87,7 +87,7 @@ __attribute__((used)) static void test_palette_from_bitmap(void)
     ok(hr == S_OK, "GetColorCount error %#x\n", hr);
     ok(count == 2, "expected 2, got %u\n", count);
 
-    /* without trasparent color */
+
     hr = IWICPalette_InitializeFromBitmap(palette, (IWICBitmapSource *)bitmap, 16, FALSE);
     ok(hr == S_OK, "InitializeFromBitmap error %#x\n", hr);
     type = -1;
@@ -104,7 +104,7 @@ __attribute__((used)) static void test_palette_from_bitmap(void)
     ok(ret == count, "expected %u, got %u\n", count, ret);
     ok(color[count - 1] != 0, "expected !0, got %08x\n", color[count - 1]);
 
-    /* with trasparent color */
+
     hr = IWICPalette_InitializeFromBitmap(palette, (IWICBitmapSource *)bitmap, 16, TRUE);
     ok(hr == S_OK, "InitializeFromBitmap error %#x\n", hr);
     type = -1;

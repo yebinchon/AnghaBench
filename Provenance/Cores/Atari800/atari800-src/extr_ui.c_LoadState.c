@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* fMessage ) (char*,int /*<<< orphan*/ ) ;scalar_t__ (* fGetLoadFilename ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CantLoad (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StateSav_ReadAtariState (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* UI_driver ; 
- int /*<<< orphan*/  UI_n_saved_files_dir ; 
- int /*<<< orphan*/  UI_saved_files_dir ; 
- int /*<<< orphan*/  state_filename ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* fMessage ) (char*,int ) ;scalar_t__ (* fGetLoadFilename ) (int ,int ,int ) ;} ;
+
+
+ int CantLoad (int ) ;
+ int StateSav_ReadAtariState (int ,char*) ;
+ TYPE_1__* UI_driver ;
+ int UI_n_saved_files_dir ;
+ int UI_saved_files_dir ;
+ int state_filename ;
+ scalar_t__ stub1 (int ,int ,int ) ;
+ int stub2 (char*,int ) ;
 
 __attribute__((used)) static void LoadState(void)
 {
-	if (UI_driver->fGetLoadFilename(state_filename, UI_saved_files_dir, UI_n_saved_files_dir)) {
-		UI_driver->fMessage("Please wait while loading...", 0);
-		if (!StateSav_ReadAtariState(state_filename, "rb"))
-			CantLoad(state_filename);
-	}
+ if (UI_driver->fGetLoadFilename(state_filename, UI_saved_files_dir, UI_n_saved_files_dir)) {
+  UI_driver->fMessage("Please wait while loading...", 0);
+  if (!StateSav_ReadAtariState(state_filename, "rb"))
+   CantLoad(state_filename);
+ }
 }

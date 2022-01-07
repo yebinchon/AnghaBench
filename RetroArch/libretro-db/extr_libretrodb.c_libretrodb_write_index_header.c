@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_3__ {char* name; int /*<<< orphan*/  next; int /*<<< orphan*/  key_size; } ;
-typedef  TYPE_1__ libretrodb_index_t ;
-typedef  int /*<<< orphan*/  RFILE ;
 
-/* Variables and functions */
- scalar_t__ STRLEN_CONST (char*) ; 
- int /*<<< orphan*/  rmsgpack_write_map_header (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rmsgpack_write_string (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- int /*<<< orphan*/  rmsgpack_write_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_3__ {char* name; int next; int key_size; } ;
+typedef TYPE_1__ libretrodb_index_t ;
+typedef int RFILE ;
+
+
+ scalar_t__ STRLEN_CONST (char*) ;
+ int rmsgpack_write_map_header (int *,int) ;
+ int rmsgpack_write_string (int *,char*,scalar_t__) ;
+ int rmsgpack_write_uint (int *,int ) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void libretrodb_write_index_header(RFILE *fd, libretrodb_index_t *idx)
 {

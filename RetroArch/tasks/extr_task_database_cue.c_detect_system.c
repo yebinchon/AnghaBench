@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  intfstream_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_2__ {char* system_name; int offset; int /*<<< orphan*/  magic; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int MAGIC_LEN ; 
- TYPE_1__* MAGIC_NUMBERS ; 
- int /*<<< orphan*/  MSG_COMPARING_WITH_KNOWN_MAGIC_NUMBERS ; 
- int /*<<< orphan*/  MSG_COULD_NOT_FIND_COMPATIBLE_SYSTEM ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int,...) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int errno ; 
- scalar_t__ intfstream_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  intfstream_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int) ; 
- int /*<<< orphan*/  string_is_empty (char*) ; 
- scalar_t__ string_is_equal (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int intfstream_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_2__ {char* system_name; int offset; int magic; } ;
+
+
+ int EINVAL ;
+ int MAGIC_LEN ;
+ TYPE_1__* MAGIC_NUMBERS ;
+ int MSG_COMPARING_WITH_KNOWN_MAGIC_NUMBERS ;
+ int MSG_COULD_NOT_FIND_COMPATIBLE_SYSTEM ;
+ int RARCH_LOG (char*,int,...) ;
+ int SEEK_SET ;
+ int errno ;
+ scalar_t__ intfstream_read (int *,char*,int) ;
+ int intfstream_seek (int *,int,int ) ;
+ scalar_t__ memcmp (int ,char*,int) ;
+ int msg_hash_to_str (int ) ;
+ int strerror (int) ;
+ int string_is_empty (char*) ;
+ scalar_t__ string_is_equal (char*,char*) ;
 
 int detect_system(intfstream_t *fd, const char **system_name)
 {
@@ -40,7 +40,7 @@ int detect_system(intfstream_t *fd, const char **system_name)
    int64_t read;
 
    RARCH_LOG("%s\n", msg_hash_to_str(MSG_COMPARING_WITH_KNOWN_MAGIC_NUMBERS));
-   for (i = 0; MAGIC_NUMBERS[i].system_name != NULL; i++)
+   for (i = 0; MAGIC_NUMBERS[i].system_name != ((void*)0); i++)
    {
       intfstream_seek(fd, MAGIC_NUMBERS[i].offset, SEEK_SET);
 

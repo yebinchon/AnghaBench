@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPATCH_METHOD ; 
- scalar_t__ DISP_E_UNKNOWNNAME ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ create_array (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  debugstr_jsval (int /*<<< orphan*/ ) ; 
- scalar_t__ disp_call_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ get_length (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,scalar_t__*) ; 
- int /*<<< orphan*/ * get_object (int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_undefined (int /*<<< orphan*/ ) ; 
- scalar_t__ jsdisp_get_idx (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ jsdisp_propput_idx (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (scalar_t__) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ int DISPATCH_METHOD ;
+ scalar_t__ DISP_E_UNKNOWNNAME ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FIXME (char*,...) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ int TRACE (char*) ;
+ scalar_t__ create_array (int *,scalar_t__,int **) ;
+ int debugstr_jsval (int ) ;
+ scalar_t__ disp_call_value (int *,int *,int *,int ,int,int *,int *) ;
+ scalar_t__ get_length (int *,int *,int **,scalar_t__*) ;
+ int * get_object (int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ int is_undefined (int ) ;
+ scalar_t__ jsdisp_get_idx (int *,scalar_t__,int *) ;
+ scalar_t__ jsdisp_propput_idx (int *,scalar_t__,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_number (scalar_t__) ;
+ int jsval_obj (int *) ;
+ int jsval_release (int ) ;
+ int jsval_undefined () ;
 
 __attribute__((used)) static HRESULT Array_map(script_ctx_t *ctx, vdisp_t *vthis, WORD flags, unsigned argc, jsval_t *argv, jsval_t *r)
 {
-    IDispatch *context_this = NULL, *callback;
+    IDispatch *context_this = ((void*)0), *callback;
     jsval_t callback_args[3], mapped_value;
     jsdisp_t *jsthis, *array;
     DWORD length, k;
@@ -59,7 +59,7 @@ __attribute__((used)) static HRESULT Array_map(script_ctx_t *ctx, vdisp_t *vthis
         return hres;
     }
 
-    /* Fixme check IsCallable */
+
     if(!argc || !is_object_instance(argv[0]) || !get_object(argv[0])) {
         FIXME("Invalid arg %s\n", debugstr_jsval(argc ? argv[0] : jsval_undefined()));
         return E_INVALIDARG;

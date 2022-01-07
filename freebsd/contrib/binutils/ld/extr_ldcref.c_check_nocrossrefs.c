@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  check_local_sym_xref ; 
- int /*<<< orphan*/  check_nocrossref ; 
- int /*<<< orphan*/  cref_hash_traverse (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cref_initialized ; 
- int /*<<< orphan*/  cref_table ; 
- int /*<<< orphan*/  lang_for_each_file (int /*<<< orphan*/ ) ; 
+ int check_local_sym_xref ;
+ int check_nocrossref ;
+ int cref_hash_traverse (int *,int ,int *) ;
+ int cref_initialized ;
+ int cref_table ;
+ int lang_for_each_file (int ) ;
 
 void
 check_nocrossrefs (void)
@@ -25,7 +17,7 @@ check_nocrossrefs (void)
   if (! cref_initialized)
     return;
 
-  cref_hash_traverse (&cref_table, check_nocrossref, NULL);
+  cref_hash_traverse (&cref_table, check_nocrossref, ((void*)0));
 
   lang_for_each_file (check_local_sym_xref);
 }

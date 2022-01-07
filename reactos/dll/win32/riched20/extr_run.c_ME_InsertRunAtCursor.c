@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_8__ ;
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_29__ {int /*<<< orphan*/  text; scalar_t__ nCharOfs; } ;
+
+
+typedef struct TYPE_29__ TYPE_8__ ;
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_29__ {int text; scalar_t__ nCharOfs; } ;
 struct TYPE_28__ {scalar_t__ nOffset; TYPE_5__* pRun; } ;
 struct TYPE_23__ {scalar_t__ len; TYPE_8__* para; scalar_t__ nCharOfs; } ;
 struct TYPE_24__ {TYPE_1__ run; } ;
 struct TYPE_27__ {TYPE_2__ member; } ;
 struct TYPE_26__ {int nCursors; TYPE_3__* pCursors; } ;
 struct TYPE_25__ {int nOffset; TYPE_5__* pRun; } ;
-typedef  TYPE_4__ ME_TextEditor ;
-typedef  int /*<<< orphan*/  ME_Style ;
-typedef  TYPE_5__ ME_DisplayItem ;
-typedef  TYPE_6__ ME_Cursor ;
+typedef TYPE_4__ ME_TextEditor ;
+typedef int ME_Style ;
+typedef TYPE_5__ ME_DisplayItem ;
+typedef TYPE_6__ ME_Cursor ;
 
-/* Variables and functions */
- TYPE_5__* ME_FindItemBack (TYPE_5__*,int /*<<< orphan*/ ) ; 
- TYPE_5__* ME_FindItemFwd (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_InsertBefore (TYPE_5__*,TYPE_5__*) ; 
- int /*<<< orphan*/  ME_InsertString (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/  const*,int) ; 
- TYPE_5__* ME_MakeRun (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ME_PropagateCharOffset (TYPE_5__*,int) ; 
- int /*<<< orphan*/  ME_SplitRunSimple (TYPE_4__*,TYPE_6__*) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  add_undo_delete_run (TYPE_4__*,scalar_t__,int) ; 
- int /*<<< orphan*/  diRun ; 
- int /*<<< orphan*/  get_di_from_para (TYPE_8__*) ; 
- int /*<<< orphan*/  mark_para_rewrap (TYPE_4__*,int /*<<< orphan*/ ) ; 
+
+ TYPE_5__* ME_FindItemBack (TYPE_5__*,int ) ;
+ TYPE_5__* ME_FindItemFwd (TYPE_5__*,int ) ;
+ int ME_InsertBefore (TYPE_5__*,TYPE_5__*) ;
+ int ME_InsertString (int ,scalar_t__,int const*,int) ;
+ TYPE_5__* ME_MakeRun (int *,int) ;
+ int ME_PropagateCharOffset (TYPE_5__*,int) ;
+ int ME_SplitRunSimple (TYPE_4__*,TYPE_6__*) ;
+ int TRACE (char*,int) ;
+ int add_undo_delete_run (TYPE_4__*,scalar_t__,int) ;
+ int diRun ;
+ int get_di_from_para (TYPE_8__*) ;
+ int mark_para_rewrap (TYPE_4__*,int ) ;
 
 ME_DisplayItem *
 ME_InsertRunAtCursor(ME_TextEditor *editor, ME_Cursor *cursor, ME_Style *style,
@@ -55,7 +55,7 @@ ME_InsertRunAtCursor(ME_TextEditor *editor, ME_Cursor *cursor, ME_Style *style,
     if (cursor->nOffset == cursor->pRun->member.run.len)
     {
       insert_before = ME_FindItemFwd( cursor->pRun, diRun );
-      if (!insert_before) insert_before = cursor->pRun; /* Always insert before the final eop run */
+      if (!insert_before) insert_before = cursor->pRun;
     }
     else
     {
@@ -77,7 +77,7 @@ ME_InsertRunAtCursor(ME_TextEditor *editor, ME_Cursor *cursor, ME_Style *style,
   ME_PropagateCharOffset( insert_before, len );
   mark_para_rewrap(editor, get_di_from_para(insert_before->member.run.para));
 
-  /* Move any cursors that were at the end of the previous run to the end of the inserted run */
+
   prev = ME_FindItemBack( pDI, diRun );
   if (prev)
   {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct env_set {struct env_item* list; } ;
-struct env_item {struct env_item* next; int /*<<< orphan*/  string; } ;
+struct env_item {struct env_item* next; int string; } ;
 
-/* Variables and functions */
- scalar_t__ check_debug_level (int) ; 
- scalar_t__ env_safe_to_print (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg (int,char*,int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ check_debug_level (int) ;
+ scalar_t__ env_safe_to_print (int ) ;
+ int msg (int,char*,int,int ) ;
 
 void
 env_set_print(int msglevel, const struct env_set *es)

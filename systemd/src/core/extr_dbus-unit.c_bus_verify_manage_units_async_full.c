@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
 struct TYPE_5__ {char* id; TYPE_1__* manager; } ;
-typedef  TYPE_2__ Unit ;
-struct TYPE_4__ {int /*<<< orphan*/  polkit_registry; } ;
+typedef TYPE_2__ Unit ;
+struct TYPE_4__ {int polkit_registry; } ;
 
-/* Variables and functions */
- char* GETTEXT_PACKAGE ; 
- int /*<<< orphan*/  UID_INVALID ; 
- int bus_verify_polkit_async (int /*<<< orphan*/ *,int,char*,char const**,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ char* GETTEXT_PACKAGE ;
+ int UID_INVALID ;
+ int bus_verify_polkit_async (int *,int,char*,char const**,int,int ,int *,int *) ;
 
 __attribute__((used)) static int bus_verify_manage_units_async_full(
                 Unit *u,

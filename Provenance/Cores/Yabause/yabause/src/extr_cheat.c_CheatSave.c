@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct TYPE_7__ {int type; int addr; int val; int enable; } ;
-typedef  TYPE_1__ cheatlist_struct ;
+typedef TYPE_1__ cheatlist_struct ;
 struct TYPE_9__ {scalar_t__ desc; } ;
-struct TYPE_8__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ IOCheck_struct ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_8__ {int member_1; int member_0; } ;
+typedef TYPE_2__ IOCheck_struct ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoubleWordSwap (int) ; 
- TYPE_5__* cheatlist ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_5__*,int) ; 
- int numcheats ; 
- int /*<<< orphan*/  strlen (scalar_t__) ; 
- int /*<<< orphan*/  ywrite (TYPE_2__*,void*,int,int,int /*<<< orphan*/ *) ; 
+
+ int DoubleWordSwap (int) ;
+ TYPE_5__* cheatlist ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int *,char*) ;
+ int memcpy (TYPE_1__*,TYPE_5__*,int) ;
+ int numcheats ;
+ int strlen (scalar_t__) ;
+ int ywrite (TYPE_2__*,void*,int,int,int *) ;
 
 int CheatSave(const char *filename)
 {
@@ -43,14 +43,14 @@ int CheatSave(const char *filename)
    if (!filename)
       return -1;
 
-   if ((fp = fopen(filename, "wb")) == NULL)
+   if ((fp = fopen(filename, "wb")) == ((void*)0))
       return -1;
 
    fprintf(fp, "YCHT");
    num = numcheats;
-#ifndef WORDS_BIGENDIAN
+
    DoubleWordSwap(num);
-#endif
+
    ywrite(&check, (void *)&num, sizeof(int), 1, fp);
 
    for(i = 0; i < numcheats; i++)
@@ -59,12 +59,12 @@ int CheatSave(const char *filename)
       cheatlist_struct cheat;
 
       memcpy(&cheat, &cheatlist[i], sizeof(cheatlist_struct));
-#ifndef WORDS_BIGENDIAN
+
       DoubleWordSwap(cheat.type);
       DoubleWordSwap(cheat.addr);
       DoubleWordSwap(cheat.val);
       DoubleWordSwap(cheat.enable);
-#endif
+
       ywrite(&check, (void *)&cheat.type, sizeof(int), 1, fp);
       ywrite(&check, (void *)&cheat.addr, sizeof(u32), 1, fp);
       ywrite(&check, (void *)&cheat.val, sizeof(u32), 1, fp);

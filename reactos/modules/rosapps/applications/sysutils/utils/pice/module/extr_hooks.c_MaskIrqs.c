@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ENTER_FUNC () ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
- int /*<<< orphan*/  cli () ; 
- int /*<<< orphan*/  save_flags (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ulOldFlags ; 
+ int ENTER_FUNC () ;
+ int LEAVE_FUNC () ;
+ int cli () ;
+ int save_flags (int ) ;
+ int ulOldFlags ;
 
 void MaskIrqs(void)
 {

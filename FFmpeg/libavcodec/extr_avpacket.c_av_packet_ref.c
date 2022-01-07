@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  data; } ;
-struct TYPE_10__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; TYPE_2__* buf; } ;
-typedef  TYPE_1__ AVPacket ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- TYPE_2__* av_buffer_ref (TYPE_2__*) ; 
- int av_packet_copy_props (TYPE_1__*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  av_packet_free_side_data (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int packet_alloc (TYPE_2__**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int data; } ;
+struct TYPE_10__ {int size; int data; TYPE_2__* buf; } ;
+typedef TYPE_1__ AVPacket ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_assert1 (int) ;
+ TYPE_2__* av_buffer_ref (TYPE_2__*) ;
+ int av_packet_copy_props (TYPE_1__*,TYPE_1__ const*) ;
+ int av_packet_free_side_data (TYPE_1__*) ;
+ int memcpy (int ,int ,int ) ;
+ int packet_alloc (TYPE_2__**,int ) ;
 
 int av_packet_ref(AVPacket *dst, const AVPacket *src)
 {

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_SET ; 
- int /*<<< orphan*/  CHALLENGE ; 
- int /*<<< orphan*/  COUNTRY ; 
- int /*<<< orphan*/  CSA ; 
- int /*<<< orphan*/  DS_SET ; 
- int /*<<< orphan*/  FH_SET ; 
- int /*<<< orphan*/  GENERIC ; 
- int /*<<< orphan*/  HOP_PARAMS ; 
- int /*<<< orphan*/  HOP_TABLE ; 
- int /*<<< orphan*/  IBSS_DFS ; 
- int /*<<< orphan*/  IBSS_SET ; 
- int /*<<< orphan*/  MEASURE_REPORT ; 
- int /*<<< orphan*/  MEASURE_REQUEST ; 
- int /*<<< orphan*/  MFIE_STRING (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POWER_CAPABILITY ; 
- int /*<<< orphan*/  POWER_CONSTRAINT ; 
- int /*<<< orphan*/  QOS_PARAMETER ; 
- int /*<<< orphan*/  QUIET ; 
- int /*<<< orphan*/  RATES ; 
- int /*<<< orphan*/  RATES_EX ; 
- int /*<<< orphan*/  REQUEST ; 
- int /*<<< orphan*/  RSN ; 
- int /*<<< orphan*/  SSID ; 
- int /*<<< orphan*/  SUPP_CHANNELS ; 
- int /*<<< orphan*/  TIM ; 
- int /*<<< orphan*/  TPC_REPORT ; 
- int /*<<< orphan*/  TPC_REQUEST ; 
+
+
+
+typedef int u16 ;
+
+
+ int CF_SET ;
+ int CHALLENGE ;
+ int COUNTRY ;
+ int CSA ;
+ int DS_SET ;
+ int FH_SET ;
+ int GENERIC ;
+ int HOP_PARAMS ;
+ int HOP_TABLE ;
+ int IBSS_DFS ;
+ int IBSS_SET ;
+ int MEASURE_REPORT ;
+ int MEASURE_REQUEST ;
+ int MFIE_STRING (int ) ;
+ int POWER_CAPABILITY ;
+ int POWER_CONSTRAINT ;
+ int QOS_PARAMETER ;
+ int QUIET ;
+ int RATES ;
+ int RATES_EX ;
+ int REQUEST ;
+ int RSN ;
+ int SSID ;
+ int SUPP_CHANNELS ;
+ int TIM ;
+ int TPC_REPORT ;
+ int TPC_REQUEST ;
 
 __attribute__((used)) static const char *get_info_element_string(u16 id)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static const char *get_info_element_string(u16 id)
                 MFIE_STRING(MEASURE_REPORT);
                 MFIE_STRING(QUIET);
                 MFIE_STRING(IBSS_DFS);
-               // MFIE_STRING(ERP_INFO);
+
                 MFIE_STRING(RSN);
                 MFIE_STRING(RATES_EX);
                 MFIE_STRING(GENERIC);

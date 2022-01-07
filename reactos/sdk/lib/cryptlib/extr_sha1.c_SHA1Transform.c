@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R0 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  R1 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  R2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  R3 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  R4 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int UCHAR ;
+
+
+ int R0 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int R1 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int R2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int R3 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
+ int R4 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int) ;
 
 __attribute__((used)) static void SHA1Transform(ULONG State[5], UCHAR Buffer[64])
 {
@@ -27,14 +27,14 @@ __attribute__((used)) static void SHA1Transform(ULONG State[5], UCHAR Buffer[64]
 
    Block = (ULONG*)Buffer;
 
-   /* Copy Context->State[] to working variables */
+
    a = State[0];
    b = State[1];
    c = State[2];
    d = State[3];
    e = State[4];
 
-   /* 4 rounds of 20 operations each. Loop unrolled. */
+
    R0(a,b,c,d,e, 0); R0(e,a,b,c,d, 1); R0(d,e,a,b,c, 2); R0(c,d,e,a,b, 3);
    R0(b,c,d,e,a, 4); R0(a,b,c,d,e, 5); R0(e,a,b,c,d, 6); R0(d,e,a,b,c, 7);
    R0(c,d,e,a,b, 8); R0(b,c,d,e,a, 9); R0(a,b,c,d,e,10); R0(e,a,b,c,d,11);
@@ -56,13 +56,13 @@ __attribute__((used)) static void SHA1Transform(ULONG State[5], UCHAR Buffer[64]
    R4(d,e,a,b,c,72); R4(c,d,e,a,b,73); R4(b,c,d,e,a,74); R4(a,b,c,d,e,75);
    R4(e,a,b,c,d,76); R4(d,e,a,b,c,77); R4(c,d,e,a,b,78); R4(b,c,d,e,a,79);
 
-   /* Add the working variables back into Context->State[] */
+
    State[0] += a;
    State[1] += b;
    State[2] += c;
    State[3] += d;
    State[4] += e;
 
-   /* Wipe variables */
+
    a = b = c = d = e = 0;
 }

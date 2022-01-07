@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DRAW_BALL ; 
- int /*<<< orphan*/  DRAW_BALL_SHADOW ; 
- int /*<<< orphan*/  DrawBoingBall () ; 
- int /*<<< orphan*/  DrawGrid () ; 
- int GL_COLOR_BUFFER_BIT ; 
- int GL_DEPTH_BUFFER_BIT ; 
- int /*<<< orphan*/  drawBallHow ; 
- int /*<<< orphan*/  glClear (int) ; 
- int /*<<< orphan*/  glFlush () ; 
- int /*<<< orphan*/  glPopMatrix () ; 
- int /*<<< orphan*/  glPushMatrix () ; 
+ int DRAW_BALL ;
+ int DRAW_BALL_SHADOW ;
+ int DrawBoingBall () ;
+ int DrawGrid () ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_DEPTH_BUFFER_BIT ;
+ int drawBallHow ;
+ int glClear (int) ;
+ int glFlush () ;
+ int glPopMatrix () ;
+ int glPushMatrix () ;
 
 void display(void)
 {

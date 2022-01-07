@@ -1,0 +1,83 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/net/phy/extr_mdio-mscc-miim.c_mscc_miim_write.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/net/phy/extr_mdio-mscc-miim.c_mscc_miim_write.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.mii_bus = type { %struct.mscc_miim_dev* }
+%struct.mscc_miim_dev = type { i64 }
+
+@MSCC_MIIM_CMD_VLD = common dso_local global i32 0, align 4
+@MSCC_MIIM_CMD_PHYAD_SHIFT = common dso_local global i32 0, align 4
+@MSCC_MIIM_CMD_REGAD_SHIFT = common dso_local global i32 0, align 4
+@MSCC_MIIM_CMD_WRDATA_SHIFT = common dso_local global i32 0, align 4
+@MSCC_MIIM_CMD_OPR_WRITE = common dso_local global i32 0, align 4
+@MSCC_MIIM_REG_CMD = common dso_local global i64 0, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.mii_bus*, i32, i32, i32)* @mscc_miim_write to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @mscc_miim_write(%struct.mii_bus* %0, i32 %1, i32 %2, i32 %3) #0 {
+  %5 = alloca %struct.mii_bus*, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  %9 = alloca %struct.mscc_miim_dev*, align 8
+  %10 = alloca i32, align 4
+  store %struct.mii_bus* %0, %struct.mii_bus** %5, align 8
+  store i32 %1, i32* %6, align 4
+  store i32 %2, i32* %7, align 4
+  store i32 %3, i32* %8, align 4
+  %11 = load %struct.mii_bus*, %struct.mii_bus** %5, align 8
+  %12 = getelementptr inbounds %struct.mii_bus, %struct.mii_bus* %11, i32 0, i32 0
+  %13 = load %struct.mscc_miim_dev*, %struct.mscc_miim_dev** %12, align 8
+  store %struct.mscc_miim_dev* %13, %struct.mscc_miim_dev** %9, align 8
+  %14 = load %struct.mii_bus*, %struct.mii_bus** %5, align 8
+  %15 = call i32 @mscc_miim_wait_ready(%struct.mii_bus* %14)
+  store i32 %15, i32* %10, align 4
+  %16 = load i32, i32* %10, align 4
+  %17 = icmp slt i32 %16, 0
+  br i1 %17, label %18, label %19
+
+18:                                               ; preds = %4
+  br label %41
+
+19:                                               ; preds = %4
+  %20 = load i32, i32* @MSCC_MIIM_CMD_VLD, align 4
+  %21 = load i32, i32* %6, align 4
+  %22 = load i32, i32* @MSCC_MIIM_CMD_PHYAD_SHIFT, align 4
+  %23 = shl i32 %21, %22
+  %24 = or i32 %20, %23
+  %25 = load i32, i32* %7, align 4
+  %26 = load i32, i32* @MSCC_MIIM_CMD_REGAD_SHIFT, align 4
+  %27 = shl i32 %25, %26
+  %28 = or i32 %24, %27
+  %29 = load i32, i32* %8, align 4
+  %30 = load i32, i32* @MSCC_MIIM_CMD_WRDATA_SHIFT, align 4
+  %31 = shl i32 %29, %30
+  %32 = or i32 %28, %31
+  %33 = load i32, i32* @MSCC_MIIM_CMD_OPR_WRITE, align 4
+  %34 = or i32 %32, %33
+  %35 = load %struct.mscc_miim_dev*, %struct.mscc_miim_dev** %9, align 8
+  %36 = getelementptr inbounds %struct.mscc_miim_dev, %struct.mscc_miim_dev* %35, i32 0, i32 0
+  %37 = load i64, i64* %36, align 8
+  %38 = load i64, i64* @MSCC_MIIM_REG_CMD, align 8
+  %39 = add nsw i64 %37, %38
+  %40 = call i32 @writel(i32 %34, i64 %39)
+  br label %41
+
+41:                                               ; preds = %19, %18
+  %42 = load i32, i32* %10, align 4
+  ret i32 %42
+}
+
+declare dso_local i32 @mscc_miim_wait_ready(%struct.mii_bus*) #1
+
+declare dso_local i32 @writel(i32, i64) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

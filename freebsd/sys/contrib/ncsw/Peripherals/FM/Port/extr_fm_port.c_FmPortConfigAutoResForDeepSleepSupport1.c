@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  t_PortTblEntry ;
-typedef  int /*<<< orphan*/  t_OidsTblEntry ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int t_PortTblEntry ;
+typedef int t_OidsTblEntry ;
 struct TYPE_10__ {int maxNumOfArpEntries; int maxNumOfEchoIpv4Entries; int maxNumOfEchoIpv6Entries; int maxNumOfNdpEntries; int maxNumOfSnmpIPV4Entries; int maxNumOfSnmpIPV6Entries; int maxNumOfSnmpOidEntries; int maxNumOfUdpPortFiltering; int maxNumOfTcpPortFiltering; scalar_t__ maxNumOfIpProtFiltering; scalar_t__ maxNumOfSnmpOidChar; } ;
-typedef  TYPE_4__ t_FmPortDsarTablesSizes ;
+typedef TYPE_4__ t_FmPortDsarTablesSizes ;
 struct TYPE_7__ {TYPE_4__* autoResMaxSizes; } ;
-struct TYPE_11__ {scalar_t__ fmMuramPhysBaseAddr; TYPE_3__* p_FmPortBmiRegs; int /*<<< orphan*/  h_FmMuram; TYPE_1__ deepSleepVars; } ;
-typedef  TYPE_5__ t_FmPort ;
-typedef  int /*<<< orphan*/  t_Error ;
-typedef  int /*<<< orphan*/  t_DsarSnmpIpv6AddrTblEntry ;
-typedef  int /*<<< orphan*/  t_DsarSnmpIpv4AddrTblEntry ;
-typedef  int /*<<< orphan*/  t_DsarSnmpDescriptor ;
-typedef  int /*<<< orphan*/  t_DsarNdDescriptor ;
-typedef  int /*<<< orphan*/  t_DsarIcmpV6Statistics ;
-typedef  int /*<<< orphan*/  t_DsarIcmpV6Descriptor ;
-typedef  int /*<<< orphan*/  t_DsarIcmpV6BindingEntry ;
-typedef  int /*<<< orphan*/  t_DsarIcmpV4Statistics ;
-typedef  int /*<<< orphan*/  t_DsarIcmpV4Descriptor ;
-typedef  int /*<<< orphan*/  t_DsarIcmpV4BindingEntry ;
-typedef  int /*<<< orphan*/  t_DsarArpStatistics ;
-typedef  int /*<<< orphan*/  t_DsarArpDescriptor ;
-typedef  int /*<<< orphan*/  t_DsarArpBindingEntry ;
-typedef  int /*<<< orphan*/  t_ArStatistics ;
-typedef  int /*<<< orphan*/  t_ArCommonDesc ;
-struct TYPE_8__ {int /*<<< orphan*/  fmbm_rgpr; } ;
+struct TYPE_11__ {scalar_t__ fmMuramPhysBaseAddr; TYPE_3__* p_FmPortBmiRegs; int h_FmMuram; TYPE_1__ deepSleepVars; } ;
+typedef TYPE_5__ t_FmPort ;
+typedef int t_Error ;
+typedef int t_DsarSnmpIpv6AddrTblEntry ;
+typedef int t_DsarSnmpIpv4AddrTblEntry ;
+typedef int t_DsarSnmpDescriptor ;
+typedef int t_DsarNdDescriptor ;
+typedef int t_DsarIcmpV6Statistics ;
+typedef int t_DsarIcmpV6Descriptor ;
+typedef int t_DsarIcmpV6BindingEntry ;
+typedef int t_DsarIcmpV4Statistics ;
+typedef int t_DsarIcmpV4Descriptor ;
+typedef int t_DsarIcmpV4BindingEntry ;
+typedef int t_DsarArpStatistics ;
+typedef int t_DsarArpDescriptor ;
+typedef int t_DsarArpBindingEntry ;
+typedef int t_ArStatistics ;
+typedef int t_ArCommonDesc ;
+struct TYPE_8__ {int fmbm_rgpr; } ;
 struct TYPE_9__ {TYPE_2__ rxPortBmiRegs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/ * FM_MURAM_AllocMem (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ GET_UINT32 (int /*<<< orphan*/ ) ; 
- int ROUND_UP (int,int) ; 
- int /*<<< orphan*/  WRITE_UINT32 (int,int) ; 
- int* XX_PhysToVirt (scalar_t__) ; 
- scalar_t__ XX_VirtToPhys (int /*<<< orphan*/ *) ; 
+
+ int E_OK ;
+ int * FM_MURAM_AllocMem (int ,int,int) ;
+ scalar_t__ GET_UINT32 (int ) ;
+ int ROUND_UP (int,int) ;
+ int WRITE_UINT32 (int,int) ;
+ int* XX_PhysToVirt (scalar_t__) ;
+ scalar_t__ XX_VirtToPhys (int *) ;
 
 __attribute__((used)) static t_Error FmPortConfigAutoResForDeepSleepSupport1(t_FmPort *p_FmPort)
 {
@@ -57,28 +57,28 @@ __attribute__((used)) static t_Error FmPortConfigAutoResForDeepSleepSupport1(t_F
     t_FmPortDsarTablesSizes *params = p_FmPort->deepSleepVars.autoResMaxSizes;
     t_ArCommonDesc *ArCommonDescPtr;
     uint32_t size = sizeof(t_ArCommonDesc);
-    // ARP
-    // should put here if (params->max_num_of_arp_entries)?
+
+
     size = ROUND_UP(size,4);
     size += sizeof(t_DsarArpDescriptor);
     size += sizeof(t_DsarArpBindingEntry) * params->maxNumOfArpEntries;
     size += sizeof(t_DsarArpStatistics);
-    //ICMPV4
+
     size = ROUND_UP(size,4);
     size += sizeof(t_DsarIcmpV4Descriptor);
     size += sizeof(t_DsarIcmpV4BindingEntry) * params->maxNumOfEchoIpv4Entries;
     size += sizeof(t_DsarIcmpV4Statistics);
-    //ICMPV6
+
     size = ROUND_UP(size,4);
     size += sizeof(t_DsarIcmpV6Descriptor);
     size += sizeof(t_DsarIcmpV6BindingEntry) * params->maxNumOfEchoIpv6Entries;
     size += sizeof(t_DsarIcmpV6Statistics);
-    //ND
+
     size = ROUND_UP(size,4);
     size += sizeof(t_DsarNdDescriptor);
     size += sizeof(t_DsarIcmpV6BindingEntry) * params->maxNumOfNdpEntries;
     size += sizeof(t_DsarIcmpV6Statistics);
-    //SNMP
+
     size = ROUND_UP(size,4);
     size += sizeof(t_DsarSnmpDescriptor);
     size += sizeof(t_DsarSnmpIpv4AddrTblEntry)
@@ -88,7 +88,7 @@ __attribute__((used)) static t_Error FmPortConfigAutoResForDeepSleepSupport1(t_F
     size += sizeof(t_OidsTblEntry) * params->maxNumOfSnmpOidEntries;
     size += params->maxNumOfSnmpOidChar;
     size += sizeof(t_DsarIcmpV6Statistics);
-    //filters
+
     size = ROUND_UP(size,4);
     size += params->maxNumOfIpProtFiltering;
     size = ROUND_UP(size,4);
@@ -96,9 +96,9 @@ __attribute__((used)) static t_Error FmPortConfigAutoResForDeepSleepSupport1(t_F
     size = ROUND_UP(size,4);
     size += params->maxNumOfTcpPortFiltering * sizeof(t_PortTblEntry);
 
-    // add here for more protocols
 
-    // statistics
+
+
     size = ROUND_UP(size,4);
     size += sizeof(t_ArStatistics);
 

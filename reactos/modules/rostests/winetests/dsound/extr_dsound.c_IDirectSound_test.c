@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dscaps ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int dscaps ;
 struct TYPE_4__ {int dwSize; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUND ;
-typedef  int /*<<< orphan*/  LPCGUID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IDirectSound8 ;
-typedef  int /*<<< orphan*/  IDirectSound ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ DSCAPS ;
-typedef  scalar_t__ BOOL ;
+typedef int LPVOID ;
+typedef int * LPDIRECTSOUND ;
+typedef int LPCGUID ;
+typedef int IUnknown ;
+typedef int IDirectSound8 ;
+typedef int IDirectSound ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ DSCAPS ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ DSERR_ALLOCATED ; 
- scalar_t__ DSERR_ALREADYINITIALIZED ; 
- scalar_t__ DSERR_INVALIDPARAM ; 
- scalar_t__ DSERR_NODRIVER ; 
- scalar_t__ DSERR_PRIOLEVELNEEDED ; 
- scalar_t__ DSERR_UNINITIALIZED ; 
- int /*<<< orphan*/  DSSCL_PRIORITY ; 
- scalar_t__ DSSPEAKER_COMBINED (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DSSPEAKER_GEOMETRY_NARROW ; 
- int /*<<< orphan*/  DSSPEAKER_GEOMETRY_WIDE ; 
- int /*<<< orphan*/  DSSPEAKER_STEREO ; 
- scalar_t__ DS_OK ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  IDirectSound8_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSound_Compact (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSound_GetCaps (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ IDirectSound_GetSpeakerConfig (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IDirectSound_Initialize (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IDirectSound_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IDirectSound_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDirectSound_SetCooperativeLevel (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IDirectSound_SetSpeakerConfig (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  IID_IDirectSound ; 
- int /*<<< orphan*/  IID_IDirectSound8 ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  get_hwnd () ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
+
+ scalar_t__ DSERR_ALLOCATED ;
+ scalar_t__ DSERR_ALREADYINITIALIZED ;
+ scalar_t__ DSERR_INVALIDPARAM ;
+ scalar_t__ DSERR_NODRIVER ;
+ scalar_t__ DSERR_PRIOLEVELNEEDED ;
+ scalar_t__ DSERR_UNINITIALIZED ;
+ int DSSCL_PRIORITY ;
+ scalar_t__ DSSPEAKER_COMBINED (int ,int ) ;
+ int DSSPEAKER_GEOMETRY_NARROW ;
+ int DSSPEAKER_GEOMETRY_WIDE ;
+ int DSSPEAKER_STEREO ;
+ scalar_t__ DS_OK ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ FALSE ;
+ int IDirectSound8_Release (int *) ;
+ scalar_t__ IDirectSound_Compact (int *) ;
+ scalar_t__ IDirectSound_GetCaps (int *,TYPE_1__*) ;
+ scalar_t__ IDirectSound_GetSpeakerConfig (int *,scalar_t__*) ;
+ scalar_t__ IDirectSound_Initialize (int *,int ) ;
+ scalar_t__ IDirectSound_QueryInterface (int *,int *,int *) ;
+ int IDirectSound_Release (int *) ;
+ scalar_t__ IDirectSound_SetCooperativeLevel (int *,int ,int ) ;
+ scalar_t__ IDirectSound_SetSpeakerConfig (int *,scalar_t__) ;
+ int IID_IDirectSound ;
+ int IID_IDirectSound8 ;
+ int IID_IUnknown ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int get_hwnd () ;
+ int ok (int,char*,int) ;
+ int trace (char*,...) ;
 
 __attribute__((used)) static void IDirectSound_test(LPDIRECTSOUND dso, BOOL initialized,
                               LPCGUID lpGuid)
@@ -68,7 +68,7 @@ __attribute__((used)) static void IDirectSound_test(LPDIRECTSOUND dso, BOOL init
     IDirectSound8 * ds8;
     DWORD speaker_config, new_speaker_config, ref_speaker_config;
 
-    /* Try to Query for objects */
+
     rc=IDirectSound_QueryInterface(dso,&IID_IUnknown,(LPVOID*)&unknown);
     ok(rc==DS_OK,"IDirectSound_QueryInterface(IID_IUnknown) failed: %08x\n", rc);
     if (rc==DS_OK)
@@ -86,7 +86,7 @@ __attribute__((used)) static void IDirectSound_test(LPDIRECTSOUND dso, BOOL init
         IDirectSound8_Release(ds8);
 
     if (initialized == FALSE) {
-        /* try uninitialized object */
+
         rc=IDirectSound_GetCaps(dso,0);
         ok(rc==DSERR_UNINITIALIZED,"IDirectSound_GetCaps(NULL) "
            "should have returned DSERR_UNINITIALIZED, returned: %08x\n", rc);
@@ -122,21 +122,21 @@ __attribute__((used)) static void IDirectSound_test(LPDIRECTSOUND dso, BOOL init
     ok(rc==DSERR_ALREADYINITIALIZED, "IDirectSound_Initialize() "
        "should have returned DSERR_ALREADYINITIALIZED: %08x\n", rc);
 
-    /* DSOUND: Error: Invalid caps buffer */
+
     rc=IDirectSound_GetCaps(dso,0);
     ok(rc==DSERR_INVALIDPARAM,"IDirectSound_GetCaps(NULL) "
        "should have returned DSERR_INVALIDPARAM, returned: %08x\n", rc);
 
     ZeroMemory(&dscaps, sizeof(dscaps));
 
-    /* DSOUND: Error: Invalid caps buffer */
+
     rc=IDirectSound_GetCaps(dso,&dscaps);
     ok(rc==DSERR_INVALIDPARAM,"IDirectSound_GetCaps() "
        "should have returned DSERR_INVALIDPARAM, returned: %08x\n", rc);
 
     dscaps.dwSize=sizeof(dscaps);
 
-    /* DSOUND: Running on a certified driver */
+
     rc=IDirectSound_GetCaps(dso,&dscaps);
     ok(rc==DS_OK,"IDirectSound_GetCaps() failed: %08x\n",rc);
 

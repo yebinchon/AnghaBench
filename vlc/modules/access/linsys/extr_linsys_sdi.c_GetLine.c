@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_5__ {unsigned int i_anc_size; unsigned int i_active_size; int i_line_buffer; int /*<<< orphan*/  const* p_line_buffer; } ;
-typedef  TYPE_2__ demux_sys_t ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_5__ {unsigned int i_anc_size; unsigned int i_active_size; int i_line_buffer; int const* p_line_buffer; } ;
+typedef TYPE_2__ demux_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
+
+ int memcpy (int const*,int const*,int) ;
 
 __attribute__((used)) static const uint8_t *GetLine( demux_t *p_demux, const uint8_t **pp_parser,
                                const uint8_t *p_end )
@@ -44,7 +44,7 @@ __attribute__((used)) static const uint8_t *GetLine( demux_t *p_demux, const uin
         memcpy( p_sys->p_line_buffer, *pp_parser,
                                    p_end - *pp_parser );
         p_sys->i_line_buffer = p_end - *pp_parser;
-        return NULL;
+        return ((void*)0);
     }
 
     p_tmp = *pp_parser;

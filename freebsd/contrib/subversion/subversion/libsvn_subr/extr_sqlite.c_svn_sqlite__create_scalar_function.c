@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__func_t ;
-struct TYPE_4__ {int /*<<< orphan*/  db3; int /*<<< orphan*/  state_pool; } ;
-typedef  TYPE_1__ svn_sqlite__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct function_wrapper_baton_t {void* baton; int /*<<< orphan*/  func; } ;
 
-/* Variables and functions */
- int SQLITE_ANY ; 
- int SQLITE_DETERMINISTIC ; 
- int /*<<< orphan*/  SQLITE_ERR (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- struct function_wrapper_baton_t* apr_pcalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_create_function (int /*<<< orphan*/ ,char const*,int,int,struct function_wrapper_baton_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wrapped_func ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_sqlite__func_t ;
+struct TYPE_4__ {int db3; int state_pool; } ;
+typedef TYPE_1__ svn_sqlite__db_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct function_wrapper_baton_t {void* baton; int func; } ;
+
+
+ int SQLITE_ANY ;
+ int SQLITE_DETERMINISTIC ;
+ int SQLITE_ERR (int ,TYPE_1__*) ;
+ int * SVN_NO_ERROR ;
+ struct function_wrapper_baton_t* apr_pcalloc (int ,int) ;
+ int sqlite3_create_function (int ,char const*,int,int,struct function_wrapper_baton_t*,int ,int *,int *) ;
+ int wrapped_func ;
 
 svn_error_t *
 svn_sqlite__create_scalar_function(svn_sqlite__db_t *db,
@@ -47,7 +47,7 @@ svn_sqlite__create_scalar_function(svn_sqlite__db_t *db,
     eTextRep |= SQLITE_DETERMINISTIC;
 
   SQLITE_ERR(sqlite3_create_function(db->db3, func_name, argc, eTextRep,
-                                     fwb, wrapped_func, NULL, NULL),
+                                     fwb, wrapped_func, ((void*)0), ((void*)0)),
              db);
 
   return SVN_NO_ERROR;

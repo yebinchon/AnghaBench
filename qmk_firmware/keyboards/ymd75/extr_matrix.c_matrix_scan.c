@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ matrix_row_t ;
 
-/* Variables and functions */
- scalar_t__ DEBOUNCE ; 
- scalar_t__ MATRIX_ROWS ; 
- int PINA ; 
- int PINC ; 
- int PIND ; 
- int PIND7 ; 
- int /*<<< orphan*/  _delay_ms (int) ; 
- int /*<<< orphan*/  _delay_us (int) ; 
- int bit_reverse (int) ; 
- scalar_t__ debouncing ; 
- scalar_t__* matrix ; 
- scalar_t__* matrix_debouncing ; 
- int /*<<< orphan*/  matrix_scan_quantum () ; 
- int /*<<< orphan*/  matrix_set_row_status (scalar_t__) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ matrix_row_t ;
+
+
+ scalar_t__ DEBOUNCE ;
+ scalar_t__ MATRIX_ROWS ;
+ int PINA ;
+ int PINC ;
+ int PIND ;
+ int PIND7 ;
+ int _delay_ms (int) ;
+ int _delay_us (int) ;
+ int bit_reverse (int) ;
+ scalar_t__ debouncing ;
+ scalar_t__* matrix ;
+ scalar_t__* matrix_debouncing ;
+ int matrix_scan_quantum () ;
+ int matrix_set_row_status (scalar_t__) ;
 
 uint8_t matrix_scan(void) {
     for (uint8_t row = 0; row < MATRIX_ROWS; row++) {
@@ -35,13 +35,13 @@ uint8_t matrix_scan(void) {
         _delay_us(5);
 
         matrix_row_t cols = (
-            // cols 0..7, PORTA 0 -> 7
+
             (~PINA) & 0xFF
         ) | (
-            // cols 8..13, PORTC 7 -> 0
+
             bit_reverse((~PINC) & 0xFF) << 8
         ) | (
-                  // col 14, PORTD 7
+
                   ((~PIND) & (1 << PIND7)) << 7
                   );
 
@@ -60,8 +60,8 @@ uint8_t matrix_scan(void) {
             }
         }
     }
-    matrix_scan_quantum();  // also missing in original PS2AVRGB implementation
-    //matrix_scan_user();
+    matrix_scan_quantum();
+
 
     return 1;
 }

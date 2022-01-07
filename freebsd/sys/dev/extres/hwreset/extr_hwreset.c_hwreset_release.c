@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hwreset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_HWRESET ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int hwreset_t ;
+
+
+ int M_HWRESET ;
+ int free (int ,int ) ;
 
 void
 hwreset_release(hwreset_t rst)
 {
-	free(rst, M_HWRESET);
+ free(rst, M_HWRESET);
 }

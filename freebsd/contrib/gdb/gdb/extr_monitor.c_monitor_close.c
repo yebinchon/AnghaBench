@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * breakaddr ; 
- int /*<<< orphan*/ * monitor_desc ; 
- int /*<<< orphan*/  serial_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xfree (int /*<<< orphan*/ *) ; 
+ int * breakaddr ;
+ int * monitor_desc ;
+ int serial_close (int *) ;
+ int xfree (int *) ;
 
 void
 monitor_close (int quitting)
@@ -23,12 +15,12 @@ monitor_close (int quitting)
   if (monitor_desc)
     serial_close (monitor_desc);
 
-  /* Free breakpoint memory */
-  if (breakaddr != NULL)
+
+  if (breakaddr != ((void*)0))
     {
       xfree (breakaddr);
-      breakaddr = NULL;
+      breakaddr = ((void*)0);
     }
 
-  monitor_desc = NULL;
+  monitor_desc = ((void*)0);
 }

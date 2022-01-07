@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct v4l2_subdev {int dummy; } ;
-struct tef6862_state {struct v4l2_subdev sd; int /*<<< orphan*/  freq; } ;
+struct tef6862_state {struct v4l2_subdev sd; int freq; } ;
 struct i2c_device_id {int dummy; } ;
 struct i2c_client {int addr; TYPE_1__* adapter; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct TYPE_2__ {int name; } ;
 
-/* Variables and functions */
- int EIO ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  I2C_FUNC_SMBUS_BYTE_DATA ; 
- int /*<<< orphan*/  TEF6862_LO_FREQ ; 
- int /*<<< orphan*/  i2c_check_functionality (TYPE_1__*,int /*<<< orphan*/ ) ; 
- struct tef6862_state* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tef6862_ops ; 
- int /*<<< orphan*/  v4l2_i2c_subdev_init (struct v4l2_subdev*,struct i2c_client*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  v4l_info (struct i2c_client*,char*,int,int /*<<< orphan*/ ) ; 
+
+ int EIO ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int I2C_FUNC_SMBUS_BYTE_DATA ;
+ int TEF6862_LO_FREQ ;
+ int i2c_check_functionality (TYPE_1__*,int ) ;
+ struct tef6862_state* kzalloc (int,int ) ;
+ int tef6862_ops ;
+ int v4l2_i2c_subdev_init (struct v4l2_subdev*,struct i2c_client*,int *) ;
+ int v4l_info (struct i2c_client*,char*,int,int ) ;
 
 __attribute__((used)) static int tef6862_probe(struct i2c_client *client,
-			 const struct i2c_device_id *id)
+    const struct i2c_device_id *id)
 {
-	struct tef6862_state *state;
-	struct v4l2_subdev *sd;
+ struct tef6862_state *state;
+ struct v4l2_subdev *sd;
 
-	/* Check if the adapter supports the needed features */
-	if (!i2c_check_functionality(client->adapter, I2C_FUNC_SMBUS_BYTE_DATA))
-		return -EIO;
 
-	v4l_info(client, "chip found @ 0x%02x (%s)\n",
-			client->addr << 1, client->adapter->name);
+ if (!i2c_check_functionality(client->adapter, I2C_FUNC_SMBUS_BYTE_DATA))
+  return -EIO;
 
-	state = kzalloc(sizeof(struct tef6862_state), GFP_KERNEL);
-	if (state == NULL)
-		return -ENOMEM;
-	state->freq = TEF6862_LO_FREQ;
+ v4l_info(client, "chip found @ 0x%02x (%s)\n",
+   client->addr << 1, client->adapter->name);
 
-	sd = &state->sd;
-	v4l2_i2c_subdev_init(sd, client, &tef6862_ops);
+ state = kzalloc(sizeof(struct tef6862_state), GFP_KERNEL);
+ if (state == ((void*)0))
+  return -ENOMEM;
+ state->freq = TEF6862_LO_FREQ;
 
-	return 0;
+ sd = &state->sd;
+ v4l2_i2c_subdev_init(sd, client, &tef6862_ops);
+
+ return 0;
 }

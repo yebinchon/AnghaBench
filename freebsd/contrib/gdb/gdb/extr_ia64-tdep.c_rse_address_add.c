@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CORE_ADDR ;
 
-/* Variables and functions */
- scalar_t__ IS_NaT_COLLECTION_ADDR (int) ; 
+
+
+
+typedef int CORE_ADDR ;
+
+
+ scalar_t__ IS_NaT_COLLECTION_ADDR (int) ;
 
 __attribute__((used)) static CORE_ADDR
 rse_address_add(CORE_ADDR addr, int nslots)
@@ -24,7 +24,7 @@ rse_address_add(CORE_ADDR addr, int nslots)
 
   new_addr = addr + 8 * (nslots + mandatory_nat_slots);
 
-  if ((new_addr >> 9)  != ((addr + 8 * 64 * mandatory_nat_slots) >> 9))
+  if ((new_addr >> 9) != ((addr + 8 * 64 * mandatory_nat_slots) >> 9))
     new_addr += 8 * direction;
 
   if (IS_NaT_COLLECTION_ADDR(new_addr))

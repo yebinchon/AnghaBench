@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dictionary_entry {struct dictionary_entry* next; void* value; void* key; } ;
-struct dictionary {int /*<<< orphan*/  num_entries; struct dictionary_entry* head; int /*<<< orphan*/  extra; int /*<<< orphan*/  (* destroy ) (void*,void*,int /*<<< orphan*/ ) ;} ;
+struct dictionary {int num_entries; struct dictionary_entry* head; int extra; int (* destroy ) (void*,void*,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct dictionary_entry* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE (char*,struct dictionary*,void const*,void const*) ; 
- struct dictionary_entry** dictionary_find_internal (struct dictionary*,void const*) ; 
- int /*<<< orphan*/  stub1 (void*,void*,int /*<<< orphan*/ ) ; 
+
+ int GetProcessHeap () ;
+ struct dictionary_entry* HeapAlloc (int ,int ,int) ;
+ int TRACE (char*,struct dictionary*,void const*,void const*) ;
+ struct dictionary_entry** dictionary_find_internal (struct dictionary*,void const*) ;
+ int stub1 (void*,void*,int ) ;
 
 void dictionary_insert(struct dictionary *d, const void *k, const void *v)
 {

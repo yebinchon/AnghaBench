@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  nlmsg_flags; struct TYPE_5__* hdr; int /*<<< orphan*/  nlmsg_type; } ;
-typedef  TYPE_1__ sd_netlink_message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- TYPE_1__* IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NLM_F_DUMP ; 
- int /*<<< orphan*/  RTM_GETADDR ; 
- int /*<<< orphan*/  RTM_GETADDRLABEL ; 
- int /*<<< orphan*/  RTM_GETLINK ; 
- int /*<<< orphan*/  RTM_GETNEIGH ; 
- int /*<<< orphan*/  RTM_GETNEXTHOP ; 
- int /*<<< orphan*/  RTM_GETROUTE ; 
- int /*<<< orphan*/  RTM_GETRULE ; 
- int /*<<< orphan*/  SET_FLAG (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  assert_return (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int nlmsg_flags; struct TYPE_5__* hdr; int nlmsg_type; } ;
+typedef TYPE_1__ sd_netlink_message ;
+
+
+ int EINVAL ;
+ TYPE_1__* IN_SET (int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int NLM_F_DUMP ;
+ int RTM_GETADDR ;
+ int RTM_GETADDRLABEL ;
+ int RTM_GETLINK ;
+ int RTM_GETNEIGH ;
+ int RTM_GETNEXTHOP ;
+ int RTM_GETROUTE ;
+ int RTM_GETRULE ;
+ int SET_FLAG (int ,int ,int) ;
+ int assert_return (TYPE_1__*,int ) ;
 
 int sd_netlink_message_request_dump(sd_netlink_message *m, int dump) {
         assert_return(m, -EINVAL);

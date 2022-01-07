@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ia64_cpu_local_tick_fn ; 
- int /*<<< orphan*/  smp_call_function (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+ int ia64_cpu_local_tick_fn ;
+ int smp_call_function (int *,int *,int) ;
 
 void
 xen_timer_resume_on_aps(void)
 {
-	smp_call_function(&ia64_cpu_local_tick_fn, NULL, 1);
+ smp_call_function(&ia64_cpu_local_tick_fn, ((void*)0), 1);
 }

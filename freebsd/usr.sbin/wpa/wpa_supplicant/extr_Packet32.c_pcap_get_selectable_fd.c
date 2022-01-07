@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pcap_t ;
 
-/* Variables and functions */
- int pcap_fileno (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pcap_t ;
+
+
+ int pcap_fileno (int *) ;
 
 int
 pcap_get_selectable_fd(pcap_t *p)
 {
-	return(pcap_fileno(p));
+ return(pcap_fileno(p));
 }

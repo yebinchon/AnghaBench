@@ -1,64 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  IntType; scalar_t__ Attributes; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * Handler; int /*<<< orphan*/  IRQInfo1; int /*<<< orphan*/  Attributes; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int IntType; scalar_t__ Attributes; } ;
+struct TYPE_3__ {int * Handler; int IRQInfo1; int Attributes; } ;
 struct pcmcia_device {TYPE_2__ conf; TYPE_1__ irq; struct local_info_t* priv; } ;
 struct local_info_t {struct pcmcia_device* link; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*) ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INT_MEMORY_AND_IO ; 
- int /*<<< orphan*/  IRQ_LEVEL_ID ; 
- int /*<<< orphan*/  IRQ_TYPE_EXCLUSIVE ; 
- struct pcmcia_device* cur_dev ; 
- int /*<<< orphan*/  das08_pcmcia_config (struct pcmcia_device*) ; 
- struct local_info_t* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int DEBUG (int ,char*) ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int INT_MEMORY_AND_IO ;
+ int IRQ_LEVEL_ID ;
+ int IRQ_TYPE_EXCLUSIVE ;
+ struct pcmcia_device* cur_dev ;
+ int das08_pcmcia_config (struct pcmcia_device*) ;
+ struct local_info_t* kzalloc (int,int ) ;
 
 __attribute__((used)) static int das08_pcmcia_attach(struct pcmcia_device *link)
 {
-	struct local_info_t *local;
+ struct local_info_t *local;
 
-	DEBUG(0, "das08_pcmcia_attach()\n");
+ DEBUG(0, "das08_pcmcia_attach()\n");
 
-	/* Allocate space for private device-specific data */
-	local = kzalloc(sizeof(struct local_info_t), GFP_KERNEL);
-	if (!local)
-		return -ENOMEM;
-	local->link = link;
-	link->priv = local;
 
-	/* Interrupt setup */
-	link->irq.Attributes = IRQ_TYPE_EXCLUSIVE;
-	link->irq.IRQInfo1 = IRQ_LEVEL_ID;
-	link->irq.Handler = NULL;
+ local = kzalloc(sizeof(struct local_info_t), GFP_KERNEL);
+ if (!local)
+  return -ENOMEM;
+ local->link = link;
+ link->priv = local;
 
-	/*
-	   General socket configuration defaults can go here.  In this
-	   client, we assume very little, and rely on the CIS for almost
-	   everything.  In most clients, many details (i.e., number, sizes,
-	   and attributes of IO windows) are fixed by the nature of the
-	   device, and can be hard-wired here.
-	 */
-	link->conf.Attributes = 0;
-	link->conf.IntType = INT_MEMORY_AND_IO;
 
-	cur_dev = link;
+ link->irq.Attributes = IRQ_TYPE_EXCLUSIVE;
+ link->irq.IRQInfo1 = IRQ_LEVEL_ID;
+ link->irq.Handler = ((void*)0);
+ link->conf.Attributes = 0;
+ link->conf.IntType = INT_MEMORY_AND_IO;
 
-	das08_pcmcia_config(link);
+ cur_dev = link;
 
-	return 0;
+ das08_pcmcia_config(link);
+
+ return 0;
 }

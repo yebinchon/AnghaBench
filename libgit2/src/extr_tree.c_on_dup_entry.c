@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_ERROR_TREE ; 
- int /*<<< orphan*/  GIT_UNUSED (void*) ; 
- int /*<<< orphan*/  git_error_set (int /*<<< orphan*/ ,char*) ; 
+ int GIT_ERROR_TREE ;
+ int GIT_UNUSED (void*) ;
+ int git_error_set (int ,char*) ;
 
 __attribute__((used)) static int on_dup_entry(void **old, void *new)
 {
-	GIT_UNUSED(old); GIT_UNUSED(new);
+ GIT_UNUSED(old); GIT_UNUSED(new);
 
-	git_error_set(GIT_ERROR_TREE, "duplicate entries given for update");
-	return -1;
+ git_error_set(GIT_ERROR_TREE, "duplicate entries given for update");
+ return -1;
 }

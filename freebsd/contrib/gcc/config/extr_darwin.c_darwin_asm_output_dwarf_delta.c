@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assemble_name_raw (int /*<<< orphan*/ *,char const*) ; 
- int darwin_dwarf_label_counter ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
+
+
+
+typedef int FILE ;
+
+
+ int assemble_name_raw (int *,char const*) ;
+ int darwin_dwarf_label_counter ;
+ int fprintf (int *,char*,...) ;
 
 void
 darwin_asm_output_dwarf_delta (FILE *file, int size,
-			       const char *lab1, const char *lab2)
+          const char *lab1, const char *lab2)
 {
   int islocaldiff = (lab1[0] == '*' && lab1[1] == 'L'
-		     && lab2[0] == '*' && lab2[1] == 'L');
+       && lab2[0] == '*' && lab2[1] == 'L');
   const char *directive = (size == 8 ? ".quad" : ".long");
 
   if (islocaldiff)

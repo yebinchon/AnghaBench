@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct change {int ignore; struct change* link; } ;
-struct TYPE_4__ {int /*<<< orphan*/  prefix_lines; } ;
+struct TYPE_4__ {int prefix_lines; } ;
 struct TYPE_3__ {scalar_t__ fastmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIN_MAX ; 
- TYPE_2__* files ; 
- int /*<<< orphan*/  find_function_last_match ; 
- int /*<<< orphan*/  find_function_last_search ; 
- int /*<<< orphan*/  find_hunk ; 
- scalar_t__ ignore_blank_lines ; 
- TYPE_1__ ignore_regexp ; 
- int /*<<< orphan*/  mark_ignorable (struct change*) ; 
- int /*<<< orphan*/  pr_context_hunk ; 
- int /*<<< orphan*/  pr_unidiff_hunk ; 
- int /*<<< orphan*/  print_script (struct change*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int LIN_MAX ;
+ TYPE_2__* files ;
+ int find_function_last_match ;
+ int find_function_last_search ;
+ int find_hunk ;
+ scalar_t__ ignore_blank_lines ;
+ TYPE_1__ ignore_regexp ;
+ int mark_ignorable (struct change*) ;
+ int pr_context_hunk ;
+ int pr_unidiff_hunk ;
+ int print_script (struct change*,int ,int ) ;
 
 void
 print_context_script (struct change *script, bool unidiff)
@@ -38,7 +38,7 @@ print_context_script (struct change *script, bool unidiff)
     {
       struct change *e;
       for (e = script; e; e = e->link)
-	e->ignore = false;
+ e->ignore = 0;
     }
 
   find_function_last_search = - files[0].prefix_lines;

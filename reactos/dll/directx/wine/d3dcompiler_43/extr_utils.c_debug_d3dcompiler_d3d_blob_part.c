@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int D3D_BLOB_PART ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_BLOB_ALL_SIGNATURE_BLOB ; 
- int /*<<< orphan*/  D3D_BLOB_DEBUG_INFO ; 
- int /*<<< orphan*/  D3D_BLOB_INPUT_AND_OUTPUT_SIGNATURE_BLOB ; 
- int /*<<< orphan*/  D3D_BLOB_INPUT_SIGNATURE_BLOB ; 
- int /*<<< orphan*/  D3D_BLOB_LEGACY_SHADER ; 
- int /*<<< orphan*/  D3D_BLOB_OUTPUT_SIGNATURE_BLOB ; 
- int /*<<< orphan*/  D3D_BLOB_PATCH_CONSTANT_SIGNATURE_BLOB ; 
- int /*<<< orphan*/  D3D_BLOB_TEST_ALTERNATE_SHADER ; 
- int /*<<< orphan*/  D3D_BLOB_TEST_COMPILE_DETAILS ; 
- int /*<<< orphan*/  D3D_BLOB_TEST_COMPILE_PERF ; 
- int /*<<< orphan*/  D3D_BLOB_XNA_PREPASS_SHADER ; 
- int /*<<< orphan*/  D3D_BLOB_XNA_SHADER ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  WINE_D3DCOMPILER_TO_STR (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int D3D_BLOB_PART ;
+
+
+ int D3D_BLOB_ALL_SIGNATURE_BLOB ;
+ int D3D_BLOB_DEBUG_INFO ;
+ int D3D_BLOB_INPUT_AND_OUTPUT_SIGNATURE_BLOB ;
+ int D3D_BLOB_INPUT_SIGNATURE_BLOB ;
+ int D3D_BLOB_LEGACY_SHADER ;
+ int D3D_BLOB_OUTPUT_SIGNATURE_BLOB ;
+ int D3D_BLOB_PATCH_CONSTANT_SIGNATURE_BLOB ;
+ int D3D_BLOB_TEST_ALTERNATE_SHADER ;
+ int D3D_BLOB_TEST_COMPILE_DETAILS ;
+ int D3D_BLOB_TEST_COMPILE_PERF ;
+ int D3D_BLOB_XNA_PREPASS_SHADER ;
+ int D3D_BLOB_XNA_SHADER ;
+ int FIXME (char*,int) ;
+ int WINE_D3DCOMPILER_TO_STR (int ) ;
 
 const char *debug_d3dcompiler_d3d_blob_part(D3D_BLOB_PART part)
 {

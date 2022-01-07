@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct afu_irq {int /*<<< orphan*/  private; int /*<<< orphan*/  (* handler ) (int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace_ocxl_afu_irq_receive (int) ; 
+
+
+
+struct afu_irq {int private; int (* handler ) (int ) ;} ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int stub1 (int ) ;
+ int trace_ocxl_afu_irq_receive (int) ;
 
 __attribute__((used)) static irqreturn_t afu_irq_handler(int virq, void *data)
 {
-	struct afu_irq *irq = (struct afu_irq *) data;
+ struct afu_irq *irq = (struct afu_irq *) data;
 
-	trace_ocxl_afu_irq_receive(virq);
+ trace_ocxl_afu_irq_receive(virq);
 
-	if (irq->handler)
-		return irq->handler(irq->private);
+ if (irq->handler)
+  return irq->handler(irq->private);
 
-	return IRQ_HANDLED; // Just drop it on the ground
+ return IRQ_HANDLED;
 }

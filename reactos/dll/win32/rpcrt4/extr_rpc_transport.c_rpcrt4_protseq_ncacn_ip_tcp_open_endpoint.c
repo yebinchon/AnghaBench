@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_long ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_long ;
 struct sockaddr_storage {int dummy; } ;
 struct sockaddr {int dummy; } ;
-struct addrinfo {scalar_t__ ai_family; int ai_addrlen; struct sockaddr* ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; struct addrinfo* ai_next; int /*<<< orphan*/ * ai_canonname; int /*<<< orphan*/  ai_flags; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  service ;
-typedef  int /*<<< orphan*/  sa ;
-typedef  int /*<<< orphan*/  host ;
-struct TYPE_7__ {TYPE_1__* protseq; int /*<<< orphan*/  protseq_entry; } ;
+struct addrinfo {scalar_t__ ai_family; int ai_addrlen; struct sockaddr* ai_addr; int ai_protocol; int ai_socktype; struct addrinfo* ai_next; int * ai_canonname; int ai_flags; } ;
+typedef int socklen_t ;
+typedef int service ;
+typedef int sa ;
+typedef int host ;
+struct TYPE_7__ {TYPE_1__* protseq; int protseq_entry; } ;
 struct TYPE_6__ {int sock; TYPE_4__ common; } ;
-struct TYPE_5__ {int /*<<< orphan*/  cs; int /*<<< orphan*/  listeners; int /*<<< orphan*/  MaxCalls; int /*<<< orphan*/  Protseq; } ;
-typedef  TYPE_1__ RpcServerProtseq ;
-typedef  TYPE_2__ RpcConnection_tcp ;
-typedef  int /*<<< orphan*/  RpcConnection ;
-typedef  scalar_t__ RPC_STATUS ;
+struct TYPE_5__ {int cs; int listeners; int MaxCalls; int Protseq; } ;
+typedef TYPE_1__ RpcServerProtseq ;
+typedef TYPE_2__ RpcConnection_tcp ;
+typedef int RpcConnection ;
+typedef scalar_t__ RPC_STATUS ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int /*<<< orphan*/  AI_PASSIVE ; 
- int EAI_NONAME ; 
- int EAI_SERVICE ; 
- int /*<<< orphan*/  ERR (char*,char const*,...) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FIONBIO ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int NI_MAXSERV ; 
- int NI_NUMERICHOST ; 
- int NI_NUMERICSERV ; 
- scalar_t__ PF_UNSPEC ; 
- scalar_t__ RPCRT4_CreateConnection (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RPCRT4_ReleaseConnection (TYPE_4__*) ; 
- scalar_t__ RPC_S_CANT_CREATE_ENDPOINT ; 
- scalar_t__ RPC_S_DUPLICATE_ENDPOINT ; 
- scalar_t__ RPC_S_INVALID_ENDPOINT_FORMAT ; 
- scalar_t__ RPC_S_OK ; 
- scalar_t__ RPC_S_OUT_OF_RESOURCES ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRACE_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- scalar_t__ WSAEADDRINUSE ; 
- int WSAGetLastError () ; 
- int bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  closesocket (int) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int gai_strerror (int) ; 
- int getaddrinfo (int /*<<< orphan*/ *,char const*,struct addrinfo*,struct addrinfo**) ; 
- int getnameinfo (struct sockaddr*,int,char*,int,char*,int,int) ; 
- scalar_t__ getsockname (int,struct sockaddr*,int*) ; 
- int ioctlsocket (int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int listen (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpc ; 
- int socket (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int AI_PASSIVE ;
+ int EAI_NONAME ;
+ int EAI_SERVICE ;
+ int ERR (char*,char const*,...) ;
+ int EnterCriticalSection (int *) ;
+ int FIONBIO ;
+ int IPPROTO_TCP ;
+ int LeaveCriticalSection (int *) ;
+ int NI_MAXSERV ;
+ int NI_NUMERICHOST ;
+ int NI_NUMERICSERV ;
+ scalar_t__ PF_UNSPEC ;
+ scalar_t__ RPCRT4_CreateConnection (int **,int ,int ,int *,char*,int *,int *,int *,int *) ;
+ int RPCRT4_ReleaseConnection (TYPE_4__*) ;
+ scalar_t__ RPC_S_CANT_CREATE_ENDPOINT ;
+ scalar_t__ RPC_S_DUPLICATE_ENDPOINT ;
+ scalar_t__ RPC_S_INVALID_ENDPOINT_FORMAT ;
+ scalar_t__ RPC_S_OK ;
+ scalar_t__ RPC_S_OUT_OF_RESOURCES ;
+ int SOCK_STREAM ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRACE_ON (int ) ;
+ int TRUE ;
+ int WARN (char*,int) ;
+ scalar_t__ WSAEADDRINUSE ;
+ int WSAGetLastError () ;
+ int bind (int,struct sockaddr*,int) ;
+ int closesocket (int) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int gai_strerror (int) ;
+ int getaddrinfo (int *,char const*,struct addrinfo*,struct addrinfo**) ;
+ int getnameinfo (struct sockaddr*,int,char*,int,char*,int,int) ;
+ scalar_t__ getsockname (int,struct sockaddr*,int*) ;
+ int ioctlsocket (int,int ,int*) ;
+ int list_add_tail (int *,int *) ;
+ int listen (int,int ) ;
+ int rpc ;
+ int socket (scalar_t__,int ,int ) ;
 
 __attribute__((used)) static RPC_STATUS rpcrt4_protseq_ncacn_ip_tcp_open_endpoint(RpcServerProtseq *protseq, const char *endpoint)
 {
@@ -82,16 +82,16 @@ __attribute__((used)) static RPC_STATUS rpcrt4_protseq_ncacn_ip_tcp_open_endpoin
 
     TRACE("(%p, %s)\n", protseq, endpoint);
 
-    hints.ai_flags          = AI_PASSIVE /* for non-localhost addresses */;
-    hints.ai_family         = PF_UNSPEC;
-    hints.ai_socktype       = SOCK_STREAM;
-    hints.ai_protocol       = IPPROTO_TCP;
-    hints.ai_addrlen        = 0;
-    hints.ai_addr           = NULL;
-    hints.ai_canonname      = NULL;
-    hints.ai_next           = NULL;
+    hints.ai_flags = AI_PASSIVE ;
+    hints.ai_family = PF_UNSPEC;
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_protocol = IPPROTO_TCP;
+    hints.ai_addrlen = 0;
+    hints.ai_addr = ((void*)0);
+    hints.ai_canonname = ((void*)0);
+    hints.ai_next = ((void*)0);
 
-    ret = getaddrinfo(NULL, endpoint ? endpoint : "0", &hints, &ai);
+    ret = getaddrinfo(((void*)0), endpoint ? endpoint : "0", &hints, &ai);
     if (ret)
     {
         ERR("getaddrinfo for port %s failed: %s\n", endpoint,
@@ -155,7 +155,7 @@ __attribute__((used)) static RPC_STATUS rpcrt4_protseq_ncacn_ip_tcp_open_endpoin
         }
 
         ret = getnameinfo((struct sockaddr *)&sa, sa_len,
-                          NULL, 0, service, sizeof(service),
+                          ((void*)0), 0, service, sizeof(service),
                           NI_NUMERICSERV);
         if (ret)
         {
@@ -166,8 +166,8 @@ __attribute__((used)) static RPC_STATUS rpcrt4_protseq_ncacn_ip_tcp_open_endpoin
         }
 
         create_status = RPCRT4_CreateConnection((RpcConnection **)&tcpc, TRUE,
-                                                protseq->Protseq, NULL,
-                                                service, NULL, NULL, NULL, NULL);
+                                                protseq->Protseq, ((void*)0),
+                                                service, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
         if (create_status != RPC_S_OK)
         {
             closesocket(sock);
@@ -184,10 +184,10 @@ __attribute__((used)) static RPC_STATUS rpcrt4_protseq_ncacn_ip_tcp_open_endpoin
             status = RPC_S_OUT_OF_RESOURCES;
             continue;
         }
-        /* need a non-blocking socket, otherwise accept() has a potential
-         * race-condition (poll() says it is readable, connection drops,
-         * and accept() blocks until the next connection comes...)
-         */
+
+
+
+
         nonblocking = 1;
         ret = ioctlsocket(sock, FIONBIO, &nonblocking);
         if (ret < 0)
@@ -205,8 +205,8 @@ __attribute__((used)) static RPC_STATUS rpcrt4_protseq_ncacn_ip_tcp_open_endpoin
 
         freeaddrinfo(ai);
 
-        /* since IPv4 and IPv6 share the same port space, we only need one
-         * successful bind to listen for both */
+
+
         TRACE("listening on %s\n", endpoint);
         return RPC_S_OK;
     }

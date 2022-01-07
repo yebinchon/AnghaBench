@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint16_t ;
-struct TYPE_8__ {int len; int /*<<< orphan*/  p; } ;
-struct TYPE_9__ {size_t numopts; TYPE_3__ payload; TYPE_2__* opts; int /*<<< orphan*/  hdr; int /*<<< orphan*/  tok; } ;
-typedef  TYPE_4__ coap_packet_t ;
-struct TYPE_6__ {int len; int /*<<< orphan*/  p; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+struct TYPE_8__ {int len; int p; } ;
+struct TYPE_9__ {size_t numopts; TYPE_3__ payload; TYPE_2__* opts; int hdr; int tok; } ;
+typedef TYPE_4__ coap_packet_t ;
+struct TYPE_6__ {int len; int p; } ;
 struct TYPE_7__ {scalar_t__ num; TYPE_1__ buf; } ;
 
-/* Variables and functions */
- int COAP_ERR_BUFFER_TOO_SMALL ; 
- size_t coap_buildHeader (int /*<<< orphan*/ *,int*,size_t) ; 
- int coap_buildOptionHeader (scalar_t__,int,int*,size_t) ; 
- size_t coap_buildToken (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,size_t) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
+
+ int COAP_ERR_BUFFER_TOO_SMALL ;
+ size_t coap_buildHeader (int *,int*,size_t) ;
+ int coap_buildOptionHeader (scalar_t__,int,int*,size_t) ;
+ size_t coap_buildToken (int *,int *,int*,size_t) ;
+ int memcpy (int*,int ,int) ;
 
 int coap_build(uint8_t *buf, size_t *buflen, const coap_packet_t *pkt)
 {
@@ -65,13 +65,13 @@ int coap_build(uint8_t *buf, size_t *buflen, const coap_packet_t *pkt)
         running_delta = pkt->opts[i].num;
     }
 
-    opts_len = (p - buf) - 4;   // number of bytes used by options
+    opts_len = (p - buf) - 4;
 
     if (pkt->payload.len > 0)
     {
         if (*buflen < 4 + 1 + pkt->payload.len + opts_len)
             return COAP_ERR_BUFFER_TOO_SMALL;
-        buf[4 + opts_len] = 0xFF;  // payload marker
+        buf[4 + opts_len] = 0xFF;
         memcpy(buf+5 + opts_len, pkt->payload.p, pkt->payload.len);
         *buflen = opts_len + 5 + pkt->payload.len;
     }

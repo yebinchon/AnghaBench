@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rb_root {int dummy; } ;
-struct bfq_entity {int /*<<< orphan*/  rb_node; int /*<<< orphan*/ * tree; } ;
+struct bfq_entity {int rb_node; int * tree; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rb_erase (int /*<<< orphan*/ *,struct rb_root*) ; 
+
+ int rb_erase (int *,struct rb_root*) ;
 
 __attribute__((used)) static void bfq_extract(struct rb_root *root, struct bfq_entity *entity)
 {
-	entity->tree = NULL;
-	rb_erase(&entity->rb_node, root);
+ entity->tree = ((void*)0);
+ rb_erase(&entity->rb_node, root);
 }

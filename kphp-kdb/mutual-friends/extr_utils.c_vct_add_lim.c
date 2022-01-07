@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int mx; int n; int* mem; int rn; } ;
-typedef  TYPE_1__ vector ;
+typedef TYPE_1__ vector ;
 
-/* Variables and functions */
- int* qrealloc (int*,int,int) ; 
- int rand () ; 
 
-void vct_add_lim (vector *v, int x, int lim)  {
+ int* qrealloc (int*,int,int) ;
+ int rand () ;
+
+void vct_add_lim (vector *v, int x, int lim) {
   if (v->mx == v->n && v->mx != lim) {
     int new_len = v->mx * 2;
     if (new_len > lim) {

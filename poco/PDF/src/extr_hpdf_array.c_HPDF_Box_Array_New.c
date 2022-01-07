@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  top; int /*<<< orphan*/  right; int /*<<< orphan*/  bottom; int /*<<< orphan*/  left; } ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  int /*<<< orphan*/  HPDF_MMgr ;
-typedef  TYPE_1__ HPDF_Box ;
-typedef  int /*<<< orphan*/ * HPDF_Array ;
 
-/* Variables and functions */
- scalar_t__ HPDF_Array_Add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_Array_Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * HPDF_Array_New (int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_Real_New (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int top; int right; int bottom; int left; } ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef int HPDF_MMgr ;
+typedef TYPE_1__ HPDF_Box ;
+typedef int * HPDF_Array ;
+
+
+ scalar_t__ HPDF_Array_Add (int *,int ) ;
+ int HPDF_Array_Free (int *) ;
+ int * HPDF_Array_New (int ) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_Real_New (int ,int ) ;
 
 HPDF_Array
-HPDF_Box_Array_New  (HPDF_MMgr  mmgr,
-                     HPDF_Box   box)
+HPDF_Box_Array_New (HPDF_MMgr mmgr,
+                     HPDF_Box box)
 {
-    HPDF_Array  obj;
+    HPDF_Array obj;
     HPDF_STATUS ret = HPDF_OK;
 
     HPDF_PTRACE((" HPDF_Box_Array_New\n"));
 
     obj = HPDF_Array_New (mmgr);
     if (!obj)
-        return NULL;
+        return ((void*)0);
 
     ret += HPDF_Array_Add (obj, HPDF_Real_New (mmgr, box.left));
     ret += HPDF_Array_Add (obj, HPDF_Real_New (mmgr, box.bottom));
@@ -45,7 +45,7 @@ HPDF_Box_Array_New  (HPDF_MMgr  mmgr,
 
     if (ret != HPDF_OK) {
         HPDF_Array_Free (obj);
-        return NULL;
+        return ((void*)0);
     }
 
     return obj;

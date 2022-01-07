@@ -1,66 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  AmlOpcode; } ;
+
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int AmlOpcode; } ;
 struct TYPE_17__ {TYPE_1__ Common; } ;
-struct TYPE_16__ {scalar_t__ (* AscendingCallback ) (TYPE_2__*) ;int /*<<< orphan*/  ArgCount; int /*<<< orphan*/  ArgTypes; int /*<<< orphan*/  ParserState; int /*<<< orphan*/  Opcode; int /*<<< orphan*/  OpInfo; TYPE_3__* Op; } ;
-typedef  TYPE_2__ ACPI_WALK_STATE ;
-typedef  scalar_t__ ACPI_STATUS ;
-typedef  TYPE_3__ ACPI_PARSE_OBJECT ;
+struct TYPE_16__ {scalar_t__ (* AscendingCallback ) (TYPE_2__*) ;int ArgCount; int ArgTypes; int ParserState; int Opcode; int OpInfo; TYPE_3__* Op; } ;
+typedef TYPE_2__ ACPI_WALK_STATE ;
+typedef scalar_t__ ACPI_STATUS ;
+typedef TYPE_3__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_PARSE ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (scalar_t__) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE_PTR (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ AE_CTRL_PENDING ; 
- scalar_t__ AE_CTRL_TERMINATE ; 
- scalar_t__ AE_OK ; 
- scalar_t__ AcpiPsCompleteOp (TYPE_2__*,TYPE_3__**,scalar_t__) ; 
- scalar_t__ AcpiPsCompleteThisOp (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  AcpiPsGetOpcodeInfo (int /*<<< orphan*/ ) ; 
- scalar_t__ AcpiPsNextParseState (TYPE_2__*,TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  AcpiPsPopScope (int /*<<< orphan*/ *,TYPE_3__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PsCompleteFinalOp ; 
- int /*<<< orphan*/  return_ACPI_STATUS (scalar_t__) ; 
- scalar_t__ stub1 (TYPE_2__*) ; 
+
+ int ACPI_DB_PARSE ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ scalar_t__ ACPI_FAILURE (scalar_t__) ;
+ int ACPI_FUNCTION_TRACE_PTR (int ,TYPE_2__*) ;
+ scalar_t__ AE_CTRL_PENDING ;
+ scalar_t__ AE_CTRL_TERMINATE ;
+ scalar_t__ AE_OK ;
+ scalar_t__ AcpiPsCompleteOp (TYPE_2__*,TYPE_3__**,scalar_t__) ;
+ scalar_t__ AcpiPsCompleteThisOp (TYPE_2__*,TYPE_3__*) ;
+ int AcpiPsGetOpcodeInfo (int ) ;
+ scalar_t__ AcpiPsNextParseState (TYPE_2__*,TYPE_3__*,scalar_t__) ;
+ int AcpiPsPopScope (int *,TYPE_3__**,int *,int *) ;
+ int PsCompleteFinalOp ;
+ int return_ACPI_STATUS (scalar_t__) ;
+ scalar_t__ stub1 (TYPE_2__*) ;
 
 ACPI_STATUS
 AcpiPsCompleteFinalOp (
-    ACPI_WALK_STATE         *WalkState,
-    ACPI_PARSE_OBJECT       *Op,
-    ACPI_STATUS             Status)
+    ACPI_WALK_STATE *WalkState,
+    ACPI_PARSE_OBJECT *Op,
+    ACPI_STATUS Status)
 {
-    ACPI_STATUS             Status2;
+    ACPI_STATUS Status2;
 
 
     ACPI_FUNCTION_TRACE_PTR (PsCompleteFinalOp, WalkState);
-
-
-    /*
-     * Complete the last Op (if not completed), and clear the scope stack.
-     * It is easily possible to end an AML "package" with an unbounded number
-     * of open scopes (such as when several ASL blocks are closed with
-     * sequential closing braces). We want to terminate each one cleanly.
-     */
     ACPI_DEBUG_PRINT ((ACPI_DB_PARSE, "AML package complete at Op %p\n", Op));
     do
     {
         if (Op)
         {
-            if (WalkState->AscendingCallback != NULL)
+            if (WalkState->AscendingCallback != ((void*)0))
             {
                 WalkState->Op = Op;
                 WalkState->OpInfo = AcpiPsGetOpcodeInfo (Op->Common.AmlOpcode);
@@ -81,7 +73,7 @@ AcpiPsCompleteFinalOp (
                 {
                     Status = AE_OK;
 
-                    /* Clean up */
+
                     do
                     {
                         if (Op)
@@ -103,7 +95,7 @@ AcpiPsCompleteFinalOp (
 
                 else if (ACPI_FAILURE (Status))
                 {
-                    /* First error is most important */
+
 
                     (void) AcpiPsCompleteThisOp (WalkState, Op);
                     return_ACPI_STATUS (Status);

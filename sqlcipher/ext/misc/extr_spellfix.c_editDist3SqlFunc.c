@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  EditDist3Lang ;
-typedef  int /*<<< orphan*/  EditDist3FromString ;
-typedef  int /*<<< orphan*/  EditDist3Config ;
 
-/* Variables and functions */
- int editDist3ConfigLoad (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int editDist3Core (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * editDist3FindLang (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  editDist3FromStringDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * editDist3FromStringNew (int /*<<< orphan*/  const*,char const*,int) ; 
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_error_code (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
+typedef int EditDist3Lang ;
+typedef int EditDist3FromString ;
+typedef int EditDist3Config ;
+
+
+ int editDist3ConfigLoad (int *,int *,char const*) ;
+ int editDist3Core (int *,char const*,int,int const*,int ) ;
+ int * editDist3FindLang (int *,int) ;
+ int editDist3FromStringDelete (int *) ;
+ int * editDist3FromStringNew (int const*,char const*,int) ;
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_error_code (int *,int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_int (int *,int) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void editDist3SqlFunc(
   sqlite3_context *context,
@@ -66,5 +66,5 @@ __attribute__((used)) static void editDist3SqlFunc(
     }else{
       sqlite3_result_int(context, dist);
     }
-  } 
+  }
 }

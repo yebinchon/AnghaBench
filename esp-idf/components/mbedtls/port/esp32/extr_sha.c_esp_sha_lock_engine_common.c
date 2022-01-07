@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_sha_type ;
-typedef  int /*<<< orphan*/  TickType_t ;
-typedef  int /*<<< orphan*/  SemaphoreHandle_t ;
-typedef  scalar_t__ BaseType_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PERIPH_SHA_MODULE ; 
- int /*<<< orphan*/  assert (int) ; 
- int engines_in_use ; 
- int /*<<< orphan*/  engines_in_use_lock ; 
- scalar_t__ pdFALSE ; 
- int /*<<< orphan*/  periph_module_enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  portENTER_CRITICAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  portEXIT_CRITICAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sha_get_engine_state (int /*<<< orphan*/ ) ; 
- scalar_t__ xSemaphoreTake (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int esp_sha_type ;
+typedef int TickType_t ;
+typedef int SemaphoreHandle_t ;
+typedef scalar_t__ BaseType_t ;
+
+
+ int PERIPH_SHA_MODULE ;
+ int assert (int) ;
+ int engines_in_use ;
+ int engines_in_use_lock ;
+ scalar_t__ pdFALSE ;
+ int periph_module_enable (int ) ;
+ int portENTER_CRITICAL (int *) ;
+ int portEXIT_CRITICAL (int *) ;
+ int sha_get_engine_state (int ) ;
+ scalar_t__ xSemaphoreTake (int ,int ) ;
 
 __attribute__((used)) static bool esp_sha_lock_engine_common(esp_sha_type sha_type, TickType_t ticks_to_wait)
 {
@@ -33,15 +33,15 @@ __attribute__((used)) static bool esp_sha_lock_engine_common(esp_sha_type sha_ty
     BaseType_t result = xSemaphoreTake(engine_state, ticks_to_wait);
 
     if (result == pdFALSE) {
-        // failed to take semaphore
-        return false;
+
+        return 0;
     }
 
     portENTER_CRITICAL(&engines_in_use_lock);
 
     if (engines_in_use == 0) {
-        /* Just locked first engine,
-           so enable SHA hardware */
+
+
         periph_module_enable(PERIPH_SHA_MODULE);
     }
 
@@ -50,5 +50,5 @@ __attribute__((used)) static bool esp_sha_lock_engine_common(esp_sha_type sha_ty
 
     portEXIT_CRITICAL(&engines_in_use_lock);
 
-    return true;
+    return 1;
 }

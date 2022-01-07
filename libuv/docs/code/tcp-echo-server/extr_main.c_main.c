@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_tcp_t ;
-typedef  int /*<<< orphan*/  uv_stream_t ;
+
+
+
+
+typedef int uv_tcp_t ;
+typedef int uv_stream_t ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_BACKLOG ; 
- int /*<<< orphan*/  DEFAULT_PORT ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  addr ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  on_new_connection ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int /*<<< orphan*/  uv_ip4_addr (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int uv_listen (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* uv_strerror (int) ; 
- int /*<<< orphan*/  uv_tcp_bind (int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_tcp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int DEFAULT_BACKLOG ;
+ int DEFAULT_PORT ;
+ int UV_RUN_DEFAULT ;
+ int addr ;
+ int fprintf (int ,char*,char*) ;
+ int loop ;
+ int on_new_connection ;
+ int stderr ;
+ int uv_default_loop () ;
+ int uv_ip4_addr (char*,int ,int *) ;
+ int uv_listen (int *,int ,int ) ;
+ int uv_run (int ,int ) ;
+ char* uv_strerror (int) ;
+ int uv_tcp_bind (int *,struct sockaddr const*,int ) ;
+ int uv_tcp_init (int ,int *) ;
 
 int main() {
     loop = uv_default_loop();

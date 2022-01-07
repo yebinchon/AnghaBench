@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GList ;
-typedef  int /*<<< orphan*/  GCompareFunc ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * g_list_sort (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ g_strcmp0 ; 
- int /*<<< orphan*/ * string_list_parse (char const*,char const*) ; 
+
+
+
+typedef int GList ;
+typedef int GCompareFunc ;
+
+
+ int * g_list_sort (int *,int ) ;
+ scalar_t__ g_strcmp0 ;
+ int * string_list_parse (char const*,char const*) ;
 
 GList *
 string_list_parse_sorted (const char *list_in_str, const char *seperator)

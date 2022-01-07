@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ti ;
-struct ntlm_targetinfo {int avflags; int /*<<< orphan*/ * dnsservername; } ;
+
+
+
+
+typedef int ti ;
+struct ntlm_targetinfo {int avflags; int * dnsservername; } ;
 struct ntlm_buf {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errx (int,char*,...) ; 
- int heim_ntlm_decode_targetinfo (struct ntlm_buf*,int,struct ntlm_targetinfo*) ; 
- int heim_ntlm_encode_targetinfo (struct ntlm_targetinfo*,int,struct ntlm_buf*) ; 
- int /*<<< orphan*/  heim_ntlm_free_targetinfo (struct ntlm_targetinfo*) ; 
- int /*<<< orphan*/  memset (struct ntlm_targetinfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * rk_UNCONST (char const*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,char const*) ; 
+
+ int errx (int,char*,...) ;
+ int heim_ntlm_decode_targetinfo (struct ntlm_buf*,int,struct ntlm_targetinfo*) ;
+ int heim_ntlm_encode_targetinfo (struct ntlm_targetinfo*,int,struct ntlm_buf*) ;
+ int heim_ntlm_free_targetinfo (struct ntlm_targetinfo*) ;
+ int memset (struct ntlm_targetinfo*,int ,int) ;
+ int * rk_UNCONST (char const*) ;
+ scalar_t__ strcmp (int *,char const*) ;
 
 __attribute__((used)) static int
 test_targetinfo(void)
@@ -37,19 +37,19 @@ test_targetinfo(void)
     ti.avflags = 1;
     ret = heim_ntlm_encode_targetinfo(&ti, 1, &buf);
     if (ret)
-	return ret;
+ return ret;
 
     memset(&ti, 0, sizeof(ti));
 
     ret = heim_ntlm_decode_targetinfo(&buf, 1, &ti);
     if (ret)
-	return ret;
+ return ret;
 
-    if (ti.dnsservername == NULL ||
-	strcmp(ti.dnsservername, dnsservername) != 0)
-	errx(1, "ti.dnshostname != %s", dnsservername);
+    if (ti.dnsservername == ((void*)0) ||
+ strcmp(ti.dnsservername, dnsservername) != 0)
+ errx(1, "ti.dnshostname != %s", dnsservername);
     if (ti.avflags != 1)
-	errx(1, "ti.avflags != 1");
+ errx(1, "ti.avflags != 1");
 
     heim_ntlm_free_targetinfo(&ti);
 

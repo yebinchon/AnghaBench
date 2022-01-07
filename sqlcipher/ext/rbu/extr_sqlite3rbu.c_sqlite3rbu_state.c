@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ rc; int eStage; } ;
-typedef  TYPE_1__ sqlite3rbu ;
+typedef TYPE_1__ sqlite3rbu ;
 
-/* Variables and functions */
- int RBU_STAGE_CKPT ; 
- int RBU_STAGE_DONE ; 
- int RBU_STAGE_MOVE ; 
- int RBU_STAGE_OAL ; 
- scalar_t__ SQLITE_DONE ; 
- scalar_t__ SQLITE_OK ; 
- int SQLITE_RBU_STATE_CHECKPOINT ; 
- int SQLITE_RBU_STATE_DONE ; 
- int SQLITE_RBU_STATE_ERROR ; 
- int SQLITE_RBU_STATE_MOVE ; 
- int SQLITE_RBU_STATE_OAL ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int RBU_STAGE_CKPT ;
+ int RBU_STAGE_DONE ;
+ int RBU_STAGE_MOVE ;
+ int RBU_STAGE_OAL ;
+ scalar_t__ SQLITE_DONE ;
+ scalar_t__ SQLITE_OK ;
+ int SQLITE_RBU_STATE_CHECKPOINT ;
+ int SQLITE_RBU_STATE_DONE ;
+ int SQLITE_RBU_STATE_ERROR ;
+ int SQLITE_RBU_STATE_MOVE ;
+ int SQLITE_RBU_STATE_OAL ;
+ int assert (int) ;
 
 int sqlite3rbu_state(sqlite3rbu *p){
   int aRes[] = {

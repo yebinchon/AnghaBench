@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct disassemble_info {int octets_per_byte; void* display_endian; int /*<<< orphan*/  symbol_is_valid; int /*<<< orphan*/  symbol_at_address_func; int /*<<< orphan*/  print_address_func; int /*<<< orphan*/  memory_error_func; int /*<<< orphan*/  read_memory_func; void* stream; int /*<<< orphan*/  fprintf_func; void* endian; int /*<<< orphan*/  arch; int /*<<< orphan*/  flavour; } ;
-typedef  int /*<<< orphan*/  fprintf_ftype ;
 
-/* Variables and functions */
- void* BFD_ENDIAN_UNKNOWN ; 
- int /*<<< orphan*/  bfd_arch_unknown ; 
- int /*<<< orphan*/  bfd_target_unknown_flavour ; 
- int /*<<< orphan*/  buffer_read_memory ; 
- int /*<<< orphan*/  generic_print_address ; 
- int /*<<< orphan*/  generic_symbol_at_address ; 
- int /*<<< orphan*/  generic_symbol_is_valid ; 
- int /*<<< orphan*/  memset (struct disassemble_info*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror_memory ; 
+
+
+
+struct disassemble_info {int octets_per_byte; void* display_endian; int symbol_is_valid; int symbol_at_address_func; int print_address_func; int memory_error_func; int read_memory_func; void* stream; int fprintf_func; void* endian; int arch; int flavour; } ;
+typedef int fprintf_ftype ;
+
+
+ void* BFD_ENDIAN_UNKNOWN ;
+ int bfd_arch_unknown ;
+ int bfd_target_unknown_flavour ;
+ int buffer_read_memory ;
+ int generic_print_address ;
+ int generic_symbol_at_address ;
+ int generic_symbol_is_valid ;
+ int memset (struct disassemble_info*,int ,int) ;
+ int perror_memory ;
 
 void
 init_disassemble_info (struct disassemble_info *info, void *stream,
-		       fprintf_ftype fprintf_func)
+         fprintf_ftype fprintf_func)
 {
   memset (info, 0, sizeof (*info));
 

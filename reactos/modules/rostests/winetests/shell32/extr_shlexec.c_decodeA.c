@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decoded ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int decode_char (char const) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char const*) ; 
+
+
+
+typedef int decoded ;
+
+
+ int assert (int ) ;
+ int decode_char (char const) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static char* decodeA(const char* str)
 {
     static char decoded[1024];
-    char*       ptr;
-    size_t      len,i;
+    char* ptr;
+    size_t len,i;
 
     len = strlen(str) / 2;
-    if (!len--) return NULL;
+    if (!len--) return ((void*)0);
     if (len >= sizeof(decoded))
     {
         fprintf(stderr, "string is too long!\n");

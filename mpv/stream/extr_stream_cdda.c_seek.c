@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ priv; } ;
-typedef  TYPE_3__ stream_t ;
-typedef  int int64_t ;
-struct TYPE_10__ {int start_sector; int end_sector; int sector; int /*<<< orphan*/  cdp; TYPE_2__* cd; } ;
-typedef  TYPE_4__ cdda_priv ;
+typedef TYPE_3__ stream_t ;
+typedef int int64_t ;
+struct TYPE_10__ {int start_sector; int end_sector; int sector; int cdp; TYPE_2__* cd; } ;
+typedef TYPE_4__ cdda_priv ;
 struct TYPE_8__ {int tracks; TYPE_1__* disc_toc; } ;
 struct TYPE_7__ {int dwStartSector; } ;
 
-/* Variables and functions */
- int CDIO_CD_FRAMESIZE_RAW ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  paranoia_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_track_info (TYPE_3__*,int) ; 
+
+ int CDIO_CD_FRAMESIZE_RAW ;
+ int SEEK_SET ;
+ int paranoia_seek (int ,int,int ) ;
+ int print_track_info (TYPE_3__*,int) ;
 
 __attribute__((used)) static int seek(stream_t *s, int64_t newpos)
 {

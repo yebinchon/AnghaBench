@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BN_ULONG ;
 
-/* Variables and functions */
+
+
+
+typedef int BN_ULONG ;
+
+
 
 BN_ULONG bn_sub_words(BN_ULONG *rp, const BN_ULONG *ap, const BN_ULONG *bp,
                       int n)
@@ -23,7 +23,7 @@ BN_ULONG bn_sub_words(BN_ULONG *rp, const BN_ULONG *ap, const BN_ULONG *bp,
     if (n <= 0)
         return 0;
 
-    asm volatile ("       subq    %0,%0           \n" /* clear borrow */
+    asm volatile ("       subq    %0,%0           \n"
                   "       jmp     1f              \n"
                   ".p2align 4                     \n"
                   "1:     movq    (%4,%2,8),%0    \n"

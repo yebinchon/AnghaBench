@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/ * encoding_error; } ;
-struct TYPE_11__ {int /*<<< orphan*/  error_count; } ;
-struct TYPE_10__ {int /*<<< orphan*/  buf; } ;
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int * encoding_error; } ;
+struct TYPE_11__ {int error_count; } ;
+struct TYPE_10__ {int buf; } ;
 struct TYPE_9__ {TYPE_2__ pb; scalar_t__ noise_reduction; } ;
-typedef  TYPE_1__ MpegEncContext ;
+typedef TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MERGE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_assert1 (int) ; 
- int /*<<< orphan*/  avpriv_copy_bits (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  b_count ; 
- TYPE_7__ current_picture ; 
- int /*<<< orphan*/ * dct_count ; 
- int /*<<< orphan*/ ** dct_error_sum ; 
- TYPE_6__ er ; 
- int /*<<< orphan*/  f_count ; 
- int /*<<< orphan*/  flush_put_bits (TYPE_2__*) ; 
- int /*<<< orphan*/  i_count ; 
- int /*<<< orphan*/  i_tex_bits ; 
- int /*<<< orphan*/  misc_bits ; 
- int /*<<< orphan*/  mv_bits ; 
- int /*<<< orphan*/  p_tex_bits ; 
- int /*<<< orphan*/  padding_bug_score ; 
- int put_bits_count (TYPE_2__*) ; 
- int /*<<< orphan*/  skip_count ; 
+
+ int MERGE (int ) ;
+ int av_assert1 (int) ;
+ int avpriv_copy_bits (TYPE_2__*,int ,int) ;
+ int b_count ;
+ TYPE_7__ current_picture ;
+ int * dct_count ;
+ int ** dct_error_sum ;
+ TYPE_6__ er ;
+ int f_count ;
+ int flush_put_bits (TYPE_2__*) ;
+ int i_count ;
+ int i_tex_bits ;
+ int misc_bits ;
+ int mv_bits ;
+ int p_tex_bits ;
+ int padding_bug_score ;
+ int put_bits_count (TYPE_2__*) ;
+ int skip_count ;
 
 __attribute__((used)) static void merge_context_after_encode(MpegEncContext *dst, MpegEncContext *src){
     int i;
 
-    MERGE(dct_count[0]); //note, the other dct vars are not part of the context
+    MERGE(dct_count[0]);
     MERGE(dct_count[1]);
     MERGE(mv_bits);
     MERGE(i_tex_bits);

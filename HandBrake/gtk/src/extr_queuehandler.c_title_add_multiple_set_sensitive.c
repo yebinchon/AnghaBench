@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  PangoAttribute ;
-typedef  int /*<<< orphan*/  PangoAttrList ;
-typedef  int /*<<< orphan*/  GtkWidget ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GTK_LABEL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * default_title_attrs ; 
- int /*<<< orphan*/ * find_widget (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  gtk_label_set_attributes (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_widget_set_has_tooltip (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_widget_set_sensitive (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pango_attr_background_new (int,int,int) ; 
- int /*<<< orphan*/  pango_attr_list_insert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pango_attr_list_new () ; 
+
+
+
+typedef int gboolean ;
+typedef int PangoAttribute ;
+typedef int PangoAttrList ;
+typedef int GtkWidget ;
+
+
+ int FALSE ;
+ int GTK_LABEL (int *) ;
+ int TRUE ;
+ int * default_title_attrs ;
+ int * find_widget (int *,char*) ;
+ int gtk_label_set_attributes (int ,int *) ;
+ int gtk_widget_set_has_tooltip (int *,int ) ;
+ int gtk_widget_set_sensitive (int *,int ) ;
+ int * pango_attr_background_new (int,int,int) ;
+ int pango_attr_list_insert (int *,int *) ;
+ int * pango_attr_list_new () ;
 
 __attribute__((used)) static void
 title_add_multiple_set_sensitive(GtkWidget *row, gboolean sensitive)

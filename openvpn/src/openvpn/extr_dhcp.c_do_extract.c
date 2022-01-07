@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+
+
+typedef scalar_t__ uint8_t ;
 struct dhcp {int dummy; } ;
-typedef  scalar_t__ in_addr_t ;
+typedef scalar_t__ in_addr_t ;
 
-/* Variables and functions */
- scalar_t__ const DHCP_END ; 
- scalar_t__ const DHCP_PAD ; 
- scalar_t__ const DHCP_ROUTER ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  memmove (scalar_t__*,scalar_t__*,int const) ; 
- int /*<<< orphan*/  memset (scalar_t__*,scalar_t__ const,int const) ; 
- scalar_t__ ntohl (scalar_t__) ; 
+
+ scalar_t__ const DHCP_END ;
+ scalar_t__ const DHCP_PAD ;
+ scalar_t__ const DHCP_ROUTER ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
+ int memmove (scalar_t__*,scalar_t__*,int const) ;
+ int memset (scalar_t__*,scalar_t__ const,int const) ;
+ scalar_t__ ntohl (scalar_t__) ;
 
 __attribute__((used)) static in_addr_t
 do_extract(struct dhcp *dhcp, int optlen)
@@ -46,27 +46,27 @@ do_extract(struct dhcp *dhcp, int optlen)
         {
             if (room >= 2)
             {
-                const int len = p[i+1]; /* get option length */
+                const int len = p[i+1];
                 if (len <= (room-2))
                 {
-                    /* get router IP address */
+
                     if (!ret && len >= 4 && (len & 3) == 0)
                     {
                         memcpy(&ret, p+i+2, 4);
                         ret = ntohl(ret);
                     }
                     {
-                        /* delete the router option */
+
                         uint8_t *dest = p + i;
-                        const int owlen = len + 2;        /* len of data to overwrite */
+                        const int owlen = len + 2;
                         uint8_t *src = dest + owlen;
                         uint8_t *end = p + optlen;
                         const int movlen = end - src;
                         if (movlen > 0)
                         {
-                            memmove(dest, src, movlen);   /* overwrite router option */
+                            memmove(dest, src, movlen);
                         }
-                        memset(end - owlen, DHCP_PAD, owlen); /* pad tail */
+                        memset(end - owlen, DHCP_PAD, owlen);
                     }
                 }
                 else
@@ -79,12 +79,12 @@ do_extract(struct dhcp *dhcp, int optlen)
                 break;
             }
         }
-        else                            /* some other option */
+        else
         {
             if (room >= 2)
             {
-                const int len = p[i+1]; /* get option length */
-                i += (len + 2);         /* advance to next option */
+                const int len = p[i+1];
+                i += (len + 2);
             }
             else
             {

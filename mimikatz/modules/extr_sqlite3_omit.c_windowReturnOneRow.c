@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int csrApp; int regResult; int iEphCsr; int iArgCol; int regApp; TYPE_3__* pOwner; TYPE_5__* pFunc; struct TYPE_10__* pNextWin; } ;
-typedef  TYPE_4__ Window ;
-typedef  int /*<<< orphan*/  Vdbe ;
+typedef TYPE_4__ Window ;
+typedef int Vdbe ;
 struct TYPE_11__ {scalar_t__ zName; } ;
 struct TYPE_8__ {TYPE_1__* pList; } ;
 struct TYPE_9__ {TYPE_2__ x; } ;
 struct TYPE_7__ {int nExpr; } ;
-typedef  int /*<<< orphan*/  Parse ;
-typedef  TYPE_5__ FuncDef ;
+typedef int Parse ;
+typedef TYPE_5__ FuncDef ;
 
-/* Variables and functions */
- int OP_Add ; 
- int /*<<< orphan*/  OP_AddImm ; 
- int OP_Column ; 
- int /*<<< orphan*/  OP_Gosub ; 
- int OP_Gt ; 
- int /*<<< orphan*/  OP_Integer ; 
- int /*<<< orphan*/  OP_Null ; 
- int /*<<< orphan*/  OP_Rowid ; 
- int OP_SeekRowid ; 
- int OP_Subtract ; 
- int /*<<< orphan*/  VdbeCoverage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverageNeverNull (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverageNeverTaken (int /*<<< orphan*/ *) ; 
- scalar_t__ first_valueName ; 
- scalar_t__ lagName ; 
- scalar_t__ leadName ; 
- scalar_t__ nth_valueName ; 
- int sqlite3GetTempReg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempReg (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int,int,int,int) ; 
- int sqlite3VdbeMakeLabel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3VdbeResolveLabel (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  windowCheckIntValue (int /*<<< orphan*/ *,int,int) ; 
+
+ int OP_Add ;
+ int OP_AddImm ;
+ int OP_Column ;
+ int OP_Gosub ;
+ int OP_Gt ;
+ int OP_Integer ;
+ int OP_Null ;
+ int OP_Rowid ;
+ int OP_SeekRowid ;
+ int OP_Subtract ;
+ int VdbeCoverage (int *) ;
+ int VdbeCoverageNeverNull (int *) ;
+ int VdbeCoverageNeverTaken (int *) ;
+ scalar_t__ first_valueName ;
+ scalar_t__ lagName ;
+ scalar_t__ leadName ;
+ scalar_t__ nth_valueName ;
+ int sqlite3GetTempReg (int *) ;
+ int * sqlite3GetVdbe (int *) ;
+ int sqlite3ReleaseTempReg (int *,int) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int,int,int,int) ;
+ int sqlite3VdbeMakeLabel (int *) ;
+ int sqlite3VdbeResolveLabel (int *,int) ;
+ int windowCheckIntValue (int *,int,int) ;
 
 __attribute__((used)) static void windowReturnOneRow(
   Parse *pParse,

@@ -1,140 +1,140 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvlist_t ;
-struct TYPE_3__ {char const* cb_snapname; int /*<<< orphan*/  cb_max_taglen; int /*<<< orphan*/  cb_max_namelen; int /*<<< orphan*/ ** cb_nvlp; scalar_t__ cb_recursive; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ holds_cbdata_t ;
-typedef  scalar_t__ boolean_t ;
 
-/* Variables and functions */
- scalar_t__ B_FALSE ; 
- scalar_t__ B_TRUE ; 
- int /*<<< orphan*/  NV_UNIQUE_NAME ; 
- int ZFS_ITER_RECURSE ; 
- int ZFS_TYPE_FILESYSTEM ; 
- int ZFS_TYPE_SNAPSHOT ; 
- int ZFS_TYPE_VOLUME ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int getopt (int,char**,char const*) ; 
- char* gettext (char*) ; 
- int /*<<< orphan*/  holds_callback ; 
- int /*<<< orphan*/  nomem () ; 
- scalar_t__ nvlist_alloc (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ nvlist_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvlist_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  optarg ; 
- scalar_t__ optind ; 
- int optopt ; 
- int parse_depth (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  print_holds (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  usage (scalar_t__) ; 
- int zfs_for_each (int,char**,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nvlist_t ;
+struct TYPE_3__ {char const* cb_snapname; int cb_max_taglen; int cb_max_namelen; int ** cb_nvlp; scalar_t__ cb_recursive; int member_0; } ;
+typedef TYPE_1__ holds_cbdata_t ;
+typedef scalar_t__ boolean_t ;
+
+
+ scalar_t__ B_FALSE ;
+ scalar_t__ B_TRUE ;
+ int NV_UNIQUE_NAME ;
+ int ZFS_ITER_RECURSE ;
+ int ZFS_TYPE_FILESYSTEM ;
+ int ZFS_TYPE_SNAPSHOT ;
+ int ZFS_TYPE_VOLUME ;
+ int fprintf (int ,char*,int) ;
+ int getopt (int,char**,char const*) ;
+ char* gettext (char*) ;
+ int holds_callback ;
+ int nomem () ;
+ scalar_t__ nvlist_alloc (int **,int ,int ) ;
+ scalar_t__ nvlist_empty (int *) ;
+ int nvlist_free (int *) ;
+ int optarg ;
+ scalar_t__ optind ;
+ int optopt ;
+ int parse_depth (int ,int*) ;
+ int print_holds (scalar_t__,scalar_t__,int ,int ,int *) ;
+ int printf (char*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ int usage (scalar_t__) ;
+ int zfs_for_each (int,char**,int,int,int *,int *,int,int ,TYPE_1__*) ;
 
 __attribute__((used)) static int
 zfs_do_holds(int argc, char **argv)
 {
-	int errors = 0;
-	int c;
-	int i;
-	boolean_t scripted = B_FALSE;
-	boolean_t literal = B_FALSE;
-	boolean_t recursive = B_FALSE;
-	const char *opts = "d:rHp";
-	nvlist_t *nvl;
+ int errors = 0;
+ int c;
+ int i;
+ boolean_t scripted = B_FALSE;
+ boolean_t literal = B_FALSE;
+ boolean_t recursive = B_FALSE;
+ const char *opts = "d:rHp";
+ nvlist_t *nvl;
 
-	int types = ZFS_TYPE_SNAPSHOT;
-	holds_cbdata_t cb = { 0 };
+ int types = ZFS_TYPE_SNAPSHOT;
+ holds_cbdata_t cb = { 0 };
 
-	int limit = 0;
-	int ret = 0;
-	int flags = 0;
+ int limit = 0;
+ int ret = 0;
+ int flags = 0;
 
-	/* check options */
-	while ((c = getopt(argc, argv, opts)) != -1) {
-		switch (c) {
-		case 'd':
-			limit = parse_depth(optarg, &flags);
-			recursive = B_TRUE;
-			break;
-		case 'r':
-			recursive = B_TRUE;
-			break;
-		case 'H':
-			scripted = B_TRUE;
-			break;
-		case 'p':
-			literal = B_TRUE;
-			break;
-		case '?':
-			(void) fprintf(stderr, gettext("invalid option '%c'\n"),
-			    optopt);
-			usage(B_FALSE);
-		}
-	}
 
-	if (recursive) {
-		types |= ZFS_TYPE_FILESYSTEM | ZFS_TYPE_VOLUME;
-		flags |= ZFS_ITER_RECURSE;
-	}
+ while ((c = getopt(argc, argv, opts)) != -1) {
+  switch (c) {
+  case 'd':
+   limit = parse_depth(optarg, &flags);
+   recursive = B_TRUE;
+   break;
+  case 'r':
+   recursive = B_TRUE;
+   break;
+  case 'H':
+   scripted = B_TRUE;
+   break;
+  case 'p':
+   literal = B_TRUE;
+   break;
+  case '?':
+   (void) fprintf(stderr, gettext("invalid option '%c'\n"),
+       optopt);
+   usage(B_FALSE);
+  }
+ }
 
-	argc -= optind;
-	argv += optind;
+ if (recursive) {
+  types |= ZFS_TYPE_FILESYSTEM | ZFS_TYPE_VOLUME;
+  flags |= ZFS_ITER_RECURSE;
+ }
 
-	/* check number of arguments */
-	if (argc < 1)
-		usage(B_FALSE);
+ argc -= optind;
+ argv += optind;
 
-	if (nvlist_alloc(&nvl, NV_UNIQUE_NAME, 0) != 0)
-		nomem();
 
-	for (i = 0; i < argc; ++i) {
-		char *snapshot = argv[i];
-		const char *delim;
-		const char *snapname = NULL;
+ if (argc < 1)
+  usage(B_FALSE);
 
-		delim = strchr(snapshot, '@');
-		if (delim != NULL) {
-			snapname = delim + 1;
-			if (recursive)
-				snapshot[delim - snapshot] = '\0';
-		}
+ if (nvlist_alloc(&nvl, NV_UNIQUE_NAME, 0) != 0)
+  nomem();
 
-		cb.cb_recursive = recursive;
-		cb.cb_snapname = snapname;
-		cb.cb_nvlp = &nvl;
+ for (i = 0; i < argc; ++i) {
+  char *snapshot = argv[i];
+  const char *delim;
+  const char *snapname = ((void*)0);
 
-		/*
-		 *  1. collect holds data, set format options
-		 */
-		ret = zfs_for_each(argc, argv, flags, types, NULL, NULL, limit,
-		    holds_callback, &cb);
-		if (ret != 0)
-			++errors;
-	}
+  delim = strchr(snapshot, '@');
+  if (delim != ((void*)0)) {
+   snapname = delim + 1;
+   if (recursive)
+    snapshot[delim - snapshot] = '\0';
+  }
 
-	/*
-	 *  2. print holds data
-	 */
-	print_holds(scripted, literal, cb.cb_max_namelen, cb.cb_max_taglen,
-	    nvl);
+  cb.cb_recursive = recursive;
+  cb.cb_snapname = snapname;
+  cb.cb_nvlp = &nvl;
 
-	if (nvlist_empty(nvl))
-		(void) printf(gettext("no datasets available\n"));
 
-	nvlist_free(nvl);
 
-	return (0 != errors);
+
+  ret = zfs_for_each(argc, argv, flags, types, ((void*)0), ((void*)0), limit,
+      holds_callback, &cb);
+  if (ret != 0)
+   ++errors;
+ }
+
+
+
+
+ print_holds(scripted, literal, cb.cb_max_namelen, cb.cb_max_taglen,
+     nvl);
+
+ if (nvlist_empty(nvl))
+  (void) printf(gettext("no datasets available\n"));
+
+ nvlist_free(nvl);
+
+ return (0 != errors);
 }

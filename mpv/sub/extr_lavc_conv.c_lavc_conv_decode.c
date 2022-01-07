@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_15__ {double start_display_time; double end_display_time; int num_rects; TYPE_1__** rects; } ;
-struct lavc_conv {char** cur_list; TYPE_7__ cur; int /*<<< orphan*/  codec; TYPE_3__* avctx; } ;
+struct lavc_conv {char** cur_list; TYPE_7__ cur; int codec; TYPE_3__* avctx; } ;
 struct demux_packet {double pts; } ;
-struct TYPE_14__ {int /*<<< orphan*/  time_base; } ;
-struct TYPE_13__ {scalar_t__ pts; int /*<<< orphan*/  member_0; } ;
+struct TYPE_14__ {int time_base; } ;
+struct TYPE_13__ {scalar_t__ pts; int member_0; } ;
 struct TYPE_12__ {scalar_t__ w; scalar_t__ h; char* ass; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct lavc_conv*,char*) ; 
- int /*<<< orphan*/  MP_TARRAY_APPEND (struct lavc_conv*,char**,int,char*) ; 
- int /*<<< orphan*/  MP_WARN (struct lavc_conv*,char*) ; 
- double UINT32_MAX ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- int avcodec_decode_subtitle2 (TYPE_3__*,TYPE_7__*,int*,TYPE_2__*) ; 
- int /*<<< orphan*/  avsubtitle_free (TYPE_7__*) ; 
- double mp_pts_from_av (double,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_set_av_packet (TYPE_2__*,struct demux_packet*,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_webvtt (TYPE_2__*,TYPE_2__*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int MP_ERR (struct lavc_conv*,char*) ;
+ int MP_TARRAY_APPEND (struct lavc_conv*,char**,int,char*) ;
+ int MP_WARN (struct lavc_conv*,char*) ;
+ double UINT32_MAX ;
+ int av_packet_unref (TYPE_2__*) ;
+ int avcodec_decode_subtitle2 (TYPE_3__*,TYPE_7__*,int*,TYPE_2__*) ;
+ int avsubtitle_free (TYPE_7__*) ;
+ double mp_pts_from_av (double,int *) ;
+ int mp_set_av_packet (TYPE_2__*,struct demux_packet*,int *) ;
+ scalar_t__ parse_webvtt (TYPE_2__*,TYPE_2__*) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 char **lavc_conv_decode(struct lavc_conv *priv, struct demux_packet *packet,
                         double *sub_pts, double *sub_duration)
@@ -83,6 +83,6 @@ char **lavc_conv_decode(struct lavc_conv *priv, struct demux_packet *packet,
 
 done:
     av_packet_unref(&parsed_pkt);
-    MP_TARRAY_APPEND(priv, priv->cur_list, num_cur, NULL);
+    MP_TARRAY_APPEND(priv, priv->cur_list, num_cur, ((void*)0));
     return priv->cur_list;
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  dist; } ;
-typedef  TYPE_1__ aas_plane_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dist; } ;
+typedef TYPE_1__ aas_plane_t ;
 struct TYPE_4__ {TYPE_1__* planes; } ;
 
-/* Variables and functions */
- int PLANE_HASH_SIZE ; 
- int* aas_hashplanes ; 
- int* aas_planechain ; 
- TYPE_2__ aasworld ; 
- scalar_t__ fabs (int /*<<< orphan*/ ) ; 
+
+ int PLANE_HASH_SIZE ;
+ int* aas_hashplanes ;
+ int* aas_planechain ;
+ TYPE_2__ aasworld ;
+ scalar_t__ fabs (int ) ;
 
 void AAS_AddPlaneToHash(int planenum)
 {
-	int hash;
-	aas_plane_t *plane;
+ int hash;
+ aas_plane_t *plane;
 
-	plane = &aasworld.planes[planenum];
+ plane = &aasworld.planes[planenum];
 
-	hash = (int)fabs(plane->dist) / 8;
-	hash &= (PLANE_HASH_SIZE-1);
+ hash = (int)fabs(plane->dist) / 8;
+ hash &= (PLANE_HASH_SIZE-1);
 
-	aas_planechain[planenum] = aas_hashplanes[hash];
-	aas_hashplanes[hash] = planenum;
+ aas_planechain[planenum] = aas_hashplanes[hash];
+ aas_hashplanes[hash] = planenum;
 }

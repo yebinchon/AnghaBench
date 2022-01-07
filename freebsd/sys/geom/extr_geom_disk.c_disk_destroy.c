@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct disk {int d_destroyed; int /*<<< orphan*/ * d_devstat; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_WAITOK ; 
- int /*<<< orphan*/  devstat_remove_entry (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_cancel_event (struct disk*) ; 
- int /*<<< orphan*/  g_disk_destroy ; 
- int /*<<< orphan*/  g_post_event (int /*<<< orphan*/ ,struct disk*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct disk {int d_destroyed; int * d_devstat; } ;
+
+
+ int M_WAITOK ;
+ int devstat_remove_entry (int *) ;
+ int g_cancel_event (struct disk*) ;
+ int g_disk_destroy ;
+ int g_post_event (int ,struct disk*,int ,int *) ;
 
 void
 disk_destroy(struct disk *dp)
 {
 
-	g_cancel_event(dp);
-	dp->d_destroyed = 1;
-	if (dp->d_devstat != NULL)
-		devstat_remove_entry(dp->d_devstat);
-	g_post_event(g_disk_destroy, dp, M_WAITOK, NULL);
+ g_cancel_event(dp);
+ dp->d_destroyed = 1;
+ if (dp->d_devstat != ((void*)0))
+  devstat_remove_entry(dp->d_devstat);
+ g_post_event(g_disk_destroy, dp, M_WAITOK, ((void*)0));
 }

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- unsigned int ELEMENTSOF (char**) ; 
- int af_from_name (char*) ; 
- int af_max () ; 
- char** af_names ; 
- int /*<<< orphan*/ * af_to_name (int) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int streq (int /*<<< orphan*/ *,char*) ; 
+ int EINVAL ;
+ unsigned int ELEMENTSOF (char**) ;
+ int af_from_name (char*) ;
+ int af_max () ;
+ char** af_names ;
+ int * af_to_name (int) ;
+ int assert_se (int) ;
+ int streq (int *,char*) ;
 
 int main(int argc, const char *argv[]) {
 
@@ -32,8 +24,8 @@ int main(int argc, const char *argv[]) {
                 }
         }
 
-        assert_se(af_to_name(af_max()) == NULL);
-        assert_se(af_to_name(-1) == NULL);
+        assert_se(af_to_name(af_max()) == ((void*)0));
+        assert_se(af_to_name(-1) == ((void*)0));
         assert_se(af_from_name("huddlduddl") == -EINVAL);
         assert_se(af_from_name("") == -EINVAL);
 

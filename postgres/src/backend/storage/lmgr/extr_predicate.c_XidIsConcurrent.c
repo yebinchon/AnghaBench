@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32 ;
-typedef  scalar_t__ TransactionId ;
-struct TYPE_3__ {size_t xcnt; scalar_t__* xip; int /*<<< orphan*/  xmax; int /*<<< orphan*/  xmin; } ;
-typedef  TYPE_1__* Snapshot ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  GetTopTransactionIdIfAny () ; 
- TYPE_1__* GetTransactionSnapshot () ; 
- int /*<<< orphan*/  TransactionIdEquals (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ TransactionIdFollowsOrEquals (scalar_t__,int /*<<< orphan*/ ) ; 
- int TransactionIdIsValid (scalar_t__) ; 
- scalar_t__ TransactionIdPrecedes (scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint32 ;
+typedef scalar_t__ TransactionId ;
+struct TYPE_3__ {size_t xcnt; scalar_t__* xip; int xmax; int xmin; } ;
+typedef TYPE_1__* Snapshot ;
+
+
+ int Assert (int) ;
+ int GetTopTransactionIdIfAny () ;
+ TYPE_1__* GetTransactionSnapshot () ;
+ int TransactionIdEquals (scalar_t__,int ) ;
+ scalar_t__ TransactionIdFollowsOrEquals (scalar_t__,int ) ;
+ int TransactionIdIsValid (scalar_t__) ;
+ scalar_t__ TransactionIdPrecedes (scalar_t__,int ) ;
 
 __attribute__((used)) static bool
 XidIsConcurrent(TransactionId xid)
 {
-	Snapshot	snap;
-	uint32		i;
+ Snapshot snap;
+ uint32 i;
 
-	Assert(TransactionIdIsValid(xid));
-	Assert(!TransactionIdEquals(xid, GetTopTransactionIdIfAny()));
+ Assert(TransactionIdIsValid(xid));
+ Assert(!TransactionIdEquals(xid, GetTopTransactionIdIfAny()));
 
-	snap = GetTransactionSnapshot();
+ snap = GetTransactionSnapshot();
 
-	if (TransactionIdPrecedes(xid, snap->xmin))
-		return false;
+ if (TransactionIdPrecedes(xid, snap->xmin))
+  return 0;
 
-	if (TransactionIdFollowsOrEquals(xid, snap->xmax))
-		return true;
+ if (TransactionIdFollowsOrEquals(xid, snap->xmax))
+  return 1;
 
-	for (i = 0; i < snap->xcnt; i++)
-	{
-		if (xid == snap->xip[i])
-			return true;
-	}
+ for (i = 0; i < snap->xcnt; i++)
+ {
+  if (xid == snap->xip[i])
+   return 1;
+ }
 
-	return false;
+ return 0;
 }

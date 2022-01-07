@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mpgl_osd_part {int /*<<< orphan*/  texture; } ;
-struct mpgl_osd {int /*<<< orphan*/  ra; struct mpgl_osd_part** parts; } ;
 
-/* Variables and functions */
- int MAX_OSD_PARTS ; 
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (struct mpgl_osd*) ; 
+
+
+
+struct mpgl_osd_part {int texture; } ;
+struct mpgl_osd {int ra; struct mpgl_osd_part** parts; } ;
+
+
+ int MAX_OSD_PARTS ;
+ int ra_tex_free (int ,int *) ;
+ int talloc_free (struct mpgl_osd*) ;
 
 void mpgl_osd_destroy(struct mpgl_osd *ctx)
 {

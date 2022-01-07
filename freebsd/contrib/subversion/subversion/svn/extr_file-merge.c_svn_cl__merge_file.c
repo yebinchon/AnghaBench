@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_t ;
-typedef  int /*<<< orphan*/  svn_diff_file_options_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  void* svn_boolean_t ;
-struct file_merge_baton {char const* editor_cmd; void* remains_in_conflict; void* abort_merge; int /*<<< orphan*/ * scratch_pool; int /*<<< orphan*/ * config; int /*<<< orphan*/ * merged_file; scalar_t__ current_line_latest; scalar_t__ current_line_modified; scalar_t__ current_line_original; int /*<<< orphan*/ * latest_file; int /*<<< orphan*/ * modified_file; int /*<<< orphan*/ * original_file; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int APR_BUFFERED ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int APR_READ ; 
- void* FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_W (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  apr_psprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,char*,char const*) ; 
- int /*<<< orphan*/  file_merge_diff_output_fns ; 
- int /*<<< orphan*/  svn_cmdline_printf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_diff_file_diff3_2 (int /*<<< orphan*/ **,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_diff_file_options_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_output2 (int /*<<< orphan*/ *,struct file_merge_baton*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- char* svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_skip_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/  svn_io_copy_file (char const*,char const*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_del_none ; 
- int /*<<< orphan*/  svn_io_file_open (int /*<<< orphan*/ **,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_is_file_executable (void**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_open_unique_file3 (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_remove_file2 (char const*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_set_file_executable (char const*,void*,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_diff_t ;
+typedef int svn_diff_file_options_t ;
+typedef int svn_cancel_func_t ;
+typedef void* svn_boolean_t ;
+struct file_merge_baton {char const* editor_cmd; void* remains_in_conflict; void* abort_merge; int * scratch_pool; int * config; int * merged_file; scalar_t__ current_line_latest; scalar_t__ current_line_modified; scalar_t__ current_line_original; int * latest_file; int * modified_file; int * original_file; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_file_t ;
+
+
+ int APR_BUFFERED ;
+ int APR_OS_DEFAULT ;
+ int APR_READ ;
+ void* FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_W (int ,int ) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int _ (char*) ;
+ int apr_psprintf (int *,int ,char const*,char*,char const*) ;
+ int file_merge_diff_output_fns ;
+ int svn_cmdline_printf (int *,int ,char const*) ;
+ int svn_diff_file_diff3_2 (int **,char const*,char const*,char const*,int *,int *) ;
+ int * svn_diff_file_options_create (int *) ;
+ int svn_diff_output2 (int *,struct file_merge_baton*,int *,int ,void*) ;
+ char* svn_dirent_local_style (char const*,int *) ;
+ char* svn_dirent_skip_ancestor (char const*,char const*) ;
+ int svn_io_copy_file (char const*,char const*,void*,int *) ;
+ int svn_io_file_close (int *,int *) ;
+ int svn_io_file_del_none ;
+ int svn_io_file_open (int **,char const*,int,int ,int *) ;
+ int svn_io_is_file_executable (void**,char const*,int *) ;
+ int svn_io_open_unique_file3 (int **,char const**,int *,int ,int *,int *) ;
+ int svn_io_remove_file2 (char const*,void*,int *) ;
+ int svn_io_set_file_executable (char const*,void*,void*,int *) ;
 
 svn_error_t *
 svn_cl__merge_file(svn_boolean_t *remains_in_conflict,
@@ -75,8 +75,8 @@ svn_cl__merge_file(svn_boolean_t *remains_in_conflict,
   const char *wc_path_local_style;
   const char *wc_rel_path = svn_dirent_skip_ancestor(path_prefix, wc_path);
 
-  /* PATH_PREFIX may not be an ancestor of WC_PATH, just use the
-     full WC_PATH in that case. */
+
+
   if (wc_rel_path)
     wc_path_local_style = svn_dirent_local_style(wc_rel_path, scratch_pool);
   else
@@ -95,7 +95,7 @@ svn_cl__merge_file(svn_boolean_t *remains_in_conflict,
                            APR_READ | APR_BUFFERED,
                            APR_OS_DEFAULT, scratch_pool));
   SVN_ERR(svn_io_open_unique_file3(&merged_file, &merged_file_name,
-                                   NULL, svn_io_file_del_none,
+                                   ((void*)0), svn_io_file_del_none,
                                    scratch_pool, scratch_pool));
 
   diff_options = svn_diff_file_options_create(scratch_pool);
@@ -123,7 +123,7 @@ svn_cl__merge_file(svn_boolean_t *remains_in_conflict,
   SVN_ERR(svn_io_file_close(latest_file, scratch_pool));
   SVN_ERR(svn_io_file_close(merged_file, scratch_pool));
 
-  /* Start out assuming that conflicts remain. */
+
   if (remains_in_conflict)
     *remains_in_conflict = TRUE;
 
@@ -158,8 +158,8 @@ svn_cl__merge_file(svn_boolean_t *remains_in_conflict,
                                      scratch_pool));
   SVN_ERR(svn_io_remove_file2(merged_file_name, TRUE, scratch_pool));
 
-  /* The merge was not aborted and we could install the merged result. The
-   * file remains in conflict unless all conflicting sections were resolved. */
+
+
   if (remains_in_conflict)
     *remains_in_conflict = fmb.remains_in_conflict;
 

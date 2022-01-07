@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  logfile ; 
- int /*<<< orphan*/ * logfp ; 
- int /*<<< orphan*/  seaf_message (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ fclose (int *) ;
+ int * g_fopen (int ,char*) ;
+ int logfile ;
+ int * logfp ;
+ int seaf_message (char*,int ) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int
 seafile_log_reopen ()
@@ -28,12 +28,12 @@ seafile_log_reopen ()
     if (strcmp(logfile, "-") == 0)
         return 0;
 
-    if ((fp = g_fopen (logfile, "a+")) == NULL) {
+    if ((fp = g_fopen (logfile, "a+")) == ((void*)0)) {
         seaf_message ("Failed to open file %s\n", logfile);
         return -1;
     }
 
-    //TODO: check file's health
+
 
     oldfp = logfp;
     logfp = fp;

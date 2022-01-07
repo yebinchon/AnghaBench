@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpc_result_t ;
-typedef  int /*<<< orphan*/  mpc_parser_t ;
-typedef  int /*<<< orphan*/  mpc_input_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mpc_input_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mpc_input_new_pipe (char const*,int /*<<< orphan*/ *) ; 
- int mpc_parse_input (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mpc_result_t ;
+typedef int mpc_parser_t ;
+typedef int mpc_input_t ;
+typedef int FILE ;
+
+
+ int mpc_input_delete (int *) ;
+ int * mpc_input_new_pipe (char const*,int *) ;
+ int mpc_parse_input (int *,int *,int *) ;
 
 int mpc_parse_pipe(const char *filename, FILE *pipe, mpc_parser_t *p, mpc_result_t *r) {
   int x;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* conf; } ;
-typedef  TYPE_2__ mbedtls_ssl_context ;
-struct TYPE_6__ {int (* f_sni ) (int /*<<< orphan*/ ,TYPE_2__*,unsigned char const*,size_t) ;int /*<<< orphan*/  p_sni; } ;
+typedef TYPE_2__ mbedtls_ssl_context ;
+struct TYPE_6__ {int (* f_sni ) (int ,TYPE_2__*,unsigned char const*,size_t) ;int p_sni; } ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_SSL_BAD_HS_CLIENT_HELLO ; 
- int /*<<< orphan*/  MBEDTLS_SSL_ALERT_LEVEL_FATAL ; 
- int /*<<< orphan*/  MBEDTLS_SSL_ALERT_MSG_DECODE_ERROR ; 
- int /*<<< orphan*/  MBEDTLS_SSL_ALERT_MSG_ILLEGAL_PARAMETER ; 
- int /*<<< orphan*/  MBEDTLS_SSL_ALERT_MSG_UNRECOGNIZED_NAME ; 
- int /*<<< orphan*/  MBEDTLS_SSL_DEBUG_MSG (int,char*) ; 
- int /*<<< orphan*/  MBEDTLS_SSL_DEBUG_RET (int,char*,int) ; 
- unsigned char const MBEDTLS_TLS_EXT_SERVERNAME_HOSTNAME ; 
- int /*<<< orphan*/  mbedtls_ssl_send_alert_message (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub1 (int /*<<< orphan*/ ,TYPE_2__*,unsigned char const*,size_t) ; 
+
+ int MBEDTLS_ERR_SSL_BAD_HS_CLIENT_HELLO ;
+ int MBEDTLS_SSL_ALERT_LEVEL_FATAL ;
+ int MBEDTLS_SSL_ALERT_MSG_DECODE_ERROR ;
+ int MBEDTLS_SSL_ALERT_MSG_ILLEGAL_PARAMETER ;
+ int MBEDTLS_SSL_ALERT_MSG_UNRECOGNIZED_NAME ;
+ int MBEDTLS_SSL_DEBUG_MSG (int,char*) ;
+ int MBEDTLS_SSL_DEBUG_RET (int,char*,int) ;
+ unsigned char const MBEDTLS_TLS_EXT_SERVERNAME_HOSTNAME ;
+ int mbedtls_ssl_send_alert_message (TYPE_2__*,int ,int ) ;
+ int stub1 (int ,TYPE_2__*,unsigned char const*,size_t) ;
 
 __attribute__((used)) static int ssl_parse_servername_ext( mbedtls_ssl_context *ssl,
                                      const unsigned char *buf,

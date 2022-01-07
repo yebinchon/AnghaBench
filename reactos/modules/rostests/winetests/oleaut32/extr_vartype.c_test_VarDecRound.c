@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DECIMAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECIMAL_NEG ; 
- int /*<<< orphan*/  EXPECTDEC (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  EXPECTDEC64 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  SETDEC (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SETDEC64 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  VarDecRound (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HRESULT ;
+typedef int DECIMAL ;
+
+
+ int CLEAR (int ) ;
+ int DECIMAL_NEG ;
+ int EXPECTDEC (int,int ,int ,int) ;
+ int EXPECTDEC64 (int ,int ,int,int,int) ;
+ int SETDEC (int ,int,int ,int ,int) ;
+ int SETDEC64 (int ,int,int ,int,int,int) ;
+ int VarDecRound (int *,int,int *) ;
 
 __attribute__((used)) static void test_VarDecRound(void)
 {

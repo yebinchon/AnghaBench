@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_12__ {TYPE_1__* connection; int /*<<< orphan*/  write_event_handler; scalar_t__ discard_body; int /*<<< orphan*/  read_event_handler; int /*<<< orphan*/  http_state; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
-struct TYPE_13__ {int /*<<< orphan*/  send_lowat; int /*<<< orphan*/  send_timeout; } ;
-typedef  TYPE_3__ ngx_http_core_loc_conf_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_12__ {TYPE_1__* connection; int write_event_handler; scalar_t__ discard_body; int read_event_handler; int http_state; } ;
+typedef TYPE_2__ ngx_http_request_t ;
+struct TYPE_13__ {int send_lowat; int send_timeout; } ;
+typedef TYPE_3__ ngx_http_core_loc_conf_t ;
 struct TYPE_14__ {scalar_t__ delayed; scalar_t__ ready; } ;
-typedef  TYPE_4__ ngx_event_t ;
+typedef TYPE_4__ ngx_event_t ;
 struct TYPE_11__ {TYPE_4__* write; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_WRITING_REQUEST_STATE ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_4__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_handle_write_event (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_close_request (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- int /*<<< orphan*/  ngx_http_discarded_request_body_handler ; 
- TYPE_3__* ngx_http_get_module_loc_conf (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_test_reading ; 
- int /*<<< orphan*/  ngx_http_writer ; 
+
+ scalar_t__ NGX_ERROR ;
+ int NGX_HTTP_WRITING_REQUEST_STATE ;
+ scalar_t__ NGX_OK ;
+ int ngx_add_timer (TYPE_4__*,int ) ;
+ scalar_t__ ngx_handle_write_event (TYPE_4__*,int ) ;
+ int ngx_http_close_request (TYPE_2__*,int ) ;
+ int ngx_http_core_module ;
+ int ngx_http_discarded_request_body_handler ;
+ TYPE_3__* ngx_http_get_module_loc_conf (TYPE_2__*,int ) ;
+ int ngx_http_test_reading ;
+ int ngx_http_writer ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_set_write_handler(ngx_http_request_t *r)
 {
-    ngx_event_t               *wev;
-    ngx_http_core_loc_conf_t  *clcf;
+    ngx_event_t *wev;
+    ngx_http_core_loc_conf_t *clcf;
 
     r->http_state = NGX_HTTP_WRITING_REQUEST_STATE;
 

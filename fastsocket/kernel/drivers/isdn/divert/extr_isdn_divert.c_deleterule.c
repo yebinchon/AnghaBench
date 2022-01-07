@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct deflect_struc {struct deflect_struc* next; TYPE_1__* prev; } ;
 struct TYPE_2__ {struct deflect_struc* next; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  divert_lock ; 
- int /*<<< orphan*/  kfree (struct deflect_struc*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- struct deflect_struc* table_head ; 
- TYPE_1__* table_tail ; 
+
+ int EINVAL ;
+ int divert_lock ;
+ int kfree (struct deflect_struc*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ struct deflect_struc* table_head ;
+ TYPE_1__* table_tail ;
 
 int deleterule(int idx)
 { struct deflect_struc *ds,*ds1;
   unsigned long flags;
-  
-  if (idx < 0) 
+
+  if (idx < 0)
    { spin_lock_irqsave(&divert_lock, flags);
      ds = table_head;
-     table_head = NULL;
-     table_tail = NULL;
+     table_head = ((void*)0);
+     table_tail = ((void*)0);
      spin_unlock_irqrestore(&divert_lock, flags);
      while (ds)
-      { ds1 = ds; 
+      { ds1 = ds;
         ds = ds->next;
         kfree(ds1);
-      } 
-     return(0); 
+      }
+     return(0);
    }
 
   spin_lock_irqsave(&divert_lock, flags);
   ds = table_head;
 
   while ((ds) && (idx > 0))
-   { idx--; 
-     ds = ds->next;  
+   { idx--;
+     ds = ds->next;
    }
 
-  if (!ds) 
+  if (!ds)
    {
      spin_unlock_irqrestore(&divert_lock, flags);
      return(-EINVAL);
-   }  
+   }
 
-  if (ds->next) 
-    ds->next->prev = ds->prev; /* backward chain */
+  if (ds->next)
+    ds->next->prev = ds->prev;
    else
-     table_tail = ds->prev; /* end of chain */
+     table_tail = ds->prev;
 
   if (ds->prev)
-    ds->prev->next = ds->next; /* forward chain */
+    ds->prev->next = ds->next;
    else
-     table_head = ds->next; /* start of chain */      
-  
+     table_head = ds->next;
+
   spin_unlock_irqrestore(&divert_lock, flags);
   kfree(ds);
   return(0);

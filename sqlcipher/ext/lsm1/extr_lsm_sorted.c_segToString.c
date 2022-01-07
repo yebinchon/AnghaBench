@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_env ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lsm_env ;
 struct TYPE_3__ {int nSize; scalar_t__ iLastPg; scalar_t__ iFirst; scalar_t__ iRoot; } ;
-typedef  TYPE_1__ Segment ;
-typedef  scalar_t__ LsmPgno ;
+typedef TYPE_1__ Segment ;
+typedef scalar_t__ LsmPgno ;
 
-/* Variables and functions */
- int LSM_MAX (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lsmFree (int /*<<< orphan*/ *,char*) ; 
- char* lsmMallocPrintf (int /*<<< orphan*/ *,char*,...) ; 
- int strlen (char*) ; 
+
+ int LSM_MAX (int ,int) ;
+ int lsmFree (int *,char*) ;
+ char* lsmMallocPrintf (int *,char*,...) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static char *segToString(lsm_env *pEnv, Segment *pSeg, int nMin){
   int nSize = pSeg->nSize;

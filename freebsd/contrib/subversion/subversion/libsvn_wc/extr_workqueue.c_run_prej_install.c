@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  work_item_baton_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-struct TYPE_8__ {struct TYPE_8__* next; int /*<<< orphan*/  len; int /*<<< orphan*/  data; TYPE_1__* children; } ;
-typedef  TYPE_2__ svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int work_item_baton_t ;
+typedef int svn_wc__db_t ;
+struct TYPE_8__ {struct TYPE_8__* next; int len; int data; TYPE_1__* children; } ;
+typedef TYPE_2__ svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
 struct TYPE_7__ {TYPE_2__* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrmemdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_rename2 (char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_prop_conflict (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__create_prejfile (char const**,int /*<<< orphan*/ *,char const*,TYPE_2__ const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_from_relpath (char const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_conflict (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* apr_pstrmemdup (int *,int ,int ) ;
+ int svn_io_file_rename2 (char const*,char const*,int ,int *) ;
+ int svn_wc__conflict_read_prop_conflict (char const**,int *,int *,int *,int *,int *,char const*,TYPE_2__*,int *,int *) ;
+ int svn_wc__create_prejfile (char const**,int *,char const*,TYPE_2__ const*,int ,void*,int *,int *) ;
+ int svn_wc__db_from_relpath (char const**,int *,char const*,char const*,int *,int *) ;
+ int svn_wc__db_read_conflict (TYPE_2__**,int *,int *,int *,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 run_prej_install(work_item_baton_t *wqb,
@@ -53,27 +53,27 @@ run_prej_install(work_item_baton_t *wqb,
   SVN_ERR(svn_wc__db_from_relpath(&local_abspath, db, wri_abspath,
                                   local_relpath, scratch_pool, scratch_pool));
 
-  SVN_ERR(svn_wc__db_read_conflict(&conflicts, NULL, NULL, db, local_abspath,
+  SVN_ERR(svn_wc__db_read_conflict(&conflicts, ((void*)0), ((void*)0), db, local_abspath,
                                    scratch_pool, scratch_pool));
 
   SVN_ERR(svn_wc__conflict_read_prop_conflict(&prejfile_abspath,
-                                              NULL, NULL, NULL, NULL,
+                                              ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                               db, local_abspath, conflicts,
                                               scratch_pool, scratch_pool));
 
-  if (arg1->next != NULL)
-    prop_conflict_skel = arg1->next; /* Before Subversion 1.9 */
+  if (arg1->next != ((void*)0))
+    prop_conflict_skel = arg1->next;
   else
-    prop_conflict_skel = NULL; /* Read from DB */
+    prop_conflict_skel = ((void*)0);
 
-  /* Construct a property reject file in the temporary area.  */
+
   SVN_ERR(svn_wc__create_prejfile(&tmp_prejfile_abspath,
                                   db, local_abspath,
                                   prop_conflict_skel,
                                   cancel_func, cancel_baton,
                                   scratch_pool, scratch_pool));
 
-  /* ... and atomically move it into place.  */
+
   SVN_ERR(svn_io_file_rename2(tmp_prejfile_abspath,
                               prejfile_abspath, FALSE,
                               scratch_pool));

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int wchar_t ;
-typedef  int WCHAR ;
-typedef  int* LPWSTR ;
-typedef  int INT ;
-typedef  void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ConResPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ EOF ; 
- void* FALSE ; 
- int /*<<< orphan*/  ICMP ; 
- int /*<<< orphan*/  IDS_USAGE ; 
- int /*<<< orphan*/  IP ; 
- int /*<<< orphan*/  Interval ; 
- int /*<<< orphan*/  Protocol ; 
- int /*<<< orphan*/  StdOut ; 
- int /*<<< orphan*/  TCP ; 
- void* TRUE ; 
- int /*<<< orphan*/  UDP ; 
- int /*<<< orphan*/  _wcsicmp (char*,int*) ; 
- void* bDoDispSeqComp ; 
- void* bDoShowAllCons ; 
- void* bDoShowEthStats ; 
- void* bDoShowNumbers ; 
- void* bDoShowProcName ; 
- void* bDoShowProcessId ; 
- void* bDoShowProtoCons ; 
- void* bDoShowProtoStats ; 
- void* bDoShowRouteTable ; 
- void* bLoopOutput ; 
- void* bNoOptions ; 
- scalar_t__ iswdigit (int) ; 
- scalar_t__ swscanf (int*,char*,int /*<<< orphan*/ *) ; 
- int towlower (int) ; 
+
+
+
+typedef int wchar_t ;
+typedef int WCHAR ;
+typedef int* LPWSTR ;
+typedef int INT ;
+typedef void* BOOL ;
+
+
+ int ConPuts (int ,char*) ;
+ int ConResPuts (int ,int ) ;
+ scalar_t__ EOF ;
+ void* FALSE ;
+ int ICMP ;
+ int IDS_USAGE ;
+ int IP ;
+ int Interval ;
+ int Protocol ;
+ int StdOut ;
+ int TCP ;
+ void* TRUE ;
+ int UDP ;
+ int _wcsicmp (char*,int*) ;
+ void* bDoDispSeqComp ;
+ void* bDoShowAllCons ;
+ void* bDoShowEthStats ;
+ void* bDoShowNumbers ;
+ void* bDoShowProcName ;
+ void* bDoShowProcessId ;
+ void* bDoShowProtoCons ;
+ void* bDoShowProtoStats ;
+ void* bDoShowRouteTable ;
+ void* bLoopOutput ;
+ void* bNoOptions ;
+ scalar_t__ iswdigit (int) ;
+ scalar_t__ swscanf (int*,char*,int *) ;
+ int towlower (int) ;
 
 BOOL ParseCmdline(int argc, wchar_t* argv[])
 {
@@ -55,7 +55,7 @@ BOOL ParseCmdline(int argc, wchar_t* argv[])
     if ((argc == 1) || (iswdigit(*argv[1])))
         bNoOptions = TRUE;
 
-    /* Parse command line for options we have been given. */
+
     for (i = 1; i < argc; i++)
     {
         if ((argc > 1) && (argv[i][0] == L'-' || argv[i][0] == L'/'))
@@ -103,7 +103,7 @@ BOOL ParseCmdline(int argc, wchar_t* argv[])
                         bDoShowProcessId = TRUE;
                         break;
                     case L'v':
-                        // FIXME!
+
                         ConPuts(StdOut, L"got v\n");
                         bDoDispSeqComp = TRUE;
                         break;
@@ -120,11 +120,11 @@ BOOL ParseCmdline(int argc, wchar_t* argv[])
             else
                 return FALSE;
         }
-//        else
-//        {
-//            ConResPrintf(StdOut, IDS_USAGE);
-//            return FALSE;
-//        }
+
+
+
+
+
     }
 
     return TRUE;

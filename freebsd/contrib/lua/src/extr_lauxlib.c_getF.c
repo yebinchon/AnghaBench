@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_2__ {size_t n; char const* buff; int /*<<< orphan*/  f; } ;
-typedef  TYPE_1__ LoadF ;
 
-/* Variables and functions */
- scalar_t__ feof (int /*<<< orphan*/ ) ; 
- size_t fread (char const*,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_2__ {size_t n; char const* buff; int f; } ;
+typedef TYPE_1__ LoadF ;
+
+
+ scalar_t__ feof (int ) ;
+ size_t fread (char const*,int,int,int ) ;
 
 __attribute__((used)) static const char *getF (lua_State *L, void *ud, size_t *size) {
   LoadF *lf = (LoadF *)ud;
-  (void)L;  /* not used */
-  if (lf->n > 0) {  /* are there pre-read characters to be read? */
-    *size = lf->n;  /* return them (chars already in buffer) */
-    lf->n = 0;  /* no more pre-read characters */
+  (void)L;
+  if (lf->n > 0) {
+    *size = lf->n;
+    lf->n = 0;
   }
-  else {  /* read a block from file */
-    /* 'fread' can return > 0 *and* set the EOF flag. If next call to
-       'getF' called 'fread', it might still wait for user input.
-       The next check avoids this problem. */
-    if (feof(lf->f)) return NULL;
-    *size = fread(lf->buff, 1, sizeof(lf->buff), lf->f);  /* read block */
+  else {
+
+
+
+    if (feof(lf->f)) return ((void*)0);
+    *size = fread(lf->buff, 1, sizeof(lf->buff), lf->f);
   }
   return lf->buff;
 }

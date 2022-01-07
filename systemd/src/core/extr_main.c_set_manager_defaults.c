@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  default_oom_policy; int /*<<< orphan*/  default_tasks_max; int /*<<< orphan*/  default_tasks_accounting; int /*<<< orphan*/  default_memory_accounting; int /*<<< orphan*/  default_blockio_accounting; int /*<<< orphan*/  default_ip_accounting; int /*<<< orphan*/  default_io_accounting; scalar_t__ default_cpu_accounting; int /*<<< orphan*/  default_start_limit_burst; int /*<<< orphan*/  default_start_limit_interval; int /*<<< orphan*/  default_restart_usec; int /*<<< orphan*/  default_timeout_abort_set; int /*<<< orphan*/  default_timeout_abort_usec; int /*<<< orphan*/  default_timeout_stop_usec; int /*<<< orphan*/  default_timeout_start_usec; int /*<<< orphan*/  default_std_error; int /*<<< orphan*/  default_std_output; int /*<<< orphan*/  default_timer_accuracy_usec; } ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  arg_default_blockio_accounting ; 
- scalar_t__ arg_default_cpu_accounting ; 
- int /*<<< orphan*/  arg_default_environment ; 
- int /*<<< orphan*/  arg_default_io_accounting ; 
- int /*<<< orphan*/  arg_default_ip_accounting ; 
- int /*<<< orphan*/  arg_default_memory_accounting ; 
- int /*<<< orphan*/  arg_default_oom_policy ; 
- int /*<<< orphan*/  arg_default_restart_usec ; 
- int /*<<< orphan*/  arg_default_rlimit ; 
- int /*<<< orphan*/  arg_default_start_limit_burst ; 
- int /*<<< orphan*/  arg_default_start_limit_interval ; 
- int /*<<< orphan*/  arg_default_std_error ; 
- int /*<<< orphan*/  arg_default_std_output ; 
- int /*<<< orphan*/  arg_default_tasks_accounting ; 
- int /*<<< orphan*/  arg_default_tasks_max ; 
- int /*<<< orphan*/  arg_default_timeout_abort_set ; 
- int /*<<< orphan*/  arg_default_timeout_abort_usec ; 
- int /*<<< orphan*/  arg_default_timeout_start_usec ; 
- int /*<<< orphan*/  arg_default_timeout_stop_usec ; 
- int /*<<< orphan*/  arg_default_timer_accuracy_usec ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ cpu_accounting_is_cheap () ; 
- int /*<<< orphan*/  manager_default_environment (TYPE_1__*) ; 
- int /*<<< orphan*/  manager_set_default_rlimits (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  manager_transient_environment_add (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int default_oom_policy; int default_tasks_max; int default_tasks_accounting; int default_memory_accounting; int default_blockio_accounting; int default_ip_accounting; int default_io_accounting; scalar_t__ default_cpu_accounting; int default_start_limit_burst; int default_start_limit_interval; int default_restart_usec; int default_timeout_abort_set; int default_timeout_abort_usec; int default_timeout_stop_usec; int default_timeout_start_usec; int default_std_error; int default_std_output; int default_timer_accuracy_usec; } ;
+typedef TYPE_1__ Manager ;
+
+
+ int arg_default_blockio_accounting ;
+ scalar_t__ arg_default_cpu_accounting ;
+ int arg_default_environment ;
+ int arg_default_io_accounting ;
+ int arg_default_ip_accounting ;
+ int arg_default_memory_accounting ;
+ int arg_default_oom_policy ;
+ int arg_default_restart_usec ;
+ int arg_default_rlimit ;
+ int arg_default_start_limit_burst ;
+ int arg_default_start_limit_interval ;
+ int arg_default_std_error ;
+ int arg_default_std_output ;
+ int arg_default_tasks_accounting ;
+ int arg_default_tasks_max ;
+ int arg_default_timeout_abort_set ;
+ int arg_default_timeout_abort_usec ;
+ int arg_default_timeout_start_usec ;
+ int arg_default_timeout_stop_usec ;
+ int arg_default_timer_accuracy_usec ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ cpu_accounting_is_cheap () ;
+ int manager_default_environment (TYPE_1__*) ;
+ int manager_set_default_rlimits (TYPE_1__*,int ) ;
+ int manager_transient_environment_add (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void set_manager_defaults(Manager *m) {
 
         assert(m);
 
-        /* Propagates the various default unit property settings into the manager object, i.e. properties that do not
-         * affect the manager itself, but are just what newly allocated units will have set if they haven't set
-         * anything else. (Also see set_manager_settings() for the settings that affect the manager's own behaviour) */
+
+
+
 
         m->default_timer_accuracy_usec = arg_default_timer_accuracy_usec;
         m->default_std_output = arg_default_std_output;
@@ -60,8 +60,8 @@ __attribute__((used)) static void set_manager_defaults(Manager *m) {
         m->default_start_limit_interval = arg_default_start_limit_interval;
         m->default_start_limit_burst = arg_default_start_limit_burst;
 
-        /* On 4.15+ with unified hierarchy, CPU accounting is essentially free as it doesn't require the CPU
-         * controller to be enabled, so the default is to enable it unless we got told otherwise. */
+
+
         if (arg_default_cpu_accounting >= 0)
                 m->default_cpu_accounting = arg_default_cpu_accounting;
         else

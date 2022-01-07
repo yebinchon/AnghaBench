@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  filearr; } ;
-typedef  TYPE_1__* ResourceOwner ;
-typedef  int /*<<< orphan*/  File ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FileGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ResourceArrayAdd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int filearr; } ;
+typedef TYPE_1__* ResourceOwner ;
+typedef int File ;
+
+
+ int FileGetDatum (int ) ;
+ int ResourceArrayAdd (int *,int ) ;
 
 void
 ResourceOwnerRememberFile(ResourceOwner owner, File file)
 {
-	ResourceArrayAdd(&(owner->filearr), FileGetDatum(file));
+ ResourceArrayAdd(&(owner->filearr), FileGetDatum(file));
 }

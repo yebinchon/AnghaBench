@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_item_t ;
-struct vlc_playlist_view {int /*<<< orphan*/  playlist; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * vlc_playlist_Get (int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int vlc_playlist_item_t ;
+struct vlc_playlist_view {int playlist; } ;
+
+
+ int * vlc_playlist_Get (int ,size_t) ;
 
 vlc_playlist_item_t *
 vlc_playlist_view_Get(struct vlc_playlist_view *view, size_t index)

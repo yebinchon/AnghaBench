@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  size; int /*<<< orphan*/  items; } ;
-struct TYPE_6__ {struct TYPE_6__* path; struct TYPE_6__* abspath; TYPE_1__ conf; int /*<<< orphan*/ * module; int /*<<< orphan*/  handle; int /*<<< orphan*/  unloadable; } ;
-typedef  TYPE_2__ vlc_plugin_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ atomic_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  config_Free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_module_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int size; int items; } ;
+struct TYPE_6__ {struct TYPE_6__* path; struct TYPE_6__* abspath; TYPE_1__ conf; int * module; int handle; int unloadable; } ;
+typedef TYPE_2__ vlc_plugin_t ;
+
+
+ int assert (int) ;
+ scalar_t__ atomic_load (int *) ;
+ int config_Free (int ,int ) ;
+ int free (TYPE_2__*) ;
+ int vlc_module_destroy (int *) ;
 
 void vlc_plugin_destroy(vlc_plugin_t *plugin)
 {
-    assert(plugin != NULL);
-#ifdef HAVE_DYNAMIC_PLUGINS
-    assert(!plugin->unloadable || atomic_load(&plugin->handle) == 0);
-#endif
+    assert(plugin != ((void*)0));
 
-    if (plugin->module != NULL)
+
+
+
+    if (plugin->module != ((void*)0))
         vlc_module_destroy(plugin->module);
 
     config_Free(plugin->conf.items, plugin->conf.size);
-#ifdef HAVE_DYNAMIC_PLUGINS
-    free(plugin->abspath);
-    free(plugin->path);
-#endif
+
+
+
+
     free(plugin);
 }

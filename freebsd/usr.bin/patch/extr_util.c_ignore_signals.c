@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int SIGHUP ;
+ int SIGINT ;
+ int SIG_IGN ;
+ int signal (int ,int ) ;
 
 void
 ignore_signals(void)
 {
-	signal(SIGHUP, SIG_IGN);
-	signal(SIGINT, SIG_IGN);
+ signal(SIGHUP, SIG_IGN);
+ signal(SIGINT, SIG_IGN);
 }

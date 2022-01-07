@@ -1,52 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_ERROR_OOM ; 
-#define  EACCES 145 
-#define  EADDRINUSE 144 
-#define  EADDRNOTAVAIL 143 
-#define  EBADMSG 142 
-#define  ECONNABORTED 141 
-#define  ECONNRESET 140 
-#define  EEXIST 139 
-#define  EINVAL 138 
-#define  EIO 137 
-#define  ENETRESET 136 
-#define  ENOBUFS 135 
-#define  ENOENT 134 
-#define  ENOMEM 133 
-#define  EOPNOTSUPP 132 
-#define  EPERM 131 
-#define  ESRCH 130 
-#define  ETIME 129 
-#define  ETIMEDOUT 128 
- int /*<<< orphan*/  SD_BUS_ERROR_ACCESS_DENIED ; 
- int /*<<< orphan*/  SD_BUS_ERROR_ADDRESS_IN_USE ; 
- int /*<<< orphan*/  SD_BUS_ERROR_BAD_ADDRESS ; 
- int /*<<< orphan*/  SD_BUS_ERROR_DISCONNECTED ; 
- int /*<<< orphan*/  SD_BUS_ERROR_FILE_EXISTS ; 
- int /*<<< orphan*/  SD_BUS_ERROR_FILE_NOT_FOUND ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INCONSISTENT_MESSAGE ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  SD_BUS_ERROR_IO_ERROR ; 
- int /*<<< orphan*/  SD_BUS_ERROR_LIMITS_EXCEEDED ; 
- int /*<<< orphan*/  SD_BUS_ERROR_MAKE_CONST (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SD_BUS_ERROR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  SD_BUS_ERROR_NULL ; 
- int /*<<< orphan*/  SD_BUS_ERROR_TIMEOUT ; 
- int /*<<< orphan*/  SD_BUS_ERROR_UNIX_PROCESS_ID_UNKNOWN ; 
+
+
+
+typedef int sd_bus_error ;
+
+
+ int BUS_ERROR_OOM ;
+ int SD_BUS_ERROR_ACCESS_DENIED ;
+ int SD_BUS_ERROR_ADDRESS_IN_USE ;
+ int SD_BUS_ERROR_BAD_ADDRESS ;
+ int SD_BUS_ERROR_DISCONNECTED ;
+ int SD_BUS_ERROR_FILE_EXISTS ;
+ int SD_BUS_ERROR_FILE_NOT_FOUND ;
+ int SD_BUS_ERROR_INCONSISTENT_MESSAGE ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int SD_BUS_ERROR_IO_ERROR ;
+ int SD_BUS_ERROR_LIMITS_EXCEEDED ;
+ int SD_BUS_ERROR_MAKE_CONST (int ,char*) ;
+ int SD_BUS_ERROR_NOT_SUPPORTED ;
+ int SD_BUS_ERROR_NULL ;
+ int SD_BUS_ERROR_TIMEOUT ;
+ int SD_BUS_ERROR_UNIX_PROCESS_ID_UNKNOWN ;
 
 __attribute__((used)) static sd_bus_error errno_to_bus_error_const(int error) {
 
@@ -55,50 +37,50 @@ __attribute__((used)) static sd_bus_error errno_to_bus_error_const(int error) {
 
         switch (error) {
 
-        case ENOMEM:
+        case 133:
                 return BUS_ERROR_OOM;
 
-        case EPERM:
-        case EACCES:
+        case 131:
+        case 145:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_ACCESS_DENIED, "Access denied");
 
-        case EINVAL:
+        case 138:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_INVALID_ARGS, "Invalid argument");
 
-        case ESRCH:
+        case 130:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_UNIX_PROCESS_ID_UNKNOWN, "No such process");
 
-        case ENOENT:
+        case 134:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_FILE_NOT_FOUND, "File not found");
 
-        case EEXIST:
+        case 139:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_FILE_EXISTS, "File exists");
 
-        case ETIMEDOUT:
-        case ETIME:
+        case 128:
+        case 129:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_TIMEOUT, "Timed out");
 
-        case EIO:
+        case 137:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_IO_ERROR, "Input/output error");
 
-        case ENETRESET:
-        case ECONNABORTED:
-        case ECONNRESET:
+        case 136:
+        case 141:
+        case 140:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_DISCONNECTED, "Disconnected");
 
-        case EOPNOTSUPP:
+        case 132:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_NOT_SUPPORTED, "Not supported");
 
-        case EADDRNOTAVAIL:
+        case 143:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_BAD_ADDRESS, "Address not available");
 
-        case ENOBUFS:
+        case 135:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_LIMITS_EXCEEDED, "Limits exceeded");
 
-        case EADDRINUSE:
+        case 144:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_ADDRESS_IN_USE, "Address in use");
 
-        case EBADMSG:
+        case 142:
                 return SD_BUS_ERROR_MAKE_CONST(SD_BUS_ERROR_INCONSISTENT_MESSAGE, "Inconsistent message");
         }
 

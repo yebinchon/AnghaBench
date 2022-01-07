@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int result; } ;
-struct TYPE_5__ {scalar_t__ msg; TYPE_1__ data; int /*<<< orphan*/ * easy_handle; } ;
-typedef  TYPE_2__ CURLMsg ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_5__ {scalar_t__ msg; TYPE_1__ data; int * easy_handle; } ;
+typedef TYPE_2__ CURLMsg ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLINFO_PRIVATE ; 
- int /*<<< orphan*/  CURLMOPT_MAXCONNECTS ; 
- scalar_t__ CURLMSG_DONE ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int EXIT_SUCCESS ; 
- unsigned int MAX_PARALLEL ; 
- unsigned int NUM_URLS ; 
- int /*<<< orphan*/  add_transfer (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_getinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char**) ; 
- char* curl_easy_strerror (int) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- TYPE_2__* curl_multi_info_read (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * curl_multi_init () ; 
- int /*<<< orphan*/  curl_multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  curl_multi_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int CURLINFO_PRIVATE ;
+ int CURLMOPT_MAXCONNECTS ;
+ scalar_t__ CURLMSG_DONE ;
+ int CURL_GLOBAL_ALL ;
+ int EXIT_SUCCESS ;
+ unsigned int MAX_PARALLEL ;
+ unsigned int NUM_URLS ;
+ int add_transfer (int *,unsigned int) ;
+ int curl_easy_cleanup (int *) ;
+ int curl_easy_getinfo (int *,int ,char**) ;
+ char* curl_easy_strerror (int) ;
+ int curl_global_cleanup () ;
+ int curl_global_init (int ) ;
+ int curl_multi_cleanup (int *) ;
+ TYPE_2__* curl_multi_info_read (int *,int*) ;
+ int * curl_multi_init () ;
+ int curl_multi_perform (int *,int*) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ int curl_multi_setopt (int *,int ,long) ;
+ int curl_multi_wait (int *,int *,int ,int,int *) ;
+ int fprintf (int ,char*,scalar_t__,...) ;
+ int stderr ;
 
 int main(void)
 {
@@ -53,7 +53,7 @@ int main(void)
   curl_global_init(CURL_GLOBAL_ALL);
   cm = curl_multi_init();
 
-  /* Limit the amount of simultaneous connections curl should allow: */
+
   curl_multi_setopt(cm, CURLMOPT_MAXCONNECTS, (long)MAX_PARALLEL);
 
   for(transfers = 0; transfers < MAX_PARALLEL; transfers++)
@@ -79,7 +79,7 @@ int main(void)
         add_transfer(cm, transfers++);
     }
     if(still_alive)
-      curl_multi_wait(cm, NULL, 0, 1000, NULL);
+      curl_multi_wait(cm, ((void*)0), 0, 1000, ((void*)0));
 
   } while(still_alive || (transfers < NUM_URLS));
 

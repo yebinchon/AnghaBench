@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct emu_pcm_info {int /*<<< orphan*/  dev; int /*<<< orphan*/  bufsz; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMUPAGESIZE ; 
- int /*<<< orphan*/  EMU_MAX_BUFSZ ; 
- int /*<<< orphan*/  EMU_REC_BUFSZ ; 
- int /*<<< orphan*/  pcm_getbuffersize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct emu_pcm_info {int dev; int bufsz; } ;
+
+
+ int EMUPAGESIZE ;
+ int EMU_MAX_BUFSZ ;
+ int EMU_REC_BUFSZ ;
+ int pcm_getbuffersize (int ,int ,int ,int ) ;
 
 __attribute__((used)) static int
 emu_pcm_init(struct emu_pcm_info *sc)
 {
-	sc->bufsz = pcm_getbuffersize(sc->dev, EMUPAGESIZE, EMU_REC_BUFSZ, EMU_MAX_BUFSZ);
-	return (0);
+ sc->bufsz = pcm_getbuffersize(sc->dev, EMUPAGESIZE, EMU_REC_BUFSZ, EMU_MAX_BUFSZ);
+ return (0);
 }

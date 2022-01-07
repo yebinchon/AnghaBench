@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct varobj {int dummy; } ;
 struct cleanup {int dummy; } ;
-typedef  enum varobj_type { ____Placeholder_varobj_type } varobj_type ;
-typedef  enum mi_cmd_result { ____Placeholder_mi_cmd_result } mi_cmd_result ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef enum varobj_type { ____Placeholder_varobj_type } varobj_type ;
+typedef enum mi_cmd_result { ____Placeholder_mi_cmd_result } mi_cmd_result ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int MI_CMD_DONE ; 
- int USE_CURRENT_FRAME ; 
- int USE_SELECTED_FRAME ; 
- int USE_SPECIFIED_FRAME ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  fprintf_unfiltered (int /*<<< orphan*/ ,char*,char*,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free_current_contents ; 
- int /*<<< orphan*/  gdb_stdlog ; 
- int /*<<< orphan*/  isalpha (char) ; 
- struct cleanup* make_cleanup (int /*<<< orphan*/  (*) (char*),...) ; 
- int /*<<< orphan*/  paddr (int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  string_to_core_addr (char*) ; 
- int /*<<< orphan*/  ui_out_field_int (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ui_out_field_string (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  uiout ; 
- struct varobj* varobj_create (char*,char*,int /*<<< orphan*/ ,int) ; 
- char* varobj_gen_name () ; 
- int /*<<< orphan*/  varobj_get_num_children (struct varobj*) ; 
- char* varobj_get_type (struct varobj*) ; 
- scalar_t__ varobjdebug ; 
- int /*<<< orphan*/  xfree (char*) ; 
- char* xstrdup (char*) ; 
+
+ int MI_CMD_DONE ;
+ int USE_CURRENT_FRAME ;
+ int USE_SELECTED_FRAME ;
+ int USE_SPECIFIED_FRAME ;
+ int do_cleanups (struct cleanup*) ;
+ int error (char*) ;
+ int fprintf_unfiltered (int ,char*,char*,char*,int ,char*) ;
+ int free_current_contents ;
+ int gdb_stdlog ;
+ int isalpha (char) ;
+ struct cleanup* make_cleanup (int (*) (char*),...) ;
+ int paddr (int ) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int string_to_core_addr (char*) ;
+ int ui_out_field_int (int ,char*,int ) ;
+ int ui_out_field_string (int ,char*,char*) ;
+ int uiout ;
+ struct varobj* varobj_create (char*,char*,int ,int) ;
+ char* varobj_gen_name () ;
+ int varobj_get_num_children (struct varobj*) ;
+ char* varobj_get_type (struct varobj*) ;
+ scalar_t__ varobjdebug ;
+ int xfree (char*) ;
+ char* xstrdup (char*) ;
 
 enum mi_cmd_result
 mi_cmd_var_create (char *command, char **argv, int argc)
@@ -56,15 +56,15 @@ mi_cmd_var_create (char *command, char **argv, int argc)
 
   if (argc != 3)
     {
-      /*      xasprintf (&mi_error_message,
-         "mi_cmd_var_create: Usage: .");
-         return MI_CMD_ERROR; */
+
+
+
       error ("mi_cmd_var_create: Usage: NAME FRAME EXPRESSION.");
     }
 
   name = xstrdup (argv[0]);
-  /* Add cleanup for name. Must be free_current_contents as
-     name can be reallocated */
+
+
   old_cleanups = make_cleanup (free_current_contents, &name);
 
   frame = xstrdup (argv[1]);
@@ -83,7 +83,7 @@ mi_cmd_var_create (char *command, char **argv, int argc)
   if (strcmp (frame, "*") == 0)
     var_type = USE_CURRENT_FRAME;
   else if (strcmp (frame, "@") == 0)
-    var_type = USE_SELECTED_FRAME;  
+    var_type = USE_SELECTED_FRAME;
   else
     {
       var_type = USE_SPECIFIED_FRAME;
@@ -92,18 +92,18 @@ mi_cmd_var_create (char *command, char **argv, int argc)
 
   if (varobjdebug)
     fprintf_unfiltered (gdb_stdlog,
-		    "Name=\"%s\", Frame=\"%s\" (0x%s), Expression=\"%s\"\n",
-			name, frame, paddr (frameaddr), expr);
+      "Name=\"%s\", Frame=\"%s\" (0x%s), Expression=\"%s\"\n",
+   name, frame, paddr (frameaddr), expr);
 
   var = varobj_create (name, expr, frameaddr, var_type);
 
-  if (var == NULL)
+  if (var == ((void*)0))
     error ("mi_cmd_var_create: unable to create variable object");
 
   ui_out_field_string (uiout, "name", name);
   ui_out_field_int (uiout, "numchild", varobj_get_num_children (var));
   type = varobj_get_type (var);
-  if (type == NULL)
+  if (type == ((void*)0))
     ui_out_field_string (uiout, "type", "");
   else
     {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dlm_node_iter {int curnode; int /*<<< orphan*/  node_map; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned long*,int) ; 
+
+
+
+struct dlm_node_iter {int curnode; int node_map; } ;
+
+
+ int memcpy (int ,unsigned long*,int) ;
 
 __attribute__((used)) static inline void dlm_node_iter_init(unsigned long *map,
-				      struct dlm_node_iter *iter)
+          struct dlm_node_iter *iter)
 {
-	memcpy(iter->node_map, map, sizeof(iter->node_map));
-	iter->curnode = -1;
+ memcpy(iter->node_map, map, sizeof(iter->node_map));
+ iter->curnode = -1;
 }

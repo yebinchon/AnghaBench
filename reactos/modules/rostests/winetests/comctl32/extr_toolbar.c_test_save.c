@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expect ;
-typedef  int /*<<< orphan*/  data ;
-typedef  char WCHAR ;
-struct TYPE_5__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_7__ {int member_1; int member_5; int member_6; scalar_t__ iBitmap; int idCommand; scalar_t__ fsState; scalar_t__ fsStyle; scalar_t__ dwData; scalar_t__ iString; TYPE_1__ member_4; int /*<<< orphan*/  const member_3; int /*<<< orphan*/  const member_2; int /*<<< orphan*/  member_0; } ;
-struct TYPE_6__ {char const* pszSubKey; char const* pszValueName; int /*<<< orphan*/  hkr; } ;
-typedef  TYPE_2__ TBSAVEPARAMSW ;
-typedef  TYPE_3__ TBBUTTON ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int LONG ;
-typedef  scalar_t__ INT_PTR ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_3__ const*) ; 
-#define  BTNS_BUTTON 130 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ *) ; 
- int FALSE ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- scalar_t__ IS_INTRESOURCE (scalar_t__) ; 
- int /*<<< orphan*/  NUM_MSG_SEQUENCES ; 
- int /*<<< orphan*/  PARENT_SEQ_INDEX ; 
- int REG_BINARY ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegDeleteValueW (int /*<<< orphan*/ ,char const*) ; 
- int RegOpenKeyW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int RegQueryValueExW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int*) ; 
- int SendMessageW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
-#define  TBSTATE_ENABLED 129 
-#define  TBSTATE_HIDDEN 128 
- int /*<<< orphan*/  TB_ADDBUTTONSW ; 
- int /*<<< orphan*/  TB_BUTTONCOUNT ; 
- int /*<<< orphan*/  TB_GETBUTTON ; 
- int /*<<< orphan*/  TB_SAVERESTOREW ; 
- int TRUE ; 
- scalar_t__ alloced_str ; 
- int /*<<< orphan*/  flush_sequences (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_sequence (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  rebuild_toolbar (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  rebuild_toolbar_with_buttons (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  restore_parent_seq ; 
- int /*<<< orphan*/  save_parent_seq ; 
- int /*<<< orphan*/  sequences ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int expect ;
+typedef int data ;
+typedef char WCHAR ;
+struct TYPE_5__ {int member_0; } ;
+struct TYPE_7__ {int member_1; int member_5; int member_6; scalar_t__ iBitmap; int idCommand; scalar_t__ fsState; scalar_t__ fsStyle; scalar_t__ dwData; scalar_t__ iString; TYPE_1__ member_4; int const member_3; int const member_2; int member_0; } ;
+struct TYPE_6__ {char const* pszSubKey; char const* pszValueName; int hkr; } ;
+typedef TYPE_2__ TBSAVEPARAMSW ;
+typedef TYPE_3__ TBBUTTON ;
+typedef int LPARAM ;
+typedef int LONG ;
+typedef scalar_t__ INT_PTR ;
+typedef int * HWND ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int ARRAY_SIZE (TYPE_3__ const*) ;
+
+ int DestroyWindow (int *) ;
+ int FALSE ;
+ int HKEY_CURRENT_USER ;
+ scalar_t__ IS_INTRESOURCE (scalar_t__) ;
+ int NUM_MSG_SEQUENCES ;
+ int PARENT_SEQ_INDEX ;
+ int REG_BINARY ;
+ int RegCloseKey (int ) ;
+ int RegDeleteValueW (int ,char const*) ;
+ int RegOpenKeyW (int ,char const*,int *) ;
+ int RegQueryValueExW (int ,char const*,int *,int*,int *,int*) ;
+ int SendMessageW (int *,int ,int,int ) ;
+
+
+ int TB_ADDBUTTONSW ;
+ int TB_BUTTONCOUNT ;
+ int TB_GETBUTTON ;
+ int TB_SAVERESTOREW ;
+ int TRUE ;
+ scalar_t__ alloced_str ;
+ int flush_sequences (int ,int ) ;
+ int memcmp (int *,int const*,int) ;
+ int ok (int,char*,...) ;
+ int ok_sequence (int ,int ,int ,char*,int) ;
+ int rebuild_toolbar (int **) ;
+ int rebuild_toolbar_with_buttons (int **) ;
+ int restore_parent_seq ;
+ int save_parent_seq ;
+ int sequences ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static void test_save(void)
 {
-    HWND wnd = NULL;
+    HWND wnd = ((void*)0);
     TBSAVEPARAMSW params;
     static const WCHAR subkey[] = {'S','o','f','t','w','a','r','e','\\','W','i','n','e','\\',
                                    'W','i','n','e','T','e','s','t',0};
@@ -77,8 +77,8 @@ __attribute__((used)) static void test_save(void)
     TBBUTTON tb;
     static const TBBUTTON more_btns[2] =
         {
-            {0, 11, TBSTATE_HIDDEN, BTNS_BUTTON, {0}, 0, -1},
-            {0, 13, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 0, -1}
+            {0, 11, 128, 130, {0}, 0, -1},
+            {0, 13, 129, 130, {0}, 0, -1}
         };
     static const DWORD expect[] = {0xcafe, 1, 0xcafe0000, 3, 0xcafe0001, 5, 0xcafe0002, 7, 0xcafe0003,
                                    9, 0xcafe0004, 11, 0xcafe0005, 13, 0xcafe0006, 0xffffffff, 0xcafe0007,
@@ -86,17 +86,17 @@ __attribute__((used)) static void test_save(void)
                                    0x100, 0xcafe000b};
     static const TBBUTTON expect_btns[] =
     {
-        {0, 1, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 0, 0},
-        {0, 3, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 1, 2},
-        {0, 5, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 2, 0},
-        {0, 7, 0, BTNS_BUTTON, {0}, 0, (INT_PTR)"foo"},
-        {0, 9, 0, BTNS_BUTTON, {0}, 0, 0},
-        {0, 11, 0, BTNS_BUTTON, {0}, 0, 3},
-        {0, 13, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 6, 0},
-        {0, 0, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 7, 0},
-        {0, 0, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 8, 0},
-        {0, 0, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 9, 0},
-        {0, 0x7fffffff, TBSTATE_ENABLED, BTNS_BUTTON, {0}, 0xa, 0},
+        {0, 1, 129, 130, {0}, 0, 0},
+        {0, 3, 129, 130, {0}, 1, 2},
+        {0, 5, 129, 130, {0}, 2, 0},
+        {0, 7, 0, 130, {0}, 0, (INT_PTR)"foo"},
+        {0, 9, 0, 130, {0}, 0, 0},
+        {0, 11, 0, 130, {0}, 0, 3},
+        {0, 13, 129, 130, {0}, 6, 0},
+        {0, 0, 129, 130, {0}, 7, 0},
+        {0, 0, 129, 130, {0}, 8, 0},
+        {0, 0, 129, 130, {0}, 9, 0},
+        {0, 0x7fffffff, 129, 130, {0}, 0xa, 0},
     };
 
     params.hkr = HKEY_CURRENT_USER;
@@ -114,7 +114,7 @@ __attribute__((used)) static void test_save(void)
 
     res = RegOpenKeyW( HKEY_CURRENT_USER, subkey, &key );
     ok( !res, "got %08x\n", res );
-    res = RegQueryValueExW( key, value, NULL, &type, data, &size );
+    res = RegQueryValueExW( key, value, ((void*)0), &type, data, &size );
     ok( !res, "got %08x\n", res );
     ok( type == REG_BINARY, "got %08x\n", type );
     ok( size == sizeof(expect), "got %08x\n", size );
@@ -122,7 +122,7 @@ __attribute__((used)) static void test_save(void)
 
     RegCloseKey( key );
 
-    wnd = NULL;
+    wnd = ((void*)0);
     rebuild_toolbar( &wnd );
 
     flush_sequences(sequences, NUM_MSG_SEQUENCES);
@@ -148,7 +148,7 @@ __attribute__((used)) static void test_save(void)
             ok( !strcmp( (char *)tb.iString, (char *)expect_btns[i].iString ),
                 "%d: got %s\n", i, (char *)tb.iString );
 
-        /* In fact the ptr value set in TBN_GETBUTTONINFOA is simply copied */
+
         if (tb.idCommand == 7)
             ok( tb.iString == (INT_PTR)alloced_str, "string not set\n");
     }

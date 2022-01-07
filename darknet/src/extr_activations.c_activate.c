@@ -1,77 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ACTIVATION ;
 
-/* Variables and functions */
-#define  ELU 141 
-#define  HARDTAN 140 
-#define  LEAKY 139 
-#define  LHTAN 138 
-#define  LINEAR 137 
-#define  LOGGY 136 
-#define  LOGISTIC 135 
-#define  PLSE 134 
-#define  RAMP 133 
-#define  RELIE 132 
-#define  RELU 131 
-#define  SELU 130 
-#define  STAIR 129 
-#define  TANH 128 
- float elu_activate (float) ; 
- float hardtan_activate (float) ; 
- float leaky_activate (float) ; 
- float lhtan_activate (float) ; 
- float linear_activate (float) ; 
- float loggy_activate (float) ; 
- float logistic_activate (float) ; 
- float plse_activate (float) ; 
- float ramp_activate (float) ; 
- float relie_activate (float) ; 
- float relu_activate (float) ; 
- float selu_activate (float) ; 
- float stair_activate (float) ; 
- float tanh_activate (float) ; 
+
+
+
+typedef int ACTIVATION ;
+ float elu_activate (float) ;
+ float hardtan_activate (float) ;
+ float leaky_activate (float) ;
+ float lhtan_activate (float) ;
+ float linear_activate (float) ;
+ float loggy_activate (float) ;
+ float logistic_activate (float) ;
+ float plse_activate (float) ;
+ float ramp_activate (float) ;
+ float relie_activate (float) ;
+ float relu_activate (float) ;
+ float selu_activate (float) ;
+ float stair_activate (float) ;
+ float tanh_activate (float) ;
 
 float activate(float x, ACTIVATION a)
 {
     switch(a){
-        case LINEAR:
+        case 137:
             return linear_activate(x);
-        case LOGISTIC:
+        case 135:
             return logistic_activate(x);
-        case LOGGY:
+        case 136:
             return loggy_activate(x);
-        case RELU:
+        case 131:
             return relu_activate(x);
-        case ELU:
+        case 141:
             return elu_activate(x);
-        case SELU:
+        case 130:
             return selu_activate(x);
-        case RELIE:
+        case 132:
             return relie_activate(x);
-        case RAMP:
+        case 133:
             return ramp_activate(x);
-        case LEAKY:
+        case 139:
             return leaky_activate(x);
-        case TANH:
+        case 128:
             return tanh_activate(x);
-        case PLSE:
+        case 134:
             return plse_activate(x);
-        case STAIR:
+        case 129:
             return stair_activate(x);
-        case HARDTAN:
+        case 140:
             return hardtan_activate(x);
-        case LHTAN:
+        case 138:
             return lhtan_activate(x);
     }
     return 0;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct SrcList_item {scalar_t__ zDatabase; char* zName; } ;
-struct Cte {int /*<<< orphan*/  zName; } ;
+struct Cte {int zName; } ;
 struct TYPE_4__ {int nCte; struct Cte* a; struct TYPE_4__* pOuter; } ;
-typedef  TYPE_1__ With ;
+typedef TYPE_1__ With ;
 
-/* Variables and functions */
- scalar_t__ sqlite3StrICmp (char const*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ sqlite3StrICmp (char const*,int ) ;
 
 __attribute__((used)) static struct Cte *searchWith(
-  With *pWith,                    /* Current innermost WITH clause */
-  struct SrcList_item *pItem,     /* FROM clause element to resolve */
-  With **ppContext                /* OUT: WITH clause return value belongs to */
+  With *pWith,
+  struct SrcList_item *pItem,
+  With **ppContext
 ){
   const char *zName;
   if( pItem->zDatabase==0 && (zName = pItem->zName)!=0 ){

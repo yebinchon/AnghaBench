@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sock {int dummy; } ;
-struct ccid3_hc_rx_sock {int /*<<< orphan*/  ccid3hcrx_li_hist; int /*<<< orphan*/  ccid3hcrx_hist; } ;
+struct ccid3_hc_rx_sock {int ccid3hcrx_li_hist; int ccid3hcrx_hist; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TFRC_RSTATE_TERM ; 
- int /*<<< orphan*/  ccid3_hc_rx_set_state (struct sock*,int /*<<< orphan*/ ) ; 
- struct ccid3_hc_rx_sock* ccid3_hc_rx_sk (struct sock*) ; 
- int /*<<< orphan*/  tfrc_lh_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tfrc_rx_hist_purge (int /*<<< orphan*/ *) ; 
+
+ int TFRC_RSTATE_TERM ;
+ int ccid3_hc_rx_set_state (struct sock*,int ) ;
+ struct ccid3_hc_rx_sock* ccid3_hc_rx_sk (struct sock*) ;
+ int tfrc_lh_cleanup (int *) ;
+ int tfrc_rx_hist_purge (int *) ;
 
 __attribute__((used)) static void ccid3_hc_rx_exit(struct sock *sk)
 {
-	struct ccid3_hc_rx_sock *hcrx = ccid3_hc_rx_sk(sk);
+ struct ccid3_hc_rx_sock *hcrx = ccid3_hc_rx_sk(sk);
 
-	ccid3_hc_rx_set_state(sk, TFRC_RSTATE_TERM);
+ ccid3_hc_rx_set_state(sk, TFRC_RSTATE_TERM);
 
-	tfrc_rx_hist_purge(&hcrx->ccid3hcrx_hist);
-	tfrc_lh_cleanup(&hcrx->ccid3hcrx_li_hist);
+ tfrc_rx_hist_purge(&hcrx->ccid3hcrx_hist);
+ tfrc_lh_cleanup(&hcrx->ccid3hcrx_li_hist);
 }

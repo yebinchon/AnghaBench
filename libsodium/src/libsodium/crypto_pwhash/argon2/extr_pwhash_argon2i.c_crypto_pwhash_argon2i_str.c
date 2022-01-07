@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- scalar_t__ ARGON2_OK ; 
- int /*<<< orphan*/  EFBIG ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  STR_HASHBYTES ; 
- scalar_t__ argon2i_hash_encoded (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const* const,size_t,unsigned char*,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- size_t crypto_pwhash_argon2i_MEMLIMIT_MAX ; 
- size_t crypto_pwhash_argon2i_MEMLIMIT_MIN ; 
- unsigned long long crypto_pwhash_argon2i_OPSLIMIT_MAX ; 
- unsigned long long crypto_pwhash_argon2i_OPSLIMIT_MIN ; 
- unsigned long long crypto_pwhash_argon2i_PASSWD_MAX ; 
- unsigned long long crypto_pwhash_argon2i_PASSWD_MIN ; 
- int crypto_pwhash_argon2i_SALTBYTES ; 
- int /*<<< orphan*/  crypto_pwhash_argon2i_STRBYTES ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  randombytes_buf (unsigned char*,int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ scalar_t__ ARGON2_OK ;
+ int EFBIG ;
+ int EINVAL ;
+ int STR_HASHBYTES ;
+ scalar_t__ argon2i_hash_encoded (int ,int ,int ,char const* const,size_t,unsigned char*,int,int ,char*,int ) ;
+ size_t crypto_pwhash_argon2i_MEMLIMIT_MAX ;
+ size_t crypto_pwhash_argon2i_MEMLIMIT_MIN ;
+ unsigned long long crypto_pwhash_argon2i_OPSLIMIT_MAX ;
+ unsigned long long crypto_pwhash_argon2i_OPSLIMIT_MIN ;
+ unsigned long long crypto_pwhash_argon2i_PASSWD_MAX ;
+ unsigned long long crypto_pwhash_argon2i_PASSWD_MIN ;
+ int crypto_pwhash_argon2i_SALTBYTES ;
+ int crypto_pwhash_argon2i_STRBYTES ;
+ int errno ;
+ int memset (char*,int ,int ) ;
+ int randombytes_buf (unsigned char*,int) ;
 
 int
 crypto_pwhash_argon2i_str(char out[crypto_pwhash_argon2i_STRBYTES],
@@ -56,7 +56,7 @@ crypto_pwhash_argon2i_str(char out[crypto_pwhash_argon2i_STRBYTES],
                              (uint32_t) 1U, passwd, (size_t) passwdlen, salt,
                              sizeof salt, STR_HASHBYTES, out,
                              crypto_pwhash_argon2i_STRBYTES) != ARGON2_OK) {
-        return -1; /* LCOV_EXCL_LINE */
+        return -1;
     }
     return 0;
 }

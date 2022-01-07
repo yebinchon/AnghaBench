@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CURSOR_MOVE (int,int) ; 
+ int CURSOR_MOVE (int,int) ;
 
 void nmstermio_move_cursor(int y, int x) {
-	CURSOR_MOVE(y, x);
+ CURSOR_MOVE(y, x);
 }

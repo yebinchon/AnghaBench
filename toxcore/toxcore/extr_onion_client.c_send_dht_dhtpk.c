@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  temp ;
-struct TYPE_9__ {int /*<<< orphan*/  self_secret_key; int /*<<< orphan*/  self_public_key; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+typedef int temp ;
+struct TYPE_9__ {int self_secret_key; int self_public_key; } ;
 struct TYPE_8__ {scalar_t__ num_friends; TYPE_2__* friends_list; TYPE_5__* dht; TYPE_1__* c; } ;
-struct TYPE_7__ {int /*<<< orphan*/  dht_public_key; int /*<<< orphan*/  real_public_key; int /*<<< orphan*/  know_dht_public_key; } ;
-struct TYPE_6__ {int /*<<< orphan*/  self_secret_key; int /*<<< orphan*/ * self_public_key; } ;
-typedef  TYPE_3__ Onion_Client ;
+struct TYPE_7__ {int dht_public_key; int real_public_key; int know_dht_public_key; } ;
+struct TYPE_6__ {int self_secret_key; int * self_public_key; } ;
+typedef TYPE_3__ Onion_Client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_PACKET_DHTPK ; 
- int /*<<< orphan*/  DATA_IN_RESPONSE_MIN_SIZE ; 
- int MAX_CRYPTO_REQUEST_SIZE ; 
- int create_request (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int encrypt_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  new_nonce (int /*<<< orphan*/ *) ; 
- int route_tofriend (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int CRYPTO_PACKET_DHTPK ;
+ int DATA_IN_RESPONSE_MIN_SIZE ;
+ int MAX_CRYPTO_REQUEST_SIZE ;
+ int create_request (int ,int ,int *,int ,int *,int,int ) ;
+ int crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int encrypt_data (int ,int ,int *,int const*,int,int *) ;
+ int memcpy (int *,int *,int) ;
+ int new_nonce (int *) ;
+ int route_tofriend (TYPE_5__*,int ,int *,int) ;
 
 __attribute__((used)) static int send_dht_dhtpk(const Onion_Client *onion_c, int friend_num, const uint8_t *data, uint16_t length)
 {

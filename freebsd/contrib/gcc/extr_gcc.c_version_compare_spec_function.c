@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* part1; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- scalar_t__ check_live_switch (int,size_t) ; 
- int compare_version_strings (char const*,char const*) ; 
- int /*<<< orphan*/  fatal (char*,...) ; 
- int n_switches ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char*,char const*,size_t) ; 
- TYPE_1__* switches ; 
+
+ int abort () ;
+ scalar_t__ check_live_switch (int,size_t) ;
+ int compare_version_strings (char const*,char const*) ;
+ int fatal (char*,...) ;
+ int n_switches ;
+ size_t strlen (char const*) ;
+ int strncmp (char*,char const*,size_t) ;
+ TYPE_1__* switches ;
 
 __attribute__((used)) static const char *
 version_compare_spec_function (int argc, const char **argv)
 {
   int comp1, comp2;
   size_t switch_len;
-  const char *switch_value = NULL;
+  const char *switch_value = ((void*)0);
   int nargs = 1, i;
   bool result;
 
@@ -44,18 +44,18 @@ version_compare_spec_function (int argc, const char **argv)
   switch_len = strlen (argv[nargs + 1]);
   for (i = 0; i < n_switches; i++)
     if (!strncmp (switches[i].part1, argv[nargs + 1], switch_len)
-	&& check_live_switch (i, switch_len))
+ && check_live_switch (i, switch_len))
       switch_value = switches[i].part1 + switch_len;
 
-  if (switch_value == NULL)
+  if (switch_value == ((void*)0))
     comp1 = comp2 = -1;
   else
     {
       comp1 = compare_version_strings (switch_value, argv[1]);
       if (nargs == 2)
-	comp2 = compare_version_strings (switch_value, argv[2]);
+ comp2 = compare_version_strings (switch_value, argv[2]);
       else
-	comp2 = -1;  /* This value unused.  */
+ comp2 = -1;
     }
 
   switch (argv[0][0] << 8 | argv[0][1])
@@ -64,13 +64,13 @@ version_compare_spec_function (int argc, const char **argv)
       result = comp1 >= 0;
       break;
     case '!' << 8 | '<':
-      result = comp1 >= 0 || switch_value == NULL;
+      result = comp1 >= 0 || switch_value == ((void*)0);
       break;
     case '<' << 8:
       result = comp1 < 0;
       break;
     case '!' << 8 | '>':
-      result = comp1 < 0 || switch_value == NULL;
+      result = comp1 < 0 || switch_value == ((void*)0);
       break;
     case '>' << 8 | '<':
       result = comp1 >= 0 && comp2 < 0;
@@ -83,7 +83,7 @@ version_compare_spec_function (int argc, const char **argv)
       fatal ("unknown operator '%s' in %%:version-compare", argv[0]);
     }
   if (! result)
-    return NULL;
+    return ((void*)0);
 
   return argv[nargs + 2];
 }

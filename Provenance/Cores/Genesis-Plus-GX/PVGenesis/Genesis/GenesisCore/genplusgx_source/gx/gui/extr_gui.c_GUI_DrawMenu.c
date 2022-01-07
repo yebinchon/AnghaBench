@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int max_images; int max_buttons; int offset; int selected; int /*<<< orphan*/  (* cb ) () ;TYPE_3__** helpers; TYPE_5__** arrows; TYPE_3__* items; TYPE_5__* buttons; int /*<<< orphan*/  title; TYPE_4__* bg_images; scalar_t__ screenshot; } ;
-typedef  TYPE_2__ gui_menu ;
-struct TYPE_9__ {int x; int y; int w; int h; int /*<<< orphan*/  comment; scalar_t__ texture; scalar_t__ data; int /*<<< orphan*/  text; } ;
-typedef  TYPE_3__ gui_item ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int max_images; int max_buttons; int offset; int selected; int (* cb ) () ;TYPE_3__** helpers; TYPE_5__** arrows; TYPE_3__* items; TYPE_5__* buttons; int title; TYPE_4__* bg_images; scalar_t__ screenshot; } ;
+typedef TYPE_2__ gui_menu ;
+struct TYPE_9__ {int x; int y; int w; int h; int comment; scalar_t__ texture; scalar_t__ data; int text; } ;
+typedef TYPE_3__ gui_item ;
 struct TYPE_10__ {int state; int x; int y; int w; int h; int alpha; scalar_t__ texture; } ;
-typedef  TYPE_4__ gui_image ;
+typedef TYPE_4__ gui_image ;
 struct TYPE_11__ {int state; int x; int y; int w; int h; TYPE_1__* data; } ;
-typedef  TYPE_5__ gui_butn ;
+typedef TYPE_5__ gui_butn ;
 struct TYPE_7__ {scalar_t__* texture; } ;
-typedef  int /*<<< orphan*/  GXColor ;
+typedef int GXColor ;
 
-/* Variables and functions */
- scalar_t__ BLACK ; 
- int BUTTON_SELECTED ; 
- int BUTTON_VISIBLE ; 
- scalar_t__ DARK_GREY ; 
- int /*<<< orphan*/  FONT_alignRight (int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FONT_write (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FONT_writeCenter (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ) ; 
- int IMAGE_REPEAT ; 
- int IMAGE_VISIBLE ; 
- scalar_t__ WHITE ; 
- int /*<<< orphan*/  bg_color ; 
- int /*<<< orphan*/  gxClearScreen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gxDrawScreenshot (scalar_t__) ; 
- int /*<<< orphan*/  gxDrawTexture (scalar_t__,int,int,int,int,int) ; 
- int /*<<< orphan*/  gxDrawTextureRepeat (scalar_t__,int,int,int,int,int) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 () ; 
+
+ scalar_t__ BLACK ;
+ int BUTTON_SELECTED ;
+ int BUTTON_VISIBLE ;
+ scalar_t__ DARK_GREY ;
+ int FONT_alignRight (int ,int,int,int,int ) ;
+ int FONT_write (int ,int,int,int,int,int ) ;
+ int FONT_writeCenter (int ,int,int,int,int,int ) ;
+ int IMAGE_REPEAT ;
+ int IMAGE_VISIBLE ;
+ scalar_t__ WHITE ;
+ int bg_color ;
+ int gxClearScreen (int ) ;
+ int gxDrawScreenshot (scalar_t__) ;
+ int gxDrawTexture (scalar_t__,int,int,int,int,int) ;
+ int gxDrawTextureRepeat (scalar_t__,int,int,int,int,int) ;
+ scalar_t__ strlen (int ) ;
+ int stub1 () ;
 
 void GUI_DrawMenu(gui_menu *menu)
 {
@@ -52,7 +52,7 @@ void GUI_DrawMenu(gui_menu *menu)
   gui_butn *button;
   gui_image *image;
 
-  /* background color */
+
   if (menu->screenshot)
   {
     gxClearScreen((GXColor)BLACK);
@@ -63,7 +63,7 @@ void GUI_DrawMenu(gui_menu *menu)
     gxClearScreen(bg_color);
   }
 
-  /* background elements */
+
   for (i=0; i<menu->max_images; i++)
   {
     image = &menu->bg_images[i];
@@ -71,25 +71,25 @@ void GUI_DrawMenu(gui_menu *menu)
     {
       if (image->state & IMAGE_REPEAT)
         gxDrawTextureRepeat(image->texture,image->x,image->y,image->w,image->h,image->alpha);
-      else 
+      else
         gxDrawTexture(image->texture,image->x,image->y,image->w,image->h,image->alpha);
     }
   }
 
-  /* menu title */
+
   FONT_write(menu->title, 22,10,56,640,(GXColor)WHITE);
 
-  /* draw buttons + items */
+
   for (i=0; i<menu->max_buttons; i++)
   {
     button = &menu->buttons[i];
 
     if (button->state & BUTTON_VISIBLE)
     {
-      /* item select (text or image) */
-      item = (menu->items) ? (&menu->items[menu->offset + i]) : NULL;
-      
-      /* draw button + items */ 
+
+      item = (menu->items) ? (&menu->items[menu->offset + i]) : ((void*)0);
+
+
       if ((i == menu->selected) || (button->state & BUTTON_SELECTED))
       {
         if (button->data)
@@ -129,7 +129,7 @@ void GUI_DrawMenu(gui_menu *menu)
     }
   }
 
-  /* draw arrow */
+
   for (i=0; i<2; i++)
   {
     button = menu->arrows[i];
@@ -145,7 +145,7 @@ void GUI_DrawMenu(gui_menu *menu)
     }
   }
 
-  /* left comment */
+
   item = menu->helpers[0];
   if (item)
   {
@@ -156,7 +156,7 @@ void GUI_DrawMenu(gui_menu *menu)
     }
   }
 
-  /* right comment */
+
   item = menu->helpers[1];
   if (item)
   {

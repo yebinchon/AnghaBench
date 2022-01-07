@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int VOID ;
 struct TYPE_3__ {scalar_t__ uID; scalar_t__ uCmdID; struct TYPE_3__* SubMenu; } ;
-typedef  TYPE_1__ VDM_MENUITEM ;
-typedef  scalar_t__ UINT_PTR ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/ * HMENU ;
+typedef TYPE_1__ VDM_MENUITEM ;
+typedef scalar_t__ UINT_PTR ;
+typedef size_t UINT ;
+typedef int * HMENU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AppendMenuW (int /*<<< orphan*/ *,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreatePopupMenu () ; 
- int /*<<< orphan*/  DestroyMenu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetModuleHandle (int /*<<< orphan*/ *) ; 
- scalar_t__ LoadStringW (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MF_POPUP ; 
- int MF_SEPARATOR ; 
- int MF_STRING ; 
+
+ int ARRAYSIZE (int *) ;
+ int AppendMenuW (int *,int,scalar_t__,int *) ;
+ int * CreatePopupMenu () ;
+ int DestroyMenu (int *) ;
+ int GetModuleHandle (int *) ;
+ scalar_t__ LoadStringW (int ,size_t,int *,int ) ;
+ int MF_POPUP ;
+ int MF_SEPARATOR ;
+ int MF_STRING ;
 
 __attribute__((used)) static VOID
 AppendMenuItems(HMENU hMenu,
@@ -42,15 +42,15 @@ AppendMenuItems(HMENU hMenu,
     {
         if (Items[i].uID != (UINT)-1)
         {
-            if (LoadStringW(GetModuleHandle(NULL),
+            if (LoadStringW(GetModuleHandle(((void*)0)),
                             Items[i].uID,
                             szMenuString,
                             ARRAYSIZE(szMenuString)) > 0)
             {
-                if (Items[i].SubMenu != NULL)
+                if (Items[i].SubMenu != ((void*)0))
                 {
                     hSubMenu = CreatePopupMenu();
-                    if (hSubMenu != NULL)
+                    if (hSubMenu != ((void*)0))
                     {
                         AppendMenuItems(hSubMenu, Items[i].SubMenu);
 
@@ -77,8 +77,8 @@ AppendMenuItems(HMENU hMenu,
             AppendMenuW(hMenu,
                         MF_SEPARATOR,
                         0,
-                        NULL);
+                        ((void*)0));
         }
         i++;
-    } while (!(Items[i].uID == 0 && Items[i].SubMenu == NULL && Items[i].uCmdID == 0));
+    } while (!(Items[i].uID == 0 && Items[i].SubMenu == ((void*)0) && Items[i].uCmdID == 0));
 }

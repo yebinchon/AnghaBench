@@ -1,224 +1,129 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
-#define  DW_AT_GNU_vector 220 
-#define  DW_AT_MIPS_abstract_name 219 
-#define  DW_AT_MIPS_clone_origin 218 
-#define  DW_AT_MIPS_epilog_begin 217 
-#define  DW_AT_MIPS_fde 216 
-#define  DW_AT_MIPS_has_inlines 215 
-#define  DW_AT_MIPS_linkage_name 214 
-#define  DW_AT_MIPS_loop_begin 213 
-#define  DW_AT_MIPS_loop_unroll_factor 212 
-#define  DW_AT_MIPS_software_pipeline_depth 211 
-#define  DW_AT_MIPS_stride 210 
-#define  DW_AT_MIPS_tail_loop_begin 209 
-#define  DW_AT_abstract_origin 208 
-#define  DW_AT_accessibility 207 
-#define  DW_AT_address_class 206 
-#define  DW_AT_allocated 205 
-#define  DW_AT_artificial 204 
-#define  DW_AT_associated 203 
-#define  DW_AT_base_types 202 
-#define  DW_AT_bit_offset 201 
-#define  DW_AT_bit_size 200 
-#define  DW_AT_body_begin 199 
-#define  DW_AT_body_end 198 
-#define  DW_AT_byte_size 197 
-#define  DW_AT_call_column 196 
-#define  DW_AT_call_file 195 
-#define  DW_AT_call_line 194 
-#define  DW_AT_calling_convention 193 
-#define  DW_AT_common_reference 192 
-#define  DW_AT_comp_dir 191 
-#define  DW_AT_const_value 190 
-#define  DW_AT_containing_type 189 
-#define  DW_AT_count 188 
-#define  DW_AT_data_location 187 
-#define  DW_AT_data_member_location 186 
-#define  DW_AT_decl_column 185 
-#define  DW_AT_decl_file 184 
-#define  DW_AT_decl_line 183 
-#define  DW_AT_declaration 182 
-#define  DW_AT_default_value 181 
-#define  DW_AT_discr 180 
-#define  DW_AT_discr_list 179 
-#define  DW_AT_discr_value 178 
-#define  DW_AT_element_list 177 
-#define  DW_AT_encoding 176 
-#define  DW_AT_entry_pc 175 
-#define  DW_AT_extension 174 
-#define  DW_AT_external 173 
-#define  DW_AT_frame_base 172 
-#define  DW_AT_friend 171 
-#define  DW_AT_high_pc 170 
-#define  DW_AT_identifier_case 169 
-#define  DW_AT_import 168 
-#define  DW_AT_inline 167 
-#define  DW_AT_is_optional 166 
-#define  DW_AT_language 165 
-#define  DW_AT_location 164 
-#define  DW_AT_low_pc 163 
-#define  DW_AT_lower_bound 162 
-#define  DW_AT_mac_info 161 
-#define  DW_AT_macro_info 160 
-#define  DW_AT_member 159 
-#define  DW_AT_name 158 
-#define  DW_AT_namelist_items 157 
-#define  DW_AT_ordering 156 
-#define  DW_AT_priority 155 
-#define  DW_AT_producer 154 
-#define  DW_AT_prototyped 153 
-#define  DW_AT_ranges 152 
-#define  DW_AT_return_addr 151 
-#define  DW_AT_segment 150 
-#define  DW_AT_sf_names 149 
-#define  DW_AT_sibling 148 
-#define  DW_AT_specification 147 
-#define  DW_AT_src_coords 146 
-#define  DW_AT_src_info 145 
-#define  DW_AT_start_scope 144 
-#define  DW_AT_static_link 143 
-#define  DW_AT_stmt_list 142 
-#define  DW_AT_stride 141 
-#define  DW_AT_stride_size 140 
-#define  DW_AT_string_length 139 
-#define  DW_AT_subscr_data 138 
-#define  DW_AT_trampoline 137 
-#define  DW_AT_type 136 
-#define  DW_AT_upc_threads_scaled 135 
-#define  DW_AT_upper_bound 134 
-#define  DW_AT_use_UTF8 133 
-#define  DW_AT_use_location 132 
-#define  DW_AT_variable_parameter 131 
-#define  DW_AT_virtuality 130 
-#define  DW_AT_visibility 129 
-#define  DW_AT_vtable_elem_location 128 
- char* _ (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned long) ; 
+
+
+
+typedef int buffer ;
+ char* _ (char*) ;
+ int snprintf (char*,int,char*,unsigned long) ;
 
 __attribute__((used)) static char *
 get_AT_name (unsigned long attribute)
 {
   switch (attribute)
     {
-    case DW_AT_sibling:			return "DW_AT_sibling";
-    case DW_AT_location:		return "DW_AT_location";
-    case DW_AT_name:			return "DW_AT_name";
-    case DW_AT_ordering:		return "DW_AT_ordering";
-    case DW_AT_subscr_data:		return "DW_AT_subscr_data";
-    case DW_AT_byte_size:		return "DW_AT_byte_size";
-    case DW_AT_bit_offset:		return "DW_AT_bit_offset";
-    case DW_AT_bit_size:		return "DW_AT_bit_size";
-    case DW_AT_element_list:		return "DW_AT_element_list";
-    case DW_AT_stmt_list:		return "DW_AT_stmt_list";
-    case DW_AT_low_pc:			return "DW_AT_low_pc";
-    case DW_AT_high_pc:			return "DW_AT_high_pc";
-    case DW_AT_language:		return "DW_AT_language";
-    case DW_AT_member:			return "DW_AT_member";
-    case DW_AT_discr:			return "DW_AT_discr";
-    case DW_AT_discr_value:		return "DW_AT_discr_value";
-    case DW_AT_visibility:		return "DW_AT_visibility";
-    case DW_AT_import:			return "DW_AT_import";
-    case DW_AT_string_length:		return "DW_AT_string_length";
-    case DW_AT_common_reference:	return "DW_AT_common_reference";
-    case DW_AT_comp_dir:		return "DW_AT_comp_dir";
-    case DW_AT_const_value:		return "DW_AT_const_value";
-    case DW_AT_containing_type:		return "DW_AT_containing_type";
-    case DW_AT_default_value:		return "DW_AT_default_value";
-    case DW_AT_inline:			return "DW_AT_inline";
-    case DW_AT_is_optional:		return "DW_AT_is_optional";
-    case DW_AT_lower_bound:		return "DW_AT_lower_bound";
-    case DW_AT_producer:		return "DW_AT_producer";
-    case DW_AT_prototyped:		return "DW_AT_prototyped";
-    case DW_AT_return_addr:		return "DW_AT_return_addr";
-    case DW_AT_start_scope:		return "DW_AT_start_scope";
-    case DW_AT_stride_size:		return "DW_AT_stride_size";
-    case DW_AT_upper_bound:		return "DW_AT_upper_bound";
-    case DW_AT_abstract_origin:		return "DW_AT_abstract_origin";
-    case DW_AT_accessibility:		return "DW_AT_accessibility";
-    case DW_AT_address_class:		return "DW_AT_address_class";
-    case DW_AT_artificial:		return "DW_AT_artificial";
-    case DW_AT_base_types:		return "DW_AT_base_types";
-    case DW_AT_calling_convention:	return "DW_AT_calling_convention";
-    case DW_AT_count:			return "DW_AT_count";
-    case DW_AT_data_member_location:	return "DW_AT_data_member_location";
-    case DW_AT_decl_column:		return "DW_AT_decl_column";
-    case DW_AT_decl_file:		return "DW_AT_decl_file";
-    case DW_AT_decl_line:		return "DW_AT_decl_line";
-    case DW_AT_declaration:		return "DW_AT_declaration";
-    case DW_AT_discr_list:		return "DW_AT_discr_list";
-    case DW_AT_encoding:		return "DW_AT_encoding";
-    case DW_AT_external:		return "DW_AT_external";
-    case DW_AT_frame_base:		return "DW_AT_frame_base";
-    case DW_AT_friend:			return "DW_AT_friend";
-    case DW_AT_identifier_case:		return "DW_AT_identifier_case";
-    case DW_AT_macro_info:		return "DW_AT_macro_info";
-    case DW_AT_namelist_items:		return "DW_AT_namelist_items";
-    case DW_AT_priority:		return "DW_AT_priority";
-    case DW_AT_segment:			return "DW_AT_segment";
-    case DW_AT_specification:		return "DW_AT_specification";
-    case DW_AT_static_link:		return "DW_AT_static_link";
-    case DW_AT_type:			return "DW_AT_type";
-    case DW_AT_use_location:		return "DW_AT_use_location";
-    case DW_AT_variable_parameter:	return "DW_AT_variable_parameter";
-    case DW_AT_virtuality:		return "DW_AT_virtuality";
-    case DW_AT_vtable_elem_location:	return "DW_AT_vtable_elem_location";
-      /* DWARF 2.1 values.  */
-    case DW_AT_allocated:		return "DW_AT_allocated";
-    case DW_AT_associated:		return "DW_AT_associated";
-    case DW_AT_data_location:		return "DW_AT_data_location";
-    case DW_AT_stride:			return "DW_AT_stride";
-    case DW_AT_entry_pc:		return "DW_AT_entry_pc";
-    case DW_AT_use_UTF8:		return "DW_AT_use_UTF8";
-    case DW_AT_extension:		return "DW_AT_extension";
-    case DW_AT_ranges:			return "DW_AT_ranges";
-    case DW_AT_trampoline:		return "DW_AT_trampoline";
-    case DW_AT_call_column:		return "DW_AT_call_column";
-    case DW_AT_call_file:		return "DW_AT_call_file";
-    case DW_AT_call_line:		return "DW_AT_call_line";
-      /* SGI/MIPS extensions.  */
-    case DW_AT_MIPS_fde:		return "DW_AT_MIPS_fde";
-    case DW_AT_MIPS_loop_begin:		return "DW_AT_MIPS_loop_begin";
-    case DW_AT_MIPS_tail_loop_begin:	return "DW_AT_MIPS_tail_loop_begin";
-    case DW_AT_MIPS_epilog_begin:	return "DW_AT_MIPS_epilog_begin";
-    case DW_AT_MIPS_loop_unroll_factor: return "DW_AT_MIPS_loop_unroll_factor";
-    case DW_AT_MIPS_software_pipeline_depth:
+    case 148: return "DW_AT_sibling";
+    case 164: return "DW_AT_location";
+    case 158: return "DW_AT_name";
+    case 156: return "DW_AT_ordering";
+    case 138: return "DW_AT_subscr_data";
+    case 197: return "DW_AT_byte_size";
+    case 201: return "DW_AT_bit_offset";
+    case 200: return "DW_AT_bit_size";
+    case 177: return "DW_AT_element_list";
+    case 142: return "DW_AT_stmt_list";
+    case 163: return "DW_AT_low_pc";
+    case 170: return "DW_AT_high_pc";
+    case 165: return "DW_AT_language";
+    case 159: return "DW_AT_member";
+    case 180: return "DW_AT_discr";
+    case 178: return "DW_AT_discr_value";
+    case 129: return "DW_AT_visibility";
+    case 168: return "DW_AT_import";
+    case 139: return "DW_AT_string_length";
+    case 192: return "DW_AT_common_reference";
+    case 191: return "DW_AT_comp_dir";
+    case 190: return "DW_AT_const_value";
+    case 189: return "DW_AT_containing_type";
+    case 181: return "DW_AT_default_value";
+    case 167: return "DW_AT_inline";
+    case 166: return "DW_AT_is_optional";
+    case 162: return "DW_AT_lower_bound";
+    case 154: return "DW_AT_producer";
+    case 153: return "DW_AT_prototyped";
+    case 151: return "DW_AT_return_addr";
+    case 144: return "DW_AT_start_scope";
+    case 140: return "DW_AT_stride_size";
+    case 134: return "DW_AT_upper_bound";
+    case 208: return "DW_AT_abstract_origin";
+    case 207: return "DW_AT_accessibility";
+    case 206: return "DW_AT_address_class";
+    case 204: return "DW_AT_artificial";
+    case 202: return "DW_AT_base_types";
+    case 193: return "DW_AT_calling_convention";
+    case 188: return "DW_AT_count";
+    case 186: return "DW_AT_data_member_location";
+    case 185: return "DW_AT_decl_column";
+    case 184: return "DW_AT_decl_file";
+    case 183: return "DW_AT_decl_line";
+    case 182: return "DW_AT_declaration";
+    case 179: return "DW_AT_discr_list";
+    case 176: return "DW_AT_encoding";
+    case 173: return "DW_AT_external";
+    case 172: return "DW_AT_frame_base";
+    case 171: return "DW_AT_friend";
+    case 169: return "DW_AT_identifier_case";
+    case 160: return "DW_AT_macro_info";
+    case 157: return "DW_AT_namelist_items";
+    case 155: return "DW_AT_priority";
+    case 150: return "DW_AT_segment";
+    case 147: return "DW_AT_specification";
+    case 143: return "DW_AT_static_link";
+    case 136: return "DW_AT_type";
+    case 132: return "DW_AT_use_location";
+    case 131: return "DW_AT_variable_parameter";
+    case 130: return "DW_AT_virtuality";
+    case 128: return "DW_AT_vtable_elem_location";
+
+    case 205: return "DW_AT_allocated";
+    case 203: return "DW_AT_associated";
+    case 187: return "DW_AT_data_location";
+    case 141: return "DW_AT_stride";
+    case 175: return "DW_AT_entry_pc";
+    case 133: return "DW_AT_use_UTF8";
+    case 174: return "DW_AT_extension";
+    case 152: return "DW_AT_ranges";
+    case 137: return "DW_AT_trampoline";
+    case 196: return "DW_AT_call_column";
+    case 195: return "DW_AT_call_file";
+    case 194: return "DW_AT_call_line";
+
+    case 216: return "DW_AT_MIPS_fde";
+    case 213: return "DW_AT_MIPS_loop_begin";
+    case 209: return "DW_AT_MIPS_tail_loop_begin";
+    case 217: return "DW_AT_MIPS_epilog_begin";
+    case 212: return "DW_AT_MIPS_loop_unroll_factor";
+    case 211:
       return "DW_AT_MIPS_software_pipeline_depth";
-    case DW_AT_MIPS_linkage_name:	return "DW_AT_MIPS_linkage_name";
-    case DW_AT_MIPS_stride:		return "DW_AT_MIPS_stride";
-    case DW_AT_MIPS_abstract_name:	return "DW_AT_MIPS_abstract_name";
-    case DW_AT_MIPS_clone_origin:	return "DW_AT_MIPS_clone_origin";
-    case DW_AT_MIPS_has_inlines:	return "DW_AT_MIPS_has_inlines";
-      /* GNU extensions.  */
-    case DW_AT_sf_names:		return "DW_AT_sf_names";
-    case DW_AT_src_info:		return "DW_AT_src_info";
-    case DW_AT_mac_info:		return "DW_AT_mac_info";
-    case DW_AT_src_coords:		return "DW_AT_src_coords";
-    case DW_AT_body_begin:		return "DW_AT_body_begin";
-    case DW_AT_body_end:		return "DW_AT_body_end";
-    case DW_AT_GNU_vector:		return "DW_AT_GNU_vector";
-      /* UPC extension.  */
-    case DW_AT_upc_threads_scaled:	return "DW_AT_upc_threads_scaled";
+    case 214: return "DW_AT_MIPS_linkage_name";
+    case 210: return "DW_AT_MIPS_stride";
+    case 219: return "DW_AT_MIPS_abstract_name";
+    case 218: return "DW_AT_MIPS_clone_origin";
+    case 215: return "DW_AT_MIPS_has_inlines";
+
+    case 149: return "DW_AT_sf_names";
+    case 145: return "DW_AT_src_info";
+    case 161: return "DW_AT_mac_info";
+    case 146: return "DW_AT_src_coords";
+    case 199: return "DW_AT_body_begin";
+    case 198: return "DW_AT_body_end";
+    case 220: return "DW_AT_GNU_vector";
+
+    case 135: return "DW_AT_upc_threads_scaled";
     default:
       {
-	static char buffer[100];
+ static char buffer[100];
 
-	snprintf (buffer, sizeof (buffer), _("Unknown AT value: %lx"),
-		  attribute);
-	return buffer;
+ snprintf (buffer, sizeof (buffer), _("Unknown AT value: %lx"),
+    attribute);
+ return buffer;
       }
     }
 }

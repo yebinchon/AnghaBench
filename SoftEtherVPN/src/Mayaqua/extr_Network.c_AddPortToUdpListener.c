@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  Event; int /*<<< orphan*/  PortList; } ;
-typedef  TYPE_1__ UDPLISTENER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddIntDistinct (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_3__ {int Event; int PortList; } ;
+typedef TYPE_1__ UDPLISTENER ;
+
+
+ int AddIntDistinct (int ,scalar_t__) ;
+ int LockList (int ) ;
+ int SetSockEvent (int ) ;
+ int UnlockList (int ) ;
 
 void AddPortToUdpListener(UDPLISTENER *u, UINT port)
 {
-	// Validate arguments
-	if (u == NULL || port == 0)
-	{
-		return;
-	}
 
-	LockList(u->PortList);
-	{
-		AddIntDistinct(u->PortList, port);
-	}
-	UnlockList(u->PortList);
+ if (u == ((void*)0) || port == 0)
+ {
+  return;
+ }
 
-	SetSockEvent(u->Event);
+ LockList(u->PortList);
+ {
+  AddIntDistinct(u->PortList, port);
+ }
+ UnlockList(u->PortList);
+
+ SetSockEvent(u->Event);
 }

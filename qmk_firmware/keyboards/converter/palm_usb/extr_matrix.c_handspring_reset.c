@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PinLevelHigh ; 
- int /*<<< orphan*/  PinLevelLow ; 
- int /*<<< orphan*/  VCC_PIN ; 
- int /*<<< orphan*/  _delay_ms (int) ; 
- int /*<<< orphan*/  digitalWrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ disconnect_counter ; 
- scalar_t__ handspring_handshake () ; 
- int /*<<< orphan*/  last_activity ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  timer_read () ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int PinLevelHigh ;
+ int PinLevelLow ;
+ int VCC_PIN ;
+ int _delay_ms (int) ;
+ int digitalWrite (int ,int ) ;
+ scalar_t__ disconnect_counter ;
+ scalar_t__ handspring_handshake () ;
+ int last_activity ;
+ int print (char*) ;
+ int timer_read () ;
 
 uint8_t handspring_reset(void) {
     digitalWrite(VCC_PIN, PinLevelLow);
@@ -33,8 +33,8 @@ uint8_t handspring_reset(void) {
         last_activity = timer_read();
         disconnect_counter=0;
         return 1;
-    } else { 
+    } else {
         print("-HSreset");
-        return 0;   
+        return 0;
     }
 }

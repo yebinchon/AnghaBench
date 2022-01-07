@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int w; int h; int* truth; int index; int /*<<< orphan*/  train; int /*<<< orphan*/  input; } ;
-typedef  TYPE_1__ network ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int w; int h; int* truth; int index; int train; int input; } ;
+typedef TYPE_1__ network ;
 struct TYPE_13__ {int outputs; int batch; int n; int w; int h; int classes; int* biases; int* mask; int max_boxes; int truths; float ignore_thresh; float truth_thresh; int* map; int total; scalar_t__* delta; scalar_t__* cost; scalar_t__* output; } ;
-typedef  TYPE_2__ layer ;
-struct TYPE_14__ {int x; int w; int h; int y; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_3__ box ;
+typedef TYPE_2__ layer ;
+struct TYPE_14__ {int x; int w; int h; int y; int member_0; } ;
+typedef TYPE_3__ box ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGISTIC ; 
- int /*<<< orphan*/  activate_array (scalar_t__*,int,int /*<<< orphan*/ ) ; 
- float box_iou (TYPE_3__,TYPE_3__) ; 
- float delta_yolo_box (TYPE_3__,scalar_t__*,int*,int,int,int,int,int,int,int,int,scalar_t__*,int,int) ; 
- int /*<<< orphan*/  delta_yolo_class (scalar_t__*,scalar_t__*,int,int,int,int,float*) ; 
- int entry_index (TYPE_2__ const,int,int,int) ; 
- TYPE_3__ float_to_box (int*,int) ; 
- TYPE_3__ get_yolo_box (scalar_t__*,int*,int,int,int,int,int,int,int,int,int) ; 
- int int_index (int*,int,int) ; 
- int /*<<< orphan*/  mag_array (scalar_t__*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ pow (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,int,float,float,float,float,float,float,int) ; 
+
+ int LOGISTIC ;
+ int activate_array (scalar_t__*,int,int ) ;
+ float box_iou (TYPE_3__,TYPE_3__) ;
+ float delta_yolo_box (TYPE_3__,scalar_t__*,int*,int,int,int,int,int,int,int,int,scalar_t__*,int,int) ;
+ int delta_yolo_class (scalar_t__*,scalar_t__*,int,int,int,int,float*) ;
+ int entry_index (TYPE_2__ const,int,int,int) ;
+ TYPE_3__ float_to_box (int*,int) ;
+ TYPE_3__ get_yolo_box (scalar_t__*,int*,int,int,int,int,int,int,int,int,int) ;
+ int int_index (int*,int,int) ;
+ int mag_array (scalar_t__*,int) ;
+ int memcpy (scalar_t__*,int ,int) ;
+ int memset (scalar_t__*,int ,int) ;
+ scalar_t__ pow (int ,int) ;
+ int printf (char*,int,float,float,float,float,float,float,int) ;
 
 void forward_yolo_layer(const layer l, network net)
 {
     int i,j,b,t,n;
     memcpy(l.output, net.input, l.outputs*l.batch*sizeof(float));
 
-#ifndef GPU
+
     for (b = 0; b < l.batch; ++b){
         for(n = 0; n < l.n; ++n){
             int index = entry_index(l, b, n*l.w*l.h, 0);
@@ -50,7 +50,7 @@ void forward_yolo_layer(const layer l, network net)
             activate_array(l.output + index, (1+l.classes)*l.w*l.h, LOGISTIC);
         }
     }
-#endif
+
 
     memset(l.delta, 0, l.outputs * l.batch * sizeof(float));
     if(!net.train) return;

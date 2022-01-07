@@ -1,98 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_41__   TYPE_8__ ;
-typedef  struct TYPE_40__   TYPE_7__ ;
-typedef  struct TYPE_39__   TYPE_6__ ;
-typedef  struct TYPE_38__   TYPE_5__ ;
-typedef  struct TYPE_37__   TYPE_4__ ;
-typedef  struct TYPE_36__   TYPE_3__ ;
-typedef  struct TYPE_35__   TYPE_2__ ;
-typedef  struct TYPE_34__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  size_t ngx_uint_t ;
-struct TYPE_37__ {int len; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_4__ ngx_str_t ;
-struct TYPE_41__ {scalar_t__ len; int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_41__ TYPE_8__ ;
+typedef struct TYPE_40__ TYPE_7__ ;
+typedef struct TYPE_39__ TYPE_6__ ;
+typedef struct TYPE_38__ TYPE_5__ ;
+typedef struct TYPE_37__ TYPE_4__ ;
+typedef struct TYPE_36__ TYPE_3__ ;
+typedef struct TYPE_35__ TYPE_2__ ;
+typedef struct TYPE_34__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef size_t ngx_uint_t ;
+struct TYPE_37__ {int len; int * data; } ;
+typedef TYPE_4__ ngx_str_t ;
+struct TYPE_41__ {scalar_t__ len; int * data; } ;
 struct TYPE_36__ {size_t nelts; TYPE_4__* elts; } ;
-struct TYPE_34__ {scalar_t__ len; int /*<<< orphan*/ * data; } ;
-struct TYPE_38__ {int blocked; int mail_state; int quit; scalar_t__ arg_start; TYPE_8__ tag; TYPE_2__* buffer; scalar_t__ state; TYPE_3__ args; TYPE_1__ tagged_line; TYPE_8__ out; TYPE_8__ text; int /*<<< orphan*/  command; scalar_t__ backslash; } ;
-typedef  TYPE_5__ ngx_mail_session_t ;
-typedef  int ngx_int_t ;
+struct TYPE_34__ {scalar_t__ len; int * data; } ;
+struct TYPE_38__ {int blocked; int mail_state; int quit; scalar_t__ arg_start; TYPE_8__ tag; TYPE_2__* buffer; scalar_t__ state; TYPE_3__ args; TYPE_1__ tagged_line; TYPE_8__ out; TYPE_8__ text; int command; scalar_t__ backslash; } ;
+typedef TYPE_5__ ngx_mail_session_t ;
+typedef int ngx_int_t ;
 struct TYPE_39__ {scalar_t__ timedout; TYPE_7__* data; } ;
-typedef  TYPE_6__ ngx_event_t ;
-struct TYPE_40__ {int timedout; int /*<<< orphan*/  write; int /*<<< orphan*/  pool; int /*<<< orphan*/  log; TYPE_5__* data; } ;
-typedef  TYPE_7__ ngx_connection_t ;
+typedef TYPE_6__ ngx_event_t ;
+struct TYPE_40__ {int timedout; int write; int pool; int log; TYPE_5__* data; } ;
+typedef TYPE_7__ ngx_connection_t ;
 struct TYPE_35__ {scalar_t__ start; scalar_t__ pos; scalar_t__ last; } ;
 
-/* Variables and functions */
- int NGX_AGAIN ; 
-#define  NGX_DONE 142 
-#define  NGX_ERROR 141 
- int /*<<< orphan*/  NGX_ETIMEDOUT ; 
-#define  NGX_IMAP_AUTHENTICATE 140 
-#define  NGX_IMAP_CAPABILITY 139 
-#define  NGX_IMAP_LOGIN 138 
-#define  NGX_IMAP_LOGOUT 137 
- int NGX_IMAP_NEXT ; 
-#define  NGX_IMAP_NOOP 136 
-#define  NGX_IMAP_STARTTLS 135 
- int /*<<< orphan*/  NGX_LOG_DEBUG_MAIL ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
-#define  NGX_MAIL_PARSE_INVALID_COMMAND 134 
- int NGX_OK ; 
- int /*<<< orphan*/  imap_bye ; 
- int /*<<< orphan*/  imap_invalid_command ; 
- int /*<<< orphan*/  imap_next ; 
- int /*<<< orphan*/  imap_ok ; 
- int /*<<< orphan*/  imap_password ; 
- int /*<<< orphan*/  imap_star ; 
- int /*<<< orphan*/ * ngx_cpymem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
-#define  ngx_imap_auth_cram_md5 133 
-#define  ngx_imap_auth_external 132 
-#define  ngx_imap_auth_login_password 131 
-#define  ngx_imap_auth_login_username 130 
-#define  ngx_imap_auth_plain 129 
-#define  ngx_imap_start 128 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_mail_auth (TYPE_5__*,TYPE_7__*) ; 
- int ngx_mail_auth_cram_md5 (TYPE_5__*,TYPE_7__*) ; 
- int ngx_mail_auth_external (TYPE_5__*,TYPE_7__*,int /*<<< orphan*/ ) ; 
- int ngx_mail_auth_login_password (TYPE_5__*,TYPE_7__*) ; 
- int ngx_mail_auth_login_username (TYPE_5__*,TYPE_7__*,int /*<<< orphan*/ ) ; 
- int ngx_mail_auth_plain (TYPE_5__*,TYPE_7__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_mail_close_connection (TYPE_7__*) ; 
- int ngx_mail_imap_authenticate (TYPE_5__*,TYPE_7__*) ; 
- int ngx_mail_imap_capability (TYPE_5__*,TYPE_7__*) ; 
- int ngx_mail_imap_login (TYPE_5__*,TYPE_7__*) ; 
- int ngx_mail_imap_starttls (TYPE_5__*,TYPE_7__*) ; 
- int ngx_mail_read_command (TYPE_5__*,TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_mail_send (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_mail_session_internal_server_error (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * ngx_pnalloc (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ngx_str_set (TYPE_8__*,int /*<<< orphan*/ ) ; 
+
+ int NGX_AGAIN ;
+
+
+ int NGX_ETIMEDOUT ;
+
+
+
+
+ int NGX_IMAP_NEXT ;
+
+
+ int NGX_LOG_DEBUG_MAIL ;
+ int NGX_LOG_INFO ;
+
+ int NGX_OK ;
+ int imap_bye ;
+ int imap_invalid_command ;
+ int imap_next ;
+ int imap_ok ;
+ int imap_password ;
+ int imap_star ;
+ int * ngx_cpymem (int *,int *,scalar_t__) ;
+
+
+
+
+
+
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int ) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ int ngx_mail_auth (TYPE_5__*,TYPE_7__*) ;
+ int ngx_mail_auth_cram_md5 (TYPE_5__*,TYPE_7__*) ;
+ int ngx_mail_auth_external (TYPE_5__*,TYPE_7__*,int ) ;
+ int ngx_mail_auth_login_password (TYPE_5__*,TYPE_7__*) ;
+ int ngx_mail_auth_login_username (TYPE_5__*,TYPE_7__*,int ) ;
+ int ngx_mail_auth_plain (TYPE_5__*,TYPE_7__*,int ) ;
+ int ngx_mail_close_connection (TYPE_7__*) ;
+ int ngx_mail_imap_authenticate (TYPE_5__*,TYPE_7__*) ;
+ int ngx_mail_imap_capability (TYPE_5__*,TYPE_7__*) ;
+ int ngx_mail_imap_login (TYPE_5__*,TYPE_7__*) ;
+ int ngx_mail_imap_starttls (TYPE_5__*,TYPE_7__*) ;
+ int ngx_mail_read_command (TYPE_5__*,TYPE_7__*) ;
+ int ngx_mail_send (int ) ;
+ int ngx_mail_session_internal_server_error (TYPE_5__*) ;
+ int ngx_memcpy (int *,int *,scalar_t__) ;
+ int * ngx_pnalloc (int ,scalar_t__) ;
+ int ngx_str_set (TYPE_8__*,int ) ;
 
 void
 ngx_mail_imap_auth_state(ngx_event_t *rev)
 {
-    u_char              *p, *dst, *src, *end;
-    ngx_str_t           *arg;
-    ngx_int_t            rc;
-    ngx_uint_t           tag, i;
-    ngx_connection_t    *c;
-    ngx_mail_session_t  *s;
+    u_char *p, *dst, *src, *end;
+    ngx_str_t *arg;
+    ngx_int_t rc;
+    ngx_uint_t tag, i;
+    ngx_connection_t *c;
+    ngx_mail_session_t *s;
 
     c = rev->data;
     s = c->data;
@@ -116,7 +116,7 @@ ngx_mail_imap_auth_state(ngx_event_t *rev)
 
     rc = ngx_mail_read_command(s, c);
 
-    if (rc == NGX_AGAIN || rc == NGX_ERROR) {
+    if (rc == NGX_AGAIN || rc == 141) {
         return;
     }
 
@@ -152,64 +152,64 @@ ngx_mail_imap_auth_state(ngx_event_t *rev)
 
         switch (s->mail_state) {
 
-        case ngx_imap_start:
+        case 128:
 
             switch (s->command) {
 
-            case NGX_IMAP_LOGIN:
+            case 138:
                 rc = ngx_mail_imap_login(s, c);
                 break;
 
-            case NGX_IMAP_AUTHENTICATE:
+            case 140:
                 rc = ngx_mail_imap_authenticate(s, c);
                 tag = (rc != NGX_OK);
                 break;
 
-            case NGX_IMAP_CAPABILITY:
+            case 139:
                 rc = ngx_mail_imap_capability(s, c);
                 break;
 
-            case NGX_IMAP_LOGOUT:
+            case 137:
                 s->quit = 1;
                 ngx_str_set(&s->text, imap_bye);
                 break;
 
-            case NGX_IMAP_NOOP:
+            case 136:
                 break;
 
-            case NGX_IMAP_STARTTLS:
+            case 135:
                 rc = ngx_mail_imap_starttls(s, c);
                 break;
 
             default:
-                rc = NGX_MAIL_PARSE_INVALID_COMMAND;
+                rc = 134;
                 break;
             }
 
             break;
 
-        case ngx_imap_auth_login_username:
+        case 130:
             rc = ngx_mail_auth_login_username(s, c, 0);
 
             tag = 0;
             ngx_str_set(&s->out, imap_password);
-            s->mail_state = ngx_imap_auth_login_password;
+            s->mail_state = 131;
 
             break;
 
-        case ngx_imap_auth_login_password:
+        case 131:
             rc = ngx_mail_auth_login_password(s, c);
             break;
 
-        case ngx_imap_auth_plain:
+        case 129:
             rc = ngx_mail_auth_plain(s, c, 0);
             break;
 
-        case ngx_imap_auth_cram_md5:
+        case 133:
             rc = ngx_mail_auth_cram_md5(s, c);
             break;
 
-        case ngx_imap_auth_external:
+        case 132:
             rc = ngx_mail_auth_external(s, c, 0);
             break;
         }
@@ -221,18 +221,18 @@ ngx_mail_imap_auth_state(ngx_event_t *rev)
 
     switch (rc) {
 
-    case NGX_DONE:
+    case 142:
         ngx_mail_auth(s, c);
         return;
 
-    case NGX_ERROR:
+    case 141:
         ngx_mail_session_internal_server_error(s);
         return;
 
-    case NGX_MAIL_PARSE_INVALID_COMMAND:
+    case 134:
         s->state = 0;
         ngx_str_set(&s->out, imap_invalid_command);
-        s->mail_state = ngx_imap_start;
+        s->mail_state = 128;
         break;
     }
 
@@ -244,7 +244,7 @@ ngx_mail_imap_auth_state(ngx_event_t *rev)
         if (s->tagged_line.len < s->tag.len + s->text.len + s->out.len) {
             s->tagged_line.len = s->tag.len + s->text.len + s->out.len;
             s->tagged_line.data = ngx_pnalloc(c->pool, s->tagged_line.len);
-            if (s->tagged_line.data == NULL) {
+            if (s->tagged_line.data == ((void*)0)) {
                 ngx_mail_close_connection(c);
                 return;
             }
@@ -267,7 +267,7 @@ ngx_mail_imap_auth_state(ngx_event_t *rev)
         s->args.nelts = 0;
 
         if (s->state) {
-            /* preserve tag */
+
             s->arg_start = s->buffer->start + s->tag.len;
             s->buffer->pos = s->arg_start;
             s->buffer->last = s->arg_start;

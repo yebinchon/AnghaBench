@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct nbio_image_handle {size_t size; unsigned int frame_duration; int is_blocking; int is_finished; int /*<<< orphan*/  type; void* handle; int /*<<< orphan*/ * cb; int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct nbio_image_handle {size_t size; unsigned int frame_duration; int is_blocking; int is_finished; int type; void* handle; int * cb; int status; } ;
 struct TYPE_6__ {float video_refresh_rate; } ;
 struct TYPE_7__ {TYPE_1__ floats; } ;
-typedef  TYPE_2__ settings_t ;
-struct TYPE_8__ {int is_finished; int /*<<< orphan*/  handle; scalar_t__ data; } ;
-typedef  TYPE_3__ nbio_handle_t ;
+typedef TYPE_2__ settings_t ;
+struct TYPE_8__ {int is_finished; int handle; scalar_t__ data; } ;
+typedef TYPE_3__ nbio_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IMAGE_STATUS_TRANSFER ; 
- int /*<<< orphan*/  cb_image_thumbnail ; 
- TYPE_2__* config_get_ptr () ; 
- int /*<<< orphan*/ * image_transfer_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  image_transfer_set_buffer_ptr (void*,int /*<<< orphan*/ ,void*,size_t) ; 
- int /*<<< orphan*/  image_transfer_start (void*,int /*<<< orphan*/ ) ; 
- void* nbio_get_ptr (int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  task_image_cleanup (TYPE_3__*) ; 
+
+ int IMAGE_STATUS_TRANSFER ;
+ int cb_image_thumbnail ;
+ TYPE_2__* config_get_ptr () ;
+ int * image_transfer_new (int ) ;
+ int image_transfer_set_buffer_ptr (void*,int ,void*,size_t) ;
+ int image_transfer_start (void*,int ) ;
+ void* nbio_get_ptr (int ,size_t*) ;
+ int task_image_cleanup (TYPE_3__*) ;
 
 __attribute__((used)) static int cb_nbio_image_thumbnail(void *data, size_t len)
 {
-   void *ptr                       = NULL;
-   nbio_handle_t *nbio             = (nbio_handle_t*)data;
-   struct nbio_image_handle *image = nbio  ? (struct nbio_image_handle*)nbio->data : NULL;
-   void *handle                    = image ? image_transfer_new(image->type)       : NULL;
-   settings_t *settings            = config_get_ptr();
-   float refresh_rate              = 0.0f;
+   void *ptr = ((void*)0);
+   nbio_handle_t *nbio = (nbio_handle_t*)data;
+   struct nbio_image_handle *image = nbio ? (struct nbio_image_handle*)nbio->data : ((void*)0);
+   void *handle = image ? image_transfer_new(image->type) : ((void*)0);
+   settings_t *settings = config_get_ptr();
+   float refresh_rate = 0.0f;
 
    if (!handle)
       return -1;
 
-   image->status                   = IMAGE_STATUS_TRANSFER;
-   image->handle                   = handle;
-   image->cb                       = &cb_image_thumbnail;
+   image->status = IMAGE_STATUS_TRANSFER;
+   image->handle = handle;
+   image->cb = &cb_image_thumbnail;
 
-   ptr                             = nbio_get_ptr(nbio->handle, &len);
+   ptr = nbio_get_ptr(nbio->handle, &len);
 
    image_transfer_set_buffer_ptr(image->handle, image->type, ptr, len);
 
-   /* Set image size */
-   image->size                     = len;
 
-   /* Set task iteration duration */
+   image->size = len;
+
+
    if (settings)
       refresh_rate = settings->floats.video_refresh_rate;
 
@@ -67,9 +67,9 @@ __attribute__((used)) static int cb_nbio_image_thumbnail(void *data, size_t len)
       return -1;
    }
 
-   image->is_blocking              = false;
-   image->is_finished              = false;
-   nbio->is_finished               = true;
+   image->is_blocking = 0;
+   image->is_finished = 0;
+   nbio->is_finished = 1;
 
    return 0;
 }

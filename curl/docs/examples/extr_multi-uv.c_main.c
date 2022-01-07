@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CURLMOPT_SOCKETFUNCTION ; 
- int /*<<< orphan*/  CURLMOPT_TIMERFUNCTION ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  add_download (char*,int) ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_handle ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_multi_init () ; 
- int /*<<< orphan*/  curl_multi_setopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  handle_socket ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  start_timeout ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  timeout ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int /*<<< orphan*/  uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_timer_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int CURLMOPT_SOCKETFUNCTION ;
+ int CURLMOPT_TIMERFUNCTION ;
+ int CURL_GLOBAL_ALL ;
+ int UV_RUN_DEFAULT ;
+ int add_download (char*,int) ;
+ scalar_t__ curl_global_init (int ) ;
+ int curl_handle ;
+ int curl_multi_cleanup (int ) ;
+ int curl_multi_init () ;
+ int curl_multi_setopt (int ,int ,int ) ;
+ int fprintf (int ,char*) ;
+ int handle_socket ;
+ int loop ;
+ int start_timeout ;
+ int stderr ;
+ int timeout ;
+ int uv_default_loop () ;
+ int uv_run (int ,int ) ;
+ int uv_timer_init (int ,int *) ;
 
 int main(int argc, char **argv)
 {

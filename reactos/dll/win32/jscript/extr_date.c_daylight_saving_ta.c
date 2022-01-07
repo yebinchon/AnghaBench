@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ daylightBias; scalar_t__ standardBias; int /*<<< orphan*/  daylightDate; int /*<<< orphan*/  standardDate; } ;
-typedef  TYPE_1__ DateInstance ;
-typedef  scalar_t__ DOUBLE ;
 
-/* Variables and functions */
- scalar_t__ convert_time (int,int /*<<< orphan*/ ) ; 
- scalar_t__ isnan (scalar_t__) ; 
- int year_from_time (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ daylightBias; scalar_t__ standardBias; int daylightDate; int standardDate; } ;
+typedef TYPE_1__ DateInstance ;
+typedef scalar_t__ DOUBLE ;
+
+
+ scalar_t__ convert_time (int,int ) ;
+ scalar_t__ isnan (scalar_t__) ;
+ int year_from_time (scalar_t__) ;
 
 __attribute__((used)) static inline DOUBLE daylight_saving_ta(DOUBLE time, DateInstance *date)
 {

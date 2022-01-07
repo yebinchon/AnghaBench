@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cip ;
-typedef  void aeEventLoop ;
-struct TYPE_2__ {int /*<<< orphan*/  neterr; } ;
 
-/* Variables and functions */
- int ANET_ERR ; 
- scalar_t__ EWOULDBLOCK ; 
- int /*<<< orphan*/  LL_VERBOSE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int MAX_ACCEPTS_PER_CALL ; 
- int NET_IP_STR_LEN ; 
- int /*<<< orphan*/  UNUSED (void*) ; 
- int /*<<< orphan*/  acceptCommonHandler (int,int /*<<< orphan*/ ) ; 
- int anetTcpAccept (int /*<<< orphan*/ ,int,char*,int,int*) ; 
- scalar_t__ errno ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,char*,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int cip ;
+typedef void aeEventLoop ;
+struct TYPE_2__ {int neterr; } ;
+
+
+ int ANET_ERR ;
+ scalar_t__ EWOULDBLOCK ;
+ int LL_VERBOSE ;
+ int LL_WARNING ;
+ int MAX_ACCEPTS_PER_CALL ;
+ int NET_IP_STR_LEN ;
+ int UNUSED (void*) ;
+ int acceptCommonHandler (int,int ) ;
+ int anetTcpAccept (int ,int,char*,int,int*) ;
+ scalar_t__ errno ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,char*,...) ;
 
 void acceptTcpHandler(aeEventLoop *el, int fd, void *privdata, int mask) {
     int cport, cfd, max = MAX_ACCEPTS_PER_CALL;

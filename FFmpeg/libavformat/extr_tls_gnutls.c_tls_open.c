@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gnutls_x509_crt_t ;
-typedef  int /*<<< orphan*/  gnutls_datum_t ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int gnutls_x509_crt_t ;
+typedef int gnutls_datum_t ;
 struct TYPE_10__ {TYPE_3__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_11__ {int /*<<< orphan*/  host; scalar_t__ verify; int /*<<< orphan*/  tcp; scalar_t__ key_file; scalar_t__ cert_file; scalar_t__ ca_file; int /*<<< orphan*/  numerichost; scalar_t__ listen; } ;
-struct TYPE_12__ {int need_shutdown; int /*<<< orphan*/  session; int /*<<< orphan*/  cred; TYPE_2__ tls_shared; } ;
-typedef  TYPE_2__ TLSShared ;
-typedef  TYPE_3__ TLSContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_11__ {int host; scalar_t__ verify; int tcp; scalar_t__ key_file; scalar_t__ cert_file; scalar_t__ ca_file; int numerichost; scalar_t__ listen; } ;
+struct TYPE_12__ {int need_shutdown; int session; int cred; TYPE_2__ tls_shared; } ;
+typedef TYPE_2__ TLSShared ;
+typedef TYPE_3__ TLSContext ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EIO ; 
- unsigned int GNUTLS_CERT_INVALID ; 
- int /*<<< orphan*/  GNUTLS_CLIENT ; 
- int /*<<< orphan*/  GNUTLS_CRD_CERTIFICATE ; 
- scalar_t__ GNUTLS_CRT_X509 ; 
- int /*<<< orphan*/  GNUTLS_NAME_DNS ; 
- int /*<<< orphan*/  GNUTLS_SERVER ; 
- int /*<<< orphan*/  GNUTLS_VERIFY_ALLOW_X509_V1_CA_CRT ; 
- int /*<<< orphan*/  GNUTLS_X509_FMT_DER ; 
- int /*<<< orphan*/  GNUTLS_X509_FMT_PEM ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ff_gnutls_init () ; 
- int ff_tls_open_underlying (TYPE_2__*,TYPE_1__*,char const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  gnutls_certificate_allocate_credentials (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gnutls_certificate_get_peers (int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  gnutls_certificate_set_verify_flags (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int gnutls_certificate_set_x509_key_file (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_certificate_set_x509_system_trust (int /*<<< orphan*/ ) ; 
- int gnutls_certificate_set_x509_trust_file (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ gnutls_certificate_type_get (int /*<<< orphan*/ ) ; 
- int gnutls_certificate_verify_peers2 (int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  gnutls_credentials_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ gnutls_error_is_fatal (int) ; 
- int gnutls_handshake (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_priority_set_direct (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gnutls_server_name_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_strerror (int) ; 
- int /*<<< orphan*/  gnutls_transport_set_ptr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_transport_set_pull_function (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_transport_set_push_function (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_url_pull ; 
- int /*<<< orphan*/  gnutls_url_push ; 
- int gnutls_x509_crt_check_hostname (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_x509_crt_deinit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_x509_crt_import (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gnutls_x509_crt_init (int /*<<< orphan*/ *) ; 
- int print_tls_error (TYPE_1__*,int) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tls_close (TYPE_1__*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EIO ;
+ unsigned int GNUTLS_CERT_INVALID ;
+ int GNUTLS_CLIENT ;
+ int GNUTLS_CRD_CERTIFICATE ;
+ scalar_t__ GNUTLS_CRT_X509 ;
+ int GNUTLS_NAME_DNS ;
+ int GNUTLS_SERVER ;
+ int GNUTLS_VERIFY_ALLOW_X509_V1_CA_CRT ;
+ int GNUTLS_X509_FMT_DER ;
+ int GNUTLS_X509_FMT_PEM ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ int ff_gnutls_init () ;
+ int ff_tls_open_underlying (TYPE_2__*,TYPE_1__*,char const*,int **) ;
+ int gnutls_certificate_allocate_credentials (int *) ;
+ int * gnutls_certificate_get_peers (int ,unsigned int*) ;
+ int gnutls_certificate_set_verify_flags (int ,int ) ;
+ int gnutls_certificate_set_x509_key_file (int ,scalar_t__,scalar_t__,int ) ;
+ int gnutls_certificate_set_x509_system_trust (int ) ;
+ int gnutls_certificate_set_x509_trust_file (int ,scalar_t__,int ) ;
+ scalar_t__ gnutls_certificate_type_get (int ) ;
+ int gnutls_certificate_verify_peers2 (int ,unsigned int*) ;
+ int gnutls_credentials_set (int ,int ,int ) ;
+ scalar_t__ gnutls_error_is_fatal (int) ;
+ int gnutls_handshake (int ) ;
+ int gnutls_init (int *,int ) ;
+ int gnutls_priority_set_direct (int ,char*,int *) ;
+ int gnutls_server_name_set (int ,int ,int ,int ) ;
+ int gnutls_strerror (int) ;
+ int gnutls_transport_set_ptr (int ,int ) ;
+ int gnutls_transport_set_pull_function (int ,int ) ;
+ int gnutls_transport_set_push_function (int ,int ) ;
+ int gnutls_url_pull ;
+ int gnutls_url_push ;
+ int gnutls_x509_crt_check_hostname (int ,int ) ;
+ int gnutls_x509_crt_deinit (int ) ;
+ int gnutls_x509_crt_import (int ,int const*,int ) ;
+ int gnutls_x509_crt_init (int *) ;
+ int print_tls_error (TYPE_1__*,int) ;
+ int strlen (int ) ;
+ int tls_close (TYPE_1__*) ;
 
 __attribute__((used)) static int tls_open(URLContext *h, const char *uri, int flags, AVDictionary **options)
 {
@@ -87,10 +87,10 @@ __attribute__((used)) static int tls_open(URLContext *h, const char *uri, int fl
         if (ret < 0)
             av_log(h, AV_LOG_ERROR, "%s\n", gnutls_strerror(ret));
     }
-#if GNUTLS_VERSION_NUMBER >= 0x030020
-    else
-        gnutls_certificate_set_x509_system_trust(p->cred);
-#endif
+
+
+
+
     gnutls_certificate_set_verify_flags(p->cred, c->verify ?
                                         GNUTLS_VERIFY_ALLOW_X509_V1_CA_CRT : 0);
     if (c->cert_file && c->key_file) {
@@ -110,7 +110,7 @@ __attribute__((used)) static int tls_open(URLContext *h, const char *uri, int fl
     gnutls_transport_set_pull_function(p->session, gnutls_url_pull);
     gnutls_transport_set_push_function(p->session, gnutls_url_push);
     gnutls_transport_set_ptr(p->session, c->tcp);
-    gnutls_priority_set_direct(p->session, "NORMAL", NULL);
+    gnutls_priority_set_direct(p->session, "NORMAL", ((void*)0));
     do {
         ret = gnutls_handshake(p->session);
         if (gnutls_error_is_fatal(ret)) {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct fdtable {unsigned int size; int /*<<< orphan*/  cloexec; struct fd** files; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct fdtable {unsigned int size; int cloexec; struct fd** files; } ;
 struct fd {int dummy; } ;
-typedef  scalar_t__ fd_t ;
+typedef scalar_t__ fd_t ;
 struct TYPE_2__ {struct fdtable* files; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RLIMIT_NOFILE_ ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bit_clear (scalar_t__,int /*<<< orphan*/ ) ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/  fd_close (struct fd*) ; 
- int fdtable_expand (struct fdtable*,scalar_t__) ; 
- unsigned int rlimit (int /*<<< orphan*/ ) ; 
+
+ int RLIMIT_NOFILE_ ;
+ int assert (int) ;
+ int bit_clear (scalar_t__,int ) ;
+ TYPE_1__* current ;
+ int fd_close (struct fd*) ;
+ int fdtable_expand (struct fdtable*,scalar_t__) ;
+ unsigned int rlimit (int ) ;
 
 __attribute__((used)) static fd_t f_install_start(struct fd *fd, fd_t start) {
     assert(start >= 0);
@@ -34,7 +34,7 @@ __attribute__((used)) static fd_t f_install_start(struct fd *fd, fd_t start) {
 
     fd_t f;
     for (f = start; (unsigned) f < size; f++)
-        if (table->files[f] == NULL)
+        if (table->files[f] == ((void*)0))
             break;
     if ((unsigned) f >= size) {
         int err = fdtable_expand(table, f);

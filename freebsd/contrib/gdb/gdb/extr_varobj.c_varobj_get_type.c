@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct varobj {int /*<<< orphan*/  type; } ;
+
+
+
+
+struct varobj {int type; } ;
 struct value {int dummy; } ;
 struct ui_file {int dummy; } ;
 struct cleanup {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ CPLUS_FAKE_CHILD (struct varobj*) ; 
- int /*<<< orphan*/  VALUE_TYPE (struct value*) ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- struct cleanup* make_cleanup_ui_file_delete (struct ui_file*) ; 
- struct ui_file* mem_fileopen () ; 
- int /*<<< orphan*/  not_lval ; 
- int /*<<< orphan*/  type_print (int /*<<< orphan*/ ,char*,struct ui_file*,int) ; 
- char* ui_file_xstrdup (struct ui_file*,long*) ; 
- struct value* value_zero (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ CPLUS_FAKE_CHILD (struct varobj*) ;
+ int VALUE_TYPE (struct value*) ;
+ int do_cleanups (struct cleanup*) ;
+ struct cleanup* make_cleanup_ui_file_delete (struct ui_file*) ;
+ struct ui_file* mem_fileopen () ;
+ int not_lval ;
+ int type_print (int ,char*,struct ui_file*,int) ;
+ char* ui_file_xstrdup (struct ui_file*,long*) ;
+ struct value* value_zero (int ,int ) ;
 
 char *
 varobj_get_type (struct varobj *var)
@@ -35,16 +35,16 @@ varobj_get_type (struct varobj *var)
   char *thetype;
   long length;
 
-  /* For the "fake" variables, do not return a type. (It's type is
-     NULL, too.) */
+
+
   if (CPLUS_FAKE_CHILD (var))
-    return NULL;
+    return ((void*)0);
 
   stb = mem_fileopen ();
   old_chain = make_cleanup_ui_file_delete (stb);
 
-  /* To print the type, we simply create a zero ``struct value *'' and
-     cast it to our type. We then typeprint this variable. */
+
+
   val = value_zero (var->type, not_lval);
   type_print (VALUE_TYPE (val), "", stb, -1);
 

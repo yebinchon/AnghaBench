@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ZLOG_NOTICE ; 
- int /*<<< orphan*/  zlog_msg (int /*<<< orphan*/ ,char*,char*) ; 
+ int ZLOG_NOTICE ;
+ int zlog_msg (int ,char*,char*) ;
 
 __attribute__((used)) static void sapi_cgi_log_message(char *message, int syslog_type_int)
 {
-	zlog_msg(ZLOG_NOTICE, "PHP message: ", message);
+ zlog_msg(ZLOG_NOTICE, "PHP message: ", message);
 }

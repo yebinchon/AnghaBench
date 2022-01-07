@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ lang_output_statement_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lang_output_statement ; 
- TYPE_1__* new_stat (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_filename ; 
- int /*<<< orphan*/  stat_ptr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int name; } ;
+typedef TYPE_1__ lang_output_statement_type ;
+
+
+ int lang_output_statement ;
+ TYPE_1__* new_stat (int ,int ) ;
+ int output_filename ;
+ int stat_ptr ;
 
 void
 lang_final (void)

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* right_path; char* left_path; } ;
-typedef  TYPE_1__ menu_thumbnail_path_data_t ;
-typedef  enum menu_thumbnail_id { ____Placeholder_menu_thumbnail_id } menu_thumbnail_id ;
+typedef TYPE_1__ menu_thumbnail_path_data_t ;
+typedef enum menu_thumbnail_id { ____Placeholder_menu_thumbnail_id } menu_thumbnail_id ;
 
-/* Variables and functions */
-#define  MENU_THUMBNAIL_LEFT 129 
-#define  MENU_THUMBNAIL_RIGHT 128 
- scalar_t__ string_is_empty (char*) ; 
+
+
+
+ scalar_t__ string_is_empty (char*) ;
 
 bool menu_thumbnail_get_path(
       menu_thumbnail_path_data_t *path_data,
       enum menu_thumbnail_id thumbnail_id, const char **path)
 {
-   char *thumbnail_path = NULL;
-   
+   char *thumbnail_path = ((void*)0);
+
    if (!path_data)
-      return false;
-   
+      return 0;
+
    if (!path)
-      return false;
-   
+      return 0;
+
    switch (thumbnail_id)
    {
-      case MENU_THUMBNAIL_RIGHT:
+      case 128:
          thumbnail_path = path_data->right_path;
          break;
-      case MENU_THUMBNAIL_LEFT:
+      case 129:
          thumbnail_path = path_data->left_path;
          break;
       default:
-         return false;
+         return 0;
    }
-   
+
    if (string_is_empty(thumbnail_path))
-      return false;
-   
+      return 0;
+
    *path = thumbnail_path;
-   
-   return true;
+
+   return 1;
 }

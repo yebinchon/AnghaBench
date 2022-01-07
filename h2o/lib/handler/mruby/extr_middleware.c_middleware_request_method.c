@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  request; } ;
-struct TYPE_19__ {int /*<<< orphan*/  overrides; int /*<<< orphan*/  path; int /*<<< orphan*/  authority; int /*<<< orphan*/  scheme; int /*<<< orphan*/  method; } ;
+
+
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int request; } ;
+struct TYPE_19__ {int overrides; int path; int authority; int scheme; int method; } ;
 struct st_mruby_subreq_t {TYPE_2__ refs; TYPE_4__ super; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-struct TYPE_18__ {int /*<<< orphan*/ * exc; TYPE_5__* ud; } ;
-typedef  TYPE_3__ mrb_state ;
-typedef  TYPE_4__ h2o_req_t ;
+typedef int mrb_value ;
+struct TYPE_18__ {int * exc; TYPE_5__* ud; } ;
+typedef TYPE_3__ mrb_state ;
+typedef TYPE_4__ h2o_req_t ;
 struct TYPE_20__ {TYPE_6__* current_context; } ;
-typedef  TYPE_5__ h2o_mruby_shared_context_t ;
+typedef TYPE_5__ h2o_mruby_shared_context_t ;
 struct TYPE_21__ {TYPE_1__* shared; } ;
-typedef  TYPE_6__ h2o_mruby_context_t ;
-struct TYPE_16__ {int /*<<< orphan*/  constants; } ;
+typedef TYPE_6__ h2o_mruby_context_t ;
+struct TYPE_16__ {int constants; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_MRUBY_APP_REQUEST_CLASS ; 
- int /*<<< orphan*/  app_request_type ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- struct st_mruby_subreq_t* create_subreq (TYPE_6__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  h2o_delegate_request_deferred (TYPE_4__*) ; 
- int /*<<< orphan*/  h2o_mruby_create_data_instance (TYPE_3__*,int /*<<< orphan*/ ,struct st_mruby_subreq_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_reprocess_request_deferred (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_ary_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_exc_raise (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (TYPE_3__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_intern_lit (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  mrb_iv_get (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (int /*<<< orphan*/ *) ; 
+
+ int H2O_MRUBY_APP_REQUEST_CLASS ;
+ int app_request_type ;
+ int assert (int ) ;
+ struct st_mruby_subreq_t* create_subreq (TYPE_6__*,int ,scalar_t__) ;
+ int h2o_delegate_request_deferred (TYPE_4__*) ;
+ int h2o_mruby_create_data_instance (TYPE_3__*,int ,struct st_mruby_subreq_t*,int *) ;
+ int h2o_reprocess_request_deferred (TYPE_4__*,int ,int ,int ,int ,int ,int) ;
+ int mrb_ary_entry (int ,int ) ;
+ scalar_t__ mrb_bool (int ) ;
+ int mrb_exc_raise (TYPE_3__*,int ) ;
+ int mrb_get_args (TYPE_3__*,char*,int *) ;
+ int mrb_intern_lit (TYPE_3__*,char*) ;
+ int mrb_iv_get (TYPE_3__*,int ,int ) ;
+ int mrb_obj_value (int *) ;
 
 __attribute__((used)) static mrb_value middleware_request_method(mrb_state *mrb, mrb_value self)
 {
     h2o_mruby_shared_context_t *shared_ctx = mrb->ud;
     h2o_mruby_context_t *ctx = shared_ctx->current_context;
-    assert(ctx != NULL);
+    assert(ctx != ((void*)0));
 
     mrb_value env;
     mrb_value reprocess;
     mrb_get_args(mrb, "H", &env);
     reprocess = mrb_iv_get(mrb, self, mrb_intern_lit(mrb, "@reprocess"));
 
-    /* create subreq */
+
     struct st_mruby_subreq_t *subreq = create_subreq(shared_ctx->current_context, env, mrb_bool(reprocess));
-    if (mrb->exc != NULL) {
+    if (mrb->exc != ((void*)0)) {
         mrb_value exc = mrb_obj_value(mrb->exc);
-        mrb->exc = NULL;
+        mrb->exc = ((void*)0);
         mrb_exc_raise(mrb, exc);
     }
 

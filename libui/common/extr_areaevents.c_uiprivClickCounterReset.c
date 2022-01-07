@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ count; scalar_t__ prevTime; scalar_t__ rectY1; scalar_t__ rectX1; scalar_t__ rectY0; scalar_t__ rectX0; scalar_t__ curButton; } ;
-typedef  TYPE_1__ uiprivClickCounter ;
+typedef TYPE_1__ uiprivClickCounter ;
 
-/* Variables and functions */
+
 
 void uiprivClickCounterReset(uiprivClickCounter *c)
 {
-	c->curButton = 0;
-	c->rectX0 = 0;
-	c->rectY0 = 0;
-	c->rectX1 = 0;
-	c->rectY1 = 0;
-	c->prevTime = 0;
-	c->count = 0;
+ c->curButton = 0;
+ c->rectX0 = 0;
+ c->rectY0 = 0;
+ c->rectX1 = 0;
+ c->rectY1 = 0;
+ c->prevTime = 0;
+ c->count = 0;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void* visitors; void* hits; void* bw; } ;
-typedef  TYPE_1__ GPercTotals ;
-typedef  int /*<<< orphan*/  GModule ;
+typedef TYPE_1__ GPercTotals ;
+typedef int GModule ;
 
-/* Variables and functions */
- void* ht_get_meta_data (int /*<<< orphan*/ ,char*) ; 
+
+ void* ht_get_meta_data (int ,char*) ;
 
 void
 set_module_totals (GModule module, GPercTotals * totals)

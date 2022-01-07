@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int numProcessedBlocks; void* csWasEntered; int /*<<< orphan*/  cs; int /*<<< orphan*/  filledSemaphore; int /*<<< orphan*/  freeSemaphore; int /*<<< orphan*/  wasStarted; int /*<<< orphan*/  canStart; int /*<<< orphan*/  wasStopped; void* exit; void* stopWriting; void* needStart; } ;
-typedef  TYPE_1__ CMtSync ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CriticalSection_Enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CriticalSection_Leave (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Event_Reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Event_Set (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Event_Wait (int /*<<< orphan*/ *) ; 
- void* False ; 
- int /*<<< orphan*/  Semaphore_Release1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Semaphore_Wait (int /*<<< orphan*/ *) ; 
- void* True ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int numProcessedBlocks; void* csWasEntered; int cs; int filledSemaphore; int freeSemaphore; int wasStarted; int canStart; int wasStopped; void* exit; void* stopWriting; void* needStart; } ;
+typedef TYPE_1__ CMtSync ;
+
+
+ int CriticalSection_Enter (int *) ;
+ int CriticalSection_Leave (int *) ;
+ int Event_Reset (int *) ;
+ int Event_Set (int *) ;
+ int Event_Wait (int *) ;
+ void* False ;
+ int Semaphore_Release1 (int *) ;
+ int Semaphore_Wait (int *) ;
+ void* True ;
 
 void MtSync_GetNextBlock(CMtSync *p)
 {

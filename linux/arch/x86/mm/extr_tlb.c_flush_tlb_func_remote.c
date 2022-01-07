@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct flush_tlb_info {scalar_t__ mm; } ;
-struct TYPE_2__ {int /*<<< orphan*/  loaded_mm; } ;
+struct TYPE_2__ {int loaded_mm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NR_TLB_REMOTE_FLUSH_RECEIVED ; 
- int /*<<< orphan*/  TLB_REMOTE_SHOOTDOWN ; 
- int /*<<< orphan*/  count_vm_tlb_event (int /*<<< orphan*/ ) ; 
- TYPE_1__ cpu_tlbstate ; 
- int /*<<< orphan*/  flush_tlb_func_common (struct flush_tlb_info const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inc_irq_stat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irq_tlb_count ; 
- scalar_t__ this_cpu_read (int /*<<< orphan*/ ) ; 
+
+ int NR_TLB_REMOTE_FLUSH_RECEIVED ;
+ int TLB_REMOTE_SHOOTDOWN ;
+ int count_vm_tlb_event (int ) ;
+ TYPE_1__ cpu_tlbstate ;
+ int flush_tlb_func_common (struct flush_tlb_info const*,int,int ) ;
+ int inc_irq_stat (int ) ;
+ int irq_tlb_count ;
+ scalar_t__ this_cpu_read (int ) ;
 
 __attribute__((used)) static void flush_tlb_func_remote(void *info)
 {
-	const struct flush_tlb_info *f = info;
+ const struct flush_tlb_info *f = info;
 
-	inc_irq_stat(irq_tlb_count);
+ inc_irq_stat(irq_tlb_count);
 
-	if (f->mm && f->mm != this_cpu_read(cpu_tlbstate.loaded_mm))
-		return;
+ if (f->mm && f->mm != this_cpu_read(cpu_tlbstate.loaded_mm))
+  return;
 
-	count_vm_tlb_event(NR_TLB_REMOTE_FLUSH_RECEIVED);
-	flush_tlb_func_common(f, false, TLB_REMOTE_SHOOTDOWN);
+ count_vm_tlb_event(NR_TLB_REMOTE_FLUSH_RECEIVED);
+ flush_tlb_func_common(f, 0, TLB_REMOTE_SHOOTDOWN);
 }

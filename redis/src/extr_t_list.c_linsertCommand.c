@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
-typedef  int /*<<< orphan*/  listTypeIterator ;
-typedef  int /*<<< orphan*/  listTypeEntry ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int robj ;
+typedef int listTypeIterator ;
+typedef int listTypeEntry ;
 struct TYPE_15__ {TYPE_2__* db; TYPE_3__** argv; } ;
-typedef  TYPE_1__ client ;
-struct TYPE_19__ {int /*<<< orphan*/  dirty; } ;
-struct TYPE_18__ {int /*<<< orphan*/  czero; int /*<<< orphan*/  syntaxerr; } ;
-struct TYPE_17__ {int /*<<< orphan*/  ptr; } ;
-struct TYPE_16__ {int /*<<< orphan*/  id; } ;
+typedef TYPE_1__ client ;
+struct TYPE_19__ {int dirty; } ;
+struct TYPE_18__ {int czero; int syntaxerr; } ;
+struct TYPE_17__ {int ptr; } ;
+struct TYPE_16__ {int id; } ;
 
-/* Variables and functions */
- int LIST_HEAD ; 
- int LIST_TAIL ; 
- int /*<<< orphan*/  NOTIFY_LIST ; 
- int /*<<< orphan*/  OBJ_LIST ; 
- int /*<<< orphan*/  addReply (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_1__*,int) ; 
- scalar_t__ checkType (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ listTypeEqual (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/ * listTypeInitIterator (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  listTypeInsert (int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- int listTypeLength (int /*<<< orphan*/ *) ; 
- scalar_t__ listTypeNext (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listTypeReleaseIterator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lookupKeyWriteOrReply (TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  notifyKeyspaceEvent (int /*<<< orphan*/ ,char*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_5__ server ; 
- TYPE_4__ shared ; 
- int /*<<< orphan*/  signalModifiedKey (TYPE_2__*,TYPE_3__*) ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ ,char*) ; 
+
+ int LIST_HEAD ;
+ int LIST_TAIL ;
+ int NOTIFY_LIST ;
+ int OBJ_LIST ;
+ int addReply (TYPE_1__*,int ) ;
+ int addReplyLongLong (TYPE_1__*,int) ;
+ scalar_t__ checkType (TYPE_1__*,int *,int ) ;
+ scalar_t__ listTypeEqual (int *,TYPE_3__*) ;
+ int * listTypeInitIterator (int *,int ,int) ;
+ int listTypeInsert (int *,TYPE_3__*,int) ;
+ int listTypeLength (int *) ;
+ scalar_t__ listTypeNext (int *,int *) ;
+ int listTypeReleaseIterator (int *) ;
+ int * lookupKeyWriteOrReply (TYPE_1__*,TYPE_3__*,int ) ;
+ int notifyKeyspaceEvent (int ,char*,TYPE_3__*,int ) ;
+ TYPE_5__ server ;
+ TYPE_4__ shared ;
+ int signalModifiedKey (TYPE_2__*,TYPE_3__*) ;
+ scalar_t__ strcasecmp (int ,char*) ;
 
 void linsertCommand(client *c) {
     int where;
@@ -62,10 +62,10 @@ void linsertCommand(client *c) {
         return;
     }
 
-    if ((subject = lookupKeyWriteOrReply(c,c->argv[1],shared.czero)) == NULL ||
+    if ((subject = lookupKeyWriteOrReply(c,c->argv[1],shared.czero)) == ((void*)0) ||
         checkType(c,subject,OBJ_LIST)) return;
 
-    /* Seek pivot from head to tail */
+
     iter = listTypeInitIterator(subject,0,LIST_TAIL);
     while (listTypeNext(iter,&entry)) {
         if (listTypeEqual(&entry,c->argv[3])) {
@@ -82,7 +82,7 @@ void linsertCommand(client *c) {
                             c->argv[1],c->db->id);
         server.dirty++;
     } else {
-        /* Notify client of a failed insert */
+
         addReplyLongLong(c,-1);
         return;
     }

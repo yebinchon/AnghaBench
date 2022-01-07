@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int FDT_ERR_BADPHANDLE ; 
- int /*<<< orphan*/  FDT_RO_PROBE (void const*) ; 
- int fdt_get_phandle (void const*,int) ; 
- int fdt_next_node (void const*,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int FDT_ERR_BADPHANDLE ;
+ int FDT_RO_PROBE (void const*) ;
+ int fdt_get_phandle (void const*,int) ;
+ int fdt_next_node (void const*,int,int *) ;
 
 int fdt_node_offset_by_phandle(const void *fdt, uint32_t phandle)
 {
-	int offset;
+ int offset;
 
-	if ((phandle == 0) || (phandle == -1))
-		return -FDT_ERR_BADPHANDLE;
+ if ((phandle == 0) || (phandle == -1))
+  return -FDT_ERR_BADPHANDLE;
 
-	FDT_RO_PROBE(fdt);
+ FDT_RO_PROBE(fdt);
 
-	/* FIXME: The algorithm here is pretty horrible: we
-	 * potentially scan each property of a node in
-	 * fdt_get_phandle(), then if that didn't find what
-	 * we want, we scan over them again making our way to the next
-	 * node.  Still it's the easiest to implement approach;
-	 * performance can come later. */
-	for (offset = fdt_next_node(fdt, -1, NULL);
-	     offset >= 0;
-	     offset = fdt_next_node(fdt, offset, NULL)) {
-		if (fdt_get_phandle(fdt, offset) == phandle)
-			return offset;
-	}
 
-	return offset; /* error from fdt_next_node() */
+
+
+
+
+
+ for (offset = fdt_next_node(fdt, -1, ((void*)0));
+      offset >= 0;
+      offset = fdt_next_node(fdt, offset, ((void*)0))) {
+  if (fdt_get_phandle(fdt, offset) == phandle)
+   return offset;
+ }
+
+ return offset;
 }

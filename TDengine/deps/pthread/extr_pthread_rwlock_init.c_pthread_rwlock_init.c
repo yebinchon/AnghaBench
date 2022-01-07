@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * pthread_rwlockattr_t ;
-typedef  TYPE_1__* pthread_rwlock_t ;
-struct TYPE_4__ {int /*<<< orphan*/  mtxExclusiveAccess; int /*<<< orphan*/  mtxSharedAccessCompleted; int /*<<< orphan*/  nMagic; int /*<<< orphan*/  cndSharedAccessCompleted; scalar_t__ nCompletedSharedAccessCount; scalar_t__ nExclusiveAccessCount; scalar_t__ nSharedAccessCount; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  PTW32_RWLOCK_MAGIC ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int pthread_cond_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int * pthread_rwlockattr_t ;
+typedef TYPE_1__* pthread_rwlock_t ;
+struct TYPE_4__ {int mtxExclusiveAccess; int mtxSharedAccessCompleted; int nMagic; int cndSharedAccessCompleted; scalar_t__ nCompletedSharedAccessCount; scalar_t__ nExclusiveAccessCount; scalar_t__ nSharedAccessCount; } ;
+
+
+ int EINVAL ;
+ int ENOMEM ;
+ int PTW32_RWLOCK_MAGIC ;
+ scalar_t__ calloc (int,int) ;
+ int free (TYPE_1__*) ;
+ int pthread_cond_init (int *,int *) ;
+ int pthread_mutex_destroy (int *) ;
+ int pthread_mutex_init (int *,int *) ;
 
 int
 pthread_rwlock_init (pthread_rwlock_t * rwlock,
-		     const pthread_rwlockattr_t * attr)
+       const pthread_rwlockattr_t * attr)
 {
   int result;
   pthread_rwlock_t rwl = 0;
 
-  if (rwlock == NULL)
+  if (rwlock == ((void*)0))
     {
       return EINVAL;
     }
 
-  if (attr != NULL && *attr != NULL)
+  if (attr != ((void*)0) && *attr != ((void*)0))
     {
-      result = EINVAL;		/* Not supported */
+      result = EINVAL;
       goto DONE;
     }
 
   rwl = (pthread_rwlock_t) calloc (1, sizeof (*rwl));
 
-  if (rwl == NULL)
+  if (rwl == ((void*)0))
     {
       result = ENOMEM;
       goto DONE;
@@ -55,19 +55,19 @@ pthread_rwlock_init (pthread_rwlock_t * rwlock,
   rwl->nExclusiveAccessCount = 0;
   rwl->nCompletedSharedAccessCount = 0;
 
-  result = pthread_mutex_init (&rwl->mtxExclusiveAccess, NULL);
+  result = pthread_mutex_init (&rwl->mtxExclusiveAccess, ((void*)0));
   if (result != 0)
     {
       goto FAIL0;
     }
 
-  result = pthread_mutex_init (&rwl->mtxSharedAccessCompleted, NULL);
+  result = pthread_mutex_init (&rwl->mtxSharedAccessCompleted, ((void*)0));
   if (result != 0)
     {
       goto FAIL1;
     }
 
-  result = pthread_cond_init (&rwl->cndSharedAccessCompleted, NULL);
+  result = pthread_cond_init (&rwl->cndSharedAccessCompleted, ((void*)0));
   if (result != 0)
     {
       goto FAIL2;
@@ -86,7 +86,7 @@ FAIL1:
 
 FAIL0:
   (void) free (rwl);
-  rwl = NULL;
+  rwl = ((void*)0);
 
 DONE:
   *rwlock = rwl;

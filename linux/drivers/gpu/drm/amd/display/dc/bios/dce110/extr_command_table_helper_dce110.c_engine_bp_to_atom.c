@@ -1,77 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  enum engine_id { ____Placeholder_engine_id } engine_id ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASIC_INT_DAC1_ENCODER_ID ; 
- int /*<<< orphan*/  ASIC_INT_DIG1_ENCODER_ID ; 
- int /*<<< orphan*/  ASIC_INT_DIG2_ENCODER_ID ; 
- int /*<<< orphan*/  ASIC_INT_DIG3_ENCODER_ID ; 
- int /*<<< orphan*/  ASIC_INT_DIG4_ENCODER_ID ; 
- int /*<<< orphan*/  ASIC_INT_DIG5_ENCODER_ID ; 
- int /*<<< orphan*/  ASIC_INT_DIG6_ENCODER_ID ; 
- int /*<<< orphan*/  ASIC_INT_DIG7_ENCODER_ID ; 
-#define  ENGINE_ID_DACA 135 
-#define  ENGINE_ID_DIGA 134 
-#define  ENGINE_ID_DIGB 133 
-#define  ENGINE_ID_DIGC 132 
-#define  ENGINE_ID_DIGD 131 
-#define  ENGINE_ID_DIGE 130 
-#define  ENGINE_ID_DIGF 129 
-#define  ENGINE_ID_DIGG 128 
 
+
+
+typedef int uint32_t ;
+typedef enum engine_id { ____Placeholder_engine_id } engine_id ;
+
+
+ int ASIC_INT_DAC1_ENCODER_ID ;
+ int ASIC_INT_DIG1_ENCODER_ID ;
+ int ASIC_INT_DIG2_ENCODER_ID ;
+ int ASIC_INT_DIG3_ENCODER_ID ;
+ int ASIC_INT_DIG4_ENCODER_ID ;
+ int ASIC_INT_DIG5_ENCODER_ID ;
+ int ASIC_INT_DIG6_ENCODER_ID ;
+ int ASIC_INT_DIG7_ENCODER_ID ;
 __attribute__((used)) static bool engine_bp_to_atom(enum engine_id id, uint32_t *atom_engine_id)
 {
-	bool result = false;
+ bool result = 0;
 
-	if (atom_engine_id != NULL)
-		switch (id) {
-		case ENGINE_ID_DIGA:
-			*atom_engine_id = ASIC_INT_DIG1_ENCODER_ID;
-			result = true;
-			break;
-		case ENGINE_ID_DIGB:
-			*atom_engine_id = ASIC_INT_DIG2_ENCODER_ID;
-			result = true;
-			break;
-		case ENGINE_ID_DIGC:
-			*atom_engine_id = ASIC_INT_DIG3_ENCODER_ID;
-			result = true;
-			break;
-		case ENGINE_ID_DIGD:
-			*atom_engine_id = ASIC_INT_DIG4_ENCODER_ID;
-			result = true;
-			break;
-		case ENGINE_ID_DIGE:
-			*atom_engine_id = ASIC_INT_DIG5_ENCODER_ID;
-			result = true;
-			break;
-		case ENGINE_ID_DIGF:
-			*atom_engine_id = ASIC_INT_DIG6_ENCODER_ID;
-			result = true;
-			break;
-		case ENGINE_ID_DIGG:
-			*atom_engine_id = ASIC_INT_DIG7_ENCODER_ID;
-			result = true;
-			break;
-		case ENGINE_ID_DACA:
-			*atom_engine_id = ASIC_INT_DAC1_ENCODER_ID;
-			result = true;
-			break;
-		default:
-			break;
-		}
+ if (atom_engine_id != ((void*)0))
+  switch (id) {
+  case 134:
+   *atom_engine_id = ASIC_INT_DIG1_ENCODER_ID;
+   result = 1;
+   break;
+  case 133:
+   *atom_engine_id = ASIC_INT_DIG2_ENCODER_ID;
+   result = 1;
+   break;
+  case 132:
+   *atom_engine_id = ASIC_INT_DIG3_ENCODER_ID;
+   result = 1;
+   break;
+  case 131:
+   *atom_engine_id = ASIC_INT_DIG4_ENCODER_ID;
+   result = 1;
+   break;
+  case 130:
+   *atom_engine_id = ASIC_INT_DIG5_ENCODER_ID;
+   result = 1;
+   break;
+  case 129:
+   *atom_engine_id = ASIC_INT_DIG6_ENCODER_ID;
+   result = 1;
+   break;
+  case 128:
+   *atom_engine_id = ASIC_INT_DIG7_ENCODER_ID;
+   result = 1;
+   break;
+  case 135:
+   *atom_engine_id = ASIC_INT_DAC1_ENCODER_ID;
+   result = 1;
+   break;
+  default:
+   break;
+  }
 
-	return result;
+ return result;
 }

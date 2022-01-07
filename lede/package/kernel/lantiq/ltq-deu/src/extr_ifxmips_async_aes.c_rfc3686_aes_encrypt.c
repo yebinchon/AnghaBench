@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct crypto_ablkcipher {int dummy; } ;
-struct aes_ctx {int /*<<< orphan*/ * nonce; } ;
-struct ablkcipher_request {int /*<<< orphan*/ * info; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct aes_ctx {int * nonce; } ;
+struct ablkcipher_request {int * info; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_DIR_ENCRYPT ; 
- int CTR_RFC3686_IV_SIZE ; 
- int CTR_RFC3686_NONCE_SIZE ; 
- int /*<<< orphan*/  cpu_to_be32 (int) ; 
- struct aes_ctx* crypto_ablkcipher_ctx (struct crypto_ablkcipher*) ; 
- struct crypto_ablkcipher* crypto_ablkcipher_reqtfm (struct ablkcipher_request*) ; 
- int lq_aes_queue_mgr (struct aes_ctx*,struct ablkcipher_request*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int CRYPTO_DIR_ENCRYPT ;
+ int CTR_RFC3686_IV_SIZE ;
+ int CTR_RFC3686_NONCE_SIZE ;
+ int cpu_to_be32 (int) ;
+ struct aes_ctx* crypto_ablkcipher_ctx (struct crypto_ablkcipher*) ;
+ struct crypto_ablkcipher* crypto_ablkcipher_reqtfm (struct ablkcipher_request*) ;
+ int lq_aes_queue_mgr (struct aes_ctx*,struct ablkcipher_request*,int *,int ,int) ;
+ int memcpy (int *,int *,int) ;
 
 __attribute__((used)) static int rfc3686_aes_encrypt(struct ablkcipher_request *areq)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int rfc3686_aes_encrypt(struct ablkcipher_request *
     memcpy(rfc3686_iv, ctx->nonce, CTR_RFC3686_NONCE_SIZE);
     memcpy(rfc3686_iv + CTR_RFC3686_NONCE_SIZE, info, CTR_RFC3686_IV_SIZE);
 
-    /* initialize counter portion of counter block */
+
     *(__be32 *)(rfc3686_iv + CTR_RFC3686_NONCE_SIZE + CTR_RFC3686_IV_SIZE) =
         cpu_to_be32(1);
 

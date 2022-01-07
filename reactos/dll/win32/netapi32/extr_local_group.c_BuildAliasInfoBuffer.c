@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG_PTR ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_8__ {int Length; int /*<<< orphan*/  Buffer; } ;
-struct TYPE_7__ {int Length; int /*<<< orphan*/  Buffer; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int ULONG_PTR ;
+typedef int ULONG ;
+struct TYPE_8__ {int Length; int Buffer; } ;
+struct TYPE_7__ {int Length; int Buffer; } ;
 struct TYPE_11__ {TYPE_2__ AdminComment; TYPE_1__ Name; } ;
 struct TYPE_10__ {void** lgrpi0_name; } ;
 struct TYPE_9__ {void** lgrpi1_comment; void** lgrpi1_name; } ;
-typedef  TYPE_3__* PLOCALGROUP_INFO_1 ;
-typedef  TYPE_4__* PLOCALGROUP_INFO_0 ;
-typedef  TYPE_5__* PALIAS_GENERAL_INFORMATION ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  void* LPWSTR ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  LOCALGROUP_INFO_1 ;
-typedef  int /*<<< orphan*/  LOCALGROUP_INFO_0 ;
-typedef  int DWORD ;
+typedef TYPE_3__* PLOCALGROUP_INFO_1 ;
+typedef TYPE_4__* PLOCALGROUP_INFO_0 ;
+typedef TYPE_5__* PALIAS_GENERAL_INFORMATION ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef void* LPWSTR ;
+typedef int * LPVOID ;
+typedef int LOCALGROUP_INFO_1 ;
+typedef int LOCALGROUP_INFO_0 ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_LEVEL ; 
- scalar_t__ NERR_Success ; 
- scalar_t__ NetApiBufferAllocate (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  NetApiBufferFree (int /*<<< orphan*/ *) ; 
- void* UNICODE_NULL ; 
- int /*<<< orphan*/  ZeroMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void**,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ ERROR_INVALID_LEVEL ;
+ scalar_t__ NERR_Success ;
+ scalar_t__ NetApiBufferAllocate (int ,int **) ;
+ int NetApiBufferFree (int *) ;
+ void* UNICODE_NULL ;
+ int ZeroMemory (int *,int ) ;
+ int memcpy (void**,int ,int) ;
 
 __attribute__((used)) static
 NET_API_STATUS
@@ -48,14 +48,14 @@ BuildAliasInfoBuffer(PALIAS_GENERAL_INFORMATION AliasInfo,
                      DWORD level,
                      LPVOID *Buffer)
 {
-    LPVOID LocalBuffer = NULL;
+    LPVOID LocalBuffer = ((void*)0);
     PLOCALGROUP_INFO_0 LocalInfo0;
     PLOCALGROUP_INFO_1 LocalInfo1;
     LPWSTR Ptr;
     ULONG Size = 0;
     NET_API_STATUS ApiStatus = NERR_Success;
 
-    *Buffer = NULL;
+    *Buffer = ((void*)0);
 
     switch (level)
     {
@@ -123,7 +123,7 @@ done:
     }
     else
     {
-        if (LocalBuffer != NULL)
+        if (LocalBuffer != ((void*)0))
             NetApiBufferFree(LocalBuffer);
     }
 

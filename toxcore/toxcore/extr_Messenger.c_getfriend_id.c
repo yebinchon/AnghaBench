@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint32_t ;
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+typedef size_t int32_t ;
 struct TYPE_5__ {size_t numfriends; TYPE_1__* friendlist; } ;
-struct TYPE_4__ {scalar_t__ status; int /*<<< orphan*/  real_pk; } ;
-typedef  TYPE_2__ Messenger ;
+struct TYPE_4__ {scalar_t__ status; int real_pk; } ;
+typedef TYPE_2__ Messenger ;
 
-/* Variables and functions */
- scalar_t__ id_equal (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ id_equal (int const*,int ) ;
 
 int32_t getfriend_id(const Messenger *m, const uint8_t *real_pk)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  time_started; } ;
-typedef  TYPE_1__ cl_perf_timer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  git__timer () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int time_started; } ;
+typedef TYPE_1__ cl_perf_timer ;
+
+
+ int git__timer () ;
 
 void cl_perf_timer__start(cl_perf_timer *t)
 {
-	t->time_started = git__timer();
+ t->time_started = git__timer();
 }

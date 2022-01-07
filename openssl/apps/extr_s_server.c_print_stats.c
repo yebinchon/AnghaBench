@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  SSL_CTX_sess_accept (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_accept_good (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_accept_renegotiate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_cache_full (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_cb_hits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_connect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_connect_good (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_connect_renegotiate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_get_cache_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_hits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_misses (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_number (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_sess_timeouts (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SSL_CTX ;
+typedef int BIO ;
+
+
+ int BIO_printf (int *,char*,int ,...) ;
+ int SSL_CTX_sess_accept (int *) ;
+ int SSL_CTX_sess_accept_good (int *) ;
+ int SSL_CTX_sess_accept_renegotiate (int *) ;
+ int SSL_CTX_sess_cache_full (int *) ;
+ int SSL_CTX_sess_cb_hits (int *) ;
+ int SSL_CTX_sess_connect (int *) ;
+ int SSL_CTX_sess_connect_good (int *) ;
+ int SSL_CTX_sess_connect_renegotiate (int *) ;
+ int SSL_CTX_sess_get_cache_size (int *) ;
+ int SSL_CTX_sess_hits (int *) ;
+ int SSL_CTX_sess_misses (int *) ;
+ int SSL_CTX_sess_number (int *) ;
+ int SSL_CTX_sess_timeouts (int *) ;
 
 __attribute__((used)) static void print_stats(BIO *bio, SSL_CTX *ssl_ctx)
 {

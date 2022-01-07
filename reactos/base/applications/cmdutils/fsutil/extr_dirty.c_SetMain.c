@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ DeviceIoControl (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FSCTL_MARK_VOLUME_DIRTY ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ OpenVolume (int /*<<< orphan*/  const*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  PrintErrorMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _ftprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int TCHAR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ DeviceIoControl (scalar_t__,int ,int *,int ,int *,int ,int *,int *) ;
+ scalar_t__ FALSE ;
+ int FSCTL_MARK_VOLUME_DIRTY ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ OpenVolume (int const*,scalar_t__,scalar_t__) ;
+ int PrintErrorMessage (int ) ;
+ int _T (char*) ;
+ int _ftprintf (int ,int ,...) ;
+ int stderr ;
+ int stdout ;
 
 __attribute__((used)) static int
 SetMain(int argc, const TCHAR *argv[])
@@ -34,7 +34,7 @@ SetMain(int argc, const TCHAR *argv[])
     HANDLE Volume;
     DWORD BytesRead;
 
-    /* We need a volume (letter or GUID) */
+
     if (argc < 2)
     {
         _ftprintf(stderr, _T("Usage: fsutil dirty set <volume>\n"));
@@ -42,15 +42,15 @@ SetMain(int argc, const TCHAR *argv[])
         return 1;
     }
 
-    /* Get a handle for the volume */
+
     Volume = OpenVolume(argv[1], FALSE, FALSE);
     if (Volume == INVALID_HANDLE_VALUE)
     {
         return 1;
     }
 
-    /* And set the dirty bit */
-    if (DeviceIoControl(Volume, FSCTL_MARK_VOLUME_DIRTY, NULL, 0, NULL, 0, &BytesRead, NULL) == FALSE)
+
+    if (DeviceIoControl(Volume, FSCTL_MARK_VOLUME_DIRTY, ((void*)0), 0, ((void*)0), 0, &BytesRead, ((void*)0)) == FALSE)
     {
         PrintErrorMessage(GetLastError());
         CloseHandle(Volume);
@@ -59,7 +59,7 @@ SetMain(int argc, const TCHAR *argv[])
 
     CloseHandle(Volume);
 
-    /* Print the status */
+
     _ftprintf(stdout, _T("The %s volume is now marked as dirty\n"), argv[1]);
 
     return 0;

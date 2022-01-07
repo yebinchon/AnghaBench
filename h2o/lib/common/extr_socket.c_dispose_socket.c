@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void (* cb ) (void*) ;void* data; } ;
-struct TYPE_6__ {TYPE_1__ on_close; int /*<<< orphan*/ * _peername; int /*<<< orphan*/  input; int /*<<< orphan*/ * ssl; } ;
-typedef  TYPE_2__ h2o_socket_t ;
+struct TYPE_6__ {TYPE_1__ on_close; int * _peername; int input; int * ssl; } ;
+typedef TYPE_2__ h2o_socket_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_ssl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  do_dispose_socket (TYPE_2__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_buffer_dispose (int /*<<< orphan*/ *) ; 
+
+ int destroy_ssl (int *) ;
+ int do_dispose_socket (TYPE_2__*) ;
+ int free (int *) ;
+ int h2o_buffer_dispose (int *) ;
 
 __attribute__((used)) static void dispose_socket(h2o_socket_t *sock, const char *err)
 {
     void (*close_cb)(void *data);
     void *close_cb_data;
 
-    if (sock->ssl != NULL) {
+    if (sock->ssl != ((void*)0)) {
         destroy_ssl(sock->ssl);
-        sock->ssl = NULL;
+        sock->ssl = ((void*)0);
     }
     h2o_buffer_dispose(&sock->input);
-    if (sock->_peername != NULL) {
+    if (sock->_peername != ((void*)0)) {
         free(sock->_peername);
-        sock->_peername = NULL;
+        sock->_peername = ((void*)0);
     }
 
     close_cb = sock->on_close.cb;
@@ -42,6 +42,6 @@ __attribute__((used)) static void dispose_socket(h2o_socket_t *sock, const char 
 
     do_dispose_socket(sock);
 
-    if (close_cb != NULL)
+    if (close_cb != ((void*)0))
         close_cb(close_cb_data);
 }

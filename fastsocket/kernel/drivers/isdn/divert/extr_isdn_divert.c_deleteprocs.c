@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct call_struc {struct call_struc* next; int /*<<< orphan*/  timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  del_timer (int /*<<< orphan*/ *) ; 
- struct call_struc* divert_head ; 
- int /*<<< orphan*/  divert_lock ; 
- int /*<<< orphan*/  kfree (struct call_struc*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct call_struc {struct call_struc* next; int timer; } ;
+
+
+ int del_timer (int *) ;
+ struct call_struc* divert_head ;
+ int divert_lock ;
+ int kfree (struct call_struc*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void deleteprocs(void)
-{ struct call_struc *cs, *cs1; 
+{ struct call_struc *cs, *cs1;
   unsigned long flags;
 
   spin_lock_irqsave(&divert_lock, flags);
   cs = divert_head;
-  divert_head = NULL;
+  divert_head = ((void*)0);
   while (cs)
    { del_timer(&cs->timer);
      cs1 = cs;
      cs = cs->next;
      kfree(cs1);
-   } 
+   }
   spin_unlock_irqrestore(&divert_lock, flags);
 }

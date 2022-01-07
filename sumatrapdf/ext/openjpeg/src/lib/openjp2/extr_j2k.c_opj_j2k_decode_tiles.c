@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_31__   TYPE_9__ ;
-typedef  struct TYPE_30__   TYPE_8__ ;
-typedef  struct TYPE_29__   TYPE_7__ ;
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_14__ ;
-typedef  struct TYPE_21__   TYPE_13__ ;
-typedef  struct TYPE_20__   TYPE_12__ ;
-typedef  struct TYPE_19__   TYPE_11__ ;
-typedef  struct TYPE_18__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opj_stream_private_t ;
+
+
+typedef struct TYPE_31__ TYPE_9__ ;
+typedef struct TYPE_30__ TYPE_8__ ;
+typedef struct TYPE_29__ TYPE_7__ ;
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_14__ ;
+typedef struct TYPE_21__ TYPE_13__ ;
+typedef struct TYPE_20__ TYPE_12__ ;
+typedef struct TYPE_19__ TYPE_11__ ;
+typedef struct TYPE_18__ TYPE_10__ ;
+
+
+typedef int opj_stream_private_t ;
 struct TYPE_31__ {int tw; int th; scalar_t__ tx0; scalar_t__ ty0; scalar_t__ tdx; scalar_t__ tdy; TYPE_14__* tcps; } ;
-struct TYPE_29__ {int /*<<< orphan*/  m_state; } ;
+struct TYPE_29__ {int m_state; } ;
 struct TYPE_30__ {TYPE_7__ m_decoder; } ;
 struct TYPE_19__ {TYPE_9__ m_cp; TYPE_8__ m_specific_param; TYPE_10__* m_private_image; TYPE_13__* m_output_image; TYPE_12__* m_tcd; scalar_t__ m_current_tile_number; } ;
-typedef  TYPE_11__ opj_j2k_t ;
-typedef  int /*<<< orphan*/  opj_event_mgr_t ;
+typedef TYPE_11__ opj_j2k_t ;
+typedef int opj_event_mgr_t ;
 struct TYPE_28__ {TYPE_5__* tiles; } ;
 struct TYPE_27__ {TYPE_4__* comps; } ;
-struct TYPE_26__ {int /*<<< orphan*/ * data; } ;
+struct TYPE_26__ {int * data; } ;
 struct TYPE_25__ {TYPE_2__* comps; } ;
-struct TYPE_24__ {int /*<<< orphan*/  resno_decoded; } ;
-struct TYPE_23__ {int /*<<< orphan*/  resno_decoded; int /*<<< orphan*/ * data; } ;
-struct TYPE_22__ {int /*<<< orphan*/ * m_data; } ;
+struct TYPE_24__ {int resno_decoded; } ;
+struct TYPE_23__ {int resno_decoded; int * data; } ;
+struct TYPE_22__ {int * m_data; } ;
 struct TYPE_21__ {scalar_t__ x0; scalar_t__ y0; scalar_t__ x1; scalar_t__ y1; size_t numcomps; TYPE_1__* comps; } ;
 struct TYPE_20__ {TYPE_6__* tcd_image; TYPE_3__* image; } ;
 struct TYPE_18__ {scalar_t__ x0; scalar_t__ y0; scalar_t__ x1; scalar_t__ y1; } ;
-typedef  size_t OPJ_UINT32 ;
-typedef  int /*<<< orphan*/  OPJ_INT32 ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
+typedef size_t OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
+typedef int OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVT_ERROR ; 
- int /*<<< orphan*/  EVT_INFO ; 
- int /*<<< orphan*/  J2K_STATE_DATA ; 
- int /*<<< orphan*/  J2K_STATE_NEOC ; 
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  opj_event_msg (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  opj_image_data_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_j2k_decode_tile (TYPE_11__*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_j2k_read_tile_header (TYPE_11__*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  opj_j2k_tcp_data_destroy (TYPE_14__*) ; 
- int /*<<< orphan*/  opj_j2k_update_image_data (TYPE_12__*,TYPE_13__*) ; 
- scalar_t__ opj_stream_get_number_byte_left (int /*<<< orphan*/ *) ; 
+
+ int EVT_ERROR ;
+ int EVT_INFO ;
+ int J2K_STATE_DATA ;
+ int J2K_STATE_NEOC ;
+ int OPJ_FALSE ;
+ int OPJ_TRUE ;
+ int opj_event_msg (int *,int ,char*,...) ;
+ int opj_image_data_free (int *) ;
+ int opj_j2k_decode_tile (TYPE_11__*,size_t,int *,int ,int *,int *) ;
+ int opj_j2k_read_tile_header (TYPE_11__*,size_t*,int *,int *,int *,int *,int *,size_t*,int *,int *,int *) ;
+ int opj_j2k_tcp_data_destroy (TYPE_14__*) ;
+ int opj_j2k_update_image_data (TYPE_12__*,TYPE_13__*) ;
+ scalar_t__ opj_stream_get_number_byte_left (int *) ;
 
 __attribute__((used)) static OPJ_BOOL opj_j2k_decode_tiles(opj_j2k_t *p_j2k,
                                      opj_stream_private_t *p_stream,
@@ -70,8 +70,8 @@ __attribute__((used)) static OPJ_BOOL opj_j2k_decode_tiles(opj_j2k_t *p_j2k,
     OPJ_UINT32 l_nb_comps;
     OPJ_UINT32 nr_tiles = 0;
 
-    /* Particular case for whole single tile decoding */
-    /* We can avoid allocating intermediate tile buffers */
+
+
     if (p_j2k->m_cp.tw == 1 && p_j2k->m_cp.th == 1 &&
             p_j2k->m_cp.tx0 == 0 && p_j2k->m_cp.ty0 == 0 &&
             p_j2k->m_output_image->x0 == 0 &&
@@ -81,7 +81,7 @@ __attribute__((used)) static OPJ_BOOL opj_j2k_decode_tiles(opj_j2k_t *p_j2k,
         OPJ_UINT32 i;
         if (! opj_j2k_read_tile_header(p_j2k,
                                        &l_current_tile_no,
-                                       NULL,
+                                       ((void*)0),
                                        &l_tile_x0, &l_tile_y0,
                                        &l_tile_x1, &l_tile_y1,
                                        &l_nb_comps,
@@ -91,20 +91,20 @@ __attribute__((used)) static OPJ_BOOL opj_j2k_decode_tiles(opj_j2k_t *p_j2k,
             return OPJ_FALSE;
         }
 
-        if (! opj_j2k_decode_tile(p_j2k, l_current_tile_no, NULL, 0,
+        if (! opj_j2k_decode_tile(p_j2k, l_current_tile_no, ((void*)0), 0,
                                   p_stream, p_manager)) {
             opj_event_msg(p_manager, EVT_ERROR, "Failed to decode tile 1/1\n");
             return OPJ_FALSE;
         }
 
-        /* Transfer TCD data to output image data */
+
         for (i = 0; i < p_j2k->m_output_image->numcomps; i++) {
             opj_image_data_free(p_j2k->m_output_image->comps[i].data);
             p_j2k->m_output_image->comps[i].data =
                 p_j2k->m_tcd->tcd_image->tiles->comps[i].data;
             p_j2k->m_output_image->comps[i].resno_decoded =
                 p_j2k->m_tcd->image->comps[i].resno_decoded;
-            p_j2k->m_tcd->tcd_image->tiles->comps[i].data = NULL;
+            p_j2k->m_tcd->tcd_image->tiles->comps[i].data = ((void*)0);
         }
 
         return OPJ_TRUE;
@@ -112,14 +112,14 @@ __attribute__((used)) static OPJ_BOOL opj_j2k_decode_tiles(opj_j2k_t *p_j2k,
 
     for (;;) {
         if (p_j2k->m_cp.tw == 1 && p_j2k->m_cp.th == 1 &&
-                p_j2k->m_cp.tcps[0].m_data != NULL) {
+                p_j2k->m_cp.tcps[0].m_data != ((void*)0)) {
             l_current_tile_no = 0;
             p_j2k->m_current_tile_number = 0;
             p_j2k->m_specific_param.m_decoder.m_state |= J2K_STATE_DATA;
         } else {
             if (! opj_j2k_read_tile_header(p_j2k,
                                            &l_current_tile_no,
-                                           NULL,
+                                           ((void*)0),
                                            &l_tile_x0, &l_tile_y0,
                                            &l_tile_x1, &l_tile_y1,
                                            &l_nb_comps,
@@ -134,7 +134,7 @@ __attribute__((used)) static OPJ_BOOL opj_j2k_decode_tiles(opj_j2k_t *p_j2k,
             }
         }
 
-        if (! opj_j2k_decode_tile(p_j2k, l_current_tile_no, NULL, 0,
+        if (! opj_j2k_decode_tile(p_j2k, l_current_tile_no, ((void*)0), 0,
                                   p_stream, p_manager)) {
             opj_event_msg(p_manager, EVT_ERROR, "Failed to decode tile %d/%d\n",
                           l_current_tile_no + 1, p_j2k->m_cp.th * p_j2k->m_cp.tw);
@@ -154,7 +154,7 @@ __attribute__((used)) static OPJ_BOOL opj_j2k_decode_tiles(opj_j2k_t *p_j2k,
                   p_j2k->m_output_image->y0 == p_j2k->m_private_image->y0 &&
                   p_j2k->m_output_image->x1 == p_j2k->m_private_image->x1 &&
                   p_j2k->m_output_image->y1 == p_j2k->m_private_image->y1)) {
-            /* Keep current tcp data */
+
         } else {
             opj_j2k_tcp_data_destroy(&p_j2k->m_cp.tcps[l_current_tile_no]);
         }
@@ -166,7 +166,7 @@ __attribute__((used)) static OPJ_BOOL opj_j2k_decode_tiles(opj_j2k_t *p_j2k,
                 && p_j2k->m_specific_param.m_decoder.m_state == J2K_STATE_NEOC) {
             break;
         }
-        if (++nr_tiles ==  p_j2k->m_cp.th * p_j2k->m_cp.tw) {
+        if (++nr_tiles == p_j2k->m_cp.th * p_j2k->m_cp.tw) {
             break;
         }
     }

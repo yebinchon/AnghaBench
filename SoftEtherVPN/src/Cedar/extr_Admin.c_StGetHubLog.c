@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_8__ {TYPE_1__* Server; } ;
-struct TYPE_7__ {int /*<<< orphan*/  LogSetting; int /*<<< orphan*/  HubName; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * Cedar; } ;
-typedef  TYPE_1__ SERVER ;
-typedef  TYPE_2__ RPC_HUB_LOG ;
-typedef  int /*<<< orphan*/  HUB ;
-typedef  int /*<<< orphan*/  CEDAR ;
-typedef  TYPE_3__ ADMIN ;
+struct TYPE_7__ {int LogSetting; int HubName; } ;
+struct TYPE_6__ {int * Cedar; } ;
+typedef TYPE_1__ SERVER ;
+typedef TYPE_2__ RPC_HUB_LOG ;
+typedef int HUB ;
+typedef int CEDAR ;
+typedef TYPE_3__ ADMIN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_RIGHT ; 
- int /*<<< orphan*/  ERR_HUB_NOT_FOUND ; 
- int /*<<< orphan*/  ERR_NO_ERROR ; 
- int /*<<< orphan*/ * GetHub (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetHubLogSetting (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockHubList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseHub (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnlockHubList (int /*<<< orphan*/ *) ; 
+
+ int CHECK_RIGHT ;
+ int ERR_HUB_NOT_FOUND ;
+ int ERR_NO_ERROR ;
+ int * GetHub (int *,int ) ;
+ int GetHubLogSetting (int *,int *) ;
+ int LockHubList (int *) ;
+ int ReleaseHub (int *) ;
+ int UnlockHubList (int *) ;
 
 UINT StGetHubLog(ADMIN *a, RPC_HUB_LOG *t)
 {
-	SERVER *s = a->Server;
-	CEDAR *c = s->Cedar;
-	HUB *h;
+ SERVER *s = a->Server;
+ CEDAR *c = s->Cedar;
+ HUB *h;
 
-	CHECK_RIGHT;
+ CHECK_RIGHT;
 
-	LockHubList(c);
-	{
-		h = GetHub(c, t->HubName);
-	}
-	UnlockHubList(c);
+ LockHubList(c);
+ {
+  h = GetHub(c, t->HubName);
+ }
+ UnlockHubList(c);
 
-	if (h == NULL)
-	{
-		return ERR_HUB_NOT_FOUND;
-	}
+ if (h == ((void*)0))
+ {
+  return ERR_HUB_NOT_FOUND;
+ }
 
-	GetHubLogSetting(h, &t->LogSetting);
+ GetHubLogSetting(h, &t->LogSetting);
 
-	ReleaseHub(h);
+ ReleaseHub(h);
 
-	return ERR_NO_ERROR;
+ return ERR_NO_ERROR;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ RealDTEntry ;
 
-/* Variables and functions */
- int DTInitialized ; 
- scalar_t__ DTRootNode ; 
+
+
+
+typedef scalar_t__ RealDTEntry ;
+
+
+ int DTInitialized ;
+ scalar_t__ DTRootNode ;
 
 void
 DTInit(void *base)
 {
-	DTRootNode = (RealDTEntry) base;
-	DTInitialized = (DTRootNode != 0);
+ DTRootNode = (RealDTEntry) base;
+ DTInitialized = (DTRootNode != 0);
 }

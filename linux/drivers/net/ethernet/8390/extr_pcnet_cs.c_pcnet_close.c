@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcnet_dev {int /*<<< orphan*/  watchdog; struct pcmcia_device* p_dev; } ;
-struct pcmcia_device {int /*<<< orphan*/  open; int /*<<< orphan*/  dev; } ;
-struct net_device {int /*<<< orphan*/  irq; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- struct pcnet_dev* PRIV (struct net_device*) ; 
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ei_close (struct net_device*) ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct net_device*) ; 
- int /*<<< orphan*/  netif_stop_queue (struct net_device*) ; 
+
+
+
+struct pcnet_dev {int watchdog; struct pcmcia_device* p_dev; } ;
+struct pcmcia_device {int open; int dev; } ;
+struct net_device {int irq; int name; } ;
+
+
+ struct pcnet_dev* PRIV (struct net_device*) ;
+ int del_timer_sync (int *) ;
+ int dev_dbg (int *,char*,int ) ;
+ int ei_close (struct net_device*) ;
+ int free_irq (int ,struct net_device*) ;
+ int netif_stop_queue (struct net_device*) ;
 
 __attribute__((used)) static int pcnet_close(struct net_device *dev)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_fcs_rport_s {int /*<<< orphan*/  reply_oxid; int /*<<< orphan*/  prlo; int /*<<< orphan*/  pid; int /*<<< orphan*/  fcs; } ;
-typedef  int /*<<< orphan*/  __be16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFA_TRUE ; 
- int /*<<< orphan*/  RPSM_EVENT_PRLO_RCVD ; 
- int /*<<< orphan*/  bfa_sm_send_event (struct bfa_fcs_rport_s*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfa_trc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct bfa_fcs_rport_s {int reply_oxid; int prlo; int pid; int fcs; } ;
+typedef int __be16 ;
+
+
+ int BFA_TRUE ;
+ int RPSM_EVENT_PRLO_RCVD ;
+ int bfa_sm_send_event (struct bfa_fcs_rport_s*,int ) ;
+ int bfa_trc (int ,int ) ;
 
 void
 bfa_fcs_rport_prlo(struct bfa_fcs_rport_s *rport, __be16 ox_id)
 {
-	bfa_trc(rport->fcs, rport->pid);
+ bfa_trc(rport->fcs, rport->pid);
 
-	rport->prlo = BFA_TRUE;
-	rport->reply_oxid = ox_id;
-	bfa_sm_send_event(rport, RPSM_EVENT_PRLO_RCVD);
+ rport->prlo = BFA_TRUE;
+ rport->reply_oxid = ox_id;
+ bfa_sm_send_event(rport, RPSM_EVENT_PRLO_RCVD);
 }

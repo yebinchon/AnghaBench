@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x86Shift ;
-struct TYPE_6__ {int i; scalar_t__ r; int /*<<< orphan*/  op1; int /*<<< orphan*/  t; int /*<<< orphan*/  op2; } ;
-typedef  scalar_t__ Reg ;
-typedef  int /*<<< orphan*/  IRRef ;
-typedef  TYPE_1__ IRIns ;
-typedef  int /*<<< orphan*/  ASMState ;
 
-/* Variables and functions */
- TYPE_1__* IR (int /*<<< orphan*/ ) ; 
- scalar_t__ REX_64IR (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RID2RSET (scalar_t__) ; 
- scalar_t__ RID_ECX ; 
- int /*<<< orphan*/  RSET_GPR ; 
- int /*<<< orphan*/  XO_MOV ; 
- int /*<<< orphan*/  XO_SHIFT1 ; 
- int /*<<< orphan*/  XO_SHIFTcl ; 
- int /*<<< orphan*/  emit_rr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  emit_shifti (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int) ; 
- scalar_t__ irref_isk (int /*<<< orphan*/ ) ; 
- scalar_t__ irt_is64 (int /*<<< orphan*/ ) ; 
- scalar_t__ ra_allocref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ra_dest (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_left (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ ra_noreg (scalar_t__) ; 
- int /*<<< orphan*/  ra_noweak (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ ra_scratch (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rset_exclude (int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int x86Shift ;
+struct TYPE_6__ {int i; scalar_t__ r; int op1; int t; int op2; } ;
+typedef scalar_t__ Reg ;
+typedef int IRRef ;
+typedef TYPE_1__ IRIns ;
+typedef int ASMState ;
+
+
+ TYPE_1__* IR (int ) ;
+ scalar_t__ REX_64IR (TYPE_1__*,int ) ;
+ int RID2RSET (scalar_t__) ;
+ scalar_t__ RID_ECX ;
+ int RSET_GPR ;
+ int XO_MOV ;
+ int XO_SHIFT1 ;
+ int XO_SHIFTcl ;
+ int emit_rr (int *,int ,scalar_t__,scalar_t__) ;
+ int emit_shifti (int *,scalar_t__,scalar_t__,int) ;
+ scalar_t__ irref_isk (int ) ;
+ scalar_t__ irt_is64 (int ) ;
+ scalar_t__ ra_allocref (int *,int ,int ) ;
+ scalar_t__ ra_dest (int *,TYPE_1__*,int ) ;
+ int ra_left (int *,scalar_t__,int ) ;
+ scalar_t__ ra_noreg (scalar_t__) ;
+ int ra_noweak (int *,scalar_t__) ;
+ scalar_t__ ra_scratch (int *,int ) ;
+ int rset_exclude (int ,scalar_t__) ;
 
 __attribute__((used)) static void asm_bitshift(ASMState *as, IRIns *ir, x86Shift xs)
 {
   IRRef rref = ir->op2;
   IRIns *irr = IR(rref);
   Reg dest;
-  if (irref_isk(rref)) {  /* Constant shifts. */
+  if (irref_isk(rref)) {
     int shift;
     dest = ra_dest(as, ir, RSET_GPR);
     shift = irr->i & (irt_is64(ir->t) ? 63 : 31);
@@ -53,7 +53,7 @@ __attribute__((used)) static void asm_bitshift(ASMState *as, IRIns *ir, x86Shift
     case 1: emit_rr(as, XO_SHIFT1, REX_64IR(ir, xs), dest); break;
     default: emit_shifti(as, REX_64IR(ir, xs), dest, shift); break;
     }
-  } else {  /* Variable shifts implicitly use register cl (i.e. ecx). */
+  } else {
     Reg right;
     dest = ra_dest(as, ir, rset_exclude(RSET_GPR, RID_ECX));
     if (dest == RID_ECX) {
@@ -71,9 +71,9 @@ __attribute__((used)) static void asm_bitshift(ASMState *as, IRIns *ir, x86Shift
       emit_rr(as, XO_MOV, RID_ECX, right);
   }
   ra_left(as, dest, ir->op1);
-  /*
-  ** Note: avoid using the flags resulting from a shift or rotate!
-  ** All of them cause a partial flag stall, except for r,1 shifts
-  ** (but not rotates). And a shift count of 0 leaves the flags unmodified.
-  */
+
+
+
+
+
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
 struct TYPE_3__ {int* Stamps; int Size; scalar_t__ Text; scalar_t__ UnitsStart; scalar_t__ LoUnit; scalar_t__ HiUnit; } ;
-typedef  TYPE_1__ CPpmd8 ;
+typedef TYPE_1__ CPpmd8 ;
 
-/* Variables and functions */
- int I2U (unsigned int) ; 
- unsigned int PPMD_NUM_INDEXES ; 
- int U2B (int) ; 
+
+ int I2U (unsigned int) ;
+ unsigned int PPMD_NUM_INDEXES ;
+ int U2B (int) ;
 
 __attribute__((used)) static UInt32 GetUsedMemory(const CPpmd8 *p)
 {

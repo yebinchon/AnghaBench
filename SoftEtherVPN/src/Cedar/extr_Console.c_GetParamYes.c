@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- char* GetParamStr (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ StartWith (char*,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- scalar_t__ ToInt (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+
+
+typedef int tmp ;
+typedef int LIST ;
+
+
+ char* GetParamStr (int *,char*) ;
+ scalar_t__ StartWith (char*,char*) ;
+ int StrCpy (char*,int,char*) ;
+ scalar_t__ ToInt (char*) ;
+ int Trim (char*) ;
 
 bool GetParamYes(LIST *o, char *name)
 {
-	char *s;
-	char tmp[64];
-	// Validate arguments
-	if (o == NULL)
-	{
-		return false;
-	}
+ char *s;
+ char tmp[64];
 
-	s = GetParamStr(o, name);
-	if (s == NULL)
-	{
-		return false;
-	}
+ if (o == ((void*)0))
+ {
+  return 0;
+ }
 
-	StrCpy(tmp, sizeof(tmp), s);
-	Trim(tmp);
+ s = GetParamStr(o, name);
+ if (s == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (StartWith(tmp, "y"))
-	{
-		return true;
-	}
+ StrCpy(tmp, sizeof(tmp), s);
+ Trim(tmp);
 
-	if (StartWith(tmp, "t"))
-	{
-		return true;
-	}
+ if (StartWith(tmp, "y"))
+ {
+  return 1;
+ }
 
-	if (ToInt(tmp) != 0)
-	{
-		return true;
-	}
+ if (StartWith(tmp, "t"))
+ {
+  return 1;
+ }
 
-	return false;
+ if (ToInt(tmp) != 0)
+ {
+  return 1;
+ }
+
+ return 0;
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text_t ;
 
-/* Variables and functions */
- char* TextGetLine (int /*<<< orphan*/ *) ; 
- char* strcasestr (char const*,char const*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int text_t ;
+
+
+ char* TextGetLine (int *) ;
+ char* strcasestr (char const*,char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static const char *ParseSamiSearch( text_t *txt,
                                     const char *psz_start, const char *psz_str )
@@ -30,10 +30,10 @@ __attribute__((used)) static const char *ParseSamiSearch( text_t *txt,
     {
         const char *p = TextGetLine( txt );
         if( !p )
-            return NULL;
+            return ((void*)0);
 
         const char *s = strcasestr( p, psz_str );
-        if( s != NULL )
+        if( s != ((void*)0) )
             return &s[strlen( psz_str )];
     }
 }

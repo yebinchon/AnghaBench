@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  INVALID_SHARD_ID ; 
- int /*<<< orphan*/  SHARD_NAME_SEPARATOR ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,char const*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  pg_strtouint64 (char*,char**,int /*<<< orphan*/ ) ; 
- char* strrchr (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64 ;
+
+
+ int ERROR ;
+ int INVALID_SHARD_ID ;
+ int SHARD_NAME_SEPARATOR ;
+ int ereport (int ,int ) ;
+ int errmsg (char*,char const*) ;
+ scalar_t__ errno ;
+ int pg_strtouint64 (char*,char**,int ) ;
+ char* strrchr (char const*,int ) ;
 
 uint64
 ExtractShardIdFromTableName(const char *tableName, bool missingOk)
 {
-	uint64 shardId = 0;
-	char *shardIdString = NULL;
-	char *shardIdStringEnd = NULL;
+ uint64 shardId = 0;
+ char *shardIdString = ((void*)0);
+ char *shardIdStringEnd = ((void*)0);
 
-	/* find the last underscore and increment for shardId string */
-	shardIdString = strrchr(tableName, SHARD_NAME_SEPARATOR);
-	if (shardIdString == NULL && !missingOk)
-	{
-		ereport(ERROR, (errmsg("could not extract shardId from table name \"%s\"",
-							   tableName)));
-	}
-	else if (shardIdString == NULL && missingOk)
-	{
-		return INVALID_SHARD_ID;
-	}
 
-	shardIdString++;
+ shardIdString = strrchr(tableName, SHARD_NAME_SEPARATOR);
+ if (shardIdString == ((void*)0) && !missingOk)
+ {
+  ereport(ERROR, (errmsg("could not extract shardId from table name \"%s\"",
+          tableName)));
+ }
+ else if (shardIdString == ((void*)0) && missingOk)
+ {
+  return INVALID_SHARD_ID;
+ }
 
-	errno = 0;
-	shardId = pg_strtouint64(shardIdString, &shardIdStringEnd, 0);
+ shardIdString++;
 
-	if (errno != 0 || (*shardIdStringEnd != '\0'))
-	{
-		if (!missingOk)
-		{
-			ereport(ERROR, (errmsg("could not extract shardId from table name \"%s\"",
-								   tableName)));
-		}
-		else
-		{
-			return INVALID_SHARD_ID;
-		}
-	}
+ errno = 0;
+ shardId = pg_strtouint64(shardIdString, &shardIdStringEnd, 0);
 
-	return shardId;
+ if (errno != 0 || (*shardIdStringEnd != '\0'))
+ {
+  if (!missingOk)
+  {
+   ereport(ERROR, (errmsg("could not extract shardId from table name \"%s\"",
+           tableName)));
+  }
+  else
+  {
+   return INVALID_SHARD_ID;
+  }
+ }
+
+ return shardId;
 }

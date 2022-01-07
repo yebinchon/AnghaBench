@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int mandoc_strntoi (char const*,size_t,int) ; 
+ int mandoc_strntoi (char const*,size_t,int) ;
 
 int
 mchars_num2char(const char *p, size_t sz)
 {
-	int	  i;
+ int i;
 
-	i = mandoc_strntoi(p, sz, 10);
-	return i >= 0 && i < 256 ? i : -1;
+ i = mandoc_strntoi(p, sz, 10);
+ return i >= 0 && i < 256 ? i : -1;
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_msghdr {int msg_iovlen; scalar_t__ msg_controllen; int /*<<< orphan*/ * msg_control; struct nn_iovec* msg_iov; } ;
+
+
+
+
+struct nn_msghdr {int msg_iovlen; scalar_t__ msg_controllen; int * msg_control; struct nn_iovec* msg_iov; } ;
 struct nn_iovec {size_t iov_len; void* iov_base; } ;
 
-/* Variables and functions */
- int nn_sendmsg (int,struct nn_msghdr*,int) ; 
+
+ int nn_sendmsg (int,struct nn_msghdr*,int) ;
 
 int nn_send (int s, const void *buf, size_t len, int flags)
 {
@@ -26,7 +26,7 @@ int nn_send (int s, const void *buf, size_t len, int flags)
 
     hdr.msg_iov = &iov;
     hdr.msg_iovlen = 1;
-    hdr.msg_control = NULL;
+    hdr.msg_control = ((void*)0);
     hdr.msg_controllen = 0;
 
     return nn_sendmsg (s, &hdr, flags);

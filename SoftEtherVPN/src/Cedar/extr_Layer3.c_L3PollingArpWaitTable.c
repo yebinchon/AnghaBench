@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_10__ {scalar_t__ Expire; scalar_t__ LastSentTime; int /*<<< orphan*/  IpAddress; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * ArpWaitTable; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ L3IF ;
-typedef  TYPE_2__ L3ARPWAIT ;
 
-/* Variables and functions */
- scalar_t__ ARP_REQUEST_TIMEOUT ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  Free (TYPE_2__*) ; 
- int /*<<< orphan*/  Insert (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  L3SendArpRequestNow (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- scalar_t__ Tick64 () ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_10__ {scalar_t__ Expire; scalar_t__ LastSentTime; int IpAddress; } ;
+struct TYPE_9__ {int * ArpWaitTable; } ;
+typedef int LIST ;
+typedef TYPE_1__ L3IF ;
+typedef TYPE_2__ L3ARPWAIT ;
+
+
+ scalar_t__ ARP_REQUEST_TIMEOUT ;
+ int Delete (int *,TYPE_2__*) ;
+ int Free (TYPE_2__*) ;
+ int Insert (int *,TYPE_2__*) ;
+ int L3SendArpRequestNow (TYPE_1__*,int ) ;
+ TYPE_2__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
+ scalar_t__ Tick64 () ;
 
 void L3PollingArpWaitTable(L3IF *f)
 {
-	UINT i;
-	LIST *o = NULL;
-	// Validate arguments
-	if (f == NULL)
-	{
-		return;
-	}
+ UINT i;
+ LIST *o = ((void*)0);
 
-	for (i = 0;i < LIST_NUM(f->ArpWaitTable);i++)
-	{
-		L3ARPWAIT *w = LIST_DATA(f->ArpWaitTable, i);
+ if (f == ((void*)0))
+ {
+  return;
+ }
 
-		if (w->Expire <= Tick64())
-		{
-			// The ARP request entry is expired
-			if (o == NULL)
-			{
-				o = NewListFast(NULL);
-			}
+ for (i = 0;i < LIST_NUM(f->ArpWaitTable);i++)
+ {
+  L3ARPWAIT *w = LIST_DATA(f->ArpWaitTable, i);
 
-			Insert(o, w);
-		}
-		else if ((w->LastSentTime + ARP_REQUEST_TIMEOUT) <= Tick64())
-		{
-			// Send a next ARP request packet
-			w->LastSentTime = Tick64();
+  if (w->Expire <= Tick64())
+  {
 
-			L3SendArpRequestNow(f, w->IpAddress);
-		}
-	}
+   if (o == ((void*)0))
+   {
+    o = NewListFast(((void*)0));
+   }
 
-	if (o != NULL)
-	{
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			L3ARPWAIT *w = LIST_DATA(o, i);
+   Insert(o, w);
+  }
+  else if ((w->LastSentTime + ARP_REQUEST_TIMEOUT) <= Tick64())
+  {
 
-			Delete(f->ArpWaitTable, w);
-			Free(w);
-		}
+   w->LastSentTime = Tick64();
 
-		ReleaseList(o);
-	}
+   L3SendArpRequestNow(f, w->IpAddress);
+  }
+ }
+
+ if (o != ((void*)0))
+ {
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   L3ARPWAIT *w = LIST_DATA(o, i);
+
+   Delete(f->ArpWaitTable, w);
+   Free(w);
+  }
+
+  ReleaseList(o);
+ }
 }

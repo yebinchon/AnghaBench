@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* name; TYPE_2__** wildcard; } ;
 struct TYPE_7__ {char* name; TYPE_1__ x; } ;
-typedef  TYPE_2__* Symbol ;
+typedef TYPE_2__* Symbol ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NEW0 (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PERM ; 
+
+ int NEW0 (TYPE_2__*,int ) ;
+ int PERM ;
 
 Symbol mkwildcard(Symbol *syms) {
-	Symbol p;
+ Symbol p;
 
-	NEW0(p, PERM);
-	p->name = p->x.name = "wildcard";
-	p->x.wildcard = syms;
-	return p;
+ NEW0(p, PERM);
+ p->name = p->x.name = "wildcard";
+ p->x.wildcard = syms;
+ return p;
 }

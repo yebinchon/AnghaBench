@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* mc_check_perm; } ;
 struct TYPE_3__ {void* rpc_check_perm; } ;
 
-/* Variables and functions */
- int atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disable_cache ; 
- int /*<<< orphan*/  disable_wildcard ; 
- int index_mode ; 
- int max_memory ; 
- void* mcs_crypted_check_perm ; 
- TYPE_2__ memcache_methods ; 
- TYPE_1__ memcache_rpc_server ; 
- int metafile_size ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  pack_file ; 
- int /*<<< orphan*/  protected_mode ; 
- int return_false_if_not_found ; 
- void* rpcs_crypted_check_perm ; 
- int tcp_maximize_buffers ; 
+
+ int atoi (int ) ;
+ int disable_cache ;
+ int disable_wildcard ;
+ int index_mode ;
+ int max_memory ;
+ void* mcs_crypted_check_perm ;
+ TYPE_2__ memcache_methods ;
+ TYPE_1__ memcache_rpc_server ;
+ int metafile_size ;
+ int optarg ;
+ int pack_file ;
+ int protected_mode ;
+ int return_false_if_not_found ;
+ void* rpcs_crypted_check_perm ;
+ int tcp_maximize_buffers ;
 
 int f_parse_option (int val) {
   switch (val) {

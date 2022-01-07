@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_uint_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_uint_t ;
 struct TYPE_6__ {TYPE_2__* log; } ;
-typedef  TYPE_1__ ngx_connection_t ;
+typedef TYPE_1__ ngx_connection_t ;
 struct TYPE_7__ {char* action; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  ngx_http_multi_upstream_read_handler (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_http_multi_upstream_write_handler (TYPE_1__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int ngx_http_multi_upstream_read_handler (TYPE_1__*) ;
+ int ngx_http_multi_upstream_write_handler (TYPE_1__*) ;
+ int ngx_log_debug0 (int ,TYPE_2__*,int ,char*) ;
 
 void
 ngx_http_multi_upstream_process(ngx_connection_t *pc, ngx_uint_t do_write)
 {
     if (do_write) {
-        //write
+
         ngx_log_debug0(NGX_LOG_DEBUG_HTTP, pc->log, 0,
                 "multi: http upstream process write");
 
@@ -36,7 +36,7 @@ ngx_http_multi_upstream_process(ngx_connection_t *pc, ngx_uint_t do_write)
         ngx_http_multi_upstream_write_handler(pc);
         return;
     } else {
-        //read
+
         ngx_log_debug0(NGX_LOG_DEBUG_HTTP, pc->log, 0,
                 "multi: http upstream process read");
 

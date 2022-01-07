@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int type; int /*<<< orphan*/  str; int /*<<< orphan*/  pattern; } ;
-typedef  TYPE_1__ lev_antispam_add_pattern_v2_t ;
 
-/* Variables and functions */
- int add_pattern (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int type; int str; int pattern; } ;
+typedef TYPE_1__ lev_antispam_add_pattern_v2_t ;
+
+
+ int add_pattern (int ,int,int ,int,char*) ;
 
 __attribute__((used)) static bool add_pattern_v2 (lev_antispam_add_pattern_v2_t* E, bool replace) {
   return add_pattern (E->pattern, (E->type & 0xFFFF), E->str, replace, "v2");

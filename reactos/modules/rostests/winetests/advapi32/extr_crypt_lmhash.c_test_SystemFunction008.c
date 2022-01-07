@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ NTSTATUS ;
 
-/* Variables and functions */
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ STATUS_UNSUCCESSFUL ; 
- int /*<<< orphan*/  memcmp (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ pSystemFunction008 (unsigned char*,unsigned char*,unsigned char*) ; 
+
+
+
+typedef scalar_t__ NTSTATUS ;
+
+
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ STATUS_UNSUCCESSFUL ;
+ int memcmp (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int ok (int,char*) ;
+ scalar_t__ pSystemFunction008 (unsigned char*,unsigned char*,unsigned char*) ;
 
 __attribute__((used)) static void test_SystemFunction008(void)
 {
-    /* example data from http://davenport.sourceforge.net/ntlm.html */
+
     unsigned char hash[0x40] = {
         0xff, 0x37, 0x50, 0xbc, 0xc2, 0xb2, 0x24, 0x12,
         0xc2, 0x26, 0x5b, 0x23, 0x73, 0x4e, 0x0d, 0xac };
@@ -44,7 +44,7 @@ __attribute__((used)) static void test_SystemFunction008(void)
     r = pSystemFunction008(challenge, hash, 0);
     ok( r == STATUS_UNSUCCESSFUL, "wrong error code\n");
 
-    /* crashes */
+
     if (0)
     {
         r = pSystemFunction008(challenge, 0, output);

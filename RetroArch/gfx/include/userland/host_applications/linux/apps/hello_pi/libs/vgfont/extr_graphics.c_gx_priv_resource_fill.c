@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  VGfloat ;
-typedef  int /*<<< orphan*/  VCOS_STATUS_T ;
-typedef  int /*<<< orphan*/  GRAPHICS_RESOURCE_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GX_LOG (char*,int) ; 
- int /*<<< orphan*/  VCOS_SUCCESS ; 
- int /*<<< orphan*/  VG_CLEAR_COLOR ; 
- int /*<<< orphan*/  VG_FALSE ; 
- int /*<<< orphan*/  VG_SCISSORING ; 
- int /*<<< orphan*/  gx_priv_colour_to_paint (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgClear (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int vgGetError () ; 
- int /*<<< orphan*/  vgSetfv (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vgSeti (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int VGfloat ;
+typedef int VCOS_STATUS_T ;
+typedef int GRAPHICS_RESOURCE_HANDLE ;
+
+
+ int GX_LOG (char*,int) ;
+ int VCOS_SUCCESS ;
+ int VG_CLEAR_COLOR ;
+ int VG_FALSE ;
+ int VG_SCISSORING ;
+ int gx_priv_colour_to_paint (int ,int *) ;
+ int vcos_assert (int ) ;
+ int vgClear (int ,int ,int ,int ) ;
+ int vgGetError () ;
+ int vgSetfv (int ,int,int *) ;
+ int vgSeti (int ,int ) ;
 
 VCOS_STATUS_T gx_priv_resource_fill(GRAPHICS_RESOURCE_HANDLE res,
                                uint32_t x,

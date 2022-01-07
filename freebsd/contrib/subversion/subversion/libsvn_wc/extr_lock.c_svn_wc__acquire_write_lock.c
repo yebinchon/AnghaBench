@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  scalar_t__ svn_node_kind_t ;
+
+
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int * db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_wc__db_t ;
+typedef scalar_t__ svn_node_kind_t ;
 struct TYPE_16__ {scalar_t__ apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_2__*) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_NOT_DIRECTORY ; 
- int /*<<< orphan*/  SVN_ERR_WC_NOT_WORKING_COPY ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- TYPE_2__* SVN_NO_ERROR ; 
- scalar_t__ SVN_WC__ERR_IS_NOT_CURRENT_WC (TYPE_2__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_2__*) ; 
- TYPE_2__* svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_error_trace (TYPE_2__*) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_none ; 
- scalar_t__ svn_node_unknown ; 
- TYPE_2__* svn_wc__db_is_switched (scalar_t__*,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc__db_read_kind (scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc__db_wclock_obtain (int /*<<< orphan*/ *,char const*,int,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (TYPE_2__*) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_WC_NOT_DIRECTORY ;
+ int SVN_ERR_WC_NOT_WORKING_COPY ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ TYPE_2__* SVN_NO_ERROR ;
+ scalar_t__ SVN_WC__ERR_IS_NOT_CURRENT_WC (TYPE_2__*) ;
+ int TRUE ;
+ int _ (char*) ;
+ char* apr_pstrdup (int *,char const*) ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int svn_error_clear (TYPE_2__*) ;
+ TYPE_2__* svn_error_createf (int ,int *,int ,int ) ;
+ TYPE_2__* svn_error_trace (TYPE_2__*) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_none ;
+ scalar_t__ svn_node_unknown ;
+ TYPE_2__* svn_wc__db_is_switched (scalar_t__*,scalar_t__*,scalar_t__*,int *,char const*,int *) ;
+ TYPE_2__* svn_wc__db_read_kind (scalar_t__*,int *,char const*,int ,int ,scalar_t__,int *) ;
+ TYPE_2__* svn_wc__db_wclock_obtain (int *,char const*,int,scalar_t__,int *) ;
 
 svn_error_t *
 svn_wc__acquire_write_lock(const char **lock_root_abspath,
@@ -75,7 +75,7 @@ svn_wc__acquire_write_lock(const char **lock_root_abspath,
     }
 
   if (!lock_root_abspath && kind != svn_node_dir)
-    return svn_error_createf(SVN_ERR_WC_NOT_DIRECTORY, NULL,
+    return svn_error_createf(SVN_ERR_WC_NOT_DIRECTORY, ((void*)0),
                              _("Can't obtain lock on non-directory '%s'."),
                              svn_dirent_local_style(local_abspath,
                                                     scratch_pool));
@@ -89,7 +89,7 @@ svn_wc__acquire_write_lock(const char **lock_root_abspath,
   if (lock_anchor)
     {
       const char *parent_abspath;
-      SVN_ERR_ASSERT(lock_root_abspath != NULL);
+      SVN_ERR_ASSERT(lock_root_abspath != ((void*)0));
 
       parent_abspath = svn_dirent_dirname(local_abspath, scratch_pool);
 
@@ -100,17 +100,17 @@ svn_wc__acquire_write_lock(const char **lock_root_abspath,
         }
       else if (kind != svn_node_none && kind != svn_node_unknown)
         {
-          /* In the single-DB world we know parent exists */
+
           local_abspath = parent_abspath;
         }
       else
         {
-          /* Can't lock parents that don't exist */
+
           svn_node_kind_t parent_kind;
           err = svn_wc__db_read_kind(&parent_kind, db, parent_abspath,
-                                     TRUE /* allow_missing */,
-                                     TRUE /* show_deleted */,
-                                     FALSE /* show_hidden */,
+                                     TRUE ,
+                                     TRUE ,
+                                     FALSE ,
                                      scratch_pool);
           if (err && SVN_WC__ERR_IS_NOT_CURRENT_WC(err))
             {
@@ -121,7 +121,7 @@ svn_wc__acquire_write_lock(const char **lock_root_abspath,
             SVN_ERR(err);
 
           if (parent_kind != svn_node_dir)
-            return svn_error_createf(SVN_ERR_WC_NOT_WORKING_COPY, NULL,
+            return svn_error_createf(SVN_ERR_WC_NOT_WORKING_COPY, ((void*)0),
                                      _("'%s' is not a working copy"),
                                      svn_dirent_local_style(local_abspath,
                                                             scratch_pool));
@@ -138,8 +138,8 @@ svn_wc__acquire_write_lock(const char **lock_root_abspath,
     *lock_root_abspath = apr_pstrdup(result_pool, local_abspath);
 
   SVN_ERR(svn_wc__db_wclock_obtain(wc_ctx->db, local_abspath,
-                                   -1 /* levels_to_lock (infinite) */,
-                                   FALSE /* steal_lock */,
+                                   -1 ,
+                                   FALSE ,
                                    scratch_pool));
 
   return SVN_NO_ERROR;

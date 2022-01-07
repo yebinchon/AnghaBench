@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  TRUE ; 
- int fread (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,long,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isprint (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isspace (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT8 ;
+typedef int FILE ;
+typedef int BOOLEAN ;
+
+
+ int FALSE ;
+ int SEEK_SET ;
+ int TRUE ;
+ int fread (int *,int,int,int *) ;
+ int fseek (int *,long,int ) ;
+ long ftell (int *) ;
+ int isprint (int ) ;
+ int isspace (int ) ;
 
 BOOLEAN
 AcIsFileBinary (
-    FILE                    *File)
+    FILE *File)
 {
-    UINT8                   Byte;
-    BOOLEAN                 IsBinary = FALSE;
-    long                    FileOffset;
+    UINT8 Byte;
+    BOOLEAN IsBinary = FALSE;
+    long FileOffset;
 
 
-    /* Scan entire file for any non-ASCII bytes */
+
 
     FileOffset = ftell (File);
     while (fread (&Byte, 1, 1, File) == 1)

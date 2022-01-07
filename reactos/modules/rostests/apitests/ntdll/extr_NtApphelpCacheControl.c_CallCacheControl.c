@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-struct TYPE_4__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_5__ {scalar_t__ ImageHandle; int /*<<< orphan*/  ImageName; TYPE_1__ member_0; } ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  TYPE_2__ APPHELP_CACHE_SERVICE_LOOKUP ;
-typedef  int /*<<< orphan*/  APPHELPCACHESERVICECLASS ;
 
-/* Variables and functions */
- int FILE_EXECUTE ; 
- int FILE_NON_DIRECTORY_FILE ; 
- int FILE_READ_ATTRIBUTES ; 
- int FILE_READ_DATA ; 
- int FILE_SHARE_DELETE ; 
- int FILE_SHARE_READ ; 
- int FILE_SYNCHRONOUS_IO_NONALERT ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtClose (scalar_t__) ; 
- int /*<<< orphan*/  NtOpenFile (scalar_t__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int SYNCHRONIZE ; 
- int /*<<< orphan*/  ok_ntstatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pNtApphelpCacheControl (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UNICODE_STRING ;
+struct TYPE_4__ {int member_0; } ;
+struct TYPE_5__ {scalar_t__ ImageHandle; int ImageName; TYPE_1__ member_0; } ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+typedef scalar_t__ BOOLEAN ;
+typedef TYPE_2__ APPHELP_CACHE_SERVICE_LOOKUP ;
+typedef int APPHELPCACHESERVICECLASS ;
+
+
+ int FILE_EXECUTE ;
+ int FILE_NON_DIRECTORY_FILE ;
+ int FILE_READ_ATTRIBUTES ;
+ int FILE_READ_DATA ;
+ int FILE_SHARE_DELETE ;
+ int FILE_SHARE_READ ;
+ int FILE_SYNCHRONOUS_IO_NONALERT ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int NtClose (scalar_t__) ;
+ int NtOpenFile (scalar_t__*,int,int *,int *,int,int) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int STATUS_SUCCESS ;
+ int SYNCHRONIZE ;
+ int ok_ntstatus (int ,int ) ;
+ int pNtApphelpCacheControl (int ,TYPE_2__*) ;
 
 NTSTATUS CallCacheControl(UNICODE_STRING* PathName, BOOLEAN WithMapping, APPHELPCACHESERVICECLASS Service)
 {
@@ -50,7 +50,7 @@ NTSTATUS CallCacheControl(UNICODE_STRING* PathName, BOOLEAN WithMapping, APPHELP
         OBJECT_ATTRIBUTES LocalObjectAttributes;
         IO_STATUS_BLOCK IoStatusBlock;
         InitializeObjectAttributes(&LocalObjectAttributes, PathName,
-            OBJ_CASE_INSENSITIVE, NULL, NULL);
+            OBJ_CASE_INSENSITIVE, ((void*)0), ((void*)0));
         Status = NtOpenFile(&CacheEntry.ImageHandle,
                     SYNCHRONIZE | FILE_READ_ATTRIBUTES | FILE_READ_DATA | FILE_EXECUTE,
                     &LocalObjectAttributes, &IoStatusBlock,

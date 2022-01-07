@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dentry {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  in_use; } ;
+struct TYPE_2__ {int in_use; } ;
 
-/* Variables and functions */
- TYPE_1__* PDE (int /*<<< orphan*/ ) ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  d_inode (struct dentry const*) ; 
+
+ TYPE_1__* PDE (int ) ;
+ scalar_t__ atomic_read (int *) ;
+ int d_inode (struct dentry const*) ;
 
 __attribute__((used)) static int proc_misc_d_delete(const struct dentry *dentry)
 {
-	return atomic_read(&PDE(d_inode(dentry))->in_use) < 0;
+ return atomic_read(&PDE(d_inode(dentry))->in_use) < 0;
 }

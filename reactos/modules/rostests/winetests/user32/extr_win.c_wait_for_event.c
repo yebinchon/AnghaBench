@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MSG ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DispatchMessageA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int GetTickCount () ; 
- scalar_t__ MsgWaitForMultipleObjects (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PM_REMOVE ; 
- scalar_t__ PeekMessageA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QS_ALLINPUT ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WAIT_OBJECT_0 ; 
+
+
+
+typedef int MSG ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int DispatchMessageA (int *) ;
+ int FALSE ;
+ int GetTickCount () ;
+ scalar_t__ MsgWaitForMultipleObjects (int,int *,int ,int,int ) ;
+ int PM_REMOVE ;
+ scalar_t__ PeekMessageA (int *,int ,int ,int ,int ) ;
+ int QS_ALLINPUT ;
+ int TRUE ;
+ scalar_t__ WAIT_OBJECT_0 ;
 
 __attribute__((used)) static BOOL wait_for_event(HANDLE event, int timeout)
 {

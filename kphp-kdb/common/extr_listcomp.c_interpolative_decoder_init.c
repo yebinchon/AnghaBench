@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct list_decoder {int /*<<< orphan*/ * decode_int; scalar_t__ k; int /*<<< orphan*/  N; scalar_t__ K; scalar_t__ data; scalar_t__ p; } ;
-struct interpolative_decoder_stack_entry {int left_value; int /*<<< orphan*/  right_value; scalar_t__ right_idx; int /*<<< orphan*/  middle_value; scalar_t__ left_idx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTERPOLATIVE_DECODER_NOT_EVALUATED ; 
- int /*<<< orphan*/  interpolative_decode_int ; 
+
+
+
+struct list_decoder {int * decode_int; scalar_t__ k; int N; scalar_t__ K; scalar_t__ data; scalar_t__ p; } ;
+struct interpolative_decoder_stack_entry {int left_value; int right_value; scalar_t__ right_idx; int middle_value; scalar_t__ left_idx; } ;
+
+
+ int INTERPOLATIVE_DECODER_NOT_EVALUATED ;
+ int interpolative_decode_int ;
 
 __attribute__((used)) static void interpolative_decoder_init (struct list_decoder *dec) {
   dec->p = 0;

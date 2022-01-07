@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
-struct perf_read_values {int counters; scalar_t__* counterrawid; int counters_max; int /*<<< orphan*/ * countername; } ;
 
-/* Variables and functions */
- int perf_read_values__enlarge_counters (struct perf_read_values*) ; 
- int /*<<< orphan*/  strdup (char const*) ; 
+
+
+
+typedef scalar_t__ u64 ;
+struct perf_read_values {int counters; scalar_t__* counterrawid; int counters_max; int * countername; } ;
+
+
+ int perf_read_values__enlarge_counters (struct perf_read_values*) ;
+ int strdup (char const*) ;
 
 __attribute__((used)) static int perf_read_values__findnew_counter(struct perf_read_values *values,
-					     u64 rawid, const char *name)
+          u64 rawid, const char *name)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < values->counters; i++)
-		if (values->counterrawid[i] == rawid)
-			return i;
+ for (i = 0; i < values->counters; i++)
+  if (values->counterrawid[i] == rawid)
+   return i;
 
-	if (values->counters == values->counters_max) {
-		i = perf_read_values__enlarge_counters(values);
-		if (i)
-			return i;
-	}
+ if (values->counters == values->counters_max) {
+  i = perf_read_values__enlarge_counters(values);
+  if (i)
+   return i;
+ }
 
-	i = values->counters++;
-	values->counterrawid[i] = rawid;
-	values->countername[i] = strdup(name);
+ i = values->counters++;
+ values->counterrawid[i] = rawid;
+ values->countername[i] = strdup(name);
 
-	return i;
+ return i;
 }

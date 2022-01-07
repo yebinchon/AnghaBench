@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  int /*<<< orphan*/  AVDeviceInfoList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_OPT_SEARCH_CHILDREN ; 
- int /*<<< orphan*/  av_dict_copy (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int av_opt_set_dict2 (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int avdevice_list_devices (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avformat_free_context (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int AVFormatContext ;
+typedef int AVDictionary ;
+typedef int AVDeviceInfoList ;
+
+
+ int AV_OPT_SEARCH_CHILDREN ;
+ int av_dict_copy (int **,int *,int ) ;
+ int av_dict_free (int **) ;
+ int av_opt_set_dict2 (int *,int **,int ) ;
+ int avdevice_list_devices (int *,int **) ;
+ int avformat_free_context (int *) ;
 
 __attribute__((used)) static int list_devices_for_context(AVFormatContext *s, AVDictionary *options,
                                     AVDeviceInfoList **device_list)
 {
-    AVDictionary *tmp = NULL;
+    AVDictionary *tmp = ((void*)0);
     int ret;
 
     av_dict_copy(&tmp, options, 0);

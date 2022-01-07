@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  (* measure_fn ) () ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_stack () ; 
- int /*<<< orphan*/  emit (char*) ; 
- int /*<<< orphan*/  emit_uint32 (int) ; 
- int get_cycles () ; 
- int measure_stack () ; 
- int reset_cycles () ; 
+
+
+
+typedef int uint32_t ;
+typedef int (* measure_fn ) () ;
+
+
+ int clear_stack () ;
+ int emit (char*) ;
+ int emit_uint32 (int) ;
+ int get_cycles () ;
+ int measure_stack () ;
+ int reset_cycles () ;
 
 __attribute__((used)) static void measure(measure_fn fn)
 {

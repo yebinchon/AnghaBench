@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
-typedef  int /*<<< orphan*/  s16 ;
 
-/* Variables and functions */
- int EBUSY ; 
- int MAX_MODULE_READY_TIME ; 
- int /*<<< orphan*/  _is_module_ready (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  omap_test_timeout (int /*<<< orphan*/ ,int,int) ; 
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+typedef int s16 ;
+
+
+ int EBUSY ;
+ int MAX_MODULE_READY_TIME ;
+ int _is_module_ready (int ,int ,int ) ;
+ int omap_test_timeout (int ,int,int) ;
 
 __attribute__((used)) static int omap4_cminst_wait_module_ready(u8 part, s16 inst, u16 clkctrl_offs,
-					  u8 bit_shift)
+       u8 bit_shift)
 {
-	int i = 0;
+ int i = 0;
 
-	omap_test_timeout(_is_module_ready(part, inst, clkctrl_offs),
-			  MAX_MODULE_READY_TIME, i);
+ omap_test_timeout(_is_module_ready(part, inst, clkctrl_offs),
+     MAX_MODULE_READY_TIME, i);
 
-	return (i < MAX_MODULE_READY_TIME) ? 0 : -EBUSY;
+ return (i < MAX_MODULE_READY_TIME) ? 0 : -EBUSY;
 }

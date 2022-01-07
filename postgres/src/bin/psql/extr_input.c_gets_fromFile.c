@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  line ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int line ;
 struct TYPE_6__ {int len; char* data; } ;
-typedef  TYPE_1__* PQExpBuffer ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__* PQExpBuffer ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ PQExpBufferBroken (TYPE_1__*) ; 
- int /*<<< orphan*/  appendPQExpBufferStr (TYPE_1__*,char*) ; 
- TYPE_1__* createPQExpBuffer () ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- char* fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pg_log_error (char*) ; 
- char* pg_strdup (char*) ; 
- int /*<<< orphan*/  resetPQExpBuffer (TYPE_1__*) ; 
- int sigint_interrupt_enabled ; 
+
+ scalar_t__ PQExpBufferBroken (TYPE_1__*) ;
+ int appendPQExpBufferStr (TYPE_1__*,char*) ;
+ TYPE_1__* createPQExpBuffer () ;
+ scalar_t__ ferror (int *) ;
+ char* fgets (char*,int,int *) ;
+ int pg_log_error (char*) ;
+ char* pg_strdup (char*) ;
+ int resetPQExpBuffer (TYPE_1__*) ;
+ int sigint_interrupt_enabled ;
 
 char *
 gets_fromFile(FILE *source)
 {
-	static PQExpBuffer buffer = NULL;
+ static PQExpBuffer buffer = ((void*)0);
 
-	char		line[1024];
+ char line[1024];
 
-	if (buffer == NULL)			/* first time through? */
-		buffer = createPQExpBuffer();
-	else
-		resetPQExpBuffer(buffer);
+ if (buffer == ((void*)0))
+  buffer = createPQExpBuffer();
+ else
+  resetPQExpBuffer(buffer);
 
-	for (;;)
-	{
-		char	   *result;
+ for (;;)
+ {
+  char *result;
 
-		/* Enable SIGINT to longjmp to sigint_interrupt_jmp */
-		sigint_interrupt_enabled = true;
 
-		/* Get some data */
-		result = fgets(line, sizeof(line), source);
+  sigint_interrupt_enabled = 1;
 
-		/* Disable SIGINT again */
-		sigint_interrupt_enabled = false;
 
-		/* EOF or error? */
-		if (result == NULL)
-		{
-			if (ferror(source))
-			{
-				pg_log_error("could not read from input file: %m");
-				return NULL;
-			}
-			break;
-		}
+  result = fgets(line, sizeof(line), source);
 
-		appendPQExpBufferStr(buffer, line);
 
-		if (PQExpBufferBroken(buffer))
-		{
-			pg_log_error("out of memory");
-			return NULL;
-		}
+  sigint_interrupt_enabled = 0;
 
-		/* EOL? */
-		if (buffer->len > 0 && buffer->data[buffer->len - 1] == '\n')
-		{
-			buffer->data[buffer->len - 1] = '\0';
-			return pg_strdup(buffer->data);
-		}
-	}
 
-	if (buffer->len > 0)		/* EOF after reading some bufferload(s) */
-		return pg_strdup(buffer->data);
+  if (result == ((void*)0))
+  {
+   if (ferror(source))
+   {
+    pg_log_error("could not read from input file: %m");
+    return ((void*)0);
+   }
+   break;
+  }
 
-	/* EOF, so return null */
-	return NULL;
+  appendPQExpBufferStr(buffer, line);
+
+  if (PQExpBufferBroken(buffer))
+  {
+   pg_log_error("out of memory");
+   return ((void*)0);
+  }
+
+
+  if (buffer->len > 0 && buffer->data[buffer->len - 1] == '\n')
+  {
+   buffer->data[buffer->len - 1] = '\0';
+   return pg_strdup(buffer->data);
+  }
+ }
+
+ if (buffer->len > 0)
+  return pg_strdup(buffer->data);
+
+
+ return ((void*)0);
 }

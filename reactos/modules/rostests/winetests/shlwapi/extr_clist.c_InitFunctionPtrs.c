@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetModuleHandleA (char*) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SHLWAPI_hshlwapi ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- void* pSHLWAPI_166 ; 
- void* pSHLWAPI_17 ; 
- void* pSHLWAPI_18 ; 
- void* pSHLWAPI_184 ; 
- void* pSHLWAPI_19 ; 
- void* pSHLWAPI_20 ; 
- void* pSHLWAPI_21 ; 
- void* pSHLWAPI_212 ; 
- void* pSHLWAPI_213 ; 
- void* pSHLWAPI_214 ; 
- void* pSHLWAPI_22 ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char* LPSTR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetModuleHandleA (char*) ;
+ scalar_t__ GetProcAddress (int ,char*) ;
+ int SHLWAPI_hshlwapi ;
+ int TRUE ;
+ int ok (int,char*) ;
+ void* pSHLWAPI_166 ;
+ void* pSHLWAPI_17 ;
+ void* pSHLWAPI_18 ;
+ void* pSHLWAPI_184 ;
+ void* pSHLWAPI_19 ;
+ void* pSHLWAPI_20 ;
+ void* pSHLWAPI_21 ;
+ void* pSHLWAPI_212 ;
+ void* pSHLWAPI_213 ;
+ void* pSHLWAPI_214 ;
+ void* pSHLWAPI_22 ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static BOOL InitFunctionPtrs(void)
 {
   SHLWAPI_hshlwapi = GetModuleHandleA("shlwapi.dll");
 
-  /* SHCreateStreamOnFileEx was introduced in shlwapi v6.0 */
+
   if(!GetProcAddress(SHLWAPI_hshlwapi, "SHCreateStreamOnFileEx")){
       win_skip("Too old shlwapi version\n");
       return FALSE;

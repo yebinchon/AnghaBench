@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  utf8_char_t ;
 
-/* Variables and functions */
- char* malloc (int) ; 
- double parse_timestamp (char*) ; 
- int /*<<< orphan*/  printf (char*,double) ; 
- int sscanf (int /*<<< orphan*/  const*,char*,char*,char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+
+
+
+typedef int utf8_char_t ;
+
+
+ char* malloc (int) ;
+ double parse_timestamp (char*) ;
+ int printf (char*,double) ;
+ int sscanf (int const*,char*,char*,char*,char*) ;
+ int strlen (char*) ;
+ int strncpy (char*,char*,int) ;
 
 void parse_timestamps(const utf8_char_t* line, double* start_pts, double* end_pts, char** cue_settings)
 {
@@ -28,7 +28,7 @@ void parse_timestamps(const utf8_char_t* line, double* start_pts, double* end_pt
 
     int matches = sscanf(line, " %31s --> %31s%1023[^\n\r]", start_str, end_str, cue_str);
     *start_pts = -1;
-    *cue_settings = NULL;
+    *cue_settings = ((void*)0);
 
     printf("Matches: %d\n", matches);
 

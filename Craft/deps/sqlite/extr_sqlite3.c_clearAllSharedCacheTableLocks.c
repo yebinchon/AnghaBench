@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ eLock; int iTable; struct TYPE_9__* pNext; TYPE_1__* pBtree; } ;
 struct TYPE_8__ {int btsFlags; int nTransaction; TYPE_1__* pWriter; TYPE_3__* pLock; } ;
 struct TYPE_7__ {scalar_t__ inTrans; TYPE_3__ lock; scalar_t__ sharable; TYPE_2__* pBt; } ;
-typedef  TYPE_1__ Btree ;
-typedef  TYPE_2__ BtShared ;
-typedef  TYPE_3__ BtLock ;
+typedef TYPE_1__ Btree ;
+typedef TYPE_2__ BtShared ;
+typedef TYPE_3__ BtLock ;
 
-/* Variables and functions */
- int BTS_EXCLUSIVE ; 
- int BTS_PENDING ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3BtreeHoldsMutex (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_3__*) ; 
+
+ int BTS_EXCLUSIVE ;
+ int BTS_PENDING ;
+ int assert (int) ;
+ int sqlite3BtreeHoldsMutex (TYPE_1__*) ;
+ int sqlite3_free (TYPE_3__*) ;
 
 __attribute__((used)) static void clearAllSharedCacheTableLocks(Btree *p){
   BtShared *pBt = p->pBt;
@@ -55,15 +55,6 @@ __attribute__((used)) static void clearAllSharedCacheTableLocks(Btree *p){
     pBt->pWriter = 0;
     pBt->btsFlags &= ~(BTS_EXCLUSIVE|BTS_PENDING);
   }else if( pBt->nTransaction==2 ){
-    /* This function is called when Btree p is concluding its 
-    ** transaction. If there currently exists a writer, and p is not
-    ** that writer, then the number of locks held by connections other
-    ** than the writer must be about to drop to zero. In this case
-    ** set the BTS_PENDING flag to 0.
-    **
-    ** If there is not currently a writer, then BTS_PENDING must
-    ** be zero already. So this next line is harmless in that case.
-    */
     pBt->btsFlags &= ~BTS_PENDING;
   }
 }

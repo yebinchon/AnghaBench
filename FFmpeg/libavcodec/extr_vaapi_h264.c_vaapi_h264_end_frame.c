@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VAAPIDecodePicture ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int VAAPIDecodePicture ;
 struct TYPE_11__ {TYPE_3__* priv_data; } ;
-struct TYPE_10__ {TYPE_1__* avctx; int /*<<< orphan*/ * slice_ctx; TYPE_2__* cur_pic_ptr; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * hwaccel_picture_private; } ;
-struct TYPE_8__ {int /*<<< orphan*/  height; } ;
-typedef  int /*<<< orphan*/  H264SliceContext ;
-typedef  TYPE_3__ H264Context ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_10__ {TYPE_1__* avctx; int * slice_ctx; TYPE_2__* cur_pic_ptr; } ;
+struct TYPE_9__ {int * hwaccel_picture_private; } ;
+struct TYPE_8__ {int height; } ;
+typedef int H264SliceContext ;
+typedef TYPE_3__ H264Context ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_h264_draw_horiz_band (TYPE_3__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_vaapi_decode_issue (TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ int ff_h264_draw_horiz_band (TYPE_3__ const*,int *,int ,int ) ;
+ int ff_vaapi_decode_issue (TYPE_4__*,int *) ;
 
 __attribute__((used)) static int vaapi_h264_end_frame(AVCodecContext *avctx)
 {

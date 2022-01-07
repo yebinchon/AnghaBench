@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int minBytesPerChar; } ;
-typedef  TYPE_1__ ENCODING ;
+typedef TYPE_1__ ENCODING ;
 
-/* Variables and functions */
- int ASCII_0 ; 
- int ASCII_9 ; 
- int ASCII_A ; 
- int ASCII_APOS ; 
- int ASCII_EQUALS ; 
- int ASCII_MINUS ; 
- int ASCII_PERIOD ; 
- int ASCII_QUOT ; 
- int ASCII_UNDERSCORE ; 
- int ASCII_Z ; 
- int ASCII_a ; 
- int ASCII_z ; 
- scalar_t__ isSpace (int) ; 
- int toAscii (TYPE_1__ const*,char const*,char const*) ; 
+
+ int ASCII_0 ;
+ int ASCII_9 ;
+ int ASCII_A ;
+ int ASCII_APOS ;
+ int ASCII_EQUALS ;
+ int ASCII_MINUS ;
+ int ASCII_PERIOD ;
+ int ASCII_QUOT ;
+ int ASCII_UNDERSCORE ;
+ int ASCII_Z ;
+ int ASCII_a ;
+ int ASCII_z ;
+ scalar_t__ isSpace (int) ;
+ int toAscii (TYPE_1__ const*,char const*,char const*) ;
 
 __attribute__((used)) static int
 parsePseudoAttribute(const ENCODING *enc,
@@ -42,7 +42,7 @@ parsePseudoAttribute(const ENCODING *enc,
   int c;
   char open;
   if (ptr == end) {
-    *namePtr = NULL;
+    *namePtr = ((void*)0);
     return 1;
   }
   if (!isSpace(toAscii(enc, ptr, end))) {
@@ -53,7 +53,7 @@ parsePseudoAttribute(const ENCODING *enc,
     ptr += enc->minBytesPerChar;
   } while (isSpace(toAscii(enc, ptr, end)));
   if (ptr == end) {
-    *namePtr = NULL;
+    *namePtr = ((void*)0);
     return 1;
   }
   *namePtr = ptr;

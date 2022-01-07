@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BlackTable ; 
- int /*<<< orphan*/  EOLH ; 
- int /*<<< orphan*/  EOLV ; 
- int /*<<< orphan*/  Ext ; 
- int /*<<< orphan*/  FillTable (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Horiz ; 
- int /*<<< orphan*/  MainTable ; 
- int /*<<< orphan*/  MakeUp ; 
- int /*<<< orphan*/  MakeUpB ; 
- int /*<<< orphan*/  MakeUpW ; 
- int /*<<< orphan*/  Pass ; 
- int /*<<< orphan*/  S_EOL ; 
- int /*<<< orphan*/  S_Ext ; 
- int /*<<< orphan*/  S_Horiz ; 
- int /*<<< orphan*/  S_MakeUp ; 
- int /*<<< orphan*/  S_MakeUpB ; 
- int /*<<< orphan*/  S_MakeUpW ; 
- int /*<<< orphan*/  S_Pass ; 
- int /*<<< orphan*/  S_TermB ; 
- int /*<<< orphan*/  S_TermW ; 
- int /*<<< orphan*/  S_V0 ; 
- int /*<<< orphan*/  S_VL ; 
- int /*<<< orphan*/  S_VR ; 
- int /*<<< orphan*/  TermB ; 
- int /*<<< orphan*/  TermW ; 
- int /*<<< orphan*/  V0 ; 
- int /*<<< orphan*/  VL ; 
- int /*<<< orphan*/  VR ; 
- int /*<<< orphan*/  WhiteTable ; 
- int /*<<< orphan*/  WriteTable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char*) ; 
- char* const_class ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  packoutput ; 
- char* postbrace ; 
- char* prebrace ; 
- int /*<<< orphan*/  stderr ; 
- char* storage_class ; 
+
+
+
+typedef int FILE ;
+
+
+ int BlackTable ;
+ int EOLH ;
+ int EOLV ;
+ int Ext ;
+ int FillTable (int ,int,int ,int ) ;
+ int Horiz ;
+ int MainTable ;
+ int MakeUp ;
+ int MakeUpB ;
+ int MakeUpW ;
+ int Pass ;
+ int S_EOL ;
+ int S_Ext ;
+ int S_Horiz ;
+ int S_MakeUp ;
+ int S_MakeUpB ;
+ int S_MakeUpW ;
+ int S_Pass ;
+ int S_TermB ;
+ int S_TermW ;
+ int S_V0 ;
+ int S_VL ;
+ int S_VR ;
+ int TermB ;
+ int TermW ;
+ int V0 ;
+ int VL ;
+ int VR ;
+ int WhiteTable ;
+ int WriteTable (int *,int ,int,char*) ;
+ char* const_class ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ int getopt (int,char**,char*) ;
+ int packoutput ;
+ char* postbrace ;
+ char* prebrace ;
+ int stderr ;
+ char* storage_class ;
 
 int
 main(int argc, char* argv[])
@@ -61,38 +61,38 @@ main(int argc, char* argv[])
     char* outputfile;
     int c;
 
-#if !HAVE_DECL_OPTARG
+
     extern int optind;
     extern char* optarg;
-#endif
+
 
     while ((c = getopt(argc, argv, "c:s:bp")) != -1)
-	switch (c) {
-	case 'c':
-	    const_class = optarg;
-	    break;
-	case 's':
-	    storage_class = optarg;
-	    break;
-	case 'p':
-	    packoutput = 0;
-	    break;
-	case 'b':
-	    prebrace = "{";
-	    postbrace = "}";
-	    break;
-	case '?':
-	    fprintf(stderr,
-		"usage: %s [-c const] [-s storage] [-p] [-b] file\n",
-		argv[0]);
-	    return (-1);
-	}
+ switch (c) {
+ case 'c':
+     const_class = optarg;
+     break;
+ case 's':
+     storage_class = optarg;
+     break;
+ case 'p':
+     packoutput = 0;
+     break;
+ case 'b':
+     prebrace = "{";
+     postbrace = "}";
+     break;
+ case '?':
+     fprintf(stderr,
+  "usage: %s [-c const] [-s storage] [-p] [-b] file\n",
+  argv[0]);
+     return (-1);
+ }
     outputfile = optind < argc ? argv[optind] : "g3states.h";
     fd = fopen(outputfile, "w");
-    if (fd == NULL) {
-	fprintf(stderr, "%s: %s: Cannot create output file.\n",
-	    argv[0], outputfile);
-	return (-2);
+    if (fd == ((void*)0)) {
+ fprintf(stderr, "%s: %s: Cannot create output file.\n",
+     argv[0], outputfile);
+ return (-2);
     }
     FillTable(MainTable, 7, Pass, S_Pass);
     FillTable(MainTable, 7, Horiz, S_Horiz);

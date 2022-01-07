@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOG_INFO ; 
- int /*<<< orphan*/  ESP_LOG_VERBOSE ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_event_loop_create_default () ; 
- int /*<<< orphan*/  esp_get_free_heap_size () ; 
- int /*<<< orphan*/  esp_get_idf_version () ; 
- int /*<<< orphan*/  esp_log_level_set (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_netif_init () ; 
- int /*<<< orphan*/  example_connect () ; 
- int /*<<< orphan*/  mqtt_app_start () ; 
- int /*<<< orphan*/  nvs_flash_init () ; 
+ int ESP_ERROR_CHECK (int ) ;
+ int ESP_LOGI (int ,char*,...) ;
+ int ESP_LOG_INFO ;
+ int ESP_LOG_VERBOSE ;
+ int TAG ;
+ int esp_event_loop_create_default () ;
+ int esp_get_free_heap_size () ;
+ int esp_get_idf_version () ;
+ int esp_log_level_set (char*,int ) ;
+ int esp_netif_init () ;
+ int example_connect () ;
+ int mqtt_app_start () ;
+ int nvs_flash_init () ;
 
 void app_main(void)
 {
@@ -44,10 +36,10 @@ void app_main(void)
     esp_netif_init();
     ESP_ERROR_CHECK(esp_event_loop_create_default());
 
-    /* This helper function configures Wi-Fi or Ethernet, as selected in menuconfig.
-     * Read "Establishing Wi-Fi or Ethernet Connection" section in
-     * examples/protocols/README.md for more information about this function.
-     */
+
+
+
+
     ESP_ERROR_CHECK(example_connect());
 
     mqtt_app_start();

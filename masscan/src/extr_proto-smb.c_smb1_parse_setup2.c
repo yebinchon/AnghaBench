@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint16_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint16_t ;
 struct TYPE_7__ {unsigned int byte_state; size_t byte_count; size_t byte_offset; int flags2; unsigned char unicode_char; } ;
 struct TYPE_8__ {TYPE_3__ smb1; } ;
 struct TYPE_5__ {size_t BlobOffset; size_t BlobLength; } ;
 struct TYPE_6__ {TYPE_1__ setup; } ;
-struct SMBSTUFF {TYPE_4__ hdr; TYPE_2__ parms; int /*<<< orphan*/  spnego; } ;
+struct SMBSTUFF {TYPE_4__ hdr; TYPE_2__ parms; int spnego; } ;
 struct BannerOutput {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTO_LEN ; 
- int /*<<< orphan*/  PROTO_SMB ; 
- int /*<<< orphan*/  banout_append (struct BannerOutput*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  banout_append_char (struct BannerOutput*,int /*<<< orphan*/ ,unsigned char const) ; 
- int /*<<< orphan*/  banout_append_unicode (struct BannerOutput*,int /*<<< orphan*/ ,unsigned char const) ; 
- int /*<<< orphan*/  spnego_decode (int /*<<< orphan*/ *,unsigned char const*,size_t,struct BannerOutput*) ; 
- int /*<<< orphan*/  spnego_decode_init (int /*<<< orphan*/ *,size_t) ; 
+
+ int AUTO_LEN ;
+ int PROTO_SMB ;
+ int banout_append (struct BannerOutput*,int ,char*,int ) ;
+ int banout_append_char (struct BannerOutput*,int ,unsigned char const) ;
+ int banout_append_unicode (struct BannerOutput*,int ,unsigned char const) ;
+ int spnego_decode (int *,unsigned char const*,size_t,struct BannerOutput*) ;
+ int spnego_decode_init (int *,size_t) ;
 
 __attribute__((used)) static size_t
 smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, size_t max, struct BannerOutput *banout)
@@ -47,7 +47,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
         D_DOMAINA1,
         D_DOMAINA2,
         D_ENDA,
-        
+
         D_OSU1,
         D_OSU2,
         D_OSU3,
@@ -60,15 +60,15 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
         D_DOMAIN2,
         D_DOMAIN3,
         D_DOMAIN4,
-        
+
         D_UNKNOWN,
     };
-    
+
     if (max > offset + (smb->hdr.smb1.byte_count - smb->hdr.smb1.byte_offset))
         max = offset + (smb->hdr.smb1.byte_count - smb->hdr.smb1.byte_offset);
-    
+
     for (;offset<max; offset++) {
-        
+
         switch (state) {
             case D_BLOB:
                 if (smb->parms.setup.BlobOffset == 0) {
@@ -79,7 +79,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                 if (new_max > offset + smb->parms.setup.BlobLength - smb->parms.setup.BlobOffset)
                     new_max = offset + smb->parms.setup.BlobLength - smb->parms.setup.BlobOffset;
                 spnego_decode(&smb->spnego, px+offset, new_max-offset, banout);
-                
+
                 smb->parms.setup.BlobOffset += (uint16_t)(new_max-offset);
                 offset = new_max;
                 if (smb->parms.setup.BlobLength - smb->parms.setup.BlobOffset == 0) {
@@ -89,9 +89,9 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
             }
                 break;
             case D_PADDING:
-                /* If the blog length is odd, then there is no padding. Otherwise,
-                 * there is one byte of padding */
-                //if (smb->parms.setup.BlobLength & 1)
+
+
+
                     offset--;
                 state = D_PADDING2;
                 break;
@@ -118,7 +118,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                 else
                     banout_append_char(banout, PROTO_SMB, px[offset]);
                 break;
-                
+
             case D_VERSIONA1:
                 if (px[offset] == 0)
                     state = D_DOMAINA1;
@@ -149,7 +149,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                 else
                     banout_append_char(banout, PROTO_SMB, px[offset]);
                 break;
-                
+
             case D_OSU1:
             case D_OSU3:
             case D_VERSION1:
@@ -159,7 +159,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                 smb->hdr.smb1.unicode_char = px[offset];
                 state++;
                 break;
-                
+
             case D_OSU2:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
                 if (smb->hdr.smb1.unicode_char == 0)
@@ -170,7 +170,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                     state = D_OSU3;
                 }
                 break;
-                
+
             case D_OSU4:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
                 if (smb->hdr.smb1.unicode_char == 0)
@@ -180,8 +180,8 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                     state--;
                 }
                 break;
-                
-                
+
+
             case D_VERSION2:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
                 if (smb->hdr.smb1.unicode_char == 0)
@@ -192,7 +192,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                     state = D_VERSION3;
                 }
                 break;
-                
+
             case D_VERSION4:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
                 if (smb->hdr.smb1.unicode_char == 0)
@@ -202,7 +202,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                     state--;
                 }
                 break;
-                
+
             case D_DOMAIN2:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
                 if (smb->hdr.smb1.unicode_char == 0)
@@ -213,7 +213,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                     state = D_DOMAIN3;
                 }
                 break;
-                
+
             case D_DOMAIN4:
                 smb->hdr.smb1.unicode_char |= px[offset]<<8;
                 if (smb->hdr.smb1.unicode_char == 0)
@@ -227,7 +227,7 @@ smb1_parse_setup2(struct SMBSTUFF *smb, const unsigned char *px, size_t offset, 
                 break;
         }
     }
-    
+
     smb->hdr.smb1.byte_state = (unsigned short)state;
     smb->hdr.smb1.byte_offset += (unsigned short)(offset - original_offset);
     return offset - original_offset;

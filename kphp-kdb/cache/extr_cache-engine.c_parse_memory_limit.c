@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,int,...) ; 
- int /*<<< orphan*/  optarg ; 
- int sscanf (int /*<<< orphan*/ ,char*,long long*,char*) ; 
+ int exit (int) ;
+ int kprintf (char*,int,...) ;
+ int optarg ;
+ int sscanf (int ,char*,long long*,char*) ;
 
 long long parse_memory_limit (int option, const char *limit, long long min_res, long long max_res) {
   long long x;
@@ -26,10 +18,10 @@ long long parse_memory_limit (int option, const char *limit, long long min_res, 
   }
   switch (c | 0x20) {
     case ' ': break;
-    case 'k':  x <<= 10; break;
-    case 'm':  x <<= 20; break;
-    case 'g':  x <<= 30; break;
-    case 't':  x <<= 40; break;
+    case 'k': x <<= 10; break;
+    case 'm': x <<= 20; break;
+    case 'g': x <<= 30; break;
+    case 't': x <<= 40; break;
     default: kprintf ("Parsing limit fail. Unknown suffix '%c'.\n", c); exit (1);
   }
 

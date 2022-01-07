@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* aKWCode ; 
- scalar_t__* aKWHash ; 
- int* aKWLen ; 
- scalar_t__* aKWNext ; 
- size_t* aKWOffset ; 
- int charMap (char const) ; 
- int /*<<< orphan*/  testcase (int) ; 
- char const toupper (char const) ; 
- char* zKWText ; 
+ int* aKWCode ;
+ scalar_t__* aKWHash ;
+ int* aKWLen ;
+ scalar_t__* aKWNext ;
+ size_t* aKWOffset ;
+ int charMap (char const) ;
+ int testcase (int) ;
+ char const toupper (char const) ;
+ char* zKWText ;
 
 __attribute__((used)) static int keywordCode(const char *z, int n, int *pType){
   int i, j;
@@ -31,153 +23,153 @@ __attribute__((used)) static int keywordCode(const char *z, int n, int *pType){
       if( aKWLen[i]!=n ) continue;
       j = 0;
       zKW = &zKWText[aKWOffset[i]];
-#ifdef SQLITE_ASCII
-      while( j<n && (z[j]&~0x20)==zKW[j] ){ j++; }
-#endif
-#ifdef SQLITE_EBCDIC
-      while( j<n && toupper(z[j])==zKW[j] ){ j++; }
-#endif
+
+
+
+
+
+
       if( j<n ) continue;
-      testcase( i==0 ); /* REINDEX */
-      testcase( i==1 ); /* INDEXED */
-      testcase( i==2 ); /* INDEX */
-      testcase( i==3 ); /* DESC */
-      testcase( i==4 ); /* ESCAPE */
-      testcase( i==5 ); /* EACH */
-      testcase( i==6 ); /* CHECK */
-      testcase( i==7 ); /* KEY */
-      testcase( i==8 ); /* BEFORE */
-      testcase( i==9 ); /* FOREIGN */
-      testcase( i==10 ); /* FOR */
-      testcase( i==11 ); /* IGNORE */
-      testcase( i==12 ); /* REGEXP */
-      testcase( i==13 ); /* EXPLAIN */
-      testcase( i==14 ); /* INSTEAD */
-      testcase( i==15 ); /* ADD */
-      testcase( i==16 ); /* DATABASE */
-      testcase( i==17 ); /* AS */
-      testcase( i==18 ); /* SELECT */
-      testcase( i==19 ); /* TABLE */
-      testcase( i==20 ); /* LEFT */
-      testcase( i==21 ); /* THEN */
-      testcase( i==22 ); /* END */
-      testcase( i==23 ); /* DEFERRABLE */
-      testcase( i==24 ); /* ELSE */
-      testcase( i==25 ); /* EXCLUDE */
-      testcase( i==26 ); /* DELETE */
-      testcase( i==27 ); /* TEMPORARY */
-      testcase( i==28 ); /* TEMP */
-      testcase( i==29 ); /* OR */
-      testcase( i==30 ); /* CONSTRAINT */
-      testcase( i==31 ); /* INTERSECT */
-      testcase( i==32 ); /* TIES */
-      testcase( i==33 ); /* SAVEPOINT */
-      testcase( i==34 ); /* INTO */
-      testcase( i==35 ); /* OFFSET */
-      testcase( i==36 ); /* OF */
-      testcase( i==37 ); /* SET */
-      testcase( i==38 ); /* TRANSACTION */
-      testcase( i==39 ); /* ACTION */
-      testcase( i==40 ); /* ON */
-      testcase( i==41 ); /* NATURAL */
-      testcase( i==42 ); /* ALTER */
-      testcase( i==43 ); /* RAISE */
-      testcase( i==44 ); /* EXCEPT */
-      testcase( i==45 ); /* TRIGGER */
-      testcase( i==46 ); /* REFERENCES */
-      testcase( i==47 ); /* UNIQUE */
-      testcase( i==48 ); /* QUERY */
-      testcase( i==49 ); /* WITHOUT */
-      testcase( i==50 ); /* WITH */
-      testcase( i==51 ); /* OUTER */
-      testcase( i==52 ); /* RELEASE */
-      testcase( i==53 ); /* EXCLUSIVE */
-      testcase( i==54 ); /* EXISTS */
-      testcase( i==55 ); /* ATTACH */
-      testcase( i==56 ); /* HAVING */
-      testcase( i==57 ); /* GLOB */
-      testcase( i==58 ); /* BEGIN */
-      testcase( i==59 ); /* INNER */
-      testcase( i==60 ); /* RANGE */
-      testcase( i==61 ); /* BETWEEN */
-      testcase( i==62 ); /* NOTHING */
-      testcase( i==63 ); /* GROUPS */
-      testcase( i==64 ); /* GROUP */
-      testcase( i==65 ); /* CASCADE */
-      testcase( i==66 ); /* ASC */
-      testcase( i==67 ); /* DETACH */
-      testcase( i==68 ); /* CASE */
-      testcase( i==69 ); /* COLLATE */
-      testcase( i==70 ); /* CREATE */
-      testcase( i==71 ); /* CURRENT_DATE */
-      testcase( i==72 ); /* IMMEDIATE */
-      testcase( i==73 ); /* JOIN */
-      testcase( i==74 ); /* INSERT */
-      testcase( i==75 ); /* LIKE */
-      testcase( i==76 ); /* MATCH */
-      testcase( i==77 ); /* PLAN */
-      testcase( i==78 ); /* ANALYZE */
-      testcase( i==79 ); /* PRAGMA */
-      testcase( i==80 ); /* ABORT */
-      testcase( i==81 ); /* UPDATE */
-      testcase( i==82 ); /* VALUES */
-      testcase( i==83 ); /* VIRTUAL */
-      testcase( i==84 ); /* LIMIT */
-      testcase( i==85 ); /* WHEN */
-      testcase( i==86 ); /* NOTNULL */
-      testcase( i==87 ); /* NOT */
-      testcase( i==88 ); /* NO */
-      testcase( i==89 ); /* NULL */
-      testcase( i==90 ); /* WHERE */
-      testcase( i==91 ); /* RECURSIVE */
-      testcase( i==92 ); /* AFTER */
-      testcase( i==93 ); /* RENAME */
-      testcase( i==94 ); /* AND */
-      testcase( i==95 ); /* DEFAULT */
-      testcase( i==96 ); /* AUTOINCREMENT */
-      testcase( i==97 ); /* TO */
-      testcase( i==98 ); /* IN */
-      testcase( i==99 ); /* CAST */
-      testcase( i==100 ); /* COLUMN */
-      testcase( i==101 ); /* COMMIT */
-      testcase( i==102 ); /* CONFLICT */
-      testcase( i==103 ); /* CROSS */
-      testcase( i==104 ); /* CURRENT_TIMESTAMP */
-      testcase( i==105 ); /* CURRENT_TIME */
-      testcase( i==106 ); /* CURRENT */
-      testcase( i==107 ); /* PARTITION */
-      testcase( i==108 ); /* DEFERRED */
-      testcase( i==109 ); /* DISTINCT */
-      testcase( i==110 ); /* IS */
-      testcase( i==111 ); /* DROP */
-      testcase( i==112 ); /* PRECEDING */
-      testcase( i==113 ); /* FAIL */
-      testcase( i==114 ); /* FILTER */
-      testcase( i==115 ); /* REPLACE */
-      testcase( i==116 ); /* FOLLOWING */
-      testcase( i==117 ); /* FROM */
-      testcase( i==118 ); /* FULL */
-      testcase( i==119 ); /* IF */
-      testcase( i==120 ); /* ISNULL */
-      testcase( i==121 ); /* ORDER */
-      testcase( i==122 ); /* RESTRICT */
-      testcase( i==123 ); /* OTHERS */
-      testcase( i==124 ); /* OVER */
-      testcase( i==125 ); /* RIGHT */
-      testcase( i==126 ); /* ROLLBACK */
-      testcase( i==127 ); /* ROWS */
-      testcase( i==128 ); /* ROW */
-      testcase( i==129 ); /* UNBOUNDED */
-      testcase( i==130 ); /* UNION */
-      testcase( i==131 ); /* USING */
-      testcase( i==132 ); /* VACUUM */
-      testcase( i==133 ); /* VIEW */
-      testcase( i==134 ); /* WINDOW */
-      testcase( i==135 ); /* DO */
-      testcase( i==136 ); /* BY */
-      testcase( i==137 ); /* INITIALLY */
-      testcase( i==138 ); /* ALL */
-      testcase( i==139 ); /* PRIMARY */
+      testcase( i==0 );
+      testcase( i==1 );
+      testcase( i==2 );
+      testcase( i==3 );
+      testcase( i==4 );
+      testcase( i==5 );
+      testcase( i==6 );
+      testcase( i==7 );
+      testcase( i==8 );
+      testcase( i==9 );
+      testcase( i==10 );
+      testcase( i==11 );
+      testcase( i==12 );
+      testcase( i==13 );
+      testcase( i==14 );
+      testcase( i==15 );
+      testcase( i==16 );
+      testcase( i==17 );
+      testcase( i==18 );
+      testcase( i==19 );
+      testcase( i==20 );
+      testcase( i==21 );
+      testcase( i==22 );
+      testcase( i==23 );
+      testcase( i==24 );
+      testcase( i==25 );
+      testcase( i==26 );
+      testcase( i==27 );
+      testcase( i==28 );
+      testcase( i==29 );
+      testcase( i==30 );
+      testcase( i==31 );
+      testcase( i==32 );
+      testcase( i==33 );
+      testcase( i==34 );
+      testcase( i==35 );
+      testcase( i==36 );
+      testcase( i==37 );
+      testcase( i==38 );
+      testcase( i==39 );
+      testcase( i==40 );
+      testcase( i==41 );
+      testcase( i==42 );
+      testcase( i==43 );
+      testcase( i==44 );
+      testcase( i==45 );
+      testcase( i==46 );
+      testcase( i==47 );
+      testcase( i==48 );
+      testcase( i==49 );
+      testcase( i==50 );
+      testcase( i==51 );
+      testcase( i==52 );
+      testcase( i==53 );
+      testcase( i==54 );
+      testcase( i==55 );
+      testcase( i==56 );
+      testcase( i==57 );
+      testcase( i==58 );
+      testcase( i==59 );
+      testcase( i==60 );
+      testcase( i==61 );
+      testcase( i==62 );
+      testcase( i==63 );
+      testcase( i==64 );
+      testcase( i==65 );
+      testcase( i==66 );
+      testcase( i==67 );
+      testcase( i==68 );
+      testcase( i==69 );
+      testcase( i==70 );
+      testcase( i==71 );
+      testcase( i==72 );
+      testcase( i==73 );
+      testcase( i==74 );
+      testcase( i==75 );
+      testcase( i==76 );
+      testcase( i==77 );
+      testcase( i==78 );
+      testcase( i==79 );
+      testcase( i==80 );
+      testcase( i==81 );
+      testcase( i==82 );
+      testcase( i==83 );
+      testcase( i==84 );
+      testcase( i==85 );
+      testcase( i==86 );
+      testcase( i==87 );
+      testcase( i==88 );
+      testcase( i==89 );
+      testcase( i==90 );
+      testcase( i==91 );
+      testcase( i==92 );
+      testcase( i==93 );
+      testcase( i==94 );
+      testcase( i==95 );
+      testcase( i==96 );
+      testcase( i==97 );
+      testcase( i==98 );
+      testcase( i==99 );
+      testcase( i==100 );
+      testcase( i==101 );
+      testcase( i==102 );
+      testcase( i==103 );
+      testcase( i==104 );
+      testcase( i==105 );
+      testcase( i==106 );
+      testcase( i==107 );
+      testcase( i==108 );
+      testcase( i==109 );
+      testcase( i==110 );
+      testcase( i==111 );
+      testcase( i==112 );
+      testcase( i==113 );
+      testcase( i==114 );
+      testcase( i==115 );
+      testcase( i==116 );
+      testcase( i==117 );
+      testcase( i==118 );
+      testcase( i==119 );
+      testcase( i==120 );
+      testcase( i==121 );
+      testcase( i==122 );
+      testcase( i==123 );
+      testcase( i==124 );
+      testcase( i==125 );
+      testcase( i==126 );
+      testcase( i==127 );
+      testcase( i==128 );
+      testcase( i==129 );
+      testcase( i==130 );
+      testcase( i==131 );
+      testcase( i==132 );
+      testcase( i==133 );
+      testcase( i==134 );
+      testcase( i==135 );
+      testcase( i==136 );
+      testcase( i==137 );
+      testcase( i==138 );
+      testcase( i==139 );
       *pType = aKWCode[i];
       break;
     }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ apr_uint32_t ;
 
-/* Variables and functions */
- scalar_t__ APR_INT32_MAX ; 
- int /*<<< orphan*/  SVN_ERR_REVNUM_PARSE_FAILURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn__strtoul (char const*,char const**) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ apr_uint32_t ;
+
+
+ scalar_t__ APR_INT32_MAX ;
+ int SVN_ERR_REVNUM_PARSE_FAILURE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn__strtoul (char const*,char const**) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
 
 svn_error_t *
 svn_revnum_parse(svn_revnum_t *rev,
@@ -36,25 +36,25 @@ svn_revnum_parse(svn_revnum_t *rev,
 
   if (str == end)
     return svn_error_createf
-              (SVN_ERR_REVNUM_PARSE_FAILURE, NULL,
+              (SVN_ERR_REVNUM_PARSE_FAILURE, ((void*)0),
                *str == '-' ? _("Negative revision number found parsing '%s'")
                            : _("Invalid revision number found parsing '%s'"),
                str);
 
-  /* a revision number with more than 9 digits is suspicious.
-     Have a closer look at those. */
+
+
   if (str + 10 <= end)
     {
-      /* we support 32 bit revision numbers only. check for overflows */
+
       if (str + 10 < end)
         return svn_error_createf
-                  (SVN_ERR_REVNUM_PARSE_FAILURE, NULL,
+                  (SVN_ERR_REVNUM_PARSE_FAILURE, ((void*)0),
                   _("Revision number longer than 10 digits '%s'"), str);
 
-      /* we support 32 bit revision numbers only. check for overflows */
+
       if (*str > '2' || (apr_uint32_t)result > APR_INT32_MAX)
         return svn_error_createf
-                  (SVN_ERR_REVNUM_PARSE_FAILURE, NULL,
+                  (SVN_ERR_REVNUM_PARSE_FAILURE, ((void*)0),
                   _("Revision number too large '%s'"), str);
     }
 

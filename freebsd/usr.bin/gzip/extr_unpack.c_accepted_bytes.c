@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
 
-/* Variables and functions */
+
+
+
+typedef scalar_t__ off_t ;
+
+
 
 __attribute__((used)) static void
 accepted_bytes(off_t *bytes_in, off_t newbytes)
 {
 
-	if (bytes_in != NULL)
-		(*bytes_in) += newbytes;
+ if (bytes_in != ((void*)0))
+  (*bytes_in) += newbytes;
 }

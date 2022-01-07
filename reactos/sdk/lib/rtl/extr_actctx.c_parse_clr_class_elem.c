@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int xmlstr_t ;
+typedef int xmlbuf_t ;
 struct TYPE_5__ {scalar_t__ num; } ;
-struct TYPE_6__ {TYPE_1__ progids; void* progid; void* version; int /*<<< orphan*/  model; void* tlbid; void* clsid; void* name; } ;
+struct TYPE_6__ {TYPE_1__ progids; void* progid; void* version; int model; void* tlbid; void* clsid; void* name; } ;
 struct TYPE_7__ {TYPE_2__ comclass; } ;
 struct entity {TYPE_3__ u; } ;
-struct assembly {int /*<<< orphan*/  entities; } ;
+struct assembly {int entities; } ;
 struct actctx_loader {TYPE_4__* actctx; } ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-struct TYPE_8__ {int /*<<< orphan*/  sections; } ;
-typedef  scalar_t__ BOOL ;
+typedef int UNICODE_STRING ;
+struct TYPE_8__ {int sections; } ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTIVATION_CONTEXT_SECTION_COM_SERVER_REDIRECTION ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *,...) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  PROGIDREDIRECT_SECTION ; 
- int /*<<< orphan*/  SERVERREDIRECT_SECTION ; 
- scalar_t__ TRUE ; 
- struct entity* add_entity (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clrClassW ; 
- int /*<<< orphan*/  clsidW ; 
- int /*<<< orphan*/  g_nameW ; 
- scalar_t__ next_xml_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- scalar_t__ next_xml_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_com_class_progid (int /*<<< orphan*/ *,struct entity*) ; 
- int /*<<< orphan*/  parse_com_class_threadingmodel (int /*<<< orphan*/ *) ; 
- scalar_t__ parse_end_element (int /*<<< orphan*/ *) ; 
- scalar_t__ parse_unknown_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  progidW ; 
- int /*<<< orphan*/  runtimeVersionW ; 
- int /*<<< orphan*/  threadingmodelW ; 
- int /*<<< orphan*/  tlbidW ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlstr_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ xmlstr_cmp_end (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* xmlstrdupW (int /*<<< orphan*/ *) ; 
+
+ int ACTIVATION_CONTEXT_SECTION_COM_SERVER_REDIRECTION ;
+ int DPRINT1 (char*,int *,...) ;
+ scalar_t__ FALSE ;
+ int PROGIDREDIRECT_SECTION ;
+ int SERVERREDIRECT_SECTION ;
+ scalar_t__ TRUE ;
+ struct entity* add_entity (int *,int ) ;
+ int clrClassW ;
+ int clsidW ;
+ int g_nameW ;
+ scalar_t__ next_xml_attr (int *,int *,int *,scalar_t__*,scalar_t__*) ;
+ scalar_t__ next_xml_elem (int *,int *) ;
+ scalar_t__ parse_com_class_progid (int *,struct entity*) ;
+ int parse_com_class_threadingmodel (int *) ;
+ scalar_t__ parse_end_element (int *) ;
+ scalar_t__ parse_unknown_elem (int *,int *) ;
+ int progidW ;
+ int runtimeVersionW ;
+ int threadingmodelW ;
+ int tlbidW ;
+ int xmlstr2unicode (int *) ;
+ scalar_t__ xmlstr_cmp (int *,int ) ;
+ scalar_t__ xmlstr_cmp_end (int *,int ) ;
+ void* xmlstrdupW (int *) ;
 
 __attribute__((used)) static BOOL parse_clr_class_elem(xmlbuf_t* xmlbuf, struct assembly* assembly, struct actctx_loader *acl)
 {
-    xmlstr_t    attr_name, attr_value, elem;
-    BOOL        end = FALSE, error, ret = TRUE;
-    struct entity*      entity;
+    xmlstr_t attr_name, attr_value, elem;
+    BOOL end = FALSE, error, ret = TRUE;
+    struct entity* entity;
 
     entity = add_entity(&assembly->entities, ACTIVATION_CONTEXT_SECTION_COM_SERVER_REDIRECTION);
     if (!entity) return FALSE;

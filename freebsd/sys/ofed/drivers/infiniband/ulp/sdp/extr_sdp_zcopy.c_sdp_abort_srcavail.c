@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tx_srcavail_state {int /*<<< orphan*/  umem; int /*<<< orphan*/  fmr; } ;
+
+
+
+
+struct tx_srcavail_state {int umem; int fmr; } ;
 struct socket {int dummy; } ;
-struct sdp_sock {int /*<<< orphan*/  tx_sa_lock; struct tx_srcavail_state* tx_sa; int /*<<< orphan*/  srcavail_cancel_work; } ;
+struct sdp_sock {int tx_sa_lock; struct tx_srcavail_state* tx_sa; int srcavail_cancel_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cancel_delayed_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flush_scheduled_work () ; 
- int /*<<< orphan*/  sdp_free_fmr (struct socket*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct sdp_sock* sdp_sk (struct socket*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int cancel_delayed_work (int *) ;
+ int flush_scheduled_work () ;
+ int sdp_free_fmr (struct socket*,int *,int *) ;
+ struct sdp_sock* sdp_sk (struct socket*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void sdp_abort_srcavail(struct socket *sk)
 {
-	struct sdp_sock *ssk = sdp_sk(sk);
-	struct tx_srcavail_state *tx_sa = ssk->tx_sa;
-	unsigned long flags;
+ struct sdp_sock *ssk = sdp_sk(sk);
+ struct tx_srcavail_state *tx_sa = ssk->tx_sa;
+ unsigned long flags;
 
-	if (!tx_sa)
-		return;
+ if (!tx_sa)
+  return;
 
-	cancel_delayed_work(&ssk->srcavail_cancel_work);
-	flush_scheduled_work();
+ cancel_delayed_work(&ssk->srcavail_cancel_work);
+ flush_scheduled_work();
 
-	spin_lock_irqsave(&ssk->tx_sa_lock, flags);
+ spin_lock_irqsave(&ssk->tx_sa_lock, flags);
 
-	sdp_free_fmr(sk, &tx_sa->fmr, &tx_sa->umem);
+ sdp_free_fmr(sk, &tx_sa->fmr, &tx_sa->umem);
 
-	ssk->tx_sa = NULL;
+ ssk->tx_sa = ((void*)0);
 
-	spin_unlock_irqrestore(&ssk->tx_sa_lock, flags);
+ spin_unlock_irqrestore(&ssk->tx_sa_lock, flags);
 }

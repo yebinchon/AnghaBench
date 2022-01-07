@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ frame_type; scalar_t__ frame_size; } ;
 struct TYPE_7__ {scalar_t__ data; scalar_t__ size; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_1__ AVPacket ;
-typedef  int /*<<< orphan*/  AVBSFContext ;
-typedef  TYPE_2__ AC3HeaderInfo ;
+typedef int GetBitContext ;
+typedef TYPE_1__ AVPacket ;
+typedef int AVBSFContext ;
+typedef TYPE_2__ AC3HeaderInfo ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ EAC3_FRAME_TYPE_AC3_CONVERT ; 
- scalar_t__ EAC3_FRAME_TYPE_DEPENDENT ; 
- scalar_t__ EAC3_FRAME_TYPE_INDEPENDENT ; 
- scalar_t__ FFMIN (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_1__*) ; 
- int ff_ac3_parse_header (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int ff_bsf_get_packet_ref (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ EAC3_FRAME_TYPE_AC3_CONVERT ;
+ scalar_t__ EAC3_FRAME_TYPE_DEPENDENT ;
+ scalar_t__ EAC3_FRAME_TYPE_INDEPENDENT ;
+ scalar_t__ FFMIN (scalar_t__,scalar_t__) ;
+ int av_packet_unref (TYPE_1__*) ;
+ int ff_ac3_parse_header (int *,TYPE_2__*) ;
+ int ff_bsf_get_packet_ref (int *,TYPE_1__*) ;
+ int init_get_bits8 (int *,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int eac3_core_filter(AVBSFContext *ctx, AVPacket *pkt)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_netlink_message ;
+
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int sd_netlink_message ;
 struct TYPE_12__ {scalar_t__ kind; scalar_t__ mode; scalar_t__ flags; struct TYPE_12__* ifname; } ;
-typedef  TYPE_1__ NetDev ;
-typedef  TYPE_1__ Link ;
-typedef  TYPE_1__ IPVlan ;
+typedef TYPE_1__ NetDev ;
+typedef TYPE_1__ Link ;
+typedef TYPE_1__ IPVlan ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IFLA_IPVLAN_FLAGS ; 
- int /*<<< orphan*/  IFLA_IPVLAN_MODE ; 
- TYPE_1__* IPVLAN (TYPE_1__*) ; 
- TYPE_1__* IPVTAP (TYPE_1__*) ; 
- scalar_t__ NETDEV_KIND_IPVLAN ; 
- scalar_t__ _NETDEV_IPVLAN_FLAGS_INVALID ; 
- scalar_t__ _NETDEV_IPVLAN_MODE_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int log_netdev_error_errno (TYPE_1__*,int,char*) ; 
- int sd_netlink_message_append_u16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int IFLA_IPVLAN_FLAGS ;
+ int IFLA_IPVLAN_MODE ;
+ TYPE_1__* IPVLAN (TYPE_1__*) ;
+ TYPE_1__* IPVTAP (TYPE_1__*) ;
+ scalar_t__ NETDEV_KIND_IPVLAN ;
+ scalar_t__ _NETDEV_IPVLAN_FLAGS_INVALID ;
+ scalar_t__ _NETDEV_IPVLAN_MODE_INVALID ;
+ int assert (TYPE_1__*) ;
+ int log_netdev_error_errno (TYPE_1__*,int,char*) ;
+ int sd_netlink_message_append_u16 (int *,int ,scalar_t__) ;
 
 __attribute__((used)) static int netdev_ipvlan_fill_message_create(NetDev *netdev, Link *link, sd_netlink_message *req) {
         IPVlan *m;

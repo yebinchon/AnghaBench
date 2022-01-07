@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BringWindowToTop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  SW_SHOW ; 
- int /*<<< orphan*/  SetFocus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TabCtrl_GetCurSel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hPage1 ; 
- int /*<<< orphan*/  hPage2 ; 
- int /*<<< orphan*/  hPage3 ; 
- int /*<<< orphan*/  hTabWnd ; 
+ int BringWindowToTop (int ) ;
+ int SW_HIDE ;
+ int SW_SHOW ;
+ int SetFocus (int ) ;
+ int ShowWindow (int ,int ) ;
+ int TabCtrl_GetCurSel (int ) ;
+ int hPage1 ;
+ int hPage2 ;
+ int hPage3 ;
+ int hTabWnd ;
 
 void OnTabWndSelChange(void)
 {

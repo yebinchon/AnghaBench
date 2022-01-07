@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_9__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_9__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_3__* pFiles; } ;
-typedef  TYPE_2__ quotaGroup ;
+typedef TYPE_2__ quotaGroup ;
 struct TYPE_12__ {char* zFilename; int deleteOnClose; scalar_t__ nRef; struct TYPE_12__* pNext; } ;
-typedef  TYPE_3__ quotaFile ;
+typedef TYPE_3__ quotaFile ;
 struct TYPE_10__ {scalar_t__ mxPathname; } ;
 struct TYPE_14__ {TYPE_4__* pOrigVfs; TYPE_1__ sThisVfs; } ;
-struct TYPE_13__ {int (* xFullPathname ) (TYPE_4__*,char const*,scalar_t__,char*) ;int (* xDelete ) (TYPE_4__*,char*,int /*<<< orphan*/ ) ;} ;
+struct TYPE_13__ {int (* xFullPathname ) (TYPE_4__*,char const*,scalar_t__,char*) ;int (* xDelete ) (TYPE_4__*,char*,int ) ;} ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- TYPE_9__ gQuota ; 
- int /*<<< orphan*/  quotaEnter () ; 
- int /*<<< orphan*/  quotaGroupDeref (TYPE_2__*) ; 
- TYPE_2__* quotaGroupFind (char*) ; 
- int /*<<< orphan*/  quotaLeave () ; 
- int /*<<< orphan*/  quotaRemoveFile (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_malloc (scalar_t__) ; 
- size_t strlen (char*) ; 
- int strncmp (char*,char*,size_t) ; 
- int stub1 (TYPE_4__*,char const*,scalar_t__,char*) ; 
- int stub2 (TYPE_4__*,char*,int /*<<< orphan*/ ) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ TYPE_9__ gQuota ;
+ int quotaEnter () ;
+ int quotaGroupDeref (TYPE_2__*) ;
+ TYPE_2__* quotaGroupFind (char*) ;
+ int quotaLeave () ;
+ int quotaRemoveFile (TYPE_3__*) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_malloc (scalar_t__) ;
+ size_t strlen (char*) ;
+ int strncmp (char*,char*,size_t) ;
+ int stub1 (TYPE_4__*,char const*,scalar_t__,char*) ;
+ int stub2 (TYPE_4__*,char*,int ) ;
 
 int sqlite3_quota_remove(const char *zFilename){
-  char *zFull;            /* Full pathname for zFilename */
-  size_t nFull;           /* Number of bytes in zFilename */
-  int rc;                 /* Result code */
-  quotaGroup *pGroup;     /* Group containing zFilename */
-  quotaFile *pFile;       /* A file in the group */
-  quotaFile *pNextFile;   /* next file in the group */
-  int diff;               /* Difference between filenames */
-  char c;                 /* First character past end of pattern */
+  char *zFull;
+  size_t nFull;
+  int rc;
+  quotaGroup *pGroup;
+  quotaFile *pFile;
+  quotaFile *pNextFile;
+  int diff;
+  char c;
 
   zFull = (char*)sqlite3_malloc(gQuota.sThisVfs.mxPathname + 1);
   if( zFull==0 ) return SQLITE_NOMEM;
@@ -58,9 +58,9 @@ int sqlite3_quota_remove(const char *zFilename){
     return rc;
   }
 
-  /* Figure out the length of the full pathname.  If the name ends with
-  ** / (or \ on windows) then remove the trailing /.
-  */
+
+
+
   nFull = strlen(zFull);
   if( nFull>0 && (zFull[nFull-1]=='/' || zFull[nFull-1]=='\\') ){
     nFull--;

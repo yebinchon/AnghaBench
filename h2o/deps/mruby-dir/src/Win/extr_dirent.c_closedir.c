@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int handle; struct TYPE_4__* name; } ;
-typedef  TYPE_1__ DIR ;
+typedef TYPE_1__ DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EBADF ; 
- int _findclose (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+ int EBADF ;
+ int _findclose (int) ;
+ int errno ;
+ int free (TYPE_1__*) ;
 
 int closedir(DIR *dir)
 {
@@ -35,7 +35,7 @@ int closedir(DIR *dir)
         free(dir);
     }
 
-    if(result == -1) /* map all errors to EBADF */
+    if(result == -1)
     {
         errno = EBADF;
     }

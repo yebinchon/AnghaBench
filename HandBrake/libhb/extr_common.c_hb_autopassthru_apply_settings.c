@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  list_audio; int /*<<< orphan*/  mux; int /*<<< orphan*/  acodec_fallback; int /*<<< orphan*/  acodec_copy_mask; } ;
-typedef  TYPE_4__ hb_job_t ;
-struct TYPE_18__ {int codec; int /*<<< orphan*/  name; } ;
-typedef  TYPE_5__ hb_encoder_t ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int list_audio; int mux; int acodec_fallback; int acodec_copy_mask; } ;
+typedef TYPE_4__ hb_job_t ;
+struct TYPE_18__ {int codec; int name; } ;
+typedef TYPE_5__ hb_encoder_t ;
 struct TYPE_15__ {int codec; int track; scalar_t__ mixdown; scalar_t__ samplerate; scalar_t__ bitrate; scalar_t__ quality; scalar_t__ compression_level; } ;
-struct TYPE_14__ {scalar_t__ samplerate; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  codec; } ;
+struct TYPE_14__ {scalar_t__ samplerate; int channel_layout; int codec; } ;
 struct TYPE_16__ {TYPE_2__ out; TYPE_1__ in; } ;
 struct TYPE_19__ {TYPE_3__ config; } ;
-typedef  TYPE_6__ hb_audio_t ;
+typedef TYPE_6__ hb_audio_t ;
 
-/* Variables and functions */
- int HB_ACODEC_AUTO_PASS ; 
- int HB_ACODEC_INVALID ; 
- int HB_ACODEC_NONE ; 
- int HB_ACODEC_PASS_FLAG ; 
- scalar_t__ HB_INVALID_AUDIO_QUALITY ; 
- scalar_t__ hb_audio_bitrate_get_best (int,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ hb_audio_bitrate_get_default (int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  hb_audio_close (TYPE_6__**) ; 
- scalar_t__ hb_audio_compression_get_best (int,scalar_t__) ; 
- scalar_t__ hb_audio_compression_get_default (int) ; 
- TYPE_5__* hb_audio_encoder_get_next (TYPE_5__ const*) ; 
- scalar_t__ hb_audio_quality_get_best (int,scalar_t__) ; 
- scalar_t__ hb_audio_quality_get_default (int) ; 
- scalar_t__ hb_audio_samplerate_find_closest (scalar_t__,int) ; 
- int hb_autopassthru_get_encoder (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_autopassthru_print_settings (TYPE_4__*) ; 
- int hb_list_count (int /*<<< orphan*/ ) ; 
- TYPE_6__* hb_list_item (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hb_list_rem (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  hb_log (char*,int,...) ; 
- scalar_t__ hb_mixdown_get_best (int,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ hb_mixdown_get_default (int,int /*<<< orphan*/ ) ; 
+
+ int HB_ACODEC_AUTO_PASS ;
+ int HB_ACODEC_INVALID ;
+ int HB_ACODEC_NONE ;
+ int HB_ACODEC_PASS_FLAG ;
+ scalar_t__ HB_INVALID_AUDIO_QUALITY ;
+ scalar_t__ hb_audio_bitrate_get_best (int,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ hb_audio_bitrate_get_default (int,scalar_t__,scalar_t__) ;
+ int hb_audio_close (TYPE_6__**) ;
+ scalar_t__ hb_audio_compression_get_best (int,scalar_t__) ;
+ scalar_t__ hb_audio_compression_get_default (int) ;
+ TYPE_5__* hb_audio_encoder_get_next (TYPE_5__ const*) ;
+ scalar_t__ hb_audio_quality_get_best (int,scalar_t__) ;
+ scalar_t__ hb_audio_quality_get_default (int) ;
+ scalar_t__ hb_audio_samplerate_find_closest (scalar_t__,int) ;
+ int hb_autopassthru_get_encoder (int ,int ,int ,int ) ;
+ int hb_autopassthru_print_settings (TYPE_4__*) ;
+ int hb_list_count (int ) ;
+ TYPE_6__* hb_list_item (int ,int) ;
+ int hb_list_rem (int ,TYPE_6__*) ;
+ int hb_log (char*,int,...) ;
+ scalar_t__ hb_mixdown_get_best (int,int ,scalar_t__) ;
+ scalar_t__ hb_mixdown_get_default (int,int ) ;
 
 void hb_autopassthru_apply_settings(hb_job_t *job)
 {
@@ -102,7 +102,7 @@ void hb_autopassthru_apply_settings(hb_job_t *job)
                             == HB_INVALID_AUDIO_QUALITY;
                 if (audio->config.out.bitrate > 0)
                 {
-                    // Use best bitrate
+
                     audio->config.out.bitrate =
                         hb_audio_bitrate_get_best(audio->config.out.codec,
                                                   audio->config.out.bitrate,
@@ -112,7 +112,7 @@ void hb_autopassthru_apply_settings(hb_job_t *job)
                 else if (quality_not_allowed ||
                          audio->config.out.quality != HB_INVALID_AUDIO_QUALITY)
                 {
-                    // Use default bitrate
+
                     audio->config.out.bitrate =
                         hb_audio_bitrate_get_default(audio->config.out.codec,
                                                  audio->config.out.samplerate,
@@ -120,7 +120,7 @@ void hb_autopassthru_apply_settings(hb_job_t *job)
                 }
                 else
                 {
-                    // Use best quality
+
                     audio->config.out.quality =
                         hb_audio_quality_get_best(audio->config.out.codec,
                                                   audio->config.out.quality);
@@ -140,8 +140,8 @@ void hb_autopassthru_apply_settings(hb_job_t *job)
             }
             else
             {
-                const hb_encoder_t *audio_encoder = NULL;
-                while ((audio_encoder = hb_audio_encoder_get_next(audio_encoder)) != NULL)
+                const hb_encoder_t *audio_encoder = ((void*)0);
+                while ((audio_encoder = hb_audio_encoder_get_next(audio_encoder)) != ((void*)0))
                 {
                     if (audio_encoder->codec == audio->config.out.codec)
                     {
@@ -153,9 +153,9 @@ void hb_autopassthru_apply_settings(hb_job_t *job)
                 }
             }
         }
-        /* Adjust output track number, in case we removed one.
-         * Output tracks sadly still need to be in sequential order.
-         * Note: out.track starts at 1, i starts at 0 */
+
+
+
         audio->config.out.track = ++i;
     }
 }

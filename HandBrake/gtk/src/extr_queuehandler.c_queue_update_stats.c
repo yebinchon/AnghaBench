@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int time_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
 struct stat {double st_size; } ;
-struct TYPE_3__ {int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  GtkLabel ;
-typedef  int /*<<< orphan*/  GhbValue ;
+struct TYPE_3__ {int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int GtkLabel ;
+typedef int GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
-#define  GHB_QUEUE_CANCELED 132 
-#define  GHB_QUEUE_DONE 131 
-#define  GHB_QUEUE_FAIL 130 
-#define  GHB_QUEUE_PENDING 129 
-#define  GHB_QUEUE_RUNNING 128 
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * GTK_LABEL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GTK_WIDGET (int /*<<< orphan*/ *) ; 
- char const* _ (char*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- scalar_t__ g_stat (char const*,struct stat*) ; 
- char* g_strdup_printf (char const*,double,...) ; 
- int /*<<< orphan*/  ghb_break_duration (int,int*,int*,int*) ; 
- int /*<<< orphan*/ * ghb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- char* ghb_dict_get_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  gtk_label_set_text (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  gtk_widget_set_visible (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct tm* localtime (int*) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
+
+ int FALSE ;
+
+
+
+
+
+ int GHB_WIDGET (int ,char*) ;
+ int * GTK_LABEL (int ) ;
+ int GTK_WIDGET (int *) ;
+ char const* _ (char*) ;
+ int g_free (char*) ;
+ scalar_t__ g_stat (char const*,struct stat*) ;
+ char* g_strdup_printf (char const*,double,...) ;
+ int ghb_break_duration (int,int*,int*,int*) ;
+ int * ghb_dict_get (int *,char*) ;
+ int ghb_dict_get_int (int *,char*) ;
+ char* ghb_dict_get_string (int *,char*) ;
+ int gtk_label_set_text (int *,char const*) ;
+ int gtk_widget_set_visible (int ,int ) ;
+ struct tm* localtime (int*) ;
+ int strftime (char*,int,char*,struct tm*) ;
 
 void
 queue_update_stats(GhbValue * queueDict, signal_user_data_t *ud)
@@ -49,7 +49,7 @@ queue_update_stats(GhbValue * queueDict, signal_user_data_t *ud)
     GtkLabel * label;
 
     uiDict = ghb_dict_get(queueDict, "uiSettings");
-    if (uiDict == NULL) // should never happen
+    if (uiDict == ((void*)0))
     {
         return;
     }
@@ -62,7 +62,7 @@ queue_update_stats(GhbValue * queueDict, signal_user_data_t *ud)
     const char * result = "";
     int status = ghb_dict_get_int(uiDict, "job_status");
 
-    if (status == GHB_QUEUE_PENDING)
+    if (status == 129)
     {
         label = GTK_LABEL(GHB_WIDGET(ud->builder, "queue_stats_start_time"));
         gtk_label_set_text(label, "");
@@ -81,44 +81,44 @@ queue_update_stats(GhbValue * queueDict, signal_user_data_t *ud)
 
     switch (status)
     {
-        case GHB_QUEUE_RUNNING:
-            // This job is running.
-            // ghb_queue_update_live_stats() will update stats
+        case 128:
+
+
             return;
 
-        case GHB_QUEUE_DONE:
+        case 131:
             result = _("Completed");
             break;
 
-        case GHB_QUEUE_CANCELED:
+        case 132:
             result = _("Canceled");
             break;
 
-        case GHB_QUEUE_FAIL:
+        case 130:
             result = _("Failed");
             break;
 
-        case GHB_QUEUE_PENDING:
+        case 129:
         default:
             result = _("Pending");
             break;
     }
 
-    struct tm  * tm;
-    char         date[40] = "";
-    char       * str;
-    time_t       start, finish, paused, duration;
+    struct tm * tm;
+    char date[40] = "";
+    char * str;
+    time_t start, finish, paused, duration;
 
-    start  = ghb_dict_get_int(uiDict, "job_start_time");
+    start = ghb_dict_get_int(uiDict, "job_start_time");
     finish = ghb_dict_get_int(uiDict, "job_finish_time");
     paused = ghb_dict_get_int(uiDict, "job_pause_time_ms") / 1000;
 
-    tm     = localtime( &start );
+    tm = localtime( &start );
     strftime(date, 40, "%c", tm);
     label = GTK_LABEL(GHB_WIDGET(ud->builder, "queue_stats_start_time"));
     gtk_label_set_text(label, date);
 
-    tm  = localtime( &finish );
+    tm = localtime( &finish );
     strftime(date, 40, "%c", tm);
     label = GTK_LABEL(GHB_WIDGET(ud->builder, "queue_stats_finish_time"));
     gtk_label_set_text(label, date);
@@ -174,8 +174,8 @@ queue_update_stats(GhbValue * queueDict, signal_user_data_t *ud)
     gtk_label_set_text(label, str);
     g_free(str);
 
-    const char  * path;
-    struct stat   stbuf;
+    const char * path;
+    struct stat stbuf;
 
     path = ghb_dict_get_string(uiDict, "destination");
     if (g_stat(path, &stbuf) == 0)

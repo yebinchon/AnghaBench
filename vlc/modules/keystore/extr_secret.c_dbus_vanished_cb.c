@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct secrets_watch_data {int b_running; int /*<<< orphan*/  sem; } ;
-typedef  struct secrets_watch_data* gpointer ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GDBusConnection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_sem_post (int /*<<< orphan*/ *) ; 
+
+
+
+struct secrets_watch_data {int b_running; int sem; } ;
+typedef struct secrets_watch_data* gpointer ;
+typedef int gchar ;
+typedef int GDBusConnection ;
+
+
+ int vlc_sem_post (int *) ;
 
 __attribute__((used)) static void
 dbus_vanished_cb(GDBusConnection *connection, const gchar *name,
@@ -24,6 +24,6 @@ dbus_vanished_cb(GDBusConnection *connection, const gchar *name,
 {
     (void) connection; (void) name;
     struct secrets_watch_data *p_watch_data = user_data;
-    p_watch_data->b_running = false;
+    p_watch_data->b_running = 0;
     vlc_sem_post(&p_watch_data->sem);
 }

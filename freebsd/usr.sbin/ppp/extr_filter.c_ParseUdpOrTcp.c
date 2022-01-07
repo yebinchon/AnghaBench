@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct protoent {scalar_t__ p_proto; int /*<<< orphan*/  p_name; } ;
+
+
+
+
+struct protoent {scalar_t__ p_proto; int p_name; } ;
 struct filterent {scalar_t__ f_srcop; scalar_t__ f_dstop; int f_estab; int f_syn; int f_finrst; scalar_t__ f_srcport; scalar_t__ f_dstport; } ;
 
-/* Variables and functions */
- scalar_t__ IPPROTO_TCP ; 
- int /*<<< orphan*/  LogWARN ; 
- scalar_t__ OP_NONE ; 
- void* ParsePort (char const* const,int /*<<< orphan*/ ) ; 
- void* filter_Nam2Op (char const* const) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  strcmp (char const* const,char*) ; 
+
+ scalar_t__ IPPROTO_TCP ;
+ int LogWARN ;
+ scalar_t__ OP_NONE ;
+ void* ParsePort (char const* const,int ) ;
+ void* filter_Nam2Op (char const* const) ;
+ int log_Printf (int ,char*,...) ;
+ int strcmp (char const* const,char*) ;
 
 __attribute__((used)) static int
 ParseUdpOrTcp(int argc, char const *const *argv, const struct protoent *pe,
@@ -35,7 +35,7 @@ ParseUdpOrTcp(int argc, char const *const *argv, const struct protoent *pe,
       log_Printf(LogWARN, "ParseUdpOrTcp: bad operator\n");
       return 0;
     }
-    if (pe == NULL)
+    if (pe == ((void*)0))
       return 0;
     tgt->f_srcport = ParsePort(argv[2], pe->p_name);
     if (tgt->f_srcport == 0)
@@ -50,7 +50,7 @@ ParseUdpOrTcp(int argc, char const *const *argv, const struct protoent *pe,
       log_Printf(LogWARN, "ParseUdpOrTcp: bad operator\n");
       return 0;
     }
-    if (pe == NULL)
+    if (pe == ((void*)0))
       return 0;
     tgt->f_dstport = ParsePort(argv[2], pe->p_name);
     if (tgt->f_dstport == 0)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wpabuf {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  os_strlen (char const*) ; 
- int /*<<< orphan*/  wpabuf_put_data (struct wpabuf*,char const*,int /*<<< orphan*/ ) ; 
+
+ int os_strlen (char const*) ;
+ int wpabuf_put_data (struct wpabuf*,char const*,int ) ;
 
 __attribute__((used)) static inline void wpabuf_put_str(struct wpabuf *dst, const char *str)
 {
-	wpabuf_put_data(dst, str, os_strlen(str));
+ wpabuf_put_data(dst, str, os_strlen(str));
 }

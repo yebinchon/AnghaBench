@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_4__ {int nDb; char** azDb; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ memstat_cursor ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  memstatClearSchema (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- char** sqlite3_realloc64 (char**,int) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_4__ {int nDb; char** azDb; int db; } ;
+typedef TYPE_1__ memstat_cursor ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int memstatClearSchema (TYPE_1__*) ;
+ int sqlite3_column_text (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ char* sqlite3_mprintf (char*,int ) ;
+ int sqlite3_prepare_v2 (int ,char*,int,int **,int ) ;
+ char** sqlite3_realloc64 (char**,int) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static int memstatFindSchemas(memstat_cursor *pCur){
   sqlite3_stmt *pStmt = 0;

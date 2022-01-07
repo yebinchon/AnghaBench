@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * osi_mutex_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * xSemaphoreCreateMutex () ; 
+
+
+
+typedef int * osi_mutex_t ;
+
+
+ int * xSemaphoreCreateMutex () ;
 
 int osi_mutex_new(osi_mutex_t *mutex)
 {
@@ -21,7 +21,7 @@ int osi_mutex_new(osi_mutex_t *mutex)
 
     *mutex = xSemaphoreCreateMutex();
 
-    if (*mutex != NULL) {
+    if (*mutex != ((void*)0)) {
         xReturn = 0;
     }
 

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  smp_lock; } ;
-typedef  TYPE_1__ gdth_ha_str ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int smp_lock; } ;
+typedef TYPE_1__ gdth_ha_str ;
 struct TYPE_9__ {scalar_t__ event_source; } ;
-typedef  TYPE_2__ gdth_evt_str ;
+typedef TYPE_2__ gdth_evt_str ;
 
-/* Variables and functions */
- int MAX_EVENTS ; 
- int /*<<< orphan*/  TRACE2 (char*) ; 
- TYPE_2__* ebuffer ; 
- int elastidx ; 
- int eoldidx ; 
- int /*<<< orphan*/  memcpy (TYPE_2__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int MAX_EVENTS ;
+ int TRACE2 (char*) ;
+ TYPE_2__* ebuffer ;
+ int elastidx ;
+ int eoldidx ;
+ int memcpy (TYPE_2__*,TYPE_2__*,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int gdth_read_event(gdth_ha_str *ha, int handle, gdth_evt_str *estr)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ge25519_p3 ;
-typedef  int /*<<< orphan*/  ge25519_p1p1 ;
-typedef  int /*<<< orphan*/  ge25519_cached ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ge25519_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p1p1_to_p3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p3_to_cached (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ristretto255_frombytes (int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  ristretto255_p3_tobytes (unsigned char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ge25519_p3 ;
+typedef int ge25519_p1p1 ;
+typedef int ge25519_cached ;
+
+
+ int ge25519_add (int *,int *,int *) ;
+ int ge25519_p1p1_to_p3 (int *,int *) ;
+ int ge25519_p3_to_cached (int *,int *) ;
+ scalar_t__ ristretto255_frombytes (int *,unsigned char const*) ;
+ int ristretto255_p3_tobytes (unsigned char*,int *) ;
 
 int
 crypto_core_ristretto255_add(unsigned char *r,
                              const unsigned char *p, const unsigned char *q)
 {
-    ge25519_p3     p_p3, q_p3, r_p3;
-    ge25519_p1p1   r_p1p1;
+    ge25519_p3 p_p3, q_p3, r_p3;
+    ge25519_p1p1 r_p1p1;
     ge25519_cached q_cached;
 
     if (ristretto255_frombytes(&p_p3, p) != 0 ||

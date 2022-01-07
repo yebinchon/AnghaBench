@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ ULONG ;
-typedef  int LONGLONG ;
-typedef  int /*<<< orphan*/  LARGE_MCB ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FsRtlInitializeLargeMcb (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FsRtlLookupLargeMcbEntry (int /*<<< orphan*/ *,long long,int*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FsRtlLookupLastLargeMcbEntryAndIndex (int /*<<< orphan*/ *,int*,int*,scalar_t__*) ; 
- int /*<<< orphan*/  FsRtlUninitializeLargeMcb (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  ok_bool_false (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ok_eq_longlong (int,int) ; 
- int /*<<< orphan*/  ok_eq_ulong (scalar_t__,scalar_t__) ; 
+
+
+
+typedef int VOID ;
+typedef scalar_t__ ULONG ;
+typedef int LONGLONG ;
+typedef int LARGE_MCB ;
+typedef int BOOLEAN ;
+
+
+ int FsRtlInitializeLargeMcb (int *,int ) ;
+ int FsRtlLookupLargeMcbEntry (int *,long long,int*,int*,int *,int *,int *) ;
+ int FsRtlLookupLastLargeMcbEntryAndIndex (int *,int*,int*,scalar_t__*) ;
+ int FsRtlUninitializeLargeMcb (int *) ;
+ int PagedPool ;
+ int ok_bool_false (int ,char*) ;
+ int ok_eq_longlong (int,int) ;
+ int ok_eq_ulong (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static VOID FsRtlLargeMcbTestsFastFat()
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static VOID FsRtlLargeMcbTestsFastFat()
 
     Lbn = -1;
     SectorCount = -1;
-    Result = FsRtlLookupLargeMcbEntry(&FirstMcb, 8388607LL, &Lbn, &SectorCount, NULL, NULL, NULL);
+    Result = FsRtlLookupLargeMcbEntry(&FirstMcb, 8388607LL, &Lbn, &SectorCount, ((void*)0), ((void*)0), ((void*)0));
     ok_bool_false(Result, "FsRtlLookupLargeMcbEntry returned");
     ok_eq_longlong(Lbn, -1);
     ok_eq_longlong(SectorCount, -1);

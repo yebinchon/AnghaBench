@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  test_ascii_is_valid () ; 
- int /*<<< orphan*/  test_ascii_is_valid_n () ; 
- int /*<<< orphan*/  test_utf16_to_utf8 () ; 
- int /*<<< orphan*/  test_utf8_console_width () ; 
- int /*<<< orphan*/  test_utf8_encoded_valid_unichar () ; 
- int /*<<< orphan*/  test_utf8_escape_invalid () ; 
- int /*<<< orphan*/  test_utf8_escape_non_printable () ; 
- int /*<<< orphan*/  test_utf8_escape_non_printable_full () ; 
- int /*<<< orphan*/  test_utf8_is_printable () ; 
- int /*<<< orphan*/  test_utf8_is_valid () ; 
- int /*<<< orphan*/  test_utf8_n_codepoints () ; 
- int /*<<< orphan*/  test_utf8_to_utf16 () ; 
+ int test_ascii_is_valid () ;
+ int test_ascii_is_valid_n () ;
+ int test_utf16_to_utf8 () ;
+ int test_utf8_console_width () ;
+ int test_utf8_encoded_valid_unichar () ;
+ int test_utf8_escape_invalid () ;
+ int test_utf8_escape_non_printable () ;
+ int test_utf8_escape_non_printable_full () ;
+ int test_utf8_is_printable () ;
+ int test_utf8_is_valid () ;
+ int test_utf8_n_codepoints () ;
+ int test_utf8_to_utf16 () ;
 
 int main(int argc, char *argv[]) {
         test_utf8_is_valid();

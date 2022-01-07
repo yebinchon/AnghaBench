@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int png_uint_32 ;
-typedef  TYPE_1__* png_structp ;
-typedef  int png_size_t ;
-typedef  int* png_bytep ;
-typedef  int png_byte ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef unsigned int png_uint_32 ;
+typedef TYPE_1__* png_structp ;
+typedef int png_size_t ;
+typedef int* png_bytep ;
+typedef int png_byte ;
 struct TYPE_5__ {int mode; scalar_t__ compression_type; int height; int width; int channels; int bit_depth; } ;
 
-/* Variables and functions */
- scalar_t__ PNG_COMPRESSION_TYPE_BASE ; 
- int PNG_HAVE_IDAT ; 
- int /*<<< orphan*/  PNG_IDAT ; 
- int /*<<< orphan*/  png_IDAT ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
- int /*<<< orphan*/  png_error (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  png_write_chunk (TYPE_1__*,int /*<<< orphan*/ ,int*,int) ; 
 
-void /* PRIVATE */
+ scalar_t__ PNG_COMPRESSION_TYPE_BASE ;
+ int PNG_HAVE_IDAT ;
+ int PNG_IDAT ;
+ int png_IDAT ;
+ int png_debug (int,char*) ;
+ int png_error (TYPE_1__*,char*) ;
+ int png_write_chunk (TYPE_1__*,int ,int*,int) ;
+
+void
 png_write_IDAT(png_structp png_ptr, png_bytep data, png_size_t length)
 {
-#ifdef PNG_USE_LOCAL_ARRAYS
-   PNG_IDAT;
-#endif
+
+
+
    png_debug(1, "in png_write_IDAT\n");
 
-   /* Optimize the CMF field in the zlib stream. */
-   /* This hack of the zlib stream is compliant to the stream specification. */
+
+
    if (!(png_ptr->mode & PNG_HAVE_IDAT) &&
        png_ptr->compression_type == PNG_COMPRESSION_TYPE_BASE)
    {
-      unsigned int z_cmf = data[0];  /* zlib compression method and flags */
+      unsigned int z_cmf = data[0];
       if ((z_cmf & 0x0f) == 8 && (z_cmf & 0xf0) <= 0x70)
       {
-         /* Avoid memory underflows and multiplication overflows. */
-         /* The conditions below are practically always satisfied;
-            however, they still must be checked. */
+
+
+
          if (length >= 2 &&
              png_ptr->height < 16384 && png_ptr->width < 16384)
          {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int GET_MODE_SIZE (int) ; 
- int /*<<< orphan*/  INTEGRAL_MODE_P (int) ; 
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  REPORT_DETAILS ; 
- int /*<<< orphan*/  TDF_SLIM ; 
- int TYPE_MODE (int /*<<< orphan*/ ) ; 
- int UNITS_PER_SIMD_WORD ; 
- int /*<<< orphan*/  VECTOR_MODE_P (int) ; 
- int /*<<< orphan*/  build_vector_type (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  print_generic_expr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vect_dump ; 
- scalar_t__ vect_print_dump_info (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int GET_MODE_SIZE (int) ;
+ int INTEGRAL_MODE_P (int) ;
+ int NULL_TREE ;
+ int REPORT_DETAILS ;
+ int TDF_SLIM ;
+ int TYPE_MODE (int ) ;
+ int UNITS_PER_SIMD_WORD ;
+ int VECTOR_MODE_P (int) ;
+ int build_vector_type (int ,int) ;
+ int fprintf (int ,char*,...) ;
+ int print_generic_expr (int ,int ,int ) ;
+ int vect_dump ;
+ scalar_t__ vect_print_dump_info (int ) ;
 
 tree
 get_vectype_for_scalar_type (tree scalar_type)
@@ -39,8 +39,8 @@ get_vectype_for_scalar_type (tree scalar_type)
   if (nbytes == 0 || nbytes >= UNITS_PER_SIMD_WORD)
     return NULL_TREE;
 
-  /* FORNOW: Only a single vector size per target (UNITS_PER_SIMD_WORD)
-     is expected.  */
+
+
   nunits = UNITS_PER_SIMD_WORD / nbytes;
 
   vectype = build_vector_type (scalar_type, nunits);

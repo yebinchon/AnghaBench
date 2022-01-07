@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  vlc_clock_t ;
+
+
+
+
+typedef int vlc_object_t ;
+typedef int vlc_clock_t ;
 struct input_decoder_callbacks {int dummy; } ;
-typedef  int /*<<< orphan*/  sout_instance_t ;
-typedef  int /*<<< orphan*/  input_resource_t ;
-typedef  int /*<<< orphan*/  es_format_t ;
-typedef  int /*<<< orphan*/  decoder_t ;
+typedef int sout_instance_t ;
+typedef int input_resource_t ;
+typedef int es_format_t ;
+typedef int decoder_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * decoder_New (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,struct input_decoder_callbacks const*,void*) ; 
+
+ int * decoder_New (int *,int *,int *,int *,int *,int,struct input_decoder_callbacks const*,void*) ;
 
 decoder_t *input_DecoderNew( vlc_object_t *parent, es_format_t *fmt,
                              vlc_clock_t *p_clock, input_resource_t *resource,

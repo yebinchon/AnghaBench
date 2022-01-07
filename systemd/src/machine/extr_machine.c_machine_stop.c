@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int stopping; int /*<<< orphan*/  manager; int /*<<< orphan*/  class; } ;
-typedef  TYPE_1__ Machine ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
- int /*<<< orphan*/  IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MACHINE_CONTAINER ; 
- int /*<<< orphan*/  MACHINE_VM ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  machine_save (TYPE_1__*) ; 
- int machine_stop_scope (TYPE_1__*) ; 
- int /*<<< orphan*/  manager_enqueue_nscd_cache_flush (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int stopping; int manager; int class; } ;
+typedef TYPE_1__ Machine ;
+
+
+ int EOPNOTSUPP ;
+ int IN_SET (int ,int ,int ) ;
+ int MACHINE_CONTAINER ;
+ int MACHINE_VM ;
+ int assert (TYPE_1__*) ;
+ int machine_save (TYPE_1__*) ;
+ int machine_stop_scope (TYPE_1__*) ;
+ int manager_enqueue_nscd_cache_flush (int ) ;
 
 int machine_stop(Machine *m) {
         int r;
@@ -33,7 +33,7 @@ int machine_stop(Machine *m) {
 
         r = machine_stop_scope(m);
 
-        m->stopping = true;
+        m->stopping = 1;
 
         machine_save(m);
         (void) manager_enqueue_nscd_cache_flush(m->manager);

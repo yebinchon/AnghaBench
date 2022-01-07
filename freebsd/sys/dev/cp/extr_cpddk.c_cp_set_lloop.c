@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int f; scalar_t__ y; int l53; int l26; TYPE_6__* d; int /*<<< orphan*/  l64; int /*<<< orphan*/  l38; } ;
-typedef  TYPE_1__ e ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int f; scalar_t__ y; int l53; int l26; TYPE_6__* d; int l64; int l38; } ;
+typedef TYPE_1__ e ;
 struct TYPE_11__ {int f; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cp_set_baud (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  i (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  l (TYPE_6__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  l106 (TYPE_1__*,int,unsigned char) ; 
- int /*<<< orphan*/  l226 (TYPE_1__*) ; 
- int /*<<< orphan*/  l227 (TYPE_1__*) ; 
- int /*<<< orphan*/  l68 (TYPE_1__*) ; 
+
+ int cp_set_baud (TYPE_1__*,scalar_t__) ;
+ int i (TYPE_1__*,int,int) ;
+ int l (TYPE_6__*,int ,int) ;
+ int l106 (TYPE_1__*,int,unsigned char) ;
+ int l226 (TYPE_1__*) ;
+ int l227 (TYPE_1__*) ;
+ int l68 (TYPE_1__*) ;
 
 void
 cp_set_lloop(e*a,int m){{if(!((a->f==1&&a->y==0)||a->f==6))goto l780;

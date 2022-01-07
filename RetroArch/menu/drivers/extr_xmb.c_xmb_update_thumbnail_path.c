@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  thumbnail_path_data; } ;
-typedef  TYPE_1__ xmb_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_THUMBNAIL_LEFT ; 
- int /*<<< orphan*/  MENU_THUMBNAIL_RIGHT ; 
- int /*<<< orphan*/  menu_thumbnail_get_core_name (int /*<<< orphan*/ ,char const**) ; 
- int /*<<< orphan*/  menu_thumbnail_is_enabled (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  menu_thumbnail_update_path (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ string_is_equal (char const*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int thumbnail_path_data; } ;
+typedef TYPE_1__ xmb_handle_t ;
+
+
+ int MENU_THUMBNAIL_LEFT ;
+ int MENU_THUMBNAIL_RIGHT ;
+ int menu_thumbnail_get_core_name (int ,char const**) ;
+ int menu_thumbnail_is_enabled (int ,int ) ;
+ int menu_thumbnail_update_path (int ,int ) ;
+ scalar_t__ string_is_equal (char const*,char*) ;
 
 __attribute__((used)) static void xmb_update_thumbnail_path(void *data, unsigned i, char pos)
 {
-   xmb_handle_t *xmb     = (xmb_handle_t*)data;
-   const char *core_name = NULL;
+   xmb_handle_t *xmb = (xmb_handle_t*)data;
+   const char *core_name = ((void*)0);
 
    if (!xmb)
       return;
 
-   /* imageviewer content requires special treatment... */
+
    menu_thumbnail_get_core_name(xmb->thumbnail_path_data, &core_name);
    if (string_is_equal(core_name, "imageviewer"))
    {

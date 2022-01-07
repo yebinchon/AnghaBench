@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vtscsi_softc {int /*<<< orphan*/  vtscsi_request_vq; int /*<<< orphan*/  vtscsi_event_vq; int /*<<< orphan*/  vtscsi_control_vq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  virtqueue_disable_intr (int /*<<< orphan*/ ) ; 
+
+
+
+struct vtscsi_softc {int vtscsi_request_vq; int vtscsi_event_vq; int vtscsi_control_vq; } ;
+
+
+ int virtqueue_disable_intr (int ) ;
 
 __attribute__((used)) static void
 vtscsi_disable_vqs_intr(struct vtscsi_softc *sc)
 {
 
-	virtqueue_disable_intr(sc->vtscsi_control_vq);
-	virtqueue_disable_intr(sc->vtscsi_event_vq);
-	virtqueue_disable_intr(sc->vtscsi_request_vq);
+ virtqueue_disable_intr(sc->vtscsi_control_vq);
+ virtqueue_disable_intr(sc->vtscsi_event_vq);
+ virtqueue_disable_intr(sc->vtscsi_request_vq);
 }

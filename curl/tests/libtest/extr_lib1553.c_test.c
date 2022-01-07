@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  curl_mimepart ;
-typedef  int /*<<< orphan*/  curl_mime ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int CURLM_OK ; 
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_MIMEPOST ; 
- int /*<<< orphan*/  CURLOPT_NOPROGRESS ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_USERPWD ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURLOPT_XFERINFOFUNCTION ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  CURL_ZERO_TERMINATED ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  TEST_HANG_TIMEOUT ; 
- int /*<<< orphan*/  abort_on_test_timeout () ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/ * curl_mime_addpart (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_mime_data (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curl_mime_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_mime_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_mime_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int curl_multi_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  start_test_timing () ; 
- long xferinfo ; 
+
+
+
+typedef int curl_mimepart ;
+typedef int curl_mime ;
+typedef int CURLM ;
+typedef int CURL ;
+
+
+ int CURLM_OK ;
+ int CURLOPT_HEADER ;
+ int CURLOPT_MIMEPOST ;
+ int CURLOPT_NOPROGRESS ;
+ int CURLOPT_URL ;
+ int CURLOPT_USERPWD ;
+ int CURLOPT_VERBOSE ;
+ int CURLOPT_XFERINFOFUNCTION ;
+ int CURL_GLOBAL_ALL ;
+ int CURL_ZERO_TERMINATED ;
+ int TEST_ERR_MAJOR_BAD ;
+ int TEST_HANG_TIMEOUT ;
+ int abort_on_test_timeout () ;
+ int curl_easy_cleanup (int *) ;
+ int curl_global_cleanup () ;
+ int * curl_mime_addpart (int *) ;
+ int curl_mime_data (int *,char*,int ) ;
+ int curl_mime_free (int *) ;
+ int * curl_mime_init (int *) ;
+ int curl_mime_name (int *,char*) ;
+ int curl_multi_cleanup (int *) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ int curl_multi_wait (int *,int *,int ,int ,int*) ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int global_init (int ) ;
+ int multi_add_handle (int *,int *) ;
+ int multi_init (int *) ;
+ int multi_perform (int *,int*) ;
+ int printf (char*,int) ;
+ int start_test_timing () ;
+ long xferinfo ;
 
 int test(char *URL)
 {
-  CURL *curls = NULL;
-  CURLM *multi = NULL;
+  CURL *curls = ((void*)0);
+  CURLM *multi = ((void*)0);
   int still_running;
   int i = 0;
   int res = 0;
-  curl_mimepart *field = NULL;
-  curl_mime *mime = NULL;
+  curl_mimepart *field = ((void*)0);
+  curl_mime *mime = ((void*)0);
   int counter = 1;
 
   start_test_timing();
@@ -89,7 +89,7 @@ int test(char *URL)
 
   while(still_running && counter--) {
     int num;
-    res = curl_multi_wait(multi, NULL, 0, TEST_HANG_TIMEOUT, &num);
+    res = curl_multi_wait(multi, ((void*)0), 0, TEST_HANG_TIMEOUT, &num);
     if(res != CURLM_OK) {
       printf("curl_multi_wait() returned %d\n", res);
       res = TEST_ERR_MAJOR_BAD;
@@ -114,5 +114,5 @@ test_cleanup:
   if(res)
     i = res;
 
-  return i; /* return the final return code */
+  return i;
 }

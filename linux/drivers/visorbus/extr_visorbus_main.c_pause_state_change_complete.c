@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct visor_device {int pausing; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  segment_state_standby ; 
- int /*<<< orphan*/  visorbus_device_changestate_response (struct visor_device*,int,int /*<<< orphan*/ ) ; 
+
+ int segment_state_standby ;
+ int visorbus_device_changestate_response (struct visor_device*,int,int ) ;
 
 __attribute__((used)) static void pause_state_change_complete(struct visor_device *dev, int status)
 {
-	if (!dev->pausing)
-		return;
+ if (!dev->pausing)
+  return;
 
-	dev->pausing = false;
-	visorbus_device_changestate_response(dev, status,
-					     segment_state_standby);
+ dev->pausing = 0;
+ visorbus_device_changestate_response(dev, status,
+          segment_state_standby);
 }

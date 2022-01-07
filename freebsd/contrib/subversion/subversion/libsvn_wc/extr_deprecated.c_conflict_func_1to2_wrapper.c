@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_conflict_result_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_description_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_description2_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct conflict_func_1to2_baton {int /*<<< orphan*/  inner_baton; int /*<<< orphan*/  (* inner_func ) (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_wc__cd2_to_cd (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_conflict_result_t ;
+typedef int svn_wc_conflict_description_t ;
+typedef int svn_wc_conflict_description2_t ;
+typedef int svn_error_t ;
+struct conflict_func_1to2_baton {int inner_baton; int (* inner_func ) (int **,int *,int ,int *) ;} ;
+typedef int apr_pool_t ;
+
+
+ int stub1 (int **,int *,int ,int *) ;
+ int * svn_error_trace (int ) ;
+ int * svn_wc__cd2_to_cd (int const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 conflict_func_1to2_wrapper(svn_wc_conflict_result_t **result,

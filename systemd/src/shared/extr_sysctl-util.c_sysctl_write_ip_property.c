@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- char const* IN_SET (int,int,int /*<<< orphan*/ ) ; 
- int WRITE_STRING_FILE_DISABLE_BUFFER ; 
- int WRITE_STRING_FILE_VERIFY_ON_FAILURE ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  log_debug (char*,char const*,char const*) ; 
- int /*<<< orphan*/  strempty (char const*) ; 
- char* strjoina (char*,char*,char*,int /*<<< orphan*/ ,char*,char const*) ; 
- int write_string_file (char const*,char const*,int) ; 
+ int AF_INET ;
+ int AF_INET6 ;
+ char const* IN_SET (int,int,int ) ;
+ int WRITE_STRING_FILE_DISABLE_BUFFER ;
+ int WRITE_STRING_FILE_VERIFY_ON_FAILURE ;
+ int assert (char const*) ;
+ int log_debug (char*,char const*,char const*) ;
+ int strempty (char const*) ;
+ char* strjoina (char*,char*,char*,int ,char*,char const*) ;
+ int write_string_file (char const*,char const*,int) ;
 
 int sysctl_write_ip_property(int af, const char *ifname, const char *property, const char *value) {
         const char *p;

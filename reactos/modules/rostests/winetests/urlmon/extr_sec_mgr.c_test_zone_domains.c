@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ is_ie_hardened () ; 
- int /*<<< orphan*/  pCreateUri ; 
- int /*<<< orphan*/  register_zone_domains () ; 
- int /*<<< orphan*/  run_child_process () ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  test_zone_domain_cache () ; 
- int /*<<< orphan*/  trace (char*) ; 
- int /*<<< orphan*/  unregister_zone_domains () ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ scalar_t__ is_ie_hardened () ;
+ int pCreateUri ;
+ int register_zone_domains () ;
+ int run_child_process () ;
+ int skip (char*) ;
+ int test_zone_domain_cache () ;
+ int trace (char*) ;
+ int unregister_zone_domains () ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_zone_domains(void)
 {

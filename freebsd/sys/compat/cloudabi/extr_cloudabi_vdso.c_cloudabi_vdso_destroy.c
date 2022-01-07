@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sysentvec {int /*<<< orphan*/  sv_shared_page_obj; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vm_object_deallocate (int /*<<< orphan*/ ) ; 
+
+
+
+struct sysentvec {int sv_shared_page_obj; } ;
+
+
+ int vm_object_deallocate (int ) ;
 
 void
 cloudabi_vdso_destroy(struct sysentvec *sv)
 {
 
-	vm_object_deallocate(sv->sv_shared_page_obj);
+ vm_object_deallocate(sv->sv_shared_page_obj);
 }

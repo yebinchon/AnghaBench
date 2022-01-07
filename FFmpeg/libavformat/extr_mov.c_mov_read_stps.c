@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int nb_streams; TYPE_3__** streams; } ;
 struct TYPE_12__ {scalar_t__ eof_reached; } ;
 struct TYPE_11__ {TYPE_1__* priv_data; } ;
 struct TYPE_10__ {TYPE_8__* fc; } ;
 struct TYPE_9__ {unsigned int stps_count; void** stps_data; } ;
-typedef  TYPE_1__ MOVStreamContext ;
-typedef  TYPE_2__ MOVContext ;
-typedef  int /*<<< orphan*/  MOVAtom ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVIOContext ;
+typedef TYPE_1__ MOVStreamContext ;
+typedef TYPE_2__ MOVContext ;
+typedef int MOVAtom ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (void**) ; 
- int /*<<< orphan*/  av_log (TYPE_8__*,int /*<<< orphan*/ ,char*) ; 
- void** av_malloc_array (unsigned int,int) ; 
- void* avio_rb32 (TYPE_4__*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int av_free (void**) ;
+ int av_log (TYPE_8__*,int ,char*) ;
+ void** av_malloc_array (unsigned int,int) ;
+ void* avio_rb32 (TYPE_4__*) ;
 
 __attribute__((used)) static int mov_read_stps(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int mov_read_stps(MOVContext *c, AVIOContext *pb, M
     st = c->fc->streams[c->fc->nb_streams-1];
     sc = st->priv_data;
 
-    avio_rb32(pb); // version + flags
+    avio_rb32(pb);
 
     entries = avio_rb32(pb);
     if (sc->stps_data)

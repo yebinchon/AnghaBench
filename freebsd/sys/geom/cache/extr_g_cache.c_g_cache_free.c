@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct g_cache_softc {int /*<<< orphan*/  sc_nent; int /*<<< orphan*/  sc_zone; int /*<<< orphan*/  sc_mtx; } ;
-struct g_cache_desc {int /*<<< orphan*/  d_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/  M_GCACHE ; 
- int /*<<< orphan*/  free (struct g_cache_desc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uma_zfree (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct g_cache_softc {int sc_nent; int sc_zone; int sc_mtx; } ;
+struct g_cache_desc {int d_data; } ;
+
+
+ int MA_OWNED ;
+ int M_GCACHE ;
+ int free (struct g_cache_desc*,int ) ;
+ int mtx_assert (int *,int ) ;
+ int uma_zfree (int ,int ) ;
 
 __attribute__((used)) static void
 g_cache_free(struct g_cache_softc *sc, struct g_cache_desc *dp)
 {
 
-	mtx_assert(&sc->sc_mtx, MA_OWNED);
+ mtx_assert(&sc->sc_mtx, MA_OWNED);
 
-	uma_zfree(sc->sc_zone, dp->d_data);
-	free(dp, M_GCACHE);
-	sc->sc_nent--;
+ uma_zfree(sc->sc_zone, dp->d_data);
+ free(dp, M_GCACHE);
+ sc->sc_nent--;
 }

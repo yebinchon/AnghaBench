@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int operation; int /*<<< orphan*/ * src_right_version; int /*<<< orphan*/ * src_left_version; int /*<<< orphan*/  action; int /*<<< orphan*/  reason; } ;
-typedef  TYPE_1__ svn_wc_conflict_description2_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_skel__parse (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_add_prop_conflict (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_add_text_conflict (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_add_tree_conflict (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__conflict_skel_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_set_op_merge (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_set_op_switch (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_set_op_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_get_wcroot (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__deserialize_conflict (TYPE_1__ const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
-#define  svn_wc_operation_merge 130 
-#define  svn_wc_operation_switch 129 
-#define  svn_wc_operation_update 128 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int operation; int * src_right_version; int * src_left_version; int action; int reason; } ;
+typedef TYPE_1__ svn_wc_conflict_description2_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef int svn_error_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int apr_hash_make (int *) ;
+ int svn_dirent_dirname (char const*,int *) ;
+ char* svn_dirent_join (char const*,char const*,int *) ;
+ int * svn_skel__parse (char const*,int ,int *) ;
+ int svn_wc__conflict_skel_add_prop_conflict (int *,int *,char const*,char const*,int *,int *,int *,int ,int *,int *) ;
+ int svn_wc__conflict_skel_add_text_conflict (int *,int *,char const*,char const*,char const*,char const*,int *,int *) ;
+ int svn_wc__conflict_skel_add_tree_conflict (int *,int *,char const*,int ,int ,int *,int *,int *) ;
+ int * svn_wc__conflict_skel_create (int *) ;
+ int svn_wc__conflict_skel_set_op_merge (int *,int *,int *,int *,int *) ;
+ int svn_wc__conflict_skel_set_op_switch (int *,int *,int *,int *,int *) ;
+ int svn_wc__conflict_skel_set_op_update (int *,int *,int *,int *,int *) ;
+ int svn_wc__db_get_wcroot (char const**,int *,char const*,int *,int *) ;
+ int svn_wc__deserialize_conflict (TYPE_1__ const**,int *,int ,int *,int *) ;
+
+
+
 
 svn_error_t *
 svn_wc__upgrade_conflict_skel_from_raw(svn_skel_t **conflicts,
@@ -53,7 +53,7 @@ svn_wc__upgrade_conflict_skel_from_raw(svn_skel_t **conflicts,
                                        apr_pool_t *result_pool,
                                        apr_pool_t *scratch_pool)
 {
-  svn_skel_t *conflict_data = NULL;
+  svn_skel_t *conflict_data = ((void*)0);
   const char *wcroot_abspath;
 
   SVN_ERR(svn_wc__db_get_wcroot(&wcroot_abspath, db, wri_abspath,
@@ -61,9 +61,9 @@ svn_wc__upgrade_conflict_skel_from_raw(svn_skel_t **conflicts,
 
   if (conflict_old || conflict_new || conflict_wrk)
     {
-      const char *old_abspath = NULL;
-      const char *new_abspath = NULL;
-      const char *wrk_abspath = NULL;
+      const char *old_abspath = ((void*)0);
+      const char *new_abspath = ((void*)0);
+      const char *wrk_abspath = ((void*)0);
 
       conflict_data = svn_wc__conflict_skel_create(result_pool);
 
@@ -100,7 +100,7 @@ svn_wc__upgrade_conflict_skel_from_raw(svn_skel_t **conflicts,
       SVN_ERR(svn_wc__conflict_skel_add_prop_conflict(conflict_data,
                                                       db, wri_abspath,
                                                       prej_abspath,
-                                                      NULL, NULL, NULL,
+                                                      ((void*)0), ((void*)0), ((void*)0),
                                                 apr_hash_make(scratch_pool),
                                                       scratch_pool,
                                                       scratch_pool));
@@ -130,13 +130,13 @@ svn_wc__upgrade_conflict_skel_from_raw(svn_skel_t **conflicts,
                                                       db, wri_abspath,
                                                       tc->reason,
                                                       tc->action,
-                                                      NULL,
+                                                      ((void*)0),
                                                       scratch_pool,
                                                       scratch_pool));
 
       switch (tc->operation)
         {
-          case svn_wc_operation_update:
+          case 128:
           default:
             SVN_ERR(svn_wc__conflict_skel_set_op_update(conflict_data,
                                                        tc->src_left_version,
@@ -144,14 +144,14 @@ svn_wc__upgrade_conflict_skel_from_raw(svn_skel_t **conflicts,
                                                        scratch_pool,
                                                        scratch_pool));
             break;
-          case svn_wc_operation_switch:
+          case 129:
             SVN_ERR(svn_wc__conflict_skel_set_op_switch(conflict_data,
                                                         tc->src_left_version,
                                                         tc->src_right_version,
                                                         scratch_pool,
                                                         scratch_pool));
             break;
-          case svn_wc_operation_merge:
+          case 130:
             SVN_ERR(svn_wc__conflict_skel_set_op_merge(conflict_data,
                                                        tc->src_left_version,
                                                        tc->src_right_version,
@@ -162,7 +162,7 @@ svn_wc__upgrade_conflict_skel_from_raw(svn_skel_t **conflicts,
     }
   else if (conflict_data)
     {
-      SVN_ERR(svn_wc__conflict_skel_set_op_update(conflict_data, NULL, NULL,
+      SVN_ERR(svn_wc__conflict_skel_set_op_update(conflict_data, ((void*)0), ((void*)0),
                                                   scratch_pool,
                                                   scratch_pool));
     }

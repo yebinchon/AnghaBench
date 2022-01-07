@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct tm {int dummy; } ;
 struct TYPE_6__ {int start; int stop; int repeat; struct TYPE_6__* next; } ;
-struct TYPE_5__ {int /*<<< orphan*/  utc; TYPE_2__ const* day; scalar_t__ end_of_month; } ;
-typedef  TYPE_1__ CalendarSpec ;
-typedef  TYPE_2__ CalendarComponent ;
+struct TYPE_5__ {int utc; TYPE_2__ const* day; scalar_t__ end_of_month; } ;
+typedef TYPE_1__ CalendarSpec ;
+typedef TYPE_2__ CalendarComponent ;
 
-/* Variables and functions */
- int DIV_ROUND_UP (int,int) ; 
- int ENOENT ; 
- int /*<<< orphan*/  SWAP_TWO (int,int) ; 
- int /*<<< orphan*/  assert (int*) ; 
- int find_end_of_month (struct tm*,int /*<<< orphan*/ ,int) ; 
+
+ int DIV_ROUND_UP (int,int) ;
+ int ENOENT ;
+ int SWAP_TWO (int,int) ;
+ int assert (int*) ;
+ int find_end_of_month (struct tm*,int ,int) ;
 
 __attribute__((used)) static int find_matching_component(const CalendarSpec *spec, const CalendarComponent *c,
                                    struct tm *tm, int *val) {
         const CalendarComponent *p = c;
         int start, stop, d = -1;
-        bool d_set = false;
+        bool d_set = 0;
         int r;
 
         assert(val);
@@ -53,7 +53,7 @@ __attribute__((used)) static int find_matching_component(const CalendarSpec *spe
 
                         if (!d_set || start < d) {
                                 d = start;
-                                d_set = true;
+                                d_set = 1;
                         }
 
                 } else if (c->repeat > 0) {
@@ -63,7 +63,7 @@ __attribute__((used)) static int find_matching_component(const CalendarSpec *spe
 
                         if ((!d_set || k < d) && (stop < 0 || k <= stop)) {
                                 d = k;
-                                d_set = true;
+                                d_set = 1;
                         }
                 }
 

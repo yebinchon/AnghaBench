@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  iv_len; int /*<<< orphan*/  iv; int /*<<< orphan*/  ki_len; int /*<<< orphan*/  ki; int /*<<< orphan*/  label_len; int /*<<< orphan*/  label; int /*<<< orphan*/  context_len; int /*<<< orphan*/  context; int /*<<< orphan*/  ctx_init; } ;
-typedef  TYPE_1__ KBKDF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_MAC_CTX_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int iv_len; int iv; int ki_len; int ki; int label_len; int label; int context_len; int context; int ctx_init; } ;
+typedef TYPE_1__ KBKDF ;
+
+
+ int EVP_MAC_CTX_free (int ) ;
+ int OPENSSL_clear_free (int ,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void kbkdf_reset(void *vctx)
 {

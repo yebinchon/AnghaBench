@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ status; scalar_t__ long_lock_cancel_timeout; int /*<<< orphan*/  transaction_id; } ;
-typedef  TYPE_1__ transaction_t ;
-struct lev_money_trans_cancel {int temp_id; int /*<<< orphan*/  transaction_id; } ;
-typedef  scalar_t__ money_auth_code_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEV_MONEY_TRANS_CANCEL ; 
- struct lev_money_trans_cancel* alloc_log_event (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int cancel_transaction (struct lev_money_trans_cancel*) ; 
- int /*<<< orphan*/  compute_lock_codes (TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  flush_binlog_forced (int /*<<< orphan*/ ) ; 
- TYPE_1__* get_transaction (long long) ; 
- scalar_t__ now ; 
- scalar_t__ trs_long_locked ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ status; scalar_t__ long_lock_cancel_timeout; int transaction_id; } ;
+typedef TYPE_1__ transaction_t ;
+struct lev_money_trans_cancel {int temp_id; int transaction_id; } ;
+typedef scalar_t__ money_auth_code_t ;
+
+
+ int LEV_MONEY_TRANS_CANCEL ;
+ struct lev_money_trans_cancel* alloc_log_event (int ,int,int) ;
+ int assert (int) ;
+ int cancel_transaction (struct lev_money_trans_cancel*) ;
+ int compute_lock_codes (TYPE_1__*,scalar_t__*) ;
+ int flush_binlog_forced (int ) ;
+ TYPE_1__* get_transaction (long long) ;
+ scalar_t__ now ;
+ scalar_t__ trs_long_locked ;
 
 int do_long_cancel_transaction (long long transaction_id, money_auth_code_t auth_code) {
   money_auth_code_t codes[2];

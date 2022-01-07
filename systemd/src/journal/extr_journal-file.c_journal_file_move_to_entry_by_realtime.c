@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  direction_t ;
-struct TYPE_5__ {int /*<<< orphan*/  n_entries; struct TYPE_5__* header; int /*<<< orphan*/  entry_array_offset; } ;
-typedef  int /*<<< orphan*/  Object ;
-typedef  TYPE_1__ JournalFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int generic_array_bisect (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  le64toh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_object_realtime ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int direction_t ;
+struct TYPE_5__ {int n_entries; struct TYPE_5__* header; int entry_array_offset; } ;
+typedef int Object ;
+typedef TYPE_1__ JournalFile ;
+
+
+ int assert (TYPE_1__*) ;
+ int generic_array_bisect (TYPE_1__*,int ,int ,int ,int ,int ,int **,int *,int *) ;
+ int le64toh (int ) ;
+ int test_object_realtime ;
 
 int journal_file_move_to_entry_by_realtime(
                 JournalFile *f,
@@ -38,5 +38,5 @@ int journal_file_move_to_entry_by_realtime(
                                     realtime,
                                     test_object_realtime,
                                     direction,
-                                    ret, offset, NULL);
+                                    ret, offset, ((void*)0));
 }

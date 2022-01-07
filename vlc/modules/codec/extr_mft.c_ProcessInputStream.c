@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
 struct TYPE_9__ {scalar_t__ i_codec; } ;
 struct TYPE_10__ {TYPE_1__ fmt_in; TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ decoder_t ;
-struct TYPE_11__ {int /*<<< orphan*/  mft; int /*<<< orphan*/  nal_length_size; } ;
-typedef  TYPE_3__ decoder_sys_t ;
-struct TYPE_12__ {scalar_t__ i_pts; scalar_t__ i_dts; int /*<<< orphan*/  i_buffer; int /*<<< orphan*/  p_buffer; } ;
-typedef  TYPE_4__ block_t ;
-typedef  int /*<<< orphan*/  IMFSample ;
-typedef  int /*<<< orphan*/  IMFMediaBuffer ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_2__ decoder_t ;
+struct TYPE_11__ {int mft; int nal_length_size; } ;
+typedef TYPE_3__ decoder_sys_t ;
+struct TYPE_12__ {scalar_t__ i_pts; scalar_t__ i_dts; int i_buffer; int p_buffer; } ;
+typedef TYPE_4__ block_t ;
+typedef int IMFSample ;
+typedef int IMFMediaBuffer ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ AllocateInputSample (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMFMediaBuffer_Lock (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFMediaBuffer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFMediaBuffer_SetCurrentLength (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMFMediaBuffer_Unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFSample_GetBufferByIndex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMFSample_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFSample_SetSampleTime (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMFTransform_ProcessInput (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MSFTIME_FROM_VLC_TICK (scalar_t__) ; 
- scalar_t__ VLC_CODEC_H264 ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ VLC_TICK_INVALID ; 
- int /*<<< orphan*/  h264_AVC_to_AnnexB (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*) ; 
+
+ scalar_t__ AllocateInputSample (TYPE_2__*,int ,int **,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IMFMediaBuffer_Lock (int *,int **,int *,int *) ;
+ int IMFMediaBuffer_Release (int *) ;
+ int IMFMediaBuffer_SetCurrentLength (int *,int ) ;
+ int IMFMediaBuffer_Unlock (int *) ;
+ int IMFSample_GetBufferByIndex (int *,int ,int **) ;
+ int IMFSample_Release (int *) ;
+ int IMFSample_SetSampleTime (int *,int ) ;
+ int IMFTransform_ProcessInput (int ,int ,int *,int ) ;
+ int MSFTIME_FROM_VLC_TICK (scalar_t__) ;
+ scalar_t__ VLC_CODEC_H264 ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ VLC_TICK_INVALID ;
+ int h264_AVC_to_AnnexB (int *,int ,int ) ;
+ int memcpy (int *,int ,int ) ;
+ int msg_Err (TYPE_2__*,char*) ;
 
 __attribute__((used)) static int ProcessInputStream(decoder_t *p_dec, DWORD stream_id, block_t *p_block)
 {
     decoder_sys_t *p_sys = p_dec->p_sys;
     HRESULT hr;
-    IMFSample *input_sample = NULL;
+    IMFSample *input_sample = ((void*)0);
 
     if (AllocateInputSample(p_dec, stream_id, &input_sample, p_block->i_buffer))
         goto error;
 
-    IMFMediaBuffer *input_media_buffer = NULL;
+    IMFMediaBuffer *input_media_buffer = ((void*)0);
     hr = IMFSample_GetBufferByIndex(input_sample, 0, &input_media_buffer);
     if (FAILED(hr))
         goto error;
 
     BYTE *buffer_start;
-    hr = IMFMediaBuffer_Lock(input_media_buffer, &buffer_start, NULL, NULL);
+    hr = IMFMediaBuffer_Lock(input_media_buffer, &buffer_start, ((void*)0), ((void*)0));
     if (FAILED(hr))
         goto error;
 
@@ -71,7 +71,7 @@ __attribute__((used)) static int ProcessInputStream(decoder_t *p_dec, DWORD stre
 
     if (p_dec->fmt_in.i_codec == VLC_CODEC_H264)
     {
-        /* in-place NAL to annex B conversion. */
+
         h264_AVC_to_AnnexB(buffer_start, p_block->i_buffer, p_sys->nal_length_size);
     }
 
@@ -85,7 +85,7 @@ __attribute__((used)) static int ProcessInputStream(decoder_t *p_dec, DWORD stre
 
     vlc_tick_t ts = p_block->i_pts == VLC_TICK_INVALID ? p_block->i_dts : p_block->i_pts;
 
-    /* Convert from microseconds to 100 nanoseconds unit. */
+
     hr = IMFSample_SetSampleTime(input_sample, MSFTIME_FROM_VLC_TICK(ts));
     if (FAILED(hr))
         goto error;

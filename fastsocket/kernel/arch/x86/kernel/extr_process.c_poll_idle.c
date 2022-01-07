@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  POWER_CSTATE ; 
- int /*<<< orphan*/  cpu_relax () ; 
- int /*<<< orphan*/  local_irq_enable () ; 
- int /*<<< orphan*/  need_resched () ; 
- int /*<<< orphan*/  smp_processor_id () ; 
- int /*<<< orphan*/  trace_power_end (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace_power_start (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int POWER_CSTATE ;
+ int cpu_relax () ;
+ int local_irq_enable () ;
+ int need_resched () ;
+ int smp_processor_id () ;
+ int trace_power_end (int ) ;
+ int trace_power_start (int ,int ,int ) ;
 
 __attribute__((used)) static void poll_idle(void)
 {
-	trace_power_start(POWER_CSTATE, 0, smp_processor_id());
-	local_irq_enable();
-	while (!need_resched())
-		cpu_relax();
-	trace_power_end(0);
+ trace_power_start(POWER_CSTATE, 0, smp_processor_id());
+ local_irq_enable();
+ while (!need_resched())
+  cpu_relax();
+ trace_power_end(0);
 }

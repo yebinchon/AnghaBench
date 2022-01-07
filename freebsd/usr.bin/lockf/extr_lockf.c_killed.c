@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EX_OSERR ; 
- int /*<<< orphan*/  SIG_DFL ; 
- int /*<<< orphan*/  cleanup () ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  getpid () ; 
- int kill (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  signal (int,int /*<<< orphan*/ ) ; 
+ int EX_OSERR ;
+ int SIG_DFL ;
+ int cleanup () ;
+ int err (int ,char*) ;
+ int getpid () ;
+ int kill (int ,int) ;
+ int signal (int,int ) ;
 
 __attribute__((used)) static void
 killed(int sig)
 {
 
-	cleanup();
-	signal(sig, SIG_DFL);
-	if (kill(getpid(), sig) == -1)
-		err(EX_OSERR, "kill failed");
+ cleanup();
+ signal(sig, SIG_DFL);
+ if (kill(getpid(), sig) == -1)
+  err(EX_OSERR, "kill failed");
 }

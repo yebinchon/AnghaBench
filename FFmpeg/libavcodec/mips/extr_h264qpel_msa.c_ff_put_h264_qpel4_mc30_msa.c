@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  int /*<<< orphan*/  v2i64 ;
-typedef  int /*<<< orphan*/  v16u8 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPADD_SB2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  HADD_SB2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB3 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SAT_SH2_SH (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  SLDI_B4_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SRARI_H2_SH (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  ST_W4 (scalar_t__,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XORI_B4_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_aver_s_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_insve_d (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_insve_w (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_ldi_b (int) ; 
- scalar_t__ __msa_pckev_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_xori_b (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * luma_mask_arr ; 
+
+
+
+typedef scalar_t__ v8i16 ;
+typedef int v4i32 ;
+typedef int v2i64 ;
+typedef int v16u8 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+
+
+ int DPADD_SB2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int HADD_SB2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_SB3 (int *,int,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_SB4 (int const*,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SAT_SH2_SH (scalar_t__,scalar_t__,int) ;
+ int SLDI_B4_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SRARI_H2_SH (scalar_t__,scalar_t__,int) ;
+ int ST_W4 (scalar_t__,int ,int,int,int,int *,int ) ;
+ int VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int XORI_B4_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_aver_s_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_insve_d (int ,int,int ) ;
+ scalar_t__ __msa_insve_w (int ,int,int ) ;
+ scalar_t__ __msa_ldi_b (int) ;
+ scalar_t__ __msa_pckev_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_xori_b (int ,int) ;
+ int * luma_mask_arr ;
 
 void ff_put_h264_qpel4_mc30_msa(uint8_t *dst, const uint8_t *src,
                                 ptrdiff_t stride)

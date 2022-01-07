@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int Size; int DataSize; } ;
 struct TYPE_4__ {int comment_data_size; char* comment_data; int comment_data_length; } ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_1__ GpMetafile ;
-typedef  TYPE_2__ EmfPlusRecordHeader ;
-typedef  int DWORD ;
-typedef  char BYTE ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpMetafile ;
+typedef TYPE_2__ EmfPlusRecordHeader ;
+typedef int DWORD ;
+typedef char BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  OutOfMemory ; 
- void* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int max (int,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+ int Ok ;
+ int OutOfMemory ;
+ void* heap_alloc_zero (int) ;
+ int heap_free (char*) ;
+ int max (int,int) ;
+ int memcpy (char*,char*,int) ;
 
 __attribute__((used)) static GpStatus METAFILE_AllocateRecord(GpMetafile *metafile, DWORD size, void **result)
 {

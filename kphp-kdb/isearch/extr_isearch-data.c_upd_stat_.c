@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int val; int prev_used; int next_bucket; int next_used; } ;
 
-/* Variables and functions */
- int STAT_BUCKET_SIZE ; 
- int STAT_MAX_RATE ; 
- int STAT_ST ; 
- int /*<<< orphan*/  add_bucket (int,int) ; 
- int add_q (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  del_bucket (int) ; 
- int idn ; 
- TYPE_1__* q_entry ; 
+
+ int STAT_BUCKET_SIZE ;
+ int STAT_MAX_RATE ;
+ int STAT_ST ;
+ int add_bucket (int,int) ;
+ int add_q (int) ;
+ int assert (int) ;
+ int del_bucket (int) ;
+ int idn ;
+ TYPE_1__* q_entry ;
 
 void upd_stat_ (int id, int add) {
   if (add != 1 && add != -1) {

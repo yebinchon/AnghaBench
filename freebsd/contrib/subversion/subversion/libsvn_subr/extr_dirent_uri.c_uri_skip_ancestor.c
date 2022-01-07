@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t apr_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- size_t strlen (char const*) ; 
- scalar_t__ strncmp (char const*,char const*,size_t) ; 
- int /*<<< orphan*/  svn_uri_is_canonical (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t apr_size_t ;
+
+
+ int assert (int ) ;
+ size_t strlen (char const*) ;
+ scalar_t__ strncmp (char const*,char const*,size_t) ;
+ int svn_uri_is_canonical (char const*,int *) ;
 
 __attribute__((used)) static const char *
 uri_skip_ancestor(const char *parent_uri,
@@ -24,17 +24,17 @@ uri_skip_ancestor(const char *parent_uri,
 {
   apr_size_t len = strlen(parent_uri);
 
-  assert(svn_uri_is_canonical(parent_uri, NULL));
-  assert(svn_uri_is_canonical(child_uri, NULL));
+  assert(svn_uri_is_canonical(parent_uri, ((void*)0)));
+  assert(svn_uri_is_canonical(child_uri, ((void*)0)));
 
   if (0 != strncmp(parent_uri, child_uri, len))
-    return NULL; /* parent_uri is no ancestor of child_uri */
+    return ((void*)0);
 
   if (child_uri[len] == 0)
-    return ""; /* parent_uri == child_uri */
+    return "";
 
   if (child_uri[len] == '/')
     return child_uri + len + 1;
 
-  return NULL;
+  return ((void*)0);
 }

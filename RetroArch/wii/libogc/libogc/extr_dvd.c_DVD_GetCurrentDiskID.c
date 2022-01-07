@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dvddiskid ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * __dvd_diskID ; 
+
+
+
+typedef int dvddiskid ;
+
+
+ int * __dvd_diskID ;
 
 dvddiskid* DVD_GetCurrentDiskID()
 {
-	return __dvd_diskID;
+ return __dvd_diskID;
 }

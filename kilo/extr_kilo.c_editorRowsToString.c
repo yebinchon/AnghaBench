@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int numrows; TYPE_1__* row; } ;
-struct TYPE_3__ {scalar_t__ size; int /*<<< orphan*/  chars; } ;
+struct TYPE_3__ {scalar_t__ size; int chars; } ;
 
-/* Variables and functions */
- TYPE_2__ E ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ TYPE_2__ E ;
+ char* malloc (int) ;
+ int memcpy (char*,int ,scalar_t__) ;
 
 char *editorRowsToString(int *buflen) {
-    char *buf = NULL, *p;
+    char *buf = ((void*)0), *p;
     int totlen = 0;
     int j;
 
-    /* Compute count of bytes */
+
     for (j = 0; j < E.numrows; j++)
-        totlen += E.row[j].size+1; /* +1 is for "\n" at end of every row */
+        totlen += E.row[j].size+1;
     *buflen = totlen;
-    totlen++; /* Also make space for nulterm */
+    totlen++;
 
     p = buf = malloc(totlen);
     for (j = 0; j < E.numrows; j++) {

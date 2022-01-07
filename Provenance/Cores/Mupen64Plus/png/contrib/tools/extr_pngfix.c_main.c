@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct global {int errors; int warnings; int quiet; int verbose; int idat_max; scalar_t__ skip; int optimize_zlib; int /*<<< orphan*/  status_code; } ;
-typedef  int png_uint_32 ;
 
-/* Variables and functions */
- int FILENAME_MAX ; 
- scalar_t__ SKIP_ALL ; 
- scalar_t__ SKIP_BAD_CRC ; 
- scalar_t__ SKIP_COLOR ; 
- scalar_t__ SKIP_NONE ; 
- scalar_t__ SKIP_TRANSFORM ; 
- scalar_t__ SKIP_UNSAFE ; 
- scalar_t__ SKIP_UNUSED ; 
- int /*<<< orphan*/  WRITE_ERROR ; 
- scalar_t__ atol (char const*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char const*,char const*,...) ; 
- int global_end (struct global*) ; 
- int /*<<< orphan*/  global_init (struct global*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  one_file (struct global*,char const*,char const*) ; 
- int /*<<< orphan*/  set_option ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const*,char*) ; 
- size_t strlen (char const*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  usage (char const*) ; 
+
+
+
+struct global {int errors; int warnings; int quiet; int verbose; int idat_max; scalar_t__ skip; int optimize_zlib; int status_code; } ;
+typedef int png_uint_32 ;
+
+
+ int FILENAME_MAX ;
+ scalar_t__ SKIP_ALL ;
+ scalar_t__ SKIP_BAD_CRC ;
+ scalar_t__ SKIP_COLOR ;
+ scalar_t__ SKIP_NONE ;
+ scalar_t__ SKIP_TRANSFORM ;
+ scalar_t__ SKIP_UNSAFE ;
+ scalar_t__ SKIP_UNUSED ;
+ int WRITE_ERROR ;
+ scalar_t__ atol (char const*) ;
+ int fprintf (int ,char*,char const*,char const*,char const*,...) ;
+ int global_end (struct global*) ;
+ int global_init (struct global*) ;
+ int memcpy (char*,char const*,size_t) ;
+ int one_file (struct global*,char const*,char const*) ;
+ int set_option ;
+ int stderr ;
+ scalar_t__ strcmp (char const*,char*) ;
+ size_t strlen (char const*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ int usage (char const*) ;
 
 int
 main(int argc, const char **argv)
 {
    char temp_name[FILENAME_MAX+1];
-   const char *  prog = *argv;
-   const char *  outfile = NULL;
-   const char *  suffix = NULL;
-   const char *  prefix = NULL;
-   int           done = 0; /* if at least one file is processed */
+   const char * prog = *argv;
+   const char * outfile = ((void*)0);
+   const char * suffix = ((void*)0);
+   const char * prefix = ((void*)0);
+   int done = 0;
    struct global global;
 
    global_init(&global);
@@ -55,7 +55,7 @@ main(int argc, const char **argv)
 
       if (strcmp(*argv, "--debug") == 0)
       {
-         /* To help debugging problems: */
+
          global.errors = global.warnings = 1;
          global.quiet = 0;
          global.verbose = 7;
@@ -127,15 +127,6 @@ main(int argc, const char **argv)
 
       else if (strcmp(*argv, "--verbose") == 0 || strcmp(*argv, "-v") == 0)
          ++global.verbose;
-
-#if 0
-      /* NYI */
-#     ifdef PNG_MAXIMUM_INFLATE_WINDOW
-         else if (strcmp(*argv, "--test") == 0)
-            ++set_option;
-#     endif
-#endif
-
       else if ((*argv)[0] == '-')
          usage(prog);
 
@@ -143,10 +134,10 @@ main(int argc, const char **argv)
       {
          size_t outlen = strlen(*argv);
 
-         if (outfile == NULL) /* else this takes precedence */
+         if (outfile == ((void*)0))
          {
-            /* Consider the prefix/suffix options */
-            if (prefix != NULL)
+
+            if (prefix != ((void*)0))
             {
                size_t prefixlen = strlen(prefix);
 
@@ -164,12 +155,12 @@ main(int argc, const char **argv)
                outfile = temp_name;
             }
 
-            else if (suffix != NULL)
+            else if (suffix != ((void*)0))
                memcpy(temp_name, *argv, outlen);
 
             temp_name[outlen] = 0;
 
-            if (suffix != NULL)
+            if (suffix != ((void*)0))
             {
                size_t suffixlen = strlen(suffix);
 
@@ -190,7 +181,7 @@ main(int argc, const char **argv)
 
          (void)one_file(&global, *argv, outfile);
          ++done;
-         outfile = NULL;
+         outfile = ((void*)0);
       }
    }
 

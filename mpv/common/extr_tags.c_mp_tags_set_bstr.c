@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_tags {int num_keys; void** values; void** keys; } ;
-typedef  int /*<<< orphan*/  bstr ;
+typedef int bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_RESIZE_ARRAY (struct mp_tags*,void**,int) ; 
- scalar_t__ bstrcasecmp0 (int /*<<< orphan*/ ,void*) ; 
- void* bstrto0 (struct mp_tags*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
+
+ int MP_RESIZE_ARRAY (struct mp_tags*,void**,int) ;
+ scalar_t__ bstrcasecmp0 (int ,void*) ;
+ void* bstrto0 (struct mp_tags*,int ) ;
+ int talloc_free (void*) ;
 
 void mp_tags_set_bstr(struct mp_tags *tags, bstr key, bstr value)
 {
@@ -29,9 +29,9 @@ void mp_tags_set_bstr(struct mp_tags *tags, bstr key, bstr value)
         }
     }
 
-    MP_RESIZE_ARRAY(tags, tags->keys,   tags->num_keys + 1);
+    MP_RESIZE_ARRAY(tags, tags->keys, tags->num_keys + 1);
     MP_RESIZE_ARRAY(tags, tags->values, tags->num_keys + 1);
-    tags->keys[tags->num_keys]   = bstrto0(tags, key);
+    tags->keys[tags->num_keys] = bstrto0(tags, key);
     tags->values[tags->num_keys] = bstrto0(tags, value);
     tags->num_keys++;
 }

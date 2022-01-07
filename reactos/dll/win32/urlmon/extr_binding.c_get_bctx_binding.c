@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * lpVtbl; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_1__ IBinding ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  Binding ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BindingVtbl ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IBindCtx_GetObjectParam (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IBinding ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cbinding_contextW ; 
- int /*<<< orphan*/ * impl_from_IBinding (TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * lpVtbl; } ;
+typedef int IUnknown ;
+typedef TYPE_1__ IBinding ;
+typedef int IBindCtx ;
+typedef int HRESULT ;
+typedef int Binding ;
+
+
+ int BindingVtbl ;
+ scalar_t__ FAILED (int ) ;
+ int IBindCtx_GetObjectParam (int *,int ,int **) ;
+ int IID_IBinding ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int cbinding_contextW ;
+ int * impl_from_IBinding (TYPE_1__*) ;
 
 __attribute__((used)) static Binding *get_bctx_binding(IBindCtx *bctx)
 {
@@ -36,14 +36,14 @@ __attribute__((used)) static Binding *get_bctx_binding(IBindCtx *bctx)
 
     hres = IBindCtx_GetObjectParam(bctx, cbinding_contextW, &unk);
     if(FAILED(hres))
-        return NULL;
+        return ((void*)0);
 
     hres = IUnknown_QueryInterface(unk, &IID_IBinding, (void**)&binding);
     IUnknown_Release(unk);
     if(FAILED(hres))
-        return NULL;
+        return ((void*)0);
 
     if (binding->lpVtbl != &BindingVtbl)
-        return NULL;
+        return ((void*)0);
     return impl_from_IBinding(binding);
 }

@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  adapter_dmatag; } ;
-typedef  TYPE_1__ ips_softc_t ;
-struct TYPE_8__ {int /*<<< orphan*/  data_dmatag; int /*<<< orphan*/  data_dmamap; int /*<<< orphan*/  data_buffer; int /*<<< orphan*/  callback; TYPE_1__* sc; } ;
-typedef  TYPE_2__ ips_command_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_DMA_NOWAIT ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR_32BIT ; 
- int ENOMEM ; 
- int /*<<< orphan*/  IPS_NVRAM_PAGE_SIZE ; 
- scalar_t__ bus_dma_tag_create (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ ) ; 
- int bus_dmamap_load (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_unload (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ bus_dmamem_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dmamem_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ips_insert_free_cmd (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ips_read_nvram_callback ; 
- int /*<<< orphan*/  ips_write_nvram ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int adapter_dmatag; } ;
+typedef TYPE_1__ ips_softc_t ;
+struct TYPE_8__ {int data_dmatag; int data_dmamap; int data_buffer; int callback; TYPE_1__* sc; } ;
+typedef TYPE_2__ ips_command_t ;
+
+
+ int BUS_DMA_NOWAIT ;
+ int BUS_SPACE_MAXADDR ;
+ int BUS_SPACE_MAXADDR_32BIT ;
+ int ENOMEM ;
+ int IPS_NVRAM_PAGE_SIZE ;
+ scalar_t__ bus_dma_tag_create (int ,int,int ,int ,int ,int *,int *,int ,int,int ,int ,int *,int *,int *) ;
+ int bus_dma_tag_destroy (int ) ;
+ int bus_dmamap_load (int ,int ,int ,int ,int ,TYPE_2__*,int ) ;
+ int bus_dmamap_unload (int ,int ) ;
+ scalar_t__ bus_dmamem_alloc (int ,int *,int ,int *) ;
+ int bus_dmamem_free (int ,int ,int ) ;
+ int ips_insert_free_cmd (TYPE_1__*,TYPE_2__*) ;
+ int ips_read_nvram_callback ;
+ int ips_write_nvram ;
+ int printf (char*) ;
 
 __attribute__((used)) static int ips_read_nvram(ips_command_t *command)
 {
-	int error = 0;
-	ips_softc_t *sc = command->sc;
+ int error = 0;
+ ips_softc_t *sc = command->sc;
 
-	if (bus_dma_tag_create(	/* parent    */	sc->adapter_dmatag,
-				/* alignemnt */	1,
-				/* boundary  */	0,
-				/* lowaddr   */	BUS_SPACE_MAXADDR_32BIT,
-				/* highaddr  */	BUS_SPACE_MAXADDR,
-				/* filter    */	NULL,
-				/* filterarg */	NULL,
-				/* maxsize   */	IPS_NVRAM_PAGE_SIZE,
-				/* numsegs   */	1,
-				/* maxsegsize*/	IPS_NVRAM_PAGE_SIZE,
-				/* flags     */	0,
-				/* lockfunc  */ NULL,
-				/* lockarg   */ NULL,
-				&command->data_dmatag) != 0) {
+ if (bus_dma_tag_create( sc->adapter_dmatag,
+                    1,
+                    0,
+                    BUS_SPACE_MAXADDR_32BIT,
+                    BUS_SPACE_MAXADDR,
+                    ((void*)0),
+                    ((void*)0),
+                    IPS_NVRAM_PAGE_SIZE,
+                    1,
+                    IPS_NVRAM_PAGE_SIZE,
+                    0,
+                    ((void*)0),
+                    ((void*)0),
+    &command->data_dmatag) != 0) {
                 printf("ips: can't alloc dma tag for nvram\n");
-		error = ENOMEM;
-		goto exit;
+  error = ENOMEM;
+  goto exit;
         }
-	if(bus_dmamem_alloc(command->data_dmatag, &command->data_buffer, 
-	   		    BUS_DMA_NOWAIT, &command->data_dmamap)){
-		error = ENOMEM;
-		goto exit;
-	}
-	command->callback = ips_write_nvram;
-	error = bus_dmamap_load(command->data_dmatag, command->data_dmamap, 
-				command->data_buffer,IPS_NVRAM_PAGE_SIZE, 
-				ips_read_nvram_callback, command,
-				BUS_DMA_NOWAIT);
-	if (error == 0)
-		bus_dmamap_unload(command->data_dmatag, command->data_dmamap);
+ if(bus_dmamem_alloc(command->data_dmatag, &command->data_buffer,
+          BUS_DMA_NOWAIT, &command->data_dmamap)){
+  error = ENOMEM;
+  goto exit;
+ }
+ command->callback = ips_write_nvram;
+ error = bus_dmamap_load(command->data_dmatag, command->data_dmamap,
+    command->data_buffer,IPS_NVRAM_PAGE_SIZE,
+    ips_read_nvram_callback, command,
+    BUS_DMA_NOWAIT);
+ if (error == 0)
+  bus_dmamap_unload(command->data_dmatag, command->data_dmamap);
 
 exit:
-	bus_dmamem_free(command->data_dmatag, command->data_buffer, 
-			command->data_dmamap);
-	bus_dma_tag_destroy(command->data_dmatag);
-	ips_insert_free_cmd(sc, command);
-	return error;
+ bus_dmamem_free(command->data_dmatag, command->data_buffer,
+   command->data_dmamap);
+ bus_dma_tag_destroy(command->data_dmatag);
+ ips_insert_free_cmd(sc, command);
+ return error;
 }

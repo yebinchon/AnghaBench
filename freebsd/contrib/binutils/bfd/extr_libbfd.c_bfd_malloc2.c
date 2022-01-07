@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ bfd_size_type ;
 
-/* Variables and functions */
- scalar_t__ HALF_BFD_SIZE_TYPE ; 
- int /*<<< orphan*/  bfd_error_no_memory ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
- void* malloc (size_t) ; 
+
+
+
+typedef scalar_t__ bfd_size_type ;
+
+
+ scalar_t__ HALF_BFD_SIZE_TYPE ;
+ int bfd_error_no_memory ;
+ int bfd_set_error (int ) ;
+ void* malloc (size_t) ;
 
 void *
 bfd_malloc2 (bfd_size_type nmemb, bfd_size_type size)
@@ -28,7 +28,7 @@ bfd_malloc2 (bfd_size_type nmemb, bfd_size_type size)
       && nmemb > ~(bfd_size_type) 0 / size)
     {
       bfd_set_error (bfd_error_no_memory);
-      return NULL;
+      return ((void*)0);
     }
 
   size *= nmemb;
@@ -36,11 +36,11 @@ bfd_malloc2 (bfd_size_type nmemb, bfd_size_type size)
   if (size != (size_t) size)
     {
       bfd_set_error (bfd_error_no_memory);
-      return NULL;
+      return ((void*)0);
     }
 
   ptr = malloc ((size_t) size);
-  if (ptr == NULL && (size_t) size != 0)
+  if (ptr == ((void*)0) && (size_t) size != 0)
     bfd_set_error (bfd_error_no_memory);
 
   return ptr;

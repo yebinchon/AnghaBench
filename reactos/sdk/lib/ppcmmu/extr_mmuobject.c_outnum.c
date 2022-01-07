@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  outdig (unsigned long) ; 
+ int outdig (unsigned long) ;
 
 void outnum(unsigned long num)
 {
     int i;
-    for( i = 0; i < 8; i++ ) 
+    for( i = 0; i < 8; i++ )
     {
-	outdig(num >> 28);
-	num <<= 4;
+ outdig(num >> 28);
+ num <<= 4;
     }
 }

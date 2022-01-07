@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-struct zip_eocd64 {scalar_t__ numentries; int /*<<< orphan*/  dir_offset; } ;
-typedef  int off64_t ;
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  ar_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ SIG_CENTRAL_DIRECTORY ; 
- int ZIP_DIR_ENTRY_FIXED_SIZE ; 
- int ar_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ar_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ar_skip (int /*<<< orphan*/ *,scalar_t__) ; 
- int ar_tell (int /*<<< orphan*/ *) ; 
- scalar_t__ uint16le (int /*<<< orphan*/ *) ; 
- scalar_t__ uint32le (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+struct zip_eocd64 {scalar_t__ numentries; int dir_offset; } ;
+typedef int off64_t ;
+typedef int data ;
+typedef int ar_stream ;
+
+
+ int SEEK_SET ;
+ scalar_t__ SIG_CENTRAL_DIRECTORY ;
+ int ZIP_DIR_ENTRY_FIXED_SIZE ;
+ int ar_read (int *,int *,int) ;
+ int ar_seek (int *,int ,int ) ;
+ int ar_skip (int *,scalar_t__) ;
+ int ar_tell (int *) ;
+ scalar_t__ uint16le (int *) ;
+ scalar_t__ uint32le (int *) ;
 
 off64_t zip_find_end_of_last_directory_entry(ar_stream *stream, struct zip_eocd64 *eocd)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct scsi_device {int queue_depth; int /*<<< orphan*/  type; scalar_t__ tagged_supported; struct Scsi_Host* host; } ;
+
+
+
+
+struct scsi_device {int queue_depth; int type; scalar_t__ tagged_supported; struct Scsi_Host* host; } ;
 struct hostdata {int board_number; } ;
 struct Scsi_Host {scalar_t__ hostdata; } ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  KERN_INFO ; 
- int MAX_CMD_PER_LUN ; 
- int /*<<< orphan*/  MSG_ORDERED_TAG ; 
- int /*<<< orphan*/  MSG_SIMPLE_TAG ; 
- scalar_t__ TAG_ORDERED ; 
- scalar_t__ TAG_SIMPLE ; 
- scalar_t__ TLDEV (int /*<<< orphan*/ ) ; 
- scalar_t__ linked_comm ; 
- int max_queue_depth ; 
- int /*<<< orphan*/  scsi_adjust_queue_depth (struct scsi_device*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sdev_printk (int /*<<< orphan*/ ,struct scsi_device*,char*,int,char*,char*) ; 
- scalar_t__ tag_mode ; 
+
+ int FALSE ;
+ int KERN_INFO ;
+ int MAX_CMD_PER_LUN ;
+ int MSG_ORDERED_TAG ;
+ int MSG_SIMPLE_TAG ;
+ scalar_t__ TAG_ORDERED ;
+ scalar_t__ TAG_SIMPLE ;
+ scalar_t__ TLDEV (int ) ;
+ scalar_t__ linked_comm ;
+ int max_queue_depth ;
+ int scsi_adjust_queue_depth (struct scsi_device*,int ,int) ;
+ int sdev_printk (int ,struct scsi_device*,char*,int,char*,char*) ;
+ scalar_t__ tag_mode ;
 
 __attribute__((used)) static int u14_34f_slave_configure(struct scsi_device *dev) {
    int j, tqd, utqd;

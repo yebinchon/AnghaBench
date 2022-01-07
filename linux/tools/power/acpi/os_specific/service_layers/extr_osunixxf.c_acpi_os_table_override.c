@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct acpi_table_header {int dummy; } ;
-typedef  int /*<<< orphan*/  acpi_status ;
+typedef int acpi_status ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_NO_ACPI_TABLES ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  ae_table_override (struct acpi_table_header*,struct acpi_table_header**) ; 
+
+ int AE_BAD_PARAMETER ;
+ int AE_NO_ACPI_TABLES ;
+ int AE_OK ;
+ int ae_table_override (struct acpi_table_header*,struct acpi_table_header**) ;
 
 acpi_status
 acpi_os_table_override(struct acpi_table_header *existing_table,
-		       struct acpi_table_header **new_table)
+         struct acpi_table_header **new_table)
 {
 
-	if (!existing_table || !new_table) {
-		return (AE_BAD_PARAMETER);
-	}
+ if (!existing_table || !new_table) {
+  return (AE_BAD_PARAMETER);
+ }
 
-	*new_table = NULL;
+ *new_table = ((void*)0);
 
-#ifdef ACPI_EXEC_APP
 
-	ae_table_override(existing_table, new_table);
-	return (AE_OK);
-#else
 
-	return (AE_NO_ACPI_TABLES);
-#endif
+
+
+
+
+ return (AE_NO_ACPI_TABLES);
+
 }

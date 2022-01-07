@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* p; } ;
-typedef  TYPE_2__ picture_t ;
+typedef TYPE_2__ picture_t ;
 struct TYPE_7__ {void* p_pixels; } ;
 
-/* Variables and functions */
- int PICTURES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fmt ; 
- int /*<<< orphan*/  picture_Hold (TYPE_2__*) ; 
- int /*<<< orphan*/  picture_Release (TYPE_2__*) ; 
- TYPE_2__* picture_pool_Get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * picture_pool_NewFromFormat (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  picture_pool_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * picture_pool_Reserve (int /*<<< orphan*/ *,int) ; 
- TYPE_2__* picture_pool_Wait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pool ; 
- int /*<<< orphan*/ * reserve ; 
+
+ int PICTURES ;
+ int assert (int) ;
+ int fmt ;
+ int picture_Hold (TYPE_2__*) ;
+ int picture_Release (TYPE_2__*) ;
+ TYPE_2__* picture_pool_Get (int *) ;
+ int * picture_pool_NewFromFormat (int *,int) ;
+ int picture_pool_Release (int *) ;
+ int * picture_pool_Reserve (int *,int) ;
+ TYPE_2__* picture_pool_Wait (int *) ;
+ int * pool ;
+ int * reserve ;
 
 __attribute__((used)) static void test(bool zombie)
 {
     picture_t *pics[PICTURES];
 
     pool = picture_pool_NewFromFormat(&fmt, PICTURES);
-    assert(pool != NULL);
+    assert(pool != ((void*)0));
 
     for (unsigned i = 0; i < PICTURES; i++) {
         pics[i] = picture_pool_Get(pool);
-        assert(pics[i] != NULL);
+        assert(pics[i] != ((void*)0));
     }
 
     for (unsigned i = 0; i < PICTURES; i++)
-        assert(picture_pool_Get(pool) == NULL);
+        assert(picture_pool_Get(pool) == ((void*)0));
 
-    // Reserve currently assumes that all pictures are free (or reserved).
-    //assert(picture_pool_Reserve(pool, 1) == NULL);
+
+
 
     for (unsigned i = 0; i < PICTURES / 2; i++)
         picture_Hold(pics[i]);
@@ -56,11 +56,11 @@ __attribute__((used)) static void test(bool zombie)
 
     for (unsigned i = 0; i < PICTURES; i++) {
         void *plane = pics[i]->p[0].p_pixels;
-        assert(plane != NULL);
+        assert(plane != ((void*)0));
         picture_Release(pics[i]);
 
         pics[i] = picture_pool_Get(pool);
-        assert(pics[i] != NULL);
+        assert(pics[i] != ((void*)0));
         assert(pics[i]->p[0].p_pixels == plane);
     }
 
@@ -69,24 +69,24 @@ __attribute__((used)) static void test(bool zombie)
 
     for (unsigned i = 0; i < PICTURES; i++) {
         pics[i] = picture_pool_Wait(pool);
-        assert(pics[i] != NULL);
+        assert(pics[i] != ((void*)0));
     }
 
     for (unsigned i = 0; i < PICTURES; i++)
         picture_Release(pics[i]);
 
     reserve = picture_pool_Reserve(pool, PICTURES / 2);
-    assert(reserve != NULL);
+    assert(reserve != ((void*)0));
 
     for (unsigned i = 0; i < PICTURES / 2; i++) {
         pics[i] = picture_pool_Get(pool);
-        assert(pics[i] != NULL);
+        assert(pics[i] != ((void*)0));
     }
 
     for (unsigned i = PICTURES / 2; i < PICTURES; i++) {
-        assert(picture_pool_Get(pool) == NULL);
+        assert(picture_pool_Get(pool) == ((void*)0));
         pics[i] = picture_pool_Get(reserve);
-        assert(pics[i] != NULL);
+        assert(pics[i] != ((void*)0));
     }
 
     if (!zombie)

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_client_blame_receiver_t ;
-struct wrapped_receiver_baton_s {void* orig_baton; int /*<<< orphan*/  orig_receiver; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  APR_EOL_STR ;
 
-/* Variables and functions */
- struct wrapped_receiver_baton_s* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wrapped_receiver ; 
+
+
+
+typedef int svn_client_blame_receiver_t ;
+struct wrapped_receiver_baton_s {void* orig_baton; int orig_receiver; } ;
+typedef int apr_pool_t ;
+typedef int APR_EOL_STR ;
+
+
+ struct wrapped_receiver_baton_s* apr_palloc (int *,int) ;
+ int wrapped_receiver ;
 
 __attribute__((used)) static void
 wrap_pre_blame3_receiver(svn_client_blame_receiver_t *receiver,

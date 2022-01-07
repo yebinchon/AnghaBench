@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct roff_node {int flags; scalar_t__ type; int /*<<< orphan*/  string; struct roff_node* child; struct roff_node* next; } ;
+
+
+
+
+typedef int uint64_t ;
+struct roff_node {int flags; scalar_t__ type; int string; struct roff_node* child; struct roff_node* next; } ;
 struct mpage {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ ROFFT_TEXT ; 
- int /*<<< orphan*/  putkey (struct mpage const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ROFFT_TEXT ;
+ int putkey (struct mpage const*,int ,int ) ;
 
 __attribute__((used)) static void
 putmdockey(const struct mpage *mpage,
-	const struct roff_node *n, uint64_t m, int taboo)
+ const struct roff_node *n, uint64_t m, int taboo)
 {
 
-	for ( ; NULL != n; n = n->next) {
-		if (n->flags & taboo)
-			continue;
-		if (NULL != n->child)
-			putmdockey(mpage, n->child, m, taboo);
-		if (n->type == ROFFT_TEXT)
-			putkey(mpage, n->string, m);
-	}
+ for ( ; ((void*)0) != n; n = n->next) {
+  if (n->flags & taboo)
+   continue;
+  if (((void*)0) != n->child)
+   putmdockey(mpage, n->child, m, taboo);
+  if (n->type == ROFFT_TEXT)
+   putkey(mpage, n->string, m);
+ }
 }

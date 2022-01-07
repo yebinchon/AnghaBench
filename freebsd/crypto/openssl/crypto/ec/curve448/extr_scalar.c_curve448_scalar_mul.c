@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const curve448_scalar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sc_montmul (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  const sc_r2 ; 
+
+
+
+typedef int const curve448_scalar_t ;
+
+
+ int sc_montmul (int const,int const,int const) ;
+ int const sc_r2 ;
 
 void curve448_scalar_mul(curve448_scalar_t out, const curve448_scalar_t a,
                          const curve448_scalar_t b)

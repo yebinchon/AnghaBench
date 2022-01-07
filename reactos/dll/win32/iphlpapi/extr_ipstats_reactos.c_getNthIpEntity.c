@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  tei_instance; int /*<<< orphan*/  tei_entity; } ;
-typedef  TYPE_1__ TDIEntityID ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STATUS_UNSUCCESSFUL ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- scalar_t__ isIpEntity (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  tdiFreeThingSet (TYPE_1__*) ; 
- int /*<<< orphan*/  tdiGetEntityIDSet (int /*<<< orphan*/ ,TYPE_1__**,int*) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int tei_instance; int tei_entity; } ;
+typedef TYPE_1__ TDIEntityID ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+typedef int DWORD ;
+
+
+ int NT_SUCCESS (int ) ;
+ int STATUS_SUCCESS ;
+ int STATUS_UNSUCCESSFUL ;
+ int TRACE (char*,int,...) ;
+ scalar_t__ isIpEntity (int ,TYPE_1__*) ;
+ int memcpy (TYPE_1__*,TYPE_1__*,int) ;
+ int tdiFreeThingSet (TYPE_1__*) ;
+ int tdiGetEntityIDSet (int ,TYPE_1__**,int*) ;
 
 NTSTATUS getNthIpEntity( HANDLE tcpFile, DWORD index, TDIEntityID *ent ) {
     DWORD numEntities = 0;

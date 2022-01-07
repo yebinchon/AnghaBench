@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tOptions ;
-typedef  int /*<<< orphan*/  tOptDesc ;
 
-/* Variables and functions */
- int AO_NAME_SIZE ; 
- char NUL ; 
- scalar_t__ find_name (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const* const*,unsigned int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+
+
+typedef int tOptions ;
+typedef int tOptDesc ;
+
+
+ int AO_NAME_SIZE ;
+ char NUL ;
+ scalar_t__ find_name (char*,int *,int *,char const* const*,unsigned int) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static uintptr_t
 find_member_bit(tOptions * opts, tOptDesc * od, char const * pz, int len,

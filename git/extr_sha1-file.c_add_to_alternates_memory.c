@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  link_alt_odb_entries (int /*<<< orphan*/ ,char const*,char,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prepare_alt_odb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  the_repository ; 
+ int link_alt_odb_entries (int ,char const*,char,int *,int ) ;
+ int prepare_alt_odb (int ) ;
+ int the_repository ;
 
 void add_to_alternates_memory(const char *reference)
 {
-	/*
-	 * Make sure alternates are initialized, or else our entry may be
-	 * overwritten when they are.
-	 */
-	prepare_alt_odb(the_repository);
 
-	link_alt_odb_entries(the_repository, reference,
-			     '\n', NULL, 0);
+
+
+
+ prepare_alt_odb(the_repository);
+
+ link_alt_odb_entries(the_repository, reference,
+        '\n', ((void*)0), 0);
 }

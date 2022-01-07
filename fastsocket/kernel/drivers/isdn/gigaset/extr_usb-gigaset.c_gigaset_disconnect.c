@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct usb_interface {int dummy; } ;
-struct usb_cardstate {int /*<<< orphan*/ * udev; int /*<<< orphan*/ * interface; int /*<<< orphan*/ * bulk_out_buffer; int /*<<< orphan*/ * bulk_out_urb; int /*<<< orphan*/ * read_urb; } ;
+struct usb_cardstate {int * udev; int * interface; int * bulk_out_buffer; int * bulk_out_urb; int * read_urb; } ;
 struct TYPE_3__ {struct usb_cardstate* usb; } ;
-struct cardstate {int /*<<< orphan*/ * dev; TYPE_2__* inbuf; int /*<<< orphan*/  write_tasklet; TYPE_1__ hw; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * rcvbuf; } ;
+struct cardstate {int * dev; TYPE_2__* inbuf; int write_tasklet; TYPE_1__ hw; } ;
+struct TYPE_4__ {int * rcvbuf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  gigaset_freecs (struct cardstate*) ; 
- int /*<<< orphan*/  gigaset_stop (struct cardstate*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_kill (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_free_urb (int /*<<< orphan*/ *) ; 
- struct cardstate* usb_get_intfdata (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_kill_urb (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_put_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,int /*<<< orphan*/ *) ; 
+
+ int dev_info (int *,char*) ;
+ int gigaset_freecs (struct cardstate*) ;
+ int gigaset_stop (struct cardstate*) ;
+ int kfree (int *) ;
+ int tasklet_kill (int *) ;
+ int usb_free_urb (int *) ;
+ struct cardstate* usb_get_intfdata (struct usb_interface*) ;
+ int usb_kill_urb (int *) ;
+ int usb_put_dev (int *) ;
+ int usb_set_intfdata (struct usb_interface*,int *) ;
 
 __attribute__((used)) static void gigaset_disconnect(struct usb_interface *interface)
 {
-	struct cardstate *cs;
-	struct usb_cardstate *ucs;
+ struct cardstate *cs;
+ struct usb_cardstate *ucs;
 
-	cs = usb_get_intfdata(interface);
-	ucs = cs->hw.usb;
+ cs = usb_get_intfdata(interface);
+ ucs = cs->hw.usb;
 
-	dev_info(cs->dev, "disconnecting Gigaset USB adapter\n");
+ dev_info(cs->dev, "disconnecting Gigaset USB adapter\n");
 
-	usb_kill_urb(ucs->read_urb);
+ usb_kill_urb(ucs->read_urb);
 
-	gigaset_stop(cs);
+ gigaset_stop(cs);
 
-	usb_set_intfdata(interface, NULL);
-	tasklet_kill(&cs->write_tasklet);
+ usb_set_intfdata(interface, ((void*)0));
+ tasklet_kill(&cs->write_tasklet);
 
-	usb_kill_urb(ucs->bulk_out_urb);
+ usb_kill_urb(ucs->bulk_out_urb);
 
-	kfree(ucs->bulk_out_buffer);
-	usb_free_urb(ucs->bulk_out_urb);
-	kfree(cs->inbuf[0].rcvbuf);
-	usb_free_urb(ucs->read_urb);
-	ucs->read_urb = ucs->bulk_out_urb = NULL;
-	cs->inbuf[0].rcvbuf = ucs->bulk_out_buffer = NULL;
+ kfree(ucs->bulk_out_buffer);
+ usb_free_urb(ucs->bulk_out_urb);
+ kfree(cs->inbuf[0].rcvbuf);
+ usb_free_urb(ucs->read_urb);
+ ucs->read_urb = ucs->bulk_out_urb = ((void*)0);
+ cs->inbuf[0].rcvbuf = ucs->bulk_out_buffer = ((void*)0);
 
-	usb_put_dev(ucs->udev);
-	ucs->interface = NULL;
-	ucs->udev = NULL;
-	cs->dev = NULL;
-	gigaset_freecs(cs);
+ usb_put_dev(ucs->udev);
+ ucs->interface = ((void*)0);
+ ucs->udev = ((void*)0);
+ cs->dev = ((void*)0);
+ gigaset_freecs(cs);
 }

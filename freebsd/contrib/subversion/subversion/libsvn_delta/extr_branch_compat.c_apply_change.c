@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_6__ {TYPE_5__* deditor; scalar_t__ repos_root_url; void* ev1_root_dir_baton; int /*<<< orphan*/  fetch_baton; int /*<<< orphan*/  fetch_func; int /*<<< orphan*/  changes; } ;
-typedef  TYPE_1__ svn_branch__txn_priv_t ;
-struct TYPE_7__ {scalar_t__ action; scalar_t__ kind; char* copyfrom_path; scalar_t__ contents_text; int /*<<< orphan*/  changing_rev; int /*<<< orphan*/  copyfrom_rev; int /*<<< orphan*/  deleting_rev; scalar_t__ deleting; } ;
-typedef  TYPE_2__ change_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_8__ {int /*<<< orphan*/  (* close_file ) (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* apply_textdelta ) (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/  (* open_file ) (char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/  (* open_directory ) (char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/  (* add_file ) (char const*,void*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/  (* add_directory ) (char const*,void*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;int /*<<< orphan*/  (* delete_entry ) (char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* absent_file ) (char const*,void*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* absent_directory ) (char const*,void*,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- scalar_t__ RESTRUCTURE_ADD ; 
- scalar_t__ RESTRUCTURE_ADD_ABSENT ; 
- scalar_t__ RESTRUCTURE_DELETE ; 
- scalar_t__ RESTRUCTURE_NONE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_MALFUNCTION () ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_VA_NULL ; 
- char* apr_pstrcat (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  drive_ev1_props (char const*,TYPE_2__ const*,int /*<<< orphan*/ *,TYPE_5__*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fetch_base_props (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (char const*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (char const*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (char const*,void*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  stub6 (char const*,void*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  stub7 (char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  stub8 (char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  stub9 (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- TYPE_2__* svn_hash_gets (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_unknown ; 
- char* svn_path_url_add_component2 (scalar_t__,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_from_stringbuf (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_txdelta_send_stream (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_stream_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct TYPE_6__ {TYPE_5__* deditor; scalar_t__ repos_root_url; void* ev1_root_dir_baton; int fetch_baton; int fetch_func; int changes; } ;
+typedef TYPE_1__ svn_branch__txn_priv_t ;
+struct TYPE_7__ {scalar_t__ action; scalar_t__ kind; char* copyfrom_path; scalar_t__ contents_text; int changing_rev; int copyfrom_rev; int deleting_rev; scalar_t__ deleting; } ;
+typedef TYPE_2__ change_node_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_8__ {int (* close_file ) (void*,int *,int *) ;int (* apply_textdelta ) (void*,int *,int *,int *,void**) ;int (* open_file ) (char const*,void*,int ,int *,void**) ;int (* open_directory ) (char const*,void*,int ,int *,void**) ;int (* add_file ) (char const*,void*,char const*,int ,int *,void**) ;int (* add_directory ) (char const*,void*,char const*,int ,int *,void**) ;int (* delete_entry ) (char const*,int ,void*,int *) ;int (* absent_file ) (char const*,void*,int *) ;int (* absent_directory ) (char const*,void*,int *) ;} ;
+
+
+ scalar_t__ RESTRUCTURE_ADD ;
+ scalar_t__ RESTRUCTURE_ADD_ABSENT ;
+ scalar_t__ RESTRUCTURE_DELETE ;
+ scalar_t__ RESTRUCTURE_NONE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_MALFUNCTION () ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int SVN_VA_NULL ;
+ char* apr_pstrcat (int *,char*,char const*,int ) ;
+ int drive_ev1_props (char const*,TYPE_2__ const*,int *,TYPE_5__*,void*,int *) ;
+ int fetch_base_props (int **,int ,char const*,int ,int ,int *,int *) ;
+ int stub1 (char const*,int ,void*,int *) ;
+ int stub10 (void*,int *,int *) ;
+ int stub2 (char const*,void*,int *) ;
+ int stub3 (char const*,void*,int *) ;
+ int stub4 (char const*,int ,void*,int *) ;
+ int stub5 (char const*,void*,char const*,int ,int *,void**) ;
+ int stub6 (char const*,void*,char const*,int ,int *,void**) ;
+ int stub7 (char const*,void*,int ,int *,void**) ;
+ int stub8 (char const*,void*,int ,int *,void**) ;
+ int stub9 (void*,int *,int *,int *,void**) ;
+ TYPE_2__* svn_hash_gets (int ,char const*) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_unknown ;
+ char* svn_path_url_add_component2 (scalar_t__,char*,int *) ;
+ int svn_stream_close (int *) ;
+ int * svn_stream_from_stringbuf (scalar_t__,int *) ;
+ int svn_txdelta_send_stream (int *,int ,void*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 apply_change(void **dir_baton,
@@ -68,31 +68,31 @@ apply_change(void **dir_baton,
   apr_pool_t *scratch_pool = result_pool;
   const svn_branch__txn_priv_t *eb = callback_baton;
   const change_node_t *change = svn_hash_gets(eb->changes, ev1_relpath);
-  void *file_baton = NULL;
+  void *file_baton = ((void*)0);
   apr_hash_t *base_props;
 
-  /* The callback should only be called for paths in CHANGES.  */
-  SVN_ERR_ASSERT(change != NULL);
 
-  /* Typically, we are not creating new directory batons.  */
-  *dir_baton = NULL;
+  SVN_ERR_ASSERT(change != ((void*)0));
+
+
+  *dir_baton = ((void*)0);
 
   SVN_ERR(fetch_base_props(&base_props, eb->changes, ev1_relpath,
                            eb->fetch_func, eb->fetch_baton,
                            scratch_pool, scratch_pool));
 
-  /* Are we editing the root of the tree?  */
-  if (parent_baton == NULL)
+
+  if (parent_baton == ((void*)0))
     {
-      /* The root dir was already opened. */
+
       *dir_baton = eb->ev1_root_dir_baton;
 
-      /* Only property edits are allowed on the root.  */
+
       SVN_ERR_ASSERT(change->action == RESTRUCTURE_NONE);
       SVN_ERR(drive_ev1_props(ev1_relpath, change, base_props,
                               eb->deditor, *dir_baton, scratch_pool));
 
-      /* No further action possible for the root.  */
+
       return SVN_NO_ERROR;
     }
 
@@ -101,46 +101,27 @@ apply_change(void **dir_baton,
       SVN_ERR(eb->deditor->delete_entry(ev1_relpath, change->deleting_rev,
                                         parent_baton, scratch_pool));
 
-      /* No futher action possible for this node.  */
+
       return SVN_NO_ERROR;
     }
 
-  /* If we're not deleting this node, then we should know its kind.  */
+
   SVN_ERR_ASSERT(change->kind != svn_node_unknown);
-
-#ifdef SHIM_WITH_ADD_ABSENT
-  if (change->action == RESTRUCTURE_ADD_ABSENT)
-    {
-      if (change->kind == svn_node_dir)
-        SVN_ERR(eb->deditor->absent_directory(ev1_relpath, parent_baton,
-                                              scratch_pool));
-      else if (change->kind == svn_node_file)
-        SVN_ERR(eb->deditor->absent_file(ev1_relpath, parent_baton,
-                                         scratch_pool));
-      else
-        SVN_ERR_MALFUNCTION();
-
-      /* No further action possible for this node.  */
-      return SVN_NO_ERROR;
-    }
-#endif
-  /* RESTRUCTURE_NONE or RESTRUCTURE_ADD  */
-
   if (change->action == RESTRUCTURE_ADD)
     {
-      const char *copyfrom_url = NULL;
+      const char *copyfrom_url = ((void*)0);
       svn_revnum_t copyfrom_rev = SVN_INVALID_REVNUM;
 
-      /* Do we have an old node to delete first? If so, delete it. */
+
       if (change->deleting)
         SVN_ERR(eb->deditor->delete_entry(ev1_relpath, change->deleting_rev,
                                           parent_baton, scratch_pool));
 
-      /* If it's a copy, determine the copy source location. */
+
       if (change->copyfrom_path)
         {
-          /* ### What's this about URL vs. fspath? REPOS_ROOT_URL isn't
-             optional, is it, at least in a commit editor? */
+
+
           if (eb->repos_root_url)
             copyfrom_url = svn_path_url_add_component2(eb->repos_root_url,
                                                        change->copyfrom_path,
@@ -149,7 +130,7 @@ apply_change(void **dir_baton,
             {
               copyfrom_url = change->copyfrom_path;
 
-              /* Make this an FS path by prepending "/" */
+
               if (copyfrom_url[0] != '/')
                 copyfrom_url = apr_pstrcat(scratch_pool, "/",
                                            copyfrom_url, SVN_VA_NULL);
@@ -169,13 +150,13 @@ apply_change(void **dir_baton,
       else
         SVN_ERR_MALFUNCTION();
     }
-  else /* RESTRUCTURE_NONE */
+  else
     {
-      /* ### The code that inserts a "plain edit" change record sets
-         'changing_rev' to the peg rev of the pegged part of the path,
-         even when the full path refers to a child of a copy. Should we
-         instead be using the copy source rev here, in that case? (Like
-         when we fetch the base properties.) */
+
+
+
+
+
 
       if (change->kind == svn_node_dir)
         SVN_ERR(eb->deditor->open_directory(ev1_relpath, parent_baton,
@@ -189,7 +170,7 @@ apply_change(void **dir_baton,
         SVN_ERR_MALFUNCTION();
     }
 
-  /* Apply any properties in CHANGE to the node.  */
+
   if (change->kind == svn_node_dir)
     SVN_ERR(drive_ev1_props(ev1_relpath, change, base_props,
                             eb->deditor, *dir_baton, scratch_pool));
@@ -197,7 +178,7 @@ apply_change(void **dir_baton,
     SVN_ERR(drive_ev1_props(ev1_relpath, change, base_props,
                             eb->deditor, file_baton, scratch_pool));
 
-  /* Send the text content delta, if new text content is provided. */
+
   if (change->contents_text)
     {
       svn_stream_t *read_stream;
@@ -206,19 +187,19 @@ apply_change(void **dir_baton,
 
       read_stream = svn_stream_from_stringbuf(change->contents_text,
                                               scratch_pool);
-      /* ### would be nice to have a BASE_CHECKSUM, but hey: this is the
-         ### shim code...  */
-      SVN_ERR(eb->deditor->apply_textdelta(file_baton, NULL, scratch_pool,
+
+
+      SVN_ERR(eb->deditor->apply_textdelta(file_baton, ((void*)0), scratch_pool,
                                            &handler, &handler_baton));
-      /* ### it would be nice to send a true txdelta here, but whatever.  */
+
       SVN_ERR(svn_txdelta_send_stream(read_stream, handler, handler_baton,
-                                      NULL, scratch_pool));
+                                      ((void*)0), scratch_pool));
       SVN_ERR(svn_stream_close(read_stream));
     }
 
   if (file_baton)
     {
-      SVN_ERR(eb->deditor->close_file(file_baton, NULL, scratch_pool));
+      SVN_ERR(eb->deditor->close_file(file_baton, ((void*)0), scratch_pool));
     }
 
   return SVN_NO_ERROR;

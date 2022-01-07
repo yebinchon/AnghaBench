@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct serio {struct i8042_port* port_data; } ;
-struct i8042_port {int exists; int /*<<< orphan*/ * serio; } ;
+struct i8042_port {int exists; int * serio; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I8042_AUX_IRQ ; 
- int /*<<< orphan*/  I8042_KBD_IRQ ; 
- int /*<<< orphan*/  synchronize_irq (int /*<<< orphan*/ ) ; 
+
+ int I8042_AUX_IRQ ;
+ int I8042_KBD_IRQ ;
+ int synchronize_irq (int ) ;
 
 __attribute__((used)) static void i8042_stop(struct serio *serio)
 {
-	struct i8042_port *port = serio->port_data;
+ struct i8042_port *port = serio->port_data;
 
-	port->exists = false;
+ port->exists = 0;
 
-	/*
-	 * We synchronize with both AUX and KBD IRQs because there is
-	 * a (very unlikely) chance that AUX IRQ is raised for KBD port
-	 * and vice versa.
-	 */
-	synchronize_irq(I8042_AUX_IRQ);
-	synchronize_irq(I8042_KBD_IRQ);
-	port->serio = NULL;
+
+
+
+
+
+ synchronize_irq(I8042_AUX_IRQ);
+ synchronize_irq(I8042_KBD_IRQ);
+ port->serio = ((void*)0);
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XLATEOBJ ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int UCHAR ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int XLATEOBJ ;
+typedef scalar_t__ ULONG_PTR ;
+typedef int UCHAR ;
 struct TYPE_18__ {scalar_t__ BlendOp; scalar_t__ BlendFlags; int AlphaFormat; int SourceConstantAlpha; } ;
 struct TYPE_17__ {TYPE_6__ BlendFunction; } ;
 struct TYPE_13__ {int red; int green; int blue; int alpha; } ;
-struct TYPE_16__ {TYPE_1__ col; int /*<<< orphan*/  ul; } ;
+struct TYPE_16__ {TYPE_1__ col; int ul; } ;
 struct TYPE_15__ {int left; int top; int right; int bottom; } ;
-struct TYPE_14__ {int lDelta; scalar_t__ pvScan0; int /*<<< orphan*/  iBitmapFormat; } ;
-typedef  TYPE_2__ SURFOBJ ;
-typedef  TYPE_3__ RECTL ;
-typedef  int* PUCHAR ;
-typedef  TYPE_4__ NICEPIXEL32 ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  CLIPOBJ ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  TYPE_5__ BLENDOBJ ;
-typedef  TYPE_6__ BLENDFUNCTION ;
+struct TYPE_14__ {int lDelta; scalar_t__ pvScan0; int iBitmapFormat; } ;
+typedef TYPE_2__ SURFOBJ ;
+typedef TYPE_3__ RECTL ;
+typedef int* PUCHAR ;
+typedef TYPE_4__ NICEPIXEL32 ;
+typedef int INT ;
+typedef int CLIPOBJ ;
+typedef int BOOLEAN ;
+typedef TYPE_5__ BLENDOBJ ;
+typedef TYPE_6__ BLENDFUNCTION ;
 
-/* Variables and functions */
- int AC_SRC_ALPHA ; 
- scalar_t__ AC_SRC_OVER ; 
- int BitsPerFormat (int /*<<< orphan*/ ) ; 
- void* Clamp8 (int) ; 
- int /*<<< orphan*/  DIB_GetSource (TYPE_2__*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT (char*,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int AC_SRC_ALPHA ;
+ scalar_t__ AC_SRC_OVER ;
+ int BitsPerFormat (int ) ;
+ void* Clamp8 (int) ;
+ int DIB_GetSource (TYPE_2__*,int,int,int *) ;
+ int DPRINT (char*,int,int,int,int,int,int,int,int) ;
+ int DPRINT1 (char*,...) ;
+ int FALSE ;
+ int TRUE ;
 
 BOOLEAN
 DIB_24BPP_AlphaBlend(SURFOBJ* Dest, SURFOBJ* Source, RECTL* DestRect,
@@ -56,7 +56,7 @@ DIB_24BPP_AlphaBlend(SURFOBJ* Dest, SURFOBJ* Source, RECTL* DestRect,
    BLENDFUNCTION BlendFunc;
    register NICEPIXEL32 DstPixel, SrcPixel;
    UCHAR Alpha;
-   //UCHAR SrcBpp;
+
 
    DPRINT("DIB_24BPP_AlphaBlend: srcRect: (%d,%d)-(%d,%d), dstRect: (%d,%d)-(%d,%d)\n",
           SourceRect->left, SourceRect->top, SourceRect->right, SourceRect->bottom,
@@ -87,7 +87,7 @@ DIB_24BPP_AlphaBlend(SURFOBJ* Dest, SURFOBJ* Source, RECTL* DestRect,
 
    Dst = (PUCHAR)((ULONG_PTR)Dest->pvScan0 + (DestRect->top * Dest->lDelta) +
                              (DestRect->left * 3));
-   //SrcBpp = BitsPerFormat(Source->iBitmapFormat);
+
 
    Rows = 0;
    SrcY = SourceRect->top;

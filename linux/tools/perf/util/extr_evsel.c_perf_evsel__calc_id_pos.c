@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  sample_type; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sample_type; } ;
 struct TYPE_4__ {TYPE_1__ attr; } ;
-struct evsel {TYPE_2__ core; int /*<<< orphan*/  is_pos; int /*<<< orphan*/  id_pos; } ;
+struct evsel {TYPE_2__ core; int is_pos; int id_pos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __perf_evsel__calc_id_pos (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __perf_evsel__calc_is_pos (int /*<<< orphan*/ ) ; 
+
+ int __perf_evsel__calc_id_pos (int ) ;
+ int __perf_evsel__calc_is_pos (int ) ;
 
 void perf_evsel__calc_id_pos(struct evsel *evsel)
 {
-	evsel->id_pos = __perf_evsel__calc_id_pos(evsel->core.attr.sample_type);
-	evsel->is_pos = __perf_evsel__calc_is_pos(evsel->core.attr.sample_type);
+ evsel->id_pos = __perf_evsel__calc_id_pos(evsel->core.attr.sample_type);
+ evsel->is_pos = __perf_evsel__calc_is_pos(evsel->core.attr.sample_type);
 }

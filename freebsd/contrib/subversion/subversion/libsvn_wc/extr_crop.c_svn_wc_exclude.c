@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  (* svn_wc_notify_func2_t ) (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-struct TYPE_3__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_UNSUPPORTED_FEATURE ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  crop_children (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *),void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_empty ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__db_base_remove (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_is_switched (scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_info (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
-#define  svn_wc__db_status_added 134 
-#define  svn_wc__db_status_deleted 133 
-#define  svn_wc__db_status_excluded 132 
-#define  svn_wc__db_status_incomplete 131 
-#define  svn_wc__db_status_normal 130 
-#define  svn_wc__db_status_not_present 129 
-#define  svn_wc__db_status_server_excluded 128 
- int /*<<< orphan*/  svn_wc__node_has_local_mods (scalar_t__*,scalar_t__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_run (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_exclude ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_t ;
+typedef int (* svn_wc_notify_func2_t ) (void*,int *,int *) ;
+struct TYPE_3__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_wc__db_status_t ;
+typedef int svn_revnum_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_UNSUPPORTED_FEATURE ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ int crop_children (int ,char const*,int ,int ,int (*) (void*,int *,int *),void*,int ,void*,int *) ;
+ int svn_depth_empty ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int svn_wc__db_base_remove (int ,char const*,int ,int ,int ,int ,int *,int *,int *) ;
+ int svn_wc__db_is_switched (scalar_t__*,scalar_t__*,int *,int ,char const*,int *) ;
+ int svn_wc__db_read_info (int*,int *,int *,char const**,char const**,char const**,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int ,char const*,int *,int *) ;
+
+
+
+
+
+
+
+ int svn_wc__node_has_local_mods (scalar_t__*,scalar_t__*,int ,char const*,int ,int ,void*,int *) ;
+ int svn_wc__wq_run (int ,char const*,int ,void*,int *) ;
+ int * svn_wc_create_notify (char const*,int ,int *) ;
+ int svn_wc_notify_exclude ;
 
 svn_error_t *
 svn_wc_exclude(svn_wc_context_t *wc_ctx,
@@ -68,12 +68,12 @@ svn_wc_exclude(svn_wc_context_t *wc_ctx,
   svn_boolean_t modified, all_deletes;
   const char *repos_relpath, *repos_root, *repos_uuid;
 
-  SVN_ERR(svn_wc__db_is_switched(&is_root, &is_switched, NULL,
+  SVN_ERR(svn_wc__db_is_switched(&is_root, &is_switched, ((void*)0),
                                  wc_ctx->db, local_abspath, scratch_pool));
 
   if (is_root)
     {
-       return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+       return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                                 _("Cannot exclude '%s': "
                                   "it is a working copy root"),
                                 svn_dirent_local_style(local_abspath,
@@ -81,7 +81,7 @@ svn_wc_exclude(svn_wc_context_t *wc_ctx,
     }
   if (is_switched)
     {
-      return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+      return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                                _("Cannot exclude '%s': "
                                  "it is a switched path"),
                                svn_dirent_local_style(local_abspath,
@@ -89,42 +89,42 @@ svn_wc_exclude(svn_wc_context_t *wc_ctx,
     }
 
   SVN_ERR(svn_wc__db_read_info(&status, &kind, &revision, &repos_relpath,
-                               &repos_root, &repos_uuid, NULL, NULL, NULL,
-                               &depth, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                               NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                               NULL, NULL, NULL,
+                               &repos_root, &repos_uuid, ((void*)0), ((void*)0), ((void*)0),
+                               &depth, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                               ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                               ((void*)0), ((void*)0), ((void*)0),
                                wc_ctx->db, local_abspath,
                                scratch_pool, scratch_pool));
 
   switch (status)
     {
-      case svn_wc__db_status_server_excluded:
-      case svn_wc__db_status_excluded:
-      case svn_wc__db_status_not_present:
-        return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+      case 128:
+      case 132:
+      case 129:
+        return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                                  _("The node '%s' was not found."),
                                  svn_dirent_local_style(local_abspath,
                                                         scratch_pool));
 
-      case svn_wc__db_status_added:
-        /* Would have to check parents if we want to allow this */
-        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+      case 134:
+
+        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                                  _("Cannot exclude '%s': it is to be added "
                                    "to the repository. Try commit instead"),
                                  svn_dirent_local_style(local_abspath,
                                                         scratch_pool));
-      case svn_wc__db_status_deleted:
-        /* Would have to check parents if we want to allow this */
-        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+      case 133:
+
+        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                                  _("Cannot exclude '%s': it is to be deleted "
                                    "from the repository. Try commit instead"),
                                  svn_dirent_local_style(local_abspath,
                                                         scratch_pool));
 
-      case svn_wc__db_status_normal:
-      case svn_wc__db_status_incomplete:
+      case 130:
+      case 131:
       default:
-        break; /* Ok to exclude */
+        break;
     }
 
   SVN_ERR(svn_wc__node_has_local_mods(&modified, &all_deletes,
@@ -134,12 +134,12 @@ svn_wc_exclude(svn_wc_context_t *wc_ctx,
 
   if (!modified || all_deletes)
     {
-      /* Remove all working copy data below local_abspath */
+
       SVN_ERR(svn_wc__db_base_remove(wc_ctx->db, local_abspath,
-                                     FALSE /* keep_working */,
+                                     FALSE ,
                                      FALSE, TRUE,
                                      revision,
-                                     NULL, NULL,
+                                     ((void*)0), ((void*)0),
                                      scratch_pool));
 
       SVN_ERR(svn_wc__wq_run(wc_ctx->db, local_abspath,
@@ -157,7 +157,7 @@ svn_wc_exclude(svn_wc_context_t *wc_ctx,
     }
   else
     {
-      /* Do the next best thing: retry below this path */
+
       SVN_ERR(crop_children(wc_ctx->db, local_abspath, depth, svn_depth_empty,
                             notify_func, notify_baton,
                             cancel_func, cancel_baton,

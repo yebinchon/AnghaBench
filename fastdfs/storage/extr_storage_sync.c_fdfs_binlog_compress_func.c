@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENOENT ; 
- int MAX_PATH_SIZE ; 
- int binlog_compress_index ; 
- int calc_compress_until_binlog_index () ; 
- int compress_binlog_file (char*) ; 
- int g_binlog_index ; 
- int /*<<< orphan*/  get_binlog_readable_filename_ex (int,char*) ; 
- int /*<<< orphan*/  write_to_binlog_index (int) ; 
+ int ENOENT ;
+ int MAX_PATH_SIZE ;
+ int binlog_compress_index ;
+ int calc_compress_until_binlog_index () ;
+ int compress_binlog_file (char*) ;
+ int g_binlog_index ;
+ int get_binlog_readable_filename_ex (int,char*) ;
+ int write_to_binlog_index (int) ;
 
 int fdfs_binlog_compress_func(void *args)
 {
-	char full_filename[MAX_PATH_SIZE];
+ char full_filename[MAX_PATH_SIZE];
     int until_index;
     int bindex;
     int result;

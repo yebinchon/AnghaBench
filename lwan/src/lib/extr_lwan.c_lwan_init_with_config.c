@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct lwan_config {int dummy; } ;
 struct TYPE_3__ {int count; unsigned int max_fd; } ;
 struct TYPE_4__ {int n_threads; void* config_file_path; void* listener; } ;
 struct lwan {int n_cpus; TYPE_1__ thread; TYPE_2__ config; } ;
-typedef  scalar_t__ rlim_t ;
+typedef scalar_t__ rlim_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  allocate_connections (struct lwan*,size_t) ; 
- void* dup_or_null (void*) ; 
- int get_number_of_cpus () ; 
- int /*<<< orphan*/  lwan_fd_watch_init (struct lwan*) ; 
- int /*<<< orphan*/  lwan_http_authorize_init () ; 
- int /*<<< orphan*/  lwan_job_thread_init () ; 
- int /*<<< orphan*/  lwan_readahead_init () ; 
- int /*<<< orphan*/  lwan_response_init (struct lwan*) ; 
- int /*<<< orphan*/  lwan_socket_init (struct lwan*) ; 
- int /*<<< orphan*/  lwan_status_debug (char*) ; 
- int /*<<< orphan*/  lwan_status_info (char*,int,unsigned int) ; 
- int /*<<< orphan*/  lwan_status_init (struct lwan*) ; 
- int /*<<< orphan*/  lwan_status_warning (char*,int,...) ; 
- int /*<<< orphan*/  lwan_tables_init () ; 
- int /*<<< orphan*/  lwan_thread_init (struct lwan*) ; 
- int /*<<< orphan*/  memcpy (TYPE_2__*,struct lwan_config const*,int) ; 
- int /*<<< orphan*/  memset (struct lwan*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ setup_open_file_count_limits () ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  try_setup_from_config (struct lwan*,struct lwan_config const*) ; 
+
+ int SIGPIPE ;
+ int SIG_IGN ;
+ int allocate_connections (struct lwan*,size_t) ;
+ void* dup_or_null (void*) ;
+ int get_number_of_cpus () ;
+ int lwan_fd_watch_init (struct lwan*) ;
+ int lwan_http_authorize_init () ;
+ int lwan_job_thread_init () ;
+ int lwan_readahead_init () ;
+ int lwan_response_init (struct lwan*) ;
+ int lwan_socket_init (struct lwan*) ;
+ int lwan_status_debug (char*) ;
+ int lwan_status_info (char*,int,unsigned int) ;
+ int lwan_status_init (struct lwan*) ;
+ int lwan_status_warning (char*,int,...) ;
+ int lwan_tables_init () ;
+ int lwan_thread_init (struct lwan*) ;
+ int memcpy (TYPE_2__*,struct lwan_config const*,int) ;
+ int memset (struct lwan*,int ,int) ;
+ scalar_t__ setup_open_file_count_limits () ;
+ int signal (int ,int ) ;
+ int try_setup_from_config (struct lwan*,struct lwan_config const*) ;
 
 void lwan_init_with_config(struct lwan *l, const struct lwan_config *config)
 {
-    /* Load defaults */
+
     memset(l, 0, sizeof(*l));
     memcpy(&l->config, config, sizeof(*config));
     l->config.listener = dup_or_null(l->config.listener);
     l->config.config_file_path = dup_or_null(l->config.config_file_path);
 
-    /* Initialize status first, as it is used by other things during
-     * their initialization. */
+
+
     lwan_status_init(l);
 
-    /* These will only print debugging messages. Debug messages are always
-     * printed if we're on a debug build, so the quiet setting will be
-     * respected. */
+
+
+
     lwan_job_thread_init();
     lwan_tables_init();
 
@@ -64,7 +64,7 @@ void lwan_init_with_config(struct lwan *l, const struct lwan_config *config)
 
     lwan_response_init(l);
 
-    /* Continue initialization as normal. */
+
     lwan_status_debug("Initializing lwan web server");
 
     l->n_cpus = get_number_of_cpus();

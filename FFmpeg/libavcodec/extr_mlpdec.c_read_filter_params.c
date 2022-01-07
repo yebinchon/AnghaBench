@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_9__ {int order; int* state; void* shift; } ;
-struct TYPE_8__ {int /*<<< orphan*/  avctx; int /*<<< orphan*/ ** filter_changed; TYPE_2__* substream; } ;
+struct TYPE_8__ {int avctx; int ** filter_changed; TYPE_2__* substream; } ;
 struct TYPE_7__ {TYPE_1__* channel_params; } ;
 struct TYPE_6__ {int** coeff; TYPE_4__* filter_params; } ;
-typedef  TYPE_2__ SubStream ;
-typedef  TYPE_3__ MLPDecodeContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_4__ FilterParams ;
+typedef TYPE_2__ SubStream ;
+typedef TYPE_3__ MLPDecodeContext ;
+typedef int GetBitContext ;
+typedef TYPE_4__ FilterParams ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- unsigned int FIR ; 
- int MAX_FIR_ORDER ; 
- int MAX_IIR_ORDER ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_sbits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ unsigned int FIR ;
+ int MAX_FIR_ORDER ;
+ int MAX_IIR_ORDER ;
+ int av_assert0 (int) ;
+ int av_log (int ,int ,char*,...) ;
+ void* get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_sbits (int *,int) ;
 
 __attribute__((used)) static int read_filter_params(MLPDecodeContext *m, GetBitContext *gbp,
                               unsigned int substr, unsigned int channel,
@@ -46,7 +46,7 @@ __attribute__((used)) static int read_filter_params(MLPDecodeContext *m, GetBitC
     const char fchar = filter ? 'I' : 'F';
     int i, order;
 
-    // Filter is 0 for FIR, 1 for IIR.
+
     av_assert0(filter < 2);
 
     if (m->filter_changed[channel][filter]++ > 1) {
@@ -69,7 +69,7 @@ __attribute__((used)) static int read_filter_params(MLPDecodeContext *m, GetBitC
 
         fp->shift = get_bits(gbp, 4);
 
-        coeff_bits  = get_bits(gbp, 5);
+        coeff_bits = get_bits(gbp, 5);
         coeff_shift = get_bits(gbp, 3);
         if (coeff_bits < 1 || coeff_bits > 16) {
             av_log(m->avctx, AV_LOG_ERROR,
@@ -96,10 +96,10 @@ __attribute__((used)) static int read_filter_params(MLPDecodeContext *m, GetBitC
                 return AVERROR_INVALIDDATA;
             }
 
-            state_bits  = get_bits(gbp, 4);
+            state_bits = get_bits(gbp, 4);
             state_shift = get_bits(gbp, 4);
 
-            /* TODO: Check validity of state data. */
+
 
             for (i = 0; i < order; i++)
                 fp->state[i] = state_bits ? get_sbits(gbp, state_bits) * (1 << state_shift) : 0;

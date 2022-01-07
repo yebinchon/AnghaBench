@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct s6e63m0 {int enabled; int /*<<< orphan*/  bl_dev; } ;
+
+
+
+
+struct s6e63m0 {int enabled; int bl_dev; } ;
 struct drm_panel {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIPI_DCS_SET_DISPLAY_ON ; 
- int /*<<< orphan*/  backlight_enable (int /*<<< orphan*/ ) ; 
- struct s6e63m0* panel_to_s6e63m0 (struct drm_panel*) ; 
- int /*<<< orphan*/  s6e63m0_dcs_write_seq_static (struct s6e63m0*,int /*<<< orphan*/ ) ; 
+
+ int MIPI_DCS_SET_DISPLAY_ON ;
+ int backlight_enable (int ) ;
+ struct s6e63m0* panel_to_s6e63m0 (struct drm_panel*) ;
+ int s6e63m0_dcs_write_seq_static (struct s6e63m0*,int ) ;
 
 __attribute__((used)) static int s6e63m0_enable(struct drm_panel *panel)
 {
-	struct s6e63m0 *ctx = panel_to_s6e63m0(panel);
+ struct s6e63m0 *ctx = panel_to_s6e63m0(panel);
 
-	if (ctx->enabled)
-		return 0;
+ if (ctx->enabled)
+  return 0;
 
-	s6e63m0_dcs_write_seq_static(ctx, MIPI_DCS_SET_DISPLAY_ON);
+ s6e63m0_dcs_write_seq_static(ctx, MIPI_DCS_SET_DISPLAY_ON);
 
-	backlight_enable(ctx->bl_dev);
+ backlight_enable(ctx->bl_dev);
 
-	ctx->enabled = true;
+ ctx->enabled = 1;
 
-	return 0;
+ return 0;
 }

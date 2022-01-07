@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int MAXARGS ; 
- int MakeArgs (char*,char**,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PARSE_REDUCE ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char const*,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (char*) ; 
+ int LogWARN ;
+ int MAXARGS ;
+ int MakeArgs (char*,char**,int,int ) ;
+ int PARSE_REDUCE ;
+ int log_Printf (int ,char*,char const*,int) ;
+ int strcmp (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static char *
 GetLabel(char *line, const char *filename, int linenum)
@@ -34,9 +26,9 @@ GetLabel(char *line, const char *filename, int linenum)
   if (argc != 1 || (len = strlen(argv[0])) < 2 || argv[0][len-1] != ':') {
       log_Printf(LogWARN, "Bad label in %s (line %d) - missing colon\n",
                  filename, linenum);
-      return NULL;
+      return ((void*)0);
   }
-  argv[0][len-1] = '\0';	/* Lose the ':' */
+  argv[0][len-1] = '\0';
 
   return argv[0];
 }

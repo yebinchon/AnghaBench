@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPSTR ;
-typedef  char* LPCSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lstrcpynA (char*,char const*,int) ; 
- int strlen (char*) ; 
+
+
+
+typedef char* LPSTR ;
+typedef char* LPCSTR ;
+typedef int DWORD ;
+
+
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int lstrcpynA (char*,char const*,int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static LPSTR convert_file_list(LPCSTR FileList, DWORD *dwNumFiles)
 {
@@ -27,33 +27,33 @@ __attribute__((used)) static LPSTR convert_file_list(LPCSTR FileList, DWORD *dwN
     const char *first = FileList;
     const char *last = FileList + strlen(FileList) - 1;
     LPSTR szConvertedList, temp;
-    
-    /* any number of these chars before the list is OK */
+
+
     while (first < last && (*first == ' ' || *first == '\t' || *first == ':'))
         first++;
 
-    /* any number of these chars after the list is OK */
+
     while (last > first && (*last == ' ' || *last == '\t' || *last == ':'))
         last--;
 
     if (first == last)
-        return NULL;
+        return ((void*)0);
 
-    dwLen = last - first + 3; /* room for double-null termination */
+    dwLen = last - first + 3;
     szConvertedList = HeapAlloc(GetProcessHeap(), 0, dwLen);
     lstrcpynA(szConvertedList, first, dwLen - 1);
     szConvertedList[dwLen - 1] = '\0';
 
-    /* empty list */
+
     if (!szConvertedList[0])
     {
         HeapFree(GetProcessHeap(), 0, szConvertedList);
-        return NULL;
+        return ((void*)0);
     }
-        
+
     *dwNumFiles = 1;
 
-    /* convert the colons to double-null termination */
+
     temp = szConvertedList;
     while (*temp)
     {

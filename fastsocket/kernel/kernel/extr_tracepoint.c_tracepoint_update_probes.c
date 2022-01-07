@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  __start___tracepoints ; 
- int /*<<< orphan*/  __stop___tracepoints ; 
- int /*<<< orphan*/  module_update_tracepoints () ; 
- int /*<<< orphan*/  tracepoint_update_probe_range (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int __start___tracepoints ;
+ int __stop___tracepoints ;
+ int module_update_tracepoints () ;
+ int tracepoint_update_probe_range (int ,int ) ;
 
 __attribute__((used)) static void tracepoint_update_probes(void)
 {
-	/* Core kernel tracepoints */
-	tracepoint_update_probe_range(__start___tracepoints,
-		__stop___tracepoints);
-	/* tracepoints in modules. */
-	module_update_tracepoints();
+
+ tracepoint_update_probe_range(__start___tracepoints,
+  __stop___tracepoints);
+
+ module_update_tracepoints();
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int mode_t ;
-typedef  int /*<<< orphan*/  JsonVariant ;
-typedef  int /*<<< orphan*/  JsonDispatchFlags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ STR_IN_SET (char const*,char*,char*) ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int S_IFBLK ; 
- int S_IFCHR ; 
- int S_IFIFO ; 
- int S_IFMT ; 
- int /*<<< orphan*/  assert (int*) ; 
- int /*<<< orphan*/  assert_se (char const*) ; 
- int json_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*) ; 
- char* json_variant_string (int /*<<< orphan*/ *) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef int mode_t ;
+typedef int JsonVariant ;
+typedef int JsonDispatchFlags ;
+
+
+ int EINVAL ;
+ scalar_t__ STR_IN_SET (char const*,char*,char*) ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int S_IFBLK ;
+ int S_IFCHR ;
+ int S_IFIFO ;
+ int S_IFMT ;
+ int assert (int*) ;
+ int assert_se (char const*) ;
+ int json_log (int *,int ,int ,char*,char const*) ;
+ char* json_variant_string (int *) ;
+ scalar_t__ streq (char const*,char*) ;
 
 __attribute__((used)) static int oci_device_type(const char *name, JsonVariant *v, JsonDispatchFlags flags, void *userdata) {
         mode_t *mode = userdata;

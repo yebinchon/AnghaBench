@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  owner; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int owner; } ;
 struct pci_driver {TYPE_1__ driver; } ;
 struct pci_dev {struct pci_driver* driver; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  try_module_get (int /*<<< orphan*/ ) ; 
+
+ int try_module_get (int ) ;
 
 __attribute__((used)) static inline struct pci_driver *eeh_pcid_get(struct pci_dev *pdev)
 {
-	if (!pdev || !pdev->driver)
-		return NULL;
+ if (!pdev || !pdev->driver)
+  return ((void*)0);
 
-	if (!try_module_get(pdev->driver->driver.owner))
-		return NULL;
+ if (!try_module_get(pdev->driver->driver.owner))
+  return ((void*)0);
 
-	return pdev->driver;
+ return pdev->driver;
 }

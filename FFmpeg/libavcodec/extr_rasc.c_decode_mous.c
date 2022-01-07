@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {unsigned int width; unsigned int height; TYPE_1__* priv_data; } ;
-struct TYPE_5__ {unsigned int cursor_w; unsigned int cursor_h; int /*<<< orphan*/  delta; int /*<<< orphan*/  cursor; int /*<<< orphan*/  cursor_size; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ RASCContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_5__ {unsigned int cursor_w; unsigned int cursor_h; int delta; int cursor; int cursor_size; int gb; } ;
+typedef TYPE_1__ RASCContext ;
+typedef int GetByteContext ;
+typedef int AVPacket ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_fast_padded_malloc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- unsigned int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,unsigned int) ; 
- unsigned int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int decode_zlib (TYPE_2__*,int /*<<< orphan*/ *,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int ENOMEM ;
+ int av_fast_padded_malloc (int *,int *,unsigned int) ;
+ unsigned int bytestream2_get_le32 (int *) ;
+ int bytestream2_skip (int *,unsigned int) ;
+ unsigned int bytestream2_tell (int *) ;
+ int decode_zlib (TYPE_2__*,int *,unsigned int,unsigned int) ;
+ int memcpy (int ,int ,unsigned int) ;
 
 __attribute__((used)) static int decode_mous(AVCodecContext *avctx,
                        AVPacket *avpkt, unsigned size)

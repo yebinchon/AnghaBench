@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ data; } ;
-typedef  TYPE_1__ AVFrameSideData ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  int /*<<< orphan*/  AVDynamicHDRPlus ;
+typedef TYPE_1__ AVFrameSideData ;
+typedef int AVFrame ;
+typedef int AVDynamicHDRPlus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_FRAME_DATA_DYNAMIC_HDR_PLUS ; 
- TYPE_1__* av_frame_new_side_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+ int AV_FRAME_DATA_DYNAMIC_HDR_PLUS ;
+ TYPE_1__* av_frame_new_side_data (int *,int ,int) ;
+ int memset (scalar_t__,int ,int) ;
 
 AVDynamicHDRPlus *av_dynamic_hdr_plus_create_side_data(AVFrame *frame)
 {
@@ -27,7 +27,7 @@ AVDynamicHDRPlus *av_dynamic_hdr_plus_create_side_data(AVFrame *frame)
                                                         AV_FRAME_DATA_DYNAMIC_HDR_PLUS,
                                                         sizeof(AVDynamicHDRPlus));
     if (!side_data)
-        return NULL;
+        return ((void*)0);
 
     memset(side_data->data, 0, sizeof(AVDynamicHDRPlus));
 

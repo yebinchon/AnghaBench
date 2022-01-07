@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dds_pixel_format {scalar_t__ bpp; scalar_t__ rmask; scalar_t__ gmask; scalar_t__ bmask; int flags; scalar_t__ amask; } ;
-struct TYPE_3__ {scalar_t__ bpp; scalar_t__ rmask; scalar_t__ gmask; scalar_t__ bmask; scalar_t__ amask; int /*<<< orphan*/  format; } ;
-typedef  int /*<<< orphan*/  D3DFORMAT ;
+struct TYPE_3__ {scalar_t__ bpp; scalar_t__ rmask; scalar_t__ gmask; scalar_t__ bmask; scalar_t__ amask; int format; } ;
+typedef int D3DFORMAT ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  D3DFMT_UNKNOWN ; 
- int DDS_PF_ALPHA ; 
- int /*<<< orphan*/  WARN (char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- TYPE_1__* rgb_pixel_formats ; 
+
+ unsigned int ARRAY_SIZE (TYPE_1__*) ;
+ int D3DFMT_UNKNOWN ;
+ int DDS_PF_ALPHA ;
+ int WARN (char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ TYPE_1__* rgb_pixel_formats ;
 
 __attribute__((used)) static D3DFORMAT dds_rgb_to_d3dformat(const struct dds_pixel_format *pixel_format)
 {

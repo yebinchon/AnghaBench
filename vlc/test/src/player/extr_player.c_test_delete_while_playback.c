@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+
+
+typedef int vlc_player_t ;
+typedef int vlc_object_t ;
 struct media_params {int dummy; } ;
-typedef  int /*<<< orphan*/  input_item_t ;
+typedef int input_item_t ;
 
-/* Variables and functions */
- struct media_params DEFAULT_MEDIA_PARAMS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VLC_PLAYER_LOCK_NORMAL ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_TICK_FROM_SEC (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * create_mock_media (char*,struct media_params*) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_log (char*,int) ; 
- int /*<<< orphan*/  vlc_player_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlc_player_New (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int vlc_player_SetCurrentMedia (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int vlc_player_Start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_player_Unlock (int /*<<< orphan*/ *) ; 
+
+ struct media_params DEFAULT_MEDIA_PARAMS (int ) ;
+ int VLC_PLAYER_LOCK_NORMAL ;
+ int VLC_SUCCESS ;
+ int VLC_TICK_FROM_SEC (int) ;
+ int assert (int) ;
+ int * create_mock_media (char*,struct media_params*) ;
+ int input_item_Release (int *) ;
+ int test_log (char*,int) ;
+ int vlc_player_Delete (int *) ;
+ int vlc_player_Lock (int *) ;
+ int * vlc_player_New (int *,int ,int *,int *) ;
+ int vlc_player_SetCurrentMedia (int *,int *) ;
+ int vlc_player_Start (int *) ;
+ int vlc_player_Unlock (int *) ;
 
 __attribute__((used)) static void
 test_delete_while_playback(vlc_object_t *obj, bool start)
 {
     test_log("delete_while_playback (start: %d)\n", start);
     vlc_player_t *player = vlc_player_New(obj, VLC_PLAYER_LOCK_NORMAL,
-                                          NULL, NULL);
+                                          ((void*)0), ((void*)0));
 
     struct media_params params = DEFAULT_MEDIA_PARAMS(VLC_TICK_FROM_SEC(10));
     input_item_t *media = create_mock_media("media1", &params);

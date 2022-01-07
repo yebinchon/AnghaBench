@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int i_start; int i_order; int /*<<< orphan*/  i_channel; int /*<<< orphan*/  b_absolute; } ;
-typedef  TYPE_1__ subpicture_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int i_start; int i_order; int i_channel; int b_absolute; } ;
+typedef TYPE_1__ subpicture_t ;
 struct TYPE_4__ {TYPE_1__* subpic; } ;
-typedef  TYPE_2__ spu_render_entry_t ;
+typedef TYPE_2__ spu_render_entry_t ;
 
-/* Variables and functions */
- int IntegerCmp (int,int) ; 
- int SSizeCmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int IntegerCmp (int,int) ;
+ int SSizeCmp (int ,int ) ;
 
 __attribute__((used)) static int SpuRenderCmp(const void *s0, const void *s1)
 {

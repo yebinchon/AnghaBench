@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CONFIG_LOG_BUF_SHIFT ; 
- int /*<<< orphan*/  __delay (int) ; 
- int /*<<< orphan*/  bus_error_jmp ; 
- int catch_memory_errors ; 
- unsigned long kallsyms_lookup_name (char*) ; 
- int /*<<< orphan*/  mread (unsigned long,unsigned char*,unsigned long const) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ setjmp (int /*<<< orphan*/ ) ; 
- unsigned long const strlen (unsigned char*) ; 
- int /*<<< orphan*/  sync () ; 
+ int CONFIG_LOG_BUF_SHIFT ;
+ int __delay (int) ;
+ int bus_error_jmp ;
+ int catch_memory_errors ;
+ unsigned long kallsyms_lookup_name (char*) ;
+ int mread (unsigned long,unsigned char*,unsigned long const) ;
+ int printf (char*,...) ;
+ scalar_t__ setjmp (int ) ;
+ unsigned long const strlen (unsigned char*) ;
+ int sync () ;
 
 void
 dump_log_buf(void)
@@ -62,7 +54,7 @@ dump_log_buf(void)
         }
 
         sync();
-        /* wait a little while to see if we get a machine check */
+
         __delay(200);
         catch_memory_errors = 0;
 }

@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ubsec_softc {int dummy; } ;
-struct ubsec_session {scalar_t__ ses_mlen; int /*<<< orphan*/  ses_iv; } ;
-struct cryptoini {scalar_t__ cri_alg; scalar_t__ cri_mlen; int cri_klen; int /*<<< orphan*/ * cri_key; struct cryptoini* cri_next; } ;
-typedef  int /*<<< orphan*/  device_t ;
-typedef  int /*<<< orphan*/  crypto_session_t ;
+struct ubsec_session {scalar_t__ ses_mlen; int ses_iv; } ;
+struct cryptoini {scalar_t__ cri_alg; scalar_t__ cri_mlen; int cri_klen; int * cri_key; struct cryptoini* cri_next; } ;
+typedef int device_t ;
+typedef int crypto_session_t ;
 
-/* Variables and functions */
- scalar_t__ CRYPTO_3DES_CBC ; 
- scalar_t__ CRYPTO_DES_CBC ; 
- scalar_t__ CRYPTO_MD5_HMAC ; 
- scalar_t__ CRYPTO_SHA1_HMAC ; 
- int EINVAL ; 
- scalar_t__ MD5_HASH_LEN ; 
- scalar_t__ SHA1_HASH_LEN ; 
- struct ubsec_session* crypto_get_driver_session (int /*<<< orphan*/ ) ; 
- struct ubsec_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_random (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ubsec_setup_enckey (struct ubsec_session*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ubsec_setup_mackey (struct ubsec_session*,scalar_t__,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ CRYPTO_3DES_CBC ;
+ scalar_t__ CRYPTO_DES_CBC ;
+ scalar_t__ CRYPTO_MD5_HMAC ;
+ scalar_t__ CRYPTO_SHA1_HMAC ;
+ int EINVAL ;
+ scalar_t__ MD5_HASH_LEN ;
+ scalar_t__ SHA1_HASH_LEN ;
+ struct ubsec_session* crypto_get_driver_session (int ) ;
+ struct ubsec_softc* device_get_softc (int ) ;
+ int read_random (int ,int) ;
+ int ubsec_setup_enckey (struct ubsec_session*,scalar_t__,int *) ;
+ int ubsec_setup_mackey (struct ubsec_session*,scalar_t__,int *,int) ;
 
 __attribute__((used)) static int
 ubsec_newsession(device_t dev, crypto_session_t cses, struct cryptoini *cri)
 {
-	struct ubsec_softc *sc = device_get_softc(dev);
-	struct cryptoini *c, *encini = NULL, *macini = NULL;
-	struct ubsec_session *ses = NULL;
+ struct ubsec_softc *sc = device_get_softc(dev);
+ struct cryptoini *c, *encini = ((void*)0), *macini = ((void*)0);
+ struct ubsec_session *ses = ((void*)0);
 
-	if (cri == NULL || sc == NULL)
-		return (EINVAL);
+ if (cri == ((void*)0) || sc == ((void*)0))
+  return (EINVAL);
 
-	for (c = cri; c != NULL; c = c->cri_next) {
-		if (c->cri_alg == CRYPTO_MD5_HMAC ||
-		    c->cri_alg == CRYPTO_SHA1_HMAC) {
-			if (macini)
-				return (EINVAL);
-			macini = c;
-		} else if (c->cri_alg == CRYPTO_DES_CBC ||
-		    c->cri_alg == CRYPTO_3DES_CBC) {
-			if (encini)
-				return (EINVAL);
-			encini = c;
-		} else
-			return (EINVAL);
-	}
-	if (encini == NULL && macini == NULL)
-		return (EINVAL);
+ for (c = cri; c != ((void*)0); c = c->cri_next) {
+  if (c->cri_alg == CRYPTO_MD5_HMAC ||
+      c->cri_alg == CRYPTO_SHA1_HMAC) {
+   if (macini)
+    return (EINVAL);
+   macini = c;
+  } else if (c->cri_alg == CRYPTO_DES_CBC ||
+      c->cri_alg == CRYPTO_3DES_CBC) {
+   if (encini)
+    return (EINVAL);
+   encini = c;
+  } else
+   return (EINVAL);
+ }
+ if (encini == ((void*)0) && macini == ((void*)0))
+  return (EINVAL);
 
-	ses = crypto_get_driver_session(cses);
-	if (encini) {
-		/* get an IV, network byte order */
-		/* XXX may read fewer than requested */
-		read_random(ses->ses_iv, sizeof(ses->ses_iv));
+ ses = crypto_get_driver_session(cses);
+ if (encini) {
 
-		if (encini->cri_key != NULL) {
-			ubsec_setup_enckey(ses, encini->cri_alg,
-			    encini->cri_key);
-		}
-	}
 
-	if (macini) {
-		ses->ses_mlen = macini->cri_mlen;
-		if (ses->ses_mlen == 0) {
-			if (macini->cri_alg == CRYPTO_MD5_HMAC)
-				ses->ses_mlen = MD5_HASH_LEN;
-			else
-				ses->ses_mlen = SHA1_HASH_LEN;
-		}
+  read_random(ses->ses_iv, sizeof(ses->ses_iv));
 
-		if (macini->cri_key != NULL) {
-			ubsec_setup_mackey(ses, macini->cri_alg,
-			    macini->cri_key, macini->cri_klen / 8);
-		}
-	}
+  if (encini->cri_key != ((void*)0)) {
+   ubsec_setup_enckey(ses, encini->cri_alg,
+       encini->cri_key);
+  }
+ }
 
-	return (0);
+ if (macini) {
+  ses->ses_mlen = macini->cri_mlen;
+  if (ses->ses_mlen == 0) {
+   if (macini->cri_alg == CRYPTO_MD5_HMAC)
+    ses->ses_mlen = MD5_HASH_LEN;
+   else
+    ses->ses_mlen = SHA1_HASH_LEN;
+  }
+
+  if (macini->cri_key != ((void*)0)) {
+   ubsec_setup_mackey(ses, macini->cri_alg,
+       macini->cri_key, macini->cri_klen / 8);
+  }
+ }
+
+ return (0);
 }

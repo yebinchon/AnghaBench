@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int i_size; int /*<<< orphan*/ * p_elems; } ;
-struct TYPE_5__ {TYPE_4__ eit; scalar_t__ handle; int /*<<< orphan*/  p_eas_es; scalar_t__ p_ctx; } ;
-typedef  TYPE_1__ ts_psip_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_RESET (TYPE_4__) ; 
- int /*<<< orphan*/  ATSC_Detach_Dvbpsi_Decoders (scalar_t__) ; 
- int /*<<< orphan*/  PIDRelease (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dvbpsi_delete (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  ts_pes_ChainDelete_es (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ts_psip_context_Delete (scalar_t__) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int i_size; int * p_elems; } ;
+struct TYPE_5__ {TYPE_4__ eit; scalar_t__ handle; int p_eas_es; scalar_t__ p_ctx; } ;
+typedef TYPE_1__ ts_psip_t ;
+typedef int demux_t ;
+
+
+ int ARRAY_RESET (TYPE_4__) ;
+ int ATSC_Detach_Dvbpsi_Decoders (scalar_t__) ;
+ int PIDRelease (int *,int ) ;
+ int dvbpsi_delete (scalar_t__) ;
+ int free (TYPE_1__*) ;
+ int ts_pes_ChainDelete_es (int *,int ) ;
+ int ts_psip_context_Delete (scalar_t__) ;
 
 void ts_psip_Del( demux_t *p_demux, ts_psip_t *psip )
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int codes_count; int current_codes_count; int /*<<< orphan*/  avctx; TYPE_1__* codes; void* max_codes_bits; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int codes_count; int current_codes_count; int avctx; TYPE_1__* codes; void* max_codes_bits; } ;
 struct TYPE_5__ {void* delta; } ;
-typedef  TYPE_2__ MotionPixelsContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_2__ MotionPixelsContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- int mp_get_code (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*) ;
+ void* get_bits (int *,int) ;
+ int mp_get_code (TYPE_2__*,int *,int ,int ) ;
 
 __attribute__((used)) static int mp_read_codes_table(MotionPixelsContext *mp, GetBitContext *gb)
 {

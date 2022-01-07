@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int length; unsigned char command; char const* key; scalar_t__ status; int flags; char const* data; size_t data_len; void* value; void* cas_unique; int /*<<< orphan*/  serial; scalar_t__ key_len; } ;
-typedef  TYPE_1__ yrmcds_response ;
-typedef  scalar_t__ yrmcds_error ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int length; unsigned char command; char const* key; scalar_t__ status; int flags; char const* data; size_t data_len; void* value; void* cas_unique; int serial; scalar_t__ key_len; } ;
+typedef TYPE_1__ yrmcds_response ;
+typedef scalar_t__ yrmcds_error ;
 struct TYPE_9__ {int invalid; scalar_t__ last_size; size_t used; char* recvbuf; char* decompressed; scalar_t__ compress_size; scalar_t__ text_mode; } ;
-typedef  TYPE_2__ yrmcds ;
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ uint16_t ;
+typedef TYPE_2__ yrmcds ;
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ uint16_t ;
 
-/* Variables and functions */
- scalar_t__ BINARY_HEADER_SIZE ; 
- scalar_t__ INT_MAX ; 
- int LZ4_decompress_safe (char const*,char*,int,int) ; 
- scalar_t__ MAX_CAPACITY ; 
- scalar_t__ UINT32_MAX ; 
- scalar_t__ YRMCDS_BAD_ARGUMENT ; 
- unsigned char YRMCDS_CMD_DECREMENT ; 
- unsigned char YRMCDS_CMD_INCREMENT ; 
- int YRMCDS_FLAG_COMPRESS ; 
- scalar_t__ YRMCDS_OK ; 
- scalar_t__ YRMCDS_OUT_OF_MEMORY ; 
- scalar_t__ YRMCDS_PROTOCOL_ERROR ; 
- scalar_t__ YRMCDS_STATUS_OK ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
- void* ntoh16 (char const*) ; 
- void* ntoh32 (char const*) ; 
- void* ntoh64 (char const*) ; 
- scalar_t__ recv_data (TYPE_2__*) ; 
- scalar_t__ text_recv (TYPE_2__*,TYPE_1__*) ; 
+
+ scalar_t__ BINARY_HEADER_SIZE ;
+ scalar_t__ INT_MAX ;
+ int LZ4_decompress_safe (char const*,char*,int,int) ;
+ scalar_t__ MAX_CAPACITY ;
+ scalar_t__ UINT32_MAX ;
+ scalar_t__ YRMCDS_BAD_ARGUMENT ;
+ unsigned char YRMCDS_CMD_DECREMENT ;
+ unsigned char YRMCDS_CMD_INCREMENT ;
+ int YRMCDS_FLAG_COMPRESS ;
+ scalar_t__ YRMCDS_OK ;
+ scalar_t__ YRMCDS_OUT_OF_MEMORY ;
+ scalar_t__ YRMCDS_PROTOCOL_ERROR ;
+ scalar_t__ YRMCDS_STATUS_OK ;
+ int free (char*) ;
+ scalar_t__ malloc (scalar_t__) ;
+ int memcpy (int *,char const*,int) ;
+ int memmove (char*,char*,size_t) ;
+ void* ntoh16 (char const*) ;
+ void* ntoh32 (char const*) ;
+ void* ntoh64 (char const*) ;
+ scalar_t__ recv_data (TYPE_2__*) ;
+ scalar_t__ text_recv (TYPE_2__*,TYPE_1__*) ;
 
 yrmcds_error yrmcds_recv(yrmcds* c, yrmcds_response* r) {
-    if( c == NULL || r == NULL )
+    if( c == ((void*)0) || r == ((void*)0) )
         return YRMCDS_BAD_ARGUMENT;
     if( c->invalid )
         return YRMCDS_PROTOCOL_ERROR;
@@ -58,7 +58,7 @@ yrmcds_error yrmcds_recv(yrmcds* c, yrmcds_response* r) {
         c->used = remain;
         c->last_size = 0;
         free(c->decompressed);
-        c->decompressed = NULL;
+        c->decompressed = ((void*)0);
     }
 
     if( c->text_mode ) {
@@ -94,7 +94,7 @@ yrmcds_error yrmcds_recv(yrmcds* c, yrmcds_response* r) {
     const char* pkey = c->recvbuf + (BINARY_HEADER_SIZE + extras_len);
     r->length = BINARY_HEADER_SIZE + total_len;
     r->command = *(unsigned char*)(c->recvbuf + 1);
-    r->key = key_len ? pkey : NULL;
+    r->key = key_len ? pkey : ((void*)0);
     r->key_len = key_len;
     r->status = ntoh16(c->recvbuf + 6);
     memcpy(&(r->serial), c->recvbuf + 12, 4);
@@ -114,7 +114,7 @@ yrmcds_error yrmcds_recv(yrmcds* c, yrmcds_response* r) {
     if( (r->command == YRMCDS_CMD_INCREMENT ||
          r->command == YRMCDS_CMD_DECREMENT) &&
         (r->status == YRMCDS_STATUS_OK) ) {
-        r->data = NULL;
+        r->data = ((void*)0);
         r->data_len = 0;
         if( data_len != 8 ) {
             c->invalid = 1;
@@ -125,39 +125,8 @@ yrmcds_error yrmcds_recv(yrmcds* c, yrmcds_response* r) {
         return YRMCDS_OK;
     }
     r->value = 0;
-    r->data = data_len ? pdata : NULL;
+    r->data = data_len ? pdata : ((void*)0);
     r->data_len = data_len;
-
-#ifdef LIBYRMCDS_USE_LZ4
-    if( c->compress_size && (r->flags & YRMCDS_FLAG_COMPRESS) ) {
-        if( data_len == 0 ) {
-            c->invalid = 1;
-            return YRMCDS_PROTOCOL_ERROR;
-        }
-        r->flags &= ~(uint32_t)YRMCDS_FLAG_COMPRESS;
-        uint32_t decompress_size = ntoh32(pdata);
-        if( UINT32_MAX > INT_MAX ) {
-            if( decompress_size > INT_MAX ) {
-                c->invalid = 1;
-                return YRMCDS_PROTOCOL_ERROR;
-            }
-        }
-        c->decompressed = (char*)malloc(decompress_size);
-        if( c->decompressed == NULL )
-            return YRMCDS_OUT_OF_MEMORY;
-        int d = LZ4_decompress_safe(pdata + sizeof(uint32_t),
-                                    c->decompressed,
-                                    (int)(data_len - sizeof(uint32_t)),
-                                    (int)decompress_size);
-        if( d != decompress_size ) {
-            c->invalid = 1;
-            return YRMCDS_PROTOCOL_ERROR;
-        }
-        r->data = c->decompressed;
-        r->data_len = decompress_size;
-    }
-#endif // LIBYRMCDS_USE_LZ4
-
     c->last_size = r->length;
     return YRMCDS_OK;
 }

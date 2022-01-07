@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int DialogCanceling; scalar_t__ NoClose; } ;
-typedef  TYPE_1__ VI_INSTALL_DLG ;
-typedef  int /*<<< orphan*/ * HWND ;
+typedef TYPE_1__ VI_INSTALL_DLG ;
+typedef int * HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Disable (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDCANCEL ; 
- int /*<<< orphan*/  ViDownloadThreadStop (TYPE_1__*) ; 
+
+ int Disable (int *,int ) ;
+ int EndDialog (int *,int ) ;
+ int IDCANCEL ;
+ int ViDownloadThreadStop (TYPE_1__*) ;
 
 void ViInstallDlgOnClose(HWND hWnd, VI_INSTALL_DLG *d)
 {
-	// Validate arguments
-	if (hWnd == NULL || d == NULL)
-	{
-		return;
-	}
 
-	if (d->DialogCanceling)
-	{
-		return;
-	}
-	if (d->NoClose)
-	{
-		return;
-	}
+ if (hWnd == ((void*)0) || d == ((void*)0))
+ {
+  return;
+ }
 
-	d->DialogCanceling = true;
+ if (d->DialogCanceling)
+ {
+  return;
+ }
+ if (d->NoClose)
+ {
+  return;
+ }
 
-	// Disable the cancel button
-	Disable(hWnd, IDCANCEL);
+ d->DialogCanceling = 1;
 
-	// Stop the download thread if it runs
-	ViDownloadThreadStop(d);
 
-	// Exit the dialog
-	EndDialog(hWnd, 0);
+ Disable(hWnd, IDCANCEL);
+
+
+ ViDownloadThreadStop(d);
+
+
+ EndDialog(hWnd, 0);
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qed_vf_info {int b_malicious; int /*<<< orphan*/  abs_vf_id; } ;
+
+
+
+
+struct qed_vf_info {int b_malicious; int abs_vf_id; } ;
 struct qed_hwfn {int dummy; } ;
-struct malicious_vf_eqe_data {int /*<<< orphan*/  err_id; int /*<<< orphan*/  vf_id; } ;
+struct malicious_vf_eqe_data {int err_id; int vf_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DP_INFO (struct qed_hwfn*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DP_NOTICE (struct qed_hwfn*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct qed_vf_info* qed_sriov_get_vf_from_absid (struct qed_hwfn*,int /*<<< orphan*/ ) ; 
+
+ int DP_INFO (struct qed_hwfn*,char*,int ,int ) ;
+ int DP_NOTICE (struct qed_hwfn*,char*,int ,int ) ;
+ struct qed_vf_info* qed_sriov_get_vf_from_absid (struct qed_hwfn*,int ) ;
 
 __attribute__((used)) static void qed_sriov_vfpf_malicious(struct qed_hwfn *p_hwfn,
-				     struct malicious_vf_eqe_data *p_data)
+         struct malicious_vf_eqe_data *p_data)
 {
-	struct qed_vf_info *p_vf;
+ struct qed_vf_info *p_vf;
 
-	p_vf = qed_sriov_get_vf_from_absid(p_hwfn, p_data->vf_id);
+ p_vf = qed_sriov_get_vf_from_absid(p_hwfn, p_data->vf_id);
 
-	if (!p_vf)
-		return;
+ if (!p_vf)
+  return;
 
-	if (!p_vf->b_malicious) {
-		DP_NOTICE(p_hwfn,
-			  "VF [%d] - Malicious behavior [%02x]\n",
-			  p_vf->abs_vf_id, p_data->err_id);
+ if (!p_vf->b_malicious) {
+  DP_NOTICE(p_hwfn,
+     "VF [%d] - Malicious behavior [%02x]\n",
+     p_vf->abs_vf_id, p_data->err_id);
 
-		p_vf->b_malicious = true;
-	} else {
-		DP_INFO(p_hwfn,
-			"VF [%d] - Malicious behavior [%02x]\n",
-			p_vf->abs_vf_id, p_data->err_id);
-	}
+  p_vf->b_malicious = 1;
+ } else {
+  DP_INFO(p_hwfn,
+   "VF [%d] - Malicious behavior [%02x]\n",
+   p_vf->abs_vf_id, p_data->err_id);
+ }
 }

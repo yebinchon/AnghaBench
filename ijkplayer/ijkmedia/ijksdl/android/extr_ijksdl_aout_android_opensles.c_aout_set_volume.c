@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* opaque; } ;
-struct TYPE_4__ {float left_volume; float right_volume; int need_set_volume; int /*<<< orphan*/  wakeup_mutex; int /*<<< orphan*/  wakeup_cond; } ;
-typedef  TYPE_1__ SDL_Aout_Opaque ;
-typedef  TYPE_2__ SDL_Aout ;
+struct TYPE_4__ {float left_volume; float right_volume; int need_set_volume; int wakeup_mutex; int wakeup_cond; } ;
+typedef TYPE_1__ SDL_Aout_Opaque ;
+typedef TYPE_2__ SDL_Aout ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGI (char*,float,float) ; 
- int /*<<< orphan*/  SDL_CondSignal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_LockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_UnlockMutex (int /*<<< orphan*/ ) ; 
+
+ int ALOGI (char*,float,float) ;
+ int SDL_CondSignal (int ) ;
+ int SDL_LockMutex (int ) ;
+ int SDL_UnlockMutex (int ) ;
 
 __attribute__((used)) static void aout_set_volume(SDL_Aout *aout, float left_volume, float right_volume)
 {

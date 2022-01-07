@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ iNode; } ;
-typedef  TYPE_1__ RtreeNode ;
-typedef  int /*<<< orphan*/  RtreeCell ;
-typedef  int /*<<< orphan*/  Rtree ;
+typedef TYPE_1__ RtreeNode ;
+typedef int RtreeCell ;
+typedef int Rtree ;
 
-/* Variables and functions */
- int ChooseLeaf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,TYPE_1__**) ; 
- int NCELL (TYPE_1__*) ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  nodeGetCell (int /*<<< orphan*/ *,TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int nodeRelease (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int rtreeInsertCell (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+ int ChooseLeaf (int *,int *,int,TYPE_1__**) ;
+ int NCELL (TYPE_1__*) ;
+ int SQLITE_OK ;
+ int nodeGetCell (int *,TYPE_1__*,int,int *) ;
+ int nodeRelease (int *,TYPE_1__*) ;
+ int rtreeInsertCell (int *,TYPE_1__*,int *,int) ;
 
 __attribute__((used)) static int reinsertNodeContent(Rtree *pRtree, RtreeNode *pNode){
   int ii;
@@ -34,9 +34,9 @@ __attribute__((used)) static int reinsertNodeContent(Rtree *pRtree, RtreeNode *p
     RtreeCell cell;
     nodeGetCell(pRtree, pNode, ii, &cell);
 
-    /* Find a node to store this cell in. pNode->iNode currently contains
-    ** the height of the sub-tree headed by the cell.
-    */
+
+
+
     rc = ChooseLeaf(pRtree, &cell, (int)pNode->iNode, &pInsert);
     if( rc==SQLITE_OK ){
       int rc2;

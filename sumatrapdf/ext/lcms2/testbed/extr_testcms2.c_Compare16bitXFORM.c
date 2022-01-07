@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ cmsUInt16Number ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Fail (char*,int) ; 
- int abs (scalar_t__) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,scalar_t__*,int) ; 
- int cmsMAXCHANNELS ; 
+
+
+
+typedef scalar_t__ cmsUInt16Number ;
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+
+
+ int DbgThread () ;
+ int Fail (char*,int) ;
+ int abs (scalar_t__) ;
+ int cmsDoTransform (int ,int ,scalar_t__*,scalar_t__*,int) ;
+ int cmsMAXCHANNELS ;
 
 __attribute__((used)) static
 cmsInt32Number Compare16bitXFORM(cmsHTRANSFORM xform1, cmsHTRANSFORM xform2, cmsInt32Number nChan)
@@ -44,7 +44,7 @@ cmsInt32Number Compare16bitXFORM(cmsHTRANSFORM xform1, cmsHTRANSFORM xform2, cms
         }
     }
 
-   // We allow 2 contone of difference on 16 bits
+
     if (n2 > 0x200) {
 
         Fail("Differences too big (%x)", n2);

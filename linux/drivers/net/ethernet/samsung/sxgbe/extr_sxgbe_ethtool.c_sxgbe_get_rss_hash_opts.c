@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sxgbe_priv_data {int dummy; } ;
 struct ethtool_rxnfc {int data; int flow_type; } ;
 
-/* Variables and functions */
-#define  AH_ESP_V4_FLOW 141 
-#define  AH_ESP_V6_FLOW 140 
-#define  AH_V4_FLOW 139 
-#define  AH_V6_FLOW 138 
- int EINVAL ; 
-#define  ESP_V4_FLOW 137 
-#define  ESP_V6_FLOW 136 
-#define  IPV4_FLOW 135 
-#define  IPV6_FLOW 134 
- int RXH_IP_DST ; 
- int RXH_IP_SRC ; 
- int RXH_L4_B_0_1 ; 
- int RXH_L4_B_2_3 ; 
-#define  SCTP_V4_FLOW 133 
-#define  SCTP_V6_FLOW 132 
-#define  TCP_V4_FLOW 131 
-#define  TCP_V6_FLOW 130 
-#define  UDP_V4_FLOW 129 
-#define  UDP_V6_FLOW 128 
+
+
+
+
+
+ int EINVAL ;
+
+
+
+
+ int RXH_IP_DST ;
+ int RXH_IP_SRC ;
+ int RXH_L4_B_0_1 ;
+ int RXH_L4_B_2_3 ;
+
+
+
+
+
+
 
 __attribute__((used)) static int sxgbe_get_rss_hash_opts(struct sxgbe_priv_data *priv,
-				   struct ethtool_rxnfc *cmd)
+       struct ethtool_rxnfc *cmd)
 {
-	cmd->data = 0;
+ cmd->data = 0;
 
-	/* Report default options for RSS on sxgbe */
-	switch (cmd->flow_type) {
-	case TCP_V4_FLOW:
-	case UDP_V4_FLOW:
-		cmd->data |= RXH_L4_B_0_1 | RXH_L4_B_2_3;
-		/* Fall through */
-	case SCTP_V4_FLOW:
-	case AH_ESP_V4_FLOW:
-	case AH_V4_FLOW:
-	case ESP_V4_FLOW:
-	case IPV4_FLOW:
-		cmd->data |= RXH_IP_SRC | RXH_IP_DST;
-		break;
-	case TCP_V6_FLOW:
-	case UDP_V6_FLOW:
-		cmd->data |= RXH_L4_B_0_1 | RXH_L4_B_2_3;
-		/* Fall through */
-	case SCTP_V6_FLOW:
-	case AH_ESP_V6_FLOW:
-	case AH_V6_FLOW:
-	case ESP_V6_FLOW:
-	case IPV6_FLOW:
-		cmd->data |= RXH_IP_SRC | RXH_IP_DST;
-		break;
-	default:
-		return -EINVAL;
-	}
 
-	return 0;
+ switch (cmd->flow_type) {
+ case 131:
+ case 129:
+  cmd->data |= RXH_L4_B_0_1 | RXH_L4_B_2_3;
+
+ case 133:
+ case 141:
+ case 139:
+ case 137:
+ case 135:
+  cmd->data |= RXH_IP_SRC | RXH_IP_DST;
+  break;
+ case 130:
+ case 128:
+  cmd->data |= RXH_L4_B_0_1 | RXH_L4_B_2_3;
+
+ case 132:
+ case 140:
+ case 138:
+ case 136:
+ case 134:
+  cmd->data |= RXH_IP_SRC | RXH_IP_DST;
+  break;
+ default:
+  return -EINVAL;
+ }
+
+ return 0;
 }

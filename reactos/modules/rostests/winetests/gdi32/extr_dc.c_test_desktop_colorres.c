@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITSPIXEL ; 
- int /*<<< orphan*/  COLORRES ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ *) ; 
- int GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int HDC ;
+
+
+ int BITSPIXEL ;
+ int COLORRES ;
+ int GetDC (int *) ;
+ int GetDeviceCaps (int ,int ) ;
+ int ReleaseDC (int *,int ) ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_desktop_colorres(void)
 {
-    HDC hdc = GetDC(NULL);
+    HDC hdc = GetDC(((void*)0));
     int bitspixel, colorres;
 
     bitspixel = GetDeviceCaps(hdc, BITSPIXEL);
@@ -31,7 +31,7 @@ __attribute__((used)) static void test_desktop_colorres(void)
 
     colorres = GetDeviceCaps(hdc, COLORRES);
     ok(colorres != 0 ||
-       broken(colorres == 0), /* Win9x */
+       broken(colorres == 0),
        "Expected to get valid COLORRES capability value\n");
 
     if (colorres)
@@ -57,5 +57,5 @@ __attribute__((used)) static void test_desktop_colorres(void)
         }
     }
 
-    ReleaseDC(NULL, hdc);
+    ReleaseDC(((void*)0), hdc);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int cnt0sel; int cnt1sel; int cnt2sel; int cnt3sel; } ;
 union cvmx_l2c_tadx_prf {void* u64; TYPE_2__ s; } ;
 struct TYPE_3__ {int cnt0sel; int cnt0ena; int cnt0rdclr; int cnt1sel; int cnt1ena; int cnt1rdclr; int cnt2sel; int cnt2ena; int cnt2rdclr; int cnt3sel; int cnt3ena; int cnt3rdclr; } ;
 union cvmx_l2c_pfctl {void* u64; TYPE_1__ s; } ;
-typedef  int uint32_t ;
-typedef  enum cvmx_l2c_event { ____Placeholder_cvmx_l2c_event } cvmx_l2c_event ;
+typedef int uint32_t ;
+typedef enum cvmx_l2c_event { ____Placeholder_cvmx_l2c_event } cvmx_l2c_event ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVMX_L2C_PFCTL ; 
- int CVMX_L2C_TADS ; 
- int /*<<< orphan*/  CVMX_L2C_TADX_PRF (int) ; 
- int /*<<< orphan*/  OCTEON_CN3XXX ; 
- int /*<<< orphan*/  OCTEON_CN5XXX ; 
- scalar_t__ OCTEON_IS_MODEL (int /*<<< orphan*/ ) ; 
- void* cvmx_read_csr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cvmx_warn (char*) ; 
- int /*<<< orphan*/  cvmx_warn_if (int,char*) ; 
- int /*<<< orphan*/  cvmx_write_csr (int /*<<< orphan*/ ,void*) ; 
+
+ int CVMX_L2C_PFCTL ;
+ int CVMX_L2C_TADS ;
+ int CVMX_L2C_TADX_PRF (int) ;
+ int OCTEON_CN3XXX ;
+ int OCTEON_CN5XXX ;
+ scalar_t__ OCTEON_IS_MODEL (int ) ;
+ void* cvmx_read_csr (int ) ;
+ int cvmx_warn (char*) ;
+ int cvmx_warn_if (int,char*) ;
+ int cvmx_write_csr (int ,void*) ;
 
 void cvmx_l2c_config_perf(uint32_t counter, enum cvmx_l2c_event event,
               uint32_t clear_on_read)

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  tid; void* pOut; scalar_t__ done; } ;
-typedef  TYPE_1__ SQLiteThread ;
 
-/* Variables and functions */
- scalar_t__ NEVER (int) ; 
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int tid; void* pOut; scalar_t__ done; } ;
+typedef TYPE_1__ SQLiteThread ;
+
+
+ scalar_t__ NEVER (int) ;
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ pthread_join (int ,void**) ;
+ int sqlite3_free (TYPE_1__*) ;
 
 int sqlite3ThreadJoin(SQLiteThread *p, void **ppOut){
   int rc;

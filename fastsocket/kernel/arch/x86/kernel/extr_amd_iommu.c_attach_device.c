@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct protection_domain {int /*<<< orphan*/  id; } ;
+
+
+
+
+typedef int u16 ;
+struct protection_domain {int id; } ;
 struct amd_iommu {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __attach_device (struct amd_iommu*,struct protection_domain*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  amd_iommu_devtable_lock ; 
- int /*<<< orphan*/  iommu_flush_tlb_pde (struct amd_iommu*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iommu_queue_inv_dev_entry (struct amd_iommu*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int __attach_device (struct amd_iommu*,struct protection_domain*,int ) ;
+ int amd_iommu_devtable_lock ;
+ int iommu_flush_tlb_pde (struct amd_iommu*,int ) ;
+ int iommu_queue_inv_dev_entry (struct amd_iommu*,int ) ;
+ int write_lock_irqsave (int *,unsigned long) ;
+ int write_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void attach_device(struct amd_iommu *iommu,
-			  struct protection_domain *domain,
-			  u16 devid)
+     struct protection_domain *domain,
+     u16 devid)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	write_lock_irqsave(&amd_iommu_devtable_lock, flags);
-	__attach_device(iommu, domain, devid);
-	write_unlock_irqrestore(&amd_iommu_devtable_lock, flags);
+ write_lock_irqsave(&amd_iommu_devtable_lock, flags);
+ __attach_device(iommu, domain, devid);
+ write_unlock_irqrestore(&amd_iommu_devtable_lock, flags);
 
-	/*
-	 * We might boot into a crash-kernel here. The crashed kernel
-	 * left the caches in the IOMMU dirty. So we have to flush
-	 * here to evict all dirty stuff.
-	 */
-	iommu_queue_inv_dev_entry(iommu, devid);
-	iommu_flush_tlb_pde(iommu, domain->id);
+
+
+
+
+
+ iommu_queue_inv_dev_entry(iommu, devid);
+ iommu_flush_tlb_pde(iommu, domain->id);
 }

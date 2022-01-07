@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double exp (float) ; 
- float fabsf (float) ; 
- double sqrt (float) ; 
+ double exp (float) ;
+ float fabsf (float) ;
+ double sqrt (float) ;
 
 __attribute__((used)) static float bessi0( float x )
 {
     float ax, ans;
-    double y; /* Accumulate polynomials in double precision. */
-    if( ( ax = fabsf( x ) ) < 3.75f ) /* Polynomial fit. */
+    double y;
+    if( ( ax = fabsf( x ) ) < 3.75f )
     {
         y = x / 3.75;
         y *= y;

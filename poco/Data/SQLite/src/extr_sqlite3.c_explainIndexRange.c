@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u16 ;
-struct TYPE_5__ {int nEq; int /*<<< orphan*/  nTop; int /*<<< orphan*/  nBtm; int /*<<< orphan*/ * pIndex; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u16 ;
+struct TYPE_5__ {int nEq; int nTop; int nBtm; int * pIndex; } ;
 struct TYPE_6__ {TYPE_1__ btree; } ;
 struct TYPE_7__ {int nSkip; int wsFlags; TYPE_2__ u; } ;
-typedef  TYPE_3__ WhereLoop ;
-typedef  int /*<<< orphan*/  StrAccum ;
-typedef  int /*<<< orphan*/  Index ;
+typedef TYPE_3__ WhereLoop ;
+typedef int StrAccum ;
+typedef int Index ;
 
-/* Variables and functions */
- int WHERE_BTM_LIMIT ; 
- int WHERE_TOP_LIMIT ; 
- int /*<<< orphan*/  explainAppendTerm (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,char*) ; 
- char* explainIndexColumnName (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_str_append (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_str_appendf (int /*<<< orphan*/ *,char*,char const*) ; 
+
+ int WHERE_BTM_LIMIT ;
+ int WHERE_TOP_LIMIT ;
+ int explainAppendTerm (int *,int *,int ,int,int,char*) ;
+ char* explainIndexColumnName (int *,int) ;
+ int sqlite3_str_append (int *,char*,int) ;
+ int sqlite3_str_appendf (int *,char*,char const*) ;
 
 __attribute__((used)) static void explainIndexRange(StrAccum *pStr, WhereLoop *pLoop){
   Index *pIndex = pLoop->u.btree.pIndex;

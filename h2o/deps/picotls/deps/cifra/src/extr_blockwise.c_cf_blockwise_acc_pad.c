@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  cf_blockwise_in_fn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cf_blockwise_acc_byte (int /*<<< orphan*/ *,size_t*,size_t,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  cf_blockwise_accumulate (int /*<<< orphan*/ *,size_t*,size_t,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,void*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int cf_blockwise_in_fn ;
+
+
+ int cf_blockwise_acc_byte (int *,size_t*,size_t,int ,size_t,int ,void*) ;
+ int cf_blockwise_accumulate (int *,size_t*,size_t,int *,int,int ,void*) ;
 
 void cf_blockwise_acc_pad(uint8_t *partial, size_t *npartial,
                           size_t nblock,
@@ -38,8 +38,8 @@ void cf_blockwise_acc_pad(uint8_t *partial, size_t *npartial,
     default:
             cf_blockwise_accumulate(partial, npartial, nblock, &fbyte, 1, process, ctx);
 
-            /* If the middle and last bytes differ, then process the last byte separately.
-             * Otherwise, just extend the middle block size. */
+
+
             if (lbyte != mbyte)
             {
               cf_blockwise_acc_byte(partial, npartial, nblock, mbyte, nbytes - 2, process, ctx);

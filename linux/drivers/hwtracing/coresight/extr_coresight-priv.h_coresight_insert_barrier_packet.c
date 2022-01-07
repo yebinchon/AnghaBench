@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CORESIGHT_BARRIER_PKT_SIZE ; 
- int /*<<< orphan*/  barrier_pkt ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int CORESIGHT_BARRIER_PKT_SIZE ;
+ int barrier_pkt ;
+ int memcpy (void*,int ,int ) ;
 
 __attribute__((used)) static inline void coresight_insert_barrier_packet(void *buf)
 {
-	if (buf)
-		memcpy(buf, barrier_pkt, CORESIGHT_BARRIER_PKT_SIZE);
+ if (buf)
+  memcpy(buf, barrier_pkt, CORESIGHT_BARRIER_PKT_SIZE);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bxe_softc {int /*<<< orphan*/  func_obj; scalar_t__ dmae_ready; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BXE_SP (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BXE_SP_MAPPING (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_func_sp_drv ; 
- int /*<<< orphan*/  ecore_init_func_obj (struct bxe_softc*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  func_afex_rdata ; 
- int /*<<< orphan*/  func_rdata ; 
+
+
+
+struct bxe_softc {int func_obj; scalar_t__ dmae_ready; } ;
+
+
+ int BXE_SP (struct bxe_softc*,int ) ;
+ int BXE_SP_MAPPING (struct bxe_softc*,int ) ;
+ int bxe_func_sp_drv ;
+ int ecore_init_func_obj (struct bxe_softc*,int *,int ,int ,int ,int ,int *) ;
+ int func_afex_rdata ;
+ int func_rdata ;
 
 __attribute__((used)) static void
 bxe_init_func_obj(struct bxe_softc *sc)

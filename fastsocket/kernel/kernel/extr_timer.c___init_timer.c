@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * next; } ;
-struct timer_list {int start_pid; int /*<<< orphan*/  lockdep_map; int /*<<< orphan*/  start_comm; int /*<<< orphan*/ * start_site; int /*<<< orphan*/  base; TYPE_1__ entry; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * next; } ;
+struct timer_list {int start_pid; int lockdep_map; int start_comm; int * start_site; int base; TYPE_1__ entry; } ;
 struct lock_class_key {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TASK_COMM_LEN ; 
- int /*<<< orphan*/  __raw_get_cpu_var (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lockdep_init_map (int /*<<< orphan*/ *,char const*,struct lock_class_key*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tvec_bases ; 
+
+ int TASK_COMM_LEN ;
+ int __raw_get_cpu_var (int ) ;
+ int lockdep_init_map (int *,char const*,struct lock_class_key*,int ) ;
+ int memset (int ,int ,int ) ;
+ int tvec_bases ;
 
 __attribute__((used)) static void __init_timer(struct timer_list *timer,
-			 const char *name,
-			 struct lock_class_key *key)
+    const char *name,
+    struct lock_class_key *key)
 {
-	timer->entry.next = NULL;
-	timer->base = __raw_get_cpu_var(tvec_bases);
-#ifdef CONFIG_TIMER_STATS
-	timer->start_site = NULL;
-	timer->start_pid = -1;
-	memset(timer->start_comm, 0, TASK_COMM_LEN);
-#endif
-	lockdep_init_map(&timer->lockdep_map, name, key, 0);
+ timer->entry.next = ((void*)0);
+ timer->base = __raw_get_cpu_var(tvec_bases);
+
+
+
+
+
+ lockdep_init_map(&timer->lockdep_map, name, key, 0);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int symbol ;
+
+
+
+
+typedef int symbol ;
 struct among {int s_size; int* s; int (* function ) (struct SN_env*) ;int result; int substring_i; } ;
 struct SN_env {int c; int l; int* p; } ;
 
-/* Variables and functions */
- int stub1 (struct SN_env*) ; 
+
+ int stub1 (struct SN_env*) ;
 
 extern int find_among(struct SN_env * z, const struct among * v, int v_size) {
 
@@ -35,7 +35,7 @@ extern int find_among(struct SN_env * z, const struct among * v, int v_size) {
     while(1) {
         int k = i + ((j - i) >> 1);
         int diff = 0;
-        int common = common_i < common_j ? common_i : common_j; /* smaller */
+        int common = common_i < common_j ? common_i : common_j;
         w = v + k;
         {
             int i2; for (i2 = common; i2 < w->s_size; i2++) {
@@ -53,12 +53,12 @@ extern int find_among(struct SN_env * z, const struct among * v, int v_size) {
             common_i = common;
         }
         if (j - i <= 1) {
-            if (i > 0) break; /* v->s has been inspected */
-            if (j == i) break; /* only one item in v */
+            if (i > 0) break;
+            if (j == i) break;
 
-            /* - but now we need to go round once more to get
-               v->s inspected. This looks messy, but is actually
-               the optimal approach.  */
+
+
+
 
             if (first_key_inspected) break;
             first_key_inspected = 1;

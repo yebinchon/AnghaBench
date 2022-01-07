@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int O_NONBLOCK ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  assert (int) ; 
- int fcntl (int,int /*<<< orphan*/ ,int) ; 
- int socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int F_GETFL ;
+ int F_SETFL ;
+ int IPPROTO_UDP ;
+ int O_NONBLOCK ;
+ int SOCK_DGRAM ;
+ int assert (int) ;
+ int fcntl (int,int ,int) ;
+ int socket (int,int ,int ) ;
 
 __attribute__((used)) static int new_socket(int sin_family)
 {

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  hInstance; int /*<<< orphan*/  hMainWnd; int /*<<< orphan*/  hMenu; } ;
-typedef  int /*<<< orphan*/  HMENU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AppendMenuW (int /*<<< orphan*/ ,int,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ CMD_AUTOMATIC ; 
- int /*<<< orphan*/  CloseClipboard () ; 
- scalar_t__ CountClipboardFormats () ; 
- int /*<<< orphan*/  DISPLAY_MENU_POS ; 
- int /*<<< orphan*/  DeleteMenu (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ EnumClipboardFormats (scalar_t__) ; 
- int GetMenuItemCount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSubMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ Globals ; 
- scalar_t__ IsClipboardFormatSupported (scalar_t__) ; 
- int /*<<< orphan*/  MAX_FMT_NAME_LEN ; 
- int /*<<< orphan*/  MF_BYPOSITION ; 
- int MF_GRAYED ; 
- int MF_SEPARATOR ; 
- int MF_STRING ; 
- int /*<<< orphan*/  OpenClipboard (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RetrieveClipboardFormatName (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_2__ {int hInstance; int hMainWnd; int hMenu; } ;
+typedef int HMENU ;
+
+
+ int ARRAYSIZE (int *) ;
+ int AppendMenuW (int ,int,scalar_t__,int *) ;
+ scalar_t__ CMD_AUTOMATIC ;
+ int CloseClipboard () ;
+ scalar_t__ CountClipboardFormats () ;
+ int DISPLAY_MENU_POS ;
+ int DeleteMenu (int ,int,int ) ;
+ scalar_t__ EnumClipboardFormats (scalar_t__) ;
+ int GetMenuItemCount (int ) ;
+ int GetSubMenu (int ,int ) ;
+ TYPE_1__ Globals ;
+ scalar_t__ IsClipboardFormatSupported (scalar_t__) ;
+ int MAX_FMT_NAME_LEN ;
+ int MF_BYPOSITION ;
+ int MF_GRAYED ;
+ int MF_SEPARATOR ;
+ int MF_STRING ;
+ int OpenClipboard (int ) ;
+ int RetrieveClipboardFormatName (int ,scalar_t__,int ,int *,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static void UpdateDisplayMenu(void)
 {
@@ -57,9 +57,9 @@ __attribute__((used)) static void UpdateDisplayMenu(void)
     if (!OpenClipboard(Globals.hMainWnd))
         return;
 
-    AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
+    AppendMenuW(hMenu, MF_SEPARATOR, 0, ((void*)0));
 
-    /* Display the supported clipboard formats first */
+
     for (uFormat = EnumClipboardFormats(0); uFormat;
          uFormat = EnumClipboardFormats(uFormat))
     {
@@ -71,7 +71,7 @@ __attribute__((used)) static void UpdateDisplayMenu(void)
         }
     }
 
-    /* Now display the unsupported clipboard formats */
+
     for (uFormat = EnumClipboardFormats(0); uFormat;
          uFormat = EnumClipboardFormats(uFormat))
     {

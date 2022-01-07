@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_10__ {int /*<<< orphan*/  disk_id; int /*<<< orphan*/  Sequence; } ;
-struct TYPE_9__ {int /*<<< orphan*/  db; } ;
-struct TYPE_8__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  TYPE_2__ MSIPACKAGE ;
-typedef  TYPE_3__ MSIFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- TYPE_1__* MSI_QueryGetRecord (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MSI_RecordGetInteger (TYPE_1__*,int) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+struct TYPE_10__ {int disk_id; int Sequence; } ;
+struct TYPE_9__ {int db; } ;
+struct TYPE_8__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef TYPE_2__ MSIPACKAGE ;
+typedef TYPE_3__ MSIFILE ;
+
+
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+ TYPE_1__* MSI_QueryGetRecord (int ,char const*,int ) ;
+ int MSI_RecordGetInteger (TYPE_1__*,int) ;
+ int WARN (char*) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static UINT load_file_disk_id( MSIPACKAGE *package, MSIFILE *file )
 {

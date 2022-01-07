@@ -1,0 +1,157 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/sound/isa/sb/extr_sb_mixer.c_snd_sbmixer_init.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/sound/isa/sb/extr_sb_mixer.c_snd_sbmixer_init.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.snd_sb = type { i32, %struct.snd_card* }
+%struct.snd_card = type { i32 }
+%struct.sbmix_elem = type { i32 }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.snd_sb*, %struct.sbmix_elem**, i32, [2 x i8]*, i32, i8*)* @snd_sbmixer_init to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @snd_sbmixer_init(%struct.snd_sb* %0, %struct.sbmix_elem** %1, i32 %2, [2 x i8]* %3, i32 %4, i8* %5) #0 {
+  %7 = alloca i32, align 4
+  %8 = alloca %struct.snd_sb*, align 8
+  %9 = alloca %struct.sbmix_elem**, align 8
+  %10 = alloca i32, align 4
+  %11 = alloca [2 x i8]*, align 8
+  %12 = alloca i32, align 4
+  %13 = alloca i8*, align 8
+  %14 = alloca i64, align 8
+  %15 = alloca %struct.snd_card*, align 8
+  %16 = alloca i32, align 4
+  %17 = alloca i32, align 4
+  store %struct.snd_sb* %0, %struct.snd_sb** %8, align 8
+  store %struct.sbmix_elem** %1, %struct.sbmix_elem*** %9, align 8
+  store i32 %2, i32* %10, align 4
+  store [2 x i8]* %3, [2 x i8]** %11, align 8
+  store i32 %4, i32* %12, align 4
+  store i8* %5, i8** %13, align 8
+  %18 = load %struct.snd_sb*, %struct.snd_sb** %8, align 8
+  %19 = getelementptr inbounds %struct.snd_sb, %struct.snd_sb* %18, i32 0, i32 1
+  %20 = load %struct.snd_card*, %struct.snd_card** %19, align 8
+  store %struct.snd_card* %20, %struct.snd_card** %15, align 8
+  %21 = load %struct.snd_sb*, %struct.snd_sb** %8, align 8
+  %22 = getelementptr inbounds %struct.snd_sb, %struct.snd_sb* %21, i32 0, i32 0
+  %23 = load i64, i64* %14, align 8
+  %24 = call i32 @spin_lock_irqsave(i32* %22, i64 %23)
+  %25 = load %struct.snd_sb*, %struct.snd_sb** %8, align 8
+  %26 = call i32 @snd_sbmixer_write(%struct.snd_sb* %25, i8 zeroext 0, i8 zeroext 0)
+  %27 = load %struct.snd_sb*, %struct.snd_sb** %8, align 8
+  %28 = getelementptr inbounds %struct.snd_sb, %struct.snd_sb* %27, i32 0, i32 0
+  %29 = load i64, i64* %14, align 8
+  %30 = call i32 @spin_unlock_irqrestore(i32* %28, i64 %29)
+  store i32 0, i32* %16, align 4
+  br label %31
+
+31:                                               ; preds = %58, %6
+  %32 = load i32, i32* %16, align 4
+  %33 = load i32, i32* %12, align 4
+  %34 = icmp slt i32 %32, %33
+  br i1 %34, label %35, label %61
+
+35:                                               ; preds = %31
+  %36 = load %struct.snd_sb*, %struct.snd_sb** %8, align 8
+  %37 = getelementptr inbounds %struct.snd_sb, %struct.snd_sb* %36, i32 0, i32 0
+  %38 = load i64, i64* %14, align 8
+  %39 = call i32 @spin_lock_irqsave(i32* %37, i64 %38)
+  %40 = load %struct.snd_sb*, %struct.snd_sb** %8, align 8
+  %41 = load [2 x i8]*, [2 x i8]** %11, align 8
+  %42 = load i32, i32* %16, align 4
+  %43 = sext i32 %42 to i64
+  %44 = getelementptr inbounds [2 x i8], [2 x i8]* %41, i64 %43
+  %45 = getelementptr inbounds [2 x i8], [2 x i8]* %44, i64 0, i64 0
+  %46 = load i8, i8* %45, align 1
+  %47 = load [2 x i8]*, [2 x i8]** %11, align 8
+  %48 = load i32, i32* %16, align 4
+  %49 = sext i32 %48 to i64
+  %50 = getelementptr inbounds [2 x i8], [2 x i8]* %47, i64 %49
+  %51 = getelementptr inbounds [2 x i8], [2 x i8]* %50, i64 0, i64 1
+  %52 = load i8, i8* %51, align 1
+  %53 = call i32 @snd_sbmixer_write(%struct.snd_sb* %40, i8 zeroext %46, i8 zeroext %52)
+  %54 = load %struct.snd_sb*, %struct.snd_sb** %8, align 8
+  %55 = getelementptr inbounds %struct.snd_sb, %struct.snd_sb* %54, i32 0, i32 0
+  %56 = load i64, i64* %14, align 8
+  %57 = call i32 @spin_unlock_irqrestore(i32* %55, i64 %56)
+  br label %58
+
+58:                                               ; preds = %35
+  %59 = load i32, i32* %16, align 4
+  %60 = add nsw i32 %59, 1
+  store i32 %60, i32* %16, align 4
+  br label %31
+
+61:                                               ; preds = %31
+  store i32 0, i32* %16, align 4
+  br label %62
+
+62:                                               ; preds = %78, %61
+  %63 = load i32, i32* %16, align 4
+  %64 = load i32, i32* %10, align 4
+  %65 = icmp slt i32 %63, %64
+  br i1 %65, label %66, label %81
+
+66:                                               ; preds = %62
+  %67 = load %struct.snd_sb*, %struct.snd_sb** %8, align 8
+  %68 = load %struct.sbmix_elem**, %struct.sbmix_elem*** %9, align 8
+  %69 = load i32, i32* %16, align 4
+  %70 = sext i32 %69 to i64
+  %71 = getelementptr inbounds %struct.sbmix_elem*, %struct.sbmix_elem** %68, i64 %70
+  %72 = load %struct.sbmix_elem*, %struct.sbmix_elem** %71, align 8
+  %73 = call i32 @snd_sbmixer_add_ctl_elem(%struct.snd_sb* %67, %struct.sbmix_elem* %72)
+  store i32 %73, i32* %17, align 4
+  %74 = icmp slt i32 %73, 0
+  br i1 %74, label %75, label %77
+
+75:                                               ; preds = %66
+  %76 = load i32, i32* %17, align 4
+  store i32 %76, i32* %7, align 4
+  br label %90
+
+77:                                               ; preds = %66
+  br label %78
+
+78:                                               ; preds = %77
+  %79 = load i32, i32* %16, align 4
+  %80 = add nsw i32 %79, 1
+  store i32 %80, i32* %16, align 4
+  br label %62
+
+81:                                               ; preds = %62
+  %82 = load %struct.snd_card*, %struct.snd_card** %15, align 8
+  %83 = load i8*, i8** %13, align 8
+  %84 = call i32 @snd_component_add(%struct.snd_card* %82, i8* %83)
+  %85 = load %struct.snd_card*, %struct.snd_card** %15, align 8
+  %86 = getelementptr inbounds %struct.snd_card, %struct.snd_card* %85, i32 0, i32 0
+  %87 = load i32, i32* %86, align 4
+  %88 = load i8*, i8** %13, align 8
+  %89 = call i32 @strcpy(i32 %87, i8* %88)
+  store i32 0, i32* %7, align 4
+  br label %90
+
+90:                                               ; preds = %81, %75
+  %91 = load i32, i32* %7, align 4
+  ret i32 %91
+}
+
+declare dso_local i32 @spin_lock_irqsave(i32*, i64) #1
+
+declare dso_local i32 @snd_sbmixer_write(%struct.snd_sb*, i8 zeroext, i8 zeroext) #1
+
+declare dso_local i32 @spin_unlock_irqrestore(i32*, i64) #1
+
+declare dso_local i32 @snd_sbmixer_add_ctl_elem(%struct.snd_sb*, %struct.sbmix_elem*) #1
+
+declare dso_local i32 @snd_component_add(%struct.snd_card*, i8*) #1
+
+declare dso_local i32 @strcpy(i32, i8*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

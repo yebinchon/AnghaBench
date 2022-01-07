@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_6__ {int flags; int style; int /*<<< orphan*/  hwndSelf; int /*<<< orphan*/  selection_end; int /*<<< orphan*/  line_height; int /*<<< orphan*/  selection_start; } ;
-typedef  scalar_t__ HTHEME ;
-typedef  TYPE_1__ EDITSTATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCaret (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EDIT_InvalidateText (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EDIT_NOTIFY_PARENT (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EDIT_SetCaretPos (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int EF_AFTER_WRAP ; 
- int EF_FOCUSED ; 
- int /*<<< orphan*/  EN_SETFOCUS ; 
- int ES_NOHIDESEL ; 
- int RDW_ERASE ; 
- int RDW_FRAME ; 
- int RDW_INVALIDATE ; 
- int RDW_UPDATENOW ; 
- int /*<<< orphan*/  RedrawWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ShowCaret (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_6__ {int flags; int style; int hwndSelf; int selection_end; int line_height; int selection_start; } ;
+typedef scalar_t__ HTHEME ;
+typedef TYPE_1__ EDITSTATE ;
+
+
+ int CreateCaret (int ,int ,int,int ) ;
+ int EDIT_InvalidateText (TYPE_1__*,int ,int ) ;
+ int EDIT_NOTIFY_PARENT (TYPE_1__*,int ) ;
+ int EDIT_SetCaretPos (TYPE_1__*,int ,int) ;
+ int EF_AFTER_WRAP ;
+ int EF_FOCUSED ;
+ int EN_SETFOCUS ;
+ int ES_NOHIDESEL ;
+ int RDW_ERASE ;
+ int RDW_FRAME ;
+ int RDW_INVALIDATE ;
+ int RDW_UPDATENOW ;
+ int RedrawWindow (int ,int *,int *,int) ;
+ int ShowCaret (int ) ;
 
 __attribute__((used)) static void EDIT_WM_SetFocus(HTHEME theme, EDITSTATE *es)
 {
@@ -49,5 +49,5 @@ __attribute__((used)) static void EDIT_WM_SetFocus(HTHEME theme, EDITSTATE *es)
     if (theme)
         flags |= RDW_FRAME | RDW_ERASE;
 
-    RedrawWindow(es->hwndSelf, NULL, NULL, flags);
+    RedrawWindow(es->hwndSelf, ((void*)0), ((void*)0), flags);
 }

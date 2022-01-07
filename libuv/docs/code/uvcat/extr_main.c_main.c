@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  on_open ; 
- int /*<<< orphan*/  open_req ; 
- int /*<<< orphan*/  read_req ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int /*<<< orphan*/  uv_fs_open (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_fs_req_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_req ; 
+ int O_RDONLY ;
+ int UV_RUN_DEFAULT ;
+ int on_open ;
+ int open_req ;
+ int read_req ;
+ int uv_default_loop () ;
+ int uv_fs_open (int ,int *,char*,int ,int ,int ) ;
+ int uv_fs_req_cleanup (int *) ;
+ int uv_run (int ,int ) ;
+ int write_req ;
 
 int main(int argc, char **argv) {
     uv_fs_open(uv_default_loop(), &open_req, argv[1], O_RDONLY, 0, on_open);

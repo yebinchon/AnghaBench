@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RTLD_LAZY ; 
- void* dlopen (char*,int /*<<< orphan*/ ) ; 
- void* dlsym (void*,char*) ; 
- int /*<<< orphan*/  vcos_log_error (char*) ; 
- int /*<<< orphan*/ * vcsm_free ; 
- int /*<<< orphan*/ * vcsm_malloc_cache ; 
- int /*<<< orphan*/ * vcsm_vc_hdl_from_hdl ; 
+ int RTLD_LAZY ;
+ void* dlopen (char*,int ) ;
+ void* dlsym (void*,char*) ;
+ int vcos_log_error (char*) ;
+ int * vcsm_free ;
+ int * vcsm_malloc_cache ;
+ int * vcsm_vc_hdl_from_hdl ;
 
 __attribute__((used)) static bool egl_init_vcsm()
 {
-#ifdef KHRONOS_HAVE_VCSM
-    return true;
-#else
+
+
+
     static bool warn_once;
-    bool success = false;
+    bool success = 0;
 
     if (vcsm_malloc_cache)
-       return true;
+       return 1;
 
     if (! vcsm_malloc_cache) {
-        /* Try LD_LIBRARY_PATH first */
+
         void *dl = dlopen("libvcsm.so", RTLD_LAZY);
 
         if (!dl)
@@ -46,21 +38,21 @@ __attribute__((used)) static bool egl_init_vcsm()
 
            if (vcsm_malloc_cache && vcsm_vc_hdl_from_hdl && vcsm_free)
            {
-              success = true;
+              success = 1;
            }
            else
            {
-              vcsm_malloc_cache = NULL;
-              vcsm_vc_hdl_from_hdl = NULL;
-              vcsm_free = NULL;
+              vcsm_malloc_cache = ((void*)0);
+              vcsm_vc_hdl_from_hdl = ((void*)0);
+              vcsm_free = ((void*)0);
            }
         }
     }
     if (! success && ! warn_once)
     {
         vcos_log_error("Unable to load libvcsm.so for target EGL_IMAGE_BRCM_VCSM");
-        warn_once = false;
+        warn_once = 0;
     }
     return success;
-#endif /* KHRONOS_HAVE_VCSM */
+
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * itext_strings; int /*<<< orphan*/ * itext_transkeys; int /*<<< orphan*/ * itext_langtags; int /*<<< orphan*/ * itext_keys; scalar_t__ itext_num; } ;
-typedef  TYPE_1__ LodePNGInfo ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * itext_strings; int * itext_transkeys; int * itext_langtags; int * itext_keys; scalar_t__ itext_num; } ;
+typedef TYPE_1__ LodePNGInfo ;
+
+
 
 __attribute__((used)) static void LodePNGIText_init(LodePNGInfo* info)
 {
   info->itext_num = 0;
-  info->itext_keys = NULL;
-  info->itext_langtags = NULL;
-  info->itext_transkeys = NULL;
-  info->itext_strings = NULL;
+  info->itext_keys = ((void*)0);
+  info->itext_langtags = ((void*)0);
+  info->itext_transkeys = ((void*)0);
+  info->itext_strings = ((void*)0);
 }

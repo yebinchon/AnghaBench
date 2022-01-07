@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  name; int /*<<< orphan*/ * instance; int /*<<< orphan*/ * status_indication; int /*<<< orphan*/ * flow_indication; int /*<<< orphan*/ * disconnect_indication; int /*<<< orphan*/ * connect_indication; int /*<<< orphan*/ * connect_confirm; int /*<<< orphan*/ * udata_indication; int /*<<< orphan*/ * data_indication; } ;
-typedef  TYPE_1__ notify_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int name; int * instance; int * status_indication; int * flow_indication; int * disconnect_indication; int * connect_indication; int * connect_confirm; int * udata_indication; int * data_indication; } ;
+typedef TYPE_1__ notify_t ;
+
+
+ int strlcpy (int ,char*,int) ;
 
 void irda_notify_init(notify_t *notify)
 {
-	notify->data_indication = NULL;
-	notify->udata_indication = NULL;
-	notify->connect_confirm = NULL;
-	notify->connect_indication = NULL;
-	notify->disconnect_indication = NULL;
-	notify->flow_indication = NULL;
-	notify->status_indication = NULL;
-	notify->instance = NULL;
-	strlcpy(notify->name, "Unknown", sizeof(notify->name));
+ notify->data_indication = ((void*)0);
+ notify->udata_indication = ((void*)0);
+ notify->connect_confirm = ((void*)0);
+ notify->connect_indication = ((void*)0);
+ notify->disconnect_indication = ((void*)0);
+ notify->flow_indication = ((void*)0);
+ notify->status_indication = ((void*)0);
+ notify->instance = ((void*)0);
+ strlcpy(notify->name, "Unknown", sizeof(notify->name));
 }

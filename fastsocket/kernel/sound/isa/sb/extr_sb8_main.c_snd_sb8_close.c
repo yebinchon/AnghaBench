@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_sb {int /*<<< orphan*/  open_lock; int /*<<< orphan*/  open; int /*<<< orphan*/ * capture_substream; int /*<<< orphan*/ * playback_substream; } ;
+
+
+
+
+struct snd_sb {int open_lock; int open; int * capture_substream; int * playback_substream; } ;
 struct snd_pcm_substream {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SB_OPEN_PCM ; 
- struct snd_sb* snd_pcm_substream_chip (struct snd_pcm_substream*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int SB_OPEN_PCM ;
+ struct snd_sb* snd_pcm_substream_chip (struct snd_pcm_substream*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int snd_sb8_close(struct snd_pcm_substream *substream)
 {
-	unsigned long flags;
-	struct snd_sb *chip = snd_pcm_substream_chip(substream);
+ unsigned long flags;
+ struct snd_sb *chip = snd_pcm_substream_chip(substream);
 
-	chip->playback_substream = NULL;
-	chip->capture_substream = NULL;
-	spin_lock_irqsave(&chip->open_lock, flags);
-	chip->open &= ~SB_OPEN_PCM;
-	spin_unlock_irqrestore(&chip->open_lock, flags);
-	return 0;
+ chip->playback_substream = ((void*)0);
+ chip->capture_substream = ((void*)0);
+ spin_lock_irqsave(&chip->open_lock, flags);
+ chip->open &= ~SB_OPEN_PCM;
+ spin_unlock_irqrestore(&chip->open_lock, flags);
+ return 0;
 }

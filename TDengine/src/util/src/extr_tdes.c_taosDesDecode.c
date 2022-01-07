@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECRYPTION_MODE ; 
- char* calloc (int,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char* taosDesImp (unsigned char*,char*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int64_t ;
+
+
+ int DECRYPTION_MODE ;
+ char* calloc (int,int) ;
+ int free (char*) ;
+ int memcpy (char*,char*,int) ;
+ char* taosDesImp (unsigned char*,char*,int,int ) ;
 
 char* taosDesDecode(int64_t key, char* src, int len) {
   unsigned char* keyStr = (unsigned char*)(&key);
-  char*          temp = calloc(len + 8, 1);
+  char* temp = calloc(len + 8, 1);
   memcpy(temp, src, len);
   len += 8;
 

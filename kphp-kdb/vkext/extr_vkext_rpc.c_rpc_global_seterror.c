@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ADD_MALLOC (scalar_t__) ;
+ int error_verbosity ;
+ int global_errnum ;
+ char const* global_error ;
+ int print_backtrace () ;
+ int printf (char*,char const*,int) ;
+ char* strdup (char const*) ;
+ scalar_t__ strlen (char const*) ;
+ int zzfree (char const*,scalar_t__) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_MALLOC (scalar_t__) ; 
- int error_verbosity ; 
- int global_errnum ; 
- char const* global_error ; 
- int /*<<< orphan*/  print_backtrace () ; 
- int /*<<< orphan*/  printf (char*,char const*,int) ; 
- char* strdup (char const*) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  zzfree (char const*,scalar_t__) ; 
-
-__attribute__((used)) static void rpc_global_seterror (const char *error, int errnum) { /* {{{ */
+__attribute__((used)) static void rpc_global_seterror (const char *error, int errnum) {
   if (error) {
-    //fprintf (stderr, "error %s #%d\n", error, errnum);
+
     if (global_error) {
       zzfree (global_error, strlen (global_error) + 1);
     }

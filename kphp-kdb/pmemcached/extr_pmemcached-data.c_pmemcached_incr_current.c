@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int data_len; char* data; int delay; int /*<<< orphan*/  flags; } ;
-struct TYPE_6__ {TYPE_2__ data; TYPE_1__* hash_entry; int /*<<< orphan*/  key_len; int /*<<< orphan*/  key; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int data_len; char* data; int delay; int flags; } ;
+struct TYPE_6__ {TYPE_2__ data; TYPE_1__* hash_entry; int key_len; int key; } ;
 struct TYPE_4__ {long long accum_value; } ;
 
-/* Variables and functions */
- TYPE_3__* current_cache ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  on_value_change (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pmct_set ; 
- int pmemcached_store_current (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned long long) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int verbosity ; 
+
+ TYPE_3__* current_cache ;
+ int fprintf (int ,char*,char*) ;
+ int on_value_change (int ,int ) ;
+ int pmct_set ;
+ int pmemcached_store_current (int ,char*,int,int ,int) ;
+ int sprintf (char*,char*,unsigned long long) ;
+ int stderr ;
+ int strlen (char*) ;
+ int verbosity ;
 
 int pmemcached_incr_current (long long arg) {
   if (current_cache->data.data_len == -1) {

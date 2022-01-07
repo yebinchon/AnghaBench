@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cs_base64_ctx {unsigned char* chunk; int chunk_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cs_base64_emit_chunk (struct cs_base64_ctx*) ; 
+
+ int cs_base64_emit_chunk (struct cs_base64_ctx*) ;
 
 void cs_base64_update(struct cs_base64_ctx *ctx, const char *str, size_t len) {
   const unsigned char *src = (const unsigned char *) str;

@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_5__ {int pos; } ;
-typedef  TYPE_1__ stats_buffer_t ;
+typedef TYPE_1__ stats_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AM_GET_MEMORY_USAGE_SELF ; 
- scalar_t__ COMM_MODE ; 
- int /*<<< orphan*/  FullVersionStr ; 
- scalar_t__ RECOMMEND_MODE ; 
- int /*<<< orphan*/  SB_BINLOG ; 
- int /*<<< orphan*/  SB_INDEX ; 
- int /*<<< orphan*/  SB_PRINT_I32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SB_PRINT_I64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SB_PRINT_QUERIES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  active_aio_queries ; 
- int /*<<< orphan*/  allocated_metafiles_size ; 
- scalar_t__ bookmarks_ptr ; 
- int /*<<< orphan*/  comments_kept ; 
- int /*<<< orphan*/  delete_queries ; 
- int /*<<< orphan*/  dups_removed_in_process_raw_updates ; 
- int /*<<< orphan*/  dups_users_removed_from_urlist ; 
- int /*<<< orphan*/  expired_aio_queries ; 
- int /*<<< orphan*/  garbage_objects_collected ; 
- int /*<<< orphan*/  garbage_users_collected ; 
- int /*<<< orphan*/  get_max_raw_recommend_updates_queries ; 
- int /*<<< orphan*/  get_raw_recommend_updates_queries ; 
- int /*<<< orphan*/  items_kept ; 
- int /*<<< orphan*/  items_removed_in_prepare_updates ; 
- int /*<<< orphan*/  items_removed_in_process_new ; 
- int /*<<< orphan*/  large_users_number ; 
- scalar_t__ last_collect_garbage_time ; 
- int /*<<< orphan*/  loadavg_last_minute ; 
- int /*<<< orphan*/  max_allocated_metafiles_size ; 
- int /*<<< orphan*/  max_news_days ; 
- int /*<<< orphan*/  max_uid ; 
- int /*<<< orphan*/  metafiles_cache_loading ; 
- int /*<<< orphan*/  metafiles_cache_miss ; 
- int /*<<< orphan*/  metafiles_cache_ok ; 
- int /*<<< orphan*/  metafiles_load_errors ; 
- int /*<<< orphan*/  metafiles_load_success ; 
- int /*<<< orphan*/  metafiles_loaded ; 
- int /*<<< orphan*/  metafiles_unloaded ; 
- int /*<<< orphan*/  minor_update_queries ; 
- scalar_t__ new_users_number ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  safe_div (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_memory (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_prepare (TYPE_1__*,struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_printf (TYPE_1__*,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  skipped_set_recommend_updates_queries ; 
- int /*<<< orphan*/  small_users_number ; 
- int /*<<< orphan*/  stats_buff ; 
- int /*<<< orphan*/  tot_aio_loaded_bytes ; 
- int tot_aio_queries ; 
- int /*<<< orphan*/  tot_places ; 
- int /*<<< orphan*/  tot_raw_recommend_updates_records ; 
- int /*<<< orphan*/  tot_users ; 
- int total_aio_time ; 
- int /*<<< orphan*/  ug_mode ; 
- int /*<<< orphan*/  undelete_queries ; 
- int /*<<< orphan*/  update_queries ; 
+
+ int AM_GET_MEMORY_USAGE_SELF ;
+ scalar_t__ COMM_MODE ;
+ int FullVersionStr ;
+ scalar_t__ RECOMMEND_MODE ;
+ int SB_BINLOG ;
+ int SB_INDEX ;
+ int SB_PRINT_I32 (int ) ;
+ int SB_PRINT_I64 (int ) ;
+ int SB_PRINT_QUERIES (int ) ;
+ int STATS_BUFF_SIZE ;
+ int active_aio_queries ;
+ int allocated_metafiles_size ;
+ scalar_t__ bookmarks_ptr ;
+ int comments_kept ;
+ int delete_queries ;
+ int dups_removed_in_process_raw_updates ;
+ int dups_users_removed_from_urlist ;
+ int expired_aio_queries ;
+ int garbage_objects_collected ;
+ int garbage_users_collected ;
+ int get_max_raw_recommend_updates_queries ;
+ int get_raw_recommend_updates_queries ;
+ int items_kept ;
+ int items_removed_in_prepare_updates ;
+ int items_removed_in_process_new ;
+ int large_users_number ;
+ scalar_t__ last_collect_garbage_time ;
+ int loadavg_last_minute ;
+ int max_allocated_metafiles_size ;
+ int max_news_days ;
+ int max_uid ;
+ int metafiles_cache_loading ;
+ int metafiles_cache_miss ;
+ int metafiles_cache_ok ;
+ int metafiles_load_errors ;
+ int metafiles_load_success ;
+ int metafiles_loaded ;
+ int metafiles_unloaded ;
+ int minor_update_queries ;
+ scalar_t__ new_users_number ;
+ scalar_t__ now ;
+ int safe_div (int ,int ) ;
+ int sb_memory (TYPE_1__*,int ) ;
+ int sb_prepare (TYPE_1__*,struct connection*,int ,int ) ;
+ int sb_printf (TYPE_1__*,char*,int ,...) ;
+ int skipped_set_recommend_updates_queries ;
+ int small_users_number ;
+ int stats_buff ;
+ int tot_aio_loaded_bytes ;
+ int tot_aio_queries ;
+ int tot_places ;
+ int tot_raw_recommend_updates_records ;
+ int tot_users ;
+ int total_aio_time ;
+ int ug_mode ;
+ int undelete_queries ;
+ int update_queries ;
 
 int news_prepare_stats (struct connection *c) {
   const char *const sobjs = COMM_MODE ? "comments" : "items";

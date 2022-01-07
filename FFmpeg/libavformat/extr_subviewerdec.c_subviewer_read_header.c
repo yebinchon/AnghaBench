@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value ;
-typedef  int /*<<< orphan*/  line ;
-typedef  int /*<<< orphan*/  key ;
-typedef  void* int64_t ;
-struct TYPE_16__ {int /*<<< orphan*/  extradata; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-struct TYPE_15__ {int /*<<< orphan*/  pb; int /*<<< orphan*/  metadata; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int value ;
+typedef int line ;
+typedef int key ;
+typedef void* int64_t ;
+struct TYPE_16__ {int extradata; int codec_id; int codec_type; } ;
+struct TYPE_15__ {int pb; int metadata; TYPE_1__* priv_data; } ;
 struct TYPE_14__ {int duration; void* pts; void* pos; } ;
 struct TYPE_13__ {TYPE_8__* codecpar; } ;
-struct TYPE_12__ {int /*<<< orphan*/  q; } ;
-typedef  TYPE_1__ SubViewerContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
+struct TYPE_12__ {int q; } ;
+typedef TYPE_1__ SubViewerContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFormatContext ;
+typedef int AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_SUBTITLE ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  AV_CODEC_ID_SUBVIEWER ; 
- void* AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  av_bprint_finalize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- char av_tolower (char) ; 
- TYPE_2__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_feof (int /*<<< orphan*/ ) ; 
- int avio_rb24 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- void* avio_tell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_2__*,int,int,int) ; 
- int ff_bprint_to_codecpar_extradata (TYPE_8__*,int /*<<< orphan*/ *) ; 
- int ff_get_line (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ff_subtitles_queue_finalize (TYPE_4__*,int /*<<< orphan*/ *) ; 
- TYPE_3__* ff_subtitles_queue_insert (int /*<<< orphan*/ *,char*,int,int) ; 
- int ffio_ensure_seekback (int /*<<< orphan*/ ,int) ; 
- scalar_t__ read_ts (char*,void**,int*) ; 
- size_t strcspn (char*,char*) ; 
- int strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- scalar_t__ strstr (char*,char*) ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_SUBTITLE ;
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int AV_CODEC_ID_SUBVIEWER ;
+ void* AV_NOPTS_VALUE ;
+ int ENOMEM ;
+ int SEEK_CUR ;
+ int av_bprint_finalize (int *,int *) ;
+ int av_bprint_init (int *,int ,int ) ;
+ int av_bprintf (int *,char*,char*) ;
+ int av_dict_set (int *,char*,char*,int ) ;
+ char av_tolower (char) ;
+ TYPE_2__* avformat_new_stream (TYPE_4__*,int *) ;
+ int avio_feof (int ) ;
+ int avio_rb24 (int ) ;
+ int avio_seek (int ,int,int ) ;
+ void* avio_tell (int ) ;
+ int avpriv_set_pts_info (TYPE_2__*,int,int,int) ;
+ int ff_bprint_to_codecpar_extradata (TYPE_8__*,int *) ;
+ int ff_get_line (int ,char*,int) ;
+ int ff_subtitles_queue_finalize (TYPE_4__*,int *) ;
+ TYPE_3__* ff_subtitles_queue_insert (int *,char*,int,int) ;
+ int ffio_ensure_seekback (int ,int) ;
+ scalar_t__ read_ts (char*,void**,int*) ;
+ size_t strcspn (char*,char*) ;
+ int strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ scalar_t__ strstr (char*,char*) ;
 
 __attribute__((used)) static int subviewer_read_header(AVFormatContext *s)
 {
     SubViewerContext *subviewer = s->priv_data;
-    AVStream *st = avformat_new_stream(s, NULL);
+    AVStream *st = avformat_new_stream(s, ((void*)0));
     AVBPrint header;
     int res = 0, new_event = 1;
     int64_t pts_start = AV_NOPTS_VALUE;
     int duration = -1;
-    AVPacket *sub = NULL;
+    AVPacket *sub = ((void*)0);
 
     if (!st)
         return AVERROR(ENOMEM);
@@ -79,7 +79,7 @@ __attribute__((used)) static int subviewer_read_header(AVFormatContext *s)
         avio_seek(s->pb, -3, SEEK_CUR);
     avpriv_set_pts_info(st, 64, 1, 100);
     st->codecpar->codec_type = AVMEDIA_TYPE_SUBTITLE;
-    st->codecpar->codec_id   = AV_CODEC_ID_SUBVIEWER;
+    st->codecpar->codec_id = AV_CODEC_ID_SUBVIEWER;
 
     av_bprint_init(&header, 0, AV_BPRINT_SIZE_UNLIMITED);
 
@@ -95,20 +95,20 @@ __attribute__((used)) static int subviewer_read_header(AVFormatContext *s)
 
         if (line[0] == '[' && strncmp(line, "[br]", 4)) {
 
-            /* ignore event style, XXX: add to side_data? */
+
             if (strstr(line, "[COLF]") || strstr(line, "[SIZE]") ||
                 strstr(line, "[FONT]") || strstr(line, "[STYLE]"))
                 continue;
 
-            if (!st->codecpar->extradata) { // header not finalized yet
+            if (!st->codecpar->extradata) {
                 av_bprintf(&header, "%s\n", line);
                 if (!strncmp(line, "[END INFORMATION]", 17) || !strncmp(line, "[SUBTITLE]", 10)) {
-                    /* end of header */
+
                     res = ff_bprint_to_codecpar_extradata(st->codecpar, &header);
                     if (res < 0)
                         goto end;
                 } else if (strncmp(line, "[INFORMATION]", 13)) {
-                    /* assume file metadata at this point */
+
                     int i, j = 0;
                     char key[32], value[128];
 
@@ -155,6 +155,6 @@ __attribute__((used)) static int subviewer_read_header(AVFormatContext *s)
     ff_subtitles_queue_finalize(s, &subviewer->q);
 
 end:
-    av_bprint_finalize(&header, NULL);
+    av_bprint_finalize(&header, ((void*)0));
     return res;
 }

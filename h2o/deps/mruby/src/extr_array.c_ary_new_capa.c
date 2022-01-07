@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int capa; } ;
-struct TYPE_10__ {scalar_t__ len; TYPE_1__ aux; int /*<<< orphan*/ * ptr; } ;
+struct TYPE_10__ {scalar_t__ len; TYPE_1__ aux; int * ptr; } ;
 struct TYPE_11__ {TYPE_2__ heap; } ;
 struct RArray {TYPE_3__ as; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-struct TYPE_12__ {int /*<<< orphan*/  array_class; } ;
-typedef  TYPE_4__ mrb_state ;
-typedef  int mrb_int ;
+typedef int mrb_value ;
+struct TYPE_12__ {int array_class; } ;
+typedef TYPE_4__ mrb_state ;
+typedef int mrb_int ;
 
-/* Variables and functions */
- int ARY_MAX_SIZE ; 
- int /*<<< orphan*/  ARY_SET_EMBED_LEN (struct RArray*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int MRB_ARY_EMBED_LEN_MAX ; 
- int /*<<< orphan*/  MRB_TT_ARRAY ; 
- scalar_t__ mrb_malloc (TYPE_4__*,size_t) ; 
- scalar_t__ mrb_obj_alloc (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
+
+ int ARY_MAX_SIZE ;
+ int ARY_SET_EMBED_LEN (struct RArray*,int ) ;
+ int E_ARGUMENT_ERROR ;
+ int MRB_ARY_EMBED_LEN_MAX ;
+ int MRB_TT_ARRAY ;
+ scalar_t__ mrb_malloc (TYPE_4__*,size_t) ;
+ scalar_t__ mrb_obj_alloc (TYPE_4__*,int ,int ) ;
+ int mrb_raise (TYPE_4__*,int ,char*) ;
 
 __attribute__((used)) static struct RArray*
 ary_new_capa(mrb_state *mrb, mrb_int capa)

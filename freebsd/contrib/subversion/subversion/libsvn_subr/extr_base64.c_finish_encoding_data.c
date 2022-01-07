@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct encode_baton {int /*<<< orphan*/  scratch_pool; int /*<<< orphan*/  output; int /*<<< orphan*/  break_lines; int /*<<< orphan*/  linelen; int /*<<< orphan*/  buflen; int /*<<< orphan*/  buf; } ;
-typedef  scalar_t__ apr_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  encode_partial_group (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_stream_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_stream_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- TYPE_1__* svn_stringbuf_create_empty (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ len; int data; } ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+struct encode_baton {int scratch_pool; int output; int break_lines; int linelen; int buflen; int buf; } ;
+typedef scalar_t__ apr_size_t ;
+
+
+ int * SVN_NO_ERROR ;
+ int encode_partial_group (TYPE_1__*,int ,int ,int ,int ) ;
+ int svn_pool_destroy (int ) ;
+ int * svn_stream_close (int ) ;
+ int * svn_stream_write (int ,int ,scalar_t__*) ;
+ TYPE_1__* svn_stringbuf_create_empty (int ) ;
 
 __attribute__((used)) static svn_error_t *
 finish_encoding_data(void *baton)
@@ -33,14 +33,14 @@ finish_encoding_data(void *baton)
   apr_size_t enclen;
   svn_error_t *err = SVN_NO_ERROR;
 
-  /* Encode a partial group at the end if necessary, and write it out.  */
+
   encode_partial_group(encoded, eb->buf, eb->buflen, eb->linelen,
                        eb->break_lines);
   enclen = encoded->len;
   if (enclen != 0)
     err = svn_stream_write(eb->output, encoded->data, &enclen);
 
-  /* Pass on the close request and clean up the baton.  */
+
   if (err == SVN_NO_ERROR)
     err = svn_stream_close(eb->output);
   svn_pool_destroy(eb->scratch_pool);

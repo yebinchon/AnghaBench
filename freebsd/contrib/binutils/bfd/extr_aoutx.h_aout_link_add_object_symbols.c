@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfd_link_info {int /*<<< orphan*/  keep_memory; } ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  aout_get_external_symbols (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aout_link_add_symbols (int /*<<< orphan*/ *,struct bfd_link_info*) ; 
- int /*<<< orphan*/  aout_link_free_symbols (int /*<<< orphan*/ *) ; 
+
+
+
+struct bfd_link_info {int keep_memory; } ;
+typedef int bfd_boolean ;
+typedef int bfd ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int aout_get_external_symbols (int *) ;
+ int aout_link_add_symbols (int *,struct bfd_link_info*) ;
+ int aout_link_free_symbols (int *) ;
 
 __attribute__((used)) static bfd_boolean
 aout_link_add_object_symbols (bfd *abfd, struct bfd_link_info *info)
@@ -31,7 +31,7 @@ aout_link_add_object_symbols (bfd *abfd, struct bfd_link_info *info)
   if (! info->keep_memory)
     {
       if (! aout_link_free_symbols (abfd))
-	return FALSE;
+ return FALSE;
     }
   return TRUE;
 }

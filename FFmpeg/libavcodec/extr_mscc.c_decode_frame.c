@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_18__ {int avail_in; int /*<<< orphan*/  total_out; int /*<<< orphan*/  avail_out; int /*<<< orphan*/  next_out; int /*<<< orphan*/ * next_in; } ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_18__ {int avail_in; int total_out; int avail_out; int next_out; int * next_in; } ;
 struct TYPE_17__ {scalar_t__ codec_id; scalar_t__ pix_fmt; int height; int width; TYPE_1__* priv_data; } ;
-struct TYPE_16__ {int palette_has_changed; int* linesize; int key_frame; int /*<<< orphan*/  pict_type; scalar_t__* data; } ;
-struct TYPE_15__ {int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_14__ {int* pal; int* uncomp_buf; int bpp; int /*<<< orphan*/  uncomp_size; TYPE_6__ zstream; int /*<<< orphan*/  decomp_buf; int /*<<< orphan*/  decomp_size; } ;
-typedef  int /*<<< orphan*/  PutByteContext ;
-typedef  TYPE_1__ MSCCContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_16__ {int palette_has_changed; int* linesize; int key_frame; int pict_type; scalar_t__* data; } ;
+struct TYPE_15__ {int size; int * data; } ;
+struct TYPE_14__ {int* pal; int* uncomp_buf; int bpp; int uncomp_size; TYPE_6__ zstream; int decomp_buf; int decomp_size; } ;
+typedef int PutByteContext ;
+typedef TYPE_1__ MSCCContext ;
+typedef int GetByteContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_UNKNOWN ; 
- int AVPALETTE_SIZE ; 
- scalar_t__ AV_CODEC_ID_MSCC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- scalar_t__ AV_PIX_FMT_PAL8 ; 
- int /*<<< orphan*/  AV_PKT_DATA_PALETTE ; 
- int AV_RL32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  Z_FINISH ; 
- int Z_OK ; 
- int Z_STREAM_END ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/ * av_packet_get_side_data (TYPE_2__*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_init_writer (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int inflate (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int inflateReset (TYPE_6__*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int*,int) ; 
- int rle_uncompress (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int AVERROR_UNKNOWN ;
+ int AVPALETTE_SIZE ;
+ scalar_t__ AV_CODEC_ID_MSCC ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ scalar_t__ AV_PIX_FMT_PAL8 ;
+ int AV_PKT_DATA_PALETTE ;
+ int AV_RL32 (int const*) ;
+ int Z_FINISH ;
+ int Z_OK ;
+ int Z_STREAM_END ;
+ int av_log (TYPE_4__*,int ,char*,int) ;
+ int * av_packet_get_side_data (TYPE_2__*,int ,int*) ;
+ int bytestream2_init (int *,int ,int ) ;
+ int bytestream2_init_writer (int *,int*,int ) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__*,int ) ;
+ int inflate (TYPE_6__*,int ) ;
+ int inflateReset (TYPE_6__*) ;
+ int memcpy (scalar_t__,int*,int) ;
+ int rle_uncompress (TYPE_4__*,int *,int *) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
                         void *data, int *got_frame,
@@ -93,9 +93,9 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
         av_log(avctx, AV_LOG_ERROR, "Inflate reset error: %d\n", ret);
         return AVERROR_UNKNOWN;
     }
-    s->zstream.next_in   = buf;
-    s->zstream.avail_in  = buf_size;
-    s->zstream.next_out  = s->decomp_buf;
+    s->zstream.next_in = buf;
+    s->zstream.avail_in = buf_size;
+    s->zstream.next_out = s->decomp_buf;
     s->zstream.avail_out = s->decomp_size;
     ret = inflate(&s->zstream, Z_FINISH);
     if (ret != Z_STREAM_END) {

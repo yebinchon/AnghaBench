@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_4__ {int /*<<< orphan*/ * BaseAddress; scalar_t__ size; struct TYPE_4__* next; } ;
-typedef  TYPE_1__* PDEBUG_MODULE ;
-typedef  int /*<<< orphan*/  DEBUG_MODULE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENTER_FUNC () ; 
- scalar_t__ ExAllocatePool (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FreeModuleList (TYPE_1__*) ; 
- int /*<<< orphan*/  LEAVE_FUNC () ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_4__ {int * BaseAddress; scalar_t__ size; struct TYPE_4__* next; } ;
+typedef TYPE_1__* PDEBUG_MODULE ;
+typedef int DEBUG_MODULE ;
+typedef int BOOLEAN ;
+
+
+ int ASSERT (int ) ;
+ int ENTER_FUNC () ;
+ scalar_t__ ExAllocatePool (int ,int) ;
+ int FALSE ;
+ int FreeModuleList (TYPE_1__*) ;
+ int LEAVE_FUNC () ;
+ int NonPagedPool ;
+ int TRUE ;
 
 BOOLEAN InitModuleList( PDEBUG_MODULE *ppmodule, ULONG len )
 {
-	ULONG i;
-	PDEBUG_MODULE pNext = NULL, pm = *ppmodule;
+ ULONG i;
+ PDEBUG_MODULE pNext = ((void*)0), pm = *ppmodule;
 
-	ENTER_FUNC();
+ ENTER_FUNC();
 
-	ASSERT(pm==NULL);
+ ASSERT(pm==((void*)0));
 
-	for(i=1;i<=len;i++){
-		pm = (PDEBUG_MODULE)ExAllocatePool( NonPagedPool, sizeof( DEBUG_MODULE ) );
-		if( !pm ){
-			FreeModuleList(pNext);
-			return FALSE;
-		}
-		pm->next = pNext;
-		pm->size = 0;
-		pm->BaseAddress = NULL;
-		//DbgPrint("len1: %d\n", pm->name.Length);
-		pNext = pm;
-	}
-	*ppmodule = pm;
+ for(i=1;i<=len;i++){
+  pm = (PDEBUG_MODULE)ExAllocatePool( NonPagedPool, sizeof( DEBUG_MODULE ) );
+  if( !pm ){
+   FreeModuleList(pNext);
+   return FALSE;
+  }
+  pm->next = pNext;
+  pm->size = 0;
+  pm->BaseAddress = ((void*)0);
 
-	LEAVE_FUNC();
+  pNext = pm;
+ }
+ *ppmodule = pm;
 
-	return TRUE;
+ LEAVE_FUNC();
+
+ return TRUE;
 }

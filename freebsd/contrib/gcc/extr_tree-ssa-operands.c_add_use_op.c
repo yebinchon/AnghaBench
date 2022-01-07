@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  use_optype_p ;
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOC_OPTYPE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  APPEND_OP_AFTER (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INITIALIZE_USE (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USE_OP_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  use ; 
+
+
+
+typedef int use_optype_p ;
+typedef int tree ;
+
+
+ int ALLOC_OPTYPE (int ,int ) ;
+ int APPEND_OP_AFTER (int ,int ) ;
+ int INITIALIZE_USE (int ,int *,int ) ;
+ int USE_OP_PTR (int ) ;
+ int use ;
 
 __attribute__((used)) static inline void
 add_use_op (tree stmt, tree *op, use_optype_p *last)
@@ -27,5 +27,5 @@ add_use_op (tree stmt, tree *op, use_optype_p *last)
 
   ALLOC_OPTYPE (new, use);
   INITIALIZE_USE (USE_OP_PTR (new), op, stmt);
-  APPEND_OP_AFTER (new, *last);  
+  APPEND_OP_AFTER (new, *last);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  link; int /*<<< orphan*/  fd; int /*<<< orphan*/  ip_service_type; int /*<<< orphan*/  port; } ;
-typedef  TYPE_1__ sd_dhcp_client ;
-typedef  int /*<<< orphan*/  DHCPPacket ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DHCP_PORT_SERVER ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- int /*<<< orphan*/  INADDR_BROADCAST ; 
- int dhcp_network_send_raw_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  dhcp_packet_append_ip_headers (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int link; int fd; int ip_service_type; int port; } ;
+typedef TYPE_1__ sd_dhcp_client ;
+typedef int DHCPPacket ;
+
+
+ int DHCP_PORT_SERVER ;
+ int INADDR_ANY ;
+ int INADDR_BROADCAST ;
+ int dhcp_network_send_raw_socket (int ,int *,int *,size_t) ;
+ int dhcp_packet_append_ip_headers (int *,int ,int ,int ,int ,size_t,int ) ;
 
 __attribute__((used)) static int dhcp_client_send_raw(
                 sd_dhcp_client *client,

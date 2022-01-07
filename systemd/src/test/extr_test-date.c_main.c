@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  test_one (char*) ; 
- int /*<<< orphan*/  test_one_noutc (char*) ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_should_fail (char*) ; 
- int /*<<< orphan*/  test_should_parse (char*) ; 
- int /*<<< orphan*/  test_should_pass (char*) ; 
+ int LOG_DEBUG ;
+ int test_one (char*) ;
+ int test_one_noutc (char*) ;
+ int test_setup_logging (int ) ;
+ int test_should_fail (char*) ;
+ int test_should_parse (char*) ;
+ int test_should_pass (char*) ;
 
 int main(int argc, char *argv[]) {
         test_setup_logging(LOG_DEBUG);
@@ -53,14 +45,5 @@ int main(int argc, char *argv[]) {
         test_should_fail("now Asia/Seoul");
         test_should_fail("+2d Asia/Seoul");
         test_should_fail("@1395716396 Asia/Seoul");
-#if SIZEOF_TIME_T == 8
-        test_should_pass("9999-12-30 23:59:59 UTC");
-        test_should_fail("9999-12-31 00:00:00 UTC");
-        test_should_fail("10000-01-01 00:00:00 UTC");
-#elif SIZEOF_TIME_T == 4
-        test_should_pass("2038-01-19 03:14:07 UTC");
-        test_should_fail("2038-01-19 03:14:08 UTC");
-#endif
-
         return 0;
 }

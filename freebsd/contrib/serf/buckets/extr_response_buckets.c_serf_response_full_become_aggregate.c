@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  allocator; TYPE_3__* data; } ;
-typedef  TYPE_2__ serf_bucket_t ;
-struct TYPE_11__ {char* reason; int /*<<< orphan*/  code; int /*<<< orphan*/  version; } ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int allocator; TYPE_3__* data; } ;
+typedef TYPE_2__ serf_bucket_t ;
+struct TYPE_11__ {char* reason; int code; int version; } ;
 struct TYPE_13__ {TYPE_2__* stream; TYPE_2__* headers; TYPE_1__ sl; } ;
-typedef  TYPE_3__ response_context_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
+typedef TYPE_3__ response_context_t ;
+typedef int apr_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_SUCCESS ; 
- TYPE_2__* SERF_BUCKET_SIMPLE_STRING_LEN (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SERF_HTTP_VERSION_MAJOR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SERF_HTTP_VERSION_MINOR (int /*<<< orphan*/ ) ; 
- int apr_snprintf (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serf_bucket_aggregate_append (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  serf_bucket_aggregate_become (TYPE_2__*) ; 
- int /*<<< orphan*/  serf_bucket_mem_free (int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_2__* serf_bucket_simple_copy_create (char*,int,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
+
+ int APR_SUCCESS ;
+ TYPE_2__* SERF_BUCKET_SIMPLE_STRING_LEN (char*,int,int ) ;
+ int SERF_HTTP_VERSION_MAJOR (int ) ;
+ int SERF_HTTP_VERSION_MINOR (int ) ;
+ int apr_snprintf (char*,int,char*,int ,int ,int ) ;
+ int serf_bucket_aggregate_append (TYPE_2__*,TYPE_2__*) ;
+ int serf_bucket_aggregate_become (TYPE_2__*) ;
+ int serf_bucket_mem_free (int ,TYPE_3__*) ;
+ TYPE_2__* serf_bucket_simple_copy_create (char*,int,int ) ;
+ int strlen (char*) ;
 
 apr_status_t serf_response_full_become_aggregate(serf_bucket_t *bucket)
 {
@@ -41,7 +41,7 @@ apr_status_t serf_response_full_become_aggregate(serf_bucket_t *bucket)
 
     serf_bucket_aggregate_become(bucket);
 
-    /* Add reconstructed status line. */
+
     size = apr_snprintf(buf, 256, "HTTP/%d.%d %d ",
                         SERF_HTTP_VERSION_MAJOR(ctx->sl.version),
                         SERF_HTTP_VERSION_MINOR(ctx->sl.version),
@@ -56,7 +56,7 @@ apr_status_t serf_response_full_become_aggregate(serf_bucket_t *bucket)
                                         bucket->allocator);
     serf_bucket_aggregate_append(bucket, bkt);
 
-    /* Add headers and stream buckets in order. */
+
     serf_bucket_aggregate_append(bucket, ctx->headers);
     serf_bucket_aggregate_append(bucket, ctx->stream);
 

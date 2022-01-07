@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
 
-/* Variables and functions */
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_node_file ; 
- int /*<<< orphan*/  svn_node_none ; 
- int /*<<< orphan*/  svn_node_symlink ; 
- int /*<<< orphan*/  svn_node_unknown ; 
+
+
+
+typedef int svn_node_kind_t ;
+
+
+ scalar_t__ strcmp (char const*,char*) ;
+ int svn_node_dir ;
+ int svn_node_file ;
+ int svn_node_none ;
+ int svn_node_symlink ;
+ int svn_node_unknown ;
 
 svn_node_kind_t
 svn_node_kind_from_word(const char *word)
 {
-  if (word == NULL)
+  if (word == ((void*)0))
     return svn_node_unknown;
 
   if (strcmp(word, "none") == 0)
@@ -35,6 +35,6 @@ svn_node_kind_from_word(const char *word)
   else if (strcmp(word, "symlink") == 0)
     return svn_node_symlink;
   else
-    /* This also handles word == "unknown" */
+
     return svn_node_unknown;
 }

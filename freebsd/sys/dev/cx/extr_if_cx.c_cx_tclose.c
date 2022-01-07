@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct tty {TYPE_2__* t_sc; } ;
-struct TYPE_5__ {int open_dev; int /*<<< orphan*/  chan; TYPE_1__* board; } ;
-typedef  TYPE_2__ drv_t ;
-typedef  int /*<<< orphan*/  bdrv_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * sys; } ;
+struct TYPE_5__ {int open_dev; int chan; TYPE_1__* board; } ;
+typedef TYPE_2__ drv_t ;
+typedef int bdrv_t ;
+struct TYPE_4__ {int * sys; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CX_DEBUG2 (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  CX_LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CX_UNLOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cx_enable_receive (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CX_DEBUG2 (TYPE_2__*,char*) ;
+ int CX_LOCK (int *) ;
+ int CX_UNLOCK (int *) ;
+ int cx_enable_receive (int ,int ) ;
 
 __attribute__((used)) static void cx_tclose (struct tty *tp)
 {
-	drv_t *d;
-	bdrv_t *bd;
+ drv_t *d;
+ bdrv_t *bd;
 
-	d = tp->t_sc;
-	CX_DEBUG2 (d, ("cx_close\n"));
-	bd = d->board->sys;
-	CX_LOCK (bd);
-	/* Disable receiver.
-	 * Transmitter continues sending the queued data. */
-	cx_enable_receive (d->chan, 0);
-	CX_UNLOCK (bd);
-	d->open_dev &= ~0x2;
+ d = tp->t_sc;
+ CX_DEBUG2 (d, ("cx_close\n"));
+ bd = d->board->sys;
+ CX_LOCK (bd);
+
+
+ cx_enable_receive (d->chan, 0);
+ CX_UNLOCK (bd);
+ d->open_dev &= ~0x2;
 }

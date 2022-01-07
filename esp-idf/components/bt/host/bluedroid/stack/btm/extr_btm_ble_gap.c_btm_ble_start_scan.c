@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tBTM_STATUS ;
-struct TYPE_5__ {scalar_t__ scan_duplicate_filter; scalar_t__ scan_type; int /*<<< orphan*/  state; } ;
-typedef  TYPE_2__ tBTM_BLE_INQ_CB ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tBTM_STATUS ;
+struct TYPE_5__ {scalar_t__ scan_duplicate_filter; scalar_t__ scan_type; int state; } ;
+typedef TYPE_2__ tBTM_BLE_INQ_CB ;
 struct TYPE_4__ {TYPE_2__ inq_var; } ;
 struct TYPE_6__ {TYPE_1__ ble_ctr_cb; } ;
 
-/* Variables and functions */
- scalar_t__ BTM_BLE_DUPLICATE_DISABLE ; 
- scalar_t__ BTM_BLE_DUPLICATE_MAX ; 
- int /*<<< orphan*/  BTM_BLE_SCANNING ; 
- int /*<<< orphan*/  BTM_BLE_SCAN_ENABLE ; 
- scalar_t__ BTM_BLE_SCAN_MODE_ACTI ; 
- int /*<<< orphan*/  BTM_BLE_STATE_ACTIVE_SCAN_BIT ; 
- int /*<<< orphan*/  BTM_BLE_STATE_PASSIVE_SCAN_BIT ; 
- int /*<<< orphan*/  BTM_CMD_STARTED ; 
- int /*<<< orphan*/  BTM_NO_RESOURCES ; 
- scalar_t__ BTM_SUCCESS ; 
- int /*<<< orphan*/  OSI_MUTEX_MAX_TIMEOUT ; 
- int /*<<< orphan*/  OSI_SEM_MAX_TIMEOUT ; 
- int /*<<< orphan*/  btm_ble_set_topology_mask (int /*<<< orphan*/ ) ; 
- TYPE_3__ btm_cb ; 
- int /*<<< orphan*/  btsnd_hcic_ble_set_scan_enable (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  osi_mutex_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  osi_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  osi_sem_take (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scan_enable_lock ; 
- int /*<<< orphan*/  scan_enable_sem ; 
- scalar_t__ scan_enable_status ; 
+
+ scalar_t__ BTM_BLE_DUPLICATE_DISABLE ;
+ scalar_t__ BTM_BLE_DUPLICATE_MAX ;
+ int BTM_BLE_SCANNING ;
+ int BTM_BLE_SCAN_ENABLE ;
+ scalar_t__ BTM_BLE_SCAN_MODE_ACTI ;
+ int BTM_BLE_STATE_ACTIVE_SCAN_BIT ;
+ int BTM_BLE_STATE_PASSIVE_SCAN_BIT ;
+ int BTM_CMD_STARTED ;
+ int BTM_NO_RESOURCES ;
+ scalar_t__ BTM_SUCCESS ;
+ int OSI_MUTEX_MAX_TIMEOUT ;
+ int OSI_SEM_MAX_TIMEOUT ;
+ int btm_ble_set_topology_mask (int ) ;
+ TYPE_3__ btm_cb ;
+ int btsnd_hcic_ble_set_scan_enable (int ,scalar_t__) ;
+ int osi_mutex_lock (int *,int ) ;
+ int osi_mutex_unlock (int *) ;
+ int osi_sem_take (int *,int ) ;
+ int scan_enable_lock ;
+ int scan_enable_sem ;
+ scalar_t__ scan_enable_status ;
 
 tBTM_STATUS btm_ble_start_scan(void)
 {
@@ -52,7 +52,7 @@ tBTM_STATUS btm_ble_start_scan(void)
     if(p_inq->scan_duplicate_filter > BTM_BLE_DUPLICATE_MAX) {
         p_inq->scan_duplicate_filter = BTM_BLE_DUPLICATE_DISABLE;
     }
-    /* start scan, disable duplicate filtering */
+
     if (!btsnd_hcic_ble_set_scan_enable (BTM_BLE_SCAN_ENABLE, p_inq->scan_duplicate_filter)) {
         status = BTM_NO_RESOURCES;
     } else {

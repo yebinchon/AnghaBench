@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint64_t ;
-struct ar_archive_rar_uncomp_v2 {size_t channel; size_t numchannels; int lastoffset; int lastlength; int* oldoffset; int oldoffsetindex; int /*<<< orphan*/  offsetcode; int /*<<< orphan*/  lengthcode; int /*<<< orphan*/  maincode; int /*<<< orphan*/  channeldelta; int /*<<< orphan*/ * audiostate; int /*<<< orphan*/ * audiocode; scalar_t__ audioblock; } ;
-typedef  int /*<<< orphan*/  offsetbits ;
-typedef  int /*<<< orphan*/  offsetbases ;
-typedef  int /*<<< orphan*/  lengthbits ;
-typedef  int /*<<< orphan*/  lengthbases ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  scalar_t__ int64_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+struct ar_archive_rar_uncomp_v2 {size_t channel; size_t numchannels; int lastoffset; int lastlength; int* oldoffset; int oldoffsetindex; int offsetcode; int lengthcode; int maincode; int channeldelta; int * audiostate; int * audiocode; scalar_t__ audioblock; } ;
+typedef int offsetbits ;
+typedef int offsetbases ;
+typedef int lengthbits ;
+typedef int lengthbases ;
+typedef int int8_t ;
+typedef scalar_t__ int64_t ;
+typedef int int32_t ;
 struct TYPE_10__ {struct ar_archive_rar_uncomp_v2 v2; } ;
-struct TYPE_13__ {int start_new_table; int /*<<< orphan*/  lzss; TYPE_1__ state; } ;
+struct TYPE_13__ {int start_new_table; int lzss; TYPE_1__ state; } ;
 struct TYPE_12__ {scalar_t__ size_total; } ;
 struct TYPE_11__ {scalar_t__ entry_size_uncompressed; } ;
 struct TYPE_14__ {TYPE_4__ uncomp; TYPE_3__ solid; TYPE_2__ super; } ;
-typedef  TYPE_5__ ar_archive_rar ;
-typedef  int /*<<< orphan*/  LZSS ;
+typedef TYPE_5__ ar_archive_rar ;
+typedef int LZSS ;
 
-/* Variables and functions */
- scalar_t__ br_bits (TYPE_5__*,int const) ; 
- int /*<<< orphan*/  br_check (TYPE_5__*,int const) ; 
- int /*<<< orphan*/  lzss_emit_literal (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lzss_emit_match (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ lzss_position (int /*<<< orphan*/ *) ; 
- int rar_decode_audio (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int rar_read_next_symbol (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  warn (char*) ; 
+
+ scalar_t__ br_bits (TYPE_5__*,int const) ;
+ int br_check (TYPE_5__*,int const) ;
+ int lzss_emit_literal (int *,int) ;
+ int lzss_emit_match (int *,int,int) ;
+ scalar_t__ lzss_position (int *) ;
+ int rar_decode_audio (int *,int *,int ) ;
+ int rar_read_next_symbol (TYPE_5__*,int *) ;
+ int warn (char*) ;
 
 int64_t rar_expand_v2(ar_archive_rar *rar, int64_t end)
 {
     static const uint8_t lengthbases[] =
-        {   0,   1,   2,   3,   4,   5,   6,
-            7,   8,  10,  12,  14,  16,  20,
-           24,  28,  32,  40,  48,  56,  64,
-           80,  96, 112, 128, 160, 192, 224 };
+        { 0, 1, 2, 3, 4, 5, 6,
+            7, 8, 10, 12, 14, 16, 20,
+           24, 28, 32, 40, 48, 56, 64,
+           80, 96, 112, 128, 160, 192, 224 };
     static const uint8_t lengthbits[] =
         { 0, 0, 0, 0, 0, 0, 0,
           0, 1, 1, 1, 1, 2, 2,
           2, 2, 3, 3, 3, 3, 4,
           4, 4, 4, 5, 5, 5, 5 };
     static const int32_t offsetbases[] =
-        {       0,       1,       2,       3,       4,       6,
-                8,      12,      16,      24,      32,      48,
-               64,      96,     128,     192,     256,     384,
-              512,     768,    1024,    1536,    2048,    3072,
-             4096,    6144,    8192,   12288,   16384,   24576,
-            32768,   49152,   65536,   98304,  131072,  196608,
-           262144,  327680,  393216,  458752,  524288,  589824,
-           655360,  720896,  786432,  851968,  917504,  983040 };
+        { 0, 1, 2, 3, 4, 6,
+                8, 12, 16, 24, 32, 48,
+               64, 96, 128, 192, 256, 384,
+              512, 768, 1024, 1536, 2048, 3072,
+             4096, 6144, 8192, 12288, 16384, 24576,
+            32768, 49152, 65536, 98304, 131072, 196608,
+           262144, 327680, 393216, 458752, 524288, 589824,
+           655360, 720896, 786432, 851968, 917504, 983040 };
     static const uint8_t offsetbits[] =
-        {  0,  0,  0,  0,  1,  1,  2,  2,  3,  3,  4,  4,
-           5,  5,  6,  6,  7,  7,  8,  8,  9,  9, 10, 10,
+        { 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4,
+           5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10,
           11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16,
           16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16 };
     static const uint8_t shortbases[] =
@@ -91,7 +91,7 @@ int64_t rar_expand_v2(ar_archive_rar *rar, int64_t end)
             if (symbol < 0)
                 return -1;
             if (symbol == 256) {
-                rar->uncomp.start_new_table = true;
+                rar->uncomp.start_new_table = 1;
                 return lzss_position(lzss);
             }
             byte = rar_decode_audio(&uncomp_v2->audiostate[uncomp_v2->channel], &uncomp_v2->channeldelta, (int8_t)(uint8_t)symbol);
@@ -145,7 +145,7 @@ int64_t rar_expand_v2(ar_archive_rar *rar, int64_t end)
             len = 2;
         }
         else if (symbol == 269) {
-            rar->uncomp.start_new_table = true;
+            rar->uncomp.start_new_table = 1;
             return lzss_position(lzss);
         }
         else {

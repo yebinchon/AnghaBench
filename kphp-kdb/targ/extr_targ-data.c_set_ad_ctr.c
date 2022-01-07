@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_targ_ad_setctr_pack {long long views; } ;
 struct lev_targ_ad_setctr {long long clicks; long long views; } ;
-struct lev_generic {int type; int /*<<< orphan*/  a; } ;
+struct lev_generic {int type; int a; } ;
 struct advert {scalar_t__ price; long long g_clicked_old; long long l_clicked_old; long long g_views; long long l_views; } ;
 
-/* Variables and functions */
- int LEV_TARG_AD_SETCTR ; 
- int LEV_TARG_AD_SETCTR_PACK ; 
- long long MAX_G_CLICKS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  compute_estimated_gain (struct advert*) ; 
- struct advert* get_ad_f (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ targeting_disabled ; 
+
+ int LEV_TARG_AD_SETCTR ;
+ int LEV_TARG_AD_SETCTR_PACK ;
+ long long MAX_G_CLICKS ;
+ int assert (int) ;
+ int compute_estimated_gain (struct advert*) ;
+ struct advert* get_ad_f (int ,int ) ;
+ scalar_t__ targeting_disabled ;
 
 __attribute__((used)) static int set_ad_ctr (struct lev_generic *E) {
   if (targeting_disabled) {

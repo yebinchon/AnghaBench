@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static void
 replace_bit_field (char *bundle, long long val, int from, int len)
 {
@@ -43,19 +34,19 @@ replace_bit_field (char *bundle, long long val, int from, int len)
       val >>= 8 - from % 8;
 
       for (i = from_byte+1; i < to_byte; i++)
-	{
-	  c = val & 0xff;
-	  val >>= 8;
-	  b[i] = c;
-	}
+ {
+   c = val & 0xff;
+   val >>= 8;
+   b[i] = c;
+ }
 
       if (to % 8 != 0)
-	{
-	  unsigned char cv = (unsigned char) val;
-	  c = b[to_byte];
-	  c = c >> (to % 8) << (to % 8);
-	  c |= ((unsigned char) (cv << (8 - to % 8))) >> (8 - to % 8);
-	  b[to_byte] = c;
-	}
+ {
+   unsigned char cv = (unsigned char) val;
+   c = b[to_byte];
+   c = c >> (to % 8) << (to % 8);
+   c |= ((unsigned char) (cv << (8 - to % 8))) >> (8 - to % 8);
+   b[to_byte] = c;
+ }
     }
 }

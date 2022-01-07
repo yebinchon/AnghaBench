@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ binding; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVAR_ARCHIVE ; 
- scalar_t__ CopyString (char const*) ; 
- int MAX_KEYS ; 
- int /*<<< orphan*/  Z_Free (scalar_t__) ; 
- int /*<<< orphan*/  cvar_modifiedFlags ; 
- TYPE_1__* keys ; 
+
+ int CVAR_ARCHIVE ;
+ scalar_t__ CopyString (char const*) ;
+ int MAX_KEYS ;
+ int Z_Free (scalar_t__) ;
+ int cvar_modifiedFlags ;
+ TYPE_1__* keys ;
 
 void Key_SetBinding( int keynum, const char *binding ) {
-	if ( keynum < 0 || keynum >= MAX_KEYS ) {
-		return;
-	}
+ if ( keynum < 0 || keynum >= MAX_KEYS ) {
+  return;
+ }
 
-	// free old bindings
-	if ( keys[ keynum ].binding ) {
-		Z_Free( keys[ keynum ].binding );
-	}
-		
-	// allocate memory for new binding
-	keys[keynum].binding = CopyString( binding );
 
-	// consider this like modifying an archived cvar, so the
-	// file write will be triggered at the next opportunity
-	cvar_modifiedFlags |= CVAR_ARCHIVE;
+ if ( keys[ keynum ].binding ) {
+  Z_Free( keys[ keynum ].binding );
+ }
+
+
+ keys[keynum].binding = CopyString( binding );
+
+
+
+ cvar_modifiedFlags |= CVAR_ARCHIVE;
 }

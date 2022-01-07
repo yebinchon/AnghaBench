@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lacp_port {int /*<<< orphan*/  lp_state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LACP_DPRINTF (struct lacp_port*) ; 
- int /*<<< orphan*/  LACP_STATE_COLLECTING ; 
+
+
+
+struct lacp_port {int lp_state; } ;
+
+
+ int LACP_DPRINTF (struct lacp_port*) ;
+ int LACP_STATE_COLLECTING ;
 
 __attribute__((used)) static void
 lacp_disable_collecting(struct lacp_port *lp)
 {
-	LACP_DPRINTF((lp, "collecting disabled\n"));
-	lp->lp_state &= ~LACP_STATE_COLLECTING;
+ LACP_DPRINTF((lp, "collecting disabled\n"));
+ lp->lp_state &= ~LACP_STATE_COLLECTING;
 }

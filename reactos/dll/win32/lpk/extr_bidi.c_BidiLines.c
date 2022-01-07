@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  ScriptLayout (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int resolveLines (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  resolveWhitespace (int,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int WORD ;
+typedef int * LPWSTR ;
+typedef int * LPCWSTR ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int GetProcessHeap () ;
+ int* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int ScriptLayout (int,int *,int *,int*) ;
+ int WARN (char*) ;
+ int resolveLines (int *,int const*,int) ;
+ int resolveWhitespace (int,int const*,int *,int) ;
 
 __attribute__((used)) static void BidiLines(int baselevel, LPWSTR pszOutLine, LPCWSTR pszLine, const WORD * pclsLine,
                       BYTE * plevelLine, int cchPara, const BOOL * pbrk)
@@ -41,17 +41,17 @@ __attribute__((used)) static void BidiLines(int baselevel, LPWSTR pszOutLine, LP
 
     do
     {
-        /* break lines at LS */
+
         cchLine = resolveLines(pszLine, pbrk, cchPara);
 
-        /* resolve whitespace */
+
         resolveWhitespace(baselevel, pclsLine, plevelLine, cchLine);
 
         if (pszOutLine)
         {
             int i;
-            /* reorder each line in place */
-            ScriptLayout(cchLine, plevelLine, NULL, run);
+
+            ScriptLayout(cchLine, plevelLine, ((void*)0), run);
             for (i = 0; i < cchLine; i++)
                 pszOutLine[done+run[i]] = pszLine[i];
         }

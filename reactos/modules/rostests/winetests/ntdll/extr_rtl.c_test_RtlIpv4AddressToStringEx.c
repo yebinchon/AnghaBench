@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  scalar_t__ USHORT ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int buffer ;
+typedef scalar_t__ USHORT ;
+typedef int ULONG ;
 struct TYPE_5__ {int s_b1; int s_b2; int s_b3; int s_b4; } ;
 struct TYPE_6__ {TYPE_1__ S_un_b; } ;
 struct TYPE_7__ {TYPE_2__ S_un; } ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  char* LPSTR ;
-typedef  TYPE_3__ IN_ADDR ;
-typedef  int DWORD ;
-typedef  char CHAR ;
+typedef scalar_t__ NTSTATUS ;
+typedef char* LPSTR ;
+typedef TYPE_3__ IN_ADDR ;
+typedef int DWORD ;
+typedef char CHAR ;
 
-/* Variables and functions */
- scalar_t__ STATUS_INVALID_PARAMETER ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ htons (int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- scalar_t__ pRtlIpv4AddressToStringExA (TYPE_3__*,scalar_t__,char*,int*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ scalar_t__ STATUS_INVALID_PARAMETER ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ htons (int) ;
+ int memset (char*,char,int) ;
+ int ok (int,char*,scalar_t__,...) ;
+ scalar_t__ pRtlIpv4AddressToStringExA (TYPE_3__*,scalar_t__,char*,int*) ;
+ int strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_RtlIpv4AddressToStringEx(void)
 {
@@ -96,7 +96,7 @@ __attribute__((used)) static void test_RtlIpv4AddressToStringEx(void)
         res, size, buffer, used + 1);
 
 
-    /* to get only the ip, use 0 as port */
+
     port = 0;
     expect = ip_1234;
 
@@ -134,22 +134,22 @@ __attribute__((used)) static void test_RtlIpv4AddressToStringEx(void)
         res, size, buffer, used + 1);
 
 
-    /* parameters are checked */
+
     memset(buffer, '#', sizeof(buffer) - 1);
     buffer[sizeof(buffer) -1] = 0;
-    res = pRtlIpv4AddressToStringExA(&ip, 0, buffer, NULL);
+    res = pRtlIpv4AddressToStringExA(&ip, 0, buffer, ((void*)0));
     ok(res == STATUS_INVALID_PARAMETER,
         "got 0x%x with '%s' (expected STATUS_INVALID_PARAMETER)\n", res, buffer);
 
     size = sizeof(buffer);
-    res = pRtlIpv4AddressToStringExA(&ip, 0, NULL, &size);
+    res = pRtlIpv4AddressToStringExA(&ip, 0, ((void*)0), &size);
     ok( res == STATUS_INVALID_PARAMETER,
         "got 0x%x and size %d (expected STATUS_INVALID_PARAMETER)\n", res, size);
 
     size = sizeof(buffer);
     memset(buffer, '#', sizeof(buffer) - 1);
     buffer[sizeof(buffer) -1] = 0;
-    res = pRtlIpv4AddressToStringExA(NULL, 0, buffer, &size);
+    res = pRtlIpv4AddressToStringExA(((void*)0), 0, buffer, &size);
     ok( res == STATUS_INVALID_PARAMETER,
         "got 0x%x and size %d with '%s' (expected STATUS_INVALID_PARAMETER)\n",
         res, size, buffer);

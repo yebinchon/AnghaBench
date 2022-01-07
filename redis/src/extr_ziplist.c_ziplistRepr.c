@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int headersize; unsigned int len; int prevrawlen; int /*<<< orphan*/  encoding; int /*<<< orphan*/  prevrawlensize; } ;
-typedef  TYPE_1__ zlentry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZIPLIST_BYTES (unsigned char*) ; 
- unsigned char* ZIPLIST_ENTRY_HEAD (unsigned char*) ; 
- int /*<<< orphan*/  ZIPLIST_LENGTH (unsigned char*) ; 
- int /*<<< orphan*/  ZIPLIST_TAIL_OFFSET (unsigned char*) ; 
- unsigned char ZIP_END ; 
- scalar_t__ ZIP_IS_STR (int /*<<< orphan*/ ) ; 
- scalar_t__ fwrite (unsigned char*,int,int,int /*<<< orphan*/ ) ; 
- int intrev16ifbe (int /*<<< orphan*/ ) ; 
- int intrev32ifbe (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  zipEntry (unsigned char*,TYPE_1__*) ; 
- scalar_t__ zipLoadInteger (unsigned char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int headersize; unsigned int len; int prevrawlen; int encoding; int prevrawlensize; } ;
+typedef TYPE_1__ zlentry ;
+
+
+ int ZIPLIST_BYTES (unsigned char*) ;
+ unsigned char* ZIPLIST_ENTRY_HEAD (unsigned char*) ;
+ int ZIPLIST_LENGTH (unsigned char*) ;
+ int ZIPLIST_TAIL_OFFSET (unsigned char*) ;
+ unsigned char ZIP_END ;
+ scalar_t__ ZIP_IS_STR (int ) ;
+ scalar_t__ fwrite (unsigned char*,int,int,int ) ;
+ int intrev16ifbe (int ) ;
+ int intrev32ifbe (int ) ;
+ int perror (char*) ;
+ int printf (char*,...) ;
+ int stdout ;
+ int zipEntry (unsigned char*,TYPE_1__*) ;
+ scalar_t__ zipLoadInteger (unsigned char*,int ) ;
 
 void ziplistRepr(unsigned char *zl) {
     unsigned char *p;

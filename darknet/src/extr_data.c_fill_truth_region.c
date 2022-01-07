@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {float x; float y; float w; float h; int id; } ;
-typedef  TYPE_1__ box_label ;
+typedef TYPE_1__ box_label ;
 
-/* Variables and functions */
- int /*<<< orphan*/  correct_boxes (TYPE_1__*,int,float,float,float,float,int) ; 
- int /*<<< orphan*/  find_replace (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  randomize_boxes (TYPE_1__*,int) ; 
- TYPE_1__* read_boxes (char*,int*) ; 
+
+ int correct_boxes (TYPE_1__*,int,float,float,float,float,int) ;
+ int find_replace (char*,char*,char*,char*) ;
+ int free (TYPE_1__*) ;
+ int randomize_boxes (TYPE_1__*,int) ;
+ TYPE_1__* read_boxes (char*,int*) ;
 
 void fill_truth_region(char *path, float *truth, int classes, int num_boxes, int flip, float dx, float dy, float sx, float sy)
 {
@@ -40,10 +40,10 @@ void fill_truth_region(char *path, float *truth, int classes, int num_boxes, int
     int i;
 
     for (i = 0; i < count; ++i) {
-        x =  boxes[i].x;
-        y =  boxes[i].y;
-        w =  boxes[i].w;
-        h =  boxes[i].h;
+        x = boxes[i].x;
+        y = boxes[i].y;
+        w = boxes[i].w;
+        h = boxes[i].h;
         id = boxes[i].id;
 
         if (w < .005 || h < .005) continue;

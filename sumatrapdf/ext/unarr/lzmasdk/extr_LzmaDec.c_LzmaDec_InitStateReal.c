@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UInt32 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UInt32 ;
 struct TYPE_4__ {size_t lc; size_t lp; } ;
 struct TYPE_5__ {int* probs; int* reps; scalar_t__ needInitState; scalar_t__ state; TYPE_1__ prop; } ;
-typedef  int CLzmaProb ;
-typedef  TYPE_2__ CLzmaDec ;
+typedef int CLzmaProb ;
+typedef TYPE_2__ CLzmaDec ;
 
-/* Variables and functions */
- scalar_t__ LZMA_LIT_SIZE ; 
- size_t Literal ; 
- int kBitModelTotal ; 
+
+ scalar_t__ LZMA_LIT_SIZE ;
+ size_t Literal ;
+ int kBitModelTotal ;
 
 __attribute__((used)) static void LzmaDec_InitStateReal(CLzmaDec *p)
 {

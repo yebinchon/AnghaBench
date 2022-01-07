@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int JOB_STATE_ACKED ; 
- int JOB_STATE_ACTIVE ; 
- int JOB_STATE_QUEUED ; 
- int JOB_STATE_WAIT_REPL ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
+ int JOB_STATE_ACKED ;
+ int JOB_STATE_ACTIVE ;
+ int JOB_STATE_QUEUED ;
+ int JOB_STATE_WAIT_REPL ;
+ int strcasecmp (char*,char*) ;
 
 int jobStateFromString(char *state) {
     if (!strcasecmp(state,"wait-repl")) return JOB_STATE_WAIT_REPL;

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ParseState ;
-typedef  int /*<<< orphan*/  ParseCallbackState ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cancel_parser_errposition_callback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_collation_oid (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  setup_parser_errposition_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int ParseState ;
+typedef int ParseCallbackState ;
+typedef int Oid ;
+typedef int List ;
+
+
+ int cancel_parser_errposition_callback (int *) ;
+ int get_collation_oid (int *,int) ;
+ int setup_parser_errposition_callback (int *,int *,int) ;
 
 Oid
 LookupCollation(ParseState *pstate, List *collnames, int location)
 {
-	Oid			colloid;
-	ParseCallbackState pcbstate;
+ Oid colloid;
+ ParseCallbackState pcbstate;
 
-	if (pstate)
-		setup_parser_errposition_callback(&pcbstate, pstate, location);
+ if (pstate)
+  setup_parser_errposition_callback(&pcbstate, pstate, location);
 
-	colloid = get_collation_oid(collnames, false);
+ colloid = get_collation_oid(collnames, 0);
 
-	if (pstate)
-		cancel_parser_errposition_callback(&pcbstate);
+ if (pstate)
+  cancel_parser_errposition_callback(&pcbstate);
 
-	return colloid;
+ return colloid;
 }

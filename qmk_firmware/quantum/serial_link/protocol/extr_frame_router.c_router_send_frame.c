@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  size_t uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOWN_LINK ; 
- int /*<<< orphan*/  UP_LINK ; 
- scalar_t__ is_master ; 
- int /*<<< orphan*/  validator_send_frame (int /*<<< orphan*/ ,int*,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef size_t uint16_t ;
+
+
+ int DOWN_LINK ;
+ int UP_LINK ;
+ scalar_t__ is_master ;
+ int validator_send_frame (int ,int*,size_t) ;
 
 void router_send_frame(uint8_t destination, uint8_t* data, uint16_t size) {
     if (destination == 0) {

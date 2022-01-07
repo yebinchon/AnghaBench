@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netmap_adapter {int /*<<< orphan*/ * ifp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NM_DETACH_NA (int /*<<< orphan*/ *) ; 
+
+
+
+struct netmap_adapter {int * ifp; } ;
+
+
+ int NM_DETACH_NA (int *) ;
 
 __attribute__((used)) static void
 netmap_hw_dtor(struct netmap_adapter *na)
 {
-	if (na->ifp == NULL)
-		return;
+ if (na->ifp == ((void*)0))
+  return;
 
-	NM_DETACH_NA(na->ifp);
+ NM_DETACH_NA(na->ifp);
 }

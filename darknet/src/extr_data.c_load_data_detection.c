@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {float w; float h; int /*<<< orphan*/  data; int /*<<< orphan*/  c; } ;
-typedef  TYPE_2__ image ;
-struct TYPE_17__ {int /*<<< orphan*/ * vals; } ;
-struct TYPE_14__ {int rows; int cols; int /*<<< orphan*/ * vals; } ;
-struct TYPE_16__ {TYPE_7__ y; TYPE_1__ X; scalar_t__ shallow; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_3__ data ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * calloc (int,int) ; 
- int /*<<< orphan*/  fill_image (TYPE_2__,double) ; 
- int /*<<< orphan*/  fill_truth_detection (char*,int,int /*<<< orphan*/ ,int,int,float,float,float,float) ; 
- int /*<<< orphan*/  flip_image (TYPE_2__) ; 
- int /*<<< orphan*/  free (char**) ; 
- int /*<<< orphan*/  free_image (TYPE_2__) ; 
- char** get_random_paths (char**,int,int) ; 
- TYPE_2__ load_image_color (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__ make_image (int,int,int /*<<< orphan*/ ) ; 
- TYPE_7__ make_matrix (int,int) ; 
- int /*<<< orphan*/  place_image (TYPE_2__,float,float,float,float,TYPE_2__) ; 
- int rand () ; 
- float rand_uniform (float,int) ; 
- int /*<<< orphan*/  random_distort_image (TYPE_2__,float,float,float) ; 
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_15__ {float w; float h; int data; int c; } ;
+typedef TYPE_2__ image ;
+struct TYPE_17__ {int * vals; } ;
+struct TYPE_14__ {int rows; int cols; int * vals; } ;
+struct TYPE_16__ {TYPE_7__ y; TYPE_1__ X; scalar_t__ shallow; int member_0; } ;
+typedef TYPE_3__ data ;
+
+
+ int * calloc (int,int) ;
+ int fill_image (TYPE_2__,double) ;
+ int fill_truth_detection (char*,int,int ,int,int,float,float,float,float) ;
+ int flip_image (TYPE_2__) ;
+ int free (char**) ;
+ int free_image (TYPE_2__) ;
+ char** get_random_paths (char**,int,int) ;
+ TYPE_2__ load_image_color (char*,int ,int ) ;
+ TYPE_2__ make_image (int,int,int ) ;
+ TYPE_7__ make_matrix (int,int) ;
+ int place_image (TYPE_2__,float,float,float,float,TYPE_2__) ;
+ int rand () ;
+ float rand_uniform (float,int) ;
+ int random_distort_image (TYPE_2__,float,float,float) ;
 
 data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, int classes, float jitter, float hue, float saturation, float exposure)
 {
@@ -58,7 +58,7 @@ data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, in
         float dh = jitter * orig.h;
 
         float new_ar = (orig.w + rand_uniform(-dw, dw)) / (orig.h + rand_uniform(-dh, dh));
-        //float scale = rand_uniform(.25, 2);
+
         float scale = 1;
 
         float nw, nh;

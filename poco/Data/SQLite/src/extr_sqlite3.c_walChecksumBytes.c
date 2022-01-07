@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ u32 ;
 
-/* Variables and functions */
- scalar_t__ BYTESWAP32 (scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int u8 ;
+typedef scalar_t__ u32 ;
+
+
+ scalar_t__ BYTESWAP32 (scalar_t__) ;
+ int assert (int) ;
 
 __attribute__((used)) static void walChecksumBytes(
-  int nativeCksum, /* True for native byte-order, false for non-native */
-  u8 *a,           /* Content to be checksummed */
-  int nByte,       /* Bytes of content in a[].  Must be a multiple of 8. */
-  const u32 *aIn,  /* Initial checksum value input */
-  u32 *aOut        /* OUT: Final checksum value output */
+  int nativeCksum,
+  u8 *a,
+  int nByte,
+  const u32 *aIn,
+  u32 *aOut
 ){
   u32 s1, s2;
   u32 *aData = (u32 *)a;

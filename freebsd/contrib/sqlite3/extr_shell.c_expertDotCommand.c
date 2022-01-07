@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int bVerbose; int /*<<< orphan*/  pExpert; } ;
-struct TYPE_4__ {TYPE_2__ expert; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ ShellState ;
-typedef  int /*<<< orphan*/  ExpertInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPERT_CONFIG_SAMPLE ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ integerValue (char*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  sqlite3_expert_config (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_expert_new (int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen30 (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int bVerbose; int pExpert; } ;
+struct TYPE_4__ {TYPE_2__ expert; int db; } ;
+typedef TYPE_1__ ShellState ;
+typedef int ExpertInfo ;
+
+
+ int EXPERT_CONFIG_SAMPLE ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ integerValue (char*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int raw_printf (int ,char*,char*) ;
+ int sqlite3_expert_config (int ,int ,int) ;
+ int sqlite3_expert_new (int ,char**) ;
+ int stderr ;
+ int strlen30 (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int expertDotCommand(
-  ShellState *pState,             /* Current shell tool state */
-  char **azArg,                   /* Array of arguments passed to dot command */
-  int nArg                        /* Number of entries in azArg[] */
+  ShellState *pState,
+  char **azArg,
+  int nArg
 ){
   int rc = SQLITE_OK;
   char *zErr = 0;

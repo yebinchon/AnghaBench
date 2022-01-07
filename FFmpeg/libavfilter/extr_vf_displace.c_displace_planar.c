@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_8__ {int nb_planes; int* height; int* width; int edge; int /*<<< orphan*/ * blank; } ;
-typedef  TYPE_1__ DisplaceContext ;
-typedef  TYPE_2__ AVFrame ;
 
-/* Variables and functions */
-#define  EDGE_BLANK 131 
-#define  EDGE_MIRROR 130 
-#define  EDGE_SMEAR 129 
-#define  EDGE_WRAP 128 
- int av_clip (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int* linesize; int ** data; } ;
+struct TYPE_8__ {int nb_planes; int* height; int* width; int edge; int * blank; } ;
+typedef TYPE_1__ DisplaceContext ;
+typedef TYPE_2__ AVFrame ;
+
+
+
+
+
+
+ int av_clip (int ,int ,int const) ;
 
 __attribute__((used)) static void displace_planar(DisplaceContext *s, const AVFrame *in,
                             const AVFrame *xpic, const AVFrame *ypic,
@@ -46,7 +46,7 @@ __attribute__((used)) static void displace_planar(DisplaceContext *s, const AVFr
 
         for (y = 0; y < h; y++) {
             switch (s->edge) {
-            case EDGE_BLANK:
+            case 131:
                 for (x = 0; x < w; x++) {
                     int Y = y + ysrc[x] - 128;
                     int X = x + xsrc[x] - 128;
@@ -57,14 +57,14 @@ __attribute__((used)) static void displace_planar(DisplaceContext *s, const AVFr
                         dst[x] = src[Y * slinesize + X];
                 }
                 break;
-            case EDGE_SMEAR:
+            case 129:
                 for (x = 0; x < w; x++) {
                     int Y = av_clip(y + ysrc[x] - 128, 0, h - 1);
                     int X = av_clip(x + xsrc[x] - 128, 0, w - 1);
                     dst[x] = src[Y * slinesize + X];
                 }
                 break;
-            case EDGE_WRAP:
+            case 128:
                 for (x = 0; x < w; x++) {
                     int Y = (y + ysrc[x] - 128) % h;
                     int X = (x + xsrc[x] - 128) % w;
@@ -76,7 +76,7 @@ __attribute__((used)) static void displace_planar(DisplaceContext *s, const AVFr
                     dst[x] = src[Y * slinesize + X];
                 }
                 break;
-            case EDGE_MIRROR:
+            case 130:
                 for (x = 0; x < w; x++) {
                     int Y = y + ysrc[x] - 128;
                     int X = x + xsrc[x] - 128;
@@ -96,7 +96,7 @@ __attribute__((used)) static void displace_planar(DisplaceContext *s, const AVFr
 
             ysrc += ylinesize;
             xsrc += xlinesize;
-            dst  += dlinesize;
+            dst += dlinesize;
         }
     }
 }

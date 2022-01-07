@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_expression {char* text; scalar_t__ type; size_t section; struct tl_expression* rnext; struct tl_expression* rtail; int /*<<< orphan*/ * right_name; int /*<<< orphan*/  flag_expanded; struct tl_expression* prev; struct tl_expression* next; } ;
-struct tl_compiler {int /*<<< orphan*/  hm_composite_typename; int /*<<< orphan*/ * hm_combinator; int /*<<< orphan*/ * hm_magic; } ;
 
-/* Variables and functions */
- size_t TL_SECTION_TYPES ; 
- int /*<<< orphan*/  cstr_free (char**) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- scalar_t__ tl_expression_compute_magic (struct tl_compiler*,struct tl_expression*) ; 
- int /*<<< orphan*/  tl_expression_free (struct tl_expression*) ; 
- char* tl_expression_join (struct tl_compiler*,struct tl_expression*,int /*<<< orphan*/ ) ; 
- scalar_t__ tl_expression_parse (struct tl_compiler*,struct tl_expression*) ; 
- int tl_failf (struct tl_compiler*,char*,char*,char*) ; 
- struct tl_expression* tl_hashmap_get_f (int /*<<< orphan*/ *,struct tl_expression*,int) ; 
- scalar_t__ tlet_simple ; 
- int verbosity ; 
+
+
+
+struct tl_expression {char* text; scalar_t__ type; size_t section; struct tl_expression* rnext; struct tl_expression* rtail; int * right_name; int flag_expanded; struct tl_expression* prev; struct tl_expression* next; } ;
+struct tl_compiler {int hm_composite_typename; int * hm_combinator; int * hm_magic; } ;
+
+
+ size_t TL_SECTION_TYPES ;
+ int cstr_free (char**) ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ scalar_t__ tl_expression_compute_magic (struct tl_compiler*,struct tl_expression*) ;
+ int tl_expression_free (struct tl_expression*) ;
+ char* tl_expression_join (struct tl_compiler*,struct tl_expression*,int ) ;
+ scalar_t__ tl_expression_parse (struct tl_compiler*,struct tl_expression*) ;
+ int tl_failf (struct tl_compiler*,char*,char*,char*) ;
+ struct tl_expression* tl_hashmap_get_f (int *,struct tl_expression*,int) ;
+ scalar_t__ tlet_simple ;
+ int verbosity ;
 
 int tl_list_expressions_parse (struct tl_compiler *C, struct tl_expression *L) {
   struct tl_expression *E, *W;
@@ -36,7 +36,7 @@ int tl_list_expressions_parse (struct tl_compiler *C, struct tl_expression *L) {
       return -1;
     }
     char *t = tl_expression_join (C, E, 0);
-    if (t == NULL) {
+    if (t == ((void*)0)) {
       return -1;
     }
     cstr_free (&E->text);
@@ -67,7 +67,7 @@ int tl_list_expressions_parse (struct tl_compiler *C, struct tl_expression *L) {
         }
       }
 
-      if (E->type == tlet_simple && E->right_name != NULL && E->section == TL_SECTION_TYPES) {
+      if (E->type == tlet_simple && E->right_name != ((void*)0) && E->section == TL_SECTION_TYPES) {
         struct tl_expression *A = tl_hashmap_get_f (&C->hm_composite_typename, E, 1);
         if (A == E) {
           E->rtail = E;
@@ -75,7 +75,7 @@ int tl_list_expressions_parse (struct tl_compiler *C, struct tl_expression *L) {
           A->rtail->rnext = E;
           A->rtail = E;
         }
-        E->rnext = NULL;
+        E->rnext = ((void*)0);
       }
     }
   }

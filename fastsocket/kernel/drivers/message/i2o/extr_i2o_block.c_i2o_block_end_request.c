@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/  queue_lock; } ;
+
+
+
+
+struct request_queue {int queue_lock; } ;
 struct request {struct request_queue* q; struct i2o_block_request* special; } ;
-struct i2o_block_request {int /*<<< orphan*/  queue; struct i2o_block_device* i2o_blk_dev; } ;
-struct i2o_block_device {int /*<<< orphan*/  open_queue_depth; } ;
+struct i2o_block_request {int queue; struct i2o_block_device* i2o_blk_dev; } ;
+struct i2o_block_device {int open_queue_depth; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EIO ; 
- scalar_t__ blk_end_request (struct request*,int,int) ; 
- int /*<<< orphan*/  blk_end_request_all (struct request*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blk_start_queue (struct request_queue*) ; 
- int /*<<< orphan*/  i2o_block_request_free (struct i2o_block_request*) ; 
- int /*<<< orphan*/  i2o_block_sglist_free (struct i2o_block_request*) ; 
- scalar_t__ likely (struct i2o_block_device*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
+
+ int EIO ;
+ scalar_t__ blk_end_request (struct request*,int,int) ;
+ int blk_end_request_all (struct request*,int ) ;
+ int blk_start_queue (struct request_queue*) ;
+ int i2o_block_request_free (struct i2o_block_request*) ;
+ int i2o_block_sglist_free (struct i2o_block_request*) ;
+ scalar_t__ likely (struct i2o_block_device*) ;
+ int list_del (int *) ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
 
 __attribute__((used)) static void i2o_block_end_request(struct request *req, int error,
-				  int nr_bytes)
+      int nr_bytes)
 {
-	struct i2o_block_request *ireq = req->special;
-	struct i2o_block_device *dev = ireq->i2o_blk_dev;
-	struct request_queue *q = req->q;
-	unsigned long flags;
+ struct i2o_block_request *ireq = req->special;
+ struct i2o_block_device *dev = ireq->i2o_blk_dev;
+ struct request_queue *q = req->q;
+ unsigned long flags;
 
-	if (blk_end_request(req, error, nr_bytes))
-		if (error)
-			blk_end_request_all(req, -EIO);
+ if (blk_end_request(req, error, nr_bytes))
+  if (error)
+   blk_end_request_all(req, -EIO);
 
-	spin_lock_irqsave(q->queue_lock, flags);
+ spin_lock_irqsave(q->queue_lock, flags);
 
-	if (likely(dev)) {
-		dev->open_queue_depth--;
-		list_del(&ireq->queue);
-	}
+ if (likely(dev)) {
+  dev->open_queue_depth--;
+  list_del(&ireq->queue);
+ }
 
-	blk_start_queue(q);
+ blk_start_queue(q);
 
-	spin_unlock_irqrestore(q->queue_lock, flags);
+ spin_unlock_irqrestore(q->queue_lock, flags);
 
-	i2o_block_sglist_free(ireq);
-	i2o_block_request_free(ireq);
+ i2o_block_sglist_free(ireq);
+ i2o_block_request_free(ireq);
 }

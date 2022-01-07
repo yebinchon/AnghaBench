@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct change {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  valid_lines; int /*<<< orphan*/  prefix_lines; } ;
+struct TYPE_2__ {int valid_lines; int prefix_lines; } ;
 
-/* Variables and functions */
- size_t UNCHANGED ; 
- int /*<<< orphan*/  begin_output () ; 
- TYPE_1__* files ; 
- int /*<<< orphan*/  find_change ; 
- int /*<<< orphan*/  format_ifdef (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * group_format ; 
- int /*<<< orphan*/  next_line0 ; 
- int /*<<< orphan*/  next_line1 ; 
- int /*<<< orphan*/  print_ifdef_hunk ; 
- int /*<<< orphan*/  print_script (struct change*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ size_t UNCHANGED ;
+ int begin_output () ;
+ TYPE_1__* files ;
+ int find_change ;
+ int format_ifdef (int ,int ,int ,int ,int ) ;
+ int * group_format ;
+ int next_line0 ;
+ int next_line1 ;
+ int print_ifdef_hunk ;
+ int print_script (struct change*,int ,int ) ;
 
 void
 print_ifdef_script (struct change *script)
@@ -36,7 +36,7 @@ print_ifdef_script (struct change *script)
     {
       begin_output ();
       format_ifdef (group_format[UNCHANGED],
-		    next_line0, files[0].valid_lines,
-		    next_line1, files[1].valid_lines);
+      next_line0, files[0].valid_lines,
+      next_line1, files[1].valid_lines);
     }
 }

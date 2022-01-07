@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__* I ; 
- scalar_t__ PK_video ; 
- int /*<<< orphan*/  adj_rec ; 
- int conv_uid (scalar_t__) ; 
- int /*<<< orphan*/  output_conv_privacy (scalar_t__,scalar_t__,char*) ; 
- scalar_t__ user_id ; 
- size_t vi_id ; 
- size_t vi_owner_id ; 
- size_t vi_privacy ; 
- size_t vi_user_id ; 
+ scalar_t__* I ;
+ scalar_t__ PK_video ;
+ int adj_rec ;
+ int conv_uid (scalar_t__) ;
+ int output_conv_privacy (scalar_t__,scalar_t__,char*) ;
+ scalar_t__ user_id ;
+ size_t vi_id ;
+ size_t vi_owner_id ;
+ size_t vi_privacy ;
+ size_t vi_user_id ;
 
 void process_videos_priv_row (void) {
   user_id = I[vi_owner_id];

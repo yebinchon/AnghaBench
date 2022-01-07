@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct unwind_frame_info {int ip; } ;
 
-/* Variables and functions */
- int unwind_once (struct unwind_frame_info*) ; 
+
+ int unwind_once (struct unwind_frame_info*) ;
 
 int unwind_to_user(struct unwind_frame_info *info)
 {
-	int ret;
-	
-	do {
-		ret = unwind_once(info);
-	} while (!ret && !(info->ip & 3));
+ int ret;
 
-	return ret;
+ do {
+  ret = unwind_once(info);
+ } while (!ret && !(info->ip & 3));
+
+ return ret;
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct CONFIRMSAFETY {scalar_t__ dwFlags; int /*<<< orphan*/ * pUnk; scalar_t__ clsid; } ;
-typedef  int /*<<< orphan*/  cs ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IInternetSecurityManager ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CLSID ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- scalar_t__ CLSID_TestActiveX ; 
- int /*<<< orphan*/  ERROR_NOT_FOUND ; 
- int /*<<< orphan*/  GUID_CUSTOM_CONFIRMOBJECTSAFETY ; 
- int HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int IInternetSecurityManager_ProcessUrlAction (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int IInternetSecurityManager_QueryCustomPolicy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int S_OK ; 
- int /*<<< orphan*/  URLACTION_ACTIVEX_RUN ; 
- int URLPOLICY_ALLOW ; 
- int URLPOLICY_DISALLOW ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  url1 ; 
+
+
+
+struct CONFIRMSAFETY {scalar_t__ dwFlags; int * pUnk; scalar_t__ clsid; } ;
+typedef int cs ;
+typedef int IUnknown ;
+typedef int IInternetSecurityManager ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int CLSID ;
+typedef int BYTE ;
+
+
+ scalar_t__ CLSID_TestActiveX ;
+ int ERROR_NOT_FOUND ;
+ int GUID_CUSTOM_CONFIRMOBJECTSAFETY ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ int IInternetSecurityManager_ProcessUrlAction (int *,int ,int ,int *,int,int *,int,int ,int ) ;
+ int IInternetSecurityManager_QueryCustomPolicy (int *,int ,int *,int **,int*,int *,int,int ) ;
+ int S_OK ;
+ int URLACTION_ACTIVEX_RUN ;
+ int URLPOLICY_ALLOW ;
+ int URLPOLICY_DISALLOW ;
+ int ok (int,char*,int) ;
+ int url1 ;
 
 __attribute__((used)) static void test_activex(IInternetSecurityManager *secmgr)
 {

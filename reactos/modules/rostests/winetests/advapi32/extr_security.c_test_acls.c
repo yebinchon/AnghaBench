@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  PACL ;
-typedef  int BOOL ;
-typedef  int /*<<< orphan*/  ACL ;
 
-/* Variables and functions */
- int ACL_REVISION ; 
- int ACL_REVISION1 ; 
- int ACL_REVISION2 ; 
- int ACL_REVISION3 ; 
- int ACL_REVISION4 ; 
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ GetLastError () ; 
- int InitializeAcl (int /*<<< orphan*/ ,int,int) ; 
- int IsValidAcl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int buffer ;
+typedef int PACL ;
+typedef int BOOL ;
+typedef int ACL ;
+
+
+ int ACL_REVISION ;
+ int ACL_REVISION1 ;
+ int ACL_REVISION2 ;
+ int ACL_REVISION3 ;
+ int ACL_REVISION4 ;
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ GetLastError () ;
+ int InitializeAcl (int ,int,int) ;
+ int IsValidAcl (int ) ;
+ int SetLastError (int) ;
+ int ok (int,char*,scalar_t__) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_acls(void)
 {

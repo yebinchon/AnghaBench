@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int TMS ;
-typedef  int /*<<< orphan*/  StkId ;
 
-/* Variables and functions */
- int LUA_OPADD ; 
- int LUA_OPDIV ; 
- int LUA_OPMOD ; 
- int TM_ADD ; 
- int /*<<< orphan*/  call_binTM (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  luaG_aritherror (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  luaO_arith (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaV_div (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaV_mod (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * luaV_tonumber (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  setnvalue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Number ;
+typedef int TValue ;
+typedef int TMS ;
+typedef int StkId ;
+
+
+ int LUA_OPADD ;
+ int LUA_OPDIV ;
+ int LUA_OPMOD ;
+ int TM_ADD ;
+ int call_binTM (int *,int const*,int const*,int ,int) ;
+ int luaG_aritherror (int *,int const*,int const*) ;
+ int luaO_arith (int,int ,int ) ;
+ int luaV_div (int *,int ,int ) ;
+ int luaV_mod (int *,int ,int ) ;
+ int * luaV_tonumber (int const*,int *) ;
+ int nvalue (int const*) ;
+ int setnvalue (int ,int ) ;
 
 void luaV_arith (lua_State *L, StkId ra, const TValue *rb,
                  const TValue *rc, TMS op) {
   TValue tempb, tempc;
   const TValue *b, *c;
-  if ((b = luaV_tonumber(rb, &tempb)) != NULL &&
-      (c = luaV_tonumber(rc, &tempc)) != NULL) {
-    /*
-     * Patched: if dividing or modding, use patched functions from 5.3
-     */
+  if ((b = luaV_tonumber(rb, &tempb)) != ((void*)0) &&
+      (c = luaV_tonumber(rc, &tempc)) != ((void*)0)) {
+
+
+
     lua_Number res;
     int lop = op - TM_ADD + LUA_OPADD;
     if (lop == LUA_OPDIV) {

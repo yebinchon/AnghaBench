@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- char* vlc_stream_ReadLine (int /*<<< orphan*/ ) ; 
- scalar_t__ vlclua_get_this (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s; } ;
+typedef TYPE_1__ stream_t ;
+typedef int lua_State ;
+
+
+ int free (char*) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char*) ;
+ char* vlc_stream_ReadLine (int ) ;
+ scalar_t__ vlclua_get_this (int *) ;
 
 __attribute__((used)) static int vlclua_demux_readline( lua_State *L )
 {
     stream_t *s = (stream_t *)vlclua_get_this(L);
     char *line = vlc_stream_ReadLine(s->s);
 
-    if (line != NULL)
+    if (line != ((void*)0))
     {
         lua_pushstring(L, line);
         free(line);

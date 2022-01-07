@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct table {TYPE_1__* columns; } ;
-typedef  char WCHAR ;
-typedef  size_t UINT ;
+typedef char WCHAR ;
+typedef size_t UINT ;
 struct TYPE_2__ {int type; } ;
-typedef  char const* LONGLONG ;
-typedef  scalar_t__ INT_PTR ;
-typedef  char* BSTR ;
+typedef char const* LONGLONG ;
+typedef scalar_t__ INT_PTR ;
+typedef char* BSTR ;
 
-/* Variables and functions */
-#define  CIM_BOOLEAN 136 
-#define  CIM_DATETIME 135 
- int CIM_FLAG_ARRAY ; 
-#define  CIM_SINT16 134 
-#define  CIM_SINT32 133 
-#define  CIM_SINT64 132 
-#define  CIM_STRING 131 
-#define  CIM_UINT16 130 
-#define  CIM_UINT32 129 
-#define  CIM_UINT64 128 
- int COL_TYPE_MASK ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- scalar_t__ S_OK ; 
- char* SysAllocString (char const*) ; 
- char* SysAllocStringLen (int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ get_value (struct table const*,size_t,size_t,char const**) ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,char const*) ; 
- int /*<<< orphan*/  strlenW (char const*) ; 
- int /*<<< orphan*/  wsprintfW (char*,char const*,char const*) ; 
+
+
+
+ int CIM_FLAG_ARRAY ;
+
+
+
+
+
+
+
+ int COL_TYPE_MASK ;
+ int FIXME (char*,...) ;
+ scalar_t__ S_OK ;
+ char* SysAllocString (char const*) ;
+ char* SysAllocStringLen (int *,size_t) ;
+ scalar_t__ get_value (struct table const*,size_t,size_t,char const**) ;
+ int sprintfW (char*,char const*,char const*) ;
+ int strlenW (char const*) ;
+ int wsprintfW (char*,char const*,char const*) ;
 
 BSTR get_value_bstr( const struct table *table, UINT row, UINT column )
 {
@@ -57,39 +57,39 @@ BSTR get_value_bstr( const struct table *table, UINT row, UINT column )
     if (table->columns[column].type & CIM_FLAG_ARRAY)
     {
         FIXME("array to string conversion not handled\n");
-        return NULL;
+        return ((void*)0);
     }
-    if (get_value( table, row, column, &val ) != S_OK) return NULL;
+    if (get_value( table, row, column, &val ) != S_OK) return ((void*)0);
 
     switch (table->columns[column].type & COL_TYPE_MASK)
     {
-    case CIM_BOOLEAN:
+    case 136:
         if (val) return SysAllocString( trueW );
         else return SysAllocString( falseW );
 
-    case CIM_DATETIME:
-    case CIM_STRING:
-        if (!val) return NULL;
+    case 135:
+    case 131:
+        if (!val) return ((void*)0);
         len = strlenW( (const WCHAR *)(INT_PTR)val ) + 2;
-        if (!(ret = SysAllocStringLen( NULL, len ))) return NULL;
+        if (!(ret = SysAllocStringLen( ((void*)0), len ))) return ((void*)0);
         sprintfW( ret, fmt_strW, (const WCHAR *)(INT_PTR)val );
         return ret;
 
-    case CIM_SINT16:
-    case CIM_SINT32:
+    case 134:
+    case 133:
         sprintfW( number, fmt_signedW, val );
         return SysAllocString( number );
 
-    case CIM_UINT16:
-    case CIM_UINT32:
+    case 130:
+    case 129:
         sprintfW( number, fmt_unsignedW, val );
         return SysAllocString( number );
 
-    case CIM_SINT64:
+    case 132:
         wsprintfW( number, fmt_signed64W, val );
         return SysAllocString( number );
 
-    case CIM_UINT64:
+    case 128:
         wsprintfW( number, fmt_unsigned64W, val );
         return SysAllocString( number );
 
@@ -97,5 +97,5 @@ BSTR get_value_bstr( const struct table *table, UINT row, UINT column )
         FIXME("unhandled column type %u\n", table->columns[column].type & COL_TYPE_MASK);
         break;
     }
-    return NULL;
+    return ((void*)0);
 }

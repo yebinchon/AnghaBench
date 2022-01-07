@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  sleep (int) ; 
- int vfork () ; 
+ int sleep (int) ;
+ int vfork () ;
 
 __attribute__((used)) static int vfork_fn(const char *cgroup, void *arg)
 {
-	int pid = vfork();
+ int pid = vfork();
 
-	if (pid == 0)
-		while (true)
-			sleep(1);
+ if (pid == 0)
+  while (1)
+   sleep(1);
 
-	return pid;
+ return pid;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ keyid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * auth_findkey (scalar_t__) ; 
- scalar_t__ cache_keyid ; 
+
+
+
+typedef scalar_t__ keyid_t ;
+
+
+ int * auth_findkey (scalar_t__) ;
+ scalar_t__ cache_keyid ;
 
 int
 auth_havekey(
-	keyid_t		id
-	)
+ keyid_t id
+ )
 {
-	return
-	    (0           == id) ||
-	    (cache_keyid == id) ||
-	    (NULL        != auth_findkey(id));
+ return
+     (0 == id) ||
+     (cache_keyid == id) ||
+     (((void*)0) != auth_findkey(id));
 }

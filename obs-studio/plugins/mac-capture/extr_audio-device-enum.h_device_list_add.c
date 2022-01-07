@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device_list {int /*<<< orphan*/  items; } ;
+
+
+
+
+struct device_list {int items; } ;
 struct device_item {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  da_push_back (int /*<<< orphan*/ ,struct device_item*) ; 
- int /*<<< orphan*/  memset (struct device_item*,int /*<<< orphan*/ ,int) ; 
+
+ int da_push_back (int ,struct device_item*) ;
+ int memset (struct device_item*,int ,int) ;
 
 __attribute__((used)) static inline void device_list_add(struct device_list *list,
-				   struct device_item *item)
+       struct device_item *item)
 {
-	da_push_back(list->items, item);
-	memset(item, 0, sizeof(struct device_item));
+ da_push_back(list->items, item);
+ memset(item, 0, sizeof(struct device_item));
 }

@@ -1,128 +1,119 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seq_file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A1200_IDE ; 
- int /*<<< orphan*/  A2000_CLK ; 
- int /*<<< orphan*/  A3000_CLK ; 
- int /*<<< orphan*/  A3000_SCSI ; 
- int /*<<< orphan*/  A4000_IDE ; 
- int /*<<< orphan*/  A4000_SCSI ; 
- int /*<<< orphan*/  AGNUS_HR_NTSC ; 
- int /*<<< orphan*/  AGNUS_HR_PAL ; 
- int /*<<< orphan*/  AGNUS_NTSC ; 
- int /*<<< orphan*/  AGNUS_PAL ; 
- int /*<<< orphan*/  ALICE_NTSC ; 
- int /*<<< orphan*/  ALICE_PAL ; 
- int /*<<< orphan*/  AMBER_FF ; 
- int /*<<< orphan*/  AMIGAHW_ANNOUNCE (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ AMIGAHW_PRESENT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AMI_AUDIO ; 
- int /*<<< orphan*/  AMI_BLITTER ; 
- int /*<<< orphan*/  AMI_FLOPPY ; 
- int /*<<< orphan*/  AMI_KEYBOARD ; 
- int /*<<< orphan*/  AMI_MOUSE ; 
- int /*<<< orphan*/  AMI_PARALLEL ; 
- int /*<<< orphan*/  AMI_SERIAL ; 
- int /*<<< orphan*/  AMI_VIDEO ; 
- int /*<<< orphan*/  CD_ROM ; 
- int /*<<< orphan*/  CHIP_RAM ; 
-#define  CS_AGA 130 
-#define  CS_ECS 129 
-#define  CS_OCS 128 
- int /*<<< orphan*/  DENISE ; 
- int /*<<< orphan*/  DENISE_HR ; 
- int /*<<< orphan*/  LISA ; 
- int /*<<< orphan*/  MAGIC_REKICK ; 
- int /*<<< orphan*/  PAULA ; 
- int /*<<< orphan*/  PCMCIA ; 
- int /*<<< orphan*/  ZORRO ; 
- int /*<<< orphan*/  ZORRO3 ; 
- int amiga_chip_size ; 
- int amiga_chipset ; 
- int /*<<< orphan*/  amiga_eclock ; 
- int /*<<< orphan*/  amiga_psfreq ; 
- int /*<<< orphan*/  seq_printf (struct seq_file*,char*,...) ; 
- int zorro_num_autocon ; 
+
+ int A1200_IDE ;
+ int A2000_CLK ;
+ int A3000_CLK ;
+ int A3000_SCSI ;
+ int A4000_IDE ;
+ int A4000_SCSI ;
+ int AGNUS_HR_NTSC ;
+ int AGNUS_HR_PAL ;
+ int AGNUS_NTSC ;
+ int AGNUS_PAL ;
+ int ALICE_NTSC ;
+ int ALICE_PAL ;
+ int AMBER_FF ;
+ int AMIGAHW_ANNOUNCE (int ,char*) ;
+ scalar_t__ AMIGAHW_PRESENT (int ) ;
+ int AMI_AUDIO ;
+ int AMI_BLITTER ;
+ int AMI_FLOPPY ;
+ int AMI_KEYBOARD ;
+ int AMI_MOUSE ;
+ int AMI_PARALLEL ;
+ int AMI_SERIAL ;
+ int AMI_VIDEO ;
+ int CD_ROM ;
+ int CHIP_RAM ;
+
+
+
+ int DENISE ;
+ int DENISE_HR ;
+ int LISA ;
+ int MAGIC_REKICK ;
+ int PAULA ;
+ int PCMCIA ;
+ int ZORRO ;
+ int ZORRO3 ;
+ int amiga_chip_size ;
+ int amiga_chipset ;
+ int amiga_eclock ;
+ int amiga_psfreq ;
+ int seq_printf (struct seq_file*,char*,...) ;
+ int zorro_num_autocon ;
 
 __attribute__((used)) static void amiga_get_hardware_list(struct seq_file *m)
 {
-	if (AMIGAHW_PRESENT(CHIP_RAM))
-		seq_printf(m, "Chip RAM:\t%ldK\n", amiga_chip_size>>10);
-	seq_printf(m, "PS Freq:\t%dHz\nEClock Freq:\t%ldHz\n",
-			amiga_psfreq, amiga_eclock);
-	if (AMIGAHW_PRESENT(AMI_VIDEO)) {
-		char *type;
-		switch (amiga_chipset) {
-		case CS_OCS:
-			type = "OCS";
-			break;
-		case CS_ECS:
-			type = "ECS";
-			break;
-		case CS_AGA:
-			type = "AGA";
-			break;
-		default:
-			type = "Old or Unknown";
-			break;
-		}
-		seq_printf(m, "Graphics:\t%s\n", type);
-	}
+ if (AMIGAHW_PRESENT(CHIP_RAM))
+  seq_printf(m, "Chip RAM:\t%ldK\n", amiga_chip_size>>10);
+ seq_printf(m, "PS Freq:\t%dHz\nEClock Freq:\t%ldHz\n",
+   amiga_psfreq, amiga_eclock);
+ if (AMIGAHW_PRESENT(AMI_VIDEO)) {
+  char *type;
+  switch (amiga_chipset) {
+  case 128:
+   type = "OCS";
+   break;
+  case 129:
+   type = "ECS";
+   break;
+  case 130:
+   type = "AGA";
+   break;
+  default:
+   type = "Old or Unknown";
+   break;
+  }
+  seq_printf(m, "Graphics:\t%s\n", type);
+ }
 
-#define AMIGAHW_ANNOUNCE(name, str)			\
-	if (AMIGAHW_PRESENT(name))			\
-		seq_printf (m, "\t%s\n", str)
 
-	seq_printf (m, "Detected hardware:\n");
 
-	AMIGAHW_ANNOUNCE(AMI_VIDEO, "Amiga Video");
-	AMIGAHW_ANNOUNCE(AMI_BLITTER, "Blitter");
-	AMIGAHW_ANNOUNCE(AMBER_FF, "Amber Flicker Fixer");
-	AMIGAHW_ANNOUNCE(AMI_AUDIO, "Amiga Audio");
-	AMIGAHW_ANNOUNCE(AMI_FLOPPY, "Floppy Controller");
-	AMIGAHW_ANNOUNCE(A3000_SCSI, "SCSI Controller WD33C93 (A3000 style)");
-	AMIGAHW_ANNOUNCE(A4000_SCSI, "SCSI Controller NCR53C710 (A4000T style)");
-	AMIGAHW_ANNOUNCE(A1200_IDE, "IDE Interface (A1200 style)");
-	AMIGAHW_ANNOUNCE(A4000_IDE, "IDE Interface (A4000 style)");
-	AMIGAHW_ANNOUNCE(CD_ROM, "Internal CD ROM drive");
-	AMIGAHW_ANNOUNCE(AMI_KEYBOARD, "Keyboard");
-	AMIGAHW_ANNOUNCE(AMI_MOUSE, "Mouse Port");
-	AMIGAHW_ANNOUNCE(AMI_SERIAL, "Serial Port");
-	AMIGAHW_ANNOUNCE(AMI_PARALLEL, "Parallel Port");
-	AMIGAHW_ANNOUNCE(A2000_CLK, "Hardware Clock (A2000 style)");
-	AMIGAHW_ANNOUNCE(A3000_CLK, "Hardware Clock (A3000 style)");
-	AMIGAHW_ANNOUNCE(CHIP_RAM, "Chip RAM");
-	AMIGAHW_ANNOUNCE(PAULA, "Paula 8364");
-	AMIGAHW_ANNOUNCE(DENISE, "Denise 8362");
-	AMIGAHW_ANNOUNCE(DENISE_HR, "Denise 8373");
-	AMIGAHW_ANNOUNCE(LISA, "Lisa 8375");
-	AMIGAHW_ANNOUNCE(AGNUS_PAL, "Normal/Fat PAL Agnus 8367/8371");
-	AMIGAHW_ANNOUNCE(AGNUS_NTSC, "Normal/Fat NTSC Agnus 8361/8370");
-	AMIGAHW_ANNOUNCE(AGNUS_HR_PAL, "Fat Hires PAL Agnus 8372");
-	AMIGAHW_ANNOUNCE(AGNUS_HR_NTSC, "Fat Hires NTSC Agnus 8372");
-	AMIGAHW_ANNOUNCE(ALICE_PAL, "PAL Alice 8374");
-	AMIGAHW_ANNOUNCE(ALICE_NTSC, "NTSC Alice 8374");
-	AMIGAHW_ANNOUNCE(MAGIC_REKICK, "Magic Hard Rekick");
-	AMIGAHW_ANNOUNCE(PCMCIA, "PCMCIA Slot");
-#ifdef CONFIG_ZORRO
-	if (AMIGAHW_PRESENT(ZORRO))
-		seq_printf(m, "\tZorro II%s AutoConfig: %d Expansion "
-				"Device%s\n",
-				AMIGAHW_PRESENT(ZORRO3) ? "I" : "",
-				zorro_num_autocon, zorro_num_autocon == 1 ? "" : "s");
-#endif /* CONFIG_ZORRO */
 
-#undef AMIGAHW_ANNOUNCE
+
+ seq_printf (m, "Detected hardware:\n");
+
+ if (AMIGAHW_PRESENT(AMI_VIDEO)) seq_printf (m, "\t%s\n", "Amiga Video");
+ if (AMIGAHW_PRESENT(AMI_BLITTER)) seq_printf (m, "\t%s\n", "Blitter");
+ if (AMIGAHW_PRESENT(AMBER_FF)) seq_printf (m, "\t%s\n", "Amber Flicker Fixer");
+ if (AMIGAHW_PRESENT(AMI_AUDIO)) seq_printf (m, "\t%s\n", "Amiga Audio");
+ if (AMIGAHW_PRESENT(AMI_FLOPPY)) seq_printf (m, "\t%s\n", "Floppy Controller");
+ if (AMIGAHW_PRESENT(A3000_SCSI)) seq_printf (m, "\t%s\n", "SCSI Controller WD33C93 (A3000 style)");
+ if (AMIGAHW_PRESENT(A4000_SCSI)) seq_printf (m, "\t%s\n", "SCSI Controller NCR53C710 (A4000T style)");
+ if (AMIGAHW_PRESENT(A1200_IDE)) seq_printf (m, "\t%s\n", "IDE Interface (A1200 style)");
+ if (AMIGAHW_PRESENT(A4000_IDE)) seq_printf (m, "\t%s\n", "IDE Interface (A4000 style)");
+ if (AMIGAHW_PRESENT(CD_ROM)) seq_printf (m, "\t%s\n", "Internal CD ROM drive");
+ if (AMIGAHW_PRESENT(AMI_KEYBOARD)) seq_printf (m, "\t%s\n", "Keyboard");
+ if (AMIGAHW_PRESENT(AMI_MOUSE)) seq_printf (m, "\t%s\n", "Mouse Port");
+ if (AMIGAHW_PRESENT(AMI_SERIAL)) seq_printf (m, "\t%s\n", "Serial Port");
+ if (AMIGAHW_PRESENT(AMI_PARALLEL)) seq_printf (m, "\t%s\n", "Parallel Port");
+ if (AMIGAHW_PRESENT(A2000_CLK)) seq_printf (m, "\t%s\n", "Hardware Clock (A2000 style)");
+ if (AMIGAHW_PRESENT(A3000_CLK)) seq_printf (m, "\t%s\n", "Hardware Clock (A3000 style)");
+ if (AMIGAHW_PRESENT(CHIP_RAM)) seq_printf (m, "\t%s\n", "Chip RAM");
+ if (AMIGAHW_PRESENT(PAULA)) seq_printf (m, "\t%s\n", "Paula 8364");
+ if (AMIGAHW_PRESENT(DENISE)) seq_printf (m, "\t%s\n", "Denise 8362");
+ if (AMIGAHW_PRESENT(DENISE_HR)) seq_printf (m, "\t%s\n", "Denise 8373");
+ if (AMIGAHW_PRESENT(LISA)) seq_printf (m, "\t%s\n", "Lisa 8375");
+ if (AMIGAHW_PRESENT(AGNUS_PAL)) seq_printf (m, "\t%s\n", "Normal/Fat PAL Agnus 8367/8371");
+ if (AMIGAHW_PRESENT(AGNUS_NTSC)) seq_printf (m, "\t%s\n", "Normal/Fat NTSC Agnus 8361/8370");
+ if (AMIGAHW_PRESENT(AGNUS_HR_PAL)) seq_printf (m, "\t%s\n", "Fat Hires PAL Agnus 8372");
+ if (AMIGAHW_PRESENT(AGNUS_HR_NTSC)) seq_printf (m, "\t%s\n", "Fat Hires NTSC Agnus 8372");
+ if (AMIGAHW_PRESENT(ALICE_PAL)) seq_printf (m, "\t%s\n", "PAL Alice 8374");
+ if (AMIGAHW_PRESENT(ALICE_NTSC)) seq_printf (m, "\t%s\n", "NTSC Alice 8374");
+ if (AMIGAHW_PRESENT(MAGIC_REKICK)) seq_printf (m, "\t%s\n", "Magic Hard Rekick");
+ if (AMIGAHW_PRESENT(PCMCIA)) seq_printf (m, "\t%s\n", "PCMCIA Slot");
 }

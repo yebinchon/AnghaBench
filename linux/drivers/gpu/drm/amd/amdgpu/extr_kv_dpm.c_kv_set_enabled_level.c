@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct amdgpu_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PPSMC_MSG_SCLKDPM_SetEnabledMask ; 
- int amdgpu_kv_send_msg_to_smc_with_parameter (struct amdgpu_device*,int /*<<< orphan*/ ,int) ; 
+
+ int PPSMC_MSG_SCLKDPM_SetEnabledMask ;
+ int amdgpu_kv_send_msg_to_smc_with_parameter (struct amdgpu_device*,int ,int) ;
 
 __attribute__((used)) static int kv_set_enabled_level(struct amdgpu_device *adev, u32 level)
 {
-	u32 new_mask = (1 << level);
+ u32 new_mask = (1 << level);
 
-	return amdgpu_kv_send_msg_to_smc_with_parameter(adev,
-						 PPSMC_MSG_SCLKDPM_SetEnabledMask,
-						 new_mask);
+ return amdgpu_kv_send_msg_to_smc_with_parameter(adev,
+       PPSMC_MSG_SCLKDPM_SetEnabledMask,
+       new_mask);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int qboolean ;
 struct TYPE_2__ {scalar_t__ entityString; scalar_t__ entityParsePoint; } ;
 
-/* Variables and functions */
- char* COM_Parse (scalar_t__*) ; 
- int /*<<< orphan*/  Q_strncpyz (char*,char const*,int) ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/  qtrue ; 
- TYPE_1__ s_worldData ; 
+
+ char* COM_Parse (scalar_t__*) ;
+ int Q_strncpyz (char*,char const*,int) ;
+ int qfalse ;
+ int qtrue ;
+ TYPE_1__ s_worldData ;
 
 qboolean R_GetEntityToken( char *buffer, int size ) {
-	const char	*s;
+ const char *s;
 
-	s = COM_Parse( &s_worldData.entityParsePoint );
-	Q_strncpyz( buffer, s, size );
-	if ( !s_worldData.entityParsePoint || !s[0] ) {
-		s_worldData.entityParsePoint = s_worldData.entityString;
-		return qfalse;
-	} else {
-		return qtrue;
-	}
+ s = COM_Parse( &s_worldData.entityParsePoint );
+ Q_strncpyz( buffer, s, size );
+ if ( !s_worldData.entityParsePoint || !s[0] ) {
+  s_worldData.entityParsePoint = s_worldData.entityString;
+  return qfalse;
+ } else {
+  return qtrue;
+ }
 }

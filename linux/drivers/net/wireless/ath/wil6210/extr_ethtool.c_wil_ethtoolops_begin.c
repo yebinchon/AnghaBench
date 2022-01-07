@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wil6210_priv {int /*<<< orphan*/  mutex; } ;
+
+
+
+
+struct wil6210_priv {int mutex; } ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- struct wil6210_priv* ndev_to_wil (struct net_device*) ; 
- int /*<<< orphan*/  wil_dbg_misc (struct wil6210_priv*,char*) ; 
+
+ int mutex_lock (int *) ;
+ struct wil6210_priv* ndev_to_wil (struct net_device*) ;
+ int wil_dbg_misc (struct wil6210_priv*,char*) ;
 
 __attribute__((used)) static int wil_ethtoolops_begin(struct net_device *ndev)
 {
-	struct wil6210_priv *wil = ndev_to_wil(ndev);
+ struct wil6210_priv *wil = ndev_to_wil(ndev);
 
-	mutex_lock(&wil->mutex);
+ mutex_lock(&wil->mutex);
 
-	wil_dbg_misc(wil, "ethtoolops_begin\n");
+ wil_dbg_misc(wil, "ethtoolops_begin\n");
 
-	return 0;
+ return 0;
 }

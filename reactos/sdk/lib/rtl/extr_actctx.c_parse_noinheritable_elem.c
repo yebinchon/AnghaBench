@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlbuf_t ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  asmv1W ; 
- int /*<<< orphan*/  noInheritableW ; 
- scalar_t__ parse_expect_end_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_expect_no_attr (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int xmlbuf_t ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int asmv1W ;
+ int noInheritableW ;
+ scalar_t__ parse_expect_end_elem (int *,int ,int ) ;
+ int parse_expect_no_attr (int *,int*) ;
 
 __attribute__((used)) static BOOL parse_noinheritable_elem(xmlbuf_t* xmlbuf)
 {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_memcache_t ;
-typedef  int /*<<< orphan*/  svn_membuffer_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cache__t ;
-typedef  int /*<<< orphan*/  svn_cache__serialize_func_t ;
-typedef  int /*<<< orphan*/ * svn_cache__error_handler_t ;
-typedef  int /*<<< orphan*/  svn_cache__deserialize_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  scalar_t__ apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ SVN_CACHE__MEMBUFFER_DEFAULT_PRIORITY ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  init_callbacks (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cache__create_inprocess (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cache__create_membuffer_cache (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cache__create_memcache (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cache__create_null (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * warn_and_continue_on_cache_errors ; 
- int /*<<< orphan*/ * warn_and_fail_on_cache_errors ; 
+
+
+
+typedef int svn_memcache_t ;
+typedef int svn_membuffer_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+typedef int svn_cache__t ;
+typedef int svn_cache__serialize_func_t ;
+typedef int * svn_cache__error_handler_t ;
+typedef int svn_cache__deserialize_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef scalar_t__ apr_uint32_t ;
+typedef int apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
+
+
+ int FALSE ;
+ scalar_t__ SVN_CACHE__MEMBUFFER_DEFAULT_PRIORITY ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int init_callbacks (int *,int *,int *,int *) ;
+ int svn_cache__create_inprocess (int **,int ,int ,int ,scalar_t__,scalar_t__,int ,char const*,int *) ;
+ int svn_cache__create_membuffer_cache (int **,int *,int ,int ,int ,char const*,scalar_t__,int ,scalar_t__,int *,int *) ;
+ int svn_cache__create_memcache (int **,int *,int ,int ,int ,char const*,int *) ;
+ int svn_cache__create_null (int **,char const*,int *) ;
+ int * warn_and_continue_on_cache_errors ;
+ int * warn_and_fail_on_cache_errors ;
 
 __attribute__((used)) static svn_error_t *
 create_cache(svn_cache__t **cache_p,
@@ -56,7 +56,7 @@ create_cache(svn_cache__t **cache_p,
              apr_pool_t *scratch_pool)
 {
   svn_cache__error_handler_t error_handler = no_handler
-                                           ? NULL
+                                           ? ((void*)0)
                                            : warn_and_fail_on_cache_errors;
   if (priority == 0)
     priority = SVN_CACHE__MEMBUFFER_DEFAULT_PRIORITY;
@@ -71,13 +71,13 @@ create_cache(svn_cache__t **cache_p,
                                          serializer, deserializer, klen,
                                          prefix, result_pool));
       error_handler = no_handler
-                    ? NULL
+                    ? ((void*)0)
                     : warn_and_continue_on_cache_errors;
     }
   else if (membuffer)
     {
-      /* We assume caches with namespaces to be relatively short-lived,
-       * i.e. their data will not be needed after a while. */
+
+
       SVN_ERR(svn_cache__create_membuffer_cache(
                 cache_p, membuffer, serializer, deserializer,
                 klen, prefix, priority, FALSE, has_namespace,

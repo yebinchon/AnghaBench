@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * ACPI_STRING ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_PREDEFINED_NAMES ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  DPRINT1 (char*) ; 
+
+
+
+typedef int * ACPI_STRING ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_PREDEFINED_NAMES ;
+
+
+ int AE_BAD_PARAMETER ;
+ int AE_OK ;
+ int DPRINT1 (char*) ;
 
 ACPI_STATUS
 AcpiOsPredefinedOverride(
     const ACPI_PREDEFINED_NAMES *PredefinedObject,
-    ACPI_STRING                 *NewValue)
+    ACPI_STRING *NewValue)
 {
     if (!PredefinedObject || !NewValue)
     {
@@ -30,8 +30,8 @@ AcpiOsPredefinedOverride(
         return AE_BAD_PARAMETER;
     }
 
-    /* No override */
-    *NewValue = NULL;
+
+    *NewValue = ((void*)0);
 
     return AE_OK;
 }

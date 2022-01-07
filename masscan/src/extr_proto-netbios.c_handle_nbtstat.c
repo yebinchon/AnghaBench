@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  time_t ;
-struct PreprocessedInfo {unsigned int port_src; unsigned int port_dst; int* ip_src; int* ip_dst; int /*<<< orphan*/  ip_ttl; scalar_t__ app_length; scalar_t__ app_offset; } ;
+
+
+
+
+typedef int uint64_t ;
+typedef int time_t ;
+struct PreprocessedInfo {unsigned int port_src; unsigned int port_dst; int* ip_src; int* ip_dst; int ip_ttl; scalar_t__ app_length; scalar_t__ app_offset; } ;
 struct Output {int dummy; } ;
 struct DNS_Incoming {int id; int qr; scalar_t__ rcode; int qdcount; int ancount; int rr_count; unsigned int* rr_offset; } ;
 
-/* Variables and functions */
- unsigned int Templ_UDP ; 
- unsigned int dns_name_skip (unsigned char const*,unsigned int,unsigned int) ; 
- int handle_nbtstat_rr (struct Output*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char const*,unsigned int,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  proto_dns_parse (struct DNS_Incoming*,unsigned char const*,scalar_t__,scalar_t__) ; 
- scalar_t__ syn_cookie (unsigned int,unsigned int,unsigned int,unsigned int,int) ; 
+
+ unsigned int Templ_UDP ;
+ unsigned int dns_name_skip (unsigned char const*,unsigned int,unsigned int) ;
+ int handle_nbtstat_rr (struct Output*,int ,int ,unsigned char const*,unsigned int,unsigned int,unsigned int) ;
+ int proto_dns_parse (struct DNS_Incoming*,unsigned char const*,scalar_t__,scalar_t__) ;
+ scalar_t__ syn_cookie (unsigned int,unsigned int,unsigned int,unsigned int,int) ;
 
 unsigned
 handle_nbtstat(struct Output *out, time_t timestamp,
-    const unsigned char *px, unsigned length, 
+    const unsigned char *px, unsigned length,
     struct PreprocessedInfo *parsed,
     uint64_t entropy)
 {

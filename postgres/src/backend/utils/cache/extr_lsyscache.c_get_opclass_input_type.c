@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  opcintype; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_opclass ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLAOID ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int opcintype; } ;
+typedef int Oid ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_opclass ;
+
+
+ int CLAOID ;
+ int ERROR ;
+ scalar_t__ GETSTRUCT (int ) ;
+ int HeapTupleIsValid (int ) ;
+ int ObjectIdGetDatum (int ) ;
+ int ReleaseSysCache (int ) ;
+ int SearchSysCache1 (int ,int ) ;
+ int elog (int ,char*,int ) ;
 
 Oid
 get_opclass_input_type(Oid opclass)
 {
-	HeapTuple	tp;
-	Form_pg_opclass cla_tup;
-	Oid			result;
+ HeapTuple tp;
+ Form_pg_opclass cla_tup;
+ Oid result;
 
-	tp = SearchSysCache1(CLAOID, ObjectIdGetDatum(opclass));
-	if (!HeapTupleIsValid(tp))
-		elog(ERROR, "cache lookup failed for opclass %u", opclass);
-	cla_tup = (Form_pg_opclass) GETSTRUCT(tp);
+ tp = SearchSysCache1(CLAOID, ObjectIdGetDatum(opclass));
+ if (!HeapTupleIsValid(tp))
+  elog(ERROR, "cache lookup failed for opclass %u", opclass);
+ cla_tup = (Form_pg_opclass) GETSTRUCT(tp);
 
-	result = cla_tup->opcintype;
-	ReleaseSysCache(tp);
-	return result;
+ result = cla_tup->opcintype;
+ ReleaseSysCache(tp);
+ return result;
 }

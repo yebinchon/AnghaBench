@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_array_t ;
-typedef  int /*<<< orphan*/  const es_pair_t ;
 
-/* Variables and functions */
- size_t vlc_array_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* vlc_array_item_at_index (int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int vlc_array_t ;
+typedef int const es_pair_t ;
+
+
+ size_t vlc_array_count (int *) ;
+ int const* vlc_array_item_at_index (int *,size_t) ;
 
 __attribute__((used)) static es_pair_t *getEsPair(vlc_array_t *p_array,
                             bool (*match)(const es_pair_t *, const void *),
@@ -27,5 +27,5 @@ __attribute__((used)) static es_pair_t *getEsPair(vlc_array_t *p_array,
         if(match(p_pair, param))
             return p_pair;
     }
-    return NULL;
+    return ((void*)0);
 }

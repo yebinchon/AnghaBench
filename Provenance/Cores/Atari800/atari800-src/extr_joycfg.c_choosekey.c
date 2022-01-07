@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* buffer ; 
- int /*<<< orphan*/  clreol () ; 
- int /*<<< orphan*/  clrscr () ; 
- int /*<<< orphan*/  cputs (char*) ; 
- int /*<<< orphan*/  gotoxy (int,int) ; 
- int hi ; 
- scalar_t__ kbhit () ; 
- int /*<<< orphan*/  key_done () ; 
- int /*<<< orphan*/  key_init () ; 
- char** keynames ; 
- int lo ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int strlen (char*) ; 
+ int* buffer ;
+ int clreol () ;
+ int clrscr () ;
+ int cputs (char*) ;
+ int gotoxy (int,int) ;
+ int hi ;
+ scalar_t__ kbhit () ;
+ int key_done () ;
+ int key_init () ;
+ char** keynames ;
+ int lo ;
+ int sprintf (char*,char*,char*) ;
+ int strlen (char*) ;
 
 int choosekey(char *title,int oldval)
 {
@@ -49,7 +41,7 @@ int choosekey(char *title,int oldval)
     while (hi==lo);
     lastkey=buffer[lo++];
     if (lo==100) lo=0;
-    /*do not allow F1-F12, Pause, PrintScreen or Scrollock */
+
     bad=(lastkey>=59 && lastkey<=68) || lastkey==87 || lastkey==88 || lastkey==167
         || lastkey==183 || lastkey==70 || lastkey==197;
   }while ((lastkey&0xff00) || *keynames[lastkey&0xff]=='?' || *keynames[lastkey&0xff]=='#' || bad);
@@ -60,7 +52,7 @@ int choosekey(char *title,int oldval)
   clreol();
   gotoxy((78-strlen(msg))/2,11);
   cputs(msg);
-  /*wait until key is depressed*/
+
   do{
     while (hi==lo);
     lastkey=buffer[lo++];

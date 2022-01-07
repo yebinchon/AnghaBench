@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  len; void const* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  serf_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_VA_NULL ; 
- int /*<<< orphan*/  SVN_XML_NAMESPACE ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this (int /*<<< orphan*/ *,void const**,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  svn_ra_serf__add_cdata_len_buckets (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_serf__add_close_tag_buckets (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_ra_serf__add_open_tag_buckets (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*,...) ; 
- int /*<<< orphan*/  svn_ra_serf__add_tag_buckets (int /*<<< orphan*/ *,char*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_skip_ancestor (char const*,void const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int len; void const* data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int serf_bucket_t ;
+typedef int serf_bucket_alloc_t ;
+typedef int apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int SVN_VA_NULL ;
+ int SVN_XML_NAMESPACE ;
+ scalar_t__ apr_hash_count (int *) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_this (int *,void const**,int *,void**) ;
+ int svn_ra_serf__add_cdata_len_buckets (int *,int *,void const*,int ) ;
+ int svn_ra_serf__add_close_tag_buckets (int *,int *,char*) ;
+ int svn_ra_serf__add_open_tag_buckets (int *,int *,char*,char*,...) ;
+ int svn_ra_serf__add_tag_buckets (int *,char*,void*,int *) ;
+ int svn_relpath_skip_ancestor (char const*,void const*) ;
 
 void
 svn_ra_serf__merge_lock_token_list(apr_hash_t *lock_tokens,

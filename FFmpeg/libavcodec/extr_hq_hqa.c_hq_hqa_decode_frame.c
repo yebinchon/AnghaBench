@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_12__ ;
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
+
+
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_12__ ;
+
+
+typedef unsigned int uint32_t ;
 struct TYPE_22__ {TYPE_1__* priv_data; } ;
-struct TYPE_21__ {int key_frame; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_20__ {int size; int /*<<< orphan*/  data; } ;
-struct TYPE_18__ {int /*<<< orphan*/  buffer; } ;
+struct TYPE_21__ {int key_frame; int pict_type; } ;
+struct TYPE_20__ {int size; int data; } ;
+struct TYPE_18__ {int buffer; } ;
 struct TYPE_19__ {TYPE_12__ gbc; } ;
-typedef  TYPE_1__ HQContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_1__ HQContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- unsigned int MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int bytestream2_get_bytes_left (TYPE_12__*) ; 
- void* bytestream2_get_le32 (TYPE_12__*) ; 
- int /*<<< orphan*/  bytestream2_init (TYPE_12__*,int /*<<< orphan*/ ,int) ; 
- unsigned int bytestream2_peek_le32 (TYPE_12__*) ; 
- int /*<<< orphan*/  bytestream2_skip (TYPE_12__*,int) ; 
- int /*<<< orphan*/  ff_canopus_parse_info_tag (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int hq_decode_frame (TYPE_1__*,TYPE_3__*,unsigned int,unsigned int) ; 
- int hqa_decode_frame (TYPE_1__*,TYPE_3__*,unsigned int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ unsigned int MKTAG (char,char,char,char) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int bytestream2_get_bytes_left (TYPE_12__*) ;
+ void* bytestream2_get_le32 (TYPE_12__*) ;
+ int bytestream2_init (TYPE_12__*,int ,int) ;
+ unsigned int bytestream2_peek_le32 (TYPE_12__*) ;
+ int bytestream2_skip (TYPE_12__*,int) ;
+ int ff_canopus_parse_info_tag (TYPE_4__*,int ,int) ;
+ int hq_decode_frame (TYPE_1__*,TYPE_3__*,unsigned int,unsigned int) ;
+ int hqa_decode_frame (TYPE_1__*,TYPE_3__*,unsigned int) ;
 
 __attribute__((used)) static int hq_hqa_decode_frame(AVCodecContext *avctx, void *data,
                                int *got_frame, AVPacket *avpkt)
@@ -77,9 +77,9 @@ __attribute__((used)) static int hq_hqa_decode_frame(AVCodecContext *avctx, void
         return AVERROR_INVALIDDATA;
     }
 
-    /* HQ defines dimensions and number of slices, and thus slice traversal
-     * order. HQA has no size constraint and a fixed number of slices, so it
-     * needs a separate scheme for it. */
+
+
+
     tag = bytestream2_get_le32(&ctx->gbc);
     if ((tag & 0x00FFFFFF) == (MKTAG('U', 'V', 'C', ' ') & 0x00FFFFFF)) {
         ret = hq_decode_frame(ctx, pic, tag >> 24, data_size);

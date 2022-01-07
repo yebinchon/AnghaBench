@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  acpi_handle ;
 
-/* Variables and functions */
- int dmar_device_hotplug (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int acpi_handle ;
+
+
+ int dmar_device_hotplug (int ,int) ;
 
 int dmar_device_add(acpi_handle handle)
 {
-	return dmar_device_hotplug(handle, true);
+ return dmar_device_hotplug(handle, 1);
 }

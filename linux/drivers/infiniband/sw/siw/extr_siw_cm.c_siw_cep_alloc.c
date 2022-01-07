@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct siw_device {int /*<<< orphan*/  lock; int /*<<< orphan*/  cep_list; } ;
-struct siw_cep {int enhanced_rdma_conn_est; int /*<<< orphan*/  devq; struct siw_device* sdev; int /*<<< orphan*/  lock; int /*<<< orphan*/  waitq; int /*<<< orphan*/  state; int /*<<< orphan*/  ref; int /*<<< orphan*/  work_freelist; int /*<<< orphan*/  listenq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SIW_EPSTATE_IDLE ; 
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
- struct siw_cep* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  siw_dbg_cep (struct siw_cep*,char*) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct siw_device {int lock; int cep_list; } ;
+struct siw_cep {int enhanced_rdma_conn_est; int devq; struct siw_device* sdev; int lock; int waitq; int state; int ref; int work_freelist; int listenq; } ;
+
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int SIW_EPSTATE_IDLE ;
+ int init_waitqueue_head (int *) ;
+ int kref_init (int *) ;
+ struct siw_cep* kzalloc (int,int ) ;
+ int list_add_tail (int *,int *) ;
+ int siw_dbg_cep (struct siw_cep*,char*) ;
+ int spin_lock_init (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static struct siw_cep *siw_cep_alloc(struct siw_device *sdev)
 {
-	struct siw_cep *cep = kzalloc(sizeof(*cep), GFP_KERNEL);
-	unsigned long flags;
+ struct siw_cep *cep = kzalloc(sizeof(*cep), GFP_KERNEL);
+ unsigned long flags;
 
-	if (!cep)
-		return NULL;
+ if (!cep)
+  return ((void*)0);
 
-	INIT_LIST_HEAD(&cep->listenq);
-	INIT_LIST_HEAD(&cep->devq);
-	INIT_LIST_HEAD(&cep->work_freelist);
+ INIT_LIST_HEAD(&cep->listenq);
+ INIT_LIST_HEAD(&cep->devq);
+ INIT_LIST_HEAD(&cep->work_freelist);
 
-	kref_init(&cep->ref);
-	cep->state = SIW_EPSTATE_IDLE;
-	init_waitqueue_head(&cep->waitq);
-	spin_lock_init(&cep->lock);
-	cep->sdev = sdev;
-	cep->enhanced_rdma_conn_est = false;
+ kref_init(&cep->ref);
+ cep->state = SIW_EPSTATE_IDLE;
+ init_waitqueue_head(&cep->waitq);
+ spin_lock_init(&cep->lock);
+ cep->sdev = sdev;
+ cep->enhanced_rdma_conn_est = 0;
 
-	spin_lock_irqsave(&sdev->lock, flags);
-	list_add_tail(&cep->devq, &sdev->cep_list);
-	spin_unlock_irqrestore(&sdev->lock, flags);
+ spin_lock_irqsave(&sdev->lock, flags);
+ list_add_tail(&cep->devq, &sdev->cep_list);
+ spin_unlock_irqrestore(&sdev->lock, flags);
 
-	siw_dbg_cep(cep, "new endpoint\n");
-	return cep;
+ siw_dbg_cep(cep, "new endpoint\n");
+ return cep;
 }

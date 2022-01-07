@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct evbuffer {size_t off; int /*<<< orphan*/  buffer; } ;
+
+
+
+
+struct evbuffer {size_t off; int buffer; } ;
 struct bufferevent {struct evbuffer* input; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  evbuffer_drain (struct evbuffer*,size_t) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,size_t) ; 
+
+ int evbuffer_drain (struct evbuffer*,size_t) ;
+ int memcpy (void*,int ,size_t) ;
 
 size_t
 bufferevent_read(struct bufferevent *bufev, void *data, size_t size)
 {
-	struct evbuffer *buf = bufev->input;
+ struct evbuffer *buf = bufev->input;
 
-	if (buf->off < size)
-		size = buf->off;
+ if (buf->off < size)
+  size = buf->off;
 
-	/* Copy the available data to the user buffer */
-	memcpy(data, buf->buffer, size);
 
-	if (size)
-		evbuffer_drain(buf, size);
+ memcpy(data, buf->buffer, size);
 
-	return (size);
+ if (size)
+  evbuffer_drain(buf, size);
+
+ return (size);
 }

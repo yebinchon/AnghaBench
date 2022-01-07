@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {struct TYPE_8__* Flink; } ;
-struct TYPE_7__ {int /*<<< orphan*/  lpDisplayName; } ;
-typedef  TYPE_1__* PSERVICE ;
-typedef  TYPE_2__* PLIST_ENTRY ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
+struct TYPE_7__ {int lpDisplayName; } ;
+typedef TYPE_1__* PSERVICE ;
+typedef TYPE_2__* PLIST_ENTRY ;
+typedef int LPCWSTR ;
 
-/* Variables and functions */
- TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  SERVICE ; 
- int /*<<< orphan*/  ServiceListEntry ; 
- TYPE_2__ ServiceListHead ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* CONTAINING_RECORD (TYPE_2__*,int ,int ) ;
+ int DPRINT (char*,...) ;
+ int SERVICE ;
+ int ServiceListEntry ;
+ TYPE_2__ ServiceListHead ;
+ scalar_t__ _wcsicmp (int ,int ) ;
 
 PSERVICE
 ScmGetServiceEntryByDisplayName(LPCWSTR lpDisplayName)
@@ -51,5 +51,5 @@ ScmGetServiceEntryByDisplayName(LPCWSTR lpDisplayName)
 
     DPRINT("Couldn't find a matching service\n");
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_F_OPENSSL_HEXSTR2BUF_EX ; 
- int /*<<< orphan*/  CRYPTO_R_ILLEGAL_HEX_DIGIT ; 
- int /*<<< orphan*/  CRYPTO_R_ODD_NUMBER_OF_DIGITS ; 
- int /*<<< orphan*/  CRYPTO_R_TOO_SMALL_BUFFER ; 
- int /*<<< orphan*/  CRYPTOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int OPENSSL_hexchar2int (unsigned char) ; 
+ int CRYPTO_F_OPENSSL_HEXSTR2BUF_EX ;
+ int CRYPTO_R_ILLEGAL_HEX_DIGIT ;
+ int CRYPTO_R_ODD_NUMBER_OF_DIGITS ;
+ int CRYPTO_R_TOO_SMALL_BUFFER ;
+ int CRYPTOerr (int ,int ) ;
+ int OPENSSL_hexchar2int (unsigned char) ;
 
 int OPENSSL_hexstr2buf_ex(unsigned char *buf, size_t buf_n, size_t *buflen,
                           const char *str)
@@ -46,7 +38,7 @@ int OPENSSL_hexstr2buf_ex(unsigned char *buf, size_t buf_n, size_t *buflen,
             return 0;
         }
         cnt++;
-        if (q != NULL) {
+        if (q != ((void*)0)) {
             if (cnt > buf_n) {
                 CRYPTOerr(CRYPTO_F_OPENSSL_HEXSTR2BUF_EX,
                           CRYPTO_R_TOO_SMALL_BUFFER);
@@ -56,7 +48,7 @@ int OPENSSL_hexstr2buf_ex(unsigned char *buf, size_t buf_n, size_t *buflen,
         }
     }
 
-    if (buflen != NULL)
+    if (buflen != ((void*)0))
         *buflen = cnt;
     return 1;
 }

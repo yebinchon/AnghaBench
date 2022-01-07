@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  KILL_WHO ; 
- int /*<<< orphan*/  MACHINE_CLASS ; 
- int /*<<< orphan*/  MACHINE_STATE ; 
- int /*<<< orphan*/  kill_who ; 
- int /*<<< orphan*/  machine_class ; 
- int /*<<< orphan*/  machine_state ; 
- int /*<<< orphan*/  test_table (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int EXIT_SUCCESS ;
+ int KILL_WHO ;
+ int MACHINE_CLASS ;
+ int MACHINE_STATE ;
+ int kill_who ;
+ int machine_class ;
+ int machine_state ;
+ int test_table (int ,int ) ;
 
 int main(int argc, char **argv) {
         test_table(kill_who, KILL_WHO);

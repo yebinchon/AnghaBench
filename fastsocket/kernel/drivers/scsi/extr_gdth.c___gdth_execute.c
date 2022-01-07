@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct scsi_device {int /*<<< orphan*/  host; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct scsi_device {int host; } ;
 struct request {int dummy; } ;
-struct gdth_cmndinfo {int internal_command; int status; int /*<<< orphan*/  info; int /*<<< orphan*/ * internal_cmd_str; int /*<<< orphan*/  priority; } ;
-typedef  int /*<<< orphan*/  gdth_ha_str ;
-typedef  int /*<<< orphan*/  gdth_cmd_str ;
-typedef  int /*<<< orphan*/  cmndinfo ;
+struct gdth_cmndinfo {int internal_command; int status; int info; int * internal_cmd_str; int priority; } ;
+typedef int gdth_ha_str ;
+typedef int gdth_cmd_str ;
+typedef int cmndinfo ;
 struct TYPE_4__ {int cmd_len; char* cmnd; struct TYPE_4__* sense_buffer; struct request* request; struct scsi_device* device; } ;
-typedef  TYPE_1__ Scsi_Cmnd ;
+typedef TYPE_1__ Scsi_Cmnd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECLARE_COMPLETION_ONSTACK (int /*<<< orphan*/ ) ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  IOCTL_PRI ; 
- int SCSI_SENSE_BUFFERSIZE ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  __gdth_queuecommand (int /*<<< orphan*/ *,TYPE_1__*,struct gdth_cmndinfo*) ; 
- int /*<<< orphan*/  kfree (TYPE_1__*) ; 
- void* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct gdth_cmndinfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * shost_priv (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
+
+ int DECLARE_COMPLETION_ONSTACK (int ) ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int IOCTL_PRI ;
+ int SCSI_SENSE_BUFFERSIZE ;
+ int TRACE (char*) ;
+ int __gdth_queuecommand (int *,TYPE_1__*,struct gdth_cmndinfo*) ;
+ int kfree (TYPE_1__*) ;
+ void* kzalloc (int,int ) ;
+ int memset (struct gdth_cmndinfo*,int ,int) ;
+ int * shost_priv (int ) ;
+ int wait ;
+ int wait_for_completion (int *) ;
 
 int __gdth_execute(struct scsi_device *sdev, gdth_cmd_str *gdtcmd, char *cmnd,
                    int timeout, u32 *info)
@@ -51,14 +51,14 @@ int __gdth_execute(struct scsi_device *sdev, gdth_cmd_str *gdtcmd, char *cmnd,
 
     scp->sense_buffer = kzalloc(SCSI_SENSE_BUFFERSIZE, GFP_KERNEL);
     if (!scp->sense_buffer) {
-	kfree(scp);
-	return -ENOMEM;
+ kfree(scp);
+ return -ENOMEM;
     }
 
     scp->device = sdev;
     memset(&cmndinfo, 0, sizeof(cmndinfo));
 
-    /* use request field to save the ptr. to completion struct. */
+
     scp->request = (struct request *)&wait;
     scp->cmd_len = 12;
     scp->cmnd = cmnd;

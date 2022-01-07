@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int style; size_t nb_tabs; int /*<<< orphan*/  avg_char_width; int /*<<< orphan*/ * tabs; } ;
-typedef  int /*<<< orphan*/  LPINT ;
-typedef  TYPE_1__ LB_DESCR ;
-typedef  size_t INT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_LB_WITHOUT_TABSTOPS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int LBS_USETABSTOPS ; 
- int /*<<< orphan*/  MulDiv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int style; size_t nb_tabs; int avg_char_width; int * tabs; } ;
+typedef int LPINT ;
+typedef TYPE_1__ LB_DESCR ;
+typedef size_t INT ;
+typedef int BOOL ;
+
+
+ int ERROR_LB_WITHOUT_TABSTOPS ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int LBS_USETABSTOPS ;
+ int MulDiv (int ,int ,int) ;
+ int SetLastError (int ) ;
+ int TRUE ;
+ int memcpy (int *,int ,int) ;
 
 __attribute__((used)) static BOOL LISTBOX_SetTabStops( LB_DESCR *descr, INT count, LPINT tabs )
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static BOOL LISTBOX_SetTabStops( LB_DESCR *descr, INT coun
     HeapFree( GetProcessHeap(), 0, descr->tabs );
     if (!(descr->nb_tabs = count))
     {
-        descr->tabs = NULL;
+        descr->tabs = ((void*)0);
         return TRUE;
     }
     if (!(descr->tabs = HeapAlloc( GetProcessHeap(), 0,
@@ -50,7 +50,7 @@ __attribute__((used)) static BOOL LISTBOX_SetTabStops( LB_DESCR *descr, INT coun
         return FALSE;
     memcpy( descr->tabs, tabs, descr->nb_tabs * sizeof(INT) );
 
-    /* convert into "dialog units"*/
+
     for (i = 0; i < descr->nb_tabs; i++)
         descr->tabs[i] = MulDiv(descr->tabs[i], descr->avg_char_width, 4);
 

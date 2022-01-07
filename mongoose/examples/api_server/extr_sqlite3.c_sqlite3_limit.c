@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int* aLimit; } ;
-typedef  TYPE_1__ sqlite3 ;
+typedef TYPE_1__ sqlite3 ;
 
-/* Variables and functions */
- size_t SQLITE_LIMIT_ATTACHED ; 
- size_t SQLITE_LIMIT_COLUMN ; 
- size_t SQLITE_LIMIT_COMPOUND_SELECT ; 
- size_t SQLITE_LIMIT_EXPR_DEPTH ; 
- size_t SQLITE_LIMIT_FUNCTION_ARG ; 
- size_t SQLITE_LIMIT_LENGTH ; 
- size_t SQLITE_LIMIT_LIKE_PATTERN_LENGTH ; 
- size_t SQLITE_LIMIT_SQL_LENGTH ; 
- size_t SQLITE_LIMIT_TRIGGER_DEPTH ; 
- size_t SQLITE_LIMIT_VARIABLE_NUMBER ; 
- size_t SQLITE_LIMIT_VDBE_OP ; 
- int SQLITE_MAX_ATTACHED ; 
- int SQLITE_MAX_COLUMN ; 
- int SQLITE_MAX_COMPOUND_SELECT ; 
- int SQLITE_MAX_EXPR_DEPTH ; 
- int SQLITE_MAX_FUNCTION_ARG ; 
- int SQLITE_MAX_LENGTH ; 
- int SQLITE_MAX_LIKE_PATTERN_LENGTH ; 
- int SQLITE_MAX_SQL_LENGTH ; 
- int SQLITE_MAX_TRIGGER_DEPTH ; 
- int SQLITE_MAX_VARIABLE_NUMBER ; 
- int SQLITE_MAX_VDBE_OP ; 
- int SQLITE_N_LIMIT ; 
- int* aHardLimit ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ size_t SQLITE_LIMIT_ATTACHED ;
+ size_t SQLITE_LIMIT_COLUMN ;
+ size_t SQLITE_LIMIT_COMPOUND_SELECT ;
+ size_t SQLITE_LIMIT_EXPR_DEPTH ;
+ size_t SQLITE_LIMIT_FUNCTION_ARG ;
+ size_t SQLITE_LIMIT_LENGTH ;
+ size_t SQLITE_LIMIT_LIKE_PATTERN_LENGTH ;
+ size_t SQLITE_LIMIT_SQL_LENGTH ;
+ size_t SQLITE_LIMIT_TRIGGER_DEPTH ;
+ size_t SQLITE_LIMIT_VARIABLE_NUMBER ;
+ size_t SQLITE_LIMIT_VDBE_OP ;
+ int SQLITE_MAX_ATTACHED ;
+ int SQLITE_MAX_COLUMN ;
+ int SQLITE_MAX_COMPOUND_SELECT ;
+ int SQLITE_MAX_EXPR_DEPTH ;
+ int SQLITE_MAX_FUNCTION_ARG ;
+ int SQLITE_MAX_LENGTH ;
+ int SQLITE_MAX_LIKE_PATTERN_LENGTH ;
+ int SQLITE_MAX_SQL_LENGTH ;
+ int SQLITE_MAX_TRIGGER_DEPTH ;
+ int SQLITE_MAX_VARIABLE_NUMBER ;
+ int SQLITE_MAX_VDBE_OP ;
+ int SQLITE_N_LIMIT ;
+ int* aHardLimit ;
+ int assert (int) ;
 
 int sqlite3_limit(sqlite3 *db, int limitId, int newLimit){
   int oldLimit;
 
 
-  /* EVIDENCE-OF: R-30189-54097 For each limit category SQLITE_LIMIT_NAME
-  ** there is a hard upper bound set at compile-time by a C preprocessor
-  ** macro called SQLITE_MAX_NAME. (The "_LIMIT_" in the name is changed to
-  ** "_MAX_".)
-  */
+
+
+
+
+
   assert( aHardLimit[SQLITE_LIMIT_LENGTH]==SQLITE_MAX_LENGTH );
   assert( aHardLimit[SQLITE_LIMIT_SQL_LENGTH]==SQLITE_MAX_SQL_LENGTH );
   assert( aHardLimit[SQLITE_LIMIT_COLUMN]==SQLITE_MAX_COLUMN );
@@ -69,11 +69,11 @@ int sqlite3_limit(sqlite3 *db, int limitId, int newLimit){
     return -1;
   }
   oldLimit = db->aLimit[limitId];
-  if( newLimit>=0 ){                   /* IMP: R-52476-28732 */
+  if( newLimit>=0 ){
     if( newLimit>aHardLimit[limitId] ){
-      newLimit = aHardLimit[limitId];  /* IMP: R-51463-25634 */
+      newLimit = aHardLimit[limitId];
     }
     db->aLimit[limitId] = newLimit;
   }
-  return oldLimit;                     /* IMP: R-53341-35419 */
+  return oldLimit;
 }

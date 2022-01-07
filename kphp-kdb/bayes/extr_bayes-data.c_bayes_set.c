@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int ngood; int nbad; } ;
 struct TYPE_5__ {TYPE_2__ b; } ;
-typedef  TYPE_1__ user ;
+typedef TYPE_1__ user ;
 
-/* Variables and functions */
-#define  HAM 129 
-#define  SPAM 128 
- int /*<<< orphan*/  bayes_add_word (TYPE_2__*,scalar_t__,int,int) ; 
- scalar_t__ binlog_readed ; 
- TYPE_1__* conv_uid (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  get_words (char*) ; 
- TYPE_2__ global_bayes ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strstr (char*,char*) ; 
- int /*<<< orphan*/  teach_messages ; 
- int verbosity ; 
- scalar_t__* words ; 
+
+
+
+ int bayes_add_word (TYPE_2__*,scalar_t__,int,int) ;
+ scalar_t__ binlog_readed ;
+ TYPE_1__* conv_uid (int) ;
+ int fprintf (int ,char*,int,char*) ;
+ int get_words (char*) ;
+ TYPE_2__ global_bayes ;
+ int sscanf (char*,char*,int*) ;
+ int stderr ;
+ char* strstr (char*,char*) ;
+ int teach_messages ;
+ int verbosity ;
+ scalar_t__* words ;
 
 int bayes_set (char *text, int text_len, int type) {
   if (verbosity > 1 && binlog_readed) {
@@ -41,19 +41,19 @@ int bayes_set (char *text, int text_len, int type) {
 
   int out = 0;
   char *out_s = strstr (text, "out ");
-  if (out_s != NULL) {
+  if (out_s != ((void*)0)) {
     sscanf (out_s + 5, "%d", &out);
   }
 
   int uid = 0;
   char *uid_s = strstr (text, "uid ");
-  if (uid_s != NULL) {
+  if (uid_s != ((void*)0)) {
     sscanf (uid_s + 5, "%d", &uid);
   }
 
   user *u = conv_uid (uid);
 
-  if (!out || u != NULL) {
+  if (!out || u != ((void*)0)) {
     teach_messages++;
     get_words (text);
   } else {
@@ -62,31 +62,31 @@ int bayes_set (char *text, int text_len, int type) {
 
   int add_ham = 0, add_spam = 0;
   switch (type) {
-    case HAM:
+    case 129:
       add_ham = 1;
       break;
-    case SPAM:
+    case 128:
       add_spam = 1;
       break;
-    case HAM + 2:
+    case 129 + 2:
       add_ham = -1;
       break;
-    case SPAM + 2:
+    case 128 + 2:
       add_spam = -1;
       break;
-    case HAM + 4:
+    case 129 + 4:
       add_ham = 1;
       add_spam = -1;
       break;
-    case SPAM + 4:
+    case 128 + 4:
       add_ham = -1;
       add_spam = 1;
       break;
   }
 
-//  if (u != NULL) {
-//    fprintf (stderr, "bayes_set %d %d %d : %s\n", type, add_ham, add_spam, text);
-//  }
+
+
+
 
   if (!out) {
     for (i = 0; words[i]; i++) {
@@ -97,7 +97,7 @@ int bayes_set (char *text, int text_len, int type) {
     global_bayes.nbad += add_spam;
   }
 
-  if (u != NULL) {
+  if (u != ((void*)0)) {
     for (i = 0; words[i]; i++) {
       bayes_add_word (&u->b, words[i], add_ham, add_spam);
     }

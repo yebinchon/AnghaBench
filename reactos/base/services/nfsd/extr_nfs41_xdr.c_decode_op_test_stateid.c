@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xdrproc_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_6__ {int /*<<< orphan*/  op; scalar_t__ res; } ;
-typedef  TYPE_2__ nfs_resop4 ;
-struct TYPE_5__ {int /*<<< orphan*/  count; int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int xdrproc_t ;
+typedef int uint32_t ;
+struct TYPE_6__ {int op; scalar_t__ res; } ;
+typedef TYPE_2__ nfs_resop4 ;
+struct TYPE_5__ {int count; int status; } ;
 struct TYPE_7__ {scalar_t__ status; TYPE_1__ resok; } ;
-typedef  TYPE_3__ nfs41_test_stateid_res ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
+typedef TYPE_3__ nfs41_test_stateid_res ;
+typedef int bool_t ;
+typedef int XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ NFS4_OK ; 
- int /*<<< orphan*/  OP_TEST_STATEID ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ unexpected_op (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_array (int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,scalar_t__*) ; 
+
+ int FALSE ;
+ scalar_t__ NFS4_OK ;
+ int OP_TEST_STATEID ;
+ int TRUE ;
+ scalar_t__ unexpected_op (int ,int ) ;
+ int xdr_array (int *,char**,int *,int ,int,int ) ;
+ int xdr_u_int32_t (int *,scalar_t__*) ;
 
 __attribute__((used)) static bool_t decode_op_test_stateid(
     XDR *xdr,

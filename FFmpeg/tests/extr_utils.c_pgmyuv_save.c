@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  err_if (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int,int,int) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- int fwrite (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- unsigned char* malloc (int) ; 
- int /*<<< orphan*/  rgb24_to_yuv420p (unsigned char*,unsigned char*,unsigned char*,unsigned char const*,int,int) ; 
- int /*<<< orphan*/ * stdout ; 
+
+
+
+typedef int FILE ;
+
+
+ int err_if (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int *,char*,int,int,int) ;
+ int free (unsigned char*) ;
+ int fwrite (unsigned char*,int,int,int *) ;
+ unsigned char* malloc (int) ;
+ int rgb24_to_yuv420p (unsigned char*,unsigned char*,unsigned char*,unsigned char const*,int,int) ;
+ int * stdout ;
 
 __attribute__((used)) static void pgmyuv_save(const char *filename, int w, int h,
                         const unsigned char *rgb_tab)
@@ -32,8 +32,8 @@ __attribute__((used)) static void pgmyuv_save(const char *filename, int w, int h
     unsigned char *lum_tab, *cb_tab, *cr_tab;
 
     lum_tab = malloc(w * h);
-    cb_tab  = malloc(w * h / 4);
-    cr_tab  = malloc(w * h / 4);
+    cb_tab = malloc(w * h / 4);
+    cr_tab = malloc(w * h / 4);
 
     rgb24_to_yuv420p(lum_tab, cb_tab, cr_tab, rgb_tab, w, h);
 

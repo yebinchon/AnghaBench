@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vout_thread_t ;
 struct TYPE_8__ {scalar_t__ f_float; struct TYPE_8__* psz_string; } ;
-typedef  TYPE_1__ vlc_value_t ;
+typedef TYPE_1__ vlc_value_t ;
 
-/* Variables and functions */
- int VLC_VAR_FLOAT ; 
- int /*<<< orphan*/  VLC_VAR_GETCHOICES ; 
- int VLC_VAR_STRING ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  strcmp (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  var_Change (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,size_t*,TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  var_Get (int /*<<< orphan*/ *,char const*,TYPE_1__*) ; 
- int /*<<< orphan*/  var_SetFloat (int /*<<< orphan*/ *,char const*,scalar_t__) ; 
- int /*<<< orphan*/  var_SetString (int /*<<< orphan*/ *,char const*,TYPE_1__*) ; 
+
+ int VLC_VAR_FLOAT ;
+ int VLC_VAR_GETCHOICES ;
+ int VLC_VAR_STRING ;
+ int free (TYPE_1__*) ;
+ int strcmp (TYPE_1__*,TYPE_1__*) ;
+ int var_Change (int *,char const*,int ,size_t*,TYPE_1__**,int *) ;
+ int var_Get (int *,char const*,TYPE_1__*) ;
+ int var_SetFloat (int *,char const*,scalar_t__) ;
+ int var_SetString (int *,char const*,TYPE_1__*) ;
 
 __attribute__((used)) static inline void
 vout_CycleVariable(vout_thread_t *vout,
@@ -35,7 +35,7 @@ vout_CycleVariable(vout_thread_t *vout,
     size_t num_choices;
     vlc_value_t *choices;
     var_Change(vout, varname, VLC_VAR_GETCHOICES,
-               &num_choices, &choices, NULL);
+               &num_choices, &choices, ((void*)0));
 
     vlc_value_t *choice = choices;
     for (size_t curidx = 0; curidx < num_choices; ++curidx, ++choice)

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  work_item_baton_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_subst_eol_style_t ;
-struct TYPE_9__ {TYPE_3__* next; int /*<<< orphan*/  len; int /*<<< orphan*/  data; TYPE_1__* children; } ;
-typedef  TYPE_4__ svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_8__ {TYPE_2__* next; int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int work_item_baton_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_subst_eol_style_t ;
+struct TYPE_9__ {TYPE_3__* next; int len; int data; TYPE_1__* children; } ;
+typedef TYPE_4__ svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+struct TYPE_8__ {TYPE_2__* next; int len; int data; } ;
+struct TYPE_7__ {int len; int data; } ;
 struct TYPE_6__ {TYPE_4__* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- char* apr_pstrmemdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_subst_copy_and_translate4 (char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_from_relpath (char const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__get_translate_info (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ char* apr_pstrmemdup (int *,int ,int ) ;
+ int svn_subst_copy_and_translate4 (char const*,char const*,char const*,int ,int *,int ,int ,int ,void*,int *) ;
+ int svn_wc__db_from_relpath (char const**,int *,char const*,char const*,int *,int *) ;
+ int svn_wc__get_translate_info (int *,char const**,int **,int *,int *,char const*,int *,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 run_file_copy_translated(work_item_baton_t *wqb,
@@ -72,12 +72,12 @@ run_file_copy_translated(work_item_baton_t *wqb,
   SVN_ERR(svn_wc__get_translate_info(&style, &eol,
                                      &keywords,
                                      &special,
-                                     db, local_abspath, NULL, FALSE,
+                                     db, local_abspath, ((void*)0), FALSE,
                                      scratch_pool, scratch_pool));
 
   SVN_ERR(svn_subst_copy_and_translate4(src_abspath, dst_abspath,
-                                        eol, TRUE /* repair */,
-                                        keywords, TRUE /* expand */,
+                                        eol, TRUE ,
+                                        keywords, TRUE ,
                                         special,
                                         cancel_func, cancel_baton,
                                         scratch_pool));

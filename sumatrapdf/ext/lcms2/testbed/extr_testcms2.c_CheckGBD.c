@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ cmsUInt8Number ;
-typedef  int cmsUInt32Number ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/ * cmsHANDLE ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ cmsUInt8Number ;
+typedef int cmsUInt32Number ;
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+typedef int * cmsHANDLE ;
 struct TYPE_8__ {int L; int a; int b; } ;
-typedef  TYPE_1__ cmsCIELab ;
+typedef TYPE_1__ cmsCIELab ;
 struct TYPE_9__ {int L; int C; int h; } ;
-typedef  TYPE_2__ cmsCIELCh ;
+typedef TYPE_2__ cmsCIELCh ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  INTENT_RELATIVE_COLORIMETRIC ; 
- int /*<<< orphan*/  SubTest (char*) ; 
- int /*<<< orphan*/  TYPE_Lab_DBL ; 
- int /*<<< orphan*/  TYPE_RGB_8 ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateLab4Profile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  cmsFLAGS_NOCACHE ; 
- int /*<<< orphan*/ * cmsGBDAlloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsGBDFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsGDBAddPoint (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  cmsGDBCheckPoint (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  cmsGDBCompute (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsLCh2Lab (int /*<<< orphan*/ ,TYPE_1__*,TYPE_2__*) ; 
+
+ int DbgThread () ;
+ int INTENT_RELATIVE_COLORIMETRIC ;
+ int SubTest (char*) ;
+ int TYPE_Lab_DBL ;
+ int TYPE_RGB_8 ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreateLab4Profile (int ,int *) ;
+ int cmsCreateTransform (int ,int ,int ,int ,int ,int ,int ) ;
+ int cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,int ) ;
+ int cmsDoTransform (int ,int ,scalar_t__*,TYPE_1__*,int) ;
+ int cmsFLAGS_NOCACHE ;
+ int * cmsGBDAlloc (int ) ;
+ int cmsGBDFree (int ,int *) ;
+ int cmsGDBAddPoint (int ,int *,TYPE_1__*) ;
+ int cmsGDBCheckPoint (int ,int *,TYPE_1__*) ;
+ int cmsGDBCompute (int ,int *,int ) ;
+ int cmsLCh2Lab (int ,TYPE_1__*,TYPE_2__*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckGBD(void)
 {
     cmsCIELab Lab;
-    cmsHANDLE  h;
+    cmsHANDLE h;
     cmsInt32Number L, a, b;
     cmsUInt32Number r1, g1, b1;
     cmsHPROFILE hLab, hsRGB;
     cmsHTRANSFORM xform;
 
     h = cmsGBDAlloc(DbgThread());
-    if (h == NULL) return 0;
+    if (h == ((void*)0)) return 0;
 
-    // Fill all Lab gamut as valid
+
     SubTest("Filling RAW gamut");
 
     for (L=0; L <= 100; L += 10)
@@ -69,12 +69,12 @@ cmsInt32Number CheckGBD(void)
                 if (!cmsGDBAddPoint(DbgThread(), h, &Lab)) return 0;
             }
 
-    // Complete boundaries
+
     SubTest("computing Lab gamut");
     if (!cmsGDBCompute(DbgThread(), h, 0)) return 0;
 
 
-    // All points should be inside gamut
+
     SubTest("checking Lab gamut");
     for (L=10; L <= 90; L += 25)
         for (a = -120; a <= 120; a += 25)
@@ -90,11 +90,11 @@ cmsInt32Number CheckGBD(void)
     cmsGBDFree(DbgThread(), h);
 
 
-    // Now for sRGB
+
     SubTest("checking sRGB gamut");
     h = cmsGBDAlloc(DbgThread());
     hsRGB = cmsCreate_sRGBProfile(DbgThread());
-    hLab  = cmsCreateLab4Profile(DbgThread(), NULL);
+    hLab = cmsCreateLab4Profile(DbgThread(), ((void*)0));
 
     xform = cmsCreateTransform(DbgThread(), hsRGB, TYPE_RGB_8, hLab, TYPE_Lab_DBL, INTENT_RELATIVE_COLORIMETRIC, cmsFLAGS_NOCACHE);
     cmsCloseProfile(DbgThread(), hsRGB); cmsCloseProfile(DbgThread(), hLab);
@@ -113,7 +113,7 @@ cmsInt32Number CheckGBD(void)
 
                 cmsDoTransform(DbgThread(), xform, rgb, &Lab, 1);
 
-                // if (fabs(Lab.b) < 20 && Lab.a > 0) continue;
+
 
                 if (!cmsGDBAddPoint(DbgThread(), h, &Lab)) {
                     cmsGBDFree(DbgThread(), h);
@@ -126,7 +126,7 @@ cmsInt32Number CheckGBD(void)
 
 
     if (!cmsGDBCompute(DbgThread(), h, 0)) return 0;
-    // cmsGBDdumpVRML(h, "c:\\colormaps\\lab.wrl");
+
 
     for (r1=10; r1 < 200; r1 += 10) {
         for (g1=10; g1 < 200; g1 += 10)

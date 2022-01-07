@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct lev_support_add_answer {int user_id; int mark; char* question_with_answer; } ;
-typedef  int /*<<< orphan*/  set_int ;
-typedef  TYPE_1__* answers_list_ptr ;
+typedef int set_int ;
+typedef TYPE_1__* answers_list_ptr ;
 struct TYPE_4__ {int q_hashes_len; int* q_hashes; struct lev_support_add_answer* E; } ;
 
-/* Variables and functions */
- int answers_cnt ; 
- int /*<<< orphan*/  assert (int) ; 
- int* buf ; 
- int /*<<< orphan*/  dl_free (int*,int) ; 
- int* dl_malloc (int) ; 
- int* map_int_int_add (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  map_int_int_del (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * map_int_set_int_add (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  map_int_set_int_del (int /*<<< orphan*/ *,int) ; 
- TYPE_1__** map_int_vptr_add (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  map_int_vptr_del (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  q_cnt ; 
- int /*<<< orphan*/  set_int_add (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_int_del (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_int_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_int_init (int /*<<< orphan*/ *) ; 
- scalar_t__ set_int_used (int /*<<< orphan*/ *) ; 
- int* split (int*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  user_id_to_answer ; 
- int /*<<< orphan*/  word_to_answers ; 
+
+ int answers_cnt ;
+ int assert (int) ;
+ int* buf ;
+ int dl_free (int*,int) ;
+ int* dl_malloc (int) ;
+ int* map_int_int_add (int *,int) ;
+ int map_int_int_del (int *,int) ;
+ int * map_int_set_int_add (int *,int) ;
+ int map_int_set_int_del (int *,int) ;
+ TYPE_1__** map_int_vptr_add (int *,int) ;
+ int map_int_vptr_del (int *,int) ;
+ int memcpy (int*,int*,int) ;
+ int q_cnt ;
+ int set_int_add (int *,int) ;
+ int set_int_del (int *,int) ;
+ int set_int_free (int *) ;
+ int set_int_init (int *) ;
+ scalar_t__ set_int_used (int *) ;
+ int* split (int*,int*,int ) ;
+ int user_id_to_answer ;
+ int word_to_answers ;
 
 void process_answer (answers_list_ptr answer, int add) {
   struct lev_support_add_answer *E = answer->E;

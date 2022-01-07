@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct usb_ftdi {TYPE_1__* udev; } ;
 struct TYPE_4__ {int a; int* portstatus; int status; int b; } ;
-struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_3__ {int dev; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int FI ; 
- int FIT ; 
- int FSMP (int) ; 
- int OHCI_BLF ; 
- int const OHCI_CONTROL_INIT ; 
- int const OHCI_CTRL_BLE ; 
- int OHCI_CTRL_HCFS ; 
- int OHCI_CTRL_RWC ; 
- int OHCI_HCR ; 
- int OHCI_INTR_FNO ; 
- int OHCI_INTR_INIT ; 
- int OHCI_INTR_MIE ; 
- int OHCI_INTR_OC ; 
- int OHCI_INTR_RD ; 
- int OHCI_INTR_RHSC ; 
- int OHCI_INTR_SF ; 
- int OHCI_INTR_SO ; 
- int OHCI_INTR_UE ; 
- int OHCI_INTR_WDH ; 
- int OHCI_QUIRK_AMD756 ; 
- int OHCI_QUIRK_INITRESET ; 
- int OHCI_QUIRK_SUPERIO ; 
-#define  OHCI_USB_OPER 130 
- int OHCI_USB_RESET ; 
-#define  OHCI_USB_RESUME 129 
-#define  OHCI_USB_SUSPEND 128 
- int RH_A_NDP ; 
- int RH_A_NOCP ; 
- int RH_A_NPS ; 
- int RH_A_OCPM ; 
- int RH_A_POTPGT ; 
- int RH_A_PSM ; 
- int RH_B_PPCM ; 
- int RH_HS_DRWE ; 
- int RH_HS_LPSC ; 
- int RH_PS_LSDA ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ distrust_firmware ; 
- int ed_bulkhead ; 
- int ed_controlhead ; 
- int ftdi_read_pcimem (struct usb_ftdi*,int,int*) ; 
- int ftdi_write_pcimem (struct usb_ftdi*,int,int) ; 
- int hcca ; 
- int intrdisable ; 
- int intrstatus ; 
- int /*<<< orphan*/  mdelay (int) ; 
- int /*<<< orphan*/  msleep (int) ; 
- TYPE_2__ roothub ; 
+
+ int ENODEV ;
+ int FI ;
+ int FIT ;
+ int FSMP (int) ;
+ int OHCI_BLF ;
+ int const OHCI_CONTROL_INIT ;
+ int const OHCI_CTRL_BLE ;
+ int OHCI_CTRL_HCFS ;
+ int OHCI_CTRL_RWC ;
+ int OHCI_HCR ;
+ int OHCI_INTR_FNO ;
+ int OHCI_INTR_INIT ;
+ int OHCI_INTR_MIE ;
+ int OHCI_INTR_OC ;
+ int OHCI_INTR_RD ;
+ int OHCI_INTR_RHSC ;
+ int OHCI_INTR_SF ;
+ int OHCI_INTR_SO ;
+ int OHCI_INTR_UE ;
+ int OHCI_INTR_WDH ;
+ int OHCI_QUIRK_AMD756 ;
+ int OHCI_QUIRK_INITRESET ;
+ int OHCI_QUIRK_SUPERIO ;
+
+ int OHCI_USB_RESET ;
+
+
+ int RH_A_NDP ;
+ int RH_A_NOCP ;
+ int RH_A_NPS ;
+ int RH_A_OCPM ;
+ int RH_A_POTPGT ;
+ int RH_A_PSM ;
+ int RH_B_PPCM ;
+ int RH_HS_DRWE ;
+ int RH_HS_LPSC ;
+ int RH_PS_LSDA ;
+ int dev_err (int *,char*,...) ;
+ scalar_t__ distrust_firmware ;
+ int ed_bulkhead ;
+ int ed_controlhead ;
+ int ftdi_read_pcimem (struct usb_ftdi*,int,int*) ;
+ int ftdi_write_pcimem (struct usb_ftdi*,int,int) ;
+ int hcca ;
+ int intrdisable ;
+ int intrstatus ;
+ int mdelay (int) ;
+ int msleep (int) ;
+ TYPE_2__ roothub ;
 
 __attribute__((used)) static int ftdi_elan_check_controller(struct usb_ftdi *ftdi, int quirk)
 {
@@ -84,7 +84,7 @@ __attribute__((used)) static int ftdi_elan_check_controller(struct usb_ftdi *ftd
         u32 roothub_a;
         int mask = OHCI_INTR_INIT;
         int sleep_time = 0;
-        int reset_timeout = 30;        /* ... allow extra time */
+        int reset_timeout = 30;
         int temp;
         retval = ftdi_write_pcimem(ftdi, intrdisable, OHCI_INTR_MIE);
         if (retval)
@@ -107,13 +107,13 @@ __attribute__((used)) static int ftdi_elan_check_controller(struct usb_ftdi *ftd
         if (retval)
                 return retval;
         switch (hc_control & OHCI_CTRL_HCFS) {
-        case OHCI_USB_OPER:
+        case 130:
                 sleep_time = 0;
                 break;
-        case OHCI_USB_SUSPEND:
-        case OHCI_USB_RESUME:
+        case 128:
+        case 129:
                 hc_control &= OHCI_CTRL_RWC;
-                hc_control |= OHCI_USB_RESUME;
+                hc_control |= 129;
                 sleep_time = 10;
                 break;
         default:
@@ -132,7 +132,7 @@ __attribute__((used)) static int ftdi_elan_check_controller(struct usb_ftdi *ftd
         retval = ftdi_read_pcimem(ftdi, roothub.a, &roothub_a);
         if (retval)
                 return retval;
-        if (!(roothub_a & RH_A_NPS)) {        /* power down each port */
+        if (!(roothub_a & RH_A_NPS)) {
                 for (temp = 0; temp < num_ports; temp++) {
                         retval = ftdi_write_pcimem(ftdi,
                                 roothub.portstatus[temp], RH_PS_LSDA);
@@ -205,9 +205,9 @@ __attribute__((used)) static int ftdi_elan_check_controller(struct usb_ftdi *ftd
                 } else
                         dev_err(&ftdi->udev->dev, "init err(%08x %04x)\n",
                                 fminterval, periodicstart);
-        }                        /* start controller operations */
+        }
         hc_control &= OHCI_CTRL_RWC;
-        hc_control |= OHCI_CONTROL_INIT | OHCI_CTRL_BLE | OHCI_USB_OPER;
+        hc_control |= OHCI_CONTROL_INIT | OHCI_CTRL_BLE | 130;
         retval = ftdi_write_pcimem(ftdi, control, hc_control);
         if (retval)
                 return retval;
@@ -231,7 +231,7 @@ __attribute__((used)) static int ftdi_elan_check_controller(struct usb_ftdi *ftd
                 OHCI_INTR_UE | OHCI_INTR_RD | OHCI_INTR_SF | OHCI_INTR_WDH |
                 OHCI_INTR_SO);
         if (retval)
-                return retval;        /* handle root hub init quirks ... */
+                return retval;
         retval = ftdi_read_pcimem(ftdi, roothub.a, &roothub_a);
         if (retval)
                 return retval;

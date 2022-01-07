@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ rc; char* zErrmsg; } ;
-typedef  TYPE_1__ sqlite3rbu ;
+typedef TYPE_1__ sqlite3rbu ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_CONSTRAINT ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
- size_t strlen (char*) ; 
+
+ scalar_t__ SQLITE_CONSTRAINT ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int memmove (char*,char*,size_t) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static void rbuEditErrmsg(sqlite3rbu *p){
   if( p->rc==SQLITE_CONSTRAINT && p->zErrmsg ){

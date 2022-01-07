@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_10__ {int /*<<< orphan*/ * aLimit; } ;
-typedef  TYPE_1__ sqlite3 ;
-struct TYPE_12__ {int nArg; int /*<<< orphan*/ ** apArg; scalar_t__ nUsed; } ;
-struct TYPE_11__ {int nChar; int /*<<< orphan*/  printfFlags; } ;
-typedef  TYPE_2__ StrAccum ;
-typedef  TYPE_3__ PrintfArguments ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_DYNAMIC ; 
- size_t SQLITE_LIMIT_LENGTH ; 
- int /*<<< orphan*/  SQLITE_PRINTF_SQLFUNC ; 
- int /*<<< orphan*/  sqlite3StrAccumFinish (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3StrAccumInit (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3XPrintf (TYPE_2__*,char const*,TYPE_3__*) ; 
- TYPE_1__* sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+struct TYPE_10__ {int * aLimit; } ;
+typedef TYPE_1__ sqlite3 ;
+struct TYPE_12__ {int nArg; int ** apArg; scalar_t__ nUsed; } ;
+struct TYPE_11__ {int nChar; int printfFlags; } ;
+typedef TYPE_2__ StrAccum ;
+typedef TYPE_3__ PrintfArguments ;
+
+
+ int SQLITE_DYNAMIC ;
+ size_t SQLITE_LIMIT_LENGTH ;
+ int SQLITE_PRINTF_SQLFUNC ;
+ int sqlite3StrAccumFinish (TYPE_2__*) ;
+ int sqlite3StrAccumInit (TYPE_2__*,TYPE_1__*,int ,int ,int ) ;
+ int sqlite3XPrintf (TYPE_2__*,char const*,TYPE_3__*) ;
+ TYPE_1__* sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_text (int *,int ,int,int ) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void printfFunc(
   sqlite3_context *context,

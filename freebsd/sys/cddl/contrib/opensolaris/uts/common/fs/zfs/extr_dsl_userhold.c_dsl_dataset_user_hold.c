@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvpair_t ;
-typedef  int /*<<< orphan*/  nvlist_t ;
-typedef  int /*<<< orphan*/  minor_t ;
-struct TYPE_3__ {int /*<<< orphan*/  dduha_chkholds; int /*<<< orphan*/  dduha_minor; int /*<<< orphan*/ * dduha_errlist; int /*<<< orphan*/ * dduha_holds; } ;
-typedef  TYPE_1__ dsl_dataset_user_hold_arg_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZFS_SPACE_CHECK_RESERVED ; 
- int /*<<< orphan*/  dsl_dataset_user_hold_check ; 
- int /*<<< orphan*/  dsl_dataset_user_hold_sync ; 
- int dsl_sync_task (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fnvlist_alloc () ; 
- int /*<<< orphan*/  fnvlist_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fnvlist_num_pairs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * nvlist_next_nvpair (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvpair_name (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nvpair_t ;
+typedef int nvlist_t ;
+typedef int minor_t ;
+struct TYPE_3__ {int dduha_chkholds; int dduha_minor; int * dduha_errlist; int * dduha_holds; } ;
+typedef TYPE_1__ dsl_dataset_user_hold_arg_t ;
+
+
+ int ZFS_SPACE_CHECK_RESERVED ;
+ int dsl_dataset_user_hold_check ;
+ int dsl_dataset_user_hold_sync ;
+ int dsl_sync_task (int ,int ,int ,TYPE_1__*,int ,int ) ;
+ int fnvlist_alloc () ;
+ int fnvlist_free (int ) ;
+ int fnvlist_num_pairs (int *) ;
+ int * nvlist_next_nvpair (int *,int *) ;
+ int nvpair_name (int *) ;
 
 int
 dsl_dataset_user_hold(nvlist_t *holds, minor_t cleanup_minor, nvlist_t *errlist)
 {
-	dsl_dataset_user_hold_arg_t dduha;
-	nvpair_t *pair;
-	int ret;
+ dsl_dataset_user_hold_arg_t dduha;
+ nvpair_t *pair;
+ int ret;
 
-	pair = nvlist_next_nvpair(holds, NULL);
-	if (pair == NULL)
-		return (0);
+ pair = nvlist_next_nvpair(holds, ((void*)0));
+ if (pair == ((void*)0))
+  return (0);
 
-	dduha.dduha_holds = holds;
-	dduha.dduha_chkholds = fnvlist_alloc();
-	dduha.dduha_errlist = errlist;
-	dduha.dduha_minor = cleanup_minor;
+ dduha.dduha_holds = holds;
+ dduha.dduha_chkholds = fnvlist_alloc();
+ dduha.dduha_errlist = errlist;
+ dduha.dduha_minor = cleanup_minor;
 
-	ret = dsl_sync_task(nvpair_name(pair), dsl_dataset_user_hold_check,
-	    dsl_dataset_user_hold_sync, &dduha,
-	    fnvlist_num_pairs(holds), ZFS_SPACE_CHECK_RESERVED);
-	fnvlist_free(dduha.dduha_chkholds);
+ ret = dsl_sync_task(nvpair_name(pair), dsl_dataset_user_hold_check,
+     dsl_dataset_user_hold_sync, &dduha,
+     fnvlist_num_pairs(holds), ZFS_SPACE_CHECK_RESERVED);
+ fnvlist_free(dduha.dduha_chkholds);
 
-	return (ret);
+ return (ret);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HMODULE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleHandleA (char*) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- void* pCopyFile2 ; 
- void* pCreateFile2 ; 
- void* pFindFirstFileExA ; 
- void* pGetFileInformationByHandleEx ; 
- void* pGetFinalPathNameByHandleA ; 
- void* pGetFinalPathNameByHandleW ; 
- void* pGetSystemWindowsDirectoryA ; 
- void* pGetVolumeNameForVolumeMountPointA ; 
- void* pNtCreateFile ; 
- void* pOpenFileById ; 
- void* pQueueUserAPC ; 
- void* pReplaceFileA ; 
- void* pReplaceFileW ; 
- void* pRtlAnsiStringToUnicodeString ; 
- void* pRtlDosPathNameToNtPathName_U ; 
- void* pRtlFreeUnicodeString ; 
- void* pRtlInitAnsiString ; 
- void* pSetFileInformationByHandle ; 
- void* pSetFileValidData ; 
+
+
+
+typedef int HMODULE ;
+
+
+ int GetModuleHandleA (char*) ;
+ scalar_t__ GetProcAddress (int ,char*) ;
+ void* pCopyFile2 ;
+ void* pCreateFile2 ;
+ void* pFindFirstFileExA ;
+ void* pGetFileInformationByHandleEx ;
+ void* pGetFinalPathNameByHandleA ;
+ void* pGetFinalPathNameByHandleW ;
+ void* pGetSystemWindowsDirectoryA ;
+ void* pGetVolumeNameForVolumeMountPointA ;
+ void* pNtCreateFile ;
+ void* pOpenFileById ;
+ void* pQueueUserAPC ;
+ void* pReplaceFileA ;
+ void* pReplaceFileW ;
+ void* pRtlAnsiStringToUnicodeString ;
+ void* pRtlDosPathNameToNtPathName_U ;
+ void* pRtlFreeUnicodeString ;
+ void* pRtlInitAnsiString ;
+ void* pSetFileInformationByHandle ;
+ void* pSetFileValidData ;
 
 __attribute__((used)) static void InitFunctionPointers(void)
 {

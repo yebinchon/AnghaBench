@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  lstrcpyA (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int lstrlenA (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int CHAR ;
+
+
+ int * heap_alloc (int) ;
+ int lstrcpyA (int *,int const*) ;
+ int lstrlenA (int const*) ;
 
 __attribute__((used)) static CHAR *heap_strdup(const CHAR *str)
 {

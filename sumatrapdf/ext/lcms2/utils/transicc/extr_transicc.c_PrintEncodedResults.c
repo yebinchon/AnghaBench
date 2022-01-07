@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-typedef  int cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- scalar_t__ InHexa ; 
- int /*<<< orphan*/  OutputColorSpace ; 
- int /*<<< orphan*/ * OutputColorant ; 
- scalar_t__ Verbose ; 
- scalar_t__ Width16 ; 
- int cmsChannelsOf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int cmsMAX_PATH ; 
- int /*<<< orphan*/  cmsNamedColorInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ floor (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef int cmsUInt16Number ;
+typedef int cmsContext ;
+
+
+ scalar_t__ InHexa ;
+ int OutputColorSpace ;
+ int * OutputColorant ;
+ scalar_t__ Verbose ;
+ scalar_t__ Width16 ;
+ int cmsChannelsOf (int ,int ) ;
+ int cmsMAX_PATH ;
+ int cmsNamedColorInfo (int ,int *,int,char*,int *,int *,int *,int *) ;
+ scalar_t__ floor (int) ;
+ int printf (char*,...) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static
 void PrintEncodedResults(cmsContext ContextID, cmsUInt16Number Encoded[])
@@ -37,9 +37,9 @@ void PrintEncodedResults(cmsContext ContextID, cmsUInt16Number Encoded[])
     n = cmsChannelsOf(ContextID, OutputColorSpace);
     for (i=0; i < n; i++) {
 
-        if (OutputColorant != NULL) {
+        if (OutputColorant != ((void*)0)) {
 
-            cmsNamedColorInfo(ContextID, OutputColorant, i, ChannelName, NULL, NULL, NULL, NULL);
+            cmsNamedColorInfo(ContextID, OutputColorant, i, ChannelName, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
         }
         else {
             sprintf(ChannelName, "Channel #%u", i + 1);

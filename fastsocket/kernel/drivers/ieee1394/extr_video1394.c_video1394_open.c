@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ti_ohci {TYPE_1__* host; } ;
 struct inode {int dummy; } ;
-struct file_ctx {int /*<<< orphan*/ * current_ctx; int /*<<< orphan*/  context_list; struct ti_ohci* ohci; } ;
+struct file_ctx {int * current_ctx; int context_list; struct ti_ohci* ohci; } ;
 struct file {struct file_ctx* private_data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  id; } ;
+struct TYPE_2__ {int id; } ;
 
-/* Variables and functions */
- int EIO ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KERN_ERR ; 
- int /*<<< orphan*/  PRINT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- struct ti_ohci* hpsb_get_hostinfo_bykey (int /*<<< orphan*/ *,int) ; 
- int ieee1394_file_to_instance (struct file*) ; 
- struct file_ctx* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  video1394_highlevel ; 
+
+ int EIO ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int KERN_ERR ;
+ int PRINT (int ,int ,char*) ;
+ struct ti_ohci* hpsb_get_hostinfo_bykey (int *,int) ;
+ int ieee1394_file_to_instance (struct file*) ;
+ struct file_ctx* kzalloc (int,int ) ;
+ int video1394_highlevel ;
 
 __attribute__((used)) static int video1394_open(struct inode *inode, struct file *file)
 {
-	int i = ieee1394_file_to_instance(file);
-	struct ti_ohci *ohci;
-	struct file_ctx *ctx;
+ int i = ieee1394_file_to_instance(file);
+ struct ti_ohci *ohci;
+ struct file_ctx *ctx;
 
-	ohci = hpsb_get_hostinfo_bykey(&video1394_highlevel, i);
-        if (ohci == NULL)
+ ohci = hpsb_get_hostinfo_bykey(&video1394_highlevel, i);
+        if (ohci == ((void*)0))
                 return -EIO;
 
-	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-	if (!ctx)  {
-		PRINT(KERN_ERR, ohci->host->id, "Cannot malloc file_ctx");
-		return -ENOMEM;
-	}
+ ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+ if (!ctx) {
+  PRINT(KERN_ERR, ohci->host->id, "Cannot malloc file_ctx");
+  return -ENOMEM;
+ }
 
-	ctx->ohci = ohci;
-	INIT_LIST_HEAD(&ctx->context_list);
-	ctx->current_ctx = NULL;
-	file->private_data = ctx;
+ ctx->ohci = ohci;
+ INIT_LIST_HEAD(&ctx->context_list);
+ ctx->current_ctx = ((void*)0);
+ file->private_data = ctx;
 
-	return 0;
+ return 0;
 }

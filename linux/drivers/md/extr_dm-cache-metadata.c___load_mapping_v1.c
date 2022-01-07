@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct dm_cache_metadata {scalar_t__ clean_when_opened; } ;
 struct dm_array_cursor {int dummy; } ;
-typedef  int /*<<< orphan*/  mapping ;
-typedef  int (* load_mapping_fn ) (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ;
-typedef  int /*<<< orphan*/  hint ;
-typedef  int /*<<< orphan*/  dm_oblock_t ;
-typedef  int /*<<< orphan*/  __le64 ;
-typedef  int /*<<< orphan*/  __le32 ;
+typedef int mapping ;
+typedef int (* load_mapping_fn ) (void*,int ,int ,int,int ,int) ;
+typedef int hint ;
+typedef int dm_oblock_t ;
+typedef int __le64 ;
+typedef int __le32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMERR (char*,unsigned long long) ; 
- unsigned int M_DIRTY ; 
- unsigned int M_VALID ; 
- int /*<<< orphan*/  dm_array_cursor_get_value (struct dm_array_cursor*,void**) ; 
- scalar_t__ from_cblock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  le32_to_cpu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  to_cblock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unpack_value (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int*) ; 
+
+ int DMERR (char*,unsigned long long) ;
+ unsigned int M_DIRTY ;
+ unsigned int M_VALID ;
+ int dm_array_cursor_get_value (struct dm_array_cursor*,void**) ;
+ scalar_t__ from_cblock (int ) ;
+ int le32_to_cpu (int ) ;
+ int memcpy (int *,int *,int) ;
+ int to_cblock (int ) ;
+ int unpack_value (int ,int *,unsigned int*) ;
 
 __attribute__((used)) static int __load_mapping_v1(struct dm_cache_metadata *cmd,
-			     uint64_t cb, bool hints_valid,
-			     struct dm_array_cursor *mapping_cursor,
-			     struct dm_array_cursor *hint_cursor,
-			     load_mapping_fn fn, void *context)
+        uint64_t cb, bool hints_valid,
+        struct dm_array_cursor *mapping_cursor,
+        struct dm_array_cursor *hint_cursor,
+        load_mapping_fn fn, void *context)
 {
-	int r = 0;
+ int r = 0;
 
-	__le64 mapping;
-	__le32 hint = 0;
+ __le64 mapping;
+ __le32 hint = 0;
 
-	__le64 *mapping_value_le;
-	__le32 *hint_value_le;
+ __le64 *mapping_value_le;
+ __le32 *hint_value_le;
 
-	dm_oblock_t oblock;
-	unsigned flags;
-	bool dirty = true;
+ dm_oblock_t oblock;
+ unsigned flags;
+ bool dirty = 1;
 
-	dm_array_cursor_get_value(mapping_cursor, (void **) &mapping_value_le);
-	memcpy(&mapping, mapping_value_le, sizeof(mapping));
-	unpack_value(mapping, &oblock, &flags);
+ dm_array_cursor_get_value(mapping_cursor, (void **) &mapping_value_le);
+ memcpy(&mapping, mapping_value_le, sizeof(mapping));
+ unpack_value(mapping, &oblock, &flags);
 
-	if (flags & M_VALID) {
-		if (hints_valid) {
-			dm_array_cursor_get_value(hint_cursor, (void **) &hint_value_le);
-			memcpy(&hint, hint_value_le, sizeof(hint));
-		}
-		if (cmd->clean_when_opened)
-			dirty = flags & M_DIRTY;
+ if (flags & M_VALID) {
+  if (hints_valid) {
+   dm_array_cursor_get_value(hint_cursor, (void **) &hint_value_le);
+   memcpy(&hint, hint_value_le, sizeof(hint));
+  }
+  if (cmd->clean_when_opened)
+   dirty = flags & M_DIRTY;
 
-		r = fn(context, oblock, to_cblock(cb), dirty,
-		       le32_to_cpu(hint), hints_valid);
-		if (r) {
-			DMERR("policy couldn't load cache block %llu",
-			      (unsigned long long) from_cblock(to_cblock(cb)));
-		}
-	}
+  r = fn(context, oblock, to_cblock(cb), dirty,
+         le32_to_cpu(hint), hints_valid);
+  if (r) {
+   DMERR("policy couldn't load cache block %llu",
+         (unsigned long long) from_cblock(to_cblock(cb)));
+  }
+ }
 
-	return r;
+ return r;
 }

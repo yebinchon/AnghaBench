@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct font_desc {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- struct font_desc const** fonts ; 
- unsigned int num_fonts ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct font_desc {int name; } ;
+
+
+ struct font_desc const** fonts ;
+ unsigned int num_fonts ;
+ int strcmp (int ,char const*) ;
 
 const struct font_desc *find_font(const char *name)
 {
@@ -23,6 +23,6 @@ const struct font_desc *find_font(const char *name)
 
    for (i = 0; i < num_fonts; i++)
       if (!strcmp(fonts[i]->name, name))
-	  return fonts[i];
-   return NULL;
+   return fonts[i];
+   return ((void*)0);
 }

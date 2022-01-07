@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct xmit_buf {int /*<<< orphan*/ * pxmit_urb; scalar_t__ dma_transfer_addr; int /*<<< orphan*/  pallocated_buf; int /*<<< orphan*/  pbuf; } ;
+
+
+
+
+typedef int u32 ;
+struct xmit_buf {int * pxmit_urb; scalar_t__ dma_transfer_addr; int pallocated_buf; int pbuf; } ;
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG_88E (char*) ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  PTR_ALIGN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMITBUF_ALIGN_SZ ; 
- int _FAIL ; 
- int _SUCCESS ; 
- int /*<<< orphan*/  kzalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_alloc_urb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DBG_88E (char*) ;
+ int GFP_KERNEL ;
+ int PTR_ALIGN (int ,int ) ;
+ int XMITBUF_ALIGN_SZ ;
+ int _FAIL ;
+ int _SUCCESS ;
+ int kzalloc (int ,int ) ;
+ int usb_alloc_urb (int ,int ) ;
 
 int rtw_os_xmit_resource_alloc(struct adapter *padapter,
-			       struct xmit_buf *pxmitbuf, u32 alloc_sz)
+          struct xmit_buf *pxmitbuf, u32 alloc_sz)
 {
-	int i;
+ int i;
 
-	pxmitbuf->pallocated_buf = kzalloc(alloc_sz, GFP_KERNEL);
-	if (!pxmitbuf->pallocated_buf)
-		return _FAIL;
+ pxmitbuf->pallocated_buf = kzalloc(alloc_sz, GFP_KERNEL);
+ if (!pxmitbuf->pallocated_buf)
+  return _FAIL;
 
-	pxmitbuf->pbuf = PTR_ALIGN(pxmitbuf->pallocated_buf, XMITBUF_ALIGN_SZ);
-	pxmitbuf->dma_transfer_addr = 0;
+ pxmitbuf->pbuf = PTR_ALIGN(pxmitbuf->pallocated_buf, XMITBUF_ALIGN_SZ);
+ pxmitbuf->dma_transfer_addr = 0;
 
-	for (i = 0; i < 8; i++) {
-		pxmitbuf->pxmit_urb[i] = usb_alloc_urb(0, GFP_KERNEL);
-		if (!pxmitbuf->pxmit_urb[i]) {
-			DBG_88E("pxmitbuf->pxmit_urb[i]==NULL");
-			return _FAIL;
-		}
-	}
-	return _SUCCESS;
+ for (i = 0; i < 8; i++) {
+  pxmitbuf->pxmit_urb[i] = usb_alloc_urb(0, GFP_KERNEL);
+  if (!pxmitbuf->pxmit_urb[i]) {
+   DBG_88E("pxmitbuf->pxmit_urb[i]==NULL");
+   return _FAIL;
+  }
+ }
+ return _SUCCESS;
 }

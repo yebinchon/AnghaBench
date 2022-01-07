@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct st_h2o_evloop_epoll_t {int /*<<< orphan*/  super; int /*<<< orphan*/  ep; } ;
-typedef  int /*<<< orphan*/  h2o_evloop_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- int /*<<< orphan*/  FD_CLOEXEC ; 
- int /*<<< orphan*/  F_SETFD ; 
- int /*<<< orphan*/  cloexec_mutex ; 
- scalar_t__ create_evloop (int) ; 
- int /*<<< orphan*/  epoll_create (int) ; 
- scalar_t__ errno ; 
- int fcntl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_fatal (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_strerror_r (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct st_h2o_evloop_epoll_t {int super; int ep; } ;
+typedef int h2o_evloop_t ;
+typedef int buf ;
+
+
+ scalar_t__ EAGAIN ;
+ int FD_CLOEXEC ;
+ int F_SETFD ;
+ int cloexec_mutex ;
+ scalar_t__ create_evloop (int) ;
+ int epoll_create (int) ;
+ scalar_t__ errno ;
+ int fcntl (int ,int ,int ) ;
+ int h2o_fatal (char*,int ) ;
+ int h2o_strerror_r (scalar_t__,char*,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 h2o_evloop_t *h2o_evloop_create(void)
 {

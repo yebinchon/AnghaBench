@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_2__ {int /*<<< orphan*/  HwIdle; int /*<<< orphan*/  HwDetect; int /*<<< orphan*/  InitializeBootDevices; int /*<<< orphan*/  GetTime; int /*<<< orphan*/  DiskGetCacheableBlockCount; int /*<<< orphan*/  DiskGetDriveGeometry; int /*<<< orphan*/  DiskReadLogicalSectors; int /*<<< orphan*/  GetFloppyCount; int /*<<< orphan*/  GetExtendedBIOSData; int /*<<< orphan*/  GetMemoryMap; int /*<<< orphan*/  PrepareForReactOS; int /*<<< orphan*/  Beep; int /*<<< orphan*/  VideoSync; int /*<<< orphan*/  VideoGetPaletteColor; int /*<<< orphan*/  VideoSetPaletteColor; int /*<<< orphan*/  VideoIsPaletteFixed; int /*<<< orphan*/  VideoCopyOffScreenBufferToVRAM; int /*<<< orphan*/  VideoPutChar; int /*<<< orphan*/  VideoHideShowTextCursor; int /*<<< orphan*/  VideoSetTextCursorPosition; int /*<<< orphan*/  VideoGetFontsFromFirmware; int /*<<< orphan*/  VideoGetBufferSize; int /*<<< orphan*/  VideoGetDisplaySize; int /*<<< orphan*/  VideoSetDisplayMode; int /*<<< orphan*/  VideoClearScreen; int /*<<< orphan*/  ConsGetCh; int /*<<< orphan*/  ConsKbHit; int /*<<< orphan*/  ConsPutChar; } ;
 
-/* Variables and functions */
- TYPE_1__ MachVtbl ; 
- int /*<<< orphan*/  PcBeep ; 
- int /*<<< orphan*/  PcConsGetCh ; 
- int /*<<< orphan*/  PcConsKbHit ; 
- int /*<<< orphan*/  PcConsPutChar ; 
- int /*<<< orphan*/  PcDiskGetCacheableBlockCount ; 
- int /*<<< orphan*/  PcDiskGetDriveGeometry ; 
- int /*<<< orphan*/  PcDiskReadLogicalSectors ; 
- int /*<<< orphan*/  PcGetExtendedBIOSData ; 
- int /*<<< orphan*/  PcGetFloppyCount ; 
- int /*<<< orphan*/  PcGetTime ; 
- int /*<<< orphan*/  PcHwDetect ; 
- int /*<<< orphan*/  PcHwIdle ; 
- int /*<<< orphan*/  PcInitializeBootDevices ; 
- int /*<<< orphan*/  PcMemGetMemoryMap ; 
- int /*<<< orphan*/  PcPrepareForReactOS ; 
- int /*<<< orphan*/  PcVideoClearScreen ; 
- int /*<<< orphan*/  PcVideoCopyOffScreenBufferToVRAM ; 
- int /*<<< orphan*/  PcVideoGetBufferSize ; 
- int /*<<< orphan*/  PcVideoGetDisplaySize ; 
- int /*<<< orphan*/  PcVideoGetFontsFromFirmware ; 
- int /*<<< orphan*/  PcVideoGetPaletteColor ; 
- int /*<<< orphan*/  PcVideoHideShowTextCursor ; 
- int /*<<< orphan*/  PcVideoIsPaletteFixed ; 
- int /*<<< orphan*/  PcVideoPutChar ; 
- int /*<<< orphan*/  PcVideoSetDisplayMode ; 
- int /*<<< orphan*/  PcVideoSetPaletteColor ; 
- int /*<<< orphan*/  PcVideoSetTextCursorPosition ; 
- int /*<<< orphan*/  PcVideoSync ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_2__ {int HwIdle; int HwDetect; int InitializeBootDevices; int GetTime; int DiskGetCacheableBlockCount; int DiskGetDriveGeometry; int DiskReadLogicalSectors; int GetFloppyCount; int GetExtendedBIOSData; int GetMemoryMap; int PrepareForReactOS; int Beep; int VideoSync; int VideoGetPaletteColor; int VideoSetPaletteColor; int VideoIsPaletteFixed; int VideoCopyOffScreenBufferToVRAM; int VideoPutChar; int VideoHideShowTextCursor; int VideoSetTextCursorPosition; int VideoGetFontsFromFirmware; int VideoGetBufferSize; int VideoGetDisplaySize; int VideoSetDisplayMode; int VideoClearScreen; int ConsGetCh; int ConsKbHit; int ConsPutChar; } ;
+
+
+ TYPE_1__ MachVtbl ;
+ int PcBeep ;
+ int PcConsGetCh ;
+ int PcConsKbHit ;
+ int PcConsPutChar ;
+ int PcDiskGetCacheableBlockCount ;
+ int PcDiskGetDriveGeometry ;
+ int PcDiskReadLogicalSectors ;
+ int PcGetExtendedBIOSData ;
+ int PcGetFloppyCount ;
+ int PcGetTime ;
+ int PcHwDetect ;
+ int PcHwIdle ;
+ int PcInitializeBootDevices ;
+ int PcMemGetMemoryMap ;
+ int PcPrepareForReactOS ;
+ int PcVideoClearScreen ;
+ int PcVideoCopyOffScreenBufferToVRAM ;
+ int PcVideoGetBufferSize ;
+ int PcVideoGetDisplaySize ;
+ int PcVideoGetFontsFromFirmware ;
+ int PcVideoGetPaletteColor ;
+ int PcVideoHideShowTextCursor ;
+ int PcVideoIsPaletteFixed ;
+ int PcVideoPutChar ;
+ int PcVideoSetDisplayMode ;
+ int PcVideoSetPaletteColor ;
+ int PcVideoSetTextCursorPosition ;
+ int PcVideoSync ;
 
 VOID
 PcMachInit(const char *CmdLine)
 {
-    /* Setup vtbl */
+
     MachVtbl.ConsPutChar = PcConsPutChar;
     MachVtbl.ConsKbHit = PcConsKbHit;
     MachVtbl.ConsGetCh = PcConsGetCh;

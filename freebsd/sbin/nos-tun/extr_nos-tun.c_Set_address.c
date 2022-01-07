@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-struct hostent {int /*<<< orphan*/  h_length; int /*<<< orphan*/  h_addr; int /*<<< orphan*/  h_addrtype; } ;
-typedef  int /*<<< orphan*/  caddr_t ;
+struct hostent {int h_length; int h_addr; int h_addrtype; } ;
+typedef int caddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  INADDR_NONE ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  bcopy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bzero (char*,int) ; 
- struct hostent* gethostbyname (char*) ; 
- int /*<<< orphan*/  inet_addr (char*) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,char*) ; 
+
+ int AF_INET ;
+ int INADDR_NONE ;
+ int LOG_ERR ;
+ int bcopy (int ,int ,int ) ;
+ int bzero (char*,int) ;
+ struct hostent* gethostbyname (char*) ;
+ int inet_addr (char*) ;
+ int syslog (int ,char*,char*) ;
 
 __attribute__((used)) static int
 Set_address(char *addr, struct sockaddr_in *sin)

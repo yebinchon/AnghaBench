@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dsn ;
-typedef  int /*<<< orphan*/  desc ;
-typedef  int /*<<< orphan*/  SQLUSMALLINT ;
-typedef  scalar_t__ SQLSMALLINT ;
-typedef  scalar_t__ SQLRETURN ;
-typedef  int /*<<< orphan*/  SQLHENV ;
-typedef  int /*<<< orphan*/  SQLCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  char const CHAR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- scalar_t__ ODBC32_SQLDataSources (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,scalar_t__*,int /*<<< orphan*/ *,int,scalar_t__*) ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  REG_SZ ; 
- scalar_t__ RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyExA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegSetValueExA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SQL_FETCH_FIRST_SYSTEM ; 
- int /*<<< orphan*/  SQL_FETCH_FIRST_USER ; 
- int /*<<< orphan*/  SQL_FETCH_NEXT ; 
- int /*<<< orphan*/  SQL_MAX_DSN_LENGTH ; 
- scalar_t__ SQL_NO_DATA ; 
- scalar_t__ SQL_SUCCESS ; 
- scalar_t__ SQL_SUCCESS_WITH_INFO ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,char const*,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*,char const*,...) ; 
- scalar_t__ lstrlenA (char const*) ; 
+
+
+
+typedef int dsn ;
+typedef int desc ;
+typedef int SQLUSMALLINT ;
+typedef scalar_t__ SQLSMALLINT ;
+typedef scalar_t__ SQLRETURN ;
+typedef int SQLHENV ;
+typedef int SQLCHAR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef char const CHAR ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int HKEY_CURRENT_USER ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_ALL_ACCESS ;
+ scalar_t__ ODBC32_SQLDataSources (int ,int ,int *,int,scalar_t__*,int *,int,scalar_t__*) ;
+ int REG_OPTION_NON_VOLATILE ;
+ int REG_SZ ;
+ scalar_t__ RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyExA (int ,char const*,int ,int *,int ,int ,int *,int *,int *) ;
+ scalar_t__ RegQueryValueExA (int ,char const*,int *,int *,int *,int *) ;
+ scalar_t__ RegSetValueExA (int ,char const*,int ,int ,int ,scalar_t__) ;
+ int SQL_FETCH_FIRST_SYSTEM ;
+ int SQL_FETCH_FIRST_USER ;
+ int SQL_FETCH_NEXT ;
+ int SQL_MAX_DSN_LENGTH ;
+ scalar_t__ SQL_NO_DATA ;
+ scalar_t__ SQL_SUCCESS ;
+ scalar_t__ SQL_SUCCESS_WITH_INFO ;
+ int TRACE (char*,scalar_t__,char const*,...) ;
+ scalar_t__ TRUE ;
+ int WARN (char*,char const*,...) ;
+ scalar_t__ lstrlenA (char const*) ;
 
 __attribute__((used)) static void ODBC_ReplicateODBCToRegistry (BOOL is_user, SQLHENV hEnv)
 {
@@ -65,9 +65,9 @@ __attribute__((used)) static void ODBC_ReplicateODBCToRegistry (BOOL is_user, SQ
     success = FALSE;
     if ((reg_ret = RegCreateKeyExA (
             is_user ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE,
-            "Software\\ODBC\\ODBC.INI", 0, NULL, REG_OPTION_NON_VOLATILE,
-            KEY_ALL_ACCESS /* a couple more than we need */, NULL, &hODBC,
-            NULL)) == ERROR_SUCCESS)
+            "Software\\ODBC\\ODBC.INI", 0, ((void*)0), REG_OPTION_NON_VOLATILE,
+            KEY_ALL_ACCESS , ((void*)0), &hODBC,
+            ((void*)0))) == ERROR_SUCCESS)
     {
         success = TRUE;
         dirn = is_user ? SQL_FETCH_FIRST_USER : SQL_FETCH_FIRST_SYSTEM;
@@ -76,19 +76,19 @@ __attribute__((used)) static void ODBC_ReplicateODBCToRegistry (BOOL is_user, SQ
                 (SQLCHAR*)desc, sizeof(desc), &sizedesc)) == SQL_SUCCESS
                 || sql_ret == SQL_SUCCESS_WITH_INFO)
         {
-            /* FIXME Do some proper handling of the SUCCESS_WITH_INFO */
+
             dirn = SQL_FETCH_NEXT;
             if (sizedsn == lstrlenA(dsn) && sizedesc == lstrlenA(desc))
             {
                 HKEY hDSN;
                 if ((reg_ret = RegCreateKeyExA (hODBC, dsn, 0,
-                        NULL, REG_OPTION_NON_VOLATILE,
-                        KEY_ALL_ACCESS, NULL, &hDSN, NULL))
+                        ((void*)0), REG_OPTION_NON_VOLATILE,
+                        KEY_ALL_ACCESS, ((void*)0), &hDSN, ((void*)0)))
                         == ERROR_SUCCESS)
                 {
                     static const char DRIVERKEY[] = "Driver";
                     if ((reg_ret = RegQueryValueExA (hDSN, DRIVERKEY,
-                            NULL, NULL, NULL, NULL))
+                            ((void*)0), ((void*)0), ((void*)0), ((void*)0)))
                             == ERROR_FILE_NOT_FOUND)
                     {
                         if ((reg_ret = RegSetValueExA (hDSN, DRIVERKEY, 0,

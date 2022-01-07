@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct saved_file {int /*<<< orphan*/  app_save; scalar_t__ preprocess; int /*<<< orphan*/  file_name; int /*<<< orphan*/  f_in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  app_push () ; 
- int /*<<< orphan*/  f_in ; 
- int /*<<< orphan*/  file_name ; 
- int /*<<< orphan*/  input_file_begin () ; 
- scalar_t__ preprocess ; 
- scalar_t__ xmalloc (int) ; 
+
+
+
+struct saved_file {int app_save; scalar_t__ preprocess; int file_name; int f_in; } ;
+
+
+ int app_push () ;
+ int f_in ;
+ int file_name ;
+ int input_file_begin () ;
+ scalar_t__ preprocess ;
+ scalar_t__ xmalloc (int) ;
 
 char *
 input_file_push (void)
@@ -33,7 +33,7 @@ input_file_push (void)
   if (preprocess)
     saved->app_save = app_push ();
 
-  /* Initialize for new file.  */
+
   input_file_begin ();
 
   return (char *) saved;

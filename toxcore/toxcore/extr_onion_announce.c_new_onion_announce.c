@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  net; } ;
-struct TYPE_7__ {int /*<<< orphan*/  net; int /*<<< orphan*/  secret_bytes; TYPE_2__* dht; } ;
-typedef  TYPE_1__ Onion_Announce ;
-typedef  TYPE_2__ DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NET_PACKET_ANNOUNCE_REQUEST ; 
- int /*<<< orphan*/  NET_PACKET_ONION_DATA_REQUEST ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  handle_announce_request ; 
- int /*<<< orphan*/  handle_data_request ; 
- int /*<<< orphan*/  networking_registerhandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  new_symmetric_key (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int net; } ;
+struct TYPE_7__ {int net; int secret_bytes; TYPE_2__* dht; } ;
+typedef TYPE_1__ Onion_Announce ;
+typedef TYPE_2__ DHT ;
+
+
+ int NET_PACKET_ANNOUNCE_REQUEST ;
+ int NET_PACKET_ONION_DATA_REQUEST ;
+ TYPE_1__* calloc (int,int) ;
+ int handle_announce_request ;
+ int handle_data_request ;
+ int networking_registerhandler (int ,int ,int *,TYPE_1__*) ;
+ int new_symmetric_key (int ) ;
 
 Onion_Announce *new_onion_announce(DHT *dht)
 {
-    if (dht == NULL)
-        return NULL;
+    if (dht == ((void*)0))
+        return ((void*)0);
 
     Onion_Announce *onion_a = calloc(1, sizeof(Onion_Announce));
 
-    if (onion_a == NULL)
-        return NULL;
+    if (onion_a == ((void*)0))
+        return ((void*)0);
 
     onion_a->dht = dht;
     onion_a->net = dht->net;

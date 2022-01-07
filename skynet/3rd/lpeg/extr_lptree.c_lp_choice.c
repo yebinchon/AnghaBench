@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_10__ {int* cs; } ;
 struct TYPE_9__ {scalar_t__ tag; } ;
-typedef  TYPE_1__ TTree ;
-typedef  TYPE_2__ Charset ;
+typedef TYPE_1__ TTree ;
+typedef TYPE_2__ Charset ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TChoice ; 
- scalar_t__ TFalse ; 
- TYPE_1__* getpatt (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- size_t i ; 
- int /*<<< orphan*/  loopset (size_t,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* newcharset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  newroot2sib (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ nofail (TYPE_1__*) ; 
- scalar_t__ tocharset (TYPE_1__*,TYPE_2__*) ; 
- int* treebuffer (TYPE_1__*) ; 
+
+ int TChoice ;
+ scalar_t__ TFalse ;
+ TYPE_1__* getpatt (int *,int,int *) ;
+ size_t i ;
+ int loopset (size_t,int) ;
+ int lua_pushvalue (int *,int) ;
+ TYPE_1__* newcharset (int *) ;
+ int newroot2sib (int *,int ) ;
+ scalar_t__ nofail (TYPE_1__*) ;
+ scalar_t__ tocharset (TYPE_1__*,TYPE_2__*) ;
+ int* treebuffer (TYPE_1__*) ;
 
 __attribute__((used)) static int lp_choice (lua_State *L) {
   Charset st1, st2;
-  TTree *t1 = getpatt(L, 1, NULL);
-  TTree *t2 = getpatt(L, 2, NULL);
+  TTree *t1 = getpatt(L, 1, ((void*)0));
+  TTree *t2 = getpatt(L, 2, ((void*)0));
   if (tocharset(t1, &st1) && tocharset(t2, &st2)) {
     TTree *t = newcharset(L);
     loopset(i, treebuffer(t)[i] = st1.cs[i] | st2.cs[i]);
   }
   else if (nofail(t1) || t2->tag == TFalse)
-    lua_pushvalue(L, 1);  /* true / x => true, x / false => x */
+    lua_pushvalue(L, 1);
   else if (t1->tag == TFalse)
-    lua_pushvalue(L, 2);  /* false / x => x */
+    lua_pushvalue(L, 2);
   else
     newroot2sib(L, TChoice);
   return 1;

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  Event; int /*<<< orphan*/  RecordQueue; } ;
-struct TYPE_6__ {void* Data; int /*<<< orphan*/ * ParseProc; int /*<<< orphan*/  Tick; } ;
-typedef  int /*<<< orphan*/  RECORD_PARSE_PROC ;
-typedef  TYPE_1__ RECORD ;
-typedef  TYPE_2__ LOG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InsertQueue (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  LockQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tick64 () ; 
- int /*<<< orphan*/  UnlockQueue (int /*<<< orphan*/ ) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int Event; int RecordQueue; } ;
+struct TYPE_6__ {void* Data; int * ParseProc; int Tick; } ;
+typedef int RECORD_PARSE_PROC ;
+typedef TYPE_1__ RECORD ;
+typedef TYPE_2__ LOG ;
+
+
+ int InsertQueue (int ,TYPE_1__*) ;
+ int LockQueue (int ) ;
+ int Set (int ) ;
+ int Tick64 () ;
+ int UnlockQueue (int ) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 void InsertRecord(LOG *g, void *data, RECORD_PARSE_PROC *proc)
 {
-	RECORD *rec;
-	// Validate arguments
-	if (g == NULL || data == NULL || proc == NULL)
-	{
-		return;
-	}
+ RECORD *rec;
 
-	rec = ZeroMalloc(sizeof(RECORD));
-	rec->Tick = Tick64();
-	rec->ParseProc = proc;
-	rec->Data = data;
+ if (g == ((void*)0) || data == ((void*)0) || proc == ((void*)0))
+ {
+  return;
+ }
 
-	LockQueue(g->RecordQueue);
-	{
-		InsertQueue(g->RecordQueue, rec);
-	}
-	UnlockQueue(g->RecordQueue);
+ rec = ZeroMalloc(sizeof(RECORD));
+ rec->Tick = Tick64();
+ rec->ParseProc = proc;
+ rec->Data = data;
 
-	Set(g->Event);
+ LockQueue(g->RecordQueue);
+ {
+  InsertQueue(g->RecordQueue, rec);
+ }
+ UnlockQueue(g->RecordQueue);
+
+ Set(g->Event);
 }

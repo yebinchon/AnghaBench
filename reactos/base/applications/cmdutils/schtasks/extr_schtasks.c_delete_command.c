@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ITaskFolder ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  ITaskFolder_DeleteTask (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITaskFolder_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SysAllocString (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  f_optW ; 
- int /*<<< orphan*/ * get_tasks_root_folder () ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tn_optW ; 
+
+
+
+typedef int WCHAR ;
+typedef int ITaskFolder ;
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int ITaskFolder_DeleteTask (int *,int ,int ) ;
+ int ITaskFolder_Release (int *) ;
+ int SysAllocString (int const*) ;
+ int SysFreeString (int ) ;
+ int TRACE (char*) ;
+ int debugstr_w (int *) ;
+ int f_optW ;
+ int * get_tasks_root_folder () ;
+ int strcmpiW (int *,int ) ;
+ int tn_optW ;
 
 __attribute__((used)) static int delete_command(int argc, WCHAR *argv[])
 {
-    const WCHAR *task_name = NULL;
-    ITaskFolder *root = NULL;
+    const WCHAR *task_name = ((void*)0);
+    ITaskFolder *root = ((void*)0);
     BSTR str;
     HRESULT hres;
 

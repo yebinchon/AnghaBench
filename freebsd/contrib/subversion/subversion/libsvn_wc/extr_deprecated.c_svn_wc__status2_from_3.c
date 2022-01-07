@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {scalar_t__ node_status; int prop_status; scalar_t__ repos_node_status; int text_status; scalar_t__ repos_text_status; scalar_t__ kind; scalar_t__ conflicted; scalar_t__ versioned; int /*<<< orphan*/  repos_prop_status; int /*<<< orphan*/  switched; int /*<<< orphan*/  ood_changed_author; int /*<<< orphan*/  ood_kind; int /*<<< orphan*/  ood_changed_date; int /*<<< orphan*/  ood_changed_rev; scalar_t__ repos_relpath; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  repos_lock; int /*<<< orphan*/  copied; } ;
-typedef  TYPE_1__ svn_wc_status3_t ;
-struct TYPE_18__ {scalar_t__ text_status; int prop_status; scalar_t__ repos_text_status; int pristine_text_status; int pristine_prop_status; int /*<<< orphan*/  repos_prop_status; int /*<<< orphan*/  switched; int /*<<< orphan*/  tree_conflict; int /*<<< orphan*/  ood_last_cmt_author; int /*<<< orphan*/  ood_kind; int /*<<< orphan*/  ood_last_cmt_date; int /*<<< orphan*/  ood_last_cmt_rev; int /*<<< orphan*/  url; int /*<<< orphan*/  repos_lock; int /*<<< orphan*/  copied; int /*<<< orphan*/  const* entry; } ;
-typedef  TYPE_2__ svn_wc_status2_t ;
-typedef  int /*<<< orphan*/  svn_wc_entry_t ;
-struct TYPE_19__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_3__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_description2_t ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_17__ {scalar_t__ node_status; int prop_status; scalar_t__ repos_node_status; int text_status; scalar_t__ repos_text_status; scalar_t__ kind; scalar_t__ conflicted; scalar_t__ versioned; int repos_prop_status; int switched; int ood_changed_author; int ood_kind; int ood_changed_date; int ood_changed_rev; scalar_t__ repos_relpath; int repos_root_url; int repos_lock; int copied; } ;
+typedef TYPE_1__ svn_wc_status3_t ;
+struct TYPE_18__ {scalar_t__ text_status; int prop_status; scalar_t__ repos_text_status; int pristine_text_status; int pristine_prop_status; int repos_prop_status; int switched; int tree_conflict; int ood_last_cmt_author; int ood_kind; int ood_last_cmt_date; int ood_last_cmt_rev; int url; int repos_lock; int copied; int const* entry; } ;
+typedef TYPE_2__ svn_wc_status2_t ;
+typedef int svn_wc_entry_t ;
+struct TYPE_19__ {int db; } ;
+typedef TYPE_3__ svn_wc_context_t ;
+typedef int svn_wc_conflict_description2_t ;
 struct TYPE_20__ {scalar_t__ apr_err; } ;
-typedef  TYPE_4__ svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_4__ svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_4__*) ; 
- scalar_t__ SVN_ERR_NODE_UNEXPECTED_KIND ; 
- TYPE_4__* SVN_NO_ERROR ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_4__*) ; 
- int /*<<< orphan*/  svn_lock_dup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_node_unknown ; 
- int /*<<< orphan*/  svn_path_url_add_component2 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__cd2_to_cd (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_wc__get_entry (int /*<<< orphan*/  const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_wc__get_tree_conflict (int /*<<< orphan*/  const**,TYPE_3__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_wc__internal_conflicted_p (scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_status_added ; 
-#define  svn_wc_status_conflicted 131 
- scalar_t__ svn_wc_status_deleted ; 
- scalar_t__ svn_wc_status_missing ; 
-#define  svn_wc_status_modified 130 
-#define  svn_wc_status_none 129 
-#define  svn_wc_status_normal 128 
- scalar_t__ svn_wc_status_obstructed ; 
- scalar_t__ svn_wc_status_replaced ; 
+
+ int FALSE ;
+ int SVN_ERR (TYPE_4__*) ;
+ scalar_t__ SVN_ERR_NODE_UNEXPECTED_KIND ;
+ TYPE_4__* SVN_NO_ERROR ;
+ TYPE_2__* apr_pcalloc (int *,int) ;
+ int svn_error_clear (TYPE_4__*) ;
+ int svn_lock_dup (int ,int *) ;
+ scalar_t__ svn_node_file ;
+ int svn_node_unknown ;
+ int svn_path_url_add_component2 (int ,scalar_t__,int *) ;
+ int svn_wc__cd2_to_cd (int const*,int *) ;
+ TYPE_4__* svn_wc__get_entry (int const**,int ,char const*,int ,int ,int *,int *) ;
+ TYPE_4__* svn_wc__get_tree_conflict (int const**,TYPE_3__*,char const*,int *,int *) ;
+ TYPE_4__* svn_wc__internal_conflicted_p (scalar_t__*,scalar_t__*,int *,int ,char const*,int *) ;
+ scalar_t__ svn_wc_status_added ;
+
+ scalar_t__ svn_wc_status_deleted ;
+ scalar_t__ svn_wc_status_missing ;
+
+
+
+ scalar_t__ svn_wc_status_obstructed ;
+ scalar_t__ svn_wc_status_replaced ;
 
 svn_error_t *
 svn_wc__status2_from_3(svn_wc_status2_t **status,
@@ -60,11 +60,11 @@ svn_wc__status2_from_3(svn_wc_status2_t **status,
                        apr_pool_t *result_pool,
                        apr_pool_t *scratch_pool)
 {
-  const svn_wc_entry_t *entry = NULL;
+  const svn_wc_entry_t *entry = ((void*)0);
 
-  if (old_status == NULL)
+  if (old_status == ((void*)0))
     {
-      *status = NULL;
+      *status = ((void*)0);
       return SVN_NO_ERROR;
     }
 
@@ -111,41 +111,41 @@ svn_wc__status2_from_3(svn_wc_status2_t **status,
   (*status)->repos_text_status = old_status->repos_node_status;
   (*status)->repos_prop_status = old_status->repos_prop_status;
 
-  /* Some values might be inherited from properties */
-  if (old_status->node_status == svn_wc_status_modified
-      || old_status->node_status == svn_wc_status_conflicted)
+
+  if (old_status->node_status == 130
+      || old_status->node_status == 131)
     (*status)->text_status = old_status->text_status;
 
-  /* (Currently a no-op, but just make sure it is ok) */
-  if (old_status->repos_node_status == svn_wc_status_modified
-      || old_status->repos_node_status == svn_wc_status_conflicted)
+
+  if (old_status->repos_node_status == 130
+      || old_status->repos_node_status == 131)
     (*status)->repos_text_status = old_status->repos_text_status;
 
   if (old_status->node_status == svn_wc_status_added)
-    (*status)->prop_status = svn_wc_status_none; /* No separate info */
+    (*status)->prop_status = 129;
 
-  /* Find pristine_text_status value */
+
   switch (old_status->text_status)
     {
-      case svn_wc_status_none:
-      case svn_wc_status_normal:
-      case svn_wc_status_modified:
+      case 129:
+      case 128:
+      case 130:
         (*status)->pristine_text_status = old_status->text_status;
         break;
-      case svn_wc_status_conflicted:
+      case 131:
       default:
-        /* ### Fetch compare data, or fall back to the documented
-               not retrieved behavior? */
-        (*status)->pristine_text_status = svn_wc_status_none;
+
+
+        (*status)->pristine_text_status = 129;
         break;
     }
 
-  /* Find pristine_prop_status value */
+
   switch (old_status->prop_status)
     {
-      case svn_wc_status_none:
-      case svn_wc_status_normal:
-      case svn_wc_status_modified:
+      case 129:
+      case 128:
+      case 130:
         if (old_status->node_status != svn_wc_status_added
             && old_status->node_status != svn_wc_status_deleted
             && old_status->node_status != svn_wc_status_replaced)
@@ -153,13 +153,13 @@ svn_wc__status2_from_3(svn_wc_status2_t **status,
             (*status)->pristine_prop_status = old_status->prop_status;
           }
         else
-          (*status)->pristine_prop_status = svn_wc_status_none;
+          (*status)->pristine_prop_status = 129;
         break;
-      case svn_wc_status_conflicted:
+      case 131:
       default:
-        /* ### Fetch compare data, or fall back to the documented
-               not retrieved behavior? */
-        (*status)->pristine_prop_status = svn_wc_status_none;
+
+
+        (*status)->pristine_prop_status = 129;
         break;
     }
 
@@ -171,20 +171,20 @@ svn_wc__status2_from_3(svn_wc_status2_t **status,
     {
       svn_boolean_t text_conflict_p, prop_conflict_p;
 
-      /* The entry says there was a conflict, but the user might have
-         marked it as resolved by deleting the artifact files, so check
-         for that. */
+
+
+
       SVN_ERR(svn_wc__internal_conflicted_p(&text_conflict_p,
                                             &prop_conflict_p,
-                                            NULL,
+                                            ((void*)0),
                                             wc_ctx->db, local_abspath,
                                             scratch_pool));
 
       if (text_conflict_p)
-        (*status)->text_status = svn_wc_status_conflicted;
+        (*status)->text_status = 131;
 
       if (prop_conflict_p)
-        (*status)->prop_status = svn_wc_status_conflicted;
+        (*status)->prop_status = 131;
     }
 
   return SVN_NO_ERROR;

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct wasapi_state {scalar_t__ share_mode; int /*<<< orphan*/  pSessionControl; } ;
+
+
+
+
+typedef int wchar_t ;
+struct wasapi_state {scalar_t__ share_mode; int pSessionControl; } ;
 struct ao {struct wasapi_state* priv; } ;
-typedef  enum aocontrol { ____Placeholder_aocontrol } aocontrol ;
+typedef enum aocontrol { ____Placeholder_aocontrol } aocontrol ;
 
-/* Variables and functions */
-#define  AOCONTROL_UPDATE_STREAM_TITLE 128 
- scalar_t__ AUDCLNT_SHAREMODE_EXCLUSIVE ; 
- int CONTROL_FALSE ; 
- int CONTROL_OK ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IAudioSessionControl_GetDisplayName (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IAudioSessionControl_SetDisplayName (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SAFE_DESTROY (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mp_from_utf8 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ *) ; 
- int thread_control_exclusive (struct ao*,int,void*) ; 
- int thread_control_shared (struct ao*,int,void*) ; 
- int /*<<< orphan*/  wcscmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+ scalar_t__ AUDCLNT_SHAREMODE_EXCLUSIVE ;
+ int CONTROL_FALSE ;
+ int CONTROL_OK ;
+ int CoTaskMemFree (int *) ;
+ int IAudioSessionControl_GetDisplayName (int ,int **) ;
+ int IAudioSessionControl_SetDisplayName (int ,int *,int *) ;
+ int SAFE_DESTROY (int *,int ) ;
+ int * mp_from_utf8 (int *,char*) ;
+ int talloc_free (int *) ;
+ int thread_control_exclusive (struct ao*,int,void*) ;
+ int thread_control_shared (struct ao*,int,void*) ;
+ int wcscmp (int *,int *) ;
 
 __attribute__((used)) static int thread_control(struct ao *ao, enum aocontrol cmd, void *arg)
 {
     struct wasapi_state *state = ao->priv;
 
-    // common to exclusive and shared
+
     switch (cmd) {
-    case AOCONTROL_UPDATE_STREAM_TITLE:
+    case 128:
         if (!state->pSessionControl)
             return CONTROL_FALSE;
 
-        wchar_t *title = mp_from_utf8(NULL, (char*)arg);
-        wchar_t *tmp = NULL;
-        // There is a weird race condition in the IAudioSessionControl itself --
-        // it seems that *sometimes* the SetDisplayName does not take effect and
-        // it still shows the old title. Use this loop to insist until it works.
+        wchar_t *title = mp_from_utf8(((void*)0), (char*)arg);
+        wchar_t *tmp = ((void*)0);
+
+
+
         do {
-            IAudioSessionControl_SetDisplayName(state->pSessionControl, title, NULL);
+            IAudioSessionControl_SetDisplayName(state->pSessionControl, title, ((void*)0));
 
             SAFE_DESTROY(tmp, CoTaskMemFree(tmp));
             IAudioSessionControl_GetDisplayName(state->pSessionControl, &tmp);

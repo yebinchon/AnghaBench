@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct oxu_hcd {int /*<<< orphan*/ * pshadow; int /*<<< orphan*/ * periodic; int /*<<< orphan*/  urb_timer; int /*<<< orphan*/ * async; int /*<<< orphan*/ * murb_pool; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  del_timer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qh_put (int /*<<< orphan*/ *) ; 
+
+
+
+struct oxu_hcd {int * pshadow; int * periodic; int urb_timer; int * async; int * murb_pool; } ;
+
+
+ int del_timer (int *) ;
+ int kfree (int *) ;
+ int qh_put (int *) ;
 
 __attribute__((used)) static void ehci_mem_cleanup(struct oxu_hcd *oxu)
 {
-	kfree(oxu->murb_pool);
-	oxu->murb_pool = NULL;
+ kfree(oxu->murb_pool);
+ oxu->murb_pool = ((void*)0);
 
-	if (oxu->async)
-		qh_put(oxu->async);
-	oxu->async = NULL;
+ if (oxu->async)
+  qh_put(oxu->async);
+ oxu->async = ((void*)0);
 
-	del_timer(&oxu->urb_timer);
+ del_timer(&oxu->urb_timer);
 
-	oxu->periodic = NULL;
+ oxu->periodic = ((void*)0);
 
-	/* shadow periodic table */
-	kfree(oxu->pshadow);
-	oxu->pshadow = NULL;
+
+ kfree(oxu->pshadow);
+ oxu->pshadow = ((void*)0);
 }

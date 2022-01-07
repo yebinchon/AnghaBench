@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_14__ {int size; scalar_t__ iskey; scalar_t__ data; scalar_t__ iscompr; } ;
-typedef  TYPE_2__ raxNode ;
-struct TYPE_15__ {TYPE_2__* node; int /*<<< orphan*/  stack; TYPE_1__* rt; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_3__ raxIterator ;
-typedef  int /*<<< orphan*/  n ;
+typedef TYPE_2__ raxNode ;
+struct TYPE_15__ {TYPE_2__* node; int stack; TYPE_1__* rt; int flags; } ;
+typedef TYPE_3__ raxIterator ;
+typedef int n ;
 struct TYPE_13__ {scalar_t__ numele; TYPE_2__* head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RAX_ITER_EOF ; 
- size_t floor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (TYPE_2__**,TYPE_2__**,int) ; 
- int rand () ; 
- int /*<<< orphan*/  raxIteratorAddChars (TYPE_3__*,scalar_t__,int) ; 
- int /*<<< orphan*/  raxIteratorDelChars (TYPE_3__*,int) ; 
- TYPE_2__** raxNodeFirstChildPtr (TYPE_2__*) ; 
- TYPE_2__* raxStackPop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  raxStackPush (int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int RAX_ITER_EOF ;
+ size_t floor (int ) ;
+ int log (scalar_t__) ;
+ int memcpy (TYPE_2__**,TYPE_2__**,int) ;
+ int rand () ;
+ int raxIteratorAddChars (TYPE_3__*,scalar_t__,int) ;
+ int raxIteratorDelChars (TYPE_3__*,int) ;
+ TYPE_2__** raxNodeFirstChildPtr (TYPE_2__*) ;
+ TYPE_2__* raxStackPop (int *) ;
+ int raxStackPush (int *,TYPE_2__*) ;
 
 int raxRandomWalk(raxIterator *it, size_t steps) {
     if (it->rt->numele == 0) {
@@ -50,12 +50,12 @@ int raxRandomWalk(raxIterator *it, size_t steps) {
         int r = rand() % (numchildren+(n != it->rt->head));
 
         if (r == numchildren) {
-            /* Go up to parent. */
+
             n = raxStackPop(&it->stack);
             int todel = n->iscompr ? n->size : 1;
             raxIteratorDelChars(it,todel);
         } else {
-            /* Select a random child. */
+
             if (n->iscompr) {
                 if (!raxIteratorAddChars(it,n->data,n->size)) return 0;
             } else {

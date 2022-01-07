@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int file_count; } ;
-typedef  int /*<<< orphan*/  RList ;
-typedef  TYPE_1__ RBinXtrData ;
-typedef  int /*<<< orphan*/  RBin ;
+typedef int RList ;
+typedef TYPE_1__ RBinXtrData ;
+typedef int RBin ;
 
-/* Variables and functions */
- TYPE_1__* extract (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  r_bin_xtrdata_free (TYPE_1__*) ; 
- int /*<<< orphan*/  r_list_append (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * r_list_newf (int /*<<< orphan*/  (*) (TYPE_1__*)) ; 
+
+ TYPE_1__* extract (int *,int) ;
+ int r_bin_xtrdata_free (TYPE_1__*) ;
+ int r_list_append (int *,TYPE_1__*) ;
+ int * r_list_newf (int (*) (TYPE_1__*)) ;
 
 __attribute__((used)) static RList * extractall(RBin *bin) {
-	RList *result = NULL;
-	int nlib, i = 0;
-	RBinXtrData *data = extract (bin, i);
-	if (!data) {
-		return result;
-	}
-	// XXX - how do we validate a valid nlib?
-	nlib = data->file_count;
-	result = r_list_newf (r_bin_xtrdata_free);
-	if (!result) {
-		r_bin_xtrdata_free (data);
-		return NULL;
-	}
-	r_list_append (result, data);
-	for (i = 1; data && i < nlib; i++) {
-		data = extract (bin, i);
-		r_list_append (result, data);
-	}
-	return result;
+ RList *result = ((void*)0);
+ int nlib, i = 0;
+ RBinXtrData *data = extract (bin, i);
+ if (!data) {
+  return result;
+ }
+
+ nlib = data->file_count;
+ result = r_list_newf (r_bin_xtrdata_free);
+ if (!result) {
+  r_bin_xtrdata_free (data);
+  return ((void*)0);
+ }
+ r_list_append (result, data);
+ for (i = 1; data && i < nlib; i++) {
+  data = extract (bin, i);
+  r_list_append (result, data);
+ }
+ return result;
 }

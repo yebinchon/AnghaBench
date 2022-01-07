@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btrfs_fs_info {int /*<<< orphan*/  super_copy; } ;
 
-/* Variables and functions */
- int validate_super (struct btrfs_fs_info*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct btrfs_fs_info {int super_copy; } ;
+
+
+ int validate_super (struct btrfs_fs_info*,int ,int ) ;
 
 __attribute__((used)) static int btrfs_validate_mount_super(struct btrfs_fs_info *fs_info)
 {
-	return validate_super(fs_info, fs_info->super_copy, 0);
+ return validate_super(fs_info, fs_info->super_copy, 0);
 }

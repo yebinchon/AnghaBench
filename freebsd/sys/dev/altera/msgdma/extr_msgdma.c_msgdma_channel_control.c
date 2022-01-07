@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ chan; } ;
-typedef  TYPE_1__ xdma_channel_t ;
+typedef TYPE_1__ xdma_channel_t ;
 struct msgdma_softc {int dummy; } ;
 struct msgdma_channel {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
-#define  XDMA_CMD_BEGIN 130 
-#define  XDMA_CMD_PAUSE 129 
-#define  XDMA_CMD_TERMINATE 128 
- struct msgdma_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+
+
+
+ struct msgdma_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static int
 msgdma_channel_control(device_t dev, xdma_channel_t *xchan, int cmd)
 {
-	struct msgdma_channel *chan;
-	struct msgdma_softc *sc;
+ struct msgdma_channel *chan;
+ struct msgdma_softc *sc;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	chan = (struct msgdma_channel *)xchan->chan;
+ chan = (struct msgdma_channel *)xchan->chan;
 
-	switch (cmd) {
-	case XDMA_CMD_BEGIN:
-	case XDMA_CMD_TERMINATE:
-	case XDMA_CMD_PAUSE:
-		/* TODO: implement me */
-		return (-1);
-	}
+ switch (cmd) {
+ case 130:
+ case 128:
+ case 129:
 
-	return (0);
+  return (-1);
+ }
+
+ return (0);
 }

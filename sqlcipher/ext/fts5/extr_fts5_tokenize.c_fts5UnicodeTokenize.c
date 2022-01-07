@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-typedef  int sqlite3_int64 ;
-struct TYPE_3__ {unsigned char* aTokenChar; char* aFold; int nFold; int /*<<< orphan*/  eRemoveDiacritic; } ;
-typedef  TYPE_1__ Unicode61Tokenizer ;
-typedef  int /*<<< orphan*/  Fts5Tokenizer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  READ_UTF8 (unsigned char*,unsigned char*,scalar_t__) ; 
- int SQLITE_DONE ; 
- int /*<<< orphan*/  SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAM (int) ; 
- int /*<<< orphan*/  WRITE_UTF8 (char*,scalar_t__) ; 
- scalar_t__ fts5UnicodeIsAlnum (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- scalar_t__ sqlite3Fts5UnicodeFold (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3Fts5UnicodeIsdiacritic (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc64 (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
+typedef int sqlite3_int64 ;
+struct TYPE_3__ {unsigned char* aTokenChar; char* aFold; int nFold; int eRemoveDiacritic; } ;
+typedef TYPE_1__ Unicode61Tokenizer ;
+typedef int Fts5Tokenizer ;
+
+
+ int READ_UTF8 (unsigned char*,unsigned char*,scalar_t__) ;
+ int SQLITE_DONE ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int UNUSED_PARAM (int) ;
+ int WRITE_UTF8 (char*,scalar_t__) ;
+ scalar_t__ fts5UnicodeIsAlnum (TYPE_1__*,scalar_t__) ;
+ int memcpy (char*,char*,int) ;
+ scalar_t__ sqlite3Fts5UnicodeFold (scalar_t__,int ) ;
+ scalar_t__ sqlite3Fts5UnicodeIsdiacritic (scalar_t__) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc64 (int) ;
 
 __attribute__((used)) static int fts5UnicodeTokenize(
   Fts5Tokenizer *pTokenizer,
@@ -45,27 +45,27 @@ __attribute__((used)) static int fts5UnicodeTokenize(
   unsigned char *zTerm = (unsigned char*)&pText[nText];
   unsigned char *zCsr = (unsigned char *)pText;
 
-  /* Output buffer */
+
   char *aFold = p->aFold;
   int nFold = p->nFold;
   const char *pEnd = &aFold[nFold-6];
 
   UNUSED_PARAM(iUnused);
 
-  /* Each iteration of this loop gobbles up a contiguous run of separators,
-  ** then the next token.  */
+
+
   while( rc==SQLITE_OK ){
-    u32 iCode;                    /* non-ASCII codepoint read from input */
+    u32 iCode;
     char *zOut = aFold;
     int is;
     int ie;
 
-    /* Skip any separator characters. */
+
     while( 1 ){
       if( zCsr>=zTerm ) goto tokenize_done;
       if( *zCsr & 0x80 ) {
-        /* A character outside of the ascii range. Skip past it if it is
-        ** a separator character. Or break out of the loop if it is not. */
+
+
         is = zCsr - (unsigned char*)pText;
         READ_UTF8(zCsr, zTerm, iCode);
         if( fts5UnicodeIsAlnum(p, iCode) ){
@@ -80,12 +80,12 @@ __attribute__((used)) static int fts5UnicodeTokenize(
       }
     }
 
-    /* Run through the tokenchars. Fold them into the output buffer along
-    ** the way.  */
+
+
     while( zCsr<zTerm ){
 
-      /* Grow the output buffer so that there is sufficient space to fit the
-      ** largest possible utf-8 character.  */
+
+
       if( zOut>pEnd ){
         aFold = sqlite3_malloc64((sqlite3_int64)nFold*2);
         if( aFold==0 ){
@@ -101,8 +101,8 @@ __attribute__((used)) static int fts5UnicodeTokenize(
       }
 
       if( *zCsr & 0x80 ){
-        /* An non-ascii-range character. Fold it into the output buffer if
-        ** it is a token character, or break out of the loop if it is not. */
+
+
         READ_UTF8(zCsr, zTerm, iCode);
         if( fts5UnicodeIsAlnum(p,iCode)||sqlite3Fts5UnicodeIsdiacritic(iCode) ){
  non_ascii_tokenchar:
@@ -112,8 +112,8 @@ __attribute__((used)) static int fts5UnicodeTokenize(
           break;
         }
       }else if( a[*zCsr]==0 ){
-        /* An ascii-range separator character. End of token. */
-        break; 
+
+        break;
       }else{
  ascii_tokenchar:
         if( *zCsr>='A' && *zCsr<='Z' ){
@@ -126,10 +126,10 @@ __attribute__((used)) static int fts5UnicodeTokenize(
       ie = zCsr - (unsigned char*)pText;
     }
 
-    /* Invoke the token callback */
-    rc = xToken(pCtx, 0, aFold, zOut-aFold, is, ie); 
+
+    rc = xToken(pCtx, 0, aFold, zOut-aFold, is, ie);
   }
-  
+
  tokenize_done:
   if( rc==SQLITE_DONE ) rc = SQLITE_OK;
   return rc;

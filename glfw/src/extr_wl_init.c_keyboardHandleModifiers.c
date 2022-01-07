@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int xkb_mod_mask_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int xkb_mod_mask_t ;
+typedef int uint32_t ;
 struct wl_keyboard {int dummy; } ;
-struct TYPE_4__ {int controlMask; int altMask; int shiftMask; int superMask; int capsLockMask; int numLockMask; unsigned int modifiers; int /*<<< orphan*/  state; int /*<<< orphan*/  keymap; } ;
-struct TYPE_5__ {TYPE_1__ xkb; int /*<<< orphan*/  serial; } ;
+struct TYPE_4__ {int controlMask; int altMask; int shiftMask; int superMask; int capsLockMask; int numLockMask; unsigned int modifiers; int state; int keymap; } ;
+struct TYPE_5__ {TYPE_1__ xkb; int serial; } ;
 struct TYPE_6__ {TYPE_2__ wl; } ;
 
-/* Variables and functions */
- unsigned int GLFW_MOD_ALT ; 
- unsigned int GLFW_MOD_CAPS_LOCK ; 
- unsigned int GLFW_MOD_CONTROL ; 
- unsigned int GLFW_MOD_NUM_LOCK ; 
- unsigned int GLFW_MOD_SHIFT ; 
- unsigned int GLFW_MOD_SUPER ; 
- int XKB_STATE_LAYOUT_DEPRESSED ; 
- int XKB_STATE_LAYOUT_LATCHED ; 
- int XKB_STATE_MODS_DEPRESSED ; 
- int XKB_STATE_MODS_LATCHED ; 
- TYPE_3__ _glfw ; 
- int xkb_state_serialize_mods (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xkb_state_update_mask (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ unsigned int GLFW_MOD_ALT ;
+ unsigned int GLFW_MOD_CAPS_LOCK ;
+ unsigned int GLFW_MOD_CONTROL ;
+ unsigned int GLFW_MOD_NUM_LOCK ;
+ unsigned int GLFW_MOD_SHIFT ;
+ unsigned int GLFW_MOD_SUPER ;
+ int XKB_STATE_LAYOUT_DEPRESSED ;
+ int XKB_STATE_LAYOUT_LATCHED ;
+ int XKB_STATE_MODS_DEPRESSED ;
+ int XKB_STATE_MODS_LATCHED ;
+ TYPE_3__ _glfw ;
+ int xkb_state_serialize_mods (int ,int) ;
+ int xkb_state_update_mask (int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void keyboardHandleModifiers(void* data,
                                     struct wl_keyboard* keyboard,

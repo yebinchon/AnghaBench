@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_MEMR ; 
- int /*<<< orphan*/  TYPE_MEMW ; 
- void* __nosan_memmove (void*,void const*,size_t) ; 
- int /*<<< orphan*/  kasan_check_range (void const*,size_t,int /*<<< orphan*/ ) ; 
+ int TYPE_MEMR ;
+ int TYPE_MEMW ;
+ void* __nosan_memmove (void*,void const*,size_t) ;
+ int kasan_check_range (void const*,size_t,int ) ;
 
 void *
 __asan_memmove(void *src, const void *dst, size_t sz)
 {
-	kasan_check_range(src, sz, TYPE_MEMR);
-	kasan_check_range(dst, sz, TYPE_MEMW);
-	return __nosan_memmove(src, dst, sz);
+ kasan_check_range(src, sz, TYPE_MEMR);
+ kasan_check_range(dst, sz, TYPE_MEMW);
+ return __nosan_memmove(src, dst, sz);
 }

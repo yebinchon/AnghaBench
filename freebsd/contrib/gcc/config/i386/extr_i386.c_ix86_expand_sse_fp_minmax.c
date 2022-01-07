@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  int /*<<< orphan*/  rtvec ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int GET_MODE (int /*<<< orphan*/ ) ; 
- int LT ; 
- int SMAX ; 
- int SMIN ; 
- int UNGE ; 
- int UNSPEC_IEEE_MAX ; 
- int UNSPEC_IEEE_MIN ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flag_finite_math_only ; 
- int /*<<< orphan*/  flag_unsafe_math_optimizations ; 
- int /*<<< orphan*/  force_reg (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtvec (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_UNSPEC (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gen_rtx_fmt_ee (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ rtx_equal_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+typedef int rtvec ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int GET_MODE (int ) ;
+ int LT ;
+ int SMAX ;
+ int SMIN ;
+ int UNGE ;
+ int UNSPEC_IEEE_MAX ;
+ int UNSPEC_IEEE_MIN ;
+ int VOIDmode ;
+ int emit_insn (int ) ;
+ int flag_finite_math_only ;
+ int flag_unsafe_math_optimizations ;
+ int force_reg (int,int ) ;
+ int gen_rtvec (int,int ,int ) ;
+ int gen_rtx_SET (int ,int ,int ) ;
+ int gen_rtx_UNSPEC (int,int ,int) ;
+ int gen_rtx_fmt_ee (int,int,int ,int ) ;
+ scalar_t__ rtx_equal_p (int ,int ) ;
 
 __attribute__((used)) static bool
 ix86_expand_sse_fp_minmax (rtx dest, enum rtx_code code, rtx cmp_op0,
-			   rtx cmp_op1, rtx if_true, rtx if_false)
+      rtx cmp_op1, rtx if_true, rtx if_false)
 {
   enum machine_mode mode;
   bool is_min;
@@ -51,19 +51,19 @@ ix86_expand_sse_fp_minmax (rtx dest, enum rtx_code code, rtx cmp_op0,
       if_false = tmp;
     }
   else
-    return false;
+    return 0;
 
   if (rtx_equal_p (cmp_op0, if_true) && rtx_equal_p (cmp_op1, if_false))
-    is_min = true;
+    is_min = 1;
   else if (rtx_equal_p (cmp_op1, if_true) && rtx_equal_p (cmp_op0, if_false))
-    is_min = false;
+    is_min = 0;
   else
-    return false;
+    return 0;
 
   mode = GET_MODE (dest);
 
-  /* We want to check HONOR_NANS and HONOR_SIGNED_ZEROS here,
-     but MODE may be a vector mode and thus not appropriate.  */
+
+
   if (!flag_finite_math_only || !flag_unsafe_math_optimizations)
     {
       int u = is_min ? UNSPEC_IEEE_MIN : UNSPEC_IEEE_MAX;
@@ -80,5 +80,5 @@ ix86_expand_sse_fp_minmax (rtx dest, enum rtx_code code, rtx cmp_op0,
     }
 
   emit_insn (gen_rtx_SET (VOIDmode, dest, tmp));
-  return true;
+  return 1;
 }

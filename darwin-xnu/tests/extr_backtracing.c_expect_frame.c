@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CSSymbolRef ;
 
-/* Variables and functions */
- scalar_t__ CSIsNull (int /*<<< orphan*/ ) ; 
- char* CSSymbolGetName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  T_ASSERT_NOTNULL (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  T_EXPECT_EQ_STR (char const*,char const*,char*,unsigned int,char const*,char const*) ; 
- int /*<<< orphan*/  T_FAIL (char*,...) ; 
- int /*<<< orphan*/  T_LOG (char*,unsigned int) ; 
- int /*<<< orphan*/  T_QUIET ; 
+
+
+
+typedef int CSSymbolRef ;
+
+
+ scalar_t__ CSIsNull (int ) ;
+ char* CSSymbolGetName (int ) ;
+ int T_ASSERT_NOTNULL (char const*,int *) ;
+ int T_EXPECT_EQ_STR (char const*,char const*,char*,unsigned int,char const*,char const*) ;
+ int T_FAIL (char*,...) ;
+ int T_LOG (char*,unsigned int) ;
+ int T_QUIET ;
 
 __attribute__((used)) static void
 expect_frame(const char **bt, unsigned int bt_len, CSSymbolRef symbol,
@@ -28,7 +28,7 @@ expect_frame(const char **bt, unsigned int bt_len, CSSymbolRef symbol,
     const char *name;
     unsigned int frame_idx = max_frames - bt_idx - 1;
 
-    if (bt[frame_idx] == NULL) {
+    if (bt[frame_idx] == ((void*)0)) {
         T_LOG("frame %2u: skipping system frame", frame_idx);
         return;
     }
@@ -45,7 +45,7 @@ expect_frame(const char **bt, unsigned int bt_len, CSSymbolRef symbol,
     }
 
     name = CSSymbolGetName(symbol);
-    T_QUIET; T_ASSERT_NOTNULL(name, NULL);
+    T_QUIET; T_ASSERT_NOTNULL(name, ((void*)0));
     T_EXPECT_EQ_STR(name, bt[frame_idx],
         "frame %2u: saw '%s', expected '%s'",
         frame_idx, name, bt[frame_idx]);

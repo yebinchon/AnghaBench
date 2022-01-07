@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int surface_count; scalar_t__ video_context; scalar_t__ decoder; } ;
-struct TYPE_5__ {int /*<<< orphan*/  hd3d; int /*<<< orphan*/  d3d_dev; TYPE_1__ hw; scalar_t__ d3ddec; scalar_t__* renderSrc; scalar_t__* hw_surface; } ;
-typedef  TYPE_2__ vlc_va_sys_t ;
-typedef  int /*<<< orphan*/  ID3D11Resource ;
+struct TYPE_5__ {int hd3d; int d3d_dev; TYPE_1__ hw; scalar_t__ d3ddec; scalar_t__* renderSrc; scalar_t__* hw_surface; } ;
+typedef TYPE_2__ vlc_va_sys_t ;
+typedef int ID3D11Resource ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D11_Destroy (int /*<<< orphan*/ *) ; 
- int D3D11_MAX_SHADER_VIEW ; 
- int /*<<< orphan*/  D3D11_ReleaseDevice (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ID3D11Resource_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ID3D11ShaderResourceView_Release (scalar_t__) ; 
- int /*<<< orphan*/  ID3D11VideoContext_Release (scalar_t__) ; 
- int /*<<< orphan*/  ID3D11VideoDecoderOutputView_GetResource (scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ID3D11VideoDecoderOutputView_Release (scalar_t__) ; 
- int /*<<< orphan*/  ID3D11VideoDecoder_Release (scalar_t__) ; 
- int /*<<< orphan*/  ID3D11VideoDevice_Release (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
+
+ int D3D11_Destroy (int *) ;
+ int D3D11_MAX_SHADER_VIEW ;
+ int D3D11_ReleaseDevice (int *) ;
+ int ID3D11Resource_Release (int *) ;
+ int ID3D11ShaderResourceView_Release (scalar_t__) ;
+ int ID3D11VideoContext_Release (scalar_t__) ;
+ int ID3D11VideoDecoderOutputView_GetResource (scalar_t__,int **) ;
+ int ID3D11VideoDecoderOutputView_Release (scalar_t__) ;
+ int ID3D11VideoDecoder_Release (scalar_t__) ;
+ int ID3D11VideoDevice_Release (scalar_t__) ;
+ int free (TYPE_2__*) ;
 
 __attribute__((used)) static void DxDestroySurfaces(void *opaque)
 {

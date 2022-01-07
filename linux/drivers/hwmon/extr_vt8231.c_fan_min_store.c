@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vt8231_data {int /*<<< orphan*/  update_lock; int /*<<< orphan*/ * fan_min; int /*<<< orphan*/ * fan_div; } ;
+
+
+
+
+struct vt8231_data {int update_lock; int * fan_min; int * fan_div; } ;
 struct sensor_device_attribute {int index; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIV_FROM_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FAN_TO_REG (unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VT8231_REG_FAN_MIN (int) ; 
- struct vt8231_data* dev_get_drvdata (struct device*) ; 
- int kstrtoul (char const*,int,unsigned long*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct sensor_device_attribute* to_sensor_dev_attr (struct device_attribute*) ; 
- int /*<<< orphan*/  vt8231_write_value (struct vt8231_data*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DIV_FROM_REG (int ) ;
+ int FAN_TO_REG (unsigned long,int ) ;
+ int VT8231_REG_FAN_MIN (int) ;
+ struct vt8231_data* dev_get_drvdata (struct device*) ;
+ int kstrtoul (char const*,int,unsigned long*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct sensor_device_attribute* to_sensor_dev_attr (struct device_attribute*) ;
+ int vt8231_write_value (struct vt8231_data*,int ,int ) ;
 
 __attribute__((used)) static ssize_t fan_min_store(struct device *dev,
-			     struct device_attribute *attr, const char *buf,
-			     size_t count)
+        struct device_attribute *attr, const char *buf,
+        size_t count)
 {
-	struct sensor_device_attribute *sensor_attr = to_sensor_dev_attr(attr);
-	int nr = sensor_attr->index;
-	struct vt8231_data *data = dev_get_drvdata(dev);
-	unsigned long val;
-	int err;
+ struct sensor_device_attribute *sensor_attr = to_sensor_dev_attr(attr);
+ int nr = sensor_attr->index;
+ struct vt8231_data *data = dev_get_drvdata(dev);
+ unsigned long val;
+ int err;
 
-	err = kstrtoul(buf, 10, &val);
-	if (err)
-		return err;
+ err = kstrtoul(buf, 10, &val);
+ if (err)
+  return err;
 
-	mutex_lock(&data->update_lock);
-	data->fan_min[nr] = FAN_TO_REG(val, DIV_FROM_REG(data->fan_div[nr]));
-	vt8231_write_value(data, VT8231_REG_FAN_MIN(nr), data->fan_min[nr]);
-	mutex_unlock(&data->update_lock);
-	return count;
+ mutex_lock(&data->update_lock);
+ data->fan_min[nr] = FAN_TO_REG(val, DIV_FROM_REG(data->fan_div[nr]));
+ vt8231_write_value(data, VT8231_REG_FAN_MIN(nr), data->fan_min[nr]);
+ mutex_unlock(&data->update_lock);
+ return count;
 }

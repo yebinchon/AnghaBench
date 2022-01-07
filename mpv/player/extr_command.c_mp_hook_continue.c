@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-struct hook_handler {scalar_t__ seq; int active; int /*<<< orphan*/  type; int /*<<< orphan*/  client; } ;
+
+
+
+
+typedef scalar_t__ uint64_t ;
+struct hook_handler {scalar_t__ seq; int active; int type; int client; } ;
 struct command_ctx {int num_hooks; struct hook_handler** hooks; } ;
 struct MPContext {struct command_ctx* command_ctx; } ;
 
-/* Variables and functions */
- int MPV_ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  MP_ERR (struct MPContext*,char*) ; 
- int run_next_hook_handler (struct MPContext*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int MPV_ERROR_INVALID_PARAMETER ;
+ int MP_ERR (struct MPContext*,char*) ;
+ int run_next_hook_handler (struct MPContext*,int ,int) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int mp_hook_continue(struct MPContext *mpctx, char *client, uint64_t id)
 {
@@ -30,7 +30,7 @@ int mp_hook_continue(struct MPContext *mpctx, char *client, uint64_t id)
         if (strcmp(h->client, client) == 0 && h->seq == id) {
             if (!h->active)
                 break;
-            h->active = false;
+            h->active = 0;
             return run_next_hook_handler(mpctx, h->type, n + 1);
         }
     }

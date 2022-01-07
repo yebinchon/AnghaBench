@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_15__ {long long nbad; long long ngood; } ;
 struct TYPE_12__ {scalar_t__ metafile; TYPE_7__ b; } ;
-typedef  TYPE_1__ user ;
+typedef TYPE_1__ user ;
 struct TYPE_13__ {char* text; } ;
-typedef  TYPE_2__ message ;
+typedef TYPE_2__ message ;
 struct TYPE_14__ {char* text; struct TYPE_14__* next; } ;
-typedef  TYPE_3__ black_list ;
+typedef TYPE_3__ black_list ;
 
-/* Variables and functions */
- int BAYES_MAX_WORDS ; 
- size_t HAM ; 
- int /*<<< orphan*/  NOAIO ; 
- int QL ; 
- int QR ; 
- size_t SPAM ; 
- double bayes_get_count (TYPE_7__*,scalar_t__,size_t) ; 
- double bayes_local_get_count (scalar_t__,scalar_t__,size_t) ; 
- TYPE_3__* bl_head ; 
- TYPE_1__* conv_uid (int) ; 
- scalar_t__ debug ; 
- char* debug_buff ; 
- int debug_on ; 
- int /*<<< orphan*/  debugp (char*,long long,double,double,double,double,...) ; 
- char* ds ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ get_words (char*) ; 
- TYPE_7__ global_bayes ; 
- int /*<<< orphan*/  load_user_metafile (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int local_uid (int) ; 
- scalar_t__ msg_verify (TYPE_2__*,int) ; 
- int /*<<< orphan*/  my_qsort (double*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strstr (char*,char*) ; 
- int /*<<< orphan*/  user_loaded (TYPE_1__*) ; 
- int verbosity ; 
- scalar_t__* words ; 
- double* words_prob ; 
+
+ int BAYES_MAX_WORDS ;
+ size_t HAM ;
+ int NOAIO ;
+ int QL ;
+ int QR ;
+ size_t SPAM ;
+ double bayes_get_count (TYPE_7__*,scalar_t__,size_t) ;
+ double bayes_local_get_count (scalar_t__,scalar_t__,size_t) ;
+ TYPE_3__* bl_head ;
+ TYPE_1__* conv_uid (int) ;
+ scalar_t__ debug ;
+ char* debug_buff ;
+ int debug_on ;
+ int debugp (char*,long long,double,double,double,double,...) ;
+ char* ds ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ get_words (char*) ;
+ TYPE_7__ global_bayes ;
+ int load_user_metafile (TYPE_1__*,int,int ) ;
+ int local_uid (int) ;
+ scalar_t__ msg_verify (TYPE_2__*,int) ;
+ int my_qsort (double*,int ,int) ;
+ int sscanf (char*,char*,int*) ;
+ int stderr ;
+ char* strstr (char*,char*) ;
+ int user_loaded (TYPE_1__*) ;
+ int verbosity ;
+ scalar_t__* words ;
+ double* words_prob ;
 
 double bayes_is_spam_prob (message *msg, int random_tag) {
   if (msg_verify (msg, random_tag) < 0) {
@@ -64,15 +64,15 @@ double bayes_is_spam_prob (message *msg, int random_tag) {
 
 
   black_list *cur = bl_head;
-  while (cur->next != NULL && !strstr (msg->text, cur->next->text)) {
+  while (cur->next != ((void*)0) && !strstr (msg->text, cur->next->text)) {
     cur = cur->next;
   }
 
-  if (cur->next != NULL) {
+  if (cur->next != ((void*)0)) {
     return 1.0;
   }
 
-             	
+
   long long nbad = global_bayes.nbad, ngood = global_bayes.ngood, all = nbad + ngood;
 
   if (!nbad || !ngood) {
@@ -85,20 +85,9 @@ double bayes_is_spam_prob (message *msg, int random_tag) {
     debug_on = 1;
     ds = debug_buff;
   }
-
-/*  int out = 0;
-  char *out_s = strstr (msg->text, "out ");
-  if (out_s != NULL) {
-    sscanf (out_s + 5, "%d", &out);
-  }
-
-  if (out == 1) {
-    return 0.0;
-  }*/
-
   int uid = 0;
   char *uid_s = strstr (msg->text, "uid ");
-  if (uid_s != NULL) {
+  if (uid_s != ((void*)0)) {
     sscanf (uid_s + 5, "%d", &uid);
   }
   int local_id = local_uid (uid);
@@ -107,7 +96,7 @@ double bayes_is_spam_prob (message *msg, int random_tag) {
   long long nbad_u = 0, ngood_u = 0, all_u = 0;
   double mul_u = 0.0;
 
-  if (u != NULL) {
+  if (u != ((void*)0)) {
     load_user_metafile (u, local_id, NOAIO);
 
     if (!user_loaded (u)) {
@@ -123,7 +112,7 @@ double bayes_is_spam_prob (message *msg, int random_tag) {
       mul_u = (double)all / all_u / 10;
     }
   }
-//  mul_u = 0;
+
 
   if (get_words (msg->text) < 0) {
     return 1.0;
@@ -147,7 +136,7 @@ double bayes_is_spam_prob (message *msg, int random_tag) {
       fprintf (stderr, "(%.3lf;%.3lf)%c", gcnt, bcnt, " \n"[!words[i + 1]]);
     }
 
-    if (u != NULL && mul_u > 1e-9) {
+    if (u != ((void*)0) && mul_u > 1e-9) {
       gcnt += mul_u * (ngood_u + 0.0) / (nbad_u + ngood_u + 0) * total / all;
       bcnt += mul_u * (nbad_u + 0.0) / (nbad_u + ngood_u + 0) * total / all;
 

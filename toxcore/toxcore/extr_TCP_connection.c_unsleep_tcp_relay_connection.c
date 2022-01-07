@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  proxy_info; int /*<<< orphan*/  self_secret_key; int /*<<< orphan*/  self_public_key; } ;
-struct TYPE_7__ {scalar_t__ status; scalar_t__ unsleep; scalar_t__ connected_time; scalar_t__ sleep_count; scalar_t__ lock_count; int /*<<< orphan*/  connection; int /*<<< orphan*/  relay_pk; int /*<<< orphan*/  ip_port; } ;
-typedef  TYPE_1__ TCP_con ;
-typedef  TYPE_2__ TCP_Connections ;
 
-/* Variables and functions */
- scalar_t__ TCP_CONN_SLEEPING ; 
- scalar_t__ TCP_CONN_VALID ; 
- TYPE_1__* get_tcp_connection (TYPE_2__*,int) ; 
- int /*<<< orphan*/  kill_tcp_relay_connection (TYPE_2__*,int) ; 
- int /*<<< orphan*/  new_TCP_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int proxy_info; int self_secret_key; int self_public_key; } ;
+struct TYPE_7__ {scalar_t__ status; scalar_t__ unsleep; scalar_t__ connected_time; scalar_t__ sleep_count; scalar_t__ lock_count; int connection; int relay_pk; int ip_port; } ;
+typedef TYPE_1__ TCP_con ;
+typedef TYPE_2__ TCP_Connections ;
+
+
+ scalar_t__ TCP_CONN_SLEEPING ;
+ scalar_t__ TCP_CONN_VALID ;
+ TYPE_1__* get_tcp_connection (TYPE_2__*,int) ;
+ int kill_tcp_relay_connection (TYPE_2__*,int) ;
+ int new_TCP_connection (int ,int ,int ,int ,int *) ;
 
 __attribute__((used)) static int unsleep_tcp_relay_connection(TCP_Connections *tcp_c, int tcp_connections_number)
 {

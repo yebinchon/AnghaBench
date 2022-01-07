@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
-typedef  int int64_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int ptrdiff_t ;
+typedef int int64_t ;
+typedef int int16_t ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  gb; int /*<<< orphan*/  bc; } ;
-typedef  TYPE_1__ PixletContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_4__ {int gb; int bc; } ;
+typedef TYPE_1__ PixletContext ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  align_get_bits (int /*<<< orphan*/ *) ; 
- int av_mod_uintp2 (int,int) ; 
- int /*<<< orphan*/  bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int ff_clz (int) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- unsigned int get_unary (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* show_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int align_get_bits (int *) ;
+ int av_mod_uintp2 (int,int) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int ff_clz (int) ;
+ void* get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_count (int *) ;
+ unsigned int get_unary (int *,int ,int) ;
+ int init_get_bits8 (int *,int *,int ) ;
+ void* show_bits (int *,int) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int read_high_coeffs(AVCodecContext *avctx, uint8_t *src, int16_t *dst,
                             int size, int c, int a, int d,
@@ -91,14 +91,14 @@ __attribute__((used)) static int read_high_coeffs(AVCodecContext *avctx, uint8_t
             value = 0;
         } else {
             xflag &= 1u;
-            tmp    = (int64_t)c * ((yflag + 1) >> 1) + (c >> 1);
-            value  = xflag + (tmp ^ -xflag);
+            tmp = (int64_t)c * ((yflag + 1) >> 1) + (c >> 1);
+            value = xflag + (tmp ^ -xflag);
         }
 
         i++;
         dst[j++] = value;
         if (j == width) {
-            j    = 0;
+            j = 0;
             dst += stride;
         }
         state += (int64_t)d * (uint64_t)yflag - ((int64_t)(d * (uint64_t)state) >> 8);
@@ -108,9 +108,9 @@ __attribute__((used)) static int read_high_coeffs(AVCodecContext *avctx, uint8_t
         if ((uint64_t)state > 0xFF / 4 || i >= size)
             continue;
 
-        pfx    = ((state + 8) >> 5) + (state ? ff_clz(state) : 32) - 24;
+        pfx = ((state + 8) >> 5) + (state ? ff_clz(state) : 32) - 24;
         escape = av_mod_uintp2(16383, pfx);
-        cnt1   = get_unary(bc, 0, 8);
+        cnt1 = get_unary(bc, 0, 8);
         if (cnt1 < 8) {
             if (pfx < 1 || pfx > 25)
                 return AVERROR_INVALIDDATA;
@@ -139,13 +139,13 @@ __attribute__((used)) static int read_high_coeffs(AVCodecContext *avctx, uint8_t
         for (k = 0; k < rlen; k++) {
             dst[j++] = 0;
             if (j == width) {
-                j    = 0;
+                j = 0;
                 dst += stride;
             }
         }
 
         state = 0;
-        flag  = rlen < 0xFFFF ? 1 : 0;
+        flag = rlen < 0xFFFF ? 1 : 0;
     }
 
     align_get_bits(bc);

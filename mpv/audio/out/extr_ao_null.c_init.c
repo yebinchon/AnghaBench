@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int num_chmaps; int /*<<< orphan*/ * chmaps; } ;
-struct priv {int latency; int latency_sec; int bufferlen; int outburst; int buffersize; int /*<<< orphan*/  last_time; TYPE_1__ channel_layouts; int /*<<< orphan*/  untimed; scalar_t__ format; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int num_chmaps; int * chmaps; } ;
+struct priv {int latency; int latency_sec; int bufferlen; int outburst; int buffersize; int last_time; TYPE_1__ channel_layouts; int untimed; scalar_t__ format; } ;
 struct mp_chmap_sel {struct ao* tmp; } ;
-struct ao {int samplerate; int period_size; int /*<<< orphan*/  channels; int /*<<< orphan*/  untimed; scalar_t__ format; struct priv* priv; } ;
+struct ao {int samplerate; int period_size; int channels; int untimed; scalar_t__ format; struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ao_chmap_sel_adjust (struct ao*,struct mp_chmap_sel*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_chmap_from_channels (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mp_chmap_sel_add_any (struct mp_chmap_sel*) ; 
- int /*<<< orphan*/  mp_chmap_sel_add_map (struct mp_chmap_sel*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_time_sec () ; 
+
+ int ao_chmap_sel_adjust (struct ao*,struct mp_chmap_sel*,int *) ;
+ int mp_chmap_from_channels (int *,int) ;
+ int mp_chmap_sel_add_any (struct mp_chmap_sel*) ;
+ int mp_chmap_sel_add_map (struct mp_chmap_sel*,int *) ;
+ int mp_time_sec () ;
 
 __attribute__((used)) static int init(struct ao *ao)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int init(struct ao *ao)
 
     priv->latency = priv->latency_sec * ao->samplerate;
 
-    // A "buffer" for this many seconds of audio
+
     int bursts = (int)(ao->samplerate * priv->bufferlen + 1) / priv->outburst;
     priv->buffersize = priv->outburst * bursts + priv->latency;
 

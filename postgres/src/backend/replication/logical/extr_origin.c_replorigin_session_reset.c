@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  origin_cv; scalar_t__ acquired_by; } ;
-typedef  int /*<<< orphan*/  ConditionVariable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  ConditionVariableBroadcast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  LWLockAcquire (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LWLockRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LW_EXCLUSIVE ; 
- int /*<<< orphan*/  ReplicationOriginLock ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- scalar_t__ max_replication_slots ; 
- TYPE_1__* session_replication_state ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int origin_cv; scalar_t__ acquired_by; } ;
+typedef int ConditionVariable ;
+
+
+ int Assert (int) ;
+ int ConditionVariableBroadcast (int *) ;
+ int ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE ;
+ int ERROR ;
+ int LWLockAcquire (int ,int ) ;
+ int LWLockRelease (int ) ;
+ int LW_EXCLUSIVE ;
+ int ReplicationOriginLock ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*) ;
+ scalar_t__ max_replication_slots ;
+ TYPE_1__* session_replication_state ;
 
 void
 replorigin_session_reset(void)
 {
-	ConditionVariable *cv;
+ ConditionVariable *cv;
 
-	Assert(max_replication_slots != 0);
+ Assert(max_replication_slots != 0);
 
-	if (session_replication_state == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-				 errmsg("no replication origin is configured")));
+ if (session_replication_state == ((void*)0))
+  ereport(ERROR,
+    (errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+     errmsg("no replication origin is configured")));
 
-	LWLockAcquire(ReplicationOriginLock, LW_EXCLUSIVE);
+ LWLockAcquire(ReplicationOriginLock, LW_EXCLUSIVE);
 
-	session_replication_state->acquired_by = 0;
-	cv = &session_replication_state->origin_cv;
-	session_replication_state = NULL;
+ session_replication_state->acquired_by = 0;
+ cv = &session_replication_state->origin_cv;
+ session_replication_state = ((void*)0);
 
-	LWLockRelease(ReplicationOriginLock);
+ LWLockRelease(ReplicationOriginLock);
 
-	ConditionVariableBroadcast(cv);
+ ConditionVariableBroadcast(cv);
 }

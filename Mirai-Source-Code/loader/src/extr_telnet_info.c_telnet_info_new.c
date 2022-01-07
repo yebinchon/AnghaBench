@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct telnet_info {int has_auth; int /*<<< orphan*/  has_arch; int /*<<< orphan*/  port; int /*<<< orphan*/  addr; int /*<<< orphan*/  arch; int /*<<< orphan*/  pass; int /*<<< orphan*/  user; } ;
-typedef  int /*<<< orphan*/  port_t ;
-typedef  int /*<<< orphan*/  ipv4_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct telnet_info {int has_auth; int has_arch; int port; int addr; int arch; int pass; int user; } ;
+typedef int port_t ;
+typedef int ipv4_t ;
+
+
+ int strcpy (int ,char*) ;
 
 struct telnet_info *telnet_info_new(char *user, char *pass, char *arch, ipv4_t addr, port_t port, struct telnet_info *info)
 {
-    if (user != NULL)
+    if (user != ((void*)0))
         strcpy(info->user, user);
-    if (pass != NULL)
+    if (pass != ((void*)0))
         strcpy(info->pass, pass);
-    if (arch != NULL)
+    if (arch != ((void*)0))
         strcpy(info->arch, arch);
     info->addr = addr;
     info->port = port;
 
-    info->has_auth = user != NULL || pass != NULL;
-    info->has_arch = arch != NULL;
+    info->has_auth = user != ((void*)0) || pass != ((void*)0);
+    info->has_arch = arch != ((void*)0);
 
     return info;
 }

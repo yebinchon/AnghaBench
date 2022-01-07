@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sdp_rx_ring {int destroyed; int /*<<< orphan*/  destroyed_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rw_wlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rw_wunlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct sdp_rx_ring {int destroyed; int destroyed_lock; } ;
+
+
+ int rw_wlock (int *) ;
+ int rw_wunlock (int *) ;
 
 __attribute__((used)) static inline void rx_ring_destroy_lock(struct sdp_rx_ring *rx_ring)
 {
-	rw_wlock(&rx_ring->destroyed_lock);
-	rx_ring->destroyed = 1;
-	rw_wunlock(&rx_ring->destroyed_lock);
+ rw_wlock(&rx_ring->destroyed_lock);
+ rx_ring->destroyed = 1;
+ rw_wunlock(&rx_ring->destroyed_lock);
 }

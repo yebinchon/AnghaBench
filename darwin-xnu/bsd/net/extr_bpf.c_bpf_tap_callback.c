@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mbuf {int dummy; } ;
 struct ifnet {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bpf_tap_mbuf (struct ifnet*,int /*<<< orphan*/ ,struct mbuf*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mbuf_pkthdr_rcvif (struct mbuf*) ; 
+
+ int bpf_tap_mbuf (struct ifnet*,int ,struct mbuf*,int *,int ,int ) ;
+ int * mbuf_pkthdr_rcvif (struct mbuf*) ;
 
 __attribute__((used)) static int bpf_tap_callback(struct ifnet *ifp, struct mbuf *m)
 {
-	bpf_tap_mbuf(ifp, 0, m, NULL, 0, mbuf_pkthdr_rcvif(m) == NULL);
+ bpf_tap_mbuf(ifp, 0, m, ((void*)0), 0, mbuf_pkthdr_rcvif(m) == ((void*)0));
 
-	return (0);
+ return (0);
 }

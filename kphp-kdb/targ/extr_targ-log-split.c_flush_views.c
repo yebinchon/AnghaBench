@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_targ_views {unsigned int ad_id; scalar_t__ views; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEV_TARG_VIEWS ; 
- unsigned int MAX_AD_ID ; 
- scalar_t__* Views ; 
- int wr_bytes ; 
- int /*<<< orphan*/  wr_rec ; 
- int /*<<< orphan*/  wr_views_rec ; 
- struct lev_targ_views* write_alloc (int) ; 
+
+
+
+struct lev_targ_views {unsigned int ad_id; scalar_t__ views; int type; } ;
+
+
+ int LEV_TARG_VIEWS ;
+ unsigned int MAX_AD_ID ;
+ scalar_t__* Views ;
+ int wr_bytes ;
+ int wr_rec ;
+ int wr_views_rec ;
+ struct lev_targ_views* write_alloc (int) ;
 
 __attribute__((used)) static void flush_views (unsigned ad_id) {
   if (ad_id >= MAX_AD_ID || !Views[ad_id]) {

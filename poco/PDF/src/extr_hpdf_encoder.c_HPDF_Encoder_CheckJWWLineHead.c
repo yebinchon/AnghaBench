@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ const* jww_line_head; } ;
 struct TYPE_5__ {scalar_t__ type; scalar_t__ attr; } ;
-typedef  scalar_t__ HPDF_UINT16 ;
-typedef  size_t HPDF_UINT ;
-typedef  TYPE_1__* HPDF_Encoder ;
-typedef  TYPE_2__* HPDF_CMapEncoderAttr ;
-typedef  int /*<<< orphan*/  HPDF_BOOL ;
+typedef scalar_t__ HPDF_UINT16 ;
+typedef size_t HPDF_UINT ;
+typedef TYPE_1__* HPDF_Encoder ;
+typedef TYPE_2__* HPDF_CMapEncoderAttr ;
+typedef int HPDF_BOOL ;
 
-/* Variables and functions */
- scalar_t__ HPDF_ENCODER_TYPE_DOUBLE_BYTE ; 
- int /*<<< orphan*/  HPDF_Encoder_Validate (TYPE_1__*) ; 
- int /*<<< orphan*/  HPDF_FALSE ; 
- size_t HPDF_MAX_JWW_NUM ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_TRUE ; 
+
+ scalar_t__ HPDF_ENCODER_TYPE_DOUBLE_BYTE ;
+ int HPDF_Encoder_Validate (TYPE_1__*) ;
+ int HPDF_FALSE ;
+ size_t HPDF_MAX_JWW_NUM ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_TRUE ;
 
 HPDF_BOOL
-HPDF_Encoder_CheckJWWLineHead  (HPDF_Encoder        encoder,
-                                const HPDF_UINT16   code)
+HPDF_Encoder_CheckJWWLineHead (HPDF_Encoder encoder,
+                                const HPDF_UINT16 code)
 {
     HPDF_CMapEncoderAttr attr;
     HPDF_UINT j;

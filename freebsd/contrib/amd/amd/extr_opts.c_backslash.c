@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  XLOG_USER ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,...) ; 
+ int XLOG_USER ;
+ int plog (int ,char*,...) ;
 
 __attribute__((used)) static char
 backslash(char **p)
@@ -29,28 +21,28 @@ backslash(char **p)
     (*p)++;
     switch (**p) {
     case 'g':
-      c = '\007';		/* Bell */
+      c = '\007';
       break;
     case 'b':
-      c = '\010';		/* Backspace */
+      c = '\010';
       break;
     case 't':
-      c = '\011';		/* Horizontal Tab */
+      c = '\011';
       break;
     case 'n':
-      c = '\012';		/* New Line */
+      c = '\012';
       break;
     case 'v':
-      c = '\013';		/* Vertical Tab */
+      c = '\013';
       break;
     case 'f':
-      c = '\014';		/* Form Feed */
+      c = '\014';
       break;
     case 'r':
-      c = '\015';		/* Carriage Return */
+      c = '\015';
       break;
     case 'e':
-      c = '\033';		/* Escape */
+      c = '\033';
       break;
     case '0':
     case '1':
@@ -61,23 +53,23 @@ backslash(char **p)
     case '6':
     case '7':
       {
-	int cnt, val, ch;
+ int cnt, val, ch;
 
-	for (cnt = 0, val = 0; cnt < 3; cnt++) {
-	  ch = *(*p)++;
-	  if (ch < '0' || ch > '7') {
-	    (*p)--;
-	    break;
-	  }
-	  val = (val << 3) | (ch - '0');
-	}
+ for (cnt = 0, val = 0; cnt < 3; cnt++) {
+   ch = *(*p)++;
+   if (ch < '0' || ch > '7') {
+     (*p)--;
+     break;
+   }
+   val = (val << 3) | (ch - '0');
+ }
 
-	if ((val & 0xffffff00) != 0)
-	  plog(XLOG_USER,
-	       "Too large character constant %u\n",
-	       val);
-	c = (char) val;
-	--(*p);
+ if ((val & 0xffffff00) != 0)
+   plog(XLOG_USER,
+        "Too large character constant %u\n",
+        val);
+ c = (char) val;
+ --(*p);
       }
       break;
 

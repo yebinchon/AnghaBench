@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  granule; int /*<<< orphan*/  start_granule; } ;
+
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int granule; int start_granule; } ;
 struct TYPE_16__ {TYPE_3__* priv_data; } ;
 struct TYPE_15__ {TYPE_2__* page_list; } ;
 struct TYPE_14__ {struct TYPE_14__* next; TYPE_8__ page; } ;
-struct TYPE_13__ {int /*<<< orphan*/  page_count; TYPE_8__ page; } ;
-typedef  TYPE_1__ OGGStreamContext ;
-typedef  TYPE_2__ OGGPageList ;
-typedef  TYPE_3__ OGGContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_13__ {int page_count; TYPE_8__ page; } ;
+typedef TYPE_1__ OGGStreamContext ;
+typedef TYPE_2__ OGGPageList ;
+typedef TYPE_3__ OGGContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_2__* av_mallocz (int) ; 
- scalar_t__ ogg_compare_granule (TYPE_4__*,TYPE_8__*,TYPE_8__*) ; 
- int /*<<< orphan*/  ogg_granule_to_timestamp (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ogg_reset_cur_page (TYPE_1__*) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ TYPE_2__* av_mallocz (int) ;
+ scalar_t__ ogg_compare_granule (TYPE_4__*,TYPE_8__*,TYPE_8__*) ;
+ int ogg_granule_to_timestamp (TYPE_1__*,int ) ;
+ int ogg_reset_cur_page (TYPE_1__*) ;
 
 __attribute__((used)) static int ogg_buffer_page(AVFormatContext *s, OGGStreamContext *oggstream)
 {

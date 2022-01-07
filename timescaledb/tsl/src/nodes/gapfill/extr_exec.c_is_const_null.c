@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ constisnull; } ;
-typedef  int /*<<< orphan*/  Expr ;
+typedef int Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Const ; 
- scalar_t__ IsA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* castNode (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int Const ;
+ scalar_t__ IsA (int *,int ) ;
+ TYPE_1__* castNode (int ,int *) ;
 
 __attribute__((used)) static bool
 is_const_null(Expr *expr)
 {
-	return IsA(expr, Const) && castNode(Const, expr)->constisnull;
+ return IsA(expr, Const) && castNode(Const, expr)->constisnull;
 }

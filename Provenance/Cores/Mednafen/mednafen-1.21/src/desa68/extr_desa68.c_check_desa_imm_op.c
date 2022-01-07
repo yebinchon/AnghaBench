@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef char u32 ;
 struct TYPE_2__ {int w; int reg9; int opsz; int szchar; scalar_t__ reg0; scalar_t__ mode3; } ;
 
-/* Variables and functions */
- scalar_t__ MODE_ABSW ; 
- scalar_t__ MODE_IMM ; 
- TYPE_1__ d ; 
- int /*<<< orphan*/  desa_ascii (int) ; 
- int /*<<< orphan*/  desa_char (char) ; 
- int /*<<< orphan*/  get_ea_2 (scalar_t__,scalar_t__,int) ; 
+
+ scalar_t__ MODE_ABSW ;
+ scalar_t__ MODE_IMM ;
+ TYPE_1__ d ;
+ int desa_ascii (int) ;
+ int desa_char (char) ;
+ int get_ea_2 (scalar_t__,scalar_t__,int) ;
 
 __attribute__((used)) static int check_desa_imm_op(void)
 {

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* CGATSout ; 
- int EOF ; 
- int /*<<< orphan*/  FatalError (char*) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  TRUE ; 
- void* TiffDiffFilename ; 
- int /*<<< orphan*/  Verbose ; 
- int xgetopt (int,char**,char*) ; 
- void* xoptarg ; 
+ void* CGATSout ;
+ int EOF ;
+ int FatalError (char*) ;
+ int Help () ;
+ int TRUE ;
+ void* TiffDiffFilename ;
+ int Verbose ;
+ int xgetopt (int,char**,char*) ;
+ void* xoptarg ;
 
 __attribute__((used)) static
 void HandleSwitches(int argc, char *argv[])
@@ -39,7 +31,7 @@ void HandleSwitches(int argc, char *argv[])
 
        case 'o':
        case 'O':
-           TiffDiffFilename  = xoptarg;
+           TiffDiffFilename = xoptarg;
            break;
 
 

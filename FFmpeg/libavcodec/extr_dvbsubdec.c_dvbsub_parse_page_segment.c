@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_15__ {TYPE_2__* priv_data; } ;
 struct TYPE_14__ {int version; int time_out; int compute_edt; TYPE_1__* display_list; } ;
 struct TYPE_13__ {int region_id; struct TYPE_13__* next; void* y_pos; void* x_pos; } ;
-typedef  TYPE_1__ DVBSubRegionDisplay ;
-typedef  TYPE_2__ DVBSubContext ;
-typedef  int /*<<< orphan*/  AVSubtitle ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ DVBSubRegionDisplay ;
+typedef TYPE_2__ DVBSubContext ;
+typedef int AVSubtitle ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- void* AV_RB16 (int const*) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* av_mallocz (int) ; 
- int /*<<< orphan*/  delete_cluts (TYPE_2__*) ; 
- int /*<<< orphan*/  delete_objects (TYPE_2__*) ; 
- int /*<<< orphan*/  delete_regions (TYPE_2__*) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_3__*,char*,int,int,...) ; 
- int /*<<< orphan*/  save_subtitle_set (TYPE_3__*,int /*<<< orphan*/ *,int*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ void* AV_RB16 (int const*) ;
+ int ENOMEM ;
+ int av_freep (TYPE_1__**) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ TYPE_1__* av_mallocz (int) ;
+ int delete_cluts (TYPE_2__*) ;
+ int delete_objects (TYPE_2__*) ;
+ int delete_regions (TYPE_2__*) ;
+ int ff_dlog (TYPE_3__*,char*,int,int,...) ;
+ int save_subtitle_set (TYPE_3__*,int *,int*) ;
 
 __attribute__((used)) static int dvbsub_parse_page_segment(AVCodecContext *avctx,
                                      const uint8_t *buf, int buf_size, AVSubtitle *sub, int *got_output)
@@ -76,7 +76,7 @@ __attribute__((used)) static int dvbsub_parse_page_segment(AVCodecContext *avctx
     }
 
     tmp_display_list = ctx->display_list;
-    ctx->display_list = NULL;
+    ctx->display_list = ((void*)0);
 
     while (buf + 5 < buf_end) {
         region_id = *buf++;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int strip; int use_env; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LC_ALL ; 
- TYPE_1__ conf ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int use_conf (char*) ; 
- int use_env () ; 
+
+ int LC_ALL ;
+ TYPE_1__ conf ;
+ int fprintf (int ,char*,...) ;
+ int setlocale (int ,char*) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int use_conf (char*) ;
+ int use_env () ;
 
 int main(int argc, char *argv[])
 {
     int i;
-    char *test_path = NULL;
+    char *test_path = ((void*)0);
 
-    #ifdef HAVE_SETLOCALE
-    setlocale(LC_ALL, "");
-    #endif
+
+
+
 
     if (argc < 2) {
         goto usage;

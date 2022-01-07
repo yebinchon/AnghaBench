@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int* h; int /*<<< orphan*/  md_len; } ;
-typedef  TYPE_1__ SHA256_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA224_DIGEST_LENGTH ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int* h; int md_len; } ;
+typedef TYPE_1__ SHA256_CTX ;
+
+
+ int SHA224_DIGEST_LENGTH ;
+ int memset (TYPE_1__*,int ,int) ;
 
 int SHA224_Init(SHA256_CTX *c)
 {

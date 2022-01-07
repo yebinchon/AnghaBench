@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int HIGH ; 
- int LOW ; 
- int LSBFIRST ; 
- int /*<<< orphan*/  digitalWrite (int,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int HIGH ;
+ int LOW ;
+ int LSBFIRST ;
+ int digitalWrite (int,int) ;
 
 void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val) {
     uint8_t i;

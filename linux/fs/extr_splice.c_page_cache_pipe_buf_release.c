@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pipe_inode_info {int dummy; } ;
-struct pipe_buffer {int /*<<< orphan*/  flags; int /*<<< orphan*/  page; } ;
+struct pipe_buffer {int flags; int page; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PIPE_BUF_FLAG_LRU ; 
- int /*<<< orphan*/  put_page (int /*<<< orphan*/ ) ; 
+
+ int PIPE_BUF_FLAG_LRU ;
+ int put_page (int ) ;
 
 __attribute__((used)) static void page_cache_pipe_buf_release(struct pipe_inode_info *pipe,
-					struct pipe_buffer *buf)
+     struct pipe_buffer *buf)
 {
-	put_page(buf->page);
-	buf->flags &= ~PIPE_BUF_FLAG_LRU;
+ put_page(buf->page);
+ buf->flags &= ~PIPE_BUF_FLAG_LRU;
 }

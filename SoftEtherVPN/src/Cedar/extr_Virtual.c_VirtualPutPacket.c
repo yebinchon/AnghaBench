@@ -1,102 +1,102 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int flag1; int /*<<< orphan*/  Now; TYPE_1__* NativeNat; } ;
-typedef  TYPE_2__ VH ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_12__ {int /*<<< orphan*/  Ref; } ;
-struct TYPE_10__ {int SendStateChanged; int /*<<< orphan*/  Lock; TYPE_3__* HaltTube; } ;
-typedef  TYPE_3__ TUBE ;
-typedef  int /*<<< orphan*/  PKT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Free (void*) ; 
- int /*<<< orphan*/  FreePacket (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockVirtual (TYPE_2__*) ; 
- int /*<<< orphan*/ * ParsePacket (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseTube (TYPE_3__*) ; 
- int /*<<< orphan*/  Tick64 () ; 
- int /*<<< orphan*/  TubeFlushEx (TYPE_3__*,int) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockVirtual (TYPE_2__*) ; 
- int /*<<< orphan*/  VirtualLayer2 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int flag1; int Now; TYPE_1__* NativeNat; } ;
+typedef TYPE_2__ VH ;
+typedef int UINT ;
+struct TYPE_12__ {int Ref; } ;
+struct TYPE_10__ {int SendStateChanged; int Lock; TYPE_3__* HaltTube; } ;
+typedef TYPE_3__ TUBE ;
+typedef int PKT ;
+
+
+ int AddRef (int ) ;
+ int Free (void*) ;
+ int FreePacket (int *) ;
+ int Lock (int ) ;
+ int LockVirtual (TYPE_2__*) ;
+ int * ParsePacket (void*,int ) ;
+ int ReleaseTube (TYPE_3__*) ;
+ int Tick64 () ;
+ int TubeFlushEx (TYPE_3__*,int) ;
+ int Unlock (int ) ;
+ int UnlockVirtual (TYPE_2__*) ;
+ int VirtualLayer2 (TYPE_2__*,int *) ;
 
 bool VirtualPutPacket(VH *v, void *data, UINT size)
 {
-	if (data == NULL)
-	{
-		// Flush
-		v->flag1 = false;
+ if (data == ((void*)0))
+ {
 
-		if (v->NativeNat != NULL)
-		{
-			if (v->NativeNat->SendStateChanged)
-			{
-				TUBE *halt_tube = NULL;
+  v->flag1 = 0;
 
-				Lock(v->NativeNat->Lock);
-				{
-					if (v->NativeNat->HaltTube != NULL)
-					{
-						halt_tube = v->NativeNat->HaltTube;
+  if (v->NativeNat != ((void*)0))
+  {
+   if (v->NativeNat->SendStateChanged)
+   {
+    TUBE *halt_tube = ((void*)0);
 
-						AddRef(halt_tube->Ref);
-					}
-				}
-				Unlock(v->NativeNat->Lock);
+    Lock(v->NativeNat->Lock);
+    {
+     if (v->NativeNat->HaltTube != ((void*)0))
+     {
+      halt_tube = v->NativeNat->HaltTube;
 
-				if (halt_tube != NULL)
-				{
-					TubeFlushEx(halt_tube, true);
+      AddRef(halt_tube->Ref);
+     }
+    }
+    Unlock(v->NativeNat->Lock);
 
-					v->NativeNat->SendStateChanged = false;
+    if (halt_tube != ((void*)0))
+    {
+     TubeFlushEx(halt_tube, 1);
 
-					ReleaseTube(halt_tube);
-				}
-			}
-		}
-	}
-	else
-	{
-		// Interpret the received packet
-		PKT *packet = ParsePacket(data, size);
+     v->NativeNat->SendStateChanged = 0;
 
-		if (v->flag1 == false)
-		{
-			v->flag1 = true;
-			v->Now = Tick64();
-		}
+     ReleaseTube(halt_tube);
+    }
+   }
+  }
+ }
+ else
+ {
 
-		// Lock the entire virtual machine in here
-		LockVirtual(v);
-		{
-			if (packet != NULL)
-			{
-				// Process the Layer-2
-				VirtualLayer2(v, packet);
+  PKT *packet = ParsePacket(data, size);
 
-				// Release the packet structure
-				FreePacket(packet);
-			}
-		}
-		UnlockVirtual(v);
+  if (v->flag1 == 0)
+  {
+   v->flag1 = 1;
+   v->Now = Tick64();
+  }
 
-		Free(data);
-	}
 
-	return true;
+  LockVirtual(v);
+  {
+   if (packet != ((void*)0))
+   {
+
+    VirtualLayer2(v, packet);
+
+
+    FreePacket(packet);
+   }
+  }
+  UnlockVirtual(v);
+
+  Free(data);
+ }
+
+ return 1;
 }

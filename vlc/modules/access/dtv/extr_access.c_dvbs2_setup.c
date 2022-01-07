@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  void* uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  void* uint32_t ;
-typedef  int /*<<< orphan*/  dvb_device_t ;
 
-/* Variables and functions */
- int dvb_set_dvbs2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,void*,void*,int,int,void*) ; 
- int /*<<< orphan*/  sec_setup (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* var_InheritCodeRate (int /*<<< orphan*/ *,char*) ; 
- void* var_InheritInteger (int /*<<< orphan*/ *,char*) ; 
- char* var_InheritModulation (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef void* uint8_t ;
+typedef int uint64_t ;
+typedef void* uint32_t ;
+typedef int dvb_device_t ;
+
+
+ int dvb_set_dvbs2 (int *,int ,char const*,void*,void*,int,int,void*) ;
+ int sec_setup (int *,int *,int ) ;
+ void* var_InheritCodeRate (int *,char*) ;
+ void* var_InheritInteger (int *,char*) ;
+ char* var_InheritModulation (int *,char*) ;
 
 __attribute__((used)) static int dvbs2_setup (vlc_object_t *obj, dvb_device_t *dev, uint64_t freq)
 {

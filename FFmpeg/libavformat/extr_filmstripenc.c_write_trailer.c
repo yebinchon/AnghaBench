@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {TYPE_4__** streams; int /*<<< orphan*/ * pb; TYPE_3__* priv_data; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_11__ {TYPE_4__** streams; int * pb; TYPE_3__* priv_data; } ;
 struct TYPE_8__ {int den; int num; } ;
 struct TYPE_10__ {TYPE_2__ time_base; TYPE_1__* codecpar; } ;
-struct TYPE_9__ {int /*<<< orphan*/  nb_frames; } ;
+struct TYPE_9__ {int nb_frames; } ;
 struct TYPE_7__ {int width; int height; } ;
-typedef  TYPE_3__ FilmstripMuxContext ;
-typedef  TYPE_4__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_5__ AVFormatContext ;
+typedef TYPE_3__ FilmstripMuxContext ;
+typedef TYPE_4__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RAND_TAG ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int RAND_TAG ;
+ int avio_w8 (int *,int) ;
+ int avio_wb16 (int *,int) ;
+ int avio_wb32 (int *,int ) ;
 
 __attribute__((used)) static int write_trailer(AVFormatContext *s)
 {
@@ -40,15 +40,15 @@ __attribute__((used)) static int write_trailer(AVFormatContext *s)
 
     avio_wb32(pb, RAND_TAG);
     avio_wb32(pb, film->nb_frames);
-    avio_wb16(pb, 0);  // packing method
-    avio_wb16(pb, 0);  // reserved
+    avio_wb16(pb, 0);
+    avio_wb16(pb, 0);
     avio_wb16(pb, st->codecpar->width);
     avio_wb16(pb, st->codecpar->height);
-    avio_wb16(pb, 0);  // leading
-    // TODO: should be avg_frame_rate
+    avio_wb16(pb, 0);
+
     avio_wb16(pb, st->time_base.den / st->time_base.num);
     for (i = 0; i < 16; i++)
-        avio_w8(pb, 0x00);  // reserved
+        avio_w8(pb, 0x00);
 
     return 0;
 }

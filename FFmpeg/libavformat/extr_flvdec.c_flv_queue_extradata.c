@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int* new_extradata_size; int /*<<< orphan*/ * new_extradata; } ;
-typedef  TYPE_1__ FLVContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_mallocz (scalar_t__) ; 
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int* new_extradata_size; int * new_extradata; } ;
+typedef TYPE_1__ FLVContext ;
+typedef int AVIOContext ;
+
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int ENOMEM ;
+ int av_free (int ) ;
+ int av_mallocz (scalar_t__) ;
+ int avio_read (int *,int ,int) ;
 
 __attribute__((used)) static int flv_queue_extradata(FLVContext *flv, AVIOContext *pb, int stream,
                                int size)

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  end_callbacks () ; 
- int /*<<< orphan*/ * gdbsim_desc ; 
- int /*<<< orphan*/  generic_mourn_inferior () ; 
- int /*<<< orphan*/  printf_filtered (char*,int) ; 
- scalar_t__ program_loaded ; 
- int /*<<< orphan*/  sim_close (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sr_get_debug () ; 
+ int end_callbacks () ;
+ int * gdbsim_desc ;
+ int generic_mourn_inferior () ;
+ int printf_filtered (char*,int) ;
+ scalar_t__ program_loaded ;
+ int sim_close (int *,int) ;
+ scalar_t__ sr_get_debug () ;
 
 __attribute__((used)) static void
 gdbsim_close (int quitting)
@@ -28,10 +20,10 @@ gdbsim_close (int quitting)
 
   program_loaded = 0;
 
-  if (gdbsim_desc != NULL)
+  if (gdbsim_desc != ((void*)0))
     {
       sim_close (gdbsim_desc, quitting);
-      gdbsim_desc = NULL;
+      gdbsim_desc = ((void*)0);
     }
 
   end_callbacks ();

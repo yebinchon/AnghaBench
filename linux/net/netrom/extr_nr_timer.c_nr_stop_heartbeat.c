@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sock {int /*<<< orphan*/  sk_timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sk_stop_timer (struct sock*,int /*<<< orphan*/ *) ; 
+
+
+
+struct sock {int sk_timer; } ;
+
+
+ int sk_stop_timer (struct sock*,int *) ;
 
 void nr_stop_heartbeat(struct sock *sk)
 {
-	sk_stop_timer(sk, &sk->sk_timer);
+ sk_stop_timer(sk, &sk->sk_timer);
 }

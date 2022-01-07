@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- int count ; 
- int /*<<< orphan*/  damage_array (unsigned char*,size_t*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  random_ber_signature (unsigned char*,size_t*,int*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- int test_ecdsa_der_parse (unsigned char*,size_t,int,int) ; 
+ int CHECK (int) ;
+ int count ;
+ int damage_array (unsigned char*,size_t*) ;
+ int fprintf (int ,char*,...) ;
+ int random_ber_signature (unsigned char*,size_t*,int*,int*) ;
+ int stderr ;
+ int test_ecdsa_der_parse (unsigned char*,size_t,int,int) ;
 
 void run_ecdsa_der_parse(void) {
     int i,j;
@@ -33,7 +25,7 @@ void run_ecdsa_der_parse(void) {
             int ret = 0;
             if (j > 0) {
                 damage_array(buffer, &buflen);
-                /* We don't know anything anymore about the DERness of the result */
+
                 certainly_der = 0;
                 certainly_not_der = 0;
             }

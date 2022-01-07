@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
-typedef  int /*<<< orphan*/ * hb_dict_iter_t ;
 
-/* Variables and functions */
- char* json_object_iter_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_object_iter_next (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_object_iter_value (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int hb_value_t ;
+typedef int hb_dict_t ;
+typedef int * hb_dict_iter_t ;
+
+
+ char* json_object_iter_key (int *) ;
+ int * json_object_iter_next (int *,int *) ;
+ int * json_object_iter_value (int *) ;
 
 int
 hb_dict_iter_next_ex(const hb_dict_t *dict, hb_dict_iter_t *iter,
                      const char **key, hb_value_t **val)
 {
-    if (*iter == NULL)
+    if (*iter == ((void*)0))
         return 0;
-    if (key != NULL)
+    if (key != ((void*)0))
         *key = json_object_iter_key(*iter);
-    if (val != NULL)
+    if (val != ((void*)0))
         *val = json_object_iter_value(*iter);
     *iter = json_object_iter_next((hb_dict_t*)dict, *iter);
     return 1;

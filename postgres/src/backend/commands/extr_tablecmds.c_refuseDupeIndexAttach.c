@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetRelationName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetRelid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errdetail (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  index_get_partition (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+typedef int Oid ;
+
+
+ int ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE ;
+ int ERROR ;
+ scalar_t__ OidIsValid (int ) ;
+ int RelationGetRelationName (int ) ;
+ int RelationGetRelid (int ) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errdetail (char*,int ) ;
+ int errmsg (char*,int ,int ) ;
+ int index_get_partition (int ,int ) ;
 
 __attribute__((used)) static void
 refuseDupeIndexAttach(Relation parentIdx, Relation partIdx, Relation partitionTbl)
 {
-	Oid			existingIdx;
+ Oid existingIdx;
 
-	existingIdx = index_get_partition(partitionTbl,
-									  RelationGetRelid(parentIdx));
-	if (OidIsValid(existingIdx))
-		ereport(ERROR,
-				(errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
-				 errmsg("cannot attach index \"%s\" as a partition of index \"%s\"",
-						RelationGetRelationName(partIdx),
-						RelationGetRelationName(parentIdx)),
-				 errdetail("Another index is already attached for partition \"%s\".",
-						   RelationGetRelationName(partitionTbl))));
+ existingIdx = index_get_partition(partitionTbl,
+           RelationGetRelid(parentIdx));
+ if (OidIsValid(existingIdx))
+  ereport(ERROR,
+    (errcode(ERRCODE_OBJECT_NOT_IN_PREREQUISITE_STATE),
+     errmsg("cannot attach index \"%s\" as a partition of index \"%s\"",
+      RelationGetRelationName(partIdx),
+      RelationGetRelationName(parentIdx)),
+     errdetail("Another index is already attached for partition \"%s\".",
+         RelationGetRelationName(partitionTbl))));
 }

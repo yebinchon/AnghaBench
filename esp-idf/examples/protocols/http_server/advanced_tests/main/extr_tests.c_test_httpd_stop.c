@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  httpd_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_get_free_heap_size () ; 
- int /*<<< orphan*/  httpd_stop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  post_stop_mem ; 
+
+
+
+typedef int httpd_handle_t ;
+
+
+ int ESP_LOGI (int ,char*,int ) ;
+ int TAG ;
+ int esp_get_free_heap_size () ;
+ int httpd_stop (int ) ;
+ int post_stop_mem ;
 
 __attribute__((used)) static void test_httpd_stop(httpd_handle_t hd)
 {

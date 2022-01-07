@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_2__ {size_t size; int* data; } ;
-typedef  TYPE_1__ Jbig2WordStreamBuf ;
-typedef  int /*<<< orphan*/  Jbig2WordStream ;
+typedef TYPE_1__ Jbig2WordStreamBuf ;
+typedef int Jbig2WordStream ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int
 jbig2_word_stream_buf_get_next_word(Jbig2WordStream *self, size_t offset, uint32_t *word)
@@ -25,7 +25,7 @@ jbig2_word_stream_buf_get_next_word(Jbig2WordStream *self, size_t offset, uint32
     uint32_t val = 0;
     int ret = 0;
 
-    if (self == NULL || word == NULL)
+    if (self == ((void*)0) || word == ((void*)0))
         return -1;
     if (offset >= z->size) {
         *word = 0;

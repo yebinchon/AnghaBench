@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  cabinet_streams; int /*<<< orphan*/  binaries; int /*<<< orphan*/  patches; int /*<<< orphan*/  sourcelist_media; int /*<<< orphan*/  sourcelist_info; int /*<<< orphan*/  RunningActions; int /*<<< orphan*/  progids; int /*<<< orphan*/  extensions; int /*<<< orphan*/  mimes; int /*<<< orphan*/  classes; int /*<<< orphan*/  appids; int /*<<< orphan*/  subscriptions; int /*<<< orphan*/  folders; int /*<<< orphan*/  tempfiles; int /*<<< orphan*/  filepatches; int /*<<< orphan*/  files; int /*<<< orphan*/  features; int /*<<< orphan*/  components; } ;
-typedef  TYPE_1__ MSIPACKAGE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSIHANDLETYPE_PACKAGE ; 
- int /*<<< orphan*/  MSI_FreePackage ; 
- TYPE_1__* alloc_msiobject (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int cabinet_streams; int binaries; int patches; int sourcelist_media; int sourcelist_info; int RunningActions; int progids; int extensions; int mimes; int classes; int appids; int subscriptions; int folders; int tempfiles; int filepatches; int files; int features; int components; } ;
+typedef TYPE_1__ MSIPACKAGE ;
+
+
+ int MSIHANDLETYPE_PACKAGE ;
+ int MSI_FreePackage ;
+ TYPE_1__* alloc_msiobject (int ,int,int ) ;
+ int list_init (int *) ;
 
 __attribute__((used)) static MSIPACKAGE *msi_alloc_package( void )
 {

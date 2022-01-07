@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LANG_CONFIG_FILENAME ; 
- int LoadLangConfig (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+
+
+ int LANG_CONFIG_FILENAME ;
+ int LoadLangConfig (int ,char*,int ) ;
 
 bool LoadLangConfigCurrentDir(char *str, UINT str_size)
 {
-	// Validate arguments
-	if (str == NULL)
-	{
-		return false;
-	}
 
-	return LoadLangConfig(LANG_CONFIG_FILENAME, str, str_size);
+ if (str == ((void*)0))
+ {
+  return 0;
+ }
+
+ return LoadLangConfig(LANG_CONFIG_FILENAME, str, str_size);
 }

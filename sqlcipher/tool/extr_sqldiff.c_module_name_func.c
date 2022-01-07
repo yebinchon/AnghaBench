@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zToken ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- char* gobble_token (char const*,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_stricmp (char*,char*) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zToken ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ char* gobble_token (char const*,char*,int) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ scalar_t__ sqlite3_stricmp (char*,char*) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void module_name_func(
-  sqlite3_context *pCtx, 
+  sqlite3_context *pCtx,
   int nVal, sqlite3_value **apVal
 ){
   const char *zSql;
@@ -43,6 +43,6 @@ __attribute__((used)) static void module_name_func(
   zSql = gobble_token(zSql, zToken, sizeof(zToken));
   if( zSql==0 || sqlite3_stricmp(zToken, "using") ) return;
   zSql = gobble_token(zSql, zToken, sizeof(zToken));
-  
+
   sqlite3_result_text(pCtx, zToken, -1, SQLITE_TRANSIENT);
 }

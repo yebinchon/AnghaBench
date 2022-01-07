@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_11__ ;
+
+
 struct TYPE_15__ {int i_bitspersample; int i_channels; } ;
 struct TYPE_17__ {TYPE_11__ audio; } ;
 struct TYPE_16__ {TYPE_11__ audio; } ;
 struct TYPE_18__ {TYPE_2__ fmt_out; TYPE_1__ fmt_in; scalar_t__ p_sys; } ;
-typedef  TYPE_3__ filter_t ;
-struct TYPE_19__ {int i_nb_samples; int i_buffer; int /*<<< orphan*/  i_length; int /*<<< orphan*/  i_pts; int /*<<< orphan*/  i_dts; } ;
-typedef  TYPE_4__ block_t ;
+typedef TYPE_3__ filter_t ;
+struct TYPE_19__ {int i_nb_samples; int i_buffer; int i_length; int i_pts; int i_dts; } ;
+typedef TYPE_4__ block_t ;
 
-/* Variables and functions */
- int aout_FormatNbChannels (TYPE_11__*) ; 
- TYPE_4__* block_Alloc (size_t) ; 
- int /*<<< orphan*/  block_Release (TYPE_4__*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_3__*,char*) ; 
+
+ int aout_FormatNbChannels (TYPE_11__*) ;
+ TYPE_4__* block_Alloc (size_t) ;
+ int block_Release (TYPE_4__*) ;
+ int msg_Warn (TYPE_3__*,char*) ;
 
 __attribute__((used)) static block_t *Filter( filter_t *p_filter, block_t *p_block )
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static block_t *Filter( filter_t *p_filter, block_t *p_blo
     {
         if( p_block )
             block_Release( p_block );
-        return NULL;
+        return ((void*)0);
     }
 
     size_t i_out_size = p_block->i_nb_samples *
@@ -49,7 +49,7 @@ __attribute__((used)) static block_t *Filter( filter_t *p_filter, block_t *p_blo
     {
         msg_Warn( p_filter, "can't get output buffer" );
         block_Release( p_block );
-        return NULL;
+        return ((void*)0);
     }
 
     p_out->i_nb_samples = p_block->i_nb_samples;

@@ -1,57 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum audio_format { ____Placeholder_audio_format } audio_format ;
 
-/* Variables and functions */
- int AUDIO_FORMAT_16BIT ; 
- int AUDIO_FORMAT_16BIT_PLANAR ; 
- int AUDIO_FORMAT_32BIT ; 
- int AUDIO_FORMAT_32BIT_PLANAR ; 
- int AUDIO_FORMAT_FLOAT ; 
- int AUDIO_FORMAT_FLOAT_PLANAR ; 
- int AUDIO_FORMAT_U8BIT ; 
- int AUDIO_FORMAT_U8BIT_PLANAR ; 
- int AUDIO_FORMAT_UNKNOWN ; 
-#define  AV_SAMPLE_FMT_FLT 135 
-#define  AV_SAMPLE_FMT_FLTP 134 
-#define  AV_SAMPLE_FMT_S16 133 
-#define  AV_SAMPLE_FMT_S16P 132 
-#define  AV_SAMPLE_FMT_S32 131 
-#define  AV_SAMPLE_FMT_S32P 130 
-#define  AV_SAMPLE_FMT_U8 129 
-#define  AV_SAMPLE_FMT_U8P 128 
 
+
+
+typedef enum audio_format { ____Placeholder_audio_format } audio_format ;
+
+
+ int AUDIO_FORMAT_16BIT ;
+ int AUDIO_FORMAT_16BIT_PLANAR ;
+ int AUDIO_FORMAT_32BIT ;
+ int AUDIO_FORMAT_32BIT_PLANAR ;
+ int AUDIO_FORMAT_FLOAT ;
+ int AUDIO_FORMAT_FLOAT_PLANAR ;
+ int AUDIO_FORMAT_U8BIT ;
+ int AUDIO_FORMAT_U8BIT_PLANAR ;
+ int AUDIO_FORMAT_UNKNOWN ;
 __attribute__((used)) static inline enum audio_format convert_sample_format(int f)
 {
-	switch (f) {
-	case AV_SAMPLE_FMT_U8:
-		return AUDIO_FORMAT_U8BIT;
-	case AV_SAMPLE_FMT_S16:
-		return AUDIO_FORMAT_16BIT;
-	case AV_SAMPLE_FMT_S32:
-		return AUDIO_FORMAT_32BIT;
-	case AV_SAMPLE_FMT_FLT:
-		return AUDIO_FORMAT_FLOAT;
-	case AV_SAMPLE_FMT_U8P:
-		return AUDIO_FORMAT_U8BIT_PLANAR;
-	case AV_SAMPLE_FMT_S16P:
-		return AUDIO_FORMAT_16BIT_PLANAR;
-	case AV_SAMPLE_FMT_S32P:
-		return AUDIO_FORMAT_32BIT_PLANAR;
-	case AV_SAMPLE_FMT_FLTP:
-		return AUDIO_FORMAT_FLOAT_PLANAR;
-	default:;
-	}
+ switch (f) {
+ case 129:
+  return AUDIO_FORMAT_U8BIT;
+ case 133:
+  return AUDIO_FORMAT_16BIT;
+ case 131:
+  return AUDIO_FORMAT_32BIT;
+ case 135:
+  return AUDIO_FORMAT_FLOAT;
+ case 128:
+  return AUDIO_FORMAT_U8BIT_PLANAR;
+ case 132:
+  return AUDIO_FORMAT_16BIT_PLANAR;
+ case 130:
+  return AUDIO_FORMAT_32BIT_PLANAR;
+ case 134:
+  return AUDIO_FORMAT_FLOAT_PLANAR;
+ default:;
+ }
 
-	return AUDIO_FORMAT_UNKNOWN;
+ return AUDIO_FORMAT_UNKNOWN;
 }

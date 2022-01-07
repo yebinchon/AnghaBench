@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_pbm_info {int /*<<< orphan*/ * msi_bitmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct pci_pbm_info {int * msi_bitmap; } ;
+
+
+ int kfree (int *) ;
 
 __attribute__((used)) static void msi_bitmap_free(struct pci_pbm_info *pbm)
 {
-	kfree(pbm->msi_bitmap);
-	pbm->msi_bitmap = NULL;
+ kfree(pbm->msi_bitmap);
+ pbm->msi_bitmap = ((void*)0);
 }

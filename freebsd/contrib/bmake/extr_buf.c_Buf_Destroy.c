@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * buffer; scalar_t__ count; scalar_t__ size; } ;
-typedef  int /*<<< orphan*/  Byte ;
-typedef  TYPE_1__ Buffer ;
-typedef  scalar_t__ Boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * buffer; scalar_t__ count; scalar_t__ size; } ;
+typedef int Byte ;
+typedef TYPE_1__ Buffer ;
+typedef scalar_t__ Boolean ;
+
+
+ int free (int *) ;
 
 Byte *
 Buf_Destroy(Buffer *buf, Boolean freeData)
@@ -26,13 +26,13 @@ Buf_Destroy(Buffer *buf, Boolean freeData)
 
     data = buf->buffer;
     if (freeData) {
-	free(data);
-	data = NULL;
+ free(data);
+ data = ((void*)0);
     }
 
     buf->size = 0;
     buf->count = 0;
-    buf->buffer = NULL;
+    buf->buffer = ((void*)0);
 
     return data;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  pollfd; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int pollfd; } ;
 struct evlist {TYPE_1__ core; } ;
 
-/* Variables and functions */
- int fdarray__filter (int /*<<< orphan*/ *,short,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perf_evlist__munmap_filtered ; 
+
+ int fdarray__filter (int *,short,int ,int *) ;
+ int perf_evlist__munmap_filtered ;
 
 int evlist__filter_pollfd(struct evlist *evlist, short revents_and_mask)
 {
-	return fdarray__filter(&evlist->core.pollfd, revents_and_mask,
-			       perf_evlist__munmap_filtered, NULL);
+ return fdarray__filter(&evlist->core.pollfd, revents_and_mask,
+          perf_evlist__munmap_filtered, ((void*)0));
 }

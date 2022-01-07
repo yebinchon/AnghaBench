@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  au_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUE_SHMSYS ; 
- int /*<<< orphan*/ * aue_shmsys ; 
- int aue_shmsys_count ; 
+
+
+
+typedef int au_event_t ;
+
+
+ int AUE_SHMSYS ;
+ int * aue_shmsys ;
+ int aue_shmsys_count ;
 
 au_event_t
 audit_shmsys_to_event(int which)
 {
 
-	if ((which >= 0) && (which < aue_shmsys_count))
-		return (aue_shmsys[which]);
+ if ((which >= 0) && (which < aue_shmsys_count))
+  return (aue_shmsys[which]);
 
-	/* Audit a bad command. */
-	return (AUE_SHMSYS);
+
+ return (AUE_SHMSYS);
 }

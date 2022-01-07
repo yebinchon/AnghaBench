@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long spmf_mult () ; 
- unsigned long sysdiv_div_x_2 () ; 
+ unsigned long spmf_mult () ;
+ unsigned long sysdiv_div_x_2 () ;
 
 __attribute__((used)) static unsigned long ref_to_sys(unsigned long rate)
 {
-	rate *= spmf_mult();
-	rate *= 2;
-	rate /= sysdiv_div_x_2();
+ rate *= spmf_mult();
+ rate *= 2;
+ rate /= sysdiv_div_x_2();
 
-	return rate;
+ return rate;
 }

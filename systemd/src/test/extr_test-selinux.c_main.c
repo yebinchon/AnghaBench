@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG ; 
- char* SYSTEMD_BINARY_PATH ; 
- int /*<<< orphan*/  test_cleanup () ; 
- int /*<<< orphan*/  test_create_file_prepare (char const*) ; 
- int /*<<< orphan*/  test_loading () ; 
- int /*<<< orphan*/  test_misc (char const*) ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_testing () ; 
+ int LOG_DEBUG ;
+ char* SYSTEMD_BINARY_PATH ;
+ int test_cleanup () ;
+ int test_create_file_prepare (char const*) ;
+ int test_loading () ;
+ int test_misc (char const*) ;
+ int test_setup_logging (int ) ;
+ int test_testing () ;
 
 int main(int argc, char **argv) {
         const char *path = SYSTEMD_BINARY_PATH;

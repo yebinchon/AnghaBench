@@ -1,61 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct d3dx_parameter {size_t flags; int class; int element_count; int columns; int rows; int bytes; int member_count; struct d3dx_parameter* semantic; struct d3dx_parameter* name; struct d3dx_parameter* members; scalar_t__ type; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  size_t UINT ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
-
-/* Variables and functions */
-#define  D3DXPC_MATRIX_COLUMNS 146 
-#define  D3DXPC_MATRIX_ROWS 145 
-#define  D3DXPC_OBJECT 144 
-#define  D3DXPC_SCALAR 143 
-#define  D3DXPC_STRUCT 142 
-#define  D3DXPC_VECTOR 141 
-#define  D3DXPT_PIXELSHADER 140 
-#define  D3DXPT_SAMPLER 139 
-#define  D3DXPT_SAMPLER1D 138 
-#define  D3DXPT_SAMPLER2D 137 
-#define  D3DXPT_SAMPLER3D 136 
-#define  D3DXPT_SAMPLERCUBE 135 
-#define  D3DXPT_STRING 134 
-#define  D3DXPT_TEXTURE 133 
-#define  D3DXPT_TEXTURE1D 132 
-#define  D3DXPT_TEXTURE2D 131 
-#define  D3DXPT_TEXTURE3D 130 
-#define  D3DXPT_TEXTURECUBE 129 
-#define  D3DXPT_VERTEXSHADER 128 
- scalar_t__ D3D_OK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct d3dx_parameter*) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- scalar_t__ d3dx9_parse_name (struct d3dx_parameter**,char const*) ; 
- int debug_d3dxparameter_class (int) ; 
- int debug_d3dxparameter_type (scalar_t__) ; 
- int /*<<< orphan*/  free_parameter (struct d3dx_parameter*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  param_set_magic_number (struct d3dx_parameter*) ; 
- int /*<<< orphan*/  read_dword (char const**,int*) ; 
+typedef size_t UINT ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+ scalar_t__ D3D_OK ;
+ int ERR (char*) ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int FIXME (char*,int) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,struct d3dx_parameter*) ;
+ int TRACE (char*,int) ;
+ int TRUE ;
+ int WARN (char*,...) ;
+ scalar_t__ d3dx9_parse_name (struct d3dx_parameter**,char const*) ;
+ int debug_d3dxparameter_class (int) ;
+ int debug_d3dxparameter_type (scalar_t__) ;
+ int free_parameter (struct d3dx_parameter*,int,int ) ;
+ int param_set_magic_number (struct d3dx_parameter*) ;
+ int read_dword (char const**,int*) ;
 
 __attribute__((used)) static HRESULT d3dx9_parse_effect_typedef(struct d3dx9_base_effect *base, struct d3dx_parameter *param,
-	const char *data, const char **ptr, struct d3dx_parameter *parent, UINT flags)
+ const char *data, const char **ptr, struct d3dx_parameter *parent, UINT flags)
 {
     DWORD offset;
     HRESULT hr;
@@ -94,54 +73,54 @@ __attribute__((used)) static HRESULT d3dx9_parse_effect_typedef(struct d3dx9_bas
 
         switch (param->class)
         {
-            case D3DXPC_VECTOR:
+            case 141:
                 read_dword(ptr, &param->columns);
                 TRACE("Columns: %u\n", param->columns);
 
                 read_dword(ptr, &param->rows);
                 TRACE("Rows: %u\n", param->rows);
 
-                /* sizeof(DWORD) * rows * columns */
+
                 param->bytes = 4 * param->rows * param->columns;
                 break;
 
-            case D3DXPC_SCALAR:
-            case D3DXPC_MATRIX_ROWS:
-            case D3DXPC_MATRIX_COLUMNS:
+            case 143:
+            case 145:
+            case 146:
                 read_dword(ptr, &param->rows);
                 TRACE("Rows: %u\n", param->rows);
 
                 read_dword(ptr, &param->columns);
                 TRACE("Columns: %u\n", param->columns);
 
-                /* sizeof(DWORD) * rows * columns */
+
                 param->bytes = 4 * param->rows * param->columns;
                 break;
 
-            case D3DXPC_STRUCT:
+            case 142:
                 read_dword(ptr, &param->member_count);
                 TRACE("Members: %u\n", param->member_count);
                 break;
 
-            case D3DXPC_OBJECT:
+            case 144:
                 switch (param->type)
                 {
-                    case D3DXPT_STRING:
-                    case D3DXPT_PIXELSHADER:
-                    case D3DXPT_VERTEXSHADER:
-                    case D3DXPT_TEXTURE:
-                    case D3DXPT_TEXTURE1D:
-                    case D3DXPT_TEXTURE2D:
-                    case D3DXPT_TEXTURE3D:
-                    case D3DXPT_TEXTURECUBE:
+                    case 134:
+                    case 140:
+                    case 128:
+                    case 133:
+                    case 132:
+                    case 131:
+                    case 130:
+                    case 129:
                         param->bytes = sizeof(void *);
                         break;
 
-                    case D3DXPT_SAMPLER:
-                    case D3DXPT_SAMPLER1D:
-                    case D3DXPT_SAMPLER2D:
-                    case D3DXPT_SAMPLER3D:
-                    case D3DXPT_SAMPLERCUBE:
+                    case 139:
+                    case 138:
+                    case 137:
+                    case 136:
+                    case 135:
                         param->bytes = 0;
                         break;
 
@@ -158,7 +137,7 @@ __attribute__((used)) static HRESULT d3dx9_parse_effect_typedef(struct d3dx9_bas
     }
     else
     {
-        /* elements */
+
         param->type = parent->type;
         param->class = parent->class;
         param->name = parent->name;
@@ -213,7 +192,7 @@ __attribute__((used)) static HRESULT d3dx9_parse_effect_typedef(struct d3dx9_bas
         for (i = 0; i < param->member_count; ++i)
         {
             param_set_magic_number(&param->members[i]);
-            hr = d3dx9_parse_effect_typedef(base, &param->members[i], data, ptr, NULL, flags);
+            hr = d3dx9_parse_effect_typedef(base, &param->members[i], data, ptr, ((void*)0), flags);
             if (hr != D3D_OK)
             {
                 WARN("Failed to parse member %u\n", i);
@@ -234,7 +213,7 @@ err_out:
         for (i = 0; i < count; ++i)
             free_parameter(&param->members[i], param->element_count != 0, TRUE);
         HeapFree(GetProcessHeap(), 0, param->members);
-        param->members = NULL;
+        param->members = ((void*)0);
     }
 
     if (!parent)
@@ -242,8 +221,8 @@ err_out:
         HeapFree(GetProcessHeap(), 0, param->name);
         HeapFree(GetProcessHeap(), 0, param->semantic);
     }
-    param->name = NULL;
-    param->semantic = NULL;
+    param->name = ((void*)0);
+    param->semantic = ((void*)0);
 
     return hr;
 }

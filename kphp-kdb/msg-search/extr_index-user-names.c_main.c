@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  userpair_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int userpair_t ;
 struct username_index {int dummy; } ;
-typedef  scalar_t__ hash_t ;
-struct TYPE_5__ {int user_id; scalar_t__ hash; int users; int* offset; int /*<<< orphan*/  magic; } ;
+typedef scalar_t__ hash_t ;
+struct TYPE_5__ {int user_id; scalar_t__ hash; int users; int* offset; int magic; } ;
 
-/* Variables and functions */
- int Dc ; 
- int MAX_PAIRS ; 
- int MAX_USERS ; 
- int /*<<< orphan*/  O_RDONLY ; 
- TYPE_1__* P ; 
- int Pc ; 
- TYPE_1__ U ; 
- int /*<<< orphan*/  USERNAME_HASH_INDEX_MAGIC ; 
- void* UU ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- scalar_t__ fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*,...) ; 
- int getopt (int,char**,char*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  my_psort (int /*<<< orphan*/ ,int) ; 
- scalar_t__ open (char*,int /*<<< orphan*/ ) ; 
- int optind ; 
- int /*<<< orphan*/  output_stats () ; 
- char* progname ; 
- int read (scalar_t__,TYPE_1__*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usage () ; 
- int verbose ; 
- int write (int,TYPE_1__*,int) ; 
+
+ int Dc ;
+ int MAX_PAIRS ;
+ int MAX_USERS ;
+ int O_RDONLY ;
+ TYPE_1__* P ;
+ int Pc ;
+ TYPE_1__ U ;
+ int USERNAME_HASH_INDEX_MAGIC ;
+ void* UU ;
+ int assert (int) ;
+ int close (scalar_t__) ;
+ scalar_t__ fd ;
+ int fprintf (int ,char*,char*,char*,...) ;
+ int getopt (int,char**,char*) ;
+ void* malloc (int) ;
+ int my_psort (int ,int) ;
+ scalar_t__ open (char*,int ) ;
+ int optind ;
+ int output_stats () ;
+ char* progname ;
+ int read (scalar_t__,TYPE_1__*,int) ;
+ int stderr ;
+ int usage () ;
+ int verbose ;
+ int write (int,TYPE_1__*,int) ;
 
 int main (int argc, char *argv[]) {
   int i, r;
@@ -83,7 +83,7 @@ int main (int argc, char *argv[]) {
       fprintf (stderr, "%s: error reading %s: hash space exhausted (%ld entries)\n", progname, argv[optind], MAX_PAIRS);
       return 1;
     }
-    Pc += i / sizeof(userpair_t);    
+    Pc += i / sizeof(userpair_t);
     close (fd);
     optind++;
   }
@@ -115,6 +115,6 @@ int main (int argc, char *argv[]) {
   if (verbose) {
     output_stats();
   }
-                                      
+
   return 0;
 }

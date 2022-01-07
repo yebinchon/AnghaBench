@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_MINSTACK ; 
- int /*<<< orphan*/  getfirstrule (int /*<<< orphan*/ *,int,int) ; 
- int getsize (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lp_equal (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  luaL_checkstack (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_next (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
- int lua_tonumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  testpattern (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  val2str (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_MINSTACK ;
+ int getfirstrule (int *,int,int) ;
+ int getsize (int *,int) ;
+ scalar_t__ lp_equal (int *,int,int) ;
+ int luaL_checkstack (int *,int ,char*) ;
+ int luaL_error (int *,char*,int ) ;
+ int lua_gettop (int *) ;
+ int lua_newtable (int *) ;
+ scalar_t__ lua_next (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushinteger (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_settable (int *,int) ;
+ int lua_tonumber (int *,int) ;
+ int testpattern (int *,int) ;
+ int val2str (int *,int) ;
 
 __attribute__((used)) static int collectrules (lua_State *L, int arg, int *totalsize) {
-  int n = 1;  /* to count number of rules */
-  int postab = lua_gettop(L) + 1;  /* index of position table */
-  int size;  /* accumulator for total size */
-  lua_newtable(L);  /* create position table */
+  int n = 1;
+  int postab = lua_gettop(L) + 1;
+  int size;
+  lua_newtable(L);
   getfirstrule(L, arg, postab);
-  size = 2 + getsize(L, postab + 2);  /* TGrammar + TRule + rule */
-  lua_pushnil(L);  /* prepare to traverse grammar table */
+  size = 2 + getsize(L, postab + 2);
+  lua_pushnil(L);
   while (lua_next(L, arg) != 0) {
     if (lua_tonumber(L, -2) == 1 ||
-        lp_equal(L, -2, postab + 1)) {  /* initial rule? */
-      lua_pop(L, 1);  /* remove value (keep key for lua_next) */
+        lp_equal(L, -2, postab + 1)) {
+      lua_pop(L, 1);
       continue;
     }
-    if (!testpattern(L, -1))  /* value is not a pattern? */
+    if (!testpattern(L, -1))
       luaL_error(L, "rule '%s' is not a pattern", val2str(L, -2));
     luaL_checkstack(L, LUA_MINSTACK, "grammar has too many rules");
-    lua_pushvalue(L, -2);  /* push key (to insert into position table) */
+    lua_pushvalue(L, -2);
     lua_pushinteger(L, size);
     lua_settable(L, postab);
-    size += 1 + getsize(L, -1);  /* update size */
-    lua_pushvalue(L, -2);  /* push key (for next lua_next) */
+    size += 1 + getsize(L, -1);
+    lua_pushvalue(L, -2);
     n++;
   }
-  *totalsize = size + 1;  /* TTrue to finish list of rules */
+  *totalsize = size + 1;
   return n;
 }

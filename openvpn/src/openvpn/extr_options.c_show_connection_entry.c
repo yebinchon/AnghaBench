@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection_entry {int /*<<< orphan*/  key_direction; scalar_t__ http_proxy_options; int /*<<< orphan*/  af; int /*<<< orphan*/  proto; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_SHOW_PARMS ; 
- int /*<<< orphan*/  SHOW_BOOL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SHOW_INT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SHOW_PARM (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SHOW_STR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bind_defined ; 
- int /*<<< orphan*/  bind_ipv6_only ; 
- int /*<<< orphan*/  bind_local ; 
- int /*<<< orphan*/  connect_retry_seconds ; 
- int /*<<< orphan*/  connect_timeout ; 
- int /*<<< orphan*/  explicit_exit_notification ; 
- int /*<<< orphan*/  fragment ; 
- int /*<<< orphan*/  key_direction ; 
- int /*<<< orphan*/  keydirection2ascii (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  link_mtu ; 
- int /*<<< orphan*/  link_mtu_defined ; 
- int /*<<< orphan*/  local ; 
- int /*<<< orphan*/  local_port ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mssfix ; 
- int /*<<< orphan*/  mtu_discover_type ; 
- int /*<<< orphan*/  proto2ascii (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  remote ; 
- int /*<<< orphan*/  remote_float ; 
- int /*<<< orphan*/  remote_port ; 
- int /*<<< orphan*/  show_http_proxy_options (scalar_t__) ; 
- int /*<<< orphan*/  socks_proxy_port ; 
- int /*<<< orphan*/  socks_proxy_server ; 
- int /*<<< orphan*/  tls_auth_file ; 
- int /*<<< orphan*/  tls_crypt_file ; 
- int /*<<< orphan*/  tls_crypt_v2_file ; 
- int /*<<< orphan*/  tun_mtu ; 
- int /*<<< orphan*/  tun_mtu_defined ; 
- int /*<<< orphan*/  tun_mtu_extra ; 
- int /*<<< orphan*/  tun_mtu_extra_defined ; 
+
+
+
+struct connection_entry {int key_direction; scalar_t__ http_proxy_options; int af; int proto; } ;
+
+
+ int D_SHOW_PARMS ;
+ int SHOW_BOOL (int ) ;
+ int SHOW_INT (int ) ;
+ int SHOW_PARM (int ,int ,char*) ;
+ int SHOW_STR (int ) ;
+ int bind_defined ;
+ int bind_ipv6_only ;
+ int bind_local ;
+ int connect_retry_seconds ;
+ int connect_timeout ;
+ int explicit_exit_notification ;
+ int fragment ;
+ int key_direction ;
+ int keydirection2ascii (int ,int,int) ;
+ int link_mtu ;
+ int link_mtu_defined ;
+ int local ;
+ int local_port ;
+ int msg (int ,char*,int ) ;
+ int mssfix ;
+ int mtu_discover_type ;
+ int proto2ascii (int ,int ,int) ;
+ int remote ;
+ int remote_float ;
+ int remote_port ;
+ int show_http_proxy_options (scalar_t__) ;
+ int socks_proxy_port ;
+ int socks_proxy_server ;
+ int tls_auth_file ;
+ int tls_crypt_file ;
+ int tls_crypt_v2_file ;
+ int tun_mtu ;
+ int tun_mtu_defined ;
+ int tun_mtu_extra ;
+ int tun_mtu_extra_defined ;
 
 __attribute__((used)) static void
 show_connection_entry(const struct connection_entry *o)
 {
-    msg(D_SHOW_PARMS, "  proto = %s", proto2ascii(o->proto, o->af, false));
+    msg(D_SHOW_PARMS, "  proto = %s", proto2ascii(o->proto, o->af, 0));
     SHOW_STR(local);
     SHOW_STR(local_port);
     SHOW_STR(remote);
@@ -79,17 +79,17 @@ show_connection_entry(const struct connection_entry *o)
 
     SHOW_INT(mtu_discover_type);
 
-#ifdef ENABLE_FRAGMENT
-    SHOW_INT(fragment);
-#endif
+
+
+
     SHOW_INT(mssfix);
 
-#ifdef ENABLE_OCC
-    SHOW_INT(explicit_exit_notification);
-#endif
+
+
+
 
     SHOW_STR(tls_auth_file);
-    SHOW_PARM(key_direction, keydirection2ascii(o->key_direction, false, true),
+    SHOW_PARM(key_direction, keydirection2ascii(o->key_direction, 0, 1),
               "%s");
     SHOW_STR(tls_crypt_file);
     SHOW_STR(tls_crypt_v2_file);

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_context_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__session_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__prop_func_t ;
-struct TYPE_7__ {char* method; char const* path; char* body_type; int /*<<< orphan*/  no_dav_headers; TYPE_2__* header_delegate_baton; int /*<<< orphan*/  header_delegate; TYPE_2__* body_delegate_baton; int /*<<< orphan*/  body_delegate; } ;
-typedef  TYPE_1__ svn_ra_serf__handler_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__dav_props_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_8__ {char const* path; char const* depth; TYPE_1__* handler; int /*<<< orphan*/ * label; void* prop_func_baton; int /*<<< orphan*/  prop_func; int /*<<< orphan*/  const* find_props; } ;
-typedef  TYPE_2__ propfind_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * apr_ltoa (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  create_propfind_body ; 
- int /*<<< orphan*/  propfind_closed ; 
- int /*<<< orphan*/  propfind_expected_status ; 
- int /*<<< orphan*/  propfind_opened ; 
- int /*<<< orphan*/  propfind_ttable ; 
- int /*<<< orphan*/  setup_propfind_headers ; 
- TYPE_1__* svn_ra_serf__create_expat_handler (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_serf__xml_context_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_serf__xml_context_t ;
+typedef int svn_ra_serf__session_t ;
+typedef int svn_ra_serf__prop_func_t ;
+struct TYPE_7__ {char* method; char const* path; char* body_type; int no_dav_headers; TYPE_2__* header_delegate_baton; int header_delegate; TYPE_2__* body_delegate_baton; int body_delegate; } ;
+typedef TYPE_1__ svn_ra_serf__handler_t ;
+typedef int svn_ra_serf__dav_props_t ;
+typedef int svn_error_t ;
+struct TYPE_8__ {char const* path; char const* depth; TYPE_1__* handler; int * label; void* prop_func_baton; int prop_func; int const* find_props; } ;
+typedef TYPE_2__ propfind_context_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int * apr_ltoa (int *,int ) ;
+ TYPE_2__* apr_pcalloc (int *,int) ;
+ int create_propfind_body ;
+ int propfind_closed ;
+ int propfind_expected_status ;
+ int propfind_opened ;
+ int propfind_ttable ;
+ int setup_propfind_headers ;
+ TYPE_1__* svn_ra_serf__create_expat_handler (int *,int *,int ,int *) ;
+ int * svn_ra_serf__xml_context_create (int ,int ,int ,int *,TYPE_2__*,int *) ;
 
 svn_error_t *
 svn_ra_serf__create_propfind_handler(svn_ra_serf__handler_t **propfind_handler,
@@ -68,13 +68,13 @@ svn_ra_serf__create_propfind_handler(svn_ra_serf__handler_t **propfind_handler,
     }
   else
     {
-      new_prop_ctx->label = NULL;
+      new_prop_ctx->label = ((void*)0);
     }
 
   xmlctx = svn_ra_serf__xml_context_create(propfind_ttable,
                                            propfind_opened,
                                            propfind_closed,
-                                           NULL,
+                                           ((void*)0),
                                            new_prop_ctx,
                                            pool);
   handler = svn_ra_serf__create_expat_handler(sess, xmlctx,

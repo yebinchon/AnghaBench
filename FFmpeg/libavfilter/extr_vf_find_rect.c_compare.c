@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
 struct TYPE_4__ {int height; int width; int** data; int* linesize; } ;
-typedef  TYPE_1__ AVFrame ;
+typedef TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- float fabs (float) ; 
- int sqrt (int) ; 
+
+ float fabs (float) ;
+ int sqrt (int) ;
 
 __attribute__((used)) static float compare(const AVFrame *haystack, const AVFrame *obj, int offx, int offy)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static float compare(const AVFrame *haystack, const AVFram
     int64_t oh_sum_v = 0;
     float c;
     int n = obj->height * obj->width;
-    const uint8_t *odat = obj     ->data[0];
+    const uint8_t *odat = obj ->data[0];
     const uint8_t *hdat = haystack->data[0] + offx + offy * haystack->linesize[0];
     int64_t o_sigma, h_sigma;
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct quat {int dummy; } ;
-typedef  int /*<<< orphan*/  obs_data_t ;
+typedef int obs_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_quat (int /*<<< orphan*/ ,struct quat*) ; 
- int /*<<< orphan*/  obs_data_get_default_obj (int /*<<< orphan*/ *,char const*) ; 
+
+ int get_quat (int ,struct quat*) ;
+ int obs_data_get_default_obj (int *,char const*) ;
 
 void obs_data_get_default_quat(obs_data_t *data, const char *name,
-			       struct quat *val)
+          struct quat *val)
 {
-	get_quat(obs_data_get_default_obj(data, name), val);
+ get_quat(obs_data_get_default_obj(data, name), val);
 }

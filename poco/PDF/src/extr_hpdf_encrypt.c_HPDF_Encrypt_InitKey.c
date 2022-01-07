@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t key_len; int /*<<< orphan*/  md5_encryption_key; int /*<<< orphan*/  arc4ctx; void** encryption_key; } ;
-typedef  int HPDF_UINT32 ;
-typedef  int HPDF_UINT16 ;
-typedef  size_t HPDF_UINT ;
-typedef  int /*<<< orphan*/  HPDF_MD5_CTX ;
-typedef  int /*<<< orphan*/  HPDF_INT ;
-typedef  TYPE_1__* HPDF_Encrypt ;
-typedef  void* HPDF_BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARC4Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- size_t HPDF_ENCRYPT_KEY_MAX ; 
- int /*<<< orphan*/  HPDF_MD5Final (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HPDF_MD5Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HPDF_MD5Update (int /*<<< orphan*/ *,void**,size_t) ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t key_len; int md5_encryption_key; int arc4ctx; void** encryption_key; } ;
+typedef int HPDF_UINT32 ;
+typedef int HPDF_UINT16 ;
+typedef size_t HPDF_UINT ;
+typedef int HPDF_MD5_CTX ;
+typedef int HPDF_INT ;
+typedef TYPE_1__* HPDF_Encrypt ;
+typedef void* HPDF_BYTE ;
+
+
+ int ARC4Init (int *,int ,size_t) ;
+ size_t HPDF_ENCRYPT_KEY_MAX ;
+ int HPDF_MD5Final (int ,int *) ;
+ int HPDF_MD5Init (int *) ;
+ int HPDF_MD5Update (int *,void**,size_t) ;
+ int HPDF_PTRACE (char*) ;
 
 void
-HPDF_Encrypt_InitKey  (HPDF_Encrypt  attr,
-                       HPDF_UINT32       object_id,
-                       HPDF_UINT16       gen_no)
+HPDF_Encrypt_InitKey (HPDF_Encrypt attr,
+                       HPDF_UINT32 object_id,
+                       HPDF_UINT16 gen_no)
 {
     HPDF_MD5_CTX ctx;
     HPDF_UINT key_len;

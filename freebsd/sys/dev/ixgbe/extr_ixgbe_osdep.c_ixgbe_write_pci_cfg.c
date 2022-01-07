@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u32 ;
+typedef int u16 ;
 struct ixgbe_hw {scalar_t__ back; } ;
-struct adapter {int /*<<< orphan*/  dev; } ;
+struct adapter {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pci_write_config (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int pci_write_config (int ,int ,int ,int) ;
 
 inline void
 ixgbe_write_pci_cfg(struct ixgbe_hw *hw, u32 reg, u16 value)
 {
-	pci_write_config(((struct adapter *)hw->back)->dev, reg, value, 2);
+ pci_write_config(((struct adapter *)hw->back)->dev, reg, value, 2);
 }

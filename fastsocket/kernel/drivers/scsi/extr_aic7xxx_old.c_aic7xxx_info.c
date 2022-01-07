@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct aic7xxx_host {size_t board_name_index; } ;
 struct Scsi_Host {scalar_t__ hostdata; } ;
-typedef  int /*<<< orphan*/  buffer ;
+typedef int buffer ;
 
-/* Variables and functions */
- char* AIC7XXX_C_VERSION ; 
- char* AIC7XXX_H_VERSION ; 
- char** board_names ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+ char* AIC7XXX_C_VERSION ;
+ char* AIC7XXX_H_VERSION ;
+ char** board_names ;
+ int memset (char*,int ,int) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static const char *
 aic7xxx_info(struct Scsi_Host *dooh)

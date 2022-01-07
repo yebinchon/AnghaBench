@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct value {int dummy; } ;
 struct type {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_TYPEDEF (struct type*) ; 
- int /*<<< orphan*/  COERCE_ARRAY (struct value*) ; 
- scalar_t__ TYPE_CODE (struct type*) ; 
- scalar_t__ TYPE_CODE_MEMBER ; 
- scalar_t__ TYPE_CODE_PTR ; 
- scalar_t__ TYPE_CODE_REF ; 
- scalar_t__ TYPE_CODE_STRUCT ; 
- scalar_t__ TYPE_CODE_UNION ; 
- struct type* TYPE_TARGET_TYPE (struct type*) ; 
- struct type* VALUE_TYPE (struct value*) ; 
- int check_field_in (struct type*,char const*) ; 
- int /*<<< orphan*/  error (char*) ; 
+
+ int CHECK_TYPEDEF (struct type*) ;
+ int COERCE_ARRAY (struct value*) ;
+ scalar_t__ TYPE_CODE (struct type*) ;
+ scalar_t__ TYPE_CODE_MEMBER ;
+ scalar_t__ TYPE_CODE_PTR ;
+ scalar_t__ TYPE_CODE_REF ;
+ scalar_t__ TYPE_CODE_STRUCT ;
+ scalar_t__ TYPE_CODE_UNION ;
+ struct type* TYPE_TARGET_TYPE (struct type*) ;
+ struct type* VALUE_TYPE (struct value*) ;
+ int check_field_in (struct type*,char const*) ;
+ int error (char*) ;
 
 int
 check_field (struct value *arg1, const char *name)
@@ -36,13 +36,13 @@ check_field (struct value *arg1, const char *name)
 
   t = VALUE_TYPE (arg1);
 
-  /* Follow pointers until we get to a non-pointer.  */
+
 
   for (;;)
     {
       CHECK_TYPEDEF (t);
       if (TYPE_CODE (t) != TYPE_CODE_PTR && TYPE_CODE (t) != TYPE_CODE_REF)
-	break;
+ break;
       t = TYPE_TARGET_TYPE (t);
     }
 

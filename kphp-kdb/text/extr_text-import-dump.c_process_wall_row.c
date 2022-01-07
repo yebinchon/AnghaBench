@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_add_message {int user_id; int legacy_id; int peer_id; int date; int ip; int port; int front; int text_len; char* text; int /*<<< orphan*/  ua_hash; scalar_t__ peer_msg_id; scalar_t__ type; } ;
 
-/* Variables and functions */
- int* I ; 
- int* L ; 
- scalar_t__ LEV_TX_ADD_MESSAGE ; 
- scalar_t__ LEV_TX_ADD_MESSAGE_MF ; 
- char** S ; 
- int TXFS_MEDIA ; 
- int /*<<< orphan*/  TXFS_SPAM ; 
- scalar_t__ TXFS_WALL ; 
- int /*<<< orphan*/  adj_rec ; 
- int check_wall_embedded_media (char*,int) ; 
- scalar_t__ conv_uid (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*) ; 
- int list_id ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strtoull (char*,int /*<<< orphan*/ ,int) ; 
- int verbosity ; 
- size_t wa_date ; 
- size_t wa_from_id ; 
- size_t wa_front ; 
- size_t wa_hash ; 
- size_t wa_id ; 
- size_t wa_ip ; 
- size_t wa_message ; 
- size_t wa_port ; 
- size_t wa_to_id ; 
- size_t wa_to_shown ; 
- struct lev_add_message* write_alloc (int) ; 
+
+
+
+struct lev_add_message {int user_id; int legacy_id; int peer_id; int date; int ip; int port; int front; int text_len; char* text; int ua_hash; scalar_t__ peer_msg_id; scalar_t__ type; } ;
+
+
+ int* I ;
+ int* L ;
+ scalar_t__ LEV_TX_ADD_MESSAGE ;
+ scalar_t__ LEV_TX_ADD_MESSAGE_MF ;
+ char** S ;
+ int TXFS_MEDIA ;
+ int TXFS_SPAM ;
+ scalar_t__ TXFS_WALL ;
+ int adj_rec ;
+ int check_wall_embedded_media (char*,int) ;
+ scalar_t__ conv_uid (int) ;
+ int fprintf (int ,char*,int,char*) ;
+ int list_id ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int strtoull (char*,int ,int) ;
+ int verbosity ;
+ size_t wa_date ;
+ size_t wa_from_id ;
+ size_t wa_front ;
+ size_t wa_hash ;
+ size_t wa_id ;
+ size_t wa_ip ;
+ size_t wa_message ;
+ size_t wa_port ;
+ size_t wa_to_id ;
+ size_t wa_to_shown ;
+ struct lev_add_message* write_alloc (int) ;
 
 void process_wall_row (void) {
   int user_id = I[wa_from_id];
   int i, len, has_media = 0;
   char *ptr, *str;
-  list_id = I[wa_to_id]; 
+  list_id = I[wa_to_id];
   if (conv_uid (list_id) < 0 || !list_id || user_id <= 0) {
     return;
   }
@@ -61,7 +61,7 @@ void process_wall_row (void) {
     }
   }
   struct lev_add_message *E = write_alloc (sizeof (struct lev_add_message) + L[wa_message] + 1);
-  E->type = (has_media ? LEV_TX_ADD_MESSAGE_MF + has_media * TXFS_MEDIA : LEV_TX_ADD_MESSAGE) + 
+  E->type = (has_media ? LEV_TX_ADD_MESSAGE_MF + has_media * TXFS_MEDIA : LEV_TX_ADD_MESSAGE) +
             TXFS_WALL + (I[wa_to_shown] ? TXFS_SPAM : 0);
   E->user_id = list_id;
   E->legacy_id = I[wa_id];

@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* _ (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  puts (char*) ; 
+ char* _ (char*) ;
+ int printf (char*,...) ;
+ int puts (char*) ;
 
 int main(void)
 {
-	/* TRANSLATORS: This is a test. You don't need to translate it. */
-	puts(_("TEST: A C test string"));
 
-	/* TRANSLATORS: This is a test. You don't need to translate it. */
-	printf(_("TEST: A C test string %s"), "variable");
+ puts(_("TEST: A C test string"));
 
-	/* TRANSLATORS: This is a test. You don't need to translate it. */
-	printf(_("TEST: Hello World!"));
 
-	/* TRANSLATORS: This is a test. You don't need to translate it. */
-	printf(_("TEST: Old English Runes"));
+ printf(_("TEST: A C test string %s"), "variable");
 
-	/* TRANSLATORS: This is a test. You don't need to translate it. */
-	printf(_("TEST: ‘single’ and “double” quotes"));
+
+ printf(_("TEST: Hello World!"));
+
+
+ printf(_("TEST: Old English Runes"));
+
+
+ printf(_("TEST: ‘single’ and “double” quotes"));
 }

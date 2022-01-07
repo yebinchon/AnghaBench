@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t symbol; size_t weight; } ;
-typedef  TYPE_1__ sortedSymbol_t ;
-typedef  int /*<<< orphan*/  rankVal ;
-typedef  size_t U32 ;
-typedef  scalar_t__ U16 ;
-struct TYPE_6__ {int length; void* nbBits; int /*<<< orphan*/  sequence; } ;
-typedef  TYPE_2__ HUFv05_DEltX4 ;
-typedef  void* BYTE ;
+typedef TYPE_1__ sortedSymbol_t ;
+typedef int rankVal ;
+typedef size_t U32 ;
+typedef scalar_t__ U16 ;
+struct TYPE_6__ {int length; void* nbBits; int sequence; } ;
+typedef TYPE_2__ HUFv05_DEltX4 ;
+typedef void* BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HUFv05_ABSOLUTEMAX_TABLELOG ; 
- int /*<<< orphan*/  MEM_writeLE16 (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (size_t*,size_t const*,int) ; 
+
+ int HUFv05_ABSOLUTEMAX_TABLELOG ;
+ int MEM_writeLE16 (int *,scalar_t__) ;
+ int memcpy (size_t*,size_t const*,int) ;
 
 __attribute__((used)) static void HUFv05_fillDTableX4Level2(HUFv05_DEltX4* DTable, U32 sizeLog, const U32 consumed,
                            const U32* rankValOrigin, const int minWeight,
@@ -35,21 +35,21 @@ __attribute__((used)) static void HUFv05_fillDTableX4Level2(HUFv05_DEltX4* DTabl
     U32 rankVal[HUFv05_ABSOLUTEMAX_TABLELOG + 1];
     U32 s;
 
-    /* get pre-calculated rankVal */
+
     memcpy(rankVal, rankValOrigin, sizeof(rankVal));
 
-    /* fill skipped values */
+
     if (minWeight>1) {
         U32 i, skipSize = rankVal[minWeight];
         MEM_writeLE16(&(DElt.sequence), baseSeq);
-        DElt.nbBits   = (BYTE)(consumed);
-        DElt.length   = 1;
+        DElt.nbBits = (BYTE)(consumed);
+        DElt.length = 1;
         for (i = 0; i < skipSize; i++)
             DTable[i] = DElt;
     }
 
-    /* fill DTable */
-    for (s=0; s<sortedListSize; s++) {   /* note : sortedSymbols already skipped */
+
+    for (s=0; s<sortedListSize; s++) {
         const U32 symbol = sortedSymbols[s].symbol;
         const U32 weight = sortedSymbols[s].weight;
         const U32 nbBits = nbBitsBaseline - weight;
@@ -61,7 +61,7 @@ __attribute__((used)) static void HUFv05_fillDTableX4Level2(HUFv05_DEltX4* DTabl
         MEM_writeLE16(&(DElt.sequence), (U16)(baseSeq + (symbol << 8)));
         DElt.nbBits = (BYTE)(nbBits + consumed);
         DElt.length = 2;
-        do { DTable[i++] = DElt; } while (i<end);   /* since length >= 1 */
+        do { DTable[i++] = DElt; } while (i<end);
 
         rankVal[weight] += length;
     }

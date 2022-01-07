@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int node_status; } ;
-typedef  TYPE_1__ svn_wc_status3_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct dir_delete_baton_t {int /*<<< orphan*/  found_edit; int /*<<< orphan*/  compared_abspaths; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_wc_status3_t ;
+typedef int svn_error_t ;
+struct dir_delete_baton_t {int found_edit; int compared_abspaths; } ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_CEASE_INVOCATION ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_hash_gets (int /*<<< orphan*/ ,char const*) ; 
-#define  svn_wc_status_deleted 130 
-#define  svn_wc_status_ignored 129 
-#define  svn_wc_status_none 128 
+
+ int SVN_ERR_CEASE_INVOCATION ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int * svn_error_create (int ,int *,int *) ;
+ scalar_t__ svn_hash_gets (int ,char const*) ;
+
+
+
 
 __attribute__((used)) static svn_error_t *
 verify_touched_by_del_check(void *baton,
@@ -40,13 +40,13 @@ verify_touched_by_del_check(void *baton,
 
   switch (status->node_status)
     {
-      case svn_wc_status_deleted:
-      case svn_wc_status_ignored:
-      case svn_wc_status_none:
+      case 130:
+      case 129:
+      case 128:
         return SVN_NO_ERROR;
 
       default:
         delb->found_edit = TRUE;
-        return svn_error_create(SVN_ERR_CEASE_INVOCATION, NULL, NULL);
+        return svn_error_create(SVN_ERR_CEASE_INVOCATION, ((void*)0), ((void*)0));
     }
 }

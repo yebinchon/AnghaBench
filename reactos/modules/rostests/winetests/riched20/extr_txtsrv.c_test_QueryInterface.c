@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITextServices ;
-typedef  int /*<<< orphan*/  ITextHost ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IRichEditOle ; 
- int /*<<< orphan*/  IID_ITextDocument ; 
- int IRichEditOle_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IRichEditOle_Release (int /*<<< orphan*/ *) ; 
- int ITextDocument_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  ITextDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITextHost_Release (int /*<<< orphan*/ *) ; 
- int ITextServices_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  ITextServices_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int get_refcount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_texthost (int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int ULONG ;
+typedef int IUnknown ;
+typedef int ITextServices ;
+typedef int ITextHost ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int HRESULT ;
+
+
+ int IID_IRichEditOle ;
+ int IID_ITextDocument ;
+ int IRichEditOle_QueryInterface (int *,int *,void**) ;
+ int IRichEditOle_Release (int *) ;
+ int ITextDocument_QueryInterface (int *,int *,void**) ;
+ int ITextDocument_Release (int *) ;
+ int ITextHost_Release (int *) ;
+ int ITextServices_QueryInterface (int *,int *,void**) ;
+ int ITextServices_Release (int *) ;
+ int S_OK ;
+ int get_refcount (int *) ;
+ int init_texthost (int **,int **) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_QueryInterface(void)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void test_QueryInterface(void)
     refcount = get_refcount((IUnknown *)txtserv);
     ok(refcount == 1, "got wrong ref count: %d\n", refcount);
 
-    /* IID_IRichEditOle */
+
     hres = ITextServices_QueryInterface(txtserv, &IID_IRichEditOle, (void **)&txtsrv_reole);
     ok(hres == S_OK, "ITextServices_QueryInterface: 0x%08x\n", hres);
     refcount = get_refcount((IUnknown *)txtserv);
@@ -70,7 +70,7 @@ __attribute__((used)) static void test_QueryInterface(void)
     refcount = get_refcount((IUnknown *)txtserv);
     ok(refcount == 1, "got wrong ref count: %d\n", refcount);
 
-    /* IID_ITextDocument */
+
     hres = ITextServices_QueryInterface(txtserv, &IID_ITextDocument, (void **)&txtsrv_txtdoc);
     ok(hres == S_OK, "ITextServices_QueryInterface: 0x%08x\n", hres);
     refcount = get_refcount((IUnknown *)txtserv);

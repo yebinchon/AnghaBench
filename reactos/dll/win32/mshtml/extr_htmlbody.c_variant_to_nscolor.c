@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
-#define  VT_BSTR 129 
-#define  VT_I4 128 
- int /*<<< orphan*/ * V_BSTR (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  V_I4 (int /*<<< orphan*/  const*) ; 
- int V_VT (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int nsAString ;
+typedef char WCHAR ;
+typedef int VARIANT ;
+typedef int PRUnichar ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FIXME (char*,int ) ;
+ int TRUE ;
+
+
+ int * V_BSTR (int const*) ;
+ int V_I4 (int const*) ;
+ int V_VT (int const*) ;
+ int debugstr_variant (int const*) ;
+ int nsAString_Init (int *,int *) ;
+ int wsprintfW (int *,char const*,int ) ;
 
 BOOL variant_to_nscolor(const VARIANT *v, nsAString *nsstr)
 {
     switch(V_VT(v)) {
-    case VT_BSTR:
+    case 129:
         nsAString_Init(nsstr, V_BSTR(v));
         return TRUE;
 
-    case VT_I4: {
+    case 128: {
         PRUnichar buf[10];
         static const WCHAR formatW[] = {'#','%','x',0};
 

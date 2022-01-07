@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ nice; scalar_t__ irq; scalar_t__ idle; scalar_t__ sys; scalar_t__ user; } ;
-struct TYPE_11__ {TYPE_2__ cpu_times; int /*<<< orphan*/ * model; scalar_t__ speed; } ;
-typedef  TYPE_3__ uv_cpu_info_t ;
-typedef  int /*<<< orphan*/  kstat_t ;
+struct TYPE_11__ {TYPE_2__ cpu_times; int * model; scalar_t__ speed; } ;
+typedef TYPE_3__ uv_cpu_info_t ;
+typedef int kstat_t ;
 struct TYPE_9__ {scalar_t__ ui64; scalar_t__ i64; scalar_t__ i32; } ;
 struct TYPE_12__ {scalar_t__ data_type; TYPE_1__ value; } ;
-typedef  TYPE_4__ kstat_named_t ;
-typedef  int /*<<< orphan*/  kstat_ctl_t ;
+typedef TYPE_4__ kstat_named_t ;
+typedef int kstat_ctl_t ;
 
-/* Variables and functions */
- scalar_t__ KSTAT_DATA_INT32 ; 
- scalar_t__ KSTAT_DATA_INT64 ; 
- scalar_t__ KSTAT_DATA_STRING ; 
- scalar_t__ KSTAT_DATA_UINT64 ; 
- int /*<<< orphan*/  KSTAT_NAMED_STR_PTR (TYPE_4__*) ; 
- int UV_ENOMEM ; 
- int UV_EPERM ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  kstat_close (int /*<<< orphan*/ *) ; 
- TYPE_4__* kstat_data_lookup (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * kstat_lookup (int /*<<< orphan*/ *,char*,int,char*) ; 
- int /*<<< orphan*/ * kstat_open () ; 
- int kstat_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* uv__malloc (int) ; 
- int /*<<< orphan*/ * uv__strdup (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ KSTAT_DATA_INT32 ;
+ scalar_t__ KSTAT_DATA_INT64 ;
+ scalar_t__ KSTAT_DATA_STRING ;
+ scalar_t__ KSTAT_DATA_UINT64 ;
+ int KSTAT_NAMED_STR_PTR (TYPE_4__*) ;
+ int UV_ENOMEM ;
+ int UV_EPERM ;
+ int assert (int) ;
+ int kstat_close (int *) ;
+ TYPE_4__* kstat_data_lookup (int *,char*) ;
+ int * kstat_lookup (int *,char*,int,char*) ;
+ int * kstat_open () ;
+ int kstat_read (int *,int *,int *) ;
+ TYPE_3__* uv__malloc (int) ;
+ int * uv__strdup (int ) ;
 
 int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
-  int           lookup_instance;
-  kstat_ctl_t   *kc;
-  kstat_t       *ksp;
+  int lookup_instance;
+  kstat_ctl_t *kc;
+  kstat_t *ksp;
   kstat_named_t *knp;
   uv_cpu_info_t* cpu_info;
 
   kc = kstat_open();
-  if (kc == NULL)
+  if (kc == ((void*)0))
     return UV_EPERM;
 
-  /* Get count of cpus */
+
   lookup_instance = 0;
-  while ((ksp = kstat_lookup(kc, (char*) "cpu_info", lookup_instance, NULL))) {
+  while ((ksp = kstat_lookup(kc, (char*) "cpu_info", lookup_instance, ((void*)0)))) {
     lookup_instance++;
   }
 
@@ -67,10 +67,10 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
 
   cpu_info = *cpu_infos;
   lookup_instance = 0;
-  while ((ksp = kstat_lookup(kc, (char*) "cpu_info", lookup_instance, NULL))) {
-    if (kstat_read(kc, ksp, NULL) == -1) {
+  while ((ksp = kstat_lookup(kc, (char*) "cpu_info", lookup_instance, ((void*)0)))) {
+    if (kstat_read(kc, ksp, ((void*)0)) == -1) {
       cpu_info->speed = 0;
-      cpu_info->model = NULL;
+      cpu_info->model = ((void*)0);
     } else {
       knp = kstat_data_lookup(ksp, (char*) "clock_MHz");
       assert(knp->data_type == KSTAT_DATA_INT32 ||
@@ -92,10 +92,10 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
   for (;;) {
     ksp = kstat_lookup(kc, (char*) "cpu", lookup_instance, (char*) "sys");
 
-    if (ksp == NULL)
+    if (ksp == ((void*)0))
       break;
 
-    if (kstat_read(kc, ksp, NULL) == -1) {
+    if (kstat_read(kc, ksp, ((void*)0)) == -1) {
       cpu_info->cpu_times.user = 0;
       cpu_info->cpu_times.nice = 0;
       cpu_info->cpu_times.sys = 0;

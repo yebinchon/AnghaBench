@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wlp_neighbor_e {int /*<<< orphan*/  wssid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
+
+
+
+struct wlp_neighbor_e {int wssid; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
 
 __attribute__((used)) static
 void wlp_neighbor_init(struct wlp_neighbor_e *neighbor)
 {
-	INIT_LIST_HEAD(&neighbor->wssid);
+ INIT_LIST_HEAD(&neighbor->wssid);
 }

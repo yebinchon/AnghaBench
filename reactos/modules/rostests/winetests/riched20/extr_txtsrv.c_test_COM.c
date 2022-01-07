@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * member_0; } ;
-struct unk_impl {int member_1; int ref; int /*<<< orphan*/  inner_unk; int /*<<< orphan*/  IUnknown_iface; int /*<<< orphan*/ * member_2; TYPE_1__ member_0; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * member_0; } ;
-struct ITextHostTestImpl {int member_1; int /*<<< orphan*/  ITextHost_iface; TYPE_2__ member_0; } ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  ITextServices ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int ITextServices_AddRef (int /*<<< orphan*/ *) ; 
- int ITextServices_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  itextHostVtbl ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pCreateTextServices (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pIID_ITextServices ; 
- int /*<<< orphan*/  unk_vtbl ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * member_0; } ;
+struct unk_impl {int member_1; int ref; int inner_unk; int IUnknown_iface; int * member_2; TYPE_1__ member_0; } ;
+struct TYPE_4__ {int * member_0; } ;
+struct ITextHostTestImpl {int member_1; int ITextHost_iface; TYPE_2__ member_0; } ;
+typedef int ULONG ;
+typedef int ITextServices ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ITextServices_AddRef (int *) ;
+ int ITextServices_Release (int *) ;
+ scalar_t__ IUnknown_QueryInterface (int ,int ,void**) ;
+ int IUnknown_Release (int ) ;
+ scalar_t__ S_OK ;
+ int itextHostVtbl ;
+ int ok (int,char*,...) ;
+ scalar_t__ pCreateTextServices (int *,int *,int *) ;
+ int pIID_ITextServices ;
+ int unk_vtbl ;
 
 __attribute__((used)) static void test_COM(void)
 {
-    struct unk_impl unk_obj = {{&unk_vtbl}, 19, NULL};
+    struct unk_impl unk_obj = {{&unk_vtbl}, 19, ((void*)0)};
     struct ITextHostTestImpl texthost = {{&itextHostVtbl}, 1};
     ITextServices *textsrv;
     ULONG refcount;
     HRESULT hr;
 
-    /* COM aggregation */
+
     hr = pCreateTextServices(&unk_obj.IUnknown_iface, &texthost.ITextHost_iface,
                              &unk_obj.inner_unk);
     ok(hr == S_OK, "CreateTextServices failed: %08x\n", hr);

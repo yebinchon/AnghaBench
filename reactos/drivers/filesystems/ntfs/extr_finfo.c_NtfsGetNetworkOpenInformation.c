@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_20__ {int /*<<< orphan*/  FileAttributes; int /*<<< orphan*/  ChangeTime; int /*<<< orphan*/  LastWriteTime; int /*<<< orphan*/  LastAccessTime; int /*<<< orphan*/  CreationTime; } ;
-struct TYPE_16__ {int /*<<< orphan*/  QuadPart; } ;
-struct TYPE_15__ {int /*<<< orphan*/  QuadPart; } ;
-struct TYPE_14__ {int /*<<< orphan*/  QuadPart; } ;
-struct TYPE_13__ {int /*<<< orphan*/  QuadPart; } ;
-struct TYPE_19__ {int /*<<< orphan*/  FileAttributes; int /*<<< orphan*/  AllocationSize; int /*<<< orphan*/  EndOfFile; TYPE_4__ ChangeTime; TYPE_3__ LastWriteTime; TYPE_2__ LastAccessTime; TYPE_1__ CreationTime; } ;
-struct TYPE_17__ {int /*<<< orphan*/  AllocationSize; int /*<<< orphan*/  FileSize; } ;
+
+
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_20__ {int FileAttributes; int ChangeTime; int LastWriteTime; int LastAccessTime; int CreationTime; } ;
+struct TYPE_16__ {int QuadPart; } ;
+struct TYPE_15__ {int QuadPart; } ;
+struct TYPE_14__ {int QuadPart; } ;
+struct TYPE_13__ {int QuadPart; } ;
+struct TYPE_19__ {int FileAttributes; int AllocationSize; int EndOfFile; TYPE_4__ ChangeTime; TYPE_3__ LastWriteTime; TYPE_2__ LastAccessTime; TYPE_1__ CreationTime; } ;
+struct TYPE_17__ {int AllocationSize; int FileSize; } ;
 struct TYPE_18__ {TYPE_5__ RFCB; TYPE_8__ Entry; } ;
-typedef  int* PULONG ;
-typedef  TYPE_6__* PNTFS_FCB ;
-typedef  TYPE_7__* PFILE_NETWORK_OPEN_INFORMATION ;
-typedef  TYPE_8__* PFILENAME_ATTRIBUTE ;
-typedef  int /*<<< orphan*/  PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  FILE_NETWORK_OPEN_INFORMATION ;
+typedef int* PULONG ;
+typedef TYPE_6__* PNTFS_FCB ;
+typedef TYPE_7__* PFILE_NETWORK_OPEN_INFORMATION ;
+typedef TYPE_8__* PFILENAME_ATTRIBUTE ;
+typedef int PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef int FILE_NETWORK_OPEN_INFORMATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,TYPE_6__*,int /*<<< orphan*/ ,TYPE_7__*,int*) ; 
- int /*<<< orphan*/  NtfsFileFlagsToAttributes (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STATUS_BUFFER_TOO_SMALL ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+ int DPRINT (char*,TYPE_6__*,int ,TYPE_7__*,int*) ;
+ int NtfsFileFlagsToAttributes (int ,int *) ;
+ int STATUS_BUFFER_TOO_SMALL ;
+ int STATUS_SUCCESS ;
 
 __attribute__((used)) static
 NTSTATUS

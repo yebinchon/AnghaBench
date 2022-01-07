@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct HttpContext {int /*<<< orphan*/  pass; int /*<<< orphan*/  user; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_PARSE_URL_ERROR ; 
- int /*<<< orphan*/  HTTP_PARSE_USR_ERROR ; 
- int /*<<< orphan*/  REST_ACTION_URL_POS ; 
- int /*<<< orphan*/  REST_TIMESTAMP_FMT_LOCAL_STRING ; 
- int /*<<< orphan*/  REST_TIMESTAMP_FMT_TIMESTAMP ; 
- int /*<<< orphan*/  REST_TIMESTAMP_FMT_UTC_STRING ; 
- int /*<<< orphan*/  httpSendErrorResp (struct HttpContext*,int /*<<< orphan*/ ) ; 
- scalar_t__ httpUrlMatch (struct HttpContext*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  restGetPassFromUrl (struct HttpContext*) ; 
- int /*<<< orphan*/  restGetUserFromUrl (struct HttpContext*) ; 
- int restProcessLoginRequest (struct HttpContext*) ; 
- int restProcessSqlRequest (struct HttpContext*,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
+
+
+
+struct HttpContext {int pass; int user; } ;
+
+
+ int HTTP_PARSE_URL_ERROR ;
+ int HTTP_PARSE_USR_ERROR ;
+ int REST_ACTION_URL_POS ;
+ int REST_TIMESTAMP_FMT_LOCAL_STRING ;
+ int REST_TIMESTAMP_FMT_TIMESTAMP ;
+ int REST_TIMESTAMP_FMT_UTC_STRING ;
+ int httpSendErrorResp (struct HttpContext*,int ) ;
+ scalar_t__ httpUrlMatch (struct HttpContext*,int ,char*) ;
+ int restGetPassFromUrl (struct HttpContext*) ;
+ int restGetUserFromUrl (struct HttpContext*) ;
+ int restProcessLoginRequest (struct HttpContext*) ;
+ int restProcessSqlRequest (struct HttpContext*,int ) ;
+ scalar_t__ strlen (int ) ;
 
 bool restProcessRequest(struct HttpContext* pContext) {
   if (httpUrlMatch(pContext, REST_ACTION_URL_POS, "login")) {
@@ -35,7 +35,7 @@ bool restProcessRequest(struct HttpContext* pContext) {
 
   if (strlen(pContext->user) == 0 || strlen(pContext->pass) == 0) {
     httpSendErrorResp(pContext, HTTP_PARSE_USR_ERROR);
-    return false;
+    return 0;
   }
 
   if (httpUrlMatch(pContext, REST_ACTION_URL_POS, "sql")) {
@@ -50,5 +50,5 @@ bool restProcessRequest(struct HttpContext* pContext) {
   }
 
   httpSendErrorResp(pContext, HTTP_PARSE_URL_ERROR);
-  return false;
+  return 0;
 }

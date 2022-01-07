@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  jobs; } ;
-typedef  TYPE_1__ Transaction ;
-typedef  int /*<<< orphan*/  Job ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/ * hashmap_first (int /*<<< orphan*/ ) ; 
- TYPE_1__* hashmap_isempty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transaction_delete_job (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int jobs; } ;
+typedef TYPE_1__ Transaction ;
+typedef int Job ;
+
+
+ int assert (TYPE_1__*) ;
+ int * hashmap_first (int ) ;
+ TYPE_1__* hashmap_isempty (int ) ;
+ int transaction_delete_job (TYPE_1__*,int *,int) ;
 
 void transaction_abort(Transaction *tr) {
         Job *j;
@@ -27,7 +27,7 @@ void transaction_abort(Transaction *tr) {
         assert(tr);
 
         while ((j = hashmap_first(tr->jobs)))
-                transaction_delete_job(tr, j, false);
+                transaction_delete_job(tr, j, 0);
 
         assert(hashmap_isempty(tr->jobs));
 }

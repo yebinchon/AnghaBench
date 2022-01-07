@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_2__ {struct drm_device* dev; } ;
 struct gma_encoder {struct cdv_intel_dp* dev_priv; TYPE_1__ base; } ;
 struct drm_device {int dummy; } ;
-struct cdv_intel_dp {int /*<<< orphan*/  output_reg; } ;
+struct cdv_intel_dp {int output_reg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DP_TRAINING_PATTERN_SET ; 
- int /*<<< orphan*/  DRM_DEBUG_KMS (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_READ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_WRITE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int cdv_intel_dp_aux_native_write_1 (struct gma_encoder*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DP_TRAINING_PATTERN_SET ;
+ int DRM_DEBUG_KMS (char*,int ) ;
+ int REG_READ (int ) ;
+ int REG_WRITE (int ,int ) ;
+ int cdv_intel_dp_aux_native_write_1 (struct gma_encoder*,int ,int ) ;
 
 __attribute__((used)) static bool
 cdv_intel_dp_set_link_train(struct gma_encoder *encoder,
-			uint32_t dp_reg_value,
-			uint8_t dp_train_pat)
+   uint32_t dp_reg_value,
+   uint8_t dp_train_pat)
 {
-	
-	struct drm_device *dev = encoder->base.dev;
-	int ret;
-	struct cdv_intel_dp *intel_dp = encoder->dev_priv;
 
-	REG_WRITE(intel_dp->output_reg, dp_reg_value);
-	REG_READ(intel_dp->output_reg);
+ struct drm_device *dev = encoder->base.dev;
+ int ret;
+ struct cdv_intel_dp *intel_dp = encoder->dev_priv;
 
-	ret = cdv_intel_dp_aux_native_write_1(encoder,
-				    DP_TRAINING_PATTERN_SET,
-				    dp_train_pat);
+ REG_WRITE(intel_dp->output_reg, dp_reg_value);
+ REG_READ(intel_dp->output_reg);
 
-	if (ret != 1) {
-		DRM_DEBUG_KMS("Failure in setting link pattern %x\n",
-				dp_train_pat);
-		return false;
-	}
+ ret = cdv_intel_dp_aux_native_write_1(encoder,
+        DP_TRAINING_PATTERN_SET,
+        dp_train_pat);
 
-	return true;
+ if (ret != 1) {
+  DRM_DEBUG_KMS("Failure in setting link pattern %x\n",
+    dp_train_pat);
+  return 0;
+ }
+
+ return 1;
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct rt2x00_dev {int dummy; } ;
 struct link_qual {void* false_cca; void* rx_failed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STA_CSR0 ; 
- int /*<<< orphan*/  STA_CSR0_FCS_ERROR ; 
- int /*<<< orphan*/  STA_CSR1 ; 
- int /*<<< orphan*/  STA_CSR1_FALSE_CCA_ERROR ; 
- void* rt2x00_get_field32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rt2x00mmio_register_read (struct rt2x00_dev*,int /*<<< orphan*/ ) ; 
+
+ int STA_CSR0 ;
+ int STA_CSR0_FCS_ERROR ;
+ int STA_CSR1 ;
+ int STA_CSR1_FALSE_CCA_ERROR ;
+ void* rt2x00_get_field32 (int ,int ) ;
+ int rt2x00mmio_register_read (struct rt2x00_dev*,int ) ;
 
 __attribute__((used)) static void rt61pci_link_stats(struct rt2x00_dev *rt2x00dev,
-			       struct link_qual *qual)
+          struct link_qual *qual)
 {
-	u32 reg;
+ u32 reg;
 
-	/*
-	 * Update FCS error count from register.
-	 */
-	reg = rt2x00mmio_register_read(rt2x00dev, STA_CSR0);
-	qual->rx_failed = rt2x00_get_field32(reg, STA_CSR0_FCS_ERROR);
 
-	/*
-	 * Update False CCA count from register.
-	 */
-	reg = rt2x00mmio_register_read(rt2x00dev, STA_CSR1);
-	qual->false_cca = rt2x00_get_field32(reg, STA_CSR1_FALSE_CCA_ERROR);
+
+
+ reg = rt2x00mmio_register_read(rt2x00dev, STA_CSR0);
+ qual->rx_failed = rt2x00_get_field32(reg, STA_CSR0_FCS_ERROR);
+
+
+
+
+ reg = rt2x00mmio_register_read(rt2x00dev, STA_CSR1);
+ qual->false_cca = rt2x00_get_field32(reg, STA_CSR1_FALSE_CCA_ERROR);
 }

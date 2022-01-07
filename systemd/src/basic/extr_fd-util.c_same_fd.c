@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_mode; scalar_t__ st_dev; scalar_t__ st_ino; } ;
-typedef  int /*<<< orphan*/  pid_t ;
+typedef int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EACCES ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  EPERM ; 
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  IN_SET (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KCMP_FILE ; 
- int S_IFMT ; 
- scalar_t__ S_ISBLK (int) ; 
- scalar_t__ S_ISCHR (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- int fcntl (int,int /*<<< orphan*/ ) ; 
- scalar_t__ fstat (int,struct stat*) ; 
- int /*<<< orphan*/  getpid_cached () ; 
- int kcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+ int EACCES ;
+ int ENOSYS ;
+ int EPERM ;
+ int F_GETFL ;
+ int IN_SET (int,int ,int ,int ) ;
+ int KCMP_FILE ;
+ int S_IFMT ;
+ scalar_t__ S_ISBLK (int) ;
+ scalar_t__ S_ISCHR (int) ;
+ int assert (int) ;
+ int errno ;
+ int fcntl (int,int ) ;
+ scalar_t__ fstat (int,struct stat*) ;
+ int getpid_cached () ;
+ int kcmp (int ,int ,int ,int,int) ;
 
 int same_fd(int a, int b) {
         struct stat sta, stb;
@@ -37,30 +37,20 @@ int same_fd(int a, int b) {
 
         assert(a >= 0);
         assert(b >= 0);
-
-        /* Compares two file descriptors. Note that semantics are
-         * quite different depending on whether we have kcmp() or we
-         * don't. If we have kcmp() this will only return true for
-         * dup()ed file descriptors, but not otherwise. If we don't
-         * have kcmp() this will also return true for two fds of the same
-         * file, created by separate open() calls. Since we use this
-         * call mostly for filtering out duplicates in the fd store
-         * this difference hopefully doesn't matter too much. */
-
         if (a == b)
-                return true;
+                return 1;
 
-        /* Try to use kcmp() if we have it. */
+
         pid = getpid_cached();
         r = kcmp(pid, pid, KCMP_FILE, a, b);
         if (r == 0)
-                return true;
+                return 1;
         if (r > 0)
-                return false;
+                return 0;
         if (!IN_SET(errno, ENOSYS, EACCES, EPERM))
                 return -errno;
 
-        /* We don't have kcmp(), use fstat() instead. */
+
         if (fstat(a, &sta) < 0)
                 return -errno;
 
@@ -68,22 +58,22 @@ int same_fd(int a, int b) {
                 return -errno;
 
         if ((sta.st_mode & S_IFMT) != (stb.st_mode & S_IFMT))
-                return false;
+                return 0;
 
-        /* We consider all device fds different, since two device fds
-         * might refer to quite different device contexts even though
-         * they share the same inode and backing dev_t. */
+
+
+
 
         if (S_ISCHR(sta.st_mode) || S_ISBLK(sta.st_mode))
-                return false;
+                return 0;
 
         if (sta.st_dev != stb.st_dev || sta.st_ino != stb.st_ino)
-                return false;
+                return 0;
 
-        /* The fds refer to the same inode on disk, let's also check
-         * if they have the same fd flags. This is useful to
-         * distinguish the read and write side of a pipe created with
-         * pipe(). */
+
+
+
+
         fa = fcntl(a, F_GETFL);
         if (fa < 0)
                 return -errno;

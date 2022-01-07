@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_3__ {int /*<<< orphan*/  tag; } ;
-typedef  TYPE_1__ MOVTrack ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mov_cenc_write_schi_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int update_size (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+struct TYPE_3__ {int tag; } ;
+typedef TYPE_1__ MOVTrack ;
+typedef int AVIOContext ;
+
+
+ int avio_tell (int *) ;
+ int avio_wb32 (int *,int) ;
+ int avio_wl32 (int *,int ) ;
+ int ffio_wfourcc (int *,char*) ;
+ int mov_cenc_write_schi_tag (int *,int *) ;
+ int update_size (int *,int ) ;
 
 int ff_mov_cenc_write_sinf_tag(MOVTrack* track, AVIOContext *pb, uint8_t* kid)
 {
     int64_t pos = avio_tell(pb);
-    avio_wb32(pb, 0); /* size */
+    avio_wb32(pb, 0);
     ffio_wfourcc(pb, "sinf");
 
-    /* frma */
-    avio_wb32(pb, 12);    /* size */
+
+    avio_wb32(pb, 12);
     ffio_wfourcc(pb, "frma");
     avio_wl32(pb, track->tag);
 
-    /* schm */
-    avio_wb32(pb, 20);    /* size */
-    ffio_wfourcc(pb, "schm");
-    avio_wb32(pb, 0); /* version & flags */
-    ffio_wfourcc(pb, "cenc");    /* scheme type*/
-    avio_wb32(pb, 0x10000); /* scheme version */
 
-    /* schi */
+    avio_wb32(pb, 20);
+    ffio_wfourcc(pb, "schm");
+    avio_wb32(pb, 0);
+    ffio_wfourcc(pb, "cenc");
+    avio_wb32(pb, 0x10000);
+
+
     mov_cenc_write_schi_tag(pb, kid);
 
     return update_size(pb, pos);

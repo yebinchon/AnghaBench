@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_changeset_iter ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
-#define  SQLITE_DELETE 130 
-#define  SQLITE_INSERT 129 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
-#define  SQLITE_UPDATE 128 
- int /*<<< orphan*/  conflictCallback ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int fwrite (void*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isalnum (char const) ; 
- int nConflict ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  readFile (char*,int*,void**) ; 
- int /*<<< orphan*/  renderValue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ *) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_exec (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (void*) ; 
- char* sqlite3_mprintf (char*,char const*) ; 
- int sqlite3_open (char*,int /*<<< orphan*/ **) ; 
- scalar_t__ sqlite3_strglob (char*,char const*) ; 
- int sqlite3changeset_apply (int /*<<< orphan*/ *,int,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3changeset_concat (int,void*,int,void*,int*,void**) ; 
- int /*<<< orphan*/  sqlite3changeset_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3changeset_invert (int,void*,int*,void**) ; 
- int /*<<< orphan*/  sqlite3changeset_new (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- scalar_t__ sqlite3changeset_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3changeset_old (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  sqlite3changeset_op (int /*<<< orphan*/ *,char const**,int*,int*,int*) ; 
- int /*<<< orphan*/  sqlite3changeset_pk (int /*<<< orphan*/ *,unsigned char**,int /*<<< orphan*/ ) ; 
- int sqlite3changeset_start (int /*<<< orphan*/ **,int,void*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char const*) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_changeset_iter ;
+typedef int sqlite3 ;
+typedef int FILE ;
+
+
+
+
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+
+ int conflictCallback ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fwrite (void*,int,int,int *) ;
+ int isalnum (char const) ;
+ int nConflict ;
+ int printf (char*,...) ;
+ int readFile (char*,int*,void**) ;
+ int renderValue (int *) ;
+ int sqlite3_close (int *) ;
+ char* sqlite3_errmsg (int *) ;
+ int sqlite3_exec (int *,char*,int ,int ,int ) ;
+ int sqlite3_free (void*) ;
+ char* sqlite3_mprintf (char*,char const*) ;
+ int sqlite3_open (char*,int **) ;
+ scalar_t__ sqlite3_strglob (char*,char const*) ;
+ int sqlite3changeset_apply (int *,int,void*,int ,int ,int ) ;
+ int sqlite3changeset_concat (int,void*,int,void*,int*,void**) ;
+ int sqlite3changeset_finalize (int *) ;
+ int sqlite3changeset_invert (int,void*,int*,void**) ;
+ int sqlite3changeset_new (int *,int,int **) ;
+ scalar_t__ sqlite3changeset_next (int *) ;
+ int sqlite3changeset_old (int *,int,int **) ;
+ int sqlite3changeset_op (int *,char const**,int*,int*,int*) ;
+ int sqlite3changeset_pk (int *,unsigned char**,int ) ;
+ int sqlite3changeset_start (int **,int,void*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char const*) ;
+ int usage (char*) ;
 
 int main(int argc, char **argv){
   int sz, rc;
@@ -59,9 +59,9 @@ int main(int argc, char **argv){
   if( argc<3 ) usage(argv[0]);
   readFile(argv[1], &sz, &pBuf);
 
-  /* changeset FILENAME apply DB
-  ** Apply the changeset in FILENAME to the database file DB
-  */
+
+
+
   if( strcmp(argv[2],"apply")==0 ){
     sqlite3 *db;
     if( argc!=4 ) usage(argv[0]);
@@ -91,10 +91,10 @@ int main(int argc, char **argv){
     sqlite3_close(db);
   }else
 
-  /* changeset FILENAME concat FILE2 OUT
-  ** Add changeset FILE2 onto the end of the changeset in FILENAME
-  ** and write the result into OUT.
-  */
+
+
+
+
   if( strcmp(argv[2],"concat")==0 ){
     int szB;
     void *pB;
@@ -121,9 +121,9 @@ int main(int argc, char **argv){
     sqlite3_free(pB);
   }else
 
-  /* changeset FILENAME dump
-  ** Show the complete content of the changeset in FILENAME
-  */
+
+
+
   if( strcmp(argv[2],"dump")==0 ){
     int cnt = 0;
     int i;
@@ -140,8 +140,8 @@ int main(int argc, char **argv){
       sqlite3changeset_op(pIter, &zTab, &nCol, &op, &bIndirect);
       cnt++;
       printf("%d: %s table=[%s] indirect=%d nColumn=%d\n",
-             cnt, op==SQLITE_INSERT ? "INSERT" :
-                       op==SQLITE_UPDATE ? "UPDATE" : "DELETE",
+             cnt, op==129 ? "INSERT" :
+                       op==128 ? "UPDATE" : "DELETE",
              zTab, bIndirect, nCol);
       sqlite3changeset_pk(pIter, &abPK, 0);
       for(i=0; i<nCol; i++){
@@ -165,9 +165,9 @@ int main(int argc, char **argv){
     sqlite3changeset_finalize(pIter);
   }else
 
-  /* changeset FILENAME invert OUT
-  ** Invert the changes in FILENAME and writes the result on OUT
-  */
+
+
+
   if( strcmp(argv[2],"invert")==0 ){
     FILE *out;
     int szOut = 0;
@@ -190,9 +190,9 @@ int main(int argc, char **argv){
     sqlite3_free(pOutBuf);
   }else
 
-  /* changeset FILE sql
-  ** Show the content of the changeset as pseudo-SQL
-  */
+
+
+
   if( strcmp(argv[2],"sql")==0 ){
     int cnt = 0;
     char *zPrevTab = 0;
@@ -221,7 +221,7 @@ int main(int argc, char **argv){
         printf("/****** Changes for table %s ***************/\n", zSQLTabName);
       }
       switch( op ){
-        case SQLITE_DELETE: {
+        case 130: {
           unsigned char *abPK;
           int i;
           const char *zSep = " ";
@@ -238,7 +238,7 @@ int main(int argc, char **argv){
           printf(";\n");
           break;
         }
-        case SQLITE_UPDATE: {
+        case 128: {
           unsigned char *abPK;
           int i;
           const char *zSep = " ";
@@ -266,7 +266,7 @@ int main(int argc, char **argv){
           printf(";\n");
           break;
         }
-        case SQLITE_INSERT: {
+        case 129: {
           int i;
           printf("/* %d */ INSERT INTO %s VALUES", cnt, zSQLTabName);
           for(i=0; i<nCol; i++){
@@ -286,8 +286,8 @@ int main(int argc, char **argv){
     sqlite3_free(zSQLTabName);
   }else
 
-  /* If nothing else matches, show the usage comment */
+
   usage(argv[0]);
   sqlite3_free(pBuf);
-  return 0; 
+  return 0;
 }

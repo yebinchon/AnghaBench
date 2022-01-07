@@ -1,134 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  CURLPROTO_DICT 155 
-#define  CURLPROTO_FILE 154 
-#define  CURLPROTO_FTP 153 
-#define  CURLPROTO_FTPS 152 
-#define  CURLPROTO_GOPHER 151 
-#define  CURLPROTO_HTTP 150 
-#define  CURLPROTO_HTTPS 149 
-#define  CURLPROTO_IMAP 148 
-#define  CURLPROTO_IMAPS 147 
-#define  CURLPROTO_LDAP 146 
-#define  CURLPROTO_LDAPS 145 
-#define  CURLPROTO_POP3 144 
-#define  CURLPROTO_POP3S 143 
-#define  CURLPROTO_RTMP 142 
-#define  CURLPROTO_RTMPE 141 
-#define  CURLPROTO_RTMPS 140 
-#define  CURLPROTO_RTMPT 139 
-#define  CURLPROTO_RTMPTE 138 
-#define  CURLPROTO_RTMPTS 137 
-#define  CURLPROTO_RTSP 136 
-#define  CURLPROTO_SCP 135 
-#define  CURLPROTO_SFTP 134 
-#define  CURLPROTO_SMB 133 
-#define  CURLPROTO_SMBS 132 
-#define  CURLPROTO_SMTP 131 
-#define  CURLPROTO_SMTPS 130 
-#define  CURLPROTO_TELNET 129 
-#define  CURLPROTO_TFTP 128 
-
 __attribute__((used)) static unsigned int get_protocol_family(unsigned int protocol)
 {
   unsigned int family;
 
   switch(protocol) {
-  case CURLPROTO_HTTP:
-  case CURLPROTO_HTTPS:
-    family = CURLPROTO_HTTP;
+  case 150:
+  case 149:
+    family = 150;
     break;
 
-  case CURLPROTO_FTP:
-  case CURLPROTO_FTPS:
-    family = CURLPROTO_FTP;
+  case 153:
+  case 152:
+    family = 153;
     break;
 
-  case CURLPROTO_SCP:
-    family = CURLPROTO_SCP;
+  case 135:
+    family = 135;
     break;
 
-  case CURLPROTO_SFTP:
-    family = CURLPROTO_SFTP;
+  case 134:
+    family = 134;
     break;
 
-  case CURLPROTO_TELNET:
-    family = CURLPROTO_TELNET;
+  case 129:
+    family = 129;
     break;
 
-  case CURLPROTO_LDAP:
-  case CURLPROTO_LDAPS:
-    family = CURLPROTO_LDAP;
+  case 146:
+  case 145:
+    family = 146;
     break;
 
-  case CURLPROTO_DICT:
-    family = CURLPROTO_DICT;
+  case 155:
+    family = 155;
     break;
 
-  case CURLPROTO_FILE:
-    family = CURLPROTO_FILE;
+  case 154:
+    family = 154;
     break;
 
-  case CURLPROTO_TFTP:
-    family = CURLPROTO_TFTP;
+  case 128:
+    family = 128;
     break;
 
-  case CURLPROTO_IMAP:
-  case CURLPROTO_IMAPS:
-    family = CURLPROTO_IMAP;
+  case 148:
+  case 147:
+    family = 148;
     break;
 
-  case CURLPROTO_POP3:
-  case CURLPROTO_POP3S:
-    family = CURLPROTO_POP3;
+  case 144:
+  case 143:
+    family = 144;
     break;
 
-  case CURLPROTO_SMTP:
-  case CURLPROTO_SMTPS:
-      family = CURLPROTO_SMTP;
+  case 131:
+  case 130:
+      family = 131;
       break;
 
-  case CURLPROTO_RTSP:
-    family = CURLPROTO_RTSP;
+  case 136:
+    family = 136;
     break;
 
-  case CURLPROTO_RTMP:
-  case CURLPROTO_RTMPS:
-    family = CURLPROTO_RTMP;
+  case 142:
+  case 140:
+    family = 142;
     break;
 
-  case CURLPROTO_RTMPT:
-  case CURLPROTO_RTMPTS:
-    family = CURLPROTO_RTMPT;
+  case 139:
+  case 137:
+    family = 139;
     break;
 
-  case CURLPROTO_RTMPE:
-    family = CURLPROTO_RTMPE;
+  case 141:
+    family = 141;
     break;
 
-  case CURLPROTO_RTMPTE:
-    family = CURLPROTO_RTMPTE;
+  case 138:
+    family = 138;
     break;
 
-  case CURLPROTO_GOPHER:
-    family = CURLPROTO_GOPHER;
+  case 151:
+    family = 151;
     break;
 
-  case CURLPROTO_SMB:
-  case CURLPROTO_SMBS:
-    family = CURLPROTO_SMB;
+  case 133:
+  case 132:
+    family = 133;
     break;
 
   default:

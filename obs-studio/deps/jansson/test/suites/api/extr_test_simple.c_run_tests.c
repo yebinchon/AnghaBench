@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_37__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_37__ TYPE_1__ ;
+
+
 struct TYPE_37__ {size_t refcount; } ;
-typedef  TYPE_1__ json_t ;
-typedef  TYPE_1__ json_auto_t ;
+typedef TYPE_1__ json_t ;
+typedef TYPE_1__ json_auto_t ;
 
-/* Variables and functions */
- scalar_t__ JSON_INTEGER ; 
- int /*<<< orphan*/  fail (char*) ; 
- TYPE_1__* json_boolean (int) ; 
- scalar_t__ json_boolean_value (TYPE_1__*) ; 
- int /*<<< orphan*/  json_decref (TYPE_1__*) ; 
- TYPE_1__* json_false () ; 
- TYPE_1__* json_incref (TYPE_1__*) ; 
- TYPE_1__* json_integer (int) ; 
- scalar_t__ json_integer_set (TYPE_1__*,int) ; 
- int json_integer_value (TYPE_1__*) ; 
- scalar_t__ json_is_array (TYPE_1__*) ; 
- scalar_t__ json_is_boolean (TYPE_1__*) ; 
- scalar_t__ json_is_false (TYPE_1__*) ; 
- int /*<<< orphan*/  json_is_integer (TYPE_1__*) ; 
- scalar_t__ json_is_null (TYPE_1__*) ; 
- int /*<<< orphan*/  json_is_number (TYPE_1__*) ; 
- scalar_t__ json_is_object (TYPE_1__*) ; 
- scalar_t__ json_is_real (TYPE_1__*) ; 
- scalar_t__ json_is_string (TYPE_1__*) ; 
- scalar_t__ json_is_true (TYPE_1__*) ; 
- TYPE_1__* json_null () ; 
- double json_number_value (TYPE_1__*) ; 
- TYPE_1__* json_real (double) ; 
- scalar_t__ json_real_set (TYPE_1__*,double) ; 
- double json_real_value (TYPE_1__*) ; 
- TYPE_1__* json_string (char*) ; 
- int json_string_length (TYPE_1__*) ; 
- TYPE_1__* json_string_nocheck (char*) ; 
- scalar_t__ json_string_set (TYPE_1__*,char*) ; 
- scalar_t__ json_string_set_nocheck (TYPE_1__*,char*) ; 
- scalar_t__ json_string_setn (TYPE_1__*,char*,int) ; 
- scalar_t__ json_string_setn_nocheck (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  json_string_value (TYPE_1__*) ; 
- TYPE_1__* json_true () ; 
- scalar_t__ json_typeof (TYPE_1__*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ JSON_INTEGER ;
+ int fail (char*) ;
+ TYPE_1__* json_boolean (int) ;
+ scalar_t__ json_boolean_value (TYPE_1__*) ;
+ int json_decref (TYPE_1__*) ;
+ TYPE_1__* json_false () ;
+ TYPE_1__* json_incref (TYPE_1__*) ;
+ TYPE_1__* json_integer (int) ;
+ scalar_t__ json_integer_set (TYPE_1__*,int) ;
+ int json_integer_value (TYPE_1__*) ;
+ scalar_t__ json_is_array (TYPE_1__*) ;
+ scalar_t__ json_is_boolean (TYPE_1__*) ;
+ scalar_t__ json_is_false (TYPE_1__*) ;
+ int json_is_integer (TYPE_1__*) ;
+ scalar_t__ json_is_null (TYPE_1__*) ;
+ int json_is_number (TYPE_1__*) ;
+ scalar_t__ json_is_object (TYPE_1__*) ;
+ scalar_t__ json_is_real (TYPE_1__*) ;
+ scalar_t__ json_is_string (TYPE_1__*) ;
+ scalar_t__ json_is_true (TYPE_1__*) ;
+ TYPE_1__* json_null () ;
+ double json_number_value (TYPE_1__*) ;
+ TYPE_1__* json_real (double) ;
+ scalar_t__ json_real_set (TYPE_1__*,double) ;
+ double json_real_value (TYPE_1__*) ;
+ TYPE_1__* json_string (char*) ;
+ int json_string_length (TYPE_1__*) ;
+ TYPE_1__* json_string_nocheck (char*) ;
+ scalar_t__ json_string_set (TYPE_1__*,char*) ;
+ scalar_t__ json_string_set_nocheck (TYPE_1__*,char*) ;
+ scalar_t__ json_string_setn (TYPE_1__*,char*,int) ;
+ scalar_t__ json_string_setn_nocheck (TYPE_1__*,char*,int) ;
+ int json_string_value (TYPE_1__*) ;
+ TYPE_1__* json_true () ;
+ scalar_t__ json_typeof (TYPE_1__*) ;
+ scalar_t__ memcmp (int ,char*,int) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static void run_tests()
 {
@@ -137,11 +137,11 @@ __attribute__((used)) static void run_tests()
 
     json_decref(value);
 
-    value = json_string(NULL);
+    value = json_string(((void*)0));
     if(value)
         fail("json_string(NULL) failed");
 
-    /* invalid UTF-8  */
+
     value = json_string("a\xefz");
     if(value)
         fail("json_string(<invalid utf-8>) failed");
@@ -170,7 +170,7 @@ __attribute__((used)) static void run_tests()
 
     json_decref(value);
 
-    /* invalid UTF-8 */
+
     value = json_string_nocheck("qu\xff");
     if(!value)
         fail("json_string_nocheck failed");
@@ -238,7 +238,7 @@ __attribute__((used)) static void run_tests()
         fail("json_null failed");
     json_decref(value);
 
-    /* Test reference counting on singletons (true, false, null) */
+
     value = json_true();
     if(value->refcount != (size_t)-1)
       fail("refcounting true works incorrectly");
@@ -268,17 +268,4 @@ __attribute__((used)) static void run_tests()
     json_incref(value);
     if(value->refcount != (size_t)-1)
       fail("refcounting null works incorrectly");
-
-#ifdef json_auto_t
-    value = json_string("foo");
-    {
-        json_auto_t *test = json_incref(value);
-        /* Use test so GCC doesn't complain it is unused. */
-        if(!json_is_string(test))
-            fail("value type check failed");
-    }
-    if(value->refcount != 1)
-	fail("automatic decrement failed");
-    json_decref(value);
-#endif
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  Acl ;
 
-/* Variables and functions */
- int aclmembers (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  updateAclDependencies (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int int32 ;
+typedef int Oid ;
+typedef int Acl ;
+
+
+ int aclmembers (int *,int **) ;
+ int updateAclDependencies (int ,int ,int ,int ,int ,int *,int,int *) ;
 
 void
 recordDependencyOnNewAcl(Oid classId, Oid objectId, int32 objsubId,
-						 Oid ownerId, Acl *acl)
+       Oid ownerId, Acl *acl)
 {
-	int			nmembers;
-	Oid		   *members;
+ int nmembers;
+ Oid *members;
 
-	/* Nothing to do if ACL is defaulted */
-	if (acl == NULL)
-		return;
 
-	/* Extract roles mentioned in ACL */
-	nmembers = aclmembers(acl, &members);
+ if (acl == ((void*)0))
+  return;
 
-	/* Update the shared dependency ACL info */
-	updateAclDependencies(classId, objectId, objsubId,
-						  ownerId,
-						  0, NULL,
-						  nmembers, members);
+
+ nmembers = aclmembers(acl, &members);
+
+
+ updateAclDependencies(classId, objectId, objsubId,
+        ownerId,
+        0, ((void*)0),
+        nmembers, members);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ls_expr {scalar_t__ reaching_reg; int /*<<< orphan*/  pattern; } ;
-typedef  scalar_t__ rtx ;
-typedef  int /*<<< orphan*/  basic_block ;
 
-/* Variables and functions */
- scalar_t__ AVAIL_STORE_LIST (struct ls_expr*) ; 
- int /*<<< orphan*/  BLOCK_FOR_INSN (scalar_t__) ; 
- int /*<<< orphan*/  GET_MODE (int /*<<< orphan*/ ) ; 
- scalar_t__ NULL_RTX ; 
- scalar_t__ XEXP (scalar_t__,int) ; 
- scalar_t__ gen_reg_rtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  replace_store_insn (scalar_t__,scalar_t__,int /*<<< orphan*/ ,struct ls_expr*) ; 
+
+
+
+struct ls_expr {scalar_t__ reaching_reg; int pattern; } ;
+typedef scalar_t__ rtx ;
+typedef int basic_block ;
+
+
+ scalar_t__ AVAIL_STORE_LIST (struct ls_expr*) ;
+ int BLOCK_FOR_INSN (scalar_t__) ;
+ int GET_MODE (int ) ;
+ scalar_t__ NULL_RTX ;
+ scalar_t__ XEXP (scalar_t__,int) ;
+ scalar_t__ gen_reg_rtx (int ) ;
+ int replace_store_insn (scalar_t__,scalar_t__,int ,struct ls_expr*) ;
 
 __attribute__((used)) static void
 delete_store (struct ls_expr * expr, basic_block bb)
@@ -37,11 +37,11 @@ delete_store (struct ls_expr * expr, basic_block bb)
     {
       del = XEXP (i, 0);
       if (BLOCK_FOR_INSN (del) == bb)
-	{
-	  /* We know there is only one since we deleted redundant
-	     ones during the available computation.  */
-	  replace_store_insn (reg, del, bb, expr);
-	  break;
-	}
+ {
+
+
+   replace_store_insn (reg, del, bb, expr);
+   break;
+ }
     }
 }

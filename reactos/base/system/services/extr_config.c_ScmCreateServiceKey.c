@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REGSAM ;
-typedef  int /*<<< orphan*/ ** PHKEY ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SERVICE_EXISTS ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int KEY_CREATE_SUB_KEY ; 
- int KEY_READ ; 
- scalar_t__ REG_OPENED_EXISTING_KEY ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegCreateKeyExW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,scalar_t__*) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int REGSAM ;
+typedef int ** PHKEY ;
+typedef int LPCWSTR ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_SERVICE_EXISTS ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_CREATE_SUB_KEY ;
+ int KEY_READ ;
+ scalar_t__ REG_OPENED_EXISTING_KEY ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegCreateKeyExW (int *,int ,int ,int *,int ,int ,int *,int **,scalar_t__*) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int,int **) ;
 
 DWORD
 ScmCreateServiceKey(LPCWSTR lpServiceName,
                     REGSAM samDesired,
                     PHKEY phKey)
 {
-    HKEY hServicesKey = NULL;
+    HKEY hServicesKey = ((void*)0);
     DWORD dwDisposition;
     DWORD dwError;
 
-    *phKey = NULL;
+    *phKey = ((void*)0);
 
     dwError = RegOpenKeyExW(HKEY_LOCAL_MACHINE,
                             L"System\\CurrentControlSet\\Services",
@@ -50,22 +50,12 @@ ScmCreateServiceKey(LPCWSTR lpServiceName,
     dwError = RegCreateKeyExW(hServicesKey,
                               lpServiceName,
                               0,
-                              NULL,
+                              ((void*)0),
                               REG_OPTION_NON_VOLATILE,
                               samDesired,
-                              NULL,
+                              ((void*)0),
                               phKey,
                               &dwDisposition);
-#if 0
-    if ((dwError == ERROR_SUCCESS) &&
-        (dwDisposition == REG_OPENED_EXISTING_KEY))
-    {
-        RegCloseKey(*phKey);
-        *phKey = NULL;
-        dwError = ERROR_SERVICE_EXISTS;
-    }
-#endif
-
     RegCloseKey(hServicesKey);
 
     return dwError;

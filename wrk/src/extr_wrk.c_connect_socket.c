@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  connect; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int connect; } ;
 struct TYPE_10__ {TYPE_2__ errors; struct aeEventLoop* loop; struct addrinfo* addr; } ;
-typedef  TYPE_3__ thread ;
+typedef TYPE_3__ thread ;
 struct aeEventLoop {int dummy; } ;
-struct addrinfo {int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; } ;
-typedef  int /*<<< orphan*/  flags ;
+struct addrinfo {int ai_addrlen; int ai_addr; int ai_protocol; int ai_socktype; int ai_family; } ;
+typedef int flags ;
 struct TYPE_8__ {TYPE_4__* data; } ;
 struct TYPE_11__ {int fd; TYPE_1__ parser; } ;
-typedef  TYPE_4__ connection ;
+typedef TYPE_4__ connection ;
 
-/* Variables and functions */
- scalar_t__ AE_OK ; 
- int AE_READABLE ; 
- int AE_WRITABLE ; 
- scalar_t__ EINPROGRESS ; 
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int O_NONBLOCK ; 
- int /*<<< orphan*/  TCP_NODELAY ; 
- scalar_t__ aeCreateFileEvent (struct aeEventLoop*,int,int,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  close (int) ; 
- int connect (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- int fcntl (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket_connected ; 
+
+ scalar_t__ AE_OK ;
+ int AE_READABLE ;
+ int AE_WRITABLE ;
+ scalar_t__ EINPROGRESS ;
+ int F_GETFL ;
+ int F_SETFL ;
+ int IPPROTO_TCP ;
+ int O_NONBLOCK ;
+ int TCP_NODELAY ;
+ scalar_t__ aeCreateFileEvent (struct aeEventLoop*,int,int,int ,TYPE_4__*) ;
+ int close (int) ;
+ int connect (int,int ,int ) ;
+ scalar_t__ errno ;
+ int fcntl (int,int ,int) ;
+ int setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
+ int socket_connected ;
 
 __attribute__((used)) static int connect_socket(thread *thread, connection *c) {
     struct addrinfo *addr = thread->addr;

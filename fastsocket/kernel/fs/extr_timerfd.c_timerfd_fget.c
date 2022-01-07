@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file {int /*<<< orphan*/ * f_op; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EBADF ; 
- int /*<<< orphan*/  EINVAL ; 
- struct file* ERR_PTR (int /*<<< orphan*/ ) ; 
- struct file* fget (int) ; 
- int /*<<< orphan*/  fput (struct file*) ; 
- int /*<<< orphan*/  timerfd_fops ; 
+
+
+
+struct file {int * f_op; } ;
+
+
+ int EBADF ;
+ int EINVAL ;
+ struct file* ERR_PTR (int ) ;
+ struct file* fget (int) ;
+ int fput (struct file*) ;
+ int timerfd_fops ;
 
 __attribute__((used)) static struct file *timerfd_fget(int fd)
 {
-	struct file *file;
+ struct file *file;
 
-	file = fget(fd);
-	if (!file)
-		return ERR_PTR(-EBADF);
-	if (file->f_op != &timerfd_fops) {
-		fput(file);
-		return ERR_PTR(-EINVAL);
-	}
+ file = fget(fd);
+ if (!file)
+  return ERR_PTR(-EBADF);
+ if (file->f_op != &timerfd_fops) {
+  fput(file);
+  return ERR_PTR(-EINVAL);
+ }
 
-	return file;
+ return file;
 }

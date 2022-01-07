@@ -1,37 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- scalar_t__ in_interrupt () ; 
- int jiffies ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  schedule () ; 
- scalar_t__ time_before (int,unsigned long) ; 
+
+
+
+struct net_device {int name; } ;
+
+
+ scalar_t__ in_interrupt () ;
+ int jiffies ;
+ int printk (char*,int ,char*) ;
+ int schedule () ;
+ scalar_t__ time_before (int,unsigned long) ;
 
 void lmc_trace(struct net_device *dev, char *msg){
-#ifdef LMC_TRACE
-    unsigned long j = jiffies + 3; /* Wait for 50 ms */
-
-    if(in_interrupt()){
-        printk("%s: * %s\n", dev->name, msg);
-//        while(time_before(jiffies, j+10))
-//            ;
-    }
-    else {
-        printk("%s: %s\n", dev->name, msg);
-        while(time_before(jiffies, j))
-            schedule();
-    }
-#endif
 }

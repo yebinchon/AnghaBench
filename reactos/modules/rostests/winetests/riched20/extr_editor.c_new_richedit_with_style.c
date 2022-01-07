@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RICHEDIT_CLASS20A ; 
- int /*<<< orphan*/  new_window (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HWND ;
+typedef int DWORD ;
+
+
+ int RICHEDIT_CLASS20A ;
+ int new_window (int ,int ,int ) ;
 
 __attribute__((used)) static HWND new_richedit_with_style(HWND parent, DWORD style) {
   return new_window(RICHEDIT_CLASS20A, style, parent);

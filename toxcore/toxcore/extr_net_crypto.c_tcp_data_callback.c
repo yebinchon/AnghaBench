@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_8__ {int /*<<< orphan*/  connection_number_tcp; } ;
-struct TYPE_7__ {int /*<<< orphan*/  tcp_mutex; } ;
-typedef  TYPE_1__ Net_Crypto ;
-typedef  TYPE_2__ Crypto_Connection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_CRYPTO_PACKET_SIZE ; 
- scalar_t__ const NET_PACKET_COOKIE_REQUEST ; 
- TYPE_2__* get_crypto_connection (TYPE_1__*,int) ; 
- int handle_packet_connection (TYPE_1__*,int,scalar_t__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int tcp_handle_cookie_request (TYPE_1__*,int /*<<< orphan*/ ,scalar_t__ const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint16_t ;
+struct TYPE_8__ {int connection_number_tcp; } ;
+struct TYPE_7__ {int tcp_mutex; } ;
+typedef TYPE_1__ Net_Crypto ;
+typedef TYPE_2__ Crypto_Connection ;
+
+
+ int MAX_CRYPTO_PACKET_SIZE ;
+ scalar_t__ const NET_PACKET_COOKIE_REQUEST ;
+ TYPE_2__* get_crypto_connection (TYPE_1__*,int) ;
+ int handle_packet_connection (TYPE_1__*,int,scalar_t__ const*,int ,int ) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int tcp_handle_cookie_request (TYPE_1__*,int ,scalar_t__ const*,int ) ;
 
 __attribute__((used)) static int tcp_data_callback(void *object, int id, const uint8_t *data, uint16_t length)
 {
@@ -51,6 +51,6 @@ __attribute__((used)) static int tcp_data_callback(void *object, int id, const u
     if (ret != 0)
         return -1;
 
-    //TODO detect and kill bad TCP connections.
+
     return 0;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct hfi1_pportdata {int /*<<< orphan*/  port_type; int /*<<< orphan*/  dd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PLATFORM_CONFIG_PORT_TABLE ; 
- int /*<<< orphan*/  PORT_TABLE_PORT_TYPE ; 
- int /*<<< orphan*/  PORT_TYPE_UNKNOWN ; 
- int get_platform_config_field (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int u32 ;
+struct hfi1_pportdata {int port_type; int dd; } ;
+
+
+ int PLATFORM_CONFIG_PORT_TABLE ;
+ int PORT_TABLE_PORT_TYPE ;
+ int PORT_TYPE_UNKNOWN ;
+ int get_platform_config_field (int ,int ,int ,int ,int *,int) ;
 
 void get_port_type(struct hfi1_pportdata *ppd)
 {
-	int ret;
-	u32 temp;
+ int ret;
+ u32 temp;
 
-	ret = get_platform_config_field(ppd->dd, PLATFORM_CONFIG_PORT_TABLE, 0,
-					PORT_TABLE_PORT_TYPE, &temp,
-					4);
-	if (ret) {
-		ppd->port_type = PORT_TYPE_UNKNOWN;
-		return;
-	}
-	ppd->port_type = temp;
+ ret = get_platform_config_field(ppd->dd, PLATFORM_CONFIG_PORT_TABLE, 0,
+     PORT_TABLE_PORT_TYPE, &temp,
+     4);
+ if (ret) {
+  ppd->port_type = PORT_TYPE_UNKNOWN;
+  return;
+ }
+ ppd->port_type = temp;
 }

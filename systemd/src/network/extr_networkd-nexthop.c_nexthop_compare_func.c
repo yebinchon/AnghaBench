@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int id; int oif; int family; int /*<<< orphan*/  gw; } ;
-typedef  TYPE_1__ NextHop ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int CMP (int,int) ; 
- int /*<<< orphan*/  FAMILY_ADDRESS_SIZE (int) ; 
- int memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int id; int oif; int family; int gw; } ;
+typedef TYPE_1__ NextHop ;
+
+
+
+
+ int CMP (int,int) ;
+ int FAMILY_ADDRESS_SIZE (int) ;
+ int memcmp (int *,int *,int ) ;
 
 __attribute__((used)) static int nexthop_compare_func(const NextHop *a, const NextHop *b) {
         int r;
@@ -37,8 +37,8 @@ __attribute__((used)) static int nexthop_compare_func(const NextHop *a, const Ne
                 return r;
 
         switch (a->family) {
-        case AF_INET:
-        case AF_INET6:
+        case 129:
+        case 128:
 
                 r = memcmp(&a->gw, &b->gw, FAMILY_ADDRESS_SIZE(a->family));
                 if (r != 0)
@@ -46,7 +46,7 @@ __attribute__((used)) static int nexthop_compare_func(const NextHop *a, const Ne
 
                 return 0;
         default:
-                /* treat any other address family as AF_UNSPEC */
+
                 return 0;
         }
 }

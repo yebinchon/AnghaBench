@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ ip_object; int /*<<< orphan*/  hwnd; int /*<<< orphan*/  IOleClientSite_iface; int /*<<< orphan*/  plugin_unk; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_1__ PluginHost ;
-typedef  int /*<<< orphan*/  IOleObject ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IID_IOleObject ; 
- int /*<<< orphan*/  IOleInPlaceObject_GetWindow (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleObject_DoVerb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  OLEIVERB_INPLACEACTIVATE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_pos_rect (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ ip_object; int hwnd; int IOleClientSite_iface; int plugin_unk; } ;
+typedef int RECT ;
+typedef TYPE_1__ PluginHost ;
+typedef int IOleObject ;
+typedef int HWND ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int IID_IOleObject ;
+ int IOleInPlaceObject_GetWindow (scalar_t__,int *) ;
+ int IOleObject_DoVerb (int *,int ,int *,int *,int ,int ,int *) ;
+ int IOleObject_Release (int *) ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ int OLEIVERB_INPLACEACTIVATE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,int ) ;
+ int WARN (char*,int ) ;
+ int get_pos_rect (TYPE_1__*,int *) ;
 
 __attribute__((used)) static void embed_plugin_object(PluginHost *host)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void embed_plugin_object(PluginHost *host)
     }
 
     get_pos_rect(host, &rect);
-    hres = IOleObject_DoVerb(ole_obj, OLEIVERB_INPLACEACTIVATE, NULL, &host->IOleClientSite_iface, 0, host->hwnd, &rect);
+    hres = IOleObject_DoVerb(ole_obj, OLEIVERB_INPLACEACTIVATE, ((void*)0), &host->IOleClientSite_iface, 0, host->hwnd, &rect);
     IOleObject_Release(ole_obj);
     if(FAILED(hres))
         WARN("DoVerb failed: %08x\n", hres);

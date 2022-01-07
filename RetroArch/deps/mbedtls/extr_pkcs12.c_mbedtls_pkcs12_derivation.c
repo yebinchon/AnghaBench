@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  salt_block ;
-typedef  int /*<<< orphan*/  pwd_block ;
-typedef  int /*<<< orphan*/  mbedtls_md_type_t ;
-typedef  int /*<<< orphan*/  mbedtls_md_info_t ;
-typedef  int /*<<< orphan*/  mbedtls_md_context_t ;
-typedef  int /*<<< orphan*/  hash_output ;
-typedef  int /*<<< orphan*/  hash_block ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_PKCS12_BAD_INPUT_DATA ; 
- int MBEDTLS_ERR_PKCS12_FEATURE_UNAVAILABLE ; 
- int MBEDTLS_MD_MAX_SIZE ; 
- int mbedtls_md (int /*<<< orphan*/  const*,unsigned char*,size_t,unsigned char*) ; 
- int mbedtls_md_finish (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  mbedtls_md_free (int /*<<< orphan*/ *) ; 
- size_t mbedtls_md_get_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * mbedtls_md_info_from_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_md_init (int /*<<< orphan*/ *) ; 
- int mbedtls_md_setup (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int mbedtls_md_starts (int /*<<< orphan*/ *) ; 
- int mbedtls_md_update (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- int /*<<< orphan*/  mbedtls_zeroize (unsigned char*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,unsigned char,size_t) ; 
- int /*<<< orphan*/  pkcs12_fill_buffer (unsigned char*,size_t,unsigned char const*,size_t) ; 
+
+
+
+typedef int salt_block ;
+typedef int pwd_block ;
+typedef int mbedtls_md_type_t ;
+typedef int mbedtls_md_info_t ;
+typedef int mbedtls_md_context_t ;
+typedef int hash_output ;
+typedef int hash_block ;
+
+
+ int MBEDTLS_ERR_PKCS12_BAD_INPUT_DATA ;
+ int MBEDTLS_ERR_PKCS12_FEATURE_UNAVAILABLE ;
+ int MBEDTLS_MD_MAX_SIZE ;
+ int mbedtls_md (int const*,unsigned char*,size_t,unsigned char*) ;
+ int mbedtls_md_finish (int *,unsigned char*) ;
+ int mbedtls_md_free (int *) ;
+ size_t mbedtls_md_get_size (int const*) ;
+ int * mbedtls_md_info_from_type (int ) ;
+ int mbedtls_md_init (int *) ;
+ int mbedtls_md_setup (int *,int const*,int ) ;
+ int mbedtls_md_starts (int *) ;
+ int mbedtls_md_update (int *,unsigned char*,size_t) ;
+ int mbedtls_zeroize (unsigned char*,int) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
+ int memset (unsigned char*,unsigned char,size_t) ;
+ int pkcs12_fill_buffer (unsigned char*,size_t,unsigned char const*,size_t) ;
 
 int mbedtls_pkcs12_derivation( unsigned char *data, size_t datalen,
                        const unsigned char *pwd, size_t pwdlen,
@@ -55,12 +55,12 @@ int mbedtls_pkcs12_derivation( unsigned char *data, size_t datalen,
     const mbedtls_md_info_t *md_info;
     mbedtls_md_context_t md_ctx;
 
-    /* This version only allows max of 64 bytes of password or salt */
+
     if( datalen > 128 || pwdlen > 64 || saltlen > 64 )
         return( MBEDTLS_ERR_PKCS12_BAD_INPUT_DATA );
 
     md_info = mbedtls_md_info_from_type( md_type );
-    if( md_info == NULL )
+    if( md_info == ((void*)0) )
         return( MBEDTLS_ERR_PKCS12_FEATURE_UNAVAILABLE );
 
     mbedtls_md_init( &md_ctx );
@@ -77,12 +77,12 @@ int mbedtls_pkcs12_derivation( unsigned char *data, size_t datalen,
     memset( diversifier, (unsigned char) id, v );
 
     pkcs12_fill_buffer( salt_block, v, salt, saltlen );
-    pkcs12_fill_buffer( pwd_block,  v, pwd,  pwdlen  );
+    pkcs12_fill_buffer( pwd_block, v, pwd, pwdlen );
 
     p = data;
     while( datalen > 0 )
     {
-        /* Calculate hash( diversifier || salt_block || pwd_block ) */
+
         if( ( ret = mbedtls_md_starts( &md_ctx ) ) != 0 )
             goto exit;
 
@@ -98,7 +98,7 @@ int mbedtls_pkcs12_derivation( unsigned char *data, size_t datalen,
         if( ( ret = mbedtls_md_finish( &md_ctx, hash_output ) ) != 0 )
             goto exit;
 
-        /* Perform remaining ( iterations - 1 ) recursive hash calculations */
+
         for( i = 1; i < (size_t) iterations; i++ )
         {
             if( ( ret = mbedtls_md( md_info, hash_output, hlen, hash_output ) ) != 0 )
@@ -113,15 +113,15 @@ int mbedtls_pkcs12_derivation( unsigned char *data, size_t datalen,
         if( datalen == 0 )
             break;
 
-        /* Concatenating copies of hash_output into hash_block (B) */
+
         pkcs12_fill_buffer( hash_block, v, hash_output, hlen );
 
-        /* B += 1 */
+
         for( i = v; i > 0; i-- )
             if( ++hash_block[i - 1] != 0 )
                 break;
 
-        /* salt_block += B */
+
         c = 0;
         for( i = v; i > 0; i-- )
         {
@@ -130,7 +130,7 @@ int mbedtls_pkcs12_derivation( unsigned char *data, size_t datalen,
             salt_block[i - 1] = j & 0xFF;
         }
 
-        /* pwd_block  += B */
+
         c = 0;
         for( i = v; i > 0; i-- )
         {

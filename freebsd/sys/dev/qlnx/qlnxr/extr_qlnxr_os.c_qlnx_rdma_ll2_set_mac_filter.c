@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct qlnx_host {int dummy; } ;
 struct ecore_hwfn {scalar_t__ p_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QL_DPRINT2 (struct qlnx_host*,char*,void*) ; 
- int ecore_llh_add_mac_filter (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecore_llh_remove_mac_filter (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int QL_DPRINT2 (struct qlnx_host*,char*,void*) ;
+ int ecore_llh_add_mac_filter (scalar_t__,int ,int *) ;
+ int ecore_llh_remove_mac_filter (scalar_t__,int ,int *) ;
 
 int
 qlnx_rdma_ll2_set_mac_filter(void *rdma_ctx, uint8_t *old_mac_address,
-	uint8_t *new_mac_address)
+ uint8_t *new_mac_address)
 {
         struct ecore_hwfn *p_hwfn = rdma_ctx;
         struct qlnx_host *ha;

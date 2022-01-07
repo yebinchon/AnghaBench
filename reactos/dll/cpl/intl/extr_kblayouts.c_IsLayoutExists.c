@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szTmp ;
-typedef  int /*<<< orphan*/  szPreload ;
-typedef  int /*<<< orphan*/  szLayoutNum ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LANGID ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CCH_LAYOUT_ID ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetLocaleInfoW (scalar_t__,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  LOCALE_ILANGUAGE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ ,int,char*,int*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ TRUE ; 
- scalar_t__ wcscmp (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ wcstoul (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wsprintf (char*,char*,char*) ; 
+
+
+
+typedef int szTmp ;
+typedef int szPreload ;
+typedef int szLayoutNum ;
+typedef char WCHAR ;
+typedef int PWSTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LANGID ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CCH_LAYOUT_ID ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int GetLocaleInfoW (scalar_t__,int ,char*,int) ;
+ int HKEY_CURRENT_USER ;
+ int KEY_QUERY_VALUE ;
+ int LOCALE_ILANGUAGE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumValueW (int ,int,char*,int*,int *,int*,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char*,int *,int *,int ,int*) ;
+ scalar_t__ TRUE ;
+ scalar_t__ wcscmp (char*,int ) ;
+ scalar_t__ wcstoul (char*,int *,int) ;
+ int wsprintf (char*,char*,char*) ;
 
 __attribute__((used)) static BOOL
 IsLayoutExists(PWSTR szLayoutID, PWSTR szLangID)
@@ -53,16 +53,16 @@ IsLayoutExists(PWSTR szLayoutID, PWSTR szLangID)
     {
         dwSize = sizeof(szLayoutNum);
 
-        while (RegEnumValueW(hKey, dwIndex, szLayoutNum, &dwSize, NULL, &dwType, NULL, NULL) == ERROR_SUCCESS)
+        while (RegEnumValueW(hKey, dwIndex, szLayoutNum, &dwSize, ((void*)0), &dwType, ((void*)0), ((void*)0)) == ERROR_SUCCESS)
         {
             dwSize = sizeof(szPreload);
-            if (RegQueryValueExW(hKey, szLayoutNum, NULL, NULL, (LPBYTE)szPreload, &dwSize) != ERROR_SUCCESS)
+            if (RegQueryValueExW(hKey, szLayoutNum, ((void*)0), ((void*)0), (LPBYTE)szPreload, &dwSize) != ERROR_SUCCESS)
             {
                 RegCloseKey(hKey);
                 return FALSE;
             }
 
-            langid = (LANGID)wcstoul(szPreload, NULL, 16);
+            langid = (LANGID)wcstoul(szPreload, ((void*)0), 16);
             GetLocaleInfoW(langid, LOCALE_ILANGUAGE, szTmp, sizeof(szTmp) / sizeof(WCHAR));
             wsprintf(szOldLangID, L"0000%s", szTmp);
 
@@ -77,7 +77,7 @@ IsLayoutExists(PWSTR szLayoutID, PWSTR szLangID)
                                  0, KEY_QUERY_VALUE, &hSubKey) == ERROR_SUCCESS)
                 {
                     dwSize = sizeof(szTmp);
-                    RegQueryValueExW(hSubKey, szPreload, NULL, NULL, (LPBYTE)szTmp, &dwSize);
+                    RegQueryValueExW(hSubKey, szPreload, ((void*)0), ((void*)0), (LPBYTE)szTmp, &dwSize);
 
                     if ((wcscmp(szTmp, szLayoutID) == 0)&&(IsLangExists))
                     {

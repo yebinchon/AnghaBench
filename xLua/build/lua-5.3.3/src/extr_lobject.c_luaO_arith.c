@@ -1,66 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int /*<<< orphan*/  lua_Integer ;
-typedef  int /*<<< orphan*/  TValue ;
 
-/* Variables and functions */
- int LUA_OPADD ; 
-#define  LUA_OPBAND 135 
-#define  LUA_OPBNOT 134 
-#define  LUA_OPBOR 133 
-#define  LUA_OPBXOR 132 
-#define  LUA_OPDIV 131 
-#define  LUA_OPPOW 130 
-#define  LUA_OPSHL 129 
-#define  LUA_OPSHR 128 
- int /*<<< orphan*/  TMS ; 
- int TM_ADD ; 
- int /*<<< orphan*/  cast (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  intarith (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ivalue (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  luaT_trybinTM (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  numarith (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setfltvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setivalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tointeger (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tonumber (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ttisinteger (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Number ;
+typedef int lua_Integer ;
+typedef int TValue ;
+
+
+ int LUA_OPADD ;
+ int TMS ;
+ int TM_ADD ;
+ int cast (int ,int) ;
+ int intarith (int *,int,int ,int ) ;
+ int ivalue (int const*) ;
+ int luaT_trybinTM (int *,int const*,int const*,int *,int ) ;
+ int lua_assert (int ) ;
+ int numarith (int *,int,int ,int ) ;
+ int setfltvalue (int *,int ) ;
+ int setivalue (int *,int ) ;
+ int tointeger (int const*,int *) ;
+ int tonumber (int const*,int *) ;
+ int ttisinteger (int const*) ;
 
 void luaO_arith (lua_State *L, int op, const TValue *p1, const TValue *p2,
                  TValue *res) {
   switch (op) {
-    case LUA_OPBAND: case LUA_OPBOR: case LUA_OPBXOR:
-    case LUA_OPSHL: case LUA_OPSHR:
-    case LUA_OPBNOT: {  /* operate only on integers */
+    case 135: case 133: case 132:
+    case 129: case 128:
+    case 134: {
       lua_Integer i1; lua_Integer i2;
       if (tointeger(p1, &i1) && tointeger(p2, &i2)) {
         setivalue(res, intarith(L, op, i1, i2));
         return;
       }
-      else break;  /* go to the end */
+      else break;
     }
-    case LUA_OPDIV: case LUA_OPPOW: {  /* operate only on floats */
+    case 131: case 130: {
       lua_Number n1; lua_Number n2;
       if (tonumber(p1, &n1) && tonumber(p2, &n2)) {
         setfltvalue(res, numarith(L, op, n1, n2));
         return;
       }
-      else break;  /* go to the end */
+      else break;
     }
-    default: {  /* other operations */
+    default: {
       lua_Number n1; lua_Number n2;
       if (ttisinteger(p1) && ttisinteger(p2)) {
         setivalue(res, intarith(L, op, ivalue(p1), ivalue(p2)));
@@ -70,10 +62,10 @@ void luaO_arith (lua_State *L, int op, const TValue *p1, const TValue *p2,
         setfltvalue(res, numarith(L, op, n1, n2));
         return;
       }
-      else break;  /* go to the end */
+      else break;
     }
   }
-  /* could not perform raw operation; try metamethod */
-  lua_assert(L != NULL);  /* should not fail when folding (compile time) */
+
+  lua_assert(L != ((void*)0));
   luaT_trybinTM(L, p1, p2, res, cast(TMS, (op - LUA_OPADD) + TM_ADD));
 }

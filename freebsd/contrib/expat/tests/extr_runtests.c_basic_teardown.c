@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  XML_ParserFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * parser ; 
+ int XML_ParserFree (int *) ;
+ int * parser ;
 
 __attribute__((used)) static void
 basic_teardown(void)
 {
-    if (parser != NULL) {
+    if (parser != ((void*)0)) {
         XML_ParserFree(parser);
-        parser = NULL;
+        parser = ((void*)0);
     }
 }

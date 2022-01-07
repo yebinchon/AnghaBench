@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mlxsw_sp_kvdl {int /*<<< orphan*/  priv; TYPE_1__* kvdl_ops; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mlxsw_sp_kvdl {int priv; TYPE_1__* kvdl_ops; } ;
 struct mlxsw_sp {struct mlxsw_sp_kvdl* kvdl; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* fini ) (struct mlxsw_sp*,int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* fini ) (struct mlxsw_sp*,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct mlxsw_sp_kvdl*) ; 
- int /*<<< orphan*/  stub1 (struct mlxsw_sp*,int /*<<< orphan*/ ) ; 
+
+ int kfree (struct mlxsw_sp_kvdl*) ;
+ int stub1 (struct mlxsw_sp*,int ) ;
 
 void mlxsw_sp_kvdl_fini(struct mlxsw_sp *mlxsw_sp)
 {
-	struct mlxsw_sp_kvdl *kvdl = mlxsw_sp->kvdl;
+ struct mlxsw_sp_kvdl *kvdl = mlxsw_sp->kvdl;
 
-	kvdl->kvdl_ops->fini(mlxsw_sp, kvdl->priv);
-	kfree(kvdl);
+ kvdl->kvdl_ops->fini(mlxsw_sp, kvdl->priv);
+ kfree(kvdl);
 }

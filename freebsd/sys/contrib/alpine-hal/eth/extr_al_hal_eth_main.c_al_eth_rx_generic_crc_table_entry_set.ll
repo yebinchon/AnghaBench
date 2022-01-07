@@ -1,0 +1,354 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/contrib/alpine-hal/eth/extr_al_hal_eth_main.c_al_eth_rx_generic_crc_table_entry_set.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/contrib/alpine-hal/eth/extr_al_hal_eth_main.c_al_eth_rx_generic_crc_table_entry_set.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.al_hal_eth_adapter = type { %struct.TYPE_4__* }
+%struct.TYPE_4__ = type { %struct.TYPE_3__ }
+%struct.TYPE_3__ = type { i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32 }
+%struct.al_eth_rx_gcp_table_entry = type { i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32*, i32, i32, i32 }
+
+@AL_ETH_RX_GCP_POLY_SEL_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_POLY_SEL_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_CRC32_BIT_COMP_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_CRC32_BIT_COMP_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_CRC32_BIT_SWAP_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_CRC32_BIT_SWAP_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_CRC32_BYTE_SWAP_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_CRC32_BYTE_SWAP_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_DATA_BIT_SWAP_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_DATA_BIT_SWAP_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_DATA_BYTE_SWAP_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_DATA_BYTE_SWAP_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_TRAIL_SIZE_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_TRAIL_SIZE_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_HEAD_SIZE_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_HEAD_SIZE_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_HEAD_CALC_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_HEAD_CALC_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_MASK_POLARITY_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_MASK_POLARITY_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPCODE_1_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPCODE_1_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPCODE_2_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPCODE_2_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPCODE_3_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPCODE_3_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPSEL_1_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPSEL_1_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPSEL_2_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPSEL_2_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPSEL_3_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPSEL_3_SHIFT = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPSEL_4_MASK = common dso_local global i32 0, align 4
+@AL_ETH_RX_GCP_OPSEL_4_SHIFT = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @al_eth_rx_generic_crc_table_entry_set(%struct.al_hal_eth_adapter* %0, i32 %1, %struct.al_eth_rx_gcp_table_entry* %2) #0 {
+  %4 = alloca %struct.al_hal_eth_adapter*, align 8
+  %5 = alloca i32, align 4
+  %6 = alloca %struct.al_eth_rx_gcp_table_entry*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  %9 = alloca i32, align 4
+  store %struct.al_hal_eth_adapter* %0, %struct.al_hal_eth_adapter** %4, align 8
+  store i32 %1, i32* %5, align 4
+  store %struct.al_eth_rx_gcp_table_entry* %2, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %10 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %11 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %10, i32 0, i32 0
+  %12 = load i32, i32* %11, align 8
+  %13 = load i32, i32* @AL_ETH_RX_GCP_POLY_SEL_MASK, align 4
+  %14 = and i32 %12, %13
+  %15 = load i32, i32* @AL_ETH_RX_GCP_POLY_SEL_SHIFT, align 4
+  %16 = shl i32 %14, %15
+  store i32 %16, i32* %7, align 4
+  %17 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %18 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %17, i32 0, i32 1
+  %19 = load i32, i32* %18, align 4
+  %20 = load i32, i32* @AL_ETH_RX_GCP_CRC32_BIT_COMP_MASK, align 4
+  %21 = and i32 %19, %20
+  %22 = load i32, i32* @AL_ETH_RX_GCP_CRC32_BIT_COMP_SHIFT, align 4
+  %23 = shl i32 %21, %22
+  %24 = load i32, i32* %7, align 4
+  %25 = or i32 %24, %23
+  store i32 %25, i32* %7, align 4
+  %26 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %27 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %26, i32 0, i32 2
+  %28 = load i32, i32* %27, align 8
+  %29 = load i32, i32* @AL_ETH_RX_GCP_CRC32_BIT_SWAP_MASK, align 4
+  %30 = and i32 %28, %29
+  %31 = load i32, i32* @AL_ETH_RX_GCP_CRC32_BIT_SWAP_SHIFT, align 4
+  %32 = shl i32 %30, %31
+  %33 = load i32, i32* %7, align 4
+  %34 = or i32 %33, %32
+  store i32 %34, i32* %7, align 4
+  %35 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %36 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %35, i32 0, i32 3
+  %37 = load i32, i32* %36, align 4
+  %38 = load i32, i32* @AL_ETH_RX_GCP_CRC32_BYTE_SWAP_MASK, align 4
+  %39 = and i32 %37, %38
+  %40 = load i32, i32* @AL_ETH_RX_GCP_CRC32_BYTE_SWAP_SHIFT, align 4
+  %41 = shl i32 %39, %40
+  %42 = load i32, i32* %7, align 4
+  %43 = or i32 %42, %41
+  store i32 %43, i32* %7, align 4
+  %44 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %45 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %44, i32 0, i32 4
+  %46 = load i32, i32* %45, align 8
+  %47 = load i32, i32* @AL_ETH_RX_GCP_DATA_BIT_SWAP_MASK, align 4
+  %48 = and i32 %46, %47
+  %49 = load i32, i32* @AL_ETH_RX_GCP_DATA_BIT_SWAP_SHIFT, align 4
+  %50 = shl i32 %48, %49
+  %51 = load i32, i32* %7, align 4
+  %52 = or i32 %51, %50
+  store i32 %52, i32* %7, align 4
+  %53 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %54 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %53, i32 0, i32 5
+  %55 = load i32, i32* %54, align 4
+  %56 = load i32, i32* @AL_ETH_RX_GCP_DATA_BYTE_SWAP_MASK, align 4
+  %57 = and i32 %55, %56
+  %58 = load i32, i32* @AL_ETH_RX_GCP_DATA_BYTE_SWAP_SHIFT, align 4
+  %59 = shl i32 %57, %58
+  %60 = load i32, i32* %7, align 4
+  %61 = or i32 %60, %59
+  store i32 %61, i32* %7, align 4
+  %62 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %63 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %62, i32 0, i32 6
+  %64 = load i32, i32* %63, align 8
+  %65 = load i32, i32* @AL_ETH_RX_GCP_TRAIL_SIZE_MASK, align 4
+  %66 = and i32 %64, %65
+  %67 = load i32, i32* @AL_ETH_RX_GCP_TRAIL_SIZE_SHIFT, align 4
+  %68 = shl i32 %66, %67
+  %69 = load i32, i32* %7, align 4
+  %70 = or i32 %69, %68
+  store i32 %70, i32* %7, align 4
+  %71 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %72 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %71, i32 0, i32 7
+  %73 = load i32, i32* %72, align 4
+  %74 = load i32, i32* @AL_ETH_RX_GCP_HEAD_SIZE_MASK, align 4
+  %75 = and i32 %73, %74
+  %76 = load i32, i32* @AL_ETH_RX_GCP_HEAD_SIZE_SHIFT, align 4
+  %77 = shl i32 %75, %76
+  %78 = load i32, i32* %7, align 4
+  %79 = or i32 %78, %77
+  store i32 %79, i32* %7, align 4
+  %80 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %81 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %80, i32 0, i32 8
+  %82 = load i32, i32* %81, align 8
+  %83 = load i32, i32* @AL_ETH_RX_GCP_HEAD_CALC_MASK, align 4
+  %84 = and i32 %82, %83
+  %85 = load i32, i32* @AL_ETH_RX_GCP_HEAD_CALC_SHIFT, align 4
+  %86 = shl i32 %84, %85
+  %87 = load i32, i32* %7, align 4
+  %88 = or i32 %87, %86
+  store i32 %88, i32* %7, align 4
+  %89 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %90 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %89, i32 0, i32 9
+  %91 = load i32, i32* %90, align 4
+  %92 = load i32, i32* @AL_ETH_RX_GCP_MASK_POLARITY_MASK, align 4
+  %93 = and i32 %91, %92
+  %94 = load i32, i32* @AL_ETH_RX_GCP_MASK_POLARITY_SHIFT, align 4
+  %95 = shl i32 %93, %94
+  %96 = load i32, i32* %7, align 4
+  %97 = or i32 %96, %95
+  store i32 %97, i32* %7, align 4
+  %98 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %99 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %98, i32 0, i32 10
+  %100 = load i32, i32* %99, align 8
+  %101 = load i32, i32* @AL_ETH_RX_GCP_OPCODE_1_MASK, align 4
+  %102 = and i32 %100, %101
+  %103 = load i32, i32* @AL_ETH_RX_GCP_OPCODE_1_SHIFT, align 4
+  %104 = shl i32 %102, %103
+  store i32 %104, i32* %8, align 4
+  %105 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %106 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %105, i32 0, i32 11
+  %107 = load i32, i32* %106, align 4
+  %108 = load i32, i32* @AL_ETH_RX_GCP_OPCODE_2_MASK, align 4
+  %109 = and i32 %107, %108
+  %110 = load i32, i32* @AL_ETH_RX_GCP_OPCODE_2_SHIFT, align 4
+  %111 = shl i32 %109, %110
+  %112 = load i32, i32* %8, align 4
+  %113 = or i32 %112, %111
+  store i32 %113, i32* %8, align 4
+  %114 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %115 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %114, i32 0, i32 12
+  %116 = load i32, i32* %115, align 8
+  %117 = load i32, i32* @AL_ETH_RX_GCP_OPCODE_3_MASK, align 4
+  %118 = and i32 %116, %117
+  %119 = load i32, i32* @AL_ETH_RX_GCP_OPCODE_3_SHIFT, align 4
+  %120 = shl i32 %118, %119
+  %121 = load i32, i32* %8, align 4
+  %122 = or i32 %121, %120
+  store i32 %122, i32* %8, align 4
+  %123 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %124 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %123, i32 0, i32 13
+  %125 = load i32, i32* %124, align 4
+  %126 = load i32, i32* @AL_ETH_RX_GCP_OPSEL_1_MASK, align 4
+  %127 = and i32 %125, %126
+  %128 = load i32, i32* @AL_ETH_RX_GCP_OPSEL_1_SHIFT, align 4
+  %129 = shl i32 %127, %128
+  store i32 %129, i32* %9, align 4
+  %130 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %131 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %130, i32 0, i32 14
+  %132 = load i32, i32* %131, align 8
+  %133 = load i32, i32* @AL_ETH_RX_GCP_OPSEL_2_MASK, align 4
+  %134 = and i32 %132, %133
+  %135 = load i32, i32* @AL_ETH_RX_GCP_OPSEL_2_SHIFT, align 4
+  %136 = shl i32 %134, %135
+  %137 = load i32, i32* %9, align 4
+  %138 = or i32 %137, %136
+  store i32 %138, i32* %9, align 4
+  %139 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %140 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %139, i32 0, i32 15
+  %141 = load i32, i32* %140, align 4
+  %142 = load i32, i32* @AL_ETH_RX_GCP_OPSEL_3_MASK, align 4
+  %143 = and i32 %141, %142
+  %144 = load i32, i32* @AL_ETH_RX_GCP_OPSEL_3_SHIFT, align 4
+  %145 = shl i32 %143, %144
+  %146 = load i32, i32* %9, align 4
+  %147 = or i32 %146, %145
+  store i32 %147, i32* %9, align 4
+  %148 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %149 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %148, i32 0, i32 16
+  %150 = load i32, i32* %149, align 8
+  %151 = load i32, i32* @AL_ETH_RX_GCP_OPSEL_4_MASK, align 4
+  %152 = and i32 %150, %151
+  %153 = load i32, i32* @AL_ETH_RX_GCP_OPSEL_4_SHIFT, align 4
+  %154 = shl i32 %152, %153
+  %155 = load i32, i32* %9, align 4
+  %156 = or i32 %155, %154
+  store i32 %156, i32* %9, align 4
+  %157 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %158 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %157, i32 0, i32 0
+  %159 = load %struct.TYPE_4__*, %struct.TYPE_4__** %158, align 8
+  %160 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %159, i32 0, i32 0
+  %161 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %160, i32 0, i32 12
+  %162 = load i32, i32* %5, align 4
+  %163 = call i32 @al_reg_write32(i32* %161, i32 %162)
+  %164 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %165 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %164, i32 0, i32 0
+  %166 = load %struct.TYPE_4__*, %struct.TYPE_4__** %165, align 8
+  %167 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %166, i32 0, i32 0
+  %168 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %167, i32 0, i32 11
+  %169 = load i32, i32* %7, align 4
+  %170 = call i32 @al_reg_write32(i32* %168, i32 %169)
+  %171 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %172 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %171, i32 0, i32 0
+  %173 = load %struct.TYPE_4__*, %struct.TYPE_4__** %172, align 8
+  %174 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %173, i32 0, i32 0
+  %175 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %174, i32 0, i32 10
+  %176 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %177 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %176, i32 0, i32 17
+  %178 = load i32*, i32** %177, align 8
+  %179 = getelementptr inbounds i32, i32* %178, i64 0
+  %180 = load i32, i32* %179, align 4
+  %181 = call i32 @al_reg_write32(i32* %175, i32 %180)
+  %182 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %183 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %182, i32 0, i32 0
+  %184 = load %struct.TYPE_4__*, %struct.TYPE_4__** %183, align 8
+  %185 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %184, i32 0, i32 0
+  %186 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %185, i32 0, i32 9
+  %187 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %188 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %187, i32 0, i32 17
+  %189 = load i32*, i32** %188, align 8
+  %190 = getelementptr inbounds i32, i32* %189, i64 1
+  %191 = load i32, i32* %190, align 4
+  %192 = call i32 @al_reg_write32(i32* %186, i32 %191)
+  %193 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %194 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %193, i32 0, i32 0
+  %195 = load %struct.TYPE_4__*, %struct.TYPE_4__** %194, align 8
+  %196 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %195, i32 0, i32 0
+  %197 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %196, i32 0, i32 8
+  %198 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %199 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %198, i32 0, i32 17
+  %200 = load i32*, i32** %199, align 8
+  %201 = getelementptr inbounds i32, i32* %200, i64 2
+  %202 = load i32, i32* %201, align 4
+  %203 = call i32 @al_reg_write32(i32* %197, i32 %202)
+  %204 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %205 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %204, i32 0, i32 0
+  %206 = load %struct.TYPE_4__*, %struct.TYPE_4__** %205, align 8
+  %207 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %206, i32 0, i32 0
+  %208 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %207, i32 0, i32 7
+  %209 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %210 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %209, i32 0, i32 17
+  %211 = load i32*, i32** %210, align 8
+  %212 = getelementptr inbounds i32, i32* %211, i64 3
+  %213 = load i32, i32* %212, align 4
+  %214 = call i32 @al_reg_write32(i32* %208, i32 %213)
+  %215 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %216 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %215, i32 0, i32 0
+  %217 = load %struct.TYPE_4__*, %struct.TYPE_4__** %216, align 8
+  %218 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %217, i32 0, i32 0
+  %219 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %218, i32 0, i32 6
+  %220 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %221 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %220, i32 0, i32 17
+  %222 = load i32*, i32** %221, align 8
+  %223 = getelementptr inbounds i32, i32* %222, i64 4
+  %224 = load i32, i32* %223, align 4
+  %225 = call i32 @al_reg_write32(i32* %219, i32 %224)
+  %226 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %227 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %226, i32 0, i32 0
+  %228 = load %struct.TYPE_4__*, %struct.TYPE_4__** %227, align 8
+  %229 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %228, i32 0, i32 0
+  %230 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %229, i32 0, i32 5
+  %231 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %232 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %231, i32 0, i32 17
+  %233 = load i32*, i32** %232, align 8
+  %234 = getelementptr inbounds i32, i32* %233, i64 5
+  %235 = load i32, i32* %234, align 4
+  %236 = call i32 @al_reg_write32(i32* %230, i32 %235)
+  %237 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %238 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %237, i32 0, i32 0
+  %239 = load %struct.TYPE_4__*, %struct.TYPE_4__** %238, align 8
+  %240 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %239, i32 0, i32 0
+  %241 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %240, i32 0, i32 4
+  %242 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %243 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %242, i32 0, i32 18
+  %244 = load i32, i32* %243, align 8
+  %245 = call i32 @al_reg_write32(i32* %241, i32 %244)
+  %246 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %247 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %246, i32 0, i32 0
+  %248 = load %struct.TYPE_4__*, %struct.TYPE_4__** %247, align 8
+  %249 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %248, i32 0, i32 0
+  %250 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %249, i32 0, i32 3
+  %251 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %252 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %251, i32 0, i32 19
+  %253 = load i32, i32* %252, align 4
+  %254 = call i32 @al_reg_write32(i32* %250, i32 %253)
+  %255 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %256 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %255, i32 0, i32 0
+  %257 = load %struct.TYPE_4__*, %struct.TYPE_4__** %256, align 8
+  %258 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %257, i32 0, i32 0
+  %259 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %258, i32 0, i32 2
+  %260 = load i32, i32* %8, align 4
+  %261 = call i32 @al_reg_write32(i32* %259, i32 %260)
+  %262 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %263 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %262, i32 0, i32 0
+  %264 = load %struct.TYPE_4__*, %struct.TYPE_4__** %263, align 8
+  %265 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %264, i32 0, i32 0
+  %266 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %265, i32 0, i32 1
+  %267 = load i32, i32* %9, align 4
+  %268 = call i32 @al_reg_write32(i32* %266, i32 %267)
+  %269 = load %struct.al_hal_eth_adapter*, %struct.al_hal_eth_adapter** %4, align 8
+  %270 = getelementptr inbounds %struct.al_hal_eth_adapter, %struct.al_hal_eth_adapter* %269, i32 0, i32 0
+  %271 = load %struct.TYPE_4__*, %struct.TYPE_4__** %270, align 8
+  %272 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %271, i32 0, i32 0
+  %273 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %272, i32 0, i32 0
+  %274 = load %struct.al_eth_rx_gcp_table_entry*, %struct.al_eth_rx_gcp_table_entry** %6, align 8
+  %275 = getelementptr inbounds %struct.al_eth_rx_gcp_table_entry, %struct.al_eth_rx_gcp_table_entry* %274, i32 0, i32 20
+  %276 = load i32, i32* %275, align 8
+  %277 = call i32 @al_reg_write32(i32* %273, i32 %276)
+  ret i32 0
+}
+
+declare dso_local i32 @al_reg_write32(i32*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

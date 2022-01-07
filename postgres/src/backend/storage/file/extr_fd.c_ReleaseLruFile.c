@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ lruMoreRecently; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  DO_DB (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG ; 
- int /*<<< orphan*/  LruDelete (scalar_t__) ; 
- TYPE_1__* VfdCache ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ nfile ; 
+
+ int Assert (int) ;
+ int DO_DB (int ) ;
+ int LOG ;
+ int LruDelete (scalar_t__) ;
+ TYPE_1__* VfdCache ;
+ int elog (int ,char*,scalar_t__) ;
+ scalar_t__ nfile ;
 
 __attribute__((used)) static bool
 ReleaseLruFile(void)
 {
-	DO_DB(elog(LOG, "ReleaseLruFile. Opened %d", nfile));
+ DO_DB(elog(LOG, "ReleaseLruFile. Opened %d", nfile));
 
-	if (nfile > 0)
-	{
-		/*
-		 * There are opened files and so there should be at least one used vfd
-		 * in the ring.
-		 */
-		Assert(VfdCache[0].lruMoreRecently != 0);
-		LruDelete(VfdCache[0].lruMoreRecently);
-		return true;			/* freed a file */
-	}
-	return false;				/* no files available to free */
+ if (nfile > 0)
+ {
+
+
+
+
+  Assert(VfdCache[0].lruMoreRecently != 0);
+  LruDelete(VfdCache[0].lruMoreRecently);
+  return 1;
+ }
+ return 0;
 }

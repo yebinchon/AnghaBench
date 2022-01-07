@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uclogic_params_pen {int /*<<< orphan*/  desc_ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct uclogic_params_pen*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct uclogic_params_pen {int desc_ptr; } ;
+
+
+ int kfree (int ) ;
+ int memset (struct uclogic_params_pen*,int ,int) ;
 
 __attribute__((used)) static void uclogic_params_pen_cleanup(struct uclogic_params_pen *pen)
 {
-	kfree(pen->desc_ptr);
-	memset(pen, 0, sizeof(*pen));
+ kfree(pen->desc_ptr);
+ memset(pen, 0, sizeof(*pen));
 }

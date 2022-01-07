@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_5__ {int pc; int /*<<< orphan*/  cycles; } ;
-typedef  TYPE_1__ sh2rec_block_t ;
 
-/* Variables and functions */
- int INSTRUCTION_B (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  R0 ; 
- int /*<<< orphan*/  R8 ; 
- int /*<<< orphan*/  R_MACL ; 
- int /*<<< orphan*/  emitMOVLS4 (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emitSTS (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_5__ {int pc; int cycles; } ;
+typedef TYPE_1__ sh2rec_block_t ;
+
+
+ int INSTRUCTION_B (int ) ;
+ int R0 ;
+ int R8 ;
+ int R_MACL ;
+ int emitMOVLS4 (TYPE_1__*,int ,int,int ) ;
+ int emitSTS (TYPE_1__*,int ,int ) ;
 
 __attribute__((used)) static void generateSTSMACL(uint16_t inst, sh2rec_block_t *b) {
     int regn = INSTRUCTION_B(inst);
 
-    emitSTS(b, R_MACL, R0);         /* R0 <- MACL */
-    emitMOVLS4(b, R0, regn, R8);    /* sh2[Rn] <- R0 */
+    emitSTS(b, R_MACL, R0);
+    emitMOVLS4(b, R0, regn, R8);
 
-    ++b->cycles;                    /* 1 Cycle */
+    ++b->cycles;
     b->pc += 2;
 }

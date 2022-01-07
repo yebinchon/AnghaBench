@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  linenr_T ;
-typedef  int /*<<< orphan*/  buf_T ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  scalar_t__ PyInt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * LineToString (char*) ; 
- int /*<<< orphan*/ * PyList_New (scalar_t__) ; 
- int /*<<< orphan*/  PyList_SET_ITEM (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- scalar_t__ ml_get_buf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int linenr_T ;
+typedef int buf_T ;
+typedef int PyObject ;
+typedef scalar_t__ PyInt ;
+
+
+ int FALSE ;
+ int * LineToString (char*) ;
+ int * PyList_New (scalar_t__) ;
+ int PyList_SET_ITEM (int *,scalar_t__,int *) ;
+ int Py_DECREF (int *) ;
+ scalar_t__ ml_get_buf (int *,int ,int ) ;
 
 __attribute__((used)) static PyObject *
 GetBufferLineList(buf_T *buf, PyInt lo, PyInt hi)
 {
-    PyInt	i;
-    PyInt	n = hi - lo;
-    PyObject	*list = PyList_New(n);
+    PyInt i;
+    PyInt n = hi - lo;
+    PyObject *list = PyList_New(n);
 
-    if (list == NULL)
-	return NULL;
+    if (list == ((void*)0))
+ return ((void*)0);
 
     for (i = 0; i < n; ++i)
     {
-	PyObject	*string = LineToString(
-		(char *)ml_get_buf(buf, (linenr_T)(lo+i), FALSE));
+ PyObject *string = LineToString(
+  (char *)ml_get_buf(buf, (linenr_T)(lo+i), FALSE));
 
-	/* Error check - was the Python string creation OK? */
-	if (string == NULL)
-	{
-	    Py_DECREF(list);
-	    return NULL;
-	}
 
-	PyList_SET_ITEM(list, i, string);
+ if (string == ((void*)0))
+ {
+     Py_DECREF(list);
+     return ((void*)0);
+ }
+
+ PyList_SET_ITEM(list, i, string);
     }
 
-    /* The ownership of the Python list is passed to the caller (ie,
-     * the caller should Py_DECREF() the object when it is finished
-     * with it).
-     */
+
+
+
+
 
     return list;
 }

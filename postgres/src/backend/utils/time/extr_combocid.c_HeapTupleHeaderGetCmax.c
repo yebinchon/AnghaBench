@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int t_infomask; } ;
-typedef  TYPE_1__* HeapTupleHeader ;
-typedef  int /*<<< orphan*/  CommandId ;
+typedef TYPE_1__* HeapTupleHeader ;
+typedef int CommandId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- scalar_t__ CritSectionCount ; 
- int /*<<< orphan*/  GetRealCmax (int /*<<< orphan*/ ) ; 
- int HEAP_COMBOCID ; 
- int HEAP_MOVED ; 
- int /*<<< orphan*/  HeapTupleHeaderGetRawCommandId (TYPE_1__*) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetUpdateXid (TYPE_1__*) ; 
- scalar_t__ TransactionIdIsCurrentTransactionId (int /*<<< orphan*/ ) ; 
+
+ int Assert (int) ;
+ scalar_t__ CritSectionCount ;
+ int GetRealCmax (int ) ;
+ int HEAP_COMBOCID ;
+ int HEAP_MOVED ;
+ int HeapTupleHeaderGetRawCommandId (TYPE_1__*) ;
+ int HeapTupleHeaderGetUpdateXid (TYPE_1__*) ;
+ scalar_t__ TransactionIdIsCurrentTransactionId (int ) ;
 
 CommandId
 HeapTupleHeaderGetCmax(HeapTupleHeader tup)
 {
-	CommandId	cid = HeapTupleHeaderGetRawCommandId(tup);
+ CommandId cid = HeapTupleHeaderGetRawCommandId(tup);
 
-	Assert(!(tup->t_infomask & HEAP_MOVED));
+ Assert(!(tup->t_infomask & HEAP_MOVED));
 
-	/*
-	 * Because GetUpdateXid() performs memory allocations if xmax is a
-	 * multixact we can't Assert() if we're inside a critical section. This
-	 * weakens the check, but not using GetCmax() inside one would complicate
-	 * things too much.
-	 */
-	Assert(CritSectionCount > 0 ||
-		   TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetUpdateXid(tup)));
 
-	if (tup->t_infomask & HEAP_COMBOCID)
-		return GetRealCmax(cid);
-	else
-		return cid;
+
+
+
+
+
+ Assert(CritSectionCount > 0 ||
+     TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetUpdateXid(tup)));
+
+ if (tup->t_infomask & HEAP_COMBOCID)
+  return GetRealCmax(cid);
+ else
+  return cid;
 }

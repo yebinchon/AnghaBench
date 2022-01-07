@@ -1,107 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct sih {int /*<<< orphan*/  bytes_ixr; TYPE_1__* mask; int /*<<< orphan*/  module; scalar_t__ set_cor; int /*<<< orphan*/  name; int /*<<< orphan*/  control_offset; } ;
-struct TYPE_2__ {int /*<<< orphan*/  isr_offset; int /*<<< orphan*/  imr_offset; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (struct sih*) ; 
- int EINVAL ; 
- int /*<<< orphan*/  TWL4030_SIH_CTRL_COR_MASK ; 
- unsigned int irq_line ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  pr_err (char*,int,int /*<<< orphan*/ ,char*) ; 
- struct sih* sih_modules ; 
- int twl4030_i2c_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int twl4030_i2c_write (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int twl4030_i2c_write_u8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct sih {int bytes_ixr; TYPE_1__* mask; int module; scalar_t__ set_cor; int name; int control_offset; } ;
+struct TYPE_2__ {int isr_offset; int imr_offset; } ;
+
+
+ int ARRAY_SIZE (struct sih*) ;
+ int EINVAL ;
+ int TWL4030_SIH_CTRL_COR_MASK ;
+ unsigned int irq_line ;
+ int memset (int *,int,int) ;
+ int pr_err (char*,int,int ,char*) ;
+ struct sih* sih_modules ;
+ int twl4030_i2c_read (int ,int *,int ,int ) ;
+ int twl4030_i2c_write (int ,int *,int ,int ) ;
+ int twl4030_i2c_write_u8 (int ,int ,int ) ;
 
 __attribute__((used)) static int twl4030_init_sih_modules(unsigned line)
 {
-	const struct sih *sih;
-	u8 buf[4];
-	int i;
-	int status;
+ const struct sih *sih;
+ u8 buf[4];
+ int i;
+ int status;
 
-	/* line 0 == int1_n signal; line 1 == int2_n signal */
-	if (line > 1)
-		return -EINVAL;
 
-	irq_line = line;
+ if (line > 1)
+  return -EINVAL;
 
-	/* disable all interrupts on our line */
-	memset(buf, 0xff, sizeof buf);
-	sih = sih_modules;
-	for (i = 0; i < ARRAY_SIZE(sih_modules); i++, sih++) {
+ irq_line = line;
 
-		/* skip USB -- it's funky */
-		if (!sih->bytes_ixr)
-			continue;
 
-		status = twl4030_i2c_write(sih->module, buf,
-				sih->mask[line].imr_offset, sih->bytes_ixr);
-		if (status < 0)
-			pr_err("twl4030: err %d initializing %s %s\n",
-					status, sih->name, "IMR");
+ memset(buf, 0xff, sizeof buf);
+ sih = sih_modules;
+ for (i = 0; i < ARRAY_SIZE(sih_modules); i++, sih++) {
 
-		/* Maybe disable "exclusive" mode; buffer second pending irq;
-		 * set Clear-On-Read (COR) bit.
-		 *
-		 * NOTE that sometimes COR polarity is documented as being
-		 * inverted:  for MADC and BCI, COR=1 means "clear on write".
-		 * And for PWR_INT it's not documented...
-		 */
-		if (sih->set_cor) {
-			status = twl4030_i2c_write_u8(sih->module,
-					TWL4030_SIH_CTRL_COR_MASK,
-					sih->control_offset);
-			if (status < 0)
-				pr_err("twl4030: err %d initializing %s %s\n",
-						status, sih->name, "SIH_CTRL");
-		}
-	}
 
-	sih = sih_modules;
-	for (i = 0; i < ARRAY_SIZE(sih_modules); i++, sih++) {
-		u8 rxbuf[4];
-		int j;
+  if (!sih->bytes_ixr)
+   continue;
 
-		/* skip USB */
-		if (!sih->bytes_ixr)
-			continue;
+  status = twl4030_i2c_write(sih->module, buf,
+    sih->mask[line].imr_offset, sih->bytes_ixr);
+  if (status < 0)
+   pr_err("twl4030: err %d initializing %s %s\n",
+     status, sih->name, "IMR");
+  if (sih->set_cor) {
+   status = twl4030_i2c_write_u8(sih->module,
+     TWL4030_SIH_CTRL_COR_MASK,
+     sih->control_offset);
+   if (status < 0)
+    pr_err("twl4030: err %d initializing %s %s\n",
+      status, sih->name, "SIH_CTRL");
+  }
+ }
 
-		/* Clear pending interrupt status.  Either the read was
-		 * enough, or we need to write those bits.  Repeat, in
-		 * case an IRQ is pending (PENDDIS=0) ... that's not
-		 * uncommon with PWR_INT.PWRON.
-		 */
-		for (j = 0; j < 2; j++) {
-			status = twl4030_i2c_read(sih->module, rxbuf,
-				sih->mask[line].isr_offset, sih->bytes_ixr);
-			if (status < 0)
-				pr_err("twl4030: err %d initializing %s %s\n",
-					status, sih->name, "ISR");
+ sih = sih_modules;
+ for (i = 0; i < ARRAY_SIZE(sih_modules); i++, sih++) {
+  u8 rxbuf[4];
+  int j;
 
-			if (!sih->set_cor)
-				status = twl4030_i2c_write(sih->module, buf,
-					sih->mask[line].isr_offset,
-					sih->bytes_ixr);
-			/* else COR=1 means read sufficed.
-			 * (for most SIH modules...)
-			 */
-		}
-	}
 
-	return 0;
+  if (!sih->bytes_ixr)
+   continue;
+
+
+
+
+
+
+  for (j = 0; j < 2; j++) {
+   status = twl4030_i2c_read(sih->module, rxbuf,
+    sih->mask[line].isr_offset, sih->bytes_ixr);
+   if (status < 0)
+    pr_err("twl4030: err %d initializing %s %s\n",
+     status, sih->name, "ISR");
+
+   if (!sih->set_cor)
+    status = twl4030_i2c_write(sih->module, buf,
+     sih->mask[line].isr_offset,
+     sih->bytes_ixr);
+
+
+
+  }
+ }
+
+ return 0;
 }

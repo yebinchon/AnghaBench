@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OSSetExceptionCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OS_EXCEPTION_TYPE_DSI ; 
- int /*<<< orphan*/  OS_EXCEPTION_TYPE_ISI ; 
- int /*<<< orphan*/  OS_EXCEPTION_TYPE_PROGRAM ; 
- int /*<<< orphan*/  exception_dsi_cb ; 
- int /*<<< orphan*/  exception_isi_cb ; 
- int /*<<< orphan*/  exception_msgbuf ; 
- int /*<<< orphan*/  exception_prog_cb ; 
- int /*<<< orphan*/  malloc (int) ; 
- int /*<<< orphan*/  test_os_exceptions () ; 
+ int OSSetExceptionCallback (int ,int ) ;
+ int OS_EXCEPTION_TYPE_DSI ;
+ int OS_EXCEPTION_TYPE_ISI ;
+ int OS_EXCEPTION_TYPE_PROGRAM ;
+ int exception_dsi_cb ;
+ int exception_isi_cb ;
+ int exception_msgbuf ;
+ int exception_prog_cb ;
+ int malloc (int) ;
+ int test_os_exceptions () ;
 
 void setup_os_exceptions(void)
 {

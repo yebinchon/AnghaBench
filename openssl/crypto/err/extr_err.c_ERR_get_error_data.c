@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EV_POP ; 
- unsigned long get_error_values (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int*) ; 
+ int EV_POP ;
+ unsigned long get_error_values (int ,int *,int *,int *,char const**,int*) ;
 
 unsigned long ERR_get_error_data(const char **data, int *flags)
 {
-    return get_error_values(EV_POP, NULL, NULL, NULL, data, flags);
+    return get_error_values(EV_POP, ((void*)0), ((void*)0), ((void*)0), data, flags);
 }

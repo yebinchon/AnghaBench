@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  dradf2 (int,int,float*,float*,float*) ; 
- int /*<<< orphan*/  dradf4 (int,int,float*,float*,float*,float*,float*) ; 
- int /*<<< orphan*/  dradfg (int,int,int,int,float*,float*,float*,float*,float*,float*) ; 
+ int dradf2 (int,int,float*,float*,float*) ;
+ int dradf4 (int,int,float*,float*,float*,float*,float*) ;
+ int dradfg (int,int,int,int,float*,float*,float*,float*,float*,float*) ;
 
 __attribute__((used)) static void drftf1(int n,float *c,float *ch,float *wa,int *ifac){
   int i,k1,l1,l2;

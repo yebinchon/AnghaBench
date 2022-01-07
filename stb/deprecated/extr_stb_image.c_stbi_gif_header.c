@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char flags; char bgindex; char ratio; int transparent; int /*<<< orphan*/  pal; void* h; void* w; } ;
-typedef  TYPE_1__ stbi_gif ;
-typedef  char stbi__uint8 ;
-typedef  int /*<<< orphan*/  stbi ;
 
-/* Variables and functions */
- int e (char*,char*) ; 
- char* failure_reason ; 
- void* get16le (int /*<<< orphan*/ *) ; 
- char get8 (int /*<<< orphan*/ *) ; 
- char get8u (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stbi_gif_parse_colortable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char flags; char bgindex; char ratio; int transparent; int pal; void* h; void* w; } ;
+typedef TYPE_1__ stbi_gif ;
+typedef char stbi__uint8 ;
+typedef int stbi ;
+
+
+ int e (char*,char*) ;
+ char* failure_reason ;
+ void* get16le (int *) ;
+ char get8 (int *) ;
+ char get8u (int *) ;
+ int stbi_gif_parse_colortable (int *,int ,int,int) ;
 
 __attribute__((used)) static int stbi_gif_header(stbi *s, stbi_gif *g, int *comp, int is_info)
 {
@@ -31,9 +31,9 @@ __attribute__((used)) static int stbi_gif_header(stbi *s, stbi_gif *g, int *comp
       return e("not GIF", "Corrupt GIF");
 
    version = get8u(s);
-   if (version != '7' && version != '9')    return e("not GIF", "Corrupt GIF");
-   if (get8(s) != 'a')                      return e("not GIF", "Corrupt GIF");
- 
+   if (version != '7' && version != '9') return e("not GIF", "Corrupt GIF");
+   if (get8(s) != 'a') return e("not GIF", "Corrupt GIF");
+
    failure_reason = "";
    g->w = get16le(s);
    g->h = get16le(s);
@@ -42,7 +42,7 @@ __attribute__((used)) static int stbi_gif_header(stbi *s, stbi_gif *g, int *comp
    g->ratio = get8(s);
    g->transparent = -1;
 
-   if (comp != 0) *comp = 4;  // can't actually tell whether it's 3 or 4 until we parse the comments
+   if (comp != 0) *comp = 4;
 
    if (is_info) return 1;
 

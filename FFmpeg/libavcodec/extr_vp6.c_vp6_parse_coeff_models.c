@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  def_prob ;
-typedef  int /*<<< orphan*/  VP56RangeCoder ;
-struct TYPE_8__ {int** coeff_dccv; int** coeff_runv; int**** coeff_ract; int /*<<< orphan*/ *** coeff_dcct; int /*<<< orphan*/ * coeff_reorder; } ;
-typedef  TYPE_2__ VP56Model ;
-struct TYPE_9__ {int* nb_null; int /*<<< orphan*/ *** ract_vlc; int /*<<< orphan*/ * runv_vlc; int /*<<< orphan*/ * dccv_vlc; scalar_t__ use_huffman; TYPE_1__** frames; TYPE_2__* modelp; int /*<<< orphan*/  c; } ;
-typedef  TYPE_3__ VP56Context ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int def_prob ;
+typedef int VP56RangeCoder ;
+struct TYPE_8__ {int** coeff_dccv; int** coeff_runv; int**** coeff_ract; int *** coeff_dcct; int * coeff_reorder; } ;
+typedef TYPE_2__ VP56Model ;
+struct TYPE_9__ {int* nb_null; int *** ract_vlc; int * runv_vlc; int * dccv_vlc; scalar_t__ use_huffman; TYPE_1__** frames; TYPE_2__* modelp; int c; } ;
+typedef TYPE_3__ VP56Context ;
 struct TYPE_7__ {scalar_t__ key_frame; } ;
 
-/* Variables and functions */
- size_t VP56_FRAME_CURRENT ; 
- int /*<<< orphan*/  av_clip (int,int,int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- scalar_t__ vp56_rac_get (int /*<<< orphan*/ *) ; 
- scalar_t__ vp56_rac_get_prob_branchy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vp56_rac_gets (int /*<<< orphan*/ *,int) ; 
- void* vp56_rac_gets_nn (int /*<<< orphan*/ *,int) ; 
- scalar_t__ vp6_build_huff_tree (TYPE_3__*,int*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vp6_coeff_order_table_init (TYPE_3__*) ; 
- int /*<<< orphan*/ * vp6_coeff_reorder_pct ; 
- int*** vp6_dccv_lc ; 
- int /*<<< orphan*/ ** vp6_dccv_pct ; 
- int /*<<< orphan*/  vp6_huff_coeff_map ; 
- int /*<<< orphan*/  vp6_huff_run_map ; 
- int /*<<< orphan*/ **** vp6_ract_pct ; 
- int /*<<< orphan*/ ** vp6_runv_pct ; 
+
+ size_t VP56_FRAME_CURRENT ;
+ int av_clip (int,int,int) ;
+ int memset (int*,int,int) ;
+ scalar_t__ vp56_rac_get (int *) ;
+ scalar_t__ vp56_rac_get_prob_branchy (int *,int ) ;
+ int vp56_rac_gets (int *,int) ;
+ void* vp56_rac_gets_nn (int *,int) ;
+ scalar_t__ vp6_build_huff_tree (TYPE_3__*,int*,int ,int,int *) ;
+ int vp6_coeff_order_table_init (TYPE_3__*) ;
+ int * vp6_coeff_reorder_pct ;
+ int*** vp6_dccv_lc ;
+ int ** vp6_dccv_pct ;
+ int vp6_huff_coeff_map ;
+ int vp6_huff_run_map ;
+ int **** vp6_ract_pct ;
+ int ** vp6_runv_pct ;
 
 __attribute__((used)) static int vp6_parse_coeff_models(VP56Context *s)
 {
@@ -45,8 +45,8 @@ __attribute__((used)) static int vp6_parse_coeff_models(VP56Context *s)
     VP56Model *model = s->modelp;
     int def_prob[11];
     int node, cg, ctx, pos;
-    int ct;    /* code type */
-    int pt;    /* plane type (0 for Y, 1 for U or V) */
+    int ct;
+    int pt;
 
     memset(def_prob, 0x80, sizeof(def_prob));
 
@@ -99,7 +99,7 @@ __attribute__((used)) static int vp6_parse_coeff_models(VP56Context *s)
         }
         memset(s->nb_null, 0, sizeof(s->nb_null));
     } else {
-    /* coeff_dcct is a linear combination of coeff_dccv */
+
     for (pt=0; pt<2; pt++)
         for (ctx=0; ctx<3; ctx++)
             for (node=0; node<5; node++)

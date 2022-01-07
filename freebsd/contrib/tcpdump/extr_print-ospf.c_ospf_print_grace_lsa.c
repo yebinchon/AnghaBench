@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int u_int ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int u_int ;
 struct TYPE_6__ {int ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int EXTRACT_16BITS (int const*) ; 
- int /*<<< orphan*/  EXTRACT_32BITS (int const*) ; 
-#define  LS_OPAQUE_GRACE_TLV_INT_ADDRESS 130 
-#define  LS_OPAQUE_GRACE_TLV_PERIOD 129 
-#define  LS_OPAQUE_GRACE_TLV_REASON 128 
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK2 (int const,int) ; 
- int /*<<< orphan*/  ipaddr_string (TYPE_1__*,int const*) ; 
- int /*<<< orphan*/  lsa_opaque_grace_tlv_reason_values ; 
- int /*<<< orphan*/  lsa_opaque_grace_tlv_values ; 
- int /*<<< orphan*/  print_unknown_data (TYPE_1__*,int const*,char*,int) ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int const) ; 
+
+ int EXTRACT_16BITS (int const*) ;
+ int EXTRACT_32BITS (int const*) ;
+
+
+
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK2 (int const,int) ;
+ int ipaddr_string (TYPE_1__*,int const*) ;
+ int lsa_opaque_grace_tlv_reason_values ;
+ int lsa_opaque_grace_tlv_values ;
+ int print_unknown_data (TYPE_1__*,int const*,char*,int) ;
+ int tok2str (int ,char*,int const) ;
 
 int
 ospf_print_grace_lsa(netdissect_options *ndo,
@@ -59,7 +59,7 @@ ospf_print_grace_lsa(netdissect_options *ndo,
             return -1;
         }
 
-        /* Infinite loop protection. */
+
         if (tlv_type == 0 || tlv_length ==0) {
             return -1;
         }
@@ -67,7 +67,7 @@ ospf_print_grace_lsa(netdissect_options *ndo,
         ND_TCHECK2(*tptr, tlv_length);
         switch(tlv_type) {
 
-        case LS_OPAQUE_GRACE_TLV_PERIOD:
+        case 129:
             if (tlv_length != 4) {
                 ND_PRINT((ndo, "\n\t    Bogus length %u != 4", tlv_length));
                 return -1;
@@ -75,7 +75,7 @@ ospf_print_grace_lsa(netdissect_options *ndo,
             ND_PRINT((ndo, "%us", EXTRACT_32BITS(tptr)));
             break;
 
-        case LS_OPAQUE_GRACE_TLV_REASON:
+        case 128:
             if (tlv_length != 1) {
                 ND_PRINT((ndo, "\n\t    Bogus length %u != 1", tlv_length));
                 return -1;
@@ -85,7 +85,7 @@ ospf_print_grace_lsa(netdissect_options *ndo,
                    *tptr));
             break;
 
-        case LS_OPAQUE_GRACE_TLV_INT_ADDRESS:
+        case 130:
             if (tlv_length != 4) {
                 ND_PRINT((ndo, "\n\t    Bogus length %u != 4", tlv_length));
                 return -1;
@@ -101,7 +101,7 @@ ospf_print_grace_lsa(netdissect_options *ndo,
             break;
 
         }
-        /* in OSPF everything has to be 32-bit aligned, including TLVs */
+
         if (tlv_length%4 != 0)
             tlv_length+=4-(tlv_length%4);
         ls_length-=tlv_length;

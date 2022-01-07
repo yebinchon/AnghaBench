@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_rwlock_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  pthread_rwlock_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vlc_rwlock_t ;
+
+
+ int abort () ;
+ int pthread_rwlock_init (int *,int *) ;
+ scalar_t__ unlikely (int ) ;
 
 void vlc_rwlock_init (vlc_rwlock_t *lock)
 {
-    if (unlikely(pthread_rwlock_init (lock, NULL)))
+    if (unlikely(pthread_rwlock_init (lock, ((void*)0))))
         abort ();
 }

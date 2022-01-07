@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_rr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ldns_rr_get_class (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_rr_get_type (int /*<<< orphan*/ *) ; 
- int ldns_rr_is_question (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_rr_owner (int /*<<< orphan*/ *) ; 
- int ldns_rr_rd_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_rr_rdf (int /*<<< orphan*/ *,int) ; 
- int ldns_rr_ttl (int /*<<< orphan*/ *) ; 
- scalar_t__ print_padding (int,int) ; 
- int print_rdf (int /*<<< orphan*/ ) ; 
- scalar_t__ print_rr_class (int /*<<< orphan*/ ) ; 
- scalar_t__ print_rr_type (int /*<<< orphan*/ ) ; 
- int printf (char*,...) ; 
+
+
+
+typedef int ldns_rr ;
+
+
+ int ldns_rr_get_class (int *) ;
+ int ldns_rr_get_type (int *) ;
+ int ldns_rr_is_question (int *) ;
+ int ldns_rr_owner (int *) ;
+ int ldns_rr_rd_count (int *) ;
+ int ldns_rr_rdf (int *,int) ;
+ int ldns_rr_ttl (int *) ;
+ scalar_t__ print_padding (int,int) ;
+ int print_rdf (int ) ;
+ scalar_t__ print_rr_class (int ) ;
+ scalar_t__ print_rr_type (int ) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void
 print_rr_verbose(ldns_rr *rr) {
@@ -32,7 +32,7 @@ print_rr_verbose(ldns_rr *rr) {
     int rdcnt = ldns_rr_rd_count(rr);
     int i, n;
 
-    /* bind9-host does not count the initial ';' here */
+
     n = isq ? printf(";") : 0;
     n = print_rdf(ldns_rr_owner(rr));
     if (!isq) {

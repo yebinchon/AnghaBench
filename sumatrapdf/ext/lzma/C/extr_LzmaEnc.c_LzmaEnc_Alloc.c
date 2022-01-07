@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UInt32 ;
+
+
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef scalar_t__ UInt32 ;
 struct TYPE_21__ {scalar_t__ btMode; int bigHash; } ;
-struct TYPE_18__ {int /*<<< orphan*/ * litProbs; } ;
-struct TYPE_20__ {int mtMode; unsigned int lc; unsigned int lp; unsigned int lclp; scalar_t__ dictSize; int /*<<< orphan*/  matchFinder; TYPE_7__ matchFinderBase; TYPE_7__* matchFinderObj; int /*<<< orphan*/  numFastBytes; TYPE_7__ matchFinderMt; TYPE_1__ saveState; int /*<<< orphan*/ * litProbs; int /*<<< orphan*/  fastMode; scalar_t__ multiThread; int /*<<< orphan*/  rc; } ;
+struct TYPE_18__ {int * litProbs; } ;
+struct TYPE_20__ {int mtMode; unsigned int lc; unsigned int lp; unsigned int lclp; scalar_t__ dictSize; int matchFinder; TYPE_7__ matchFinderBase; TYPE_7__* matchFinderObj; int numFastBytes; TYPE_7__ matchFinderMt; TYPE_1__ saveState; int * litProbs; int fastMode; scalar_t__ multiThread; int rc; } ;
 struct TYPE_19__ {scalar_t__ (* Alloc ) (TYPE_2__*,int) ;} ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  TYPE_2__ ISzAlloc ;
-typedef  int /*<<< orphan*/  CLzmaProb ;
-typedef  TYPE_3__ CLzmaEnc ;
-typedef  int Bool ;
+typedef int SRes ;
+typedef TYPE_2__ ISzAlloc ;
+typedef int CLzmaProb ;
+typedef TYPE_3__ CLzmaEnc ;
+typedef int Bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LZMA_MATCH_LEN_MAX ; 
- int /*<<< orphan*/  LzmaEnc_FreeLits (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  MatchFinderMt_Create (TYPE_7__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  MatchFinderMt_CreateVTable (TYPE_7__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MatchFinder_Create (TYPE_7__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  MatchFinder_CreateVTable (TYPE_7__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RangeEnc_Alloc (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_OK ; 
- scalar_t__ kBigHashDicLimit ; 
- scalar_t__ kNumOpts ; 
- scalar_t__ stub1 (TYPE_2__*,int) ; 
- scalar_t__ stub2 (TYPE_2__*,int) ; 
+
+ int LZMA_MATCH_LEN_MAX ;
+ int LzmaEnc_FreeLits (TYPE_3__*,TYPE_2__*) ;
+ int MatchFinderMt_Create (TYPE_7__*,scalar_t__,scalar_t__,int ,int ,TYPE_2__*) ;
+ int MatchFinderMt_CreateVTable (TYPE_7__*,int *) ;
+ int MatchFinder_Create (TYPE_7__*,scalar_t__,scalar_t__,int ,int ,TYPE_2__*) ;
+ int MatchFinder_CreateVTable (TYPE_7__*,int *) ;
+ int RINOK (int ) ;
+ int RangeEnc_Alloc (int *,TYPE_2__*) ;
+ int SZ_ERROR_MEM ;
+ int SZ_OK ;
+ scalar_t__ kBigHashDicLimit ;
+ scalar_t__ kNumOpts ;
+ scalar_t__ stub1 (TYPE_2__*,int) ;
+ scalar_t__ stub2 (TYPE_2__*,int) ;
 
 __attribute__((used)) static SRes LzmaEnc_Alloc(CLzmaEnc *p, UInt32 keepWindowSize, ISzAlloc *alloc, ISzAlloc *allocBig)
 {
@@ -48,9 +48,9 @@ __attribute__((used)) static SRes LzmaEnc_Alloc(CLzmaEnc *p, UInt32 keepWindowSi
   if (!RangeEnc_Alloc(&p->rc, alloc))
     return SZ_ERROR_MEM;
   btMode = (p->matchFinderBase.btMode != 0);
-  #ifndef _7ZIP_ST
+
   p->mtMode = (p->multiThread && !p->fastMode && btMode);
-  #endif
+
 
   {
     unsigned lclp = p->lc + p->lp;
@@ -73,7 +73,7 @@ __attribute__((used)) static SRes LzmaEnc_Alloc(CLzmaEnc *p, UInt32 keepWindowSi
   if (beforeSize + p->dictSize < keepWindowSize)
     beforeSize = keepWindowSize - p->dictSize;
 
-  #ifndef _7ZIP_ST
+
   if (p->mtMode)
   {
     RINOK(MatchFinderMt_Create(&p->matchFinderMt, p->dictSize, beforeSize, p->numFastBytes, LZMA_MATCH_LEN_MAX, allocBig));
@@ -81,7 +81,7 @@ __attribute__((used)) static SRes LzmaEnc_Alloc(CLzmaEnc *p, UInt32 keepWindowSi
     MatchFinderMt_CreateVTable(&p->matchFinderMt, &p->matchFinder);
   }
   else
-  #endif
+
   {
     if (!MatchFinder_Create(&p->matchFinderBase, p->dictSize, beforeSize, p->numFastBytes, LZMA_MATCH_LEN_MAX, allocBig))
       return SZ_ERROR_MEM;

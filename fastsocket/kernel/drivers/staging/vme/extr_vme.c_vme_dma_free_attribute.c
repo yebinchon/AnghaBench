@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vme_dma_attr {struct vme_dma_attr* private; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct vme_dma_attr*) ; 
+
+ int kfree (struct vme_dma_attr*) ;
 
 void vme_dma_free_attribute(struct vme_dma_attr *attributes)
 {
-	kfree(attributes->private);
-	kfree(attributes);
+ kfree(attributes->private);
+ kfree(attributes);
 }

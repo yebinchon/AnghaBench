@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mthca_mr {int /*<<< orphan*/  umem; } ;
+
+
+
+
+struct mthca_mr {int umem; } ;
 struct ib_udata {int dummy; } ;
-struct ib_mr {int /*<<< orphan*/  device; } ;
+struct ib_mr {int device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ib_umem_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct mthca_mr*) ; 
- int /*<<< orphan*/  mthca_free_mr (int /*<<< orphan*/ ,struct mthca_mr*) ; 
- int /*<<< orphan*/  to_mdev (int /*<<< orphan*/ ) ; 
- struct mthca_mr* to_mmr (struct ib_mr*) ; 
+
+ int ib_umem_release (int ) ;
+ int kfree (struct mthca_mr*) ;
+ int mthca_free_mr (int ,struct mthca_mr*) ;
+ int to_mdev (int ) ;
+ struct mthca_mr* to_mmr (struct ib_mr*) ;
 
 __attribute__((used)) static int mthca_dereg_mr(struct ib_mr *mr, struct ib_udata *udata)
 {
-	struct mthca_mr *mmr = to_mmr(mr);
+ struct mthca_mr *mmr = to_mmr(mr);
 
-	mthca_free_mr(to_mdev(mr->device), mmr);
-	ib_umem_release(mmr->umem);
-	kfree(mmr);
+ mthca_free_mr(to_mdev(mr->device), mmr);
+ ib_umem_release(mmr->umem);
+ kfree(mmr);
 
-	return 0;
+ return 0;
 }

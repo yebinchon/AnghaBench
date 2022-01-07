@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  cond; int /*<<< orphan*/  lock; int /*<<< orphan*/  buffer; } ;
-typedef  TYPE_2__ coreaudio_t ;
-typedef  int /*<<< orphan*/  UInt32 ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int cond; int lock; int buffer; } ;
+typedef TYPE_2__ coreaudio_t ;
+typedef int UInt32 ;
 struct TYPE_7__ {int mNumberBuffers; TYPE_1__* mBuffers; } ;
 struct TYPE_5__ {unsigned int mDataByteSize; void* mData; } ;
-typedef  int /*<<< orphan*/  OSStatus ;
-typedef  int /*<<< orphan*/  AudioUnitRenderActionFlags ;
-typedef  int /*<<< orphan*/  AudioTimeStamp ;
-typedef  TYPE_3__ AudioBufferList ;
+typedef int OSStatus ;
+typedef int AudioUnitRenderActionFlags ;
+typedef int AudioTimeStamp ;
+typedef TYPE_3__ AudioBufferList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fifo_read (int /*<<< orphan*/ ,void*,unsigned int) ; 
- unsigned int fifo_read_avail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kAudioUnitRenderAction_OutputIsSilence ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  noErr ; 
- int /*<<< orphan*/  scond_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+ int fifo_read (int ,void*,unsigned int) ;
+ unsigned int fifo_read_avail (int ) ;
+ int kAudioUnitRenderAction_OutputIsSilence ;
+ int memset (void*,int ,unsigned int) ;
+ int noErr ;
+ int scond_signal (int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 __attribute__((used)) static OSStatus audio_write_cb(void *userdata,
       AudioUnitRenderActionFlags *action_flags,
@@ -39,7 +39,7 @@ __attribute__((used)) static OSStatus audio_write_cb(void *userdata,
       UInt32 number_frames, AudioBufferList *io_data)
 {
    unsigned write_avail;
-   void     *outbuf = NULL;
+   void *outbuf = ((void*)0);
    coreaudio_t *dev = (coreaudio_t*)userdata;
 
    (void)time_stamp;
@@ -50,7 +50,7 @@ __attribute__((used)) static OSStatus audio_write_cb(void *userdata,
       return noErr;
 
    write_avail = io_data->mBuffers[0].mDataByteSize;
-   outbuf      = io_data->mBuffers[0].mData;
+   outbuf = io_data->mBuffers[0].mData;
 
    slock_lock(dev->lock);
 
@@ -58,12 +58,12 @@ __attribute__((used)) static OSStatus audio_write_cb(void *userdata,
    {
       *action_flags = kAudioUnitRenderAction_OutputIsSilence;
 
-      /* Seems to be needed. */
+
       memset(outbuf, 0, write_avail);
 
       slock_unlock(dev->lock);
 
-      /* Technically possible to deadlock without. */
+
       scond_signal(dev->cond);
       return noErr;
    }

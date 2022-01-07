@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nistp_test_params {int /*<<< orphan*/  d; int /*<<< orphan*/  degree; int /*<<< orphan*/  order; int /*<<< orphan*/  Gy; int /*<<< orphan*/  Gx; int /*<<< orphan*/  Qy; int /*<<< orphan*/  Qx; int /*<<< orphan*/  b; int /*<<< orphan*/  a; int /*<<< orphan*/  p; int /*<<< orphan*/  (* meth ) () ;} ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_check_prime (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_hex2bn (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_rshift (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_value_one () ; 
- int /*<<< orphan*/  EC_GROUP_free (int /*<<< orphan*/ *) ; 
- int EC_GROUP_get_degree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_GROUP_have_precompute_mult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_GROUP_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_GROUP_precompute_mult (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_GROUP_set_curve (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_GROUP_set_generator (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_POINT_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_invert (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_set_affine_coordinates (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_note (char*,...) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int group_order_tests (int /*<<< orphan*/ *) ; 
- struct nistp_test_params* nistp_tests_params ; 
- int /*<<< orphan*/  stub1 () ; 
+
+
+
+struct nistp_test_params {int d; int degree; int order; int Gy; int Gx; int Qy; int Qx; int b; int a; int p; int (* meth ) () ;} ;
+typedef int EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int BN_add (int *,int *,int ) ;
+ int BN_check_prime (int *,int *,int *) ;
+ int BN_free (int *) ;
+ int BN_hex2bn (int **,int ) ;
+ int * BN_new () ;
+ int BN_rshift (int *,int *,int) ;
+ int BN_set_word (int *,int) ;
+ int BN_value_one () ;
+ int EC_GROUP_free (int *) ;
+ int EC_GROUP_get_degree (int *) ;
+ int EC_GROUP_have_precompute_mult (int *) ;
+ int * EC_GROUP_new (int ) ;
+ int EC_GROUP_precompute_mult (int *,int *) ;
+ int EC_GROUP_set_curve (int *,int *,int *,int *,int *) ;
+ int EC_GROUP_set_generator (int *,int *,int *,int ) ;
+ int EC_POINT_cmp (int *,int *,int *,int *) ;
+ int EC_POINT_copy (int *,int *) ;
+ int EC_POINT_dbl (int *,int *,int *,int *) ;
+ int EC_POINT_free (int *) ;
+ int EC_POINT_invert (int *,int *,int *) ;
+ int EC_POINT_mul (int *,int *,int *,int *,int *,int *) ;
+ int * EC_POINT_new (int *) ;
+ int EC_POINT_set_affine_coordinates (int *,int *,int *,int *,int *) ;
+ int TEST_false (int ) ;
+ int TEST_int_eq (int,int ) ;
+ int TEST_note (char*,...) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int group_order_tests (int *) ;
+ struct nistp_test_params* nistp_tests_params ;
+ int stub1 () ;
 
 __attribute__((used)) static int nistp_single_test(int idx)
 {
     const struct nistp_test_params *test = nistp_tests_params + idx;
-    BN_CTX *ctx = NULL;
-    BIGNUM *p = NULL, *a = NULL, *b = NULL, *x = NULL, *y = NULL;
-    BIGNUM *n = NULL, *m = NULL, *order = NULL, *yplusone = NULL;
-    EC_GROUP *NISTP = NULL;
-    EC_POINT *G = NULL, *P = NULL, *Q = NULL, *Q_CHECK = NULL;
+    BN_CTX *ctx = ((void*)0);
+    BIGNUM *p = ((void*)0), *a = ((void*)0), *b = ((void*)0), *x = ((void*)0), *y = ((void*)0);
+    BIGNUM *n = ((void*)0), *m = ((void*)0), *order = ((void*)0), *yplusone = ((void*)0);
+    EC_GROUP *NISTP = ((void*)0);
+    EC_POINT *G = ((void*)0), *P = ((void*)0), *Q = ((void*)0), *Q_CHECK = ((void*)0);
     int r = 0;
 
     TEST_note("NIST curve P-%d (optimised implementation):",
@@ -76,7 +76,7 @@ __attribute__((used)) static int nistp_single_test(int idx)
 
         || !TEST_ptr(NISTP = EC_GROUP_new(test->meth()))
         || !TEST_true(BN_hex2bn(&p, test->p))
-        || !TEST_int_eq(1, BN_check_prime(p, ctx, NULL))
+        || !TEST_int_eq(1, BN_check_prime(p, ctx, ((void*)0)))
         || !TEST_true(BN_hex2bn(&a, test->a))
         || !TEST_true(BN_hex2bn(&b, test->b))
         || !TEST_true(EC_GROUP_set_curve(NISTP, p, a, b, ctx))
@@ -87,10 +87,10 @@ __attribute__((used)) static int nistp_single_test(int idx)
         || !TEST_true(BN_hex2bn(&x, test->Qx))
         || !TEST_true(BN_hex2bn(&y, test->Qy))
         || !TEST_true(BN_add(yplusone, y, BN_value_one()))
-    /*
-     * When (x, y) is on the curve, (x, y + 1) is, as it happens, not,
-     * and therefore setting the coordinates should fail.
-     */
+
+
+
+
         || !TEST_false(EC_POINT_set_affine_coordinates(NISTP, Q_CHECK, x,
                                                        yplusone, ctx))
         || !TEST_true(EC_POINT_set_affine_coordinates(NISTP, Q_CHECK, x, y,
@@ -106,62 +106,62 @@ __attribute__((used)) static int nistp_single_test(int idx)
     TEST_note("NIST test vectors ... ");
     if (!TEST_true(BN_hex2bn(&n, test->d)))
         goto err;
-    /* fixed point multiplication */
-    EC_POINT_mul(NISTP, Q, n, NULL, NULL, ctx);
+
+    EC_POINT_mul(NISTP, Q, n, ((void*)0), ((void*)0), ctx);
     if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx)))
         goto err;
-    /* random point multiplication */
-    EC_POINT_mul(NISTP, Q, NULL, G, n, ctx);
+
+    EC_POINT_mul(NISTP, Q, ((void*)0), G, n, ctx);
     if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx))
 
-        /* set generator to P = 2*G, where G is the standard generator */
+
         || !TEST_true(EC_POINT_dbl(NISTP, P, G, ctx))
         || !TEST_true(EC_GROUP_set_generator(NISTP, P, order, BN_value_one()))
-        /* set the scalar to m=n/2, where n is the NIST test scalar */
+
         || !TEST_true(BN_rshift(m, n, 1)))
         goto err;
 
-    /* test the non-standard generator */
-    /* fixed point multiplication */
-    EC_POINT_mul(NISTP, Q, m, NULL, NULL, ctx);
+
+
+    EC_POINT_mul(NISTP, Q, m, ((void*)0), ((void*)0), ctx);
     if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx)))
         goto err;
-    /* random point multiplication */
-    EC_POINT_mul(NISTP, Q, NULL, P, m, ctx);
+
+    EC_POINT_mul(NISTP, Q, ((void*)0), P, m, ctx);
     if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx))
 
-    /*
-     * We have not performed precomputation so have_precompute mult should be
-     * false
-     */
+
+
+
+
         || !TEST_false(EC_GROUP_have_precompute_mult(NISTP))
 
-    /* now repeat all tests with precomputation */
+
         || !TEST_true(EC_GROUP_precompute_mult(NISTP, ctx))
         || !TEST_true(EC_GROUP_have_precompute_mult(NISTP)))
         goto err;
 
-    /* fixed point multiplication */
-    EC_POINT_mul(NISTP, Q, m, NULL, NULL, ctx);
+
+    EC_POINT_mul(NISTP, Q, m, ((void*)0), ((void*)0), ctx);
     if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx)))
         goto err;
-    /* random point multiplication */
-    EC_POINT_mul(NISTP, Q, NULL, P, m, ctx);
+
+    EC_POINT_mul(NISTP, Q, ((void*)0), P, m, ctx);
     if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx))
 
-    /* reset generator */
+
         || !TEST_true(EC_GROUP_set_generator(NISTP, G, order, BN_value_one())))
         goto err;
-    /* fixed point multiplication */
-    EC_POINT_mul(NISTP, Q, n, NULL, NULL, ctx);
-    if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx)))
-        goto err;
-    /* random point multiplication */
-    EC_POINT_mul(NISTP, Q, NULL, G, n, ctx);
+
+    EC_POINT_mul(NISTP, Q, n, ((void*)0), ((void*)0), ctx);
     if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx)))
         goto err;
 
-    /* regression test for felem_neg bug */
+    EC_POINT_mul(NISTP, Q, ((void*)0), G, n, ctx);
+    if (!TEST_int_eq(0, EC_POINT_cmp(NISTP, Q, Q_CHECK, ctx)))
+        goto err;
+
+
     if (!TEST_true(BN_set_word(m, 32))
         || !TEST_true(BN_set_word(n, 31))
         || !TEST_true(EC_POINT_copy(P, G))

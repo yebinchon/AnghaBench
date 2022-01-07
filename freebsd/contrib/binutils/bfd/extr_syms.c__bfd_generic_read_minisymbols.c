@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asymbol ;
 
-/* Variables and functions */
- long bfd_canonicalize_dynamic_symtab (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- long bfd_canonicalize_symtab (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  bfd_error_no_symbols ; 
- long bfd_get_dynamic_symtab_upper_bound (int /*<<< orphan*/ *) ; 
- long bfd_get_symtab_upper_bound (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** bfd_malloc (long) ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ **) ; 
+
+
+
+typedef scalar_t__ bfd_boolean ;
+typedef int bfd ;
+typedef int asymbol ;
+
+
+ long bfd_canonicalize_dynamic_symtab (int *,int **) ;
+ long bfd_canonicalize_symtab (int *,int **) ;
+ int bfd_error_no_symbols ;
+ long bfd_get_dynamic_symtab_upper_bound (int *) ;
+ long bfd_get_symtab_upper_bound (int *) ;
+ int ** bfd_malloc (long) ;
+ int bfd_set_error (int ) ;
+ int free (int **) ;
 
 long
 _bfd_generic_read_minisymbols (bfd *abfd,
-			       bfd_boolean dynamic,
-			       void **minisymsp,
-			       unsigned int *sizep)
+          bfd_boolean dynamic,
+          void **minisymsp,
+          unsigned int *sizep)
 {
   long storage;
-  asymbol **syms = NULL;
+  asymbol **syms = ((void*)0);
   long symcount;
 
   if (dynamic)
@@ -44,7 +44,7 @@ _bfd_generic_read_minisymbols (bfd *abfd,
     return 0;
 
   syms = bfd_malloc (storage);
-  if (syms == NULL)
+  if (syms == ((void*)0))
     goto error_return;
 
   if (dynamic)
@@ -60,7 +60,7 @@ _bfd_generic_read_minisymbols (bfd *abfd,
 
  error_return:
   bfd_set_error (bfd_error_no_symbols);
-  if (syms != NULL)
+  if (syms != ((void*)0))
     free (syms);
   return -1;
 }

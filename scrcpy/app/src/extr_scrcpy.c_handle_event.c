@@ -1,122 +1,110 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  file_handler_action_t ;
-typedef  enum event_result { ____Placeholder_event_result } event_result ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int file_handler_action_t ;
+typedef enum event_result { ____Placeholder_event_result } event_result ;
 struct TYPE_12__ {int has_frame; } ;
-struct TYPE_10__ {int /*<<< orphan*/  file; } ;
-struct TYPE_9__ {int /*<<< orphan*/  event; } ;
-struct TYPE_11__ {int type; TYPE_2__ drop; int /*<<< orphan*/  button; int /*<<< orphan*/  wheel; int /*<<< orphan*/  motion; int /*<<< orphan*/  key; int /*<<< orphan*/  text; TYPE_1__ window; } ;
-typedef  TYPE_3__ SDL_Event ;
+struct TYPE_10__ {int file; } ;
+struct TYPE_9__ {int event; } ;
+struct TYPE_11__ {int type; TYPE_2__ drop; int button; int wheel; int motion; int key; int text; TYPE_1__ window; } ;
+typedef TYPE_3__ SDL_Event ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTION_INSTALL_APK ; 
- int /*<<< orphan*/  ACTION_PUSH_FILE ; 
-#define  EVENT_NEW_FRAME 141 
- int EVENT_RESULT_CONTINUE ; 
- int EVENT_RESULT_STOPPED_BY_EOS ; 
- int EVENT_RESULT_STOPPED_BY_USER ; 
-#define  EVENT_STREAM_STOPPED 140 
- int /*<<< orphan*/  LOGD (char*) ; 
-#define  SDL_DROPFILE 139 
-#define  SDL_KEYDOWN 138 
-#define  SDL_KEYUP 137 
-#define  SDL_MOUSEBUTTONDOWN 136 
-#define  SDL_MOUSEBUTTONUP 135 
-#define  SDL_MOUSEMOTION 134 
-#define  SDL_MOUSEWHEEL 133 
-#define  SDL_QUIT 132 
-#define  SDL_TEXTINPUT 131 
-#define  SDL_WINDOWEVENT 130 
-#define  SDL_WINDOWEVENT_EXPOSED 129 
-#define  SDL_WINDOWEVENT_SIZE_CHANGED 128 
- int /*<<< orphan*/  file_handler ; 
- int /*<<< orphan*/  file_handler_request (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_manager ; 
- int /*<<< orphan*/  input_manager_process_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  input_manager_process_mouse_button (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  input_manager_process_mouse_motion (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_manager_process_mouse_wheel (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_manager_process_text_input (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_apk (int /*<<< orphan*/ ) ; 
- TYPE_4__ screen ; 
- int /*<<< orphan*/  screen_render (TYPE_4__*) ; 
- int /*<<< orphan*/  screen_show_window (TYPE_4__*) ; 
- int /*<<< orphan*/  screen_update_frame (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_buffer ; 
+
+ int ACTION_INSTALL_APK ;
+ int ACTION_PUSH_FILE ;
+
+ int EVENT_RESULT_CONTINUE ;
+ int EVENT_RESULT_STOPPED_BY_EOS ;
+ int EVENT_RESULT_STOPPED_BY_USER ;
+
+ int LOGD (char*) ;
+ int file_handler ;
+ int file_handler_request (int *,int ,int ) ;
+ int input_manager ;
+ int input_manager_process_key (int *,int *,int) ;
+ int input_manager_process_mouse_button (int *,int *,int) ;
+ int input_manager_process_mouse_motion (int *,int *) ;
+ int input_manager_process_mouse_wheel (int *,int *) ;
+ int input_manager_process_text_input (int *,int *) ;
+ int is_apk (int ) ;
+ TYPE_4__ screen ;
+ int screen_render (TYPE_4__*) ;
+ int screen_show_window (TYPE_4__*) ;
+ int screen_update_frame (TYPE_4__*,int *) ;
+ int video_buffer ;
 
 __attribute__((used)) static enum event_result
 handle_event(SDL_Event *event, bool control) {
     switch (event->type) {
-        case EVENT_STREAM_STOPPED:
+        case 140:
             LOGD("Video stream stopped");
             return EVENT_RESULT_STOPPED_BY_EOS;
-        case SDL_QUIT:
+        case 132:
             LOGD("User requested to quit");
             return EVENT_RESULT_STOPPED_BY_USER;
-        case EVENT_NEW_FRAME:
+        case 141:
             if (!screen.has_frame) {
-                screen.has_frame = true;
-                // this is the very first frame, show the window
+                screen.has_frame = 1;
+
                 screen_show_window(&screen);
             }
             if (!screen_update_frame(&screen, &video_buffer)) {
                 return EVENT_RESULT_CONTINUE;
             }
             break;
-        case SDL_WINDOWEVENT:
+        case 130:
             switch (event->window.event) {
-                case SDL_WINDOWEVENT_EXPOSED:
-                case SDL_WINDOWEVENT_SIZE_CHANGED:
+                case 129:
+                case 128:
                     screen_render(&screen);
                     break;
             }
             break;
-        case SDL_TEXTINPUT:
+        case 131:
             if (!control) {
                 break;
             }
             input_manager_process_text_input(&input_manager, &event->text);
             break;
-        case SDL_KEYDOWN:
-        case SDL_KEYUP:
-            // some key events do not interact with the device, so process the
-            // event even if control is disabled
+        case 138:
+        case 137:
+
+
             input_manager_process_key(&input_manager, &event->key, control);
             break;
-        case SDL_MOUSEMOTION:
+        case 134:
             if (!control) {
                 break;
             }
             input_manager_process_mouse_motion(&input_manager, &event->motion);
             break;
-        case SDL_MOUSEWHEEL:
+        case 133:
             if (!control) {
                 break;
             }
             input_manager_process_mouse_wheel(&input_manager, &event->wheel);
             break;
-        case SDL_MOUSEBUTTONDOWN:
-        case SDL_MOUSEBUTTONUP:
-            // some mouse events do not interact with the device, so process
-            // the event even if control is disabled
+        case 136:
+        case 135:
+
+
             input_manager_process_mouse_button(&input_manager, &event->button,
                                                control);
             break;
-        case SDL_DROPFILE: {
+        case 139: {
             if (!control) {
                 break;
             }

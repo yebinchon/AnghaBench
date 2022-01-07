@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  uri_builder; int /*<<< orphan*/  uri; int /*<<< orphan*/  is_mutable; } ;
-typedef  TYPE_1__ nsWineURI ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateIUriBuilder (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  ensure_uri (TYPE_1__*) ; 
- int /*<<< orphan*/  invalidate_uri (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int uri_builder; int uri; int is_mutable; } ;
+typedef TYPE_1__ nsWineURI ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ int CreateIUriBuilder (int ,int ,int ,int *) ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int TRUE ;
+ int WARN (char*,...) ;
+ int ensure_uri (TYPE_1__*) ;
+ int invalidate_uri (TYPE_1__*) ;
 
 __attribute__((used)) static BOOL ensure_uri_builder(nsWineURI *This)
 {

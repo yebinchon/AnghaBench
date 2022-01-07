@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITfSource ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  IID_ITfInputProcessorProfileActivationSink ; 
- int /*<<< orphan*/  IID_ITfKeyTraceEventSink ; 
- int /*<<< orphan*/  IID_ITfSource ; 
- int /*<<< orphan*/  IID_ITfThreadMgrEventSink ; 
- int /*<<< orphan*/  IID_ITfUIElementSink ; 
- scalar_t__ ITfSource_AdviseSink (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  ITfSource_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ITfThreadMgr_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TfInputProcessorProfileActivationSink ; 
- int /*<<< orphan*/  TfKeyTraceEventSink ; 
- int /*<<< orphan*/  TfUIElementSink ; 
- scalar_t__ ThreadMgrEventSink_Constructor (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  g_tm ; 
- scalar_t__ key_trace_sink_cookie ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ profile_activation_sink_cookie ; 
- scalar_t__ tmSinkCookie ; 
- int tmSinkRefCount ; 
- scalar_t__ ui_element_sink_cookie ; 
+
+
+
+typedef int LPVOID ;
+typedef int IUnknown ;
+typedef int ITfSource ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ FAILED (scalar_t__) ;
+ int IID_ITfInputProcessorProfileActivationSink ;
+ int IID_ITfKeyTraceEventSink ;
+ int IID_ITfSource ;
+ int IID_ITfThreadMgrEventSink ;
+ int IID_ITfUIElementSink ;
+ scalar_t__ ITfSource_AdviseSink (int *,int *,int *,scalar_t__*) ;
+ int ITfSource_Release (int *) ;
+ scalar_t__ ITfThreadMgr_QueryInterface (int ,int *,int *) ;
+ int IUnknown_Release (int *) ;
+ int SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TfInputProcessorProfileActivationSink ;
+ int TfKeyTraceEventSink ;
+ int TfUIElementSink ;
+ scalar_t__ ThreadMgrEventSink_Constructor (int **) ;
+ int g_tm ;
+ scalar_t__ key_trace_sink_cookie ;
+ int ok (int,char*,...) ;
+ scalar_t__ profile_activation_sink_cookie ;
+ scalar_t__ tmSinkCookie ;
+ int tmSinkRefCount ;
+ scalar_t__ ui_element_sink_cookie ;
 
 __attribute__((used)) static void test_ThreadMgrAdviseSinks(void)
 {
-    ITfSource *source = NULL;
+    ITfSource *source = ((void*)0);
     HRESULT hr;
     IUnknown *sink;
 
@@ -61,8 +61,8 @@ __attribute__((used)) static void test_ThreadMgrAdviseSinks(void)
     ok(hr == S_OK, "Failed to Advise ITfThreadMgrEventSink\n");
     ok(tmSinkCookie!=0,"Failed to get sink cookie\n");
 
-    /* Advising the sink adds a ref, Releasing here lets the object be deleted
-       when unadvised */
+
+
     tmSinkRefCount = 2;
     IUnknown_Release(sink);
 

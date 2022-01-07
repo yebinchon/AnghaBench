@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_mpi ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_MPI_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int) ; 
- int MBEDTLS_MPI_MAX_SIZE ; 
- int mbedtls_mpi_read_binary (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
+
+
+
+typedef int mbedtls_mpi ;
+
+
+ int MBEDTLS_ERR_MPI_BAD_INPUT_DATA ;
+ int MBEDTLS_MPI_CHK (int) ;
+ int MBEDTLS_MPI_MAX_SIZE ;
+ int mbedtls_mpi_read_binary (int *,unsigned char*,size_t) ;
 
 int mbedtls_mpi_fill_random( mbedtls_mpi *X, size_t size,
                      int (*f_rng)(void *, unsigned char *, size_t),

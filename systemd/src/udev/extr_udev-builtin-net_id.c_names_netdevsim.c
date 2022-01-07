@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netnames {int /*<<< orphan*/  type; int /*<<< orphan*/  netdevsim_path; } ;
-typedef  struct netnames sd_device ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOBUFS ; 
- int /*<<< orphan*/  NAMING_NETDEVSIM ; 
- int /*<<< orphan*/  NET_NETDEVSIM ; 
- int /*<<< orphan*/  assert (struct netnames*) ; 
- int /*<<< orphan*/  naming_scheme_has (int /*<<< orphan*/ ) ; 
- int sd_device_get_parent_with_subsystem_devtype (struct netnames*,char*,int /*<<< orphan*/ *,struct netnames**) ; 
- int sd_device_get_sysattr_value (struct netnames*,char*,char const**) ; 
- int sd_device_get_sysname (struct netnames*,char const**) ; 
- int snprintf_ok (int /*<<< orphan*/ ,int,char*,unsigned int,char const*) ; 
- int sscanf (char const*,char*,unsigned int*) ; 
+
+
+
+struct netnames {int type; int netdevsim_path; } ;
+typedef struct netnames sd_device ;
+
+
+ int EINVAL ;
+ int ENOBUFS ;
+ int NAMING_NETDEVSIM ;
+ int NET_NETDEVSIM ;
+ int assert (struct netnames*) ;
+ int naming_scheme_has (int ) ;
+ int sd_device_get_parent_with_subsystem_devtype (struct netnames*,char*,int *,struct netnames**) ;
+ int sd_device_get_sysattr_value (struct netnames*,char*,char const**) ;
+ int sd_device_get_sysname (struct netnames*,char const**) ;
+ int snprintf_ok (int ,int,char*,unsigned int,char const*) ;
+ int sscanf (char const*,char*,unsigned int*) ;
 
 __attribute__((used)) static int names_netdevsim(sd_device *dev, struct netnames *names) {
         sd_device *netdevsimdev;
         const char *sysname;
         unsigned addr;
-        const char *port_name = NULL;
+        const char *port_name = ((void*)0);
         int r;
         bool ok;
 
@@ -40,7 +40,7 @@ __attribute__((used)) static int names_netdevsim(sd_device *dev, struct netnames
         assert(dev);
         assert(names);
 
-        r = sd_device_get_parent_with_subsystem_devtype(dev, "netdevsim", NULL, &netdevsimdev);
+        r = sd_device_get_parent_with_subsystem_devtype(dev, "netdevsim", ((void*)0), &netdevsimdev);
         if (r < 0)
                 return r;
         r = sd_device_get_sysname(netdevsimdev, &sysname);

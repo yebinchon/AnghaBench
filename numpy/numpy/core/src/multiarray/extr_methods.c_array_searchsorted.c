@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  NPY_SEARCHSIDE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_SEARCHLEFT ; 
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * PyArray_Return (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_SearchSorted (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_SearchsideConverter ; 
- int /*<<< orphan*/ * Py_None ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArrayObject ;
+typedef int NPY_SEARCHSIDE ;
+
+
+ int NPY_SEARCHLEFT ;
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,int **,int ,int *,int **) ;
+ int * PyArray_Return (int *) ;
+ scalar_t__ PyArray_SearchSorted (int *,int *,int ,int *) ;
+ int PyArray_SearchsideConverter ;
+ int * Py_None ;
 
 __attribute__((used)) static PyObject *
 array_searchsorted(PyArrayObject *self, PyObject *args, PyObject *kwds)
 {
-    static char *kwlist[] = {"keys", "side", "sorter", NULL};
+    static char *kwlist[] = {"keys", "side", "sorter", ((void*)0)};
     PyObject *keys;
     PyObject *sorter;
     NPY_SEARCHSIDE side = NPY_SEARCHLEFT;
 
-    sorter = NULL;
+    sorter = ((void*)0);
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O|O&O:searchsorted",
                                      kwlist, &keys,
                                      PyArray_SearchsideConverter, &side, &sorter)) {
-        return NULL;
+        return ((void*)0);
     }
     if (sorter == Py_None) {
-        sorter = NULL;
+        sorter = ((void*)0);
     }
     return PyArray_Return((PyArrayObject *)PyArray_SearchSorted(self, keys, side, sorter));
 }

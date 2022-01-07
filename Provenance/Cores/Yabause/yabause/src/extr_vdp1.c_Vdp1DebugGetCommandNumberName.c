@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int u16 ;
 
-/* Variables and functions */
- int T1ReadWord (int /*<<< orphan*/ ,int) ; 
- int Vdp1DebugGetCommandNumberAddr (int) ; 
- int /*<<< orphan*/  Vdp1Ram ; 
+
+
+
+typedef int u32 ;
+typedef int u16 ;
+
+
+ int T1ReadWord (int ,int) ;
+ int Vdp1DebugGetCommandNumberAddr (int) ;
+ int Vdp1Ram ;
 
 char *Vdp1DebugGetCommandNumberName(u32 number)
 {
@@ -30,7 +30,7 @@ char *Vdp1DebugGetCommandNumberName(u32 number)
       if (command & 0x8000)
          return "Draw End";
 
-      // Figure out command name
+
       switch (command & 0x000F)
       {
          case 0:
@@ -62,5 +62,5 @@ char *Vdp1DebugGetCommandNumberName(u32 number)
       }
    }
    else
-      return NULL;
+      return ((void*)0);
 }

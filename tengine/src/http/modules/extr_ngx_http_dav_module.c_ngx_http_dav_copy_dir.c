@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_8__ {int /*<<< orphan*/  log; int /*<<< orphan*/  access; TYPE_4__* data; } ;
-typedef  TYPE_2__ ngx_tree_ctx_t ;
-struct TYPE_9__ {size_t len; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_3__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_7__ {size_t len; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u_char ;
+struct TYPE_8__ {int log; int access; TYPE_4__* data; } ;
+typedef TYPE_2__ ngx_tree_ctx_t ;
+struct TYPE_9__ {size_t len; int * data; } ;
+typedef TYPE_3__ ngx_str_t ;
+typedef int ngx_int_t ;
+struct TYPE_7__ {size_t len; int data; } ;
 struct TYPE_10__ {size_t len; TYPE_1__ path; } ;
-typedef  TYPE_4__ ngx_http_dav_copy_ctx_t ;
+typedef TYPE_4__ ngx_http_dav_copy_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ABORT ; 
- scalar_t__ NGX_FILE_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/ * ngx_alloc (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_cpymem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ngx_cpystrn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ ngx_create_dir (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_create_dir_n ; 
- int /*<<< orphan*/  ngx_dir_access (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_errno ; 
- int /*<<< orphan*/  ngx_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_dav_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
+
+ int NGX_ABORT ;
+ scalar_t__ NGX_FILE_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ int * ngx_alloc (size_t,int ) ;
+ int * ngx_cpymem (int *,int ,size_t) ;
+ int ngx_cpystrn (int *,int *,size_t) ;
+ scalar_t__ ngx_create_dir (int *,int ) ;
+ int ngx_create_dir_n ;
+ int ngx_dir_access (int ) ;
+ int ngx_errno ;
+ int ngx_free (int *) ;
+ int ngx_http_dav_error (int ,int ,int ,int ,int *) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int *) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_dav_copy_dir(ngx_tree_ctx_t *ctx, ngx_str_t *path)
 {
-    u_char                   *p, *dir;
-    size_t                    len;
-    ngx_http_dav_copy_ctx_t  *copy;
+    u_char *p, *dir;
+    size_t len;
+    ngx_http_dav_copy_ctx_t *copy;
 
     ngx_log_debug1(NGX_LOG_DEBUG_HTTP, ctx->log, 0,
                    "http copy dir: \"%s\"", path->data);
@@ -55,7 +55,7 @@ ngx_http_dav_copy_dir(ngx_tree_ctx_t *ctx, ngx_str_t *path)
     len = copy->path.len + path->len;
 
     dir = ngx_alloc(len + 1, ctx->log);
-    if (dir == NULL) {
+    if (dir == ((void*)0)) {
         return NGX_ABORT;
     }
 

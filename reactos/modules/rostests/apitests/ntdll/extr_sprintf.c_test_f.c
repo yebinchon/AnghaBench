@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ok_str (char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+ int ok_str (char*,char*) ;
+ int sprintf (char*,char*,int) ;
 
 void
 test_f()
@@ -56,19 +48,19 @@ test_f()
     sprintf(buffer, "%f", fpval);
     ok_str(buffer, "0.000000");
 
-    sprintf(buffer, "%f", 0x7ff8000000000000ULL); // NAN
+    sprintf(buffer, "%f", 0x7ff8000000000000ULL);
     ok_str(buffer, "1.#QNAN0");
 
     sprintf(buffer, "%.9f", 0x7ff8000000000000ULL);
     ok_str(buffer, "1.#QNAN0000");
 
-    sprintf(buffer, "%f", 0x7ff0000000000000ULL ); // INFINITY
+    sprintf(buffer, "%f", 0x7ff0000000000000ULL );
     ok_str(buffer, "1.#INF00");
 
-    sprintf(buffer, "%f", 0xfff0000000000000ULL ); // -INFINITY
+    sprintf(buffer, "%f", 0xfff0000000000000ULL );
     ok_str(buffer, "-1.#INF00");
 
-    sprintf(buffer, "%f", 0xfff8000000000000ULL); // broken
+    sprintf(buffer, "%f", 0xfff8000000000000ULL);
     ok_str(buffer, "-1.#IND00");
 
 }

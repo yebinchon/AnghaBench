@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
-typedef  int /*<<< orphan*/  LABEL_NUSES ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LABEL_P (scalar_t__) ; 
- scalar_t__ PREV_INSN (scalar_t__) ; 
- int /*<<< orphan*/  emit_label_after (scalar_t__,scalar_t__) ; 
- scalar_t__ gen_label_rtx () ; 
- scalar_t__ prev_nonnote_insn (scalar_t__) ; 
+
+
+
+typedef scalar_t__ rtx ;
+typedef int LABEL_NUSES ;
+
+
+ int LABEL_P (scalar_t__) ;
+ scalar_t__ PREV_INSN (scalar_t__) ;
+ int emit_label_after (scalar_t__,scalar_t__) ;
+ scalar_t__ gen_label_rtx () ;
+ scalar_t__ prev_nonnote_insn (scalar_t__) ;
 
 rtx
 get_label_before (rtx insn)
 {
   rtx label;
 
-  /* Find an existing label at this point
-     or make a new one if there is none.  */
+
+
   label = prev_nonnote_insn (insn);
 
   if (label == 0 || !LABEL_P (label))

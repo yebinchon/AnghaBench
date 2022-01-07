@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct mlx5_core_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int MLX5_CAP_PCAM_FEATURE (struct mlx5_core_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mlx5e_ext_link_speed ; 
- int /*<<< orphan*/ * mlx5e_link_speed ; 
- int /*<<< orphan*/  ptys_extended_ethernet ; 
+
+ int ARRAY_SIZE (int *) ;
+ int MLX5_CAP_PCAM_FEATURE (struct mlx5_core_dev*,int ) ;
+ int * mlx5e_ext_link_speed ;
+ int * mlx5e_link_speed ;
+ int ptys_extended_ethernet ;
 
 __attribute__((used)) static void mlx5e_port_get_speed_arr(struct mlx5_core_dev *mdev,
-				     const u32 **arr, u32 *size,
-				     bool force_legacy)
+         const u32 **arr, u32 *size,
+         bool force_legacy)
 {
-	bool ext = force_legacy ? false : MLX5_CAP_PCAM_FEATURE(mdev, ptys_extended_ethernet);
+ bool ext = force_legacy ? 0 : MLX5_CAP_PCAM_FEATURE(mdev, ptys_extended_ethernet);
 
-	*size = ext ? ARRAY_SIZE(mlx5e_ext_link_speed) :
-		      ARRAY_SIZE(mlx5e_link_speed);
-	*arr  = ext ? mlx5e_ext_link_speed : mlx5e_link_speed;
+ *size = ext ? ARRAY_SIZE(mlx5e_ext_link_speed) :
+        ARRAY_SIZE(mlx5e_link_speed);
+ *arr = ext ? mlx5e_ext_link_speed : mlx5e_link_speed;
 }

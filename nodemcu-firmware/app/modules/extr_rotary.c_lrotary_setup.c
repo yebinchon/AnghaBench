@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_4__ {unsigned int id; int click_delay_us; int longpress_delay_us; int /*<<< orphan*/ * callback; int /*<<< orphan*/  timer; } ;
-typedef  TYPE_1__ DATA ;
 
-/* Variables and functions */
- int CALLBACK_COUNT ; 
- int CLICK_DELAY_US ; 
- int LONGPRESS_DELAY_US ; 
- int /*<<< orphan*/  LUA_NOREF ; 
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  ROTARY_ALL ; 
- int /*<<< orphan*/  SWTIMER_REG_CB (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SWTIMER_RESUME ; 
- int /*<<< orphan*/  callback_free (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
- scalar_t__ calloc (int,int) ; 
- TYPE_1__** data ; 
- int /*<<< orphan*/  lrotary_timer_done ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  os_timer_setfn (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ platform_gpio_exists (int) ; 
- int /*<<< orphan*/  rotary ; 
- scalar_t__ rotary_close (unsigned int) ; 
- scalar_t__ rotary_setup (unsigned int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tasknumber ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_4__ {unsigned int id; int click_delay_us; int longpress_delay_us; int * callback; int timer; } ;
+typedef TYPE_1__ DATA ;
+
+
+ int CALLBACK_COUNT ;
+ int CLICK_DELAY_US ;
+ int LONGPRESS_DELAY_US ;
+ int LUA_NOREF ;
+ int MOD_CHECK_ID (int ,unsigned int) ;
+ int ROTARY_ALL ;
+ int SWTIMER_REG_CB (int ,int ) ;
+ int SWTIMER_RESUME ;
+ int callback_free (int *,unsigned int,int ) ;
+ scalar_t__ calloc (int,int) ;
+ TYPE_1__** data ;
+ int lrotary_timer_done ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_checkinteger (int *,int) ;
+ int luaL_error (int *,char*) ;
+ int lua_gettop (int *) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int os_timer_setfn (int *,int ,void*) ;
+ scalar_t__ platform_gpio_exists (int) ;
+ int rotary ;
+ scalar_t__ rotary_close (unsigned int) ;
+ scalar_t__ rotary_setup (unsigned int,int,int,int,int ) ;
+ int tasknumber ;
 
 __attribute__((used)) static int lrotary_setup( lua_State* L )
 {
@@ -66,9 +66,9 @@ __attribute__((used)) static int lrotary_setup( lua_State* L )
 
   os_timer_setfn(&d->timer, lrotary_timer_done, (void *) d);
   SWTIMER_REG_CB(lrotary_timer_done, SWTIMER_RESUME);
-    //lrotary_timer_done checks time elapsed since last event
-    //My guess: Since proper functionality relies on some variables to be reset via timer callback and state would be invalid anyway.
-      //It is probably best to resume this timer so it can reset it's state variables
+
+
+
 
 
   int i;

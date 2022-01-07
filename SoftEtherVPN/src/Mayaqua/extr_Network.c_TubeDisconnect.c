@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* TubePairData; } ;
-struct TYPE_4__ {int IsDisconnected; int /*<<< orphan*/  Lock; int /*<<< orphan*/  SockEvent2; int /*<<< orphan*/  SockEvent1; int /*<<< orphan*/  Event2; int /*<<< orphan*/  Event1; } ;
-typedef  TYPE_2__ TUBE ;
+struct TYPE_4__ {int IsDisconnected; int Lock; int SockEvent2; int SockEvent1; int Event2; int Event1; } ;
+typedef TYPE_2__ TUBE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
+
+ int Lock (int ) ;
+ int Set (int ) ;
+ int SetSockEvent (int ) ;
+ int Unlock (int ) ;
 
 void TubeDisconnect(TUBE *t)
 {
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
 
-	if (t->TubePairData == NULL)
-	{
-		return;
-	}
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-	Lock(t->TubePairData->Lock);
-	{
-		t->TubePairData->IsDisconnected = true;
+ if (t->TubePairData == ((void*)0))
+ {
+  return;
+ }
 
-		Set(t->TubePairData->Event1);
-		Set(t->TubePairData->Event2);
-		SetSockEvent(t->TubePairData->SockEvent1);
-		SetSockEvent(t->TubePairData->SockEvent2);
-	}
-	Unlock(t->TubePairData->Lock);
+ Lock(t->TubePairData->Lock);
+ {
+  t->TubePairData->IsDisconnected = 1;
+
+  Set(t->TubePairData->Event1);
+  Set(t->TubePairData->Event2);
+  SetSockEvent(t->TubePairData->SockEvent1);
+  SetSockEvent(t->TubePairData->SockEvent2);
+ }
+ Unlock(t->TubePairData->Lock);
 }

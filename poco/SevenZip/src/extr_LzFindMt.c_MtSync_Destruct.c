@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {void* wasCreated; int /*<<< orphan*/  filledSemaphore; int /*<<< orphan*/  freeSemaphore; int /*<<< orphan*/  wasStopped; int /*<<< orphan*/  wasStarted; int /*<<< orphan*/  canStart; void* csWasInitialized; int /*<<< orphan*/  cs; int /*<<< orphan*/  thread; scalar_t__ needStart; int /*<<< orphan*/  exit; } ;
-typedef  TYPE_1__ CMtSync ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CriticalSection_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Event_Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Event_Set (int /*<<< orphan*/ *) ; 
- void* False ; 
- int /*<<< orphan*/  MtSync_StopWriting (TYPE_1__*) ; 
- int /*<<< orphan*/  Semaphore_Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Thread_Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Thread_Wait (int /*<<< orphan*/ *) ; 
- scalar_t__ Thread_WasCreated (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  True ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {void* wasCreated; int filledSemaphore; int freeSemaphore; int wasStopped; int wasStarted; int canStart; void* csWasInitialized; int cs; int thread; scalar_t__ needStart; int exit; } ;
+typedef TYPE_1__ CMtSync ;
+
+
+ int CriticalSection_Delete (int *) ;
+ int Event_Close (int *) ;
+ int Event_Set (int *) ;
+ void* False ;
+ int MtSync_StopWriting (TYPE_1__*) ;
+ int Semaphore_Close (int *) ;
+ int Thread_Close (int *) ;
+ int Thread_Wait (int *) ;
+ scalar_t__ Thread_WasCreated (int *) ;
+ int True ;
 
 void MtSync_Destruct(CMtSync *p)
 {

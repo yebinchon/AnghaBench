@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_interface {int dummy; } ;
-struct ds_device {int /*<<< orphan*/  udev; int /*<<< orphan*/  ds_entry; } ;
+struct ds_device {int udev; int ds_entry; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ds_mutex ; 
- int /*<<< orphan*/  ds_w1_fini (struct ds_device*) ; 
- int /*<<< orphan*/  kfree (struct ds_device*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct ds_device* usb_get_intfdata (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_put_dev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,int /*<<< orphan*/ *) ; 
+
+ int ds_mutex ;
+ int ds_w1_fini (struct ds_device*) ;
+ int kfree (struct ds_device*) ;
+ int list_del (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct ds_device* usb_get_intfdata (struct usb_interface*) ;
+ int usb_put_dev (int ) ;
+ int usb_set_intfdata (struct usb_interface*,int *) ;
 
 __attribute__((used)) static void ds_disconnect(struct usb_interface *intf)
 {
-	struct ds_device *dev;
+ struct ds_device *dev;
 
-	dev = usb_get_intfdata(intf);
-	if (!dev)
-		return;
+ dev = usb_get_intfdata(intf);
+ if (!dev)
+  return;
 
-	mutex_lock(&ds_mutex);
-	list_del(&dev->ds_entry);
-	mutex_unlock(&ds_mutex);
+ mutex_lock(&ds_mutex);
+ list_del(&dev->ds_entry);
+ mutex_unlock(&ds_mutex);
 
-	ds_w1_fini(dev);
+ ds_w1_fini(dev);
 
-	usb_set_intfdata(intf, NULL);
+ usb_set_intfdata(intf, ((void*)0));
 
-	usb_put_dev(dev->udev);
-	kfree(dev);
+ usb_put_dev(dev->udev);
+ kfree(dev);
 }

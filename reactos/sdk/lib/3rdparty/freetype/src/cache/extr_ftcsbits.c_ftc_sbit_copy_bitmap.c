@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  buffer; } ;
-struct TYPE_5__ {int rows; int /*<<< orphan*/  buffer; scalar_t__ pitch; } ;
-typedef  int FT_ULong ;
-typedef  int /*<<< orphan*/  FT_Memory ;
-typedef  scalar_t__ FT_Int ;
-typedef  int /*<<< orphan*/  FT_Error ;
-typedef  TYPE_1__ FT_Bitmap ;
-typedef  TYPE_2__* FTC_SBit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT_ALLOC (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FT_Err_Ok ; 
- int /*<<< orphan*/  FT_MEM_COPY (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int buffer; } ;
+struct TYPE_5__ {int rows; int buffer; scalar_t__ pitch; } ;
+typedef int FT_ULong ;
+typedef int FT_Memory ;
+typedef scalar_t__ FT_Int ;
+typedef int FT_Error ;
+typedef TYPE_1__ FT_Bitmap ;
+typedef TYPE_2__* FTC_SBit ;
+
+
+ int FT_ALLOC (int ,int) ;
+ int FT_Err_Ok ;
+ int FT_MEM_COPY (int ,int ,int) ;
 
 __attribute__((used)) static FT_Error
-  ftc_sbit_copy_bitmap( FTC_SBit    sbit,
-                        FT_Bitmap*  bitmap,
-                        FT_Memory   memory )
+  ftc_sbit_copy_bitmap( FTC_SBit sbit,
+                        FT_Bitmap* bitmap,
+                        FT_Memory memory )
   {
-    FT_Error  error;
-    FT_Int    pitch = bitmap->pitch;
-    FT_ULong  size;
+    FT_Error error;
+    FT_Int pitch = bitmap->pitch;
+    FT_ULong size;
 
 
     if ( pitch < 0 )

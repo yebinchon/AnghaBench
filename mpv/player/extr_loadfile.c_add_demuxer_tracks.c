@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct demuxer {int dummy; } ;
 struct MPContext {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_stream_track (struct MPContext*,struct demuxer*,int /*<<< orphan*/ ) ; 
- int demux_get_num_stream (struct demuxer*) ; 
- int /*<<< orphan*/  demux_get_stream (struct demuxer*,int) ; 
+
+ int add_stream_track (struct MPContext*,struct demuxer*,int ) ;
+ int demux_get_num_stream (struct demuxer*) ;
+ int demux_get_stream (struct demuxer*,int) ;
 
 void add_demuxer_tracks(struct MPContext *mpctx, struct demuxer *demuxer)
 {

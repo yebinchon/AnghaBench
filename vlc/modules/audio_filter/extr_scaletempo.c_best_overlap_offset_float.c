@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
+typedef TYPE_1__ filter_t ;
 struct TYPE_5__ {float* table_window; float* buf_overlap; unsigned int samples_per_frame; float* buf_pre_corr; unsigned int samples_overlap; unsigned int frames_search; unsigned int bytes_per_frame; scalar_t__ buf_queue; } ;
-typedef  TYPE_2__ filter_sys_t ;
+typedef TYPE_2__ filter_sys_t ;
 
-/* Variables and functions */
- float INT_MIN ; 
+
+ float INT_MIN ;
 
 __attribute__((used)) static unsigned best_overlap_offset_float( filter_t *p_filter )
 {
@@ -28,8 +28,8 @@ __attribute__((used)) static unsigned best_overlap_offset_float( filter_t *p_fil
     unsigned best_off = 0;
     unsigned i, off;
 
-    pw  = p->table_window;
-    po  = p->buf_overlap;
+    pw = p->table_window;
+    po = p->buf_overlap;
     po += p->samples_per_frame;
     ppc = p->buf_pre_corr;
     for( i = p->samples_per_frame; i < p->samples_overlap; i++ ) {
@@ -46,7 +46,7 @@ __attribute__((used)) static unsigned best_overlap_offset_float( filter_t *p_fil
       }
       if( corr > best_corr ) {
         best_corr = corr;
-        best_off  = off;
+        best_off = off;
       }
       search_start += p->samples_per_frame;
     }

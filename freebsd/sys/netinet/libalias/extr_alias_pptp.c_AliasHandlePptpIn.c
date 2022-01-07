@@ -1,107 +1,107 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int16_t ;
-struct tcphdr {int /*<<< orphan*/  th_sum; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_int16_t ;
+struct tcphdr {int th_sum; } ;
 struct libalias {int dummy; } ;
 struct ip {int dummy; } ;
 struct alias_link {int dummy; } ;
 struct TYPE_5__ {int cid1; int cid2; } ;
 struct TYPE_4__ {int resCode; } ;
-typedef  TYPE_1__* PptpCode ;
-typedef  TYPE_2__* PptpCallId ;
+typedef TYPE_1__* PptpCode ;
+typedef TYPE_2__* PptpCallId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADJUST_CHECKSUM (int,int /*<<< orphan*/ ) ; 
- TYPE_2__* AliasVerifyPptp (struct ip*,int*) ; 
- struct alias_link* FindPptpInByCallId (struct libalias*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- struct alias_link* FindPptpInByPeerCallId (struct libalias*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetAliasAddress (struct alias_link*) ; 
- int /*<<< orphan*/  GetDestAddress (struct alias_link*) ; 
- int GetOriginalPort (struct alias_link*) ; 
-#define  PPTP_CallDiscNotify 133 
-#define  PPTP_InCallConn 132 
-#define  PPTP_InCallReply 131 
-#define  PPTP_OutCallReply 130 
-#define  PPTP_SetLinkInfo 129 
-#define  PPTP_WanErrorNotify 128 
- int /*<<< orphan*/  SetDestCallId (struct alias_link*,int) ; 
- int /*<<< orphan*/  SetExpire (struct alias_link*,int /*<<< orphan*/ ) ; 
- scalar_t__ ip_next (struct ip*) ; 
+
+ int ADJUST_CHECKSUM (int,int ) ;
+ TYPE_2__* AliasVerifyPptp (struct ip*,int*) ;
+ struct alias_link* FindPptpInByCallId (struct libalias*,int ,int ,int) ;
+ struct alias_link* FindPptpInByPeerCallId (struct libalias*,int ,int ,int) ;
+ int GetAliasAddress (struct alias_link*) ;
+ int GetDestAddress (struct alias_link*) ;
+ int GetOriginalPort (struct alias_link*) ;
+
+
+
+
+
+
+ int SetDestCallId (struct alias_link*,int) ;
+ int SetExpire (struct alias_link*,int ) ;
+ scalar_t__ ip_next (struct ip*) ;
 
 __attribute__((used)) static void
 AliasHandlePptpIn(struct libalias *la,
-    struct ip *pip,		/* IP packet to examine/patch */
+    struct ip *pip,
     struct alias_link *lnk)
-{				/* The PPTP control link */
-	struct alias_link *pptp_lnk;
-	PptpCallId cptr;
-	u_int16_t *pcall_id;
-	u_int16_t ctl_type;	/* control message type */
-	struct tcphdr *tc;
+{
+ struct alias_link *pptp_lnk;
+ PptpCallId cptr;
+ u_int16_t *pcall_id;
+ u_int16_t ctl_type;
+ struct tcphdr *tc;
 
-	/* Verify valid PPTP control message */
-	if ((cptr = AliasVerifyPptp(pip, &ctl_type)) == NULL)
-		return;
 
-	/* Modify certain PPTP messages */
-	switch (ctl_type) {
-	case PPTP_InCallConn:
-	case PPTP_WanErrorNotify:
-	case PPTP_SetLinkInfo:
-		pcall_id = &cptr->cid1;
-		break;
-	case PPTP_OutCallReply:
-	case PPTP_InCallReply:
-		pcall_id = &cptr->cid2;
-		break;
-	case PPTP_CallDiscNotify:	/* Connection closed. */
-		pptp_lnk = FindPptpInByCallId(la, GetDestAddress(lnk),
-		    GetAliasAddress(lnk),
-		    cptr->cid1);
-		if (pptp_lnk != NULL)
-			SetExpire(pptp_lnk, 0);
-		return;
-	default:
-		return;
-	}
+ if ((cptr = AliasVerifyPptp(pip, &ctl_type)) == ((void*)0))
+  return;
 
-	/* Find PPTP link for address and Call ID found in PPTP Control Msg */
-	pptp_lnk = FindPptpInByPeerCallId(la, GetDestAddress(lnk),
-	    GetAliasAddress(lnk),
-	    *pcall_id);
 
-	if (pptp_lnk != NULL) {
-		int accumulate = *pcall_id;
+ switch (ctl_type) {
+ case 132:
+ case 128:
+ case 129:
+  pcall_id = &cptr->cid1;
+  break;
+ case 130:
+ case 131:
+  pcall_id = &cptr->cid2;
+  break;
+ case 133:
+  pptp_lnk = FindPptpInByCallId(la, GetDestAddress(lnk),
+      GetAliasAddress(lnk),
+      cptr->cid1);
+  if (pptp_lnk != ((void*)0))
+   SetExpire(pptp_lnk, 0);
+  return;
+ default:
+  return;
+ }
 
-		/* De-alias the Peer's Call Id. */
-		*pcall_id = GetOriginalPort(pptp_lnk);
 
-		/* Compute TCP checksum for modified packet */
-		tc = (struct tcphdr *)ip_next(pip);
-		accumulate -= *pcall_id;
-		ADJUST_CHECKSUM(accumulate, tc->th_sum);
+ pptp_lnk = FindPptpInByPeerCallId(la, GetDestAddress(lnk),
+     GetAliasAddress(lnk),
+     *pcall_id);
 
-		if (ctl_type == PPTP_OutCallReply || ctl_type == PPTP_InCallReply) {
-			PptpCode codes = (PptpCode) (cptr + 1);
+ if (pptp_lnk != ((void*)0)) {
+  int accumulate = *pcall_id;
 
-			if (codes->resCode == 1)	/* Connection
-							 * established, */
-				SetDestCallId(pptp_lnk,	/* note the Call ID. */
-				    cptr->cid1);
-			else
-				SetExpire(pptp_lnk, 0);	/* Connection refused. */
-		}
-	}
+
+  *pcall_id = GetOriginalPort(pptp_lnk);
+
+
+  tc = (struct tcphdr *)ip_next(pip);
+  accumulate -= *pcall_id;
+  ADJUST_CHECKSUM(accumulate, tc->th_sum);
+
+  if (ctl_type == 130 || ctl_type == 131) {
+   PptpCode codes = (PptpCode) (cptr + 1);
+
+   if (codes->resCode == 1)
+
+    SetDestCallId(pptp_lnk,
+        cptr->cid1);
+   else
+    SetExpire(pptp_lnk, 0);
+  }
+ }
 }

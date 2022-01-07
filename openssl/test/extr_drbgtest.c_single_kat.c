@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t ;
-struct TYPE_7__ {int /*<<< orphan*/  kat2len_pr; int /*<<< orphan*/  kat2_pr; int /*<<< orphan*/  adinglen_pr; int /*<<< orphan*/  ading_pr; int /*<<< orphan*/  entropyglen_pr; int /*<<< orphan*/  entropyg_pr; int /*<<< orphan*/  katlen_pr; int /*<<< orphan*/  kat_pr; int /*<<< orphan*/  adinlen_pr; int /*<<< orphan*/  adin_pr; int /*<<< orphan*/  entropyprlen_pr; int /*<<< orphan*/  entropypr_pr; int /*<<< orphan*/  perslen_pr; int /*<<< orphan*/  pers_pr; int /*<<< orphan*/  noncelen_pr; int /*<<< orphan*/  nonce_pr; int /*<<< orphan*/  entropylen_pr; int /*<<< orphan*/  entropy_pr; int /*<<< orphan*/  flags; int /*<<< orphan*/  nid; int /*<<< orphan*/  kat2len; int /*<<< orphan*/  kat2; int /*<<< orphan*/  adin2len; int /*<<< orphan*/  adin2; int /*<<< orphan*/  adinreseedlen; int /*<<< orphan*/  adinreseed; int /*<<< orphan*/  entropyreseedlen; int /*<<< orphan*/  entropyreseed; int /*<<< orphan*/  exlen; int /*<<< orphan*/  expected; int /*<<< orphan*/  adinlen; int /*<<< orphan*/  adin; int /*<<< orphan*/  perslen; int /*<<< orphan*/  pers; int /*<<< orphan*/  noncelen; int /*<<< orphan*/  nonce; int /*<<< orphan*/  entropylen; int /*<<< orphan*/  entropy; } ;
-struct TYPE_6__ {int /*<<< orphan*/  entropylen; int /*<<< orphan*/  entropy; scalar_t__ noncecnt; scalar_t__ entropycnt; int /*<<< orphan*/  noncelen; int /*<<< orphan*/  nonce; } ;
-typedef  TYPE_1__ TEST_CTX ;
-typedef  int /*<<< orphan*/  RAND_DRBG ;
-typedef  TYPE_2__ DRBG_SELFTEST_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RAND_DRBG_free (int /*<<< orphan*/ *) ; 
- int RAND_DRBG_generate (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int RAND_DRBG_instantiate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RAND_DRBG_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RAND_DRBG_reseed (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int RAND_DRBG_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int RAND_DRBG_set_callbacks (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RAND_DRBG_set_ex_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TEST_mem_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
- int /*<<< orphan*/  app_data_index ; 
- int disable_crngt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kat_entropy ; 
- int /*<<< orphan*/  kat_nonce ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uninstantiate (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int t ;
+struct TYPE_7__ {int kat2len_pr; int kat2_pr; int adinglen_pr; int ading_pr; int entropyglen_pr; int entropyg_pr; int katlen_pr; int kat_pr; int adinlen_pr; int adin_pr; int entropyprlen_pr; int entropypr_pr; int perslen_pr; int pers_pr; int noncelen_pr; int nonce_pr; int entropylen_pr; int entropy_pr; int flags; int nid; int kat2len; int kat2; int adin2len; int adin2; int adinreseedlen; int adinreseed; int entropyreseedlen; int entropyreseed; int exlen; int expected; int adinlen; int adin; int perslen; int pers; int noncelen; int nonce; int entropylen; int entropy; } ;
+struct TYPE_6__ {int entropylen; int entropy; scalar_t__ noncecnt; scalar_t__ entropycnt; int noncelen; int nonce; } ;
+typedef TYPE_1__ TEST_CTX ;
+typedef int RAND_DRBG ;
+typedef TYPE_2__ DRBG_SELFTEST_DATA ;
+
+
+ int RAND_DRBG_free (int *) ;
+ int RAND_DRBG_generate (int *,unsigned char*,int ,int,int ,int ) ;
+ int RAND_DRBG_instantiate (int *,int ,int ) ;
+ int * RAND_DRBG_new (int ,int ,int *) ;
+ scalar_t__ RAND_DRBG_reseed (int *,int ,int ,int ) ;
+ int RAND_DRBG_set (int *,int ,int ) ;
+ int RAND_DRBG_set_callbacks (int *,int ,int *,int ,int *) ;
+ int RAND_DRBG_set_ex_data (int *,int ,TYPE_1__*) ;
+ int TEST_mem_eq (int ,int ,unsigned char*,int ) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int) ;
+ int app_data_index ;
+ int disable_crngt (int *) ;
+ int kat_entropy ;
+ int kat_nonce ;
+ int memset (TYPE_1__*,int ,int) ;
+ int uninstantiate (int *) ;
 
 __attribute__((used)) static int single_kat(DRBG_SELFTEST_DATA *td)
 {
-    RAND_DRBG *drbg = NULL;
+    RAND_DRBG *drbg = ((void*)0);
     TEST_CTX t;
     int failures = 0;
     unsigned char buff[1024];
 
-    /*
-     * Test without PR: Instantiate DRBG with test entropy, nonce and
-     * personalisation string.
-     */
-    if (!TEST_ptr(drbg = RAND_DRBG_new(td->nid, td->flags, NULL)))
+
+
+
+
+    if (!TEST_ptr(drbg = RAND_DRBG_new(td->nid, td->flags, ((void*)0))))
         return 0;
-    if (!TEST_true(RAND_DRBG_set_callbacks(drbg, kat_entropy, NULL,
-                                           kat_nonce, NULL))
+    if (!TEST_true(RAND_DRBG_set_callbacks(drbg, kat_entropy, ((void*)0),
+                                           kat_nonce, ((void*)0)))
         || !TEST_true(disable_crngt(drbg))) {
         failures++;
         goto err;
@@ -70,7 +70,7 @@ __attribute__((used)) static int single_kat(DRBG_SELFTEST_DATA *td)
             || !TEST_mem_eq(td->expected, td->exlen, buff, td->exlen))
         failures++;
 
-    /* Reseed DRBG with test entropy and additional input */
+
     t.entropy = td->entropyreseed;
     t.entropylen = td->entropyreseedlen;
     if (!TEST_true(RAND_DRBG_reseed(drbg, td->adinreseed, td->adinreseedlen, 0)
@@ -80,13 +80,13 @@ __attribute__((used)) static int single_kat(DRBG_SELFTEST_DATA *td)
         failures++;
     uninstantiate(drbg);
 
-    /*
-     * Now test with PR: Instantiate DRBG with test entropy, nonce and
-     * personalisation string.
-     */
+
+
+
+
     if (!TEST_true(RAND_DRBG_set(drbg, td->nid, td->flags))
-            || !TEST_true(RAND_DRBG_set_callbacks(drbg, kat_entropy, NULL,
-                                                  kat_nonce, NULL)))
+            || !TEST_true(RAND_DRBG_set_callbacks(drbg, kat_entropy, ((void*)0),
+                                                  kat_nonce, ((void*)0))))
         failures++;
     RAND_DRBG_set_ex_data(drbg, app_data_index, &t);
     t.entropy = td->entropy_pr;
@@ -98,10 +98,10 @@ __attribute__((used)) static int single_kat(DRBG_SELFTEST_DATA *td)
     if (!TEST_true(RAND_DRBG_instantiate(drbg, td->pers_pr, td->perslen_pr)))
         failures++;
 
-    /*
-     * Now generate with PR: we need to supply entropy as this will
-     * perform a reseed operation.
-     */
+
+
+
+
     t.entropy = td->entropypr_pr;
     t.entropylen = td->entropyprlen_pr;
     if (!TEST_true(RAND_DRBG_generate(drbg, buff, td->katlen_pr, 1,
@@ -109,9 +109,9 @@ __attribute__((used)) static int single_kat(DRBG_SELFTEST_DATA *td)
             || !TEST_mem_eq(td->kat_pr, td->katlen_pr, buff, td->katlen_pr))
         failures++;
 
-    /*
-     * Now generate again with PR: supply new entropy again.
-     */
+
+
+
     t.entropy = td->entropyg_pr;
     t.entropylen = td->entropyglen_pr;
 

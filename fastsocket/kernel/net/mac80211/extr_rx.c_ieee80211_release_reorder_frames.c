@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct tid_ampdu_rx {int buf_size; int /*<<< orphan*/  ssn; int /*<<< orphan*/  head_seq_num; int /*<<< orphan*/  reorder_lock; } ;
+
+
+
+
+typedef int u16 ;
+struct tid_ampdu_rx {int buf_size; int ssn; int head_seq_num; int reorder_lock; } ;
 struct sk_buff_head {int dummy; } ;
 struct ieee80211_sub_if_data {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ieee80211_release_reorder_frame (struct ieee80211_sub_if_data*,struct tid_ampdu_rx*,int,struct sk_buff_head*) ; 
- scalar_t__ ieee80211_sn_less (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ieee80211_sn_sub (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lockdep_assert_held (int /*<<< orphan*/ *) ; 
+
+ int ieee80211_release_reorder_frame (struct ieee80211_sub_if_data*,struct tid_ampdu_rx*,int,struct sk_buff_head*) ;
+ scalar_t__ ieee80211_sn_less (int ,int ) ;
+ int ieee80211_sn_sub (int ,int ) ;
+ int lockdep_assert_held (int *) ;
 
 __attribute__((used)) static void ieee80211_release_reorder_frames(struct ieee80211_sub_if_data *sdata,
-					     struct tid_ampdu_rx *tid_agg_rx,
-					     u16 head_seq_num,
-					     struct sk_buff_head *frames)
+          struct tid_ampdu_rx *tid_agg_rx,
+          u16 head_seq_num,
+          struct sk_buff_head *frames)
 {
-	int index;
+ int index;
 
-	lockdep_assert_held(&tid_agg_rx->reorder_lock);
+ lockdep_assert_held(&tid_agg_rx->reorder_lock);
 
-	while (ieee80211_sn_less(tid_agg_rx->head_seq_num, head_seq_num)) {
-		index = ieee80211_sn_sub(tid_agg_rx->head_seq_num,
-					 tid_agg_rx->ssn) %
-							tid_agg_rx->buf_size;
-		ieee80211_release_reorder_frame(sdata, tid_agg_rx, index,
-						frames);
-	}
+ while (ieee80211_sn_less(tid_agg_rx->head_seq_num, head_seq_num)) {
+  index = ieee80211_sn_sub(tid_agg_rx->head_seq_num,
+      tid_agg_rx->ssn) %
+       tid_agg_rx->buf_size;
+  ieee80211_release_reorder_frame(sdata, tid_agg_rx, index,
+      frames);
+ }
 }

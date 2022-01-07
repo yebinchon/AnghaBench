@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct vlc_input_event {int dummy; } ;
-typedef  int /*<<< orphan*/  input_thread_t ;
-struct TYPE_3__ {int /*<<< orphan*/  events_data; int /*<<< orphan*/  (* events_cb ) (int /*<<< orphan*/ *,struct vlc_input_event const*,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ input_thread_private_t ;
+typedef int input_thread_t ;
+struct TYPE_3__ {int events_data; int (* events_cb ) (int *,struct vlc_input_event const*,int ) ;} ;
+typedef TYPE_1__ input_thread_private_t ;
 
-/* Variables and functions */
- TYPE_1__* input_priv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,struct vlc_input_event const*,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* input_priv (int *) ;
+ int stub1 (int *,struct vlc_input_event const*,int ) ;
 
 __attribute__((used)) static inline void input_SendEvent(input_thread_t *p_input,
                                    const struct vlc_input_event *event)

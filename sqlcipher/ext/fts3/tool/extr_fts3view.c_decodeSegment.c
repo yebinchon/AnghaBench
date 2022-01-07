@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zTerm ;
-typedef  int sqlite3_int64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ getVarint (unsigned char const*,int*) ; 
- int /*<<< orphan*/  memcpy (char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int zTerm ;
+typedef int sqlite3_int64 ;
+
+
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ scalar_t__ getVarint (unsigned char const*,int*) ;
+ int memcpy (char*,unsigned char const*,size_t) ;
+ int printf (char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static void decodeSegment(
-  const unsigned char *aData,   /* Content to print */
-  int nData                     /* Number of bytes of content */
+  const unsigned char *aData,
+  int nData
 ){
   sqlite3_int64 iChild = 0;
   sqlite3_int64 iPrefix;

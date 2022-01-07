@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  TCP_Connections ;
-typedef  int /*<<< orphan*/  IP_Port ;
 
-/* Variables and functions */
- int add_tcp_relay_instance (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int find_tcp_connection_relay (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int TCP_Connections ;
+typedef int IP_Port ;
+
+
+ int add_tcp_relay_instance (int *,int ,int const*) ;
+ int find_tcp_connection_relay (int *,int const*) ;
 
 int add_tcp_relay_global(TCP_Connections *tcp_c, IP_Port ip_port, const uint8_t *relay_pk)
 {

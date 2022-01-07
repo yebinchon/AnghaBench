@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct event_trigger_data {int /*<<< orphan*/  named_list; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  kstrdup (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  named_triggers ; 
+
+
+
+struct event_trigger_data {int named_list; int name; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int kstrdup (char const*,int ) ;
+ int list_add (int *,int *) ;
+ int named_triggers ;
 
 int save_named_trigger(const char *name, struct event_trigger_data *data)
 {
-	data->name = kstrdup(name, GFP_KERNEL);
-	if (!data->name)
-		return -ENOMEM;
+ data->name = kstrdup(name, GFP_KERNEL);
+ if (!data->name)
+  return -ENOMEM;
 
-	list_add(&data->named_list, &named_triggers);
+ list_add(&data->named_list, &named_triggers);
 
-	return 0;
+ return 0;
 }

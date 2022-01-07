@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct acpi_device {int /*<<< orphan*/  handle; } ;
-typedef  int /*<<< orphan*/  acpi_status ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acpi_atlas_button_handler ; 
- int /*<<< orphan*/  acpi_remove_address_space_handler (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_dev ; 
- int /*<<< orphan*/  input_unregister_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_err (char*) ; 
+
+
+
+struct acpi_device {int handle; } ;
+typedef int acpi_status ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int acpi_atlas_button_handler ;
+ int acpi_remove_address_space_handler (int ,int,int *) ;
+ int input_dev ;
+ int input_unregister_device (int ) ;
+ int pr_err (char*) ;
 
 __attribute__((used)) static int atlas_acpi_button_remove(struct acpi_device *device)
 {
-	acpi_status status;
+ acpi_status status;
 
-	status = acpi_remove_address_space_handler(device->handle,
-				0x81, &acpi_atlas_button_handler);
-	if (ACPI_FAILURE(status))
-		pr_err("error removing addr spc handler\n");
+ status = acpi_remove_address_space_handler(device->handle,
+    0x81, &acpi_atlas_button_handler);
+ if (ACPI_FAILURE(status))
+  pr_err("error removing addr spc handler\n");
 
-	input_unregister_device(input_dev);
+ input_unregister_device(input_dev);
 
-	return 0;
+ return 0;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  iids ;
-typedef  int /*<<< orphan*/  IID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_SystemClock ; 
- int /*<<< orphan*/  CLSID_VideoRenderer ; 
- int /*<<< orphan*/  const IID_IBaseFilter ; 
- int /*<<< orphan*/  const IID_IBasicVideo ; 
- int /*<<< orphan*/  const IID_IMediaFilter ; 
- int /*<<< orphan*/  IID_IReferenceClock ; 
- int /*<<< orphan*/  const IID_IVideoWindow ; 
- int /*<<< orphan*/  test_aggregation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int iids ;
+typedef int IID ;
+
+
+ int CLSID_SystemClock ;
+ int CLSID_VideoRenderer ;
+ int const IID_IBaseFilter ;
+ int const IID_IBasicVideo ;
+ int const IID_IMediaFilter ;
+ int IID_IReferenceClock ;
+ int const IID_IVideoWindow ;
+ int test_aggregation (int ,int ,int ,int const) ;
 
 __attribute__((used)) static void test_video_renderer_aggregations(void)
 {

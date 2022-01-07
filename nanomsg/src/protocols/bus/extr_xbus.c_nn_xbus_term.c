@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_xbus {int /*<<< orphan*/  sockbase; int /*<<< orphan*/  outpipes; int /*<<< orphan*/  inpipes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_dist_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fq_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_sockbase_term (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_xbus {int sockbase; int outpipes; int inpipes; } ;
+
+
+ int nn_dist_term (int *) ;
+ int nn_fq_term (int *) ;
+ int nn_sockbase_term (int *) ;
 
 void nn_xbus_term (struct nn_xbus *self)
 {

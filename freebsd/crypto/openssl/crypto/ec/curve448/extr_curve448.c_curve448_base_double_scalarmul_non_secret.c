@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct smvt_control {int power; int addend; } ;
-typedef  int /*<<< orphan*/  precmp_var ;
-typedef  struct smvt_control pniels_t ;
-typedef  int /*<<< orphan*/  curve448_scalar_t ;
-typedef  int /*<<< orphan*/  curve448_point_t ;
-typedef  int /*<<< orphan*/  control_var ;
-typedef  int /*<<< orphan*/  control_pre ;
+typedef int precmp_var ;
+typedef struct smvt_control pniels_t ;
+typedef int curve448_scalar_t ;
+typedef int curve448_point_t ;
+typedef int control_var ;
+typedef int control_pre ;
 
-/* Variables and functions */
- int C448_SCALAR_BITS ; 
- int C448_WNAF_FIXED_TABLE_BITS ; 
- int C448_WNAF_VAR_TABLE_BITS ; 
- int /*<<< orphan*/  OPENSSL_cleanse (struct smvt_control*,int) ; 
- int /*<<< orphan*/  add_niels_to_pt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  add_pniels_to_pt (int /*<<< orphan*/ ,struct smvt_control,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  curve448_point_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  curve448_point_identity ; 
- int /*<<< orphan*/ * curve448_wnaf_base ; 
- int /*<<< orphan*/  niels_to_pt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pniels_to_pt (int /*<<< orphan*/ ,struct smvt_control) ; 
- int /*<<< orphan*/  point_double_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  prepare_wnaf_table (struct smvt_control*,int /*<<< orphan*/  const,int const) ; 
- int recode_wnaf (struct smvt_control*,int /*<<< orphan*/  const,int const) ; 
- int /*<<< orphan*/  sub_niels_from_pt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sub_pniels_from_pt (int /*<<< orphan*/ ,struct smvt_control,int) ; 
+
+ int C448_SCALAR_BITS ;
+ int C448_WNAF_FIXED_TABLE_BITS ;
+ int C448_WNAF_VAR_TABLE_BITS ;
+ int OPENSSL_cleanse (struct smvt_control*,int) ;
+ int add_niels_to_pt (int ,int ,int) ;
+ int add_pniels_to_pt (int ,struct smvt_control,int) ;
+ int assert (int) ;
+ int curve448_point_copy (int ,int ) ;
+ int curve448_point_identity ;
+ int * curve448_wnaf_base ;
+ int niels_to_pt (int ,int ) ;
+ int pniels_to_pt (int ,struct smvt_control) ;
+ int point_double_internal (int ,int ,int) ;
+ int prepare_wnaf_table (struct smvt_control*,int const,int const) ;
+ int recode_wnaf (struct smvt_control*,int const,int const) ;
+ int sub_niels_from_pt (int ,int ,int) ;
+ int sub_pniels_from_pt (int ,struct smvt_control,int) ;
 
 void curve448_base_double_scalarmul_non_secret(curve448_point_t combo,
                                                const curve448_scalar_t scalar1,
@@ -110,7 +110,7 @@ void curve448_base_double_scalarmul_non_secret(curve448_point_t combo,
         }
     }
 
-    /* This function is non-secret, but whatever this is cheap. */
+
     OPENSSL_cleanse(control_var, sizeof(control_var));
     OPENSSL_cleanse(control_pre, sizeof(control_pre));
     OPENSSL_cleanse(precmp_var, sizeof(precmp_var));

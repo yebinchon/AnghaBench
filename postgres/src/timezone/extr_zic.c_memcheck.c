@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  memory_exhausted (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+ int errno ;
+ int memory_exhausted (int ) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static void *
 memcheck(void *ptr)
 {
-	if (ptr == NULL)
-		memory_exhausted(strerror(errno));
-	return ptr;
+ if (ptr == ((void*)0))
+  memory_exhausted(strerror(errno));
+ return ptr;
 }

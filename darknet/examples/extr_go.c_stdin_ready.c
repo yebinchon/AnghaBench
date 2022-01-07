@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STDIN_FILENO ; 
- scalar_t__ select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ int FD_SET (int ,int *) ;
+ int FD_ZERO (int *) ;
+ int STDIN_FILENO ;
+ scalar_t__ select (int,int *,int *,int *,struct timeval*) ;
 
 int stdin_ready()
 {
@@ -29,7 +29,7 @@ int stdin_ready()
     timeout.tv_usec = 0;
     FD_SET(STDIN_FILENO, &readfds);
 
-    if (select(1, &readfds, NULL, NULL, &timeout)){
+    if (select(1, &readfds, ((void*)0), ((void*)0), &timeout)){
         return 1;
     }
     return 0;

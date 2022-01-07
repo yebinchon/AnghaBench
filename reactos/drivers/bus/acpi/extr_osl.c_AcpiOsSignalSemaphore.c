@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT32 ;
-struct TYPE_4__ {int /*<<< orphan*/  Lock; int /*<<< orphan*/  Event; int /*<<< orphan*/  CurrentUnits; } ;
-typedef  TYPE_1__* PACPI_SEM ;
-typedef  int /*<<< orphan*/  KIRQL ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_1__* ACPI_SEMAPHORE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  DPRINT1 (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IO_NO_INCREMENT ; 
- int /*<<< orphan*/  KeAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KeSetEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT32 ;
+struct TYPE_4__ {int Lock; int Event; int CurrentUnits; } ;
+typedef TYPE_1__* PACPI_SEM ;
+typedef int KIRQL ;
+typedef int ACPI_STATUS ;
+typedef TYPE_1__* ACPI_SEMAPHORE ;
+
+
+ int AE_BAD_PARAMETER ;
+ int AE_OK ;
+ int DPRINT1 (char*) ;
+ int FALSE ;
+ int IO_NO_INCREMENT ;
+ int KeAcquireSpinLock (int *,int *) ;
+ int KeReleaseSpinLock (int *,int ) ;
+ int KeSetEvent (int *,int ,int ) ;
 
 ACPI_STATUS
 AcpiOsSignalSemaphore(

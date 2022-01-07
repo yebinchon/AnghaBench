@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_4__ {int wState; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_1__* LPHEADCOMBO ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef int RECT ;
+typedef TYPE_1__* LPHEADCOMBO ;
+typedef int HDC ;
 
-/* Variables and functions */
- int CBF_BUTTONDOWN ; 
- int CBF_NOREDRAW ; 
- scalar_t__ CB_DISABLED (TYPE_1__*) ; 
- int /*<<< orphan*/  DFCS_INACTIVE ; 
- int /*<<< orphan*/  DFCS_PUSHED ; 
- int /*<<< orphan*/  DFCS_SCROLLCOMBOBOX ; 
- int /*<<< orphan*/  DFC_SCROLL ; 
- int /*<<< orphan*/  DrawFrameControl (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CBF_BUTTONDOWN ;
+ int CBF_NOREDRAW ;
+ scalar_t__ CB_DISABLED (TYPE_1__*) ;
+ int DFCS_INACTIVE ;
+ int DFCS_PUSHED ;
+ int DFCS_SCROLLCOMBOBOX ;
+ int DFC_SCROLL ;
+ int DrawFrameControl (int ,int *,int ,int ) ;
 
 __attribute__((used)) static void CBPaintButton( LPHEADCOMBO lphc, HDC hdc, RECT rectButton)
 {
@@ -36,10 +36,10 @@ __attribute__((used)) static void CBPaintButton( LPHEADCOMBO lphc, HDC hdc, RECT
 
 
     if (lphc->wState & CBF_BUTTONDOWN)
-	buttonState |= DFCS_PUSHED;
+ buttonState |= DFCS_PUSHED;
 
     if (CB_DISABLED(lphc))
-	buttonState |= DFCS_INACTIVE;
+ buttonState |= DFCS_INACTIVE;
 
     DrawFrameControl(hdc, &rectButton, DFC_SCROLL, buttonState);
 }

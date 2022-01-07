@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {long state; int flags; int /*<<< orphan*/  comm; } ;
 
-/* Variables and functions */
- int PF_FROZEN ; 
- long TASK_UNINTERRUPTIBLE ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/  freezer_lock ; 
- int /*<<< orphan*/  freezing (TYPE_1__*) ; 
- scalar_t__ kthread_should_stop () ; 
- int /*<<< orphan*/  pr_debug (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  schedule () ; 
- int /*<<< orphan*/  set_current_state (long) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {long state; int flags; int comm; } ;
+
+
+ int PF_FROZEN ;
+ long TASK_UNINTERRUPTIBLE ;
+ TYPE_1__* current ;
+ int freezer_lock ;
+ int freezing (TYPE_1__*) ;
+ scalar_t__ kthread_should_stop () ;
+ int pr_debug (char*,int ) ;
+ int schedule () ;
+ int set_current_state (long) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 bool __refrigerator(bool check_kthr_stop)
 {
-	/* Hmm, should we be allowed to suspend when there are realtime
-	   processes around? */
-	bool was_frozen = false;
-	long save = current->state;
 
-	pr_debug("%s entered refrigerator\n", current->comm);
 
-	for (;;) {
-		set_current_state(TASK_UNINTERRUPTIBLE);
+ bool was_frozen = 0;
+ long save = current->state;
 
-		spin_lock_irq(&freezer_lock);
-		current->flags |= PF_FROZEN;
-		if (!freezing(current) ||
-		    (check_kthr_stop && kthread_should_stop()))
-			current->flags &= ~PF_FROZEN;
-		spin_unlock_irq(&freezer_lock);
+ pr_debug("%s entered refrigerator\n", current->comm);
 
-		if (!(current->flags & PF_FROZEN))
-			break;
-		was_frozen = true;
-		schedule();
-	}
+ for (;;) {
+  set_current_state(TASK_UNINTERRUPTIBLE);
 
-	pr_debug("%s left refrigerator\n", current->comm);
+  spin_lock_irq(&freezer_lock);
+  current->flags |= PF_FROZEN;
+  if (!freezing(current) ||
+      (check_kthr_stop && kthread_should_stop()))
+   current->flags &= ~PF_FROZEN;
+  spin_unlock_irq(&freezer_lock);
 
-	/*
-	 * Restore saved task state before returning.  The mb'd version
-	 * needs to be used; otherwise, it might silently break
-	 * synchronization which depends on ordered task state change.
-	 */
-	set_current_state(save);
+  if (!(current->flags & PF_FROZEN))
+   break;
+  was_frozen = 1;
+  schedule();
+ }
 
-	return was_frozen;
+ pr_debug("%s left refrigerator\n", current->comm);
+
+
+
+
+
+
+ set_current_state(save);
+
+ return was_frozen;
 }

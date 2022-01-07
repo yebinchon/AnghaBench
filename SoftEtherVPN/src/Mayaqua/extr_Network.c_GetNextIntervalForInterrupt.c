@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT64 ;
-typedef  scalar_t__ UINT ;
-struct TYPE_3__ {int /*<<< orphan*/ * TickList; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ INTERRUPT_MANAGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  Free (scalar_t__*) ; 
- scalar_t__ INFINITE ; 
- scalar_t__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- int LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- scalar_t__ Tick64 () ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT64 ;
+typedef scalar_t__ UINT ;
+struct TYPE_3__ {int * TickList; } ;
+typedef int LIST ;
+typedef TYPE_1__ INTERRUPT_MANAGER ;
+
+
+ int Add (int *,scalar_t__*) ;
+ int Delete (int *,scalar_t__*) ;
+ int Free (scalar_t__*) ;
+ scalar_t__ INFINITE ;
+ scalar_t__* LIST_DATA (int *,scalar_t__) ;
+ int LIST_NUM (int *) ;
+ int LockList (int *) ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
+ scalar_t__ Tick64 () ;
+ int UnlockList (int *) ;
 
 UINT GetNextIntervalForInterrupt(INTERRUPT_MANAGER *m)
 {
-	UINT ret = INFINITE;
-	UINT i;
-	LIST *o = NULL;
-	UINT64 now = Tick64();
-	// Validate arguments
-	if (m == NULL)
-	{
-		return 0;
-	}
+ UINT ret = INFINITE;
+ UINT i;
+ LIST *o = ((void*)0);
+ UINT64 now = Tick64();
 
-	LockList(m->TickList);
-	{
-		// Remove entries older than now already
-		for (i = 0;i < LIST_NUM(m->TickList);i++)
-		{
-			UINT64 *v = LIST_DATA(m->TickList, i);
+ if (m == ((void*)0))
+ {
+  return 0;
+ }
 
-			if (now >= *v)
-			{
-				ret = 0;
+ LockList(m->TickList);
+ {
 
-				if (o == NULL)
-				{
-					o = NewListFast(NULL);
-				}
+  for (i = 0;i < LIST_NUM(m->TickList);i++)
+  {
+   UINT64 *v = LIST_DATA(m->TickList, i);
 
-				Add(o, v);
-			}
-			else
-			{
-				break;
-			}
-		}
+   if (now >= *v)
+   {
+    ret = 0;
 
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			UINT64 *v = LIST_DATA(o, i);
+    if (o == ((void*)0))
+    {
+     o = NewListFast(((void*)0));
+    }
 
-			Free(v);
+    Add(o, v);
+   }
+   else
+   {
+    break;
+   }
+  }
 
-			Delete(m->TickList, v);
-		}
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   UINT64 *v = LIST_DATA(o, i);
 
-		if (o != NULL)
-		{
-			ReleaseList(o);
-		}
+   Free(v);
 
-		if (ret == INFINITE)
-		{
-			if (LIST_NUM(m->TickList) >= 1)
-			{
-				UINT64 *v = LIST_DATA(m->TickList, 0);
+   Delete(m->TickList, v);
+  }
 
-				ret = (UINT)(*v - now);
-			}
-		}
-	}
-	UnlockList(m->TickList);
+  if (o != ((void*)0))
+  {
+   ReleaseList(o);
+  }
 
-	return ret;
+  if (ret == INFINITE)
+  {
+   if (LIST_NUM(m->TickList) >= 1)
+   {
+    UINT64 *v = LIST_DATA(m->TickList, 0);
+
+    ret = (UINT)(*v - now);
+   }
+  }
+ }
+ UnlockList(m->TickList);
+
+ return ret;
 }

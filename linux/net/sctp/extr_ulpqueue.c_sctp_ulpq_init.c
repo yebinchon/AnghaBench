@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sctp_ulpq {scalar_t__ pd_mode; int /*<<< orphan*/  lobby; int /*<<< orphan*/  reasm_uo; int /*<<< orphan*/  reasm; struct sctp_association* asoc; } ;
+
+
+
+
+struct sctp_ulpq {scalar_t__ pd_mode; int lobby; int reasm_uo; int reasm; struct sctp_association* asoc; } ;
 struct sctp_association {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (struct sctp_ulpq*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  skb_queue_head_init (int /*<<< orphan*/ *) ; 
+
+ int memset (struct sctp_ulpq*,int ,int) ;
+ int skb_queue_head_init (int *) ;
 
 struct sctp_ulpq *sctp_ulpq_init(struct sctp_ulpq *ulpq,
-				 struct sctp_association *asoc)
+     struct sctp_association *asoc)
 {
-	memset(ulpq, 0, sizeof(struct sctp_ulpq));
+ memset(ulpq, 0, sizeof(struct sctp_ulpq));
 
-	ulpq->asoc = asoc;
-	skb_queue_head_init(&ulpq->reasm);
-	skb_queue_head_init(&ulpq->reasm_uo);
-	skb_queue_head_init(&ulpq->lobby);
-	ulpq->pd_mode  = 0;
+ ulpq->asoc = asoc;
+ skb_queue_head_init(&ulpq->reasm);
+ skb_queue_head_init(&ulpq->reasm_uo);
+ skb_queue_head_init(&ulpq->lobby);
+ ulpq->pd_mode = 0;
 
-	return ulpq;
+ return ulpq;
 }

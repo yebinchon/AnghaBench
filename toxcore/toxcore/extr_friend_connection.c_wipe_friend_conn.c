@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_7__ {scalar_t__ status; } ;
 struct TYPE_6__ {int num_cons; TYPE_4__* conns; } ;
-typedef  TYPE_1__ Friend_Connections ;
-typedef  int /*<<< orphan*/  Friend_Conn ;
+typedef TYPE_1__ Friend_Connections ;
+typedef int Friend_Conn ;
 
-/* Variables and functions */
- scalar_t__ FRIENDCONN_STATUS_NONE ; 
- scalar_t__ friendconn_id_not_valid (TYPE_1__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  realloc_friendconns (TYPE_1__*,int) ; 
+
+ scalar_t__ FRIENDCONN_STATUS_NONE ;
+ scalar_t__ friendconn_id_not_valid (TYPE_1__*,int) ;
+ int memset (TYPE_4__*,int ,int) ;
+ int realloc_friendconns (TYPE_1__*,int) ;
 
 __attribute__((used)) static int wipe_friend_conn(Friend_Connections *fr_c, int friendcon_id)
 {

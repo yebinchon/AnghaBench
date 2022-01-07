@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_has_thread_control; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_rcmd; int /*<<< orphan*/  to_xfer_partial; int /*<<< orphan*/  to_stop; int /*<<< orphan*/  to_extra_thread_info; int /*<<< orphan*/  to_pid_to_str; int /*<<< orphan*/  to_find_new_threads; int /*<<< orphan*/  to_thread_alive; int /*<<< orphan*/  to_mourn_inferior; int /*<<< orphan*/  to_load; int /*<<< orphan*/  to_kill; int /*<<< orphan*/  to_remove_watchpoint; int /*<<< orphan*/  to_insert_watchpoint; int /*<<< orphan*/  to_remove_hw_breakpoint; int /*<<< orphan*/  to_insert_hw_breakpoint; int /*<<< orphan*/  to_can_use_hw_breakpoint; int /*<<< orphan*/  to_stopped_data_address; int /*<<< orphan*/  to_stopped_by_watchpoint; int /*<<< orphan*/  to_remove_breakpoint; int /*<<< orphan*/  to_insert_breakpoint; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_prepare_to_store; int /*<<< orphan*/  to_store_registers; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_wait; int /*<<< orphan*/  to_resume; int /*<<< orphan*/  to_disconnect; int /*<<< orphan*/  to_detach; int /*<<< orphan*/  to_close; int /*<<< orphan*/  to_open; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  generic_load ; 
- int /*<<< orphan*/  process_stratum ; 
- int /*<<< orphan*/  remote_check_watch_resources ; 
- int /*<<< orphan*/  remote_close ; 
- int /*<<< orphan*/  remote_detach ; 
- int /*<<< orphan*/  remote_disconnect ; 
- int /*<<< orphan*/  remote_fetch_registers ; 
- int /*<<< orphan*/  remote_files_info ; 
- int /*<<< orphan*/  remote_insert_breakpoint ; 
- int /*<<< orphan*/  remote_insert_hw_breakpoint ; 
- int /*<<< orphan*/  remote_insert_watchpoint ; 
- int /*<<< orphan*/  remote_kill ; 
- int /*<<< orphan*/  remote_mourn ; 
- int /*<<< orphan*/  remote_open ; 
- TYPE_1__ remote_ops ; 
- int /*<<< orphan*/  remote_pid_to_str ; 
- int /*<<< orphan*/  remote_prepare_to_store ; 
- int /*<<< orphan*/  remote_rcmd ; 
- int /*<<< orphan*/  remote_remove_breakpoint ; 
- int /*<<< orphan*/  remote_remove_hw_breakpoint ; 
- int /*<<< orphan*/  remote_remove_watchpoint ; 
- int /*<<< orphan*/  remote_resume ; 
- int /*<<< orphan*/  remote_stop ; 
- int /*<<< orphan*/  remote_stopped_by_watchpoint ; 
- int /*<<< orphan*/  remote_stopped_data_address ; 
- int /*<<< orphan*/  remote_store_registers ; 
- int /*<<< orphan*/  remote_thread_alive ; 
- int /*<<< orphan*/  remote_threads_extra_info ; 
- int /*<<< orphan*/  remote_threads_info ; 
- int /*<<< orphan*/  remote_wait ; 
- int /*<<< orphan*/  remote_xfer_memory ; 
- int /*<<< orphan*/  remote_xfer_partial ; 
- int /*<<< orphan*/  tc_schedlock ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int to_magic; int to_has_thread_control; int to_stratum; int to_rcmd; int to_xfer_partial; int to_stop; int to_extra_thread_info; int to_pid_to_str; int to_find_new_threads; int to_thread_alive; int to_mourn_inferior; int to_load; int to_kill; int to_remove_watchpoint; int to_insert_watchpoint; int to_remove_hw_breakpoint; int to_insert_hw_breakpoint; int to_can_use_hw_breakpoint; int to_stopped_data_address; int to_stopped_by_watchpoint; int to_remove_breakpoint; int to_insert_breakpoint; int to_files_info; int to_xfer_memory; int to_prepare_to_store; int to_store_registers; int to_fetch_registers; int to_wait; int to_resume; int to_disconnect; int to_detach; int to_close; int to_open; } ;
+
+
+ int OPS_MAGIC ;
+ int generic_load ;
+ int process_stratum ;
+ int remote_check_watch_resources ;
+ int remote_close ;
+ int remote_detach ;
+ int remote_disconnect ;
+ int remote_fetch_registers ;
+ int remote_files_info ;
+ int remote_insert_breakpoint ;
+ int remote_insert_hw_breakpoint ;
+ int remote_insert_watchpoint ;
+ int remote_kill ;
+ int remote_mourn ;
+ int remote_open ;
+ TYPE_1__ remote_ops ;
+ int remote_pid_to_str ;
+ int remote_prepare_to_store ;
+ int remote_rcmd ;
+ int remote_remove_breakpoint ;
+ int remote_remove_hw_breakpoint ;
+ int remote_remove_watchpoint ;
+ int remote_resume ;
+ int remote_stop ;
+ int remote_stopped_by_watchpoint ;
+ int remote_stopped_data_address ;
+ int remote_store_registers ;
+ int remote_thread_alive ;
+ int remote_threads_extra_info ;
+ int remote_threads_info ;
+ int remote_wait ;
+ int remote_xfer_memory ;
+ int remote_xfer_partial ;
+ int tc_schedlock ;
 
 __attribute__((used)) static void
 init_remote_ops (void)
@@ -55,9 +55,9 @@ init_remote_ops (void)
   remote_ops.to_shortname = "remote";
   remote_ops.to_longname = "Remote serial target in gdb-specific protocol";
   remote_ops.to_doc =
-    "Use a remote computer via a serial line, using a gdb-specific protocol.\n\
-Specify the serial device it is connected to\n\
-(e.g. /dev/ttyS0, /dev/ttya, COM1, etc.).";
+    "Use a remote computer via a serial line, using a gdb-specific protocol.\nSpecify the serial device it is connected to\n(e.g. /dev/ttyS0, /dev/ttya, COM1, etc.).";
+
+
   remote_ops.to_open = remote_open;
   remote_ops.to_close = remote_close;
   remote_ops.to_detach = remote_detach;
@@ -94,6 +94,6 @@ Specify the serial device it is connected to\n\
   remote_ops.to_has_stack = 1;
   remote_ops.to_has_registers = 1;
   remote_ops.to_has_execution = 1;
-  remote_ops.to_has_thread_control = tc_schedlock;	/* can lock scheduler */
+  remote_ops.to_has_thread_control = tc_schedlock;
   remote_ops.to_magic = OPS_MAGIC;
 }

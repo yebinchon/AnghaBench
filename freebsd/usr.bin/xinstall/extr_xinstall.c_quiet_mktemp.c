@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EX_OSERR ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*,char*) ; 
- int mkstemp (char*) ; 
- int unlink (char*) ; 
+ int EX_OSERR ;
+ int close (int) ;
+ int err (int ,char*,char*) ;
+ int mkstemp (char*) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static char *
 quiet_mktemp(char *template)
 {
-	int fd;
+ int fd;
 
-	if ((fd = mkstemp(template)) == -1)
-		return (NULL);
-	close (fd);
-	if (unlink(template) == -1)
-		err(EX_OSERR, "unlink %s", template);
-	return (template);
+ if ((fd = mkstemp(template)) == -1)
+  return (((void*)0));
+ close (fd);
+ if (unlink(template) == -1)
+  err(EX_OSERR, "unlink %s", template);
+ return (template);
 }

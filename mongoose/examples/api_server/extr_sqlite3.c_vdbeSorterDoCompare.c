@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ pFile; int /*<<< orphan*/  nKey; int /*<<< orphan*/  aKey; } ;
-typedef  TYPE_1__ VdbeSorterIter ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ pFile; int nKey; int aKey; } ;
+typedef TYPE_1__ VdbeSorterIter ;
 struct TYPE_7__ {int nTree; int* aTree; scalar_t__ pUnpacked; TYPE_1__* aIter; } ;
-typedef  TYPE_2__ VdbeSorter ;
+typedef TYPE_2__ VdbeSorter ;
 struct TYPE_8__ {TYPE_2__* pSorter; } ;
-typedef  TYPE_3__ VdbeCursor ;
+typedef TYPE_3__ VdbeCursor ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  vdbeSorterCompare (TYPE_3__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+ int SQLITE_OK ;
+ int assert (int) ;
+ int vdbeSorterCompare (TYPE_3__ const*,int ,int ,int ,int ,int ,int*) ;
 
 __attribute__((used)) static int vdbeSorterDoCompare(const VdbeCursor *pCsr, int iOut){
   VdbeSorter *pSorter = pCsr->pSorter;
@@ -52,7 +52,7 @@ __attribute__((used)) static int vdbeSorterDoCompare(const VdbeCursor *pCsr, int
     iRes = i1;
   }else{
     int res;
-    assert( pCsr->pSorter->pUnpacked!=0 );  /* allocated in vdbeSorterMerge() */
+    assert( pCsr->pSorter->pUnpacked!=0 );
     vdbeSorterCompare(
         pCsr, 0, p1->aKey, p1->nKey, p2->aKey, p2->nKey, &res
     );

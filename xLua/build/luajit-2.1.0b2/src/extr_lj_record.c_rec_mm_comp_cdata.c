@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  L; } ;
-typedef  TYPE_1__ jit_State ;
-struct TYPE_11__ {int /*<<< orphan*/  keyv; int /*<<< orphan*/  tabv; int /*<<< orphan*/  key; int /*<<< orphan*/  tab; int /*<<< orphan*/  valv; int /*<<< orphan*/  val; } ;
-typedef  TYPE_2__ RecordIndex ;
-typedef  int /*<<< orphan*/  MMS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copyTV (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_record_mm_lookup (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_snap_add (TYPE_1__*) ; 
- int /*<<< orphan*/  lua_assert (scalar_t__) ; 
- int /*<<< orphan*/  rec_mm_callcomp (TYPE_1__*,TYPE_2__*,int) ; 
- scalar_t__ tref_iscdata (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int L; } ;
+typedef TYPE_1__ jit_State ;
+struct TYPE_11__ {int keyv; int tabv; int key; int tab; int valv; int val; } ;
+typedef TYPE_2__ RecordIndex ;
+typedef int MMS ;
+
+
+ int copyTV (int ,int *,int *) ;
+ int lj_record_mm_lookup (TYPE_1__*,TYPE_2__*,int ) ;
+ int lj_snap_add (TYPE_1__*) ;
+ int lua_assert (scalar_t__) ;
+ int rec_mm_callcomp (TYPE_1__*,TYPE_2__*,int) ;
+ scalar_t__ tref_iscdata (int ) ;
 
 __attribute__((used)) static void rec_mm_comp_cdata(jit_State *J, RecordIndex *ix, int op, MMS mm)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TS_VERIFY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/ * OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  TS_F_TS_VERIFY_CTX_NEW ; 
- int /*<<< orphan*/  TSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int TS_VERIFY_CTX ;
+
+
+ int ERR_R_MALLOC_FAILURE ;
+ int * OPENSSL_zalloc (int) ;
+ int TS_F_TS_VERIFY_CTX_NEW ;
+ int TSerr (int ,int ) ;
 
 TS_VERIFY_CTX *TS_VERIFY_CTX_new(void)
 {
     TS_VERIFY_CTX *ctx = OPENSSL_zalloc(sizeof(*ctx));
 
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         TSerr(TS_F_TS_VERIFY_CTX_NEW, ERR_R_MALLOC_FAILURE);
     return ctx;
 }

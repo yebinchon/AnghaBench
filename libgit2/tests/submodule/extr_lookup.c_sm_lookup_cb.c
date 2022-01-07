@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int count; } ;
-typedef  TYPE_1__ sm_lookup_data ;
-typedef  int /*<<< orphan*/  git_submodule ;
+typedef TYPE_1__ sm_lookup_data ;
+typedef int git_submodule ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_assert_equal_s (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  git_submodule_name (int /*<<< orphan*/ *) ; 
+
+ int cl_assert_equal_s (int ,char const*) ;
+ int git_submodule_name (int *) ;
 
 __attribute__((used)) static int sm_lookup_cb(git_submodule *sm, const char *name, void *payload)
 {
-	sm_lookup_data *data = payload;
-	data->count += 1;
-	cl_assert_equal_s(git_submodule_name(sm), name);
-	return 0;
+ sm_lookup_data *data = payload;
+ data->count += 1;
+ cl_assert_equal_s(git_submodule_name(sm), name);
+ return 0;
 }

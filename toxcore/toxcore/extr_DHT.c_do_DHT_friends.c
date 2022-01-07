@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {unsigned int num_friends; TYPE_2__* friends_list; } ;
-struct TYPE_8__ {unsigned int num_to_bootstrap; int /*<<< orphan*/  bootstrap_times; int /*<<< orphan*/  client_list; int /*<<< orphan*/  public_key; int /*<<< orphan*/  lastgetnode; TYPE_1__* to_bootstrap; } ;
-struct TYPE_7__ {int /*<<< orphan*/  public_key; int /*<<< orphan*/  ip_port; } ;
-typedef  TYPE_2__ DHT_Friend ;
-typedef  TYPE_3__ DHT ;
+struct TYPE_8__ {unsigned int num_to_bootstrap; int bootstrap_times; int client_list; int public_key; int lastgetnode; TYPE_1__* to_bootstrap; } ;
+struct TYPE_7__ {int public_key; int ip_port; } ;
+typedef TYPE_2__ DHT_Friend ;
+typedef TYPE_3__ DHT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_FRIEND_CLIENTS ; 
- int /*<<< orphan*/  do_ping_and_sendnode_requests (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  getnodes (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int MAX_FRIEND_CLIENTS ;
+ int do_ping_and_sendnode_requests (TYPE_3__*,int *,int ,int ,int ,int *,int) ;
+ int getnodes (TYPE_3__*,int ,int ,int ,int *) ;
 
 __attribute__((used)) static void do_DHT_friends(DHT *dht)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void do_DHT_friends(DHT *dht)
         DHT_Friend *friend = &dht->friends_list[i];
 
         for (j = 0; j < friend->num_to_bootstrap; ++j) {
-            getnodes(dht, friend->to_bootstrap[j].ip_port, friend->to_bootstrap[j].public_key, friend->public_key, NULL);
+            getnodes(dht, friend->to_bootstrap[j].ip_port, friend->to_bootstrap[j].public_key, friend->public_key, ((void*)0));
         }
 
         friend->num_to_bootstrap = 0;

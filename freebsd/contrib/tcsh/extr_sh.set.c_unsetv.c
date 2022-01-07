@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct varent {int dummy; } ;
-typedef  int /*<<< orphan*/  Char ;
+typedef int Char ;
 
-/* Variables and functions */
- struct varent* adrof1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shvhed ; 
- int /*<<< orphan*/  udvar (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unsetv1 (struct varent*) ; 
+
+ struct varent* adrof1 (int *,int *) ;
+ int shvhed ;
+ int udvar (int *) ;
+ int unsetv1 (struct varent*) ;
 
 void
 unsetv(Char *var)
@@ -25,6 +25,6 @@ unsetv(Char *var)
     struct varent *vp;
 
     if ((vp = adrof1(var, &shvhed)) == 0)
-	udvar(var);
+ udvar(var);
     unsetv1(vp);
 }

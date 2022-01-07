@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_checksum_deserialize (int /*<<< orphan*/  const**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int svn_checksum_deserialize (int const**,char const*,int *,int *) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
 
 svn_error_t *
 svn_sqlite__column_checksum(const svn_checksum_t **checksum,
                             svn_sqlite__stmt_t *stmt, int column,
                             apr_pool_t *result_pool)
 {
-  const char *digest = svn_sqlite__column_text(stmt, column, NULL);
+  const char *digest = svn_sqlite__column_text(stmt, column, ((void*)0));
 
-  if (digest == NULL)
-    *checksum = NULL;
+  if (digest == ((void*)0))
+    *checksum = ((void*)0);
   else
     SVN_ERR(svn_checksum_deserialize(checksum, digest,
                                      result_pool, result_pool));

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ current_line; scalar_t__ eof; int /*<<< orphan*/  keywords; } ;
-typedef  TYPE_1__ target_content_t ;
-struct TYPE_9__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ svn_stringbuf_t ;
-typedef  scalar_t__ svn_linenum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_hunk_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int TRUE ; 
- int /*<<< orphan*/  apr_collapse_spaces (char*,char*) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  readline (TYPE_1__*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seek_to_line (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (char const*,char const*) ; 
- scalar_t__ svn_diff_hunk__get_fuzz_penalty (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_diff_hunk_get_leading_context (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_diff_hunk_get_modified_length (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_diff_hunk_get_original_length (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_diff_hunk_get_trailing_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_hunk_readline_modified_text (int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_hunk_readline_original_text (int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_hunk_reset_modified_text (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_hunk_reset_original_text (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_translate_cstring2 (int /*<<< orphan*/ ,char const**,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ current_line; scalar_t__ eof; int keywords; } ;
+typedef TYPE_1__ target_content_t ;
+struct TYPE_9__ {scalar_t__ len; int data; } ;
+typedef TYPE_2__ svn_stringbuf_t ;
+typedef scalar_t__ svn_linenum_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_hunk_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int apr_collapse_spaces (char*,char*) ;
+ char* apr_pstrdup (int *,char const*) ;
+ int readline (TYPE_1__*,char const**,int *,int *) ;
+ int seek_to_line (TYPE_1__*,scalar_t__,int *) ;
+ int strcmp (char const*,char const*) ;
+ scalar_t__ svn_diff_hunk__get_fuzz_penalty (int *) ;
+ scalar_t__ svn_diff_hunk_get_leading_context (int *) ;
+ scalar_t__ svn_diff_hunk_get_modified_length (int *) ;
+ scalar_t__ svn_diff_hunk_get_original_length (int *) ;
+ scalar_t__ svn_diff_hunk_get_trailing_context (int *) ;
+ int svn_diff_hunk_readline_modified_text (int *,TYPE_2__**,int *,int*,int *,int *) ;
+ int svn_diff_hunk_readline_original_text (int *,TYPE_2__**,int *,int*,int *,int *) ;
+ int svn_diff_hunk_reset_modified_text (int *) ;
+ int svn_diff_hunk_reset_original_text (int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_subst_translate_cstring2 (int ,char const**,int *,int,int ,int,int *) ;
 
 __attribute__((used)) static svn_error_t *
 match_hunk(svn_boolean_t *matched, target_content_t *content,
@@ -100,30 +100,30 @@ match_hunk(svn_boolean_t *matched, target_content_t *content,
 
       if (match_modified)
         SVN_ERR(svn_diff_hunk_readline_modified_text(hunk, &hunk_line,
-                                                     NULL, &hunk_eof,
+                                                     ((void*)0), &hunk_eof,
                                                      iterpool, iterpool));
       else
         SVN_ERR(svn_diff_hunk_readline_original_text(hunk, &hunk_line,
-                                                     NULL, &hunk_eof,
+                                                     ((void*)0), &hunk_eof,
                                                      iterpool, iterpool));
 
-      /* Contract keywords, if any, before matching. */
+
       SVN_ERR(svn_subst_translate_cstring2(hunk_line->data,
                                            &hunk_line_translated,
-                                           NULL, FALSE,
+                                           ((void*)0), FALSE,
                                            content->keywords, FALSE,
                                            iterpool));
       SVN_ERR(readline(content, &target_line, iterpool, iterpool));
 
       lines_read++;
 
-      /* If the last line doesn't have a newline, we get EOF but still
-       * have a non-empty line to compare. */
+
+
       if ((hunk_eof && hunk_line->len == 0) ||
           (content->eof && *target_line == 0))
         break;
 
-      /* Leading/trailing fuzzy lines always match. */
+
       if ((lines_read <= fuzz && leading_context > fuzz) ||
           (lines_read > hunk_length - fuzz && trailing_context > fuzz))
         lines_matched = TRUE;

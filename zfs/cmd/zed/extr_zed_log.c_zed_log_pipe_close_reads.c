@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* pipe_fd; } ;
 
-/* Variables and functions */
- TYPE_1__ _ctx ; 
- scalar_t__ close (int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ getpid () ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zed_log_die (char*,int,...) ; 
+
+ TYPE_1__ _ctx ;
+ scalar_t__ close (int) ;
+ int errno ;
+ scalar_t__ getpid () ;
+ int strerror (int ) ;
+ int zed_log_die (char*,int,...) ;
 
 void
 zed_log_pipe_close_reads(void)
 {
-	if (_ctx.pipe_fd[0] < 0)
-		zed_log_die(
-		    "Invalid use of zed_log_pipe_close_reads in PID %d",
-		    (int)getpid());
+ if (_ctx.pipe_fd[0] < 0)
+  zed_log_die(
+      "Invalid use of zed_log_pipe_close_reads in PID %d",
+      (int)getpid());
 
-	if (close(_ctx.pipe_fd[0]) < 0)
-		zed_log_die(
-		    "Failed to close reads on daemonize pipe in PID %d: %s",
-		    (int)getpid(), strerror(errno));
+ if (close(_ctx.pipe_fd[0]) < 0)
+  zed_log_die(
+      "Failed to close reads on daemonize pipe in PID %d: %s",
+      (int)getpid(), strerror(errno));
 
-	_ctx.pipe_fd[0] = -1;
+ _ctx.pipe_fd[0] = -1;
 }

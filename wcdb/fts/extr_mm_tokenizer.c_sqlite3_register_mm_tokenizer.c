@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_tokenizer_module ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  mm_tokenizer_module ; 
- int /*<<< orphan*/  sqlite3_bind_blob (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const**,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ *,int,char*,int,int /*<<< orphan*/ ) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_tokenizer_module ;
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_OK ;
+ int SQLITE_STATIC ;
+ int mm_tokenizer_module ;
+ int sqlite3_bind_blob (int *,int,int const**,int,int ) ;
+ int sqlite3_bind_text (int *,int,char*,int,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ int sqlite3_step (int *) ;
 
 int sqlite3_register_mm_tokenizer(sqlite3 *db)
 {
     const sqlite3_tokenizer_module *module = &mm_tokenizer_module;
-    sqlite3_stmt *stmt = NULL;
+    sqlite3_stmt *stmt = ((void*)0);
     int result;
 
     result =

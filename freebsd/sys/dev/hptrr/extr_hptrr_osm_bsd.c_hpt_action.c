@@ -1,116 +1,116 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int func_code; int /*<<< orphan*/  status; int /*<<< orphan*/  target_id; } ;
-struct TYPE_6__ {int /*<<< orphan*/  status; } ;
-struct ccb_pathinq {int version_num; int base_transfer_speed; int transport_version; TYPE_1__ ccb_h; int /*<<< orphan*/  protocol_version; int /*<<< orphan*/  protocol; int /*<<< orphan*/  transport; int /*<<< orphan*/  dev_name; int /*<<< orphan*/  hba_vid; int /*<<< orphan*/  sim_vid; void* initiator_id; int /*<<< orphan*/  bus_id; int /*<<< orphan*/  unit_number; int /*<<< orphan*/  max_lun; void* max_target; int /*<<< orphan*/  hba_eng_cnt; int /*<<< orphan*/  hba_misc; int /*<<< orphan*/  target_sprt; int /*<<< orphan*/  hba_inquiry; } ;
-union ccb {TYPE_2__ ccb_h; struct ccb_pathinq cpi; int /*<<< orphan*/  ccg; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int func_code; int status; int target_id; } ;
+struct TYPE_6__ {int status; } ;
+struct ccb_pathinq {int version_num; int base_transfer_speed; int transport_version; TYPE_1__ ccb_h; int protocol_version; int protocol; int transport; int dev_name; int hba_vid; int sim_vid; void* initiator_id; int bus_id; int unit_number; int max_lun; void* max_target; int hba_eng_cnt; int hba_misc; int target_sprt; int hba_inquiry; } ;
+union ccb {TYPE_2__ ccb_h; struct ccb_pathinq cpi; int ccg; } ;
 struct cam_sim {int dummy; } ;
-struct TYPE_8__ {int /*<<< orphan*/  vbus; } ;
-typedef  TYPE_3__* PVBUS_EXT ;
-typedef  int /*<<< orphan*/  PVBUS ;
+struct TYPE_8__ {int vbus; } ;
+typedef TYPE_3__* PVBUS_EXT ;
+typedef int PVBUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAM_FUNC_NOTAVAIL ; 
- int /*<<< orphan*/  CAM_REQ_CMP ; 
- int /*<<< orphan*/  CAM_REQ_INVALID ; 
- int /*<<< orphan*/  DEV_IDLEN ; 
- int /*<<< orphan*/  HBA_IDLEN ; 
- int /*<<< orphan*/  KdPrint (char*) ; 
- int /*<<< orphan*/  PIM_NOBUSRESET ; 
- int /*<<< orphan*/  PI_SDTR_ABLE ; 
- int /*<<< orphan*/  PROTO_SCSI ; 
- int /*<<< orphan*/  SCSI_REV_2 ; 
- int /*<<< orphan*/  SIM_IDLEN ; 
- int /*<<< orphan*/  XPORT_SPI ; 
-#define  XPT_CALC_GEOMETRY 133 
-#define  XPT_GET_TRAN_SETTINGS 132 
-#define  XPT_PATH_INQ 131 
-#define  XPT_RESET_BUS 130 
-#define  XPT_SCSI_IO 129 
-#define  XPT_SET_TRAN_SETTINGS 128 
- int /*<<< orphan*/  cam_calc_geometry (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cam_sim_bus (struct cam_sim*) ; 
- char* cam_sim_name (struct cam_sim*) ; 
- int /*<<< orphan*/  cam_sim_softc (struct cam_sim*) ; 
- int /*<<< orphan*/  cam_sim_unit (struct cam_sim*) ; 
- int /*<<< orphan*/  hpt_assert_vbus_locked (TYPE_3__*) ; 
- int /*<<< orphan*/  hpt_scsi_io (TYPE_3__*,union ccb*) ; 
- int /*<<< orphan*/  ldm_reset_vbus (int /*<<< orphan*/ ) ; 
- void* osm_max_targets ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xpt_done (union ccb*) ; 
+
+ int CAM_FUNC_NOTAVAIL ;
+ int CAM_REQ_CMP ;
+ int CAM_REQ_INVALID ;
+ int DEV_IDLEN ;
+ int HBA_IDLEN ;
+ int KdPrint (char*) ;
+ int PIM_NOBUSRESET ;
+ int PI_SDTR_ABLE ;
+ int PROTO_SCSI ;
+ int SCSI_REV_2 ;
+ int SIM_IDLEN ;
+ int XPORT_SPI ;
+
+
+
+
+
+
+ int cam_calc_geometry (int *,int) ;
+ int cam_sim_bus (struct cam_sim*) ;
+ char* cam_sim_name (struct cam_sim*) ;
+ int cam_sim_softc (struct cam_sim*) ;
+ int cam_sim_unit (struct cam_sim*) ;
+ int hpt_assert_vbus_locked (TYPE_3__*) ;
+ int hpt_scsi_io (TYPE_3__*,union ccb*) ;
+ int ldm_reset_vbus (int ) ;
+ void* osm_max_targets ;
+ int strlcpy (int ,char*,int ) ;
+ int xpt_done (union ccb*) ;
 
 __attribute__((used)) static void hpt_action(struct cam_sim *sim, union ccb *ccb)
 {
-	PVBUS_EXT vbus_ext = (PVBUS_EXT)cam_sim_softc(sim);
+ PVBUS_EXT vbus_ext = (PVBUS_EXT)cam_sim_softc(sim);
 
-	KdPrint(("hpt_action(fn=%d, id=%d)", ccb->ccb_h.func_code, ccb->ccb_h.target_id));
+ KdPrint(("hpt_action(fn=%d, id=%d)", ccb->ccb_h.func_code, ccb->ccb_h.target_id));
 
-	hpt_assert_vbus_locked(vbus_ext);
-	switch (ccb->ccb_h.func_code) {
-	
-	case XPT_SCSI_IO:
-		hpt_scsi_io(vbus_ext, ccb);
-		return;
+ hpt_assert_vbus_locked(vbus_ext);
+ switch (ccb->ccb_h.func_code) {
 
-	case XPT_RESET_BUS:
-		ldm_reset_vbus((PVBUS)vbus_ext->vbus);
-		break;
+ case 129:
+  hpt_scsi_io(vbus_ext, ccb);
+  return;
 
-	case XPT_GET_TRAN_SETTINGS:
-	case XPT_SET_TRAN_SETTINGS:
-		ccb->ccb_h.status = CAM_FUNC_NOTAVAIL;
-		break;
+ case 130:
+  ldm_reset_vbus((PVBUS)vbus_ext->vbus);
+  break;
 
-	case XPT_CALC_GEOMETRY:
-		cam_calc_geometry(&ccb->ccg, 1);
-		break;
+ case 132:
+ case 128:
+  ccb->ccb_h.status = CAM_FUNC_NOTAVAIL;
+  break;
 
-	case XPT_PATH_INQ:
-	{
-		struct ccb_pathinq *cpi = &ccb->cpi;
+ case 133:
+  cam_calc_geometry(&ccb->ccg, 1);
+  break;
 
-		cpi->version_num = 1;
-		cpi->hba_inquiry = PI_SDTR_ABLE;
-		cpi->target_sprt = 0;
-		cpi->hba_misc = PIM_NOBUSRESET;
-		cpi->hba_eng_cnt = 0;
-		cpi->max_target = osm_max_targets;
-		cpi->max_lun = 0;
-		cpi->unit_number = cam_sim_unit(sim);
-		cpi->bus_id = cam_sim_bus(sim);
-		cpi->initiator_id = osm_max_targets;
-		cpi->base_transfer_speed = 3300;
+ case 131:
+ {
+  struct ccb_pathinq *cpi = &ccb->cpi;
 
-		strlcpy(cpi->sim_vid, "FreeBSD", SIM_IDLEN);
-		strlcpy(cpi->hba_vid, "HPT   ", HBA_IDLEN);
-		strlcpy(cpi->dev_name, cam_sim_name(sim), DEV_IDLEN);
-		cpi->transport = XPORT_SPI;
-		cpi->transport_version = 2;
-		cpi->protocol = PROTO_SCSI;
-		cpi->protocol_version = SCSI_REV_2;
-		cpi->ccb_h.status = CAM_REQ_CMP;
-		break;
-	}
+  cpi->version_num = 1;
+  cpi->hba_inquiry = PI_SDTR_ABLE;
+  cpi->target_sprt = 0;
+  cpi->hba_misc = PIM_NOBUSRESET;
+  cpi->hba_eng_cnt = 0;
+  cpi->max_target = osm_max_targets;
+  cpi->max_lun = 0;
+  cpi->unit_number = cam_sim_unit(sim);
+  cpi->bus_id = cam_sim_bus(sim);
+  cpi->initiator_id = osm_max_targets;
+  cpi->base_transfer_speed = 3300;
 
-	default:
-		ccb->ccb_h.status = CAM_REQ_INVALID;
-		break;
-	}
+  strlcpy(cpi->sim_vid, "FreeBSD", SIM_IDLEN);
+  strlcpy(cpi->hba_vid, "HPT   ", HBA_IDLEN);
+  strlcpy(cpi->dev_name, cam_sim_name(sim), DEV_IDLEN);
+  cpi->transport = XPORT_SPI;
+  cpi->transport_version = 2;
+  cpi->protocol = PROTO_SCSI;
+  cpi->protocol_version = SCSI_REV_2;
+  cpi->ccb_h.status = CAM_REQ_CMP;
+  break;
+ }
 
-	xpt_done(ccb);
-	return;
+ default:
+  ccb->ccb_h.status = CAM_REQ_INVALID;
+  break;
+ }
+
+ xpt_done(ccb);
+ return;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_meta_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-struct TYPE_3__ {scalar_t__ i_tag; int /*<<< orphan*/  psz; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- int ID3LinkFrameTagHandler (int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *,int*) ; 
- char* ID3TextConv (int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const,char**) ; 
- char* ID3TextConvert (int /*<<< orphan*/  const*,size_t,char**) ; 
- int ID3TextTagHandler (int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- TYPE_1__* ID3_tag_to_metatype ; 
- scalar_t__ VLC_FOURCC (char,char,char,char) ; 
- int /*<<< orphan*/  free (char*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncasecmp (char const*,char*,int) ; 
- int /*<<< orphan*/  vlc_meta_AddExtra (int /*<<< orphan*/ *,char const*,char const*) ; 
- scalar_t__ vlc_meta_GetExtraCount (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_meta_t ;
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+struct TYPE_3__ {scalar_t__ i_tag; int psz; int type; } ;
+
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ int ID3LinkFrameTagHandler (int const*,size_t,int *,int*) ;
+ char* ID3TextConv (int const*,size_t,int const,char**) ;
+ char* ID3TextConvert (int const*,size_t,char**) ;
+ int ID3TextTagHandler (int const*,size_t,int ,int ,int *,int*) ;
+ TYPE_1__* ID3_tag_to_metatype ;
+ scalar_t__ VLC_FOURCC (char,char,char,char) ;
+ int free (char*) ;
+ int strlen (char const*) ;
+ int strncasecmp (char const*,char*,int) ;
+ int vlc_meta_AddExtra (int *,char const*,char const*) ;
+ scalar_t__ vlc_meta_GetExtraCount (int *) ;
 
 __attribute__((used)) static bool ID3HandleTag( const uint8_t *p_buf, size_t i_buf,
                           uint32_t i_tag,
@@ -47,7 +47,7 @@ __attribute__((used)) static bool ID3HandleTag( const uint8_t *p_buf, size_t i_b
             const size_t i_len = strlen( psz_key ) + 2;
             if( i_len < i_buf )
             {
-                /* Only set those which are known as non binary */
+
                 if( !strncasecmp( psz_key, "REPLAYGAIN_", 11 ) )
                 {
                     char *psz_val_alloc;
@@ -76,5 +76,5 @@ __attribute__((used)) static bool ID3HandleTag( const uint8_t *p_buf, size_t i_b
         }
     }
 
-    return false;
+    return 0;
 }

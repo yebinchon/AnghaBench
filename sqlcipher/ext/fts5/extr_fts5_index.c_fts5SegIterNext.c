@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ u64 ;
-struct TYPE_20__ {int szLeaf; int nn; int /*<<< orphan*/ * p; } ;
-struct TYPE_19__ {scalar_t__ rc; int /*<<< orphan*/  pHash; TYPE_1__* pConfig; } ;
-struct TYPE_18__ {int iLeafOffset; int nPos; int iEndofDoclist; scalar_t__ pSeg; int flags; int bDel; TYPE_4__* pLeaf; void* iPgidxOff; int /*<<< orphan*/  iRowid; int /*<<< orphan*/  term; } ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef scalar_t__ u64 ;
+struct TYPE_20__ {int szLeaf; int nn; int * p; } ;
+struct TYPE_19__ {scalar_t__ rc; int pHash; TYPE_1__* pConfig; } ;
+struct TYPE_18__ {int iLeafOffset; int nPos; int iEndofDoclist; scalar_t__ pSeg; int flags; int bDel; TYPE_4__* pLeaf; void* iPgidxOff; int iRowid; int term; } ;
 struct TYPE_17__ {scalar_t__ eDetail; } ;
-typedef  TYPE_2__ Fts5SegIter ;
-typedef  TYPE_3__ Fts5Index ;
-typedef  TYPE_4__ Fts5Data ;
+typedef TYPE_2__ Fts5SegIter ;
+typedef TYPE_3__ Fts5Index ;
+typedef TYPE_4__ Fts5Data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_SZLEAF_OK (TYPE_4__*) ; 
- scalar_t__ FTS5_CORRUPT ; 
- scalar_t__ FTS5_DETAIL_NONE ; 
- int FTS5_SEGITER_ONETERM ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  assert_nc (int) ; 
- int /*<<< orphan*/  fts5DataRelease (TYPE_4__*) ; 
- int /*<<< orphan*/  fts5FastGetVarint32 (int /*<<< orphan*/ *,int,int) ; 
- int fts5GetVarint (int /*<<< orphan*/  const*,scalar_t__*) ; 
- void* fts5GetVarint32 (int /*<<< orphan*/ *,int) ; 
- int fts5LeafFirstRowidOff (TYPE_4__*) ; 
- int fts5LeafFirstTermOff (TYPE_4__*) ; 
- int /*<<< orphan*/  fts5SegIterLoadNPos (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  fts5SegIterLoadTerm (TYPE_3__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  fts5SegIterNextPage (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3Fts5BufferSet (scalar_t__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3Fts5GetVarint (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  sqlite3Fts5HashScanEntry (int /*<<< orphan*/ ,char const**,int /*<<< orphan*/  const**,int*) ; 
- int /*<<< orphan*/  sqlite3Fts5HashScanNext (int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int ASSERT_SZLEAF_OK (TYPE_4__*) ;
+ scalar_t__ FTS5_CORRUPT ;
+ scalar_t__ FTS5_DETAIL_NONE ;
+ int FTS5_SEGITER_ONETERM ;
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ int assert_nc (int) ;
+ int fts5DataRelease (TYPE_4__*) ;
+ int fts5FastGetVarint32 (int *,int,int) ;
+ int fts5GetVarint (int const*,scalar_t__*) ;
+ void* fts5GetVarint32 (int *,int) ;
+ int fts5LeafFirstRowidOff (TYPE_4__*) ;
+ int fts5LeafFirstTermOff (TYPE_4__*) ;
+ int fts5SegIterLoadNPos (TYPE_3__*,TYPE_2__*) ;
+ int fts5SegIterLoadTerm (TYPE_3__*,TYPE_2__*,int) ;
+ int fts5SegIterNextPage (TYPE_3__*,TYPE_2__*) ;
+ int sqlite3Fts5BufferSet (scalar_t__*,int *,int,int *) ;
+ scalar_t__ sqlite3Fts5GetVarint (int *,scalar_t__*) ;
+ int sqlite3Fts5HashScanEntry (int ,char const**,int const**,int*) ;
+ int sqlite3Fts5HashScanNext (int ) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void fts5SegIterNext(
-  Fts5Index *p,                   /* FTS5 backend object */
-  Fts5SegIter *pIter,             /* Iterator to advance */
-  int *pbNewTerm                  /* OUT: Set for new term */
+  Fts5Index *p,
+  Fts5SegIter *pIter,
+  int *pbNewTerm
 ){
   Fts5Data *pLeaf = pIter->pLeaf;
   int iOff;
@@ -62,7 +62,7 @@ __attribute__((used)) static void fts5SegIterNext(
   assert( pbNewTerm==0 || *pbNewTerm==0 );
   assert( p->pConfig->eDetail!=FTS5_DETAIL_NONE );
 
-  /* Search for the end of the position list within the current page. */
+
   a = pLeaf->p;
   n = pLeaf->szLeaf;
 
@@ -70,7 +70,7 @@ __attribute__((used)) static void fts5SegIterNext(
   iOff = pIter->iLeafOffset + pIter->nPos;
 
   if( iOff<n ){
-    /* The next entry is on the current page. */
+
     assert_nc( iOff<=pIter->iEndofDoclist );
     if( iOff>=pIter->iEndofDoclist ){
       bNewTerm = 1;
@@ -109,7 +109,7 @@ __attribute__((used)) static void fts5SegIterNext(
     }
   }else{
     iOff = 0;
-    /* Next entry is not on the current page */
+
     while( iOff==0 ){
       fts5SegIterNextPage(p, pIter);
       pLeaf = pIter->pLeaf;
@@ -141,7 +141,7 @@ __attribute__((used)) static void fts5SegIterNext(
     }
   }
 
-  /* Check if the iterator is now at EOF. If so, return early. */
+
   if( pIter->pLeaf ){
     if( bNewTerm ){
       if( pIter->flags & FTS5_SEGITER_ONETERM ){
@@ -153,13 +153,13 @@ __attribute__((used)) static void fts5SegIterNext(
         if( pbNewTerm ) *pbNewTerm = 1;
       }
     }else{
-      /* The following could be done by calling fts5SegIterLoadNPos(). But
-      ** this block is particularly performance critical, so equivalent
-      ** code is inlined. 
-      **
-      ** Later: Switched back to fts5SegIterLoadNPos() because it supports
-      ** detail=none mode. Not ideal.
-      */
+
+
+
+
+
+
+
       int nSz;
       assert( p->rc==SQLITE_OK );
       assert( pIter->iLeafOffset<=pIter->pLeaf->nn );

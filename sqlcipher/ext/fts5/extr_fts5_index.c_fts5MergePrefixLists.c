@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  writer ;
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ i64 ;
-struct TYPE_20__ {int n; int /*<<< orphan*/ * p; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_19__ {scalar_t__ iRowid; int nPoslist; size_t nSize; int /*<<< orphan*/ * aPoslist; int /*<<< orphan*/ * aEof; } ;
+
+
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int writer ;
+typedef int u8 ;
+typedef scalar_t__ i64 ;
+struct TYPE_20__ {int n; int * p; int member_2; int member_1; int member_0; } ;
+struct TYPE_19__ {scalar_t__ iRowid; int nPoslist; size_t nSize; int * aPoslist; int * aEof; } ;
 struct TYPE_18__ {scalar_t__ rc; } ;
-typedef  int /*<<< orphan*/  Fts5PoslistWriter ;
-typedef  TYPE_1__ Fts5Index ;
-typedef  TYPE_2__ Fts5DoclistIter ;
-typedef  TYPE_3__ Fts5Buffer ;
+typedef int Fts5PoslistWriter ;
+typedef TYPE_1__ Fts5Index ;
+typedef TYPE_2__ Fts5DoclistIter ;
+typedef TYPE_3__ Fts5Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  assert_nc (int) ; 
- int /*<<< orphan*/  fts5BufferFree (TYPE_3__*) ; 
- int /*<<< orphan*/  fts5BufferSafeAppendBlob (TYPE_3__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fts5BufferSafeAppendVarint (TYPE_3__*,int) ; 
- int /*<<< orphan*/  fts5BufferSet (scalar_t__*,TYPE_3__*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fts5BufferZero (TYPE_3__*) ; 
- int /*<<< orphan*/  fts5DoclistIterInit (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  fts5DoclistIterNext (TYPE_2__*) ; 
- int /*<<< orphan*/  fts5MergeAppendDocid (TYPE_3__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3Fts5BufferSize (scalar_t__*,TYPE_3__*,int) ; 
- int /*<<< orphan*/  sqlite3Fts5PoslistNext64 (int /*<<< orphan*/ *,int,int*,scalar_t__*) ; 
- int /*<<< orphan*/  sqlite3Fts5PoslistSafeAppend (TYPE_3__*,scalar_t__*,scalar_t__) ; 
+
+ int assert (int) ;
+ int assert_nc (int) ;
+ int fts5BufferFree (TYPE_3__*) ;
+ int fts5BufferSafeAppendBlob (TYPE_3__*,int *,int) ;
+ int fts5BufferSafeAppendVarint (TYPE_3__*,int) ;
+ int fts5BufferSet (scalar_t__*,TYPE_3__*,scalar_t__,int *) ;
+ int fts5BufferZero (TYPE_3__*) ;
+ int fts5DoclistIterInit (TYPE_3__*,TYPE_2__*) ;
+ int fts5DoclistIterNext (TYPE_2__*) ;
+ int fts5MergeAppendDocid (TYPE_3__*,scalar_t__,scalar_t__) ;
+ int memset (int *,int ,int) ;
+ scalar_t__ sqlite3Fts5BufferSize (scalar_t__*,TYPE_3__*,int) ;
+ int sqlite3Fts5PoslistNext64 (int *,int,int*,scalar_t__*) ;
+ int sqlite3Fts5PoslistSafeAppend (TYPE_3__*,scalar_t__*,scalar_t__) ;
 
 __attribute__((used)) static void fts5MergePrefixLists(
-  Fts5Index *p,                   /* FTS5 backend object */
-  Fts5Buffer *p1,                 /* First list to merge */
-  Fts5Buffer *p2                  /* Second list to merge */
+  Fts5Index *p,
+  Fts5Buffer *p1,
+  Fts5Buffer *p2
 ){
   if( p2->n ){
     i64 iLastRowid = 0;
@@ -52,33 +52,33 @@ __attribute__((used)) static void fts5MergePrefixLists(
     Fts5Buffer out = {0, 0, 0};
     Fts5Buffer tmp = {0, 0, 0};
 
-    /* The maximum size of the output is equal to the sum of the two 
-    ** input sizes + 1 varint (9 bytes). The extra varint is because if the
-    ** first rowid in one input is a large negative number, and the first in
-    ** the other a non-negative number, the delta for the non-negative
-    ** number will be larger on disk than the literal integer value
-    ** was.  */
+
+
+
+
+
+
     if( sqlite3Fts5BufferSize(&p->rc, &out, p1->n + p2->n + 9) ) return;
     fts5DoclistIterInit(p1, &i1);
     fts5DoclistIterInit(p2, &i2);
 
     while( 1 ){
       if( i1.iRowid<i2.iRowid ){
-        /* Copy entry from i1 */
+
         fts5MergeAppendDocid(&out, iLastRowid, i1.iRowid);
         fts5BufferSafeAppendBlob(&out, i1.aPoslist, i1.nPoslist+i1.nSize);
         fts5DoclistIterNext(&i1);
         if( i1.aPoslist==0 ) break;
       }
       else if( i2.iRowid!=i1.iRowid ){
-        /* Copy entry from i2 */
+
         fts5MergeAppendDocid(&out, iLastRowid, i2.iRowid);
         fts5BufferSafeAppendBlob(&out, i2.aPoslist, i2.nPoslist+i2.nSize);
         fts5DoclistIterNext(&i2);
         if( i2.aPoslist==0 ) break;
       }
       else{
-        /* Merge the two position lists. */ 
+
         i64 iPos1 = 0;
         i64 iPos2 = 0;
         int iOff1 = 0;
@@ -142,7 +142,7 @@ __attribute__((used)) static void fts5MergePrefixLists(
           fts5BufferSafeAppendBlob(&tmp, aCopy, nCopy);
         }
 
-        /* WRITEPOSLISTSIZE */
+
         fts5BufferSafeAppendVarint(&out, tmp.n * 2);
         fts5BufferSafeAppendBlob(&out, tmp.p, tmp.n);
         fts5DoclistIterNext(&i1);

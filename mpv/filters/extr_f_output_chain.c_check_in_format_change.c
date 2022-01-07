@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mp_user_filter {int /*<<< orphan*/  last_in_aformat; int /*<<< orphan*/  name; int /*<<< orphan*/  last_in_vformat; struct chain* p; } ;
-struct mp_image {int /*<<< orphan*/  params; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mp_user_filter {int last_in_aformat; int name; int last_in_vformat; struct chain* p; } ;
+struct mp_image {int params; } ;
 struct mp_frame {scalar_t__ type; struct mp_image* data; } ;
-struct mp_aframe {int /*<<< orphan*/  params; } ;
-struct TYPE_2__ {int reconfig_happened; int /*<<< orphan*/  output_aformat; int /*<<< orphan*/  input_aformat; int /*<<< orphan*/  output_params; int /*<<< orphan*/  input_params; } ;
+struct mp_aframe {int params; } ;
+struct TYPE_2__ {int reconfig_happened; int output_aformat; int input_aformat; int output_params; int input_params; } ;
 struct chain {TYPE_1__ public; struct mp_user_filter* output; struct mp_user_filter* input; } ;
 
-/* Variables and functions */
- scalar_t__ MP_FRAME_AUDIO ; 
- scalar_t__ MP_FRAME_VIDEO ; 
- int /*<<< orphan*/  MP_VERBOSE (struct chain*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_aframe_config_copy (int /*<<< orphan*/ ,struct mp_image*) ; 
- int /*<<< orphan*/  mp_aframe_config_equals (struct mp_image*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_aframe_format_str (struct mp_image*) ; 
- int /*<<< orphan*/  mp_image_params_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_image_params_to_str (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_output_caps (struct chain*) ; 
+
+ scalar_t__ MP_FRAME_AUDIO ;
+ scalar_t__ MP_FRAME_VIDEO ;
+ int MP_VERBOSE (struct chain*,char*,int ,int ) ;
+ int mp_aframe_config_copy (int ,struct mp_image*) ;
+ int mp_aframe_config_equals (struct mp_image*,int ) ;
+ int mp_aframe_format_str (struct mp_image*) ;
+ int mp_image_params_equal (int *,int *) ;
+ int mp_image_params_to_str (int *) ;
+ int update_output_caps (struct chain*) ;
 
 __attribute__((used)) static void check_in_format_change(struct mp_user_filter *u,
                                    struct mp_frame frame)
@@ -45,16 +45,16 @@ __attribute__((used)) static void check_in_format_change(struct mp_user_filter *
             if (u == p->input) {
                 p->public.input_params = img->params;
 
-                // Unfortunately there's no good place to update these.
-                // But a common case is enabling HW decoding, which
-                // might init some support of them in the VO, and update
-                // the VO's format list.
+
+
+
+
                 update_output_caps(p);
             } else if (u == p->output) {
                 p->public.output_params = img->params;
             }
 
-            p->public.reconfig_happened = true;
+            p->public.reconfig_happened = 1;
         }
     }
 
@@ -72,7 +72,7 @@ __attribute__((used)) static void check_in_format_change(struct mp_user_filter *
                 mp_aframe_config_copy(p->public.output_aformat, aframe);
             }
 
-            p->public.reconfig_happened = true;
+            p->public.reconfig_happened = 1;
         }
     }
 }

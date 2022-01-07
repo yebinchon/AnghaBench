@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COND_EXPR ; 
- scalar_t__ ELSE_CLAUSE (scalar_t__) ; 
- scalar_t__ IF_COND (scalar_t__) ; 
- scalar_t__ THEN_CLAUSE (scalar_t__) ; 
- int /*<<< orphan*/  TREE_SIDE_EFFECTS (scalar_t__) ; 
- scalar_t__ build3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ build_empty_stmt () ; 
- scalar_t__ integer_nonzerop (scalar_t__) ; 
- scalar_t__ integer_zerop (scalar_t__) ; 
- int /*<<< orphan*/  void_type_node ; 
+
+
+
+typedef scalar_t__ tree ;
+
+
+ int COND_EXPR ;
+ scalar_t__ ELSE_CLAUSE (scalar_t__) ;
+ scalar_t__ IF_COND (scalar_t__) ;
+ scalar_t__ THEN_CLAUSE (scalar_t__) ;
+ int TREE_SIDE_EFFECTS (scalar_t__) ;
+ scalar_t__ build3 (int ,int ,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ build_empty_stmt () ;
+ scalar_t__ integer_nonzerop (scalar_t__) ;
+ scalar_t__ integer_zerop (scalar_t__) ;
+ int void_type_node ;
 
 __attribute__((used)) static void
 gimplify_if_stmt (tree *stmt_p)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  attr; } ;
-struct TYPE_7__ {scalar_t__ tok; int /*<<< orphan*/  str; } ;
-typedef  int CTSize ;
-typedef  TYPE_1__ CPState ;
-typedef  TYPE_2__ CPDecl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTF_INSERT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ CTOK_IDENT ; 
- int /*<<< orphan*/  MSIZEP ; 
- int /*<<< orphan*/  VSIZEP ; 
- int /*<<< orphan*/  cp_check (TYPE_1__*,char) ; 
- int /*<<< orphan*/  cp_next (TYPE_1__*) ; 
- int lj_fls (int) ; 
- char* strdata (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int attr; } ;
+struct TYPE_7__ {scalar_t__ tok; int str; } ;
+typedef int CTSize ;
+typedef TYPE_1__ CPState ;
+typedef TYPE_2__ CPDecl ;
+
+
+ int CTF_INSERT (int ,int ,int) ;
+ scalar_t__ CTOK_IDENT ;
+ int MSIZEP ;
+ int VSIZEP ;
+ int cp_check (TYPE_1__*,char) ;
+ int cp_next (TYPE_1__*) ;
+ int lj_fls (int) ;
+ char* strdata (int ) ;
 
 __attribute__((used)) static void cp_decl_mode(CPState *cp, CPDecl *decl)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void cp_decl_mode(CPState *cp, CPDecl *decl)
       s++;
       vlen = *s++ - '0';
       if (*s >= '0' && *s <= '9')
-	vlen = vlen*10 + (*s++ - '0');
+ vlen = vlen*10 + (*s++ - '0');
     }
     switch (*s++) {
     case 'Q': sz = 1; break;

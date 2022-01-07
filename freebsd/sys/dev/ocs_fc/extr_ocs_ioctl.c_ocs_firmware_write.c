@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_12__ {int /*<<< orphan*/  hw; } ;
-typedef  TYPE_1__ ocs_t ;
-struct TYPE_13__ {scalar_t__ actual_xfer; scalar_t__ status; int /*<<< orphan*/  change_status; int /*<<< orphan*/  semaphore; } ;
-typedef  TYPE_2__ ocs_mgmt_fw_write_result_t ;
-struct TYPE_14__ {int /*<<< orphan*/  virt; } ;
-typedef  TYPE_3__ ocs_dma_t ;
 
-/* Variables and functions */
- int EFAULT ; 
- int ENOMEM ; 
- int ENXIO ; 
- int FW_WRITE_BUFSIZE ; 
- int /*<<< orphan*/  OCS_SEM_FOREVER ; 
- scalar_t__ ocs_dma_alloc (TYPE_1__*,TYPE_3__*,int,int) ; 
- int /*<<< orphan*/  ocs_dma_free (TYPE_1__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ocs_fw_write_cb ; 
- int /*<<< orphan*/  ocs_hw_firmware_write (int /*<<< orphan*/ *,TYPE_3__*,int,int,int,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ocs_log_err (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  ocs_memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  ocs_sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ocs_sem_p (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_12__ {int hw; } ;
+typedef TYPE_1__ ocs_t ;
+struct TYPE_13__ {scalar_t__ actual_xfer; scalar_t__ status; int change_status; int semaphore; } ;
+typedef TYPE_2__ ocs_mgmt_fw_write_result_t ;
+struct TYPE_14__ {int virt; } ;
+typedef TYPE_3__ ocs_dma_t ;
+
+
+ int EFAULT ;
+ int ENOMEM ;
+ int ENXIO ;
+ int FW_WRITE_BUFSIZE ;
+ int OCS_SEM_FOREVER ;
+ scalar_t__ ocs_dma_alloc (TYPE_1__*,TYPE_3__*,int,int) ;
+ int ocs_dma_free (TYPE_1__*,TYPE_3__*) ;
+ int ocs_fw_write_cb ;
+ int ocs_hw_firmware_write (int *,TYPE_3__*,int,int,int,int ,TYPE_2__*) ;
+ int ocs_log_err (TYPE_1__*,char*) ;
+ int ocs_memcpy (int ,int const*,int) ;
+ int ocs_sem_init (int *,int ,char*) ;
+ scalar_t__ ocs_sem_p (int *,int ) ;
 
 int
-ocs_firmware_write(ocs_t *ocs, const uint8_t *buf, size_t buf_len, 
-						uint8_t *change_status)
+ocs_firmware_write(ocs_t *ocs, const uint8_t *buf, size_t buf_len,
+      uint8_t *change_status)
 {
         int rc = 0;
         uint32_t bytes_left;
@@ -73,8 +73,8 @@ ocs_firmware_write(ocs_t *ocs, const uint8_t *buf, size_t buf_len,
                         last = 1;
                 }
 
-                ocs_hw_firmware_write(&ocs->hw, &dma, xfer_size, offset, 
-						last, ocs_fw_write_cb, &result);
+                ocs_hw_firmware_write(&ocs->hw, &dma, xfer_size, offset,
+      last, ocs_fw_write_cb, &result);
 
                 if (ocs_sem_p(&(result.semaphore), OCS_SEM_FOREVER) != 0) {
                         rc = -ENXIO;

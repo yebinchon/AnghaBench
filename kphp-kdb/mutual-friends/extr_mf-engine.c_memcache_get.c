@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int total_bytes; } ;
 struct connection {int flags; TYPE_2__* type; TYPE_1__ Out; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* writer ) (struct connection*) ;} ;
+struct TYPE_4__ {int (* writer ) (struct connection*) ;} ;
 
-/* Variables and functions */
- int C_INTIMEOUT ; 
- int C_WANTWR ; 
- scalar_t__ WaitAio ; 
- int /*<<< orphan*/  aio_metafile_query_type ; 
- int /*<<< orphan*/  conn_schedule_aio (scalar_t__,struct connection*,double,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int memcache_try_get (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  set_connection_timeout (struct connection*,double) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (struct connection*) ; 
- int verbosity ; 
+
+ int C_INTIMEOUT ;
+ int C_WANTWR ;
+ scalar_t__ WaitAio ;
+ int aio_metafile_query_type ;
+ int conn_schedule_aio (scalar_t__,struct connection*,double,int *) ;
+ int fprintf (int ,char*,...) ;
+ int memcache_try_get (struct connection*,char const*,int) ;
+ int set_connection_timeout (struct connection*,double) ;
+ int stderr ;
+ int stub1 (struct connection*) ;
+ int verbosity ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   if (verbosity > 1) {
@@ -52,7 +52,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
       c->flags |= C_WANTWR;
       c->type->writer (c);
     }
-//    fprintf (stderr, "memcache_get_nonblock returns -2, WaitAio=%p\n", WaitAio);
+
     if (!WaitAio) {
       fprintf (stderr, "WaitAio=0 - no memory to load user metafile, query dropped.\n");
       return 0;

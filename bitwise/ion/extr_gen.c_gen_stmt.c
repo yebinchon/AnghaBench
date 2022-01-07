@@ -1,97 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_40__   TYPE_9__ ;
-typedef  struct TYPE_39__   TYPE_8__ ;
-typedef  struct TYPE_38__   TYPE_7__ ;
-typedef  struct TYPE_37__   TYPE_6__ ;
-typedef  struct TYPE_36__   TYPE_5__ ;
-typedef  struct TYPE_35__   TYPE_4__ ;
-typedef  struct TYPE_34__   TYPE_3__ ;
-typedef  struct TYPE_33__   TYPE_2__ ;
-typedef  struct TYPE_32__   TYPE_21__ ;
-typedef  struct TYPE_31__   TYPE_1__ ;
-typedef  struct TYPE_30__   TYPE_15__ ;
-typedef  struct TYPE_29__   TYPE_14__ ;
-typedef  struct TYPE_28__   TYPE_13__ ;
-typedef  struct TYPE_27__   TYPE_12__ ;
-typedef  struct TYPE_26__   TYPE_11__ ;
-typedef  struct TYPE_25__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_40__ TYPE_9__ ;
+typedef struct TYPE_39__ TYPE_8__ ;
+typedef struct TYPE_38__ TYPE_7__ ;
+typedef struct TYPE_37__ TYPE_6__ ;
+typedef struct TYPE_36__ TYPE_5__ ;
+typedef struct TYPE_35__ TYPE_4__ ;
+typedef struct TYPE_34__ TYPE_3__ ;
+typedef struct TYPE_33__ TYPE_2__ ;
+typedef struct TYPE_32__ TYPE_21__ ;
+typedef struct TYPE_31__ TYPE_1__ ;
+typedef struct TYPE_30__ TYPE_15__ ;
+typedef struct TYPE_29__ TYPE_14__ ;
+typedef struct TYPE_28__ TYPE_13__ ;
+typedef struct TYPE_27__ TYPE_12__ ;
+typedef struct TYPE_26__ TYPE_11__ ;
+typedef struct TYPE_25__ TYPE_10__ ;
+
+
 struct TYPE_39__ {long long ll; } ;
-typedef  TYPE_8__ Val ;
+typedef TYPE_8__ Val ;
 struct TYPE_40__ {TYPE_14__* start; TYPE_14__* end; } ;
-struct TYPE_32__ {int /*<<< orphan*/  stmts; } ;
+struct TYPE_32__ {int stmts; } ;
 struct TYPE_38__ {TYPE_21__ block; TYPE_12__* next; TYPE_14__* cond; TYPE_12__* init; } ;
 struct TYPE_37__ {TYPE_14__* cond; TYPE_21__ block; } ;
 struct TYPE_36__ {size_t num_elseifs; TYPE_12__* init; TYPE_21__ else_block; TYPE_15__* elseifs; TYPE_21__ then_block; TYPE_14__* cond; } ;
-struct TYPE_35__ {int /*<<< orphan*/  name; } ;
-struct TYPE_34__ {char* name; int /*<<< orphan*/  pos; TYPE_14__* expr; } ;
+struct TYPE_35__ {int name; } ;
+struct TYPE_34__ {char* name; int pos; TYPE_14__* expr; } ;
 struct TYPE_33__ {char* val; } ;
 struct TYPE_31__ {size_t num_cases; TYPE_10__* cases; TYPE_14__* expr; } ;
 struct TYPE_30__ {TYPE_21__ block; TYPE_14__* cond; } ;
-struct TYPE_29__ {TYPE_2__ str_lit; int /*<<< orphan*/  pos; int /*<<< orphan*/  kind; } ;
-struct TYPE_28__ {int num_args; int /*<<< orphan*/  pos; TYPE_3__* args; int /*<<< orphan*/  name; } ;
-struct TYPE_27__ {int kind; int /*<<< orphan*/  label; TYPE_1__ switch_stmt; TYPE_7__ for_stmt; TYPE_6__ while_stmt; TYPE_5__ if_stmt; TYPE_4__ init; int /*<<< orphan*/  pos; TYPE_13__ note; TYPE_21__ block; TYPE_14__* expr; } ;
+struct TYPE_29__ {TYPE_2__ str_lit; int pos; int kind; } ;
+struct TYPE_28__ {int num_args; int pos; TYPE_3__* args; int name; } ;
+struct TYPE_27__ {int kind; int label; TYPE_1__ switch_stmt; TYPE_7__ for_stmt; TYPE_6__ while_stmt; TYPE_5__ if_stmt; TYPE_4__ init; int pos; TYPE_13__ note; TYPE_21__ block; TYPE_14__* expr; } ;
 struct TYPE_26__ {size_t num_stmts; TYPE_12__** stmts; } ;
-struct TYPE_25__ {size_t num_patterns; TYPE_11__ block; int /*<<< orphan*/  is_default; TYPE_9__* patterns; } ;
-typedef  TYPE_9__ SwitchCasePattern ;
-typedef  TYPE_10__ SwitchCase ;
-typedef  TYPE_11__ StmtList ;
-typedef  TYPE_12__ Stmt ;
-typedef  TYPE_13__ Note ;
-typedef  TYPE_14__ Expr ;
-typedef  TYPE_15__ ElseIf ;
+struct TYPE_25__ {size_t num_patterns; TYPE_11__ block; int is_default; TYPE_9__* patterns; } ;
+typedef TYPE_9__ SwitchCasePattern ;
+typedef TYPE_10__ SwitchCase ;
+typedef TYPE_11__ StmtList ;
+typedef TYPE_12__ Stmt ;
+typedef TYPE_13__ Note ;
+typedef TYPE_14__ Expr ;
+typedef TYPE_15__ ElseIf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPR_STR ; 
-#define  STMT_BLOCK 139 
-#define  STMT_BREAK 138 
-#define  STMT_CONTINUE 137 
-#define  STMT_DO_WHILE 136 
-#define  STMT_FOR 135 
-#define  STMT_GOTO 134 
-#define  STMT_IF 133 
-#define  STMT_LABEL 132 
-#define  STMT_NOTE 131 
-#define  STMT_RETURN 130 
-#define  STMT_SWITCH 129 
-#define  STMT_WHILE 128 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  assert_name ; 
- int /*<<< orphan*/  buf_printf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  complete_name ; 
- int /*<<< orphan*/  fatal_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  foreign_name ; 
- int /*<<< orphan*/  gen_buf_pos (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_char (int) ; 
- int /*<<< orphan*/  gen_expr (TYPE_14__*) ; 
- int /*<<< orphan*/  gen_indent ; 
- int /*<<< orphan*/  gen_postamble_buf ; 
- int /*<<< orphan*/  gen_preamble_buf ; 
- int /*<<< orphan*/  gen_simple_stmt (TYPE_12__*) ; 
- int /*<<< orphan*/  gen_stmt_block (TYPE_21__) ; 
- int /*<<< orphan*/  gen_sync_pos (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  genf (char*,...) ; 
- int /*<<< orphan*/  genln () ; 
- int /*<<< orphan*/  genlnf (char*,...) ; 
- TYPE_8__ get_resolved_val (TYPE_14__*) ; 
- TYPE_13__* get_stmt_note (TYPE_12__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_char_lit (TYPE_14__*) ; 
- char* str_intern (char*) ; 
+
+ int EXPR_STR ;
+ int assert (int) ;
+ int assert_name ;
+ int buf_printf (int ,char*,char const*) ;
+ int complete_name ;
+ int fatal_error (int ,char*) ;
+ int foreign_name ;
+ int gen_buf_pos (int *,int ) ;
+ int gen_char (int) ;
+ int gen_expr (TYPE_14__*) ;
+ int gen_indent ;
+ int gen_postamble_buf ;
+ int gen_preamble_buf ;
+ int gen_simple_stmt (TYPE_12__*) ;
+ int gen_stmt_block (TYPE_21__) ;
+ int gen_sync_pos (int ) ;
+ int genf (char*,...) ;
+ int genln () ;
+ int genlnf (char*,...) ;
+ TYPE_8__ get_resolved_val (TYPE_14__*) ;
+ TYPE_13__* get_stmt_note (TYPE_12__*,int ) ;
+ int is_char_lit (TYPE_14__*) ;
+ char* str_intern (char*) ;
 
 void gen_stmt(Stmt *stmt) {
     gen_sync_pos(stmt->pos);
     switch (stmt->kind) {
-    case STMT_RETURN:
+    case 130:
         genlnf("return");
         if (stmt->expr) {
             genf(" ");
@@ -99,17 +87,17 @@ void gen_stmt(Stmt *stmt) {
         }
         genf(";");
         break;
-    case STMT_BREAK:
+    case 138:
         genlnf("break;");
         break;
-    case STMT_CONTINUE:
+    case 137:
         genlnf("continue;");
         break;
-    case STMT_BLOCK:
+    case 139:
         genln();
         gen_stmt_block(stmt->block);
         break;
-    case STMT_NOTE: {
+    case 131: {
         Note note = stmt->note;
         if (note.name == assert_name) {
             genlnf("assert(");
@@ -137,7 +125,7 @@ void gen_stmt(Stmt *stmt) {
         }
         break;
     }
-    case STMT_IF:
+    case 133:
         if (stmt->if_stmt.init) {
             genlnf("{");
             gen_indent++;
@@ -178,20 +166,20 @@ void gen_stmt(Stmt *stmt) {
             genlnf("}");
         }
         break;
-    case STMT_WHILE:
+    case 128:
         genlnf("while (");
         gen_expr(stmt->while_stmt.cond);
         genf(") ");
         gen_stmt_block(stmt->while_stmt.block);
         break;
-    case STMT_DO_WHILE:
+    case 136:
         genlnf("do ");
         gen_stmt_block(stmt->while_stmt.block);
         genf(" while (");
         gen_expr(stmt->while_stmt.cond);
         genf(");");
         break;
-    case STMT_FOR:
+    case 135:
         genlnf("for (");
         if (stmt->for_stmt.init) {
             gen_simple_stmt(stmt->for_stmt.init);
@@ -209,11 +197,11 @@ void gen_stmt(Stmt *stmt) {
         genf(") ");
         gen_stmt_block(stmt->for_stmt.block);
         break;
-    case STMT_SWITCH: {
+    case 129: {
         genlnf("switch (");
         gen_expr(stmt->switch_stmt.expr);
         genf(") {");
-        bool has_default = false;
+        bool has_default = 0;
         for (size_t i = 0; i < stmt->switch_stmt.num_cases; i++) {
             SwitchCase switch_case = stmt->switch_stmt.cases[i];
             for (size_t j = 0; j < switch_case.num_patterns; j++) {
@@ -227,7 +215,7 @@ void gen_stmt(Stmt *stmt) {
                             genf("case ");
                             gen_char(c);
                             genf(": ");
-                        } 
+                        }
                     } else {
                         genlnf("// ");
                         gen_expr(pattern.start);
@@ -245,7 +233,7 @@ void gen_stmt(Stmt *stmt) {
                 }
             }
             if (switch_case.is_default) {
-                has_default = true;
+                has_default = 1;
                 genlnf("default:");
             }
             genf(" ");
@@ -272,10 +260,10 @@ void gen_stmt(Stmt *stmt) {
         genlnf("}");
         break;
     }
-    case STMT_LABEL:
+    case 132:
         genlnf("%s: ;", stmt->label);
         break;
-    case STMT_GOTO:
+    case 134:
         genlnf("goto %s;", stmt->label);
         break;
     default:

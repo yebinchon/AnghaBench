@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kobject {int dummy; } ;
 struct kobj_attribute {int dummy; } ;
-struct afu_config_record {int /*<<< orphan*/  device; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+struct afu_config_record {int device; } ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  scnprintf (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- struct afu_config_record* to_cr (struct kobject*) ; 
+
+ int PAGE_SIZE ;
+ int scnprintf (char*,int ,char*,int ) ;
+ struct afu_config_record* to_cr (struct kobject*) ;
 
 __attribute__((used)) static ssize_t device_show(struct kobject *kobj,
-			   struct kobj_attribute *attr, char *buf)
+      struct kobj_attribute *attr, char *buf)
 {
-	struct afu_config_record *cr = to_cr(kobj);
+ struct afu_config_record *cr = to_cr(kobj);
 
-	return scnprintf(buf, PAGE_SIZE, "0x%.4x\n", cr->device);
+ return scnprintf(buf, PAGE_SIZE, "0x%.4x\n", cr->device);
 }

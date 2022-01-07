@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- scalar_t__ MZ_OK ; 
- int /*<<< orphan*/  MZ_OPEN_MODE_READ ; 
- int /*<<< orphan*/  mz_crypt_crc32_update (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  mz_stream_os_close (void*) ; 
- int /*<<< orphan*/  mz_stream_os_create (void**) ; 
- int /*<<< orphan*/  mz_stream_os_delete (void**) ; 
- scalar_t__ mz_stream_os_open (void*,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ mz_stream_os_read (void*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ int32_t ;
+typedef int buf ;
+
+
+ scalar_t__ MZ_OK ;
+ int MZ_OPEN_MODE_READ ;
+ int mz_crypt_crc32_update (int ,int *,scalar_t__) ;
+ int mz_stream_os_close (void*) ;
+ int mz_stream_os_create (void**) ;
+ int mz_stream_os_delete (void**) ;
+ scalar_t__ mz_stream_os_open (void*,char const*,int ) ;
+ scalar_t__ mz_stream_os_read (void*,int *,int) ;
 
 int32_t mz_file_get_crc(const char *path, uint32_t *result_crc)
 {
-    void *stream = NULL;
+    void *stream = ((void*)0);
     uint32_t crc32 = 0;
     int32_t read = 0;
     int32_t err = MZ_OK;

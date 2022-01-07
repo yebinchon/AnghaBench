@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WCHAR ;
-struct TYPE_2__ {int* SizeString; int /*<<< orphan*/  ClusterSize; } ;
-typedef  void* BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClusterSize ; 
- void* CompressDrive ; 
- int* Drive ; 
- void* FALSE ; 
- int* FileSystem ; 
- void* GotALabel ; 
- int* Label ; 
- TYPE_1__* LegalSizes ; 
- void* QuickFormat ; 
- void* TRUE ; 
- int /*<<< orphan*/  _wcsnicmp (int*,char*,int) ; 
- int /*<<< orphan*/  wcsicmp (int*,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_2__ {int* SizeString; int ClusterSize; } ;
+typedef void* BOOLEAN ;
+
+
+ int ClusterSize ;
+ void* CompressDrive ;
+ int* Drive ;
+ void* FALSE ;
+ int* FileSystem ;
+ void* GotALabel ;
+ int* Label ;
+ TYPE_1__* LegalSizes ;
+ void* QuickFormat ;
+ void* TRUE ;
+ int _wcsnicmp (int*,char*,int) ;
+ int wcsicmp (int*,...) ;
 
 __attribute__((used)) static int ParseCommandLine(int argc, WCHAR *argv[])
 {

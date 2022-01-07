@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ao_chain {int /*<<< orphan*/  filter; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ao_chain {int filter; } ;
 struct MPContext {double speed_factor_a; TYPE_1__* opts; struct ao_chain* ao_chain; } ;
-struct TYPE_2__ {double playback_speed; int /*<<< orphan*/  pitch_correction; } ;
+struct TYPE_2__ {double playback_speed; int pitch_correction; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_output_chain_set_audio_speed (int /*<<< orphan*/ ,double,double) ; 
+
+ int mp_output_chain_set_audio_speed (int ,double,double) ;
 
 __attribute__((used)) static void update_speed_filters(struct MPContext *mpctx)
 {

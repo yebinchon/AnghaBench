@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct osd_state {struct osd_object** objs; } ;
-struct osd_object {int num_externals; int /*<<< orphan*/ * externals; int /*<<< orphan*/  ass; } ;
+struct osd_object {int num_externals; int * externals; int ass; } ;
 
-/* Variables and functions */
- int MAX_OSD_PARTS ; 
- int /*<<< orphan*/  destroy_ass_renderer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  destroy_external (int /*<<< orphan*/ *) ; 
+
+ int MAX_OSD_PARTS ;
+ int destroy_ass_renderer (int *) ;
+ int destroy_external (int *) ;
 
 void osd_destroy_backend(struct osd_state *osd)
 {

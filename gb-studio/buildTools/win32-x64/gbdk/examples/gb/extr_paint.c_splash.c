@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UBYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLACK ; 
- int /*<<< orphan*/  FILL ; 
- int /*<<< orphan*/  LTGREY ; 
- int /*<<< orphan*/  PEN ; 
- int /*<<< orphan*/  SHOW_SPRITES ; 
- int /*<<< orphan*/  SOLID ; 
- int /*<<< orphan*/  current_cursor ; 
- int cursor_x ; 
- int cursor_y ; 
- int /*<<< orphan*/  move_cursor () ; 
- int /*<<< orphan*/  plot (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_cursor () ; 
- int /*<<< orphan*/  wait_vbl_done () ; 
+
+
+
+typedef int UBYTE ;
+
+
+ int BLACK ;
+ int FILL ;
+ int LTGREY ;
+ int PEN ;
+ int SHOW_SPRITES ;
+ int SOLID ;
+ int current_cursor ;
+ int cursor_x ;
+ int cursor_y ;
+ int move_cursor () ;
+ int plot (int,int,int ,int ) ;
+ int set_cursor () ;
+ int wait_vbl_done () ;
 
 void splash()
 {
@@ -68,5 +68,5 @@ void splash()
     for(x = 41; x < 120; x++)
       plot(x, y, LTGREY, SOLID);
 
-  // HIDE_SPRITES;
+
 }

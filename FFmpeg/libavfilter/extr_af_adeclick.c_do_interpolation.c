@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {double* y; int /*<<< orphan*/  y_size; } ;
-typedef  TYPE_1__ DeclickChannel ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_fast_malloc (double**,int /*<<< orphan*/ *,int) ; 
- int factorization (double*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {double* y; int y_size; } ;
+typedef TYPE_1__ DeclickChannel ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_fast_malloc (double**,int *,int) ;
+ int factorization (double*,int) ;
 
 __attribute__((used)) static int do_interpolation(DeclickChannel *c, double *matrix,
                             double *vector, int n, double *out)

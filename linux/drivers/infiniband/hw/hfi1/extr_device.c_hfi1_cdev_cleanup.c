@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 struct cdev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cdev_del (struct cdev*) ; 
- int /*<<< orphan*/  device_unregister (struct device*) ; 
+
+ int cdev_del (struct cdev*) ;
+ int device_unregister (struct device*) ;
 
 void hfi1_cdev_cleanup(struct cdev *cdev, struct device **devp)
 {
-	struct device *device = *devp;
+ struct device *device = *devp;
 
-	if (device) {
-		device_unregister(device);
-		*devp = NULL;
+ if (device) {
+  device_unregister(device);
+  *devp = ((void*)0);
 
-		cdev_del(cdev);
-	}
+  cdev_del(cdev);
+ }
 }

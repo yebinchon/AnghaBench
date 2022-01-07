@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int POLARSSL_ERR_BASE64_BUFFER_TOO_SMALL ; 
- int POLARSSL_ERR_BASE64_INVALID_CHARACTER ; 
- int* base64_dec_map ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int POLARSSL_ERR_BASE64_BUFFER_TOO_SMALL ;
+ int POLARSSL_ERR_BASE64_INVALID_CHARACTER ;
+ int* base64_dec_map ;
 
 int base64_decode( unsigned char *dst, size_t *dlen,
                    const unsigned char *src, size_t slen )
@@ -62,14 +62,14 @@ int base64_decode( unsigned char *dst, size_t *dlen,
             continue;
 
         j -= ( base64_dec_map[*src] == 64 );
-        x  = (x << 6) | ( base64_dec_map[*src] & 0x3F );
+        x = (x << 6) | ( base64_dec_map[*src] & 0x3F );
 
         if( ++n == 4 )
         {
             n = 0;
             if( j > 0 ) *p++ = (unsigned char)( x >> 16 );
-            if( j > 1 ) *p++ = (unsigned char)( x >>  8 );
-            if( j > 2 ) *p++ = (unsigned char)( x       );
+            if( j > 1 ) *p++ = (unsigned char)( x >> 8 );
+            if( j > 2 ) *p++ = (unsigned char)( x );
         }
     }
 

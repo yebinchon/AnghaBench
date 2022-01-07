@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bShow ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- scalar_t__ allZero (unsigned char*) ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ ) ; 
- int fread (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (unsigned char*,char,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef int bShow ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ scalar_t__ allZero (unsigned char*) ;
+ int atoi (char*) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fputc (char,int ) ;
+ int fread (unsigned char*,int,int,int *) ;
+ int fseek (int *,int ,int ) ;
+ long ftell (int *) ;
+ int memset (unsigned char*,char,int) ;
+ int printf (char*,...) ;
+ int rewind (int *) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 int main(int argc, char **argv){
-  int pgsz = 0;               /* page size */
-  long szFile;                /* Size of the input file in bytes */
-  FILE *in;                   /* Input file */
-  int i, j;                   /* Loop counters */
-  int nErr = 0;               /* Number of errors */
-  const char *zInputFile = 0; /* Name of the input file */
-  const char *zBaseName = 0;  /* Base name of the file */
-  int lastPage = 0;           /* Last page number shown */
-  int iPage;                  /* Current page number */
-  unsigned char aLine[16];    /* A single line of the file */
-  unsigned char aHdr[100];    /* File header */
-  unsigned char bShow[256];      /* Characters ok to display */
+  int pgsz = 0;
+  long szFile;
+  FILE *in;
+  int i, j;
+  int nErr = 0;
+  const char *zInputFile = 0;
+  const char *zBaseName = 0;
+  int lastPage = 0;
+  int iPage;
+  unsigned char aLine[16];
+  unsigned char aHdr[100];
+  unsigned char bShow[256];
   memset(bShow, '.', sizeof(bShow));
   for(i=' '; i<='~'; i++){
     if( i!='{' && i!='}' && i!='"' && i!='\\' ) bShow[i] = (unsigned char)i;

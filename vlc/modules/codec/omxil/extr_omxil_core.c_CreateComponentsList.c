@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_2__ {char const* psz_role; char const* psz_name; } ;
-typedef  char OMX_U8 ;
-typedef  int OMX_U32 ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
+typedef char OMX_U8 ;
+typedef int OMX_U32 ;
+typedef int OMX_ERRORTYPE ;
 
-/* Variables and functions */
- unsigned int MAX_COMPONENTS_LIST_SIZE ; 
- int /*<<< orphan*/  OMX_ErrorNone ; 
- int OMX_MAX_STRINGNAME_SIZE ; 
- int /*<<< orphan*/  free (char**) ; 
- char** malloc (int) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  pf_component_enum (char*,int,unsigned int) ; 
- int /*<<< orphan*/  pf_get_roles_of_component (char*,int*,char**) ; 
- TYPE_1__* role_mappings ; 
- int /*<<< orphan*/  strcmp (char const*,char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+
+ unsigned int MAX_COMPONENTS_LIST_SIZE ;
+ int OMX_ErrorNone ;
+ int OMX_MAX_STRINGNAME_SIZE ;
+ int free (char**) ;
+ char** malloc (int) ;
+ int msg_Dbg (int *,char*,...) ;
+ int pf_component_enum (char*,int,unsigned int) ;
+ int pf_get_roles_of_component (char*,int*,char**) ;
+ TYPE_1__* role_mappings ;
+ int strcmp (char const*,char const*) ;
+ int strncpy (char*,char*,int) ;
 
 int CreateComponentsList(vlc_object_t *p_this, const char *psz_role,
                          char ppsz_components[MAX_COMPONENTS_LIST_SIZE][OMX_MAX_STRINGNAME_SIZE])
@@ -43,7 +43,7 @@ int CreateComponentsList(vlc_object_t *p_this, const char *psz_role,
 
     for( i = 0; ; i++ )
     {
-        bool b_found = false;
+        bool b_found = 0;
 
         omx_error = pf_component_enum(psz_name, OMX_MAX_STRINGNAME_SIZE, i);
         if(omx_error != OMX_ErrorNone) break;
@@ -73,7 +73,7 @@ int CreateComponentsList(vlc_object_t *p_this, const char *psz_role,
         for(j = 0; j < roles; j++)
         {
             msg_Dbg(p_this, "  - role: %s", ppsz_roles[j]);
-            if(!strcmp((char *)ppsz_roles[j], psz_role)) b_found = true;
+            if(!strcmp((char *)ppsz_roles[j], psz_role)) b_found = 1;
         }
 
         free(ppsz_roles);

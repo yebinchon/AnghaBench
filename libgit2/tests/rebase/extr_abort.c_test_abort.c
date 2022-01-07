@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_rebase ;
-typedef  int /*<<< orphan*/  git_annotated_commit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ensure_aborted (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_rebase_abort (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_rebase_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_rebase_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  repo ; 
+
+
+
+typedef int git_rebase ;
+typedef int git_annotated_commit ;
+
+
+ int cl_git_pass (int ) ;
+ int ensure_aborted (int *,int *) ;
+ int git_rebase_abort (int *) ;
+ int git_rebase_free (int *) ;
+ int git_rebase_open (int **,int ,int *) ;
+ int repo ;
 
 __attribute__((used)) static void test_abort(
-	git_annotated_commit *branch, git_annotated_commit *onto)
+ git_annotated_commit *branch, git_annotated_commit *onto)
 {
-	git_rebase *rebase;
+ git_rebase *rebase;
 
-	cl_git_pass(git_rebase_open(&rebase, repo, NULL));
-	cl_git_pass(git_rebase_abort(rebase));
+ cl_git_pass(git_rebase_open(&rebase, repo, ((void*)0)));
+ cl_git_pass(git_rebase_abort(rebase));
 
-	ensure_aborted(branch, onto);
+ ensure_aborted(branch, onto);
 
-	git_rebase_free(rebase);
+ git_rebase_free(rebase);
 }

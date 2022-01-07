@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HGLOBAL ;
 
-/* Variables and functions */
- scalar_t__ CreateStreamOnHGlobal (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GMEM_MOVEABLE ; 
- scalar_t__ GlobalAlloc (int /*<<< orphan*/ ,int) ; 
- void* GlobalLock (scalar_t__) ; 
- int /*<<< orphan*/  GlobalUnlock (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcpy (void*,void const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HGLOBAL ;
+
+
+ scalar_t__ CreateStreamOnHGlobal (scalar_t__,int ,int **) ;
+ int GMEM_MOVEABLE ;
+ scalar_t__ GlobalAlloc (int ,int) ;
+ void* GlobalLock (scalar_t__) ;
+ int GlobalUnlock (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int memcpy (void*,void const*,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static IStream *create_stream(const void *data, int data_size)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static IStream *create_stream(const void *data, int data_s
 
     hdata = GlobalAlloc(GMEM_MOVEABLE, data_size);
     ok(hdata != 0, "GlobalAlloc failed\n");
-    if (!hdata) return NULL;
+    if (!hdata) return ((void*)0);
 
     locked_data = GlobalLock(hdata);
     memcpy(locked_data, data, data_size);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  exit; int /*<<< orphan*/  enter; } ;
-struct mruby_configurator_t {TYPE_1__ super; int /*<<< orphan*/  _vars_stack; int /*<<< orphan*/  vars; } ;
-typedef  int /*<<< orphan*/  h2o_globalconf_t ;
 
-/* Variables and functions */
- int H2O_CONFIGURATOR_FLAG_DEFERRED ; 
- int H2O_CONFIGURATOR_FLAG_EXPECT_SCALAR ; 
- int H2O_CONFIGURATOR_FLAG_PATH ; 
- scalar_t__ h2o_configurator_create (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  h2o_configurator_define_command (TYPE_1__*,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  on_config_enter ; 
- int /*<<< orphan*/  on_config_exit ; 
- int /*<<< orphan*/  on_config_mruby_handler ; 
- int /*<<< orphan*/  on_config_mruby_handler_file ; 
- int /*<<< orphan*/  on_config_mruby_handler_path ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int exit; int enter; } ;
+struct mruby_configurator_t {TYPE_1__ super; int _vars_stack; int vars; } ;
+typedef int h2o_globalconf_t ;
+
+
+ int H2O_CONFIGURATOR_FLAG_DEFERRED ;
+ int H2O_CONFIGURATOR_FLAG_EXPECT_SCALAR ;
+ int H2O_CONFIGURATOR_FLAG_PATH ;
+ scalar_t__ h2o_configurator_create (int *,int) ;
+ int h2o_configurator_define_command (TYPE_1__*,char*,int,int ) ;
+ int on_config_enter ;
+ int on_config_exit ;
+ int on_config_mruby_handler ;
+ int on_config_mruby_handler_file ;
+ int on_config_mruby_handler_path ;
 
 void h2o_mruby_register_configurator(h2o_globalconf_t *conf)
 {

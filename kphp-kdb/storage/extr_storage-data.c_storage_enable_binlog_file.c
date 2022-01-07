@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int binlogs; int cur_log_pos; int /*<<< orphan*/  mutex_write; TYPE_2__** B; } ;
-typedef  TYPE_1__ volume_t ;
-struct stat {int st_size; int /*<<< orphan*/  st_mtime; } ;
-struct TYPE_5__ {int dir_id; int fd_rdonly; int fd_wronly; int size; int prefix; int /*<<< orphan*/  abs_filename; int /*<<< orphan*/  mtime; } ;
-typedef  TYPE_2__ storage_binlog_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_WRLCK ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  O_WRONLY ; 
- int PREFIX_IO_BUFFSIZE ; 
- int STORAGE_ERR_DIR_NOT_FOUND ; 
- int STORAGE_ERR_FSTAT ; 
- int STORAGE_ERR_OPEN ; 
- int STORAGE_ERR_READ ; 
- int STORAGE_ERR_SIZE_MISMATCH ; 
- int STORAGE_ERR_TAIL_DIFFER ; 
- scalar_t__ binlog_disabled ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ fstat (int,struct stat*) ; 
- scalar_t__ lock_whole_file (int,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,int const) ; 
- void* open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int const pread (int,unsigned char*,int const,scalar_t__) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int binlogs; int cur_log_pos; int mutex_write; TYPE_2__** B; } ;
+typedef TYPE_1__ volume_t ;
+struct stat {int st_size; int st_mtime; } ;
+struct TYPE_5__ {int dir_id; int fd_rdonly; int fd_wronly; int size; int prefix; int abs_filename; int mtime; } ;
+typedef TYPE_2__ storage_binlog_file_t ;
+
+
+ int F_WRLCK ;
+ int O_RDONLY ;
+ int O_WRONLY ;
+ int PREFIX_IO_BUFFSIZE ;
+ int STORAGE_ERR_DIR_NOT_FOUND ;
+ int STORAGE_ERR_FSTAT ;
+ int STORAGE_ERR_OPEN ;
+ int STORAGE_ERR_READ ;
+ int STORAGE_ERR_SIZE_MISMATCH ;
+ int STORAGE_ERR_TAIL_DIFFER ;
+ scalar_t__ binlog_disabled ;
+ int close (int) ;
+ scalar_t__ fstat (int,struct stat*) ;
+ scalar_t__ lock_whole_file (int,int ) ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,int const) ;
+ void* open (int ,int ) ;
+ int const pread (int,unsigned char*,int const,scalar_t__) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 int storage_enable_binlog_file (volume_t *V, int dir_id) {
   int k;

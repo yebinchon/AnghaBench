@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tss_struct {int dummy; } ;
-struct thread_struct {int /*<<< orphan*/  sp0; } ;
-struct multicall_space {int /*<<< orphan*/  mc; } ;
+struct thread_struct {int sp0; } ;
+struct multicall_space {int mc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MULTI_stack_switch (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PARAVIRT_LAZY_CPU ; 
- int /*<<< orphan*/  __KERNEL_DS ; 
- struct multicall_space xen_mc_entry (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xen_mc_issue (int /*<<< orphan*/ ) ; 
+
+ int MULTI_stack_switch (int ,int ,int ) ;
+ int PARAVIRT_LAZY_CPU ;
+ int __KERNEL_DS ;
+ struct multicall_space xen_mc_entry (int ) ;
+ int xen_mc_issue (int ) ;
 
 __attribute__((used)) static void xen_load_sp0(struct tss_struct *tss,
-			 struct thread_struct *thread)
+    struct thread_struct *thread)
 {
-	struct multicall_space mcs = xen_mc_entry(0);
-	MULTI_stack_switch(mcs.mc, __KERNEL_DS, thread->sp0);
-	xen_mc_issue(PARAVIRT_LAZY_CPU);
+ struct multicall_space mcs = xen_mc_entry(0);
+ MULTI_stack_switch(mcs.mc, __KERNEL_DS, thread->sp0);
+ xen_mc_issue(PARAVIRT_LAZY_CPU);
 }

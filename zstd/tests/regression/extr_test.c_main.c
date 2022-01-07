@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ are_names_bad () ; 
- int /*<<< orphan*/  data_finish () ; 
- int data_init (int /*<<< orphan*/ ) ; 
- int diff_results (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  g_cache ; 
- scalar_t__ g_diff ; 
- int /*<<< orphan*/  g_output ; 
- int /*<<< orphan*/  g_zstdcli ; 
- int /*<<< orphan*/  method_set_zstdcli (int /*<<< orphan*/ ) ; 
- int parse_args (int,char**) ; 
- int run_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ are_names_bad () ;
+ int data_finish () ;
+ int data_init (int ) ;
+ int diff_results (int ,scalar_t__) ;
+ int fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int fprintf (int ,char*,...) ;
+ int g_cache ;
+ scalar_t__ g_diff ;
+ int g_output ;
+ int g_zstdcli ;
+ int method_set_zstdcli (int ) ;
+ int parse_args (int,char**) ;
+ int run_all (int *) ;
+ int stderr ;
+ char* strerror (int) ;
 
 int main(int argc, char** argv) {
-    /* Parse args and validate modules. */
+
     int ret = parse_args(argc, argv);
     if (ret != 0)
         return ret;
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
     if (are_names_bad())
         return 1;
 
-    /* Initialize modules. */
+
     method_set_zstdcli(g_zstdcli);
     ret = data_init(g_cache);
     if (ret != 0) {
@@ -47,10 +47,10 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    /* Run the regression tests. */
+
     ret = 1;
     FILE* results = fopen(g_output, "w");
-    if (results == NULL) {
+    if (results == ((void*)0)) {
         fprintf(stderr, "Failed to open the output file\n");
         goto out;
     }
@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
         goto out;
 
     if (g_diff)
-        /* Diff the new results with the previous results. */
+
         ret = diff_results(g_output, g_diff);
 
 out:

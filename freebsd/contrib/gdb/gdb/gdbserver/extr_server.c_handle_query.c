@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct inferior_list_entry {int id; struct inferior_list_entry* next; } ;
 struct TYPE_4__ {struct inferior_list_entry* head; } ;
-struct TYPE_3__ {int (* read_auxv ) (int /*<<< orphan*/ ,char*,unsigned int) ;int /*<<< orphan*/  (* look_up_symbols ) () ;} ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+struct TYPE_3__ {int (* read_auxv ) (int ,char*,unsigned int) ;int (* look_up_symbols ) () ;} ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PBUFSIZ ; 
- TYPE_2__ all_threads ; 
- int /*<<< orphan*/  convert_int_to_ascii (char*,char*,int) ; 
- int /*<<< orphan*/  decode_m_packet (char*,int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  stub1 () ; 
- int stub2 (int /*<<< orphan*/ ,char*,unsigned int) ; 
- TYPE_1__* the_target ; 
- int /*<<< orphan*/  write_enn (char*) ; 
- int /*<<< orphan*/  write_ok (char*) ; 
+
+ int PBUFSIZ ;
+ TYPE_2__ all_threads ;
+ int convert_int_to_ascii (char*,char*,int) ;
+ int decode_m_packet (char*,int *,unsigned int*) ;
+ int sprintf (char*,char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int stub1 () ;
+ int stub2 (int ,char*,unsigned int) ;
+ TYPE_1__* the_target ;
+ int write_enn (char*) ;
+ int write_ok (char*) ;
 
 void
 handle_query (char *own_buf)
@@ -39,8 +39,8 @@ handle_query (char *own_buf)
 
   if (strcmp ("qSymbol::", own_buf) == 0)
     {
-      if (the_target->look_up_symbols != NULL)
-	(*the_target->look_up_symbols) ();
+      if (the_target->look_up_symbols != ((void*)0))
+ (*the_target->look_up_symbols) ();
 
       strcpy (own_buf, "OK");
       return;
@@ -56,40 +56,40 @@ handle_query (char *own_buf)
 
   if (strcmp ("qsThreadInfo", own_buf) == 0)
     {
-      if (thread_ptr != NULL)
-	{
-	  sprintf (own_buf, "m%x", thread_ptr->id);
-	  thread_ptr = thread_ptr->next;
-	  return;
-	}
+      if (thread_ptr != ((void*)0))
+ {
+   sprintf (own_buf, "m%x", thread_ptr->id);
+   thread_ptr = thread_ptr->next;
+   return;
+ }
       else
-	{
-	  sprintf (own_buf, "l");
-	  return;
-	}
+ {
+   sprintf (own_buf, "l");
+   return;
+ }
     }
 
-  if (the_target->read_auxv != NULL
+  if (the_target->read_auxv != ((void*)0)
       && strncmp ("qPart:auxv:read::", own_buf, 17) == 0)
     {
       char data[(PBUFSIZ - 1) / 2];
       CORE_ADDR ofs;
       unsigned int len;
       int n;
-      decode_m_packet (&own_buf[17], &ofs, &len); /* "OFS,LEN" */
+      decode_m_packet (&own_buf[17], &ofs, &len);
       if (len > sizeof data)
-	len = sizeof data;
+ len = sizeof data;
       n = (*the_target->read_auxv) (ofs, data, len);
       if (n == 0)
-	write_ok (own_buf);
+ write_ok (own_buf);
       else if (n < 0)
-	write_enn (own_buf);
+ write_enn (own_buf);
       else
-	convert_int_to_ascii (data, own_buf, n);
+ convert_int_to_ascii (data, own_buf, n);
       return;
     }
 
-  /* Otherwise we didn't know what packet it was.  Say we didn't
-     understand it.  */
+
+
   own_buf[0] = 0;
 }

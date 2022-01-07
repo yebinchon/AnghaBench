@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct htt_rx_test {scalar_t__ payload; } ;
-typedef  int /*<<< orphan*/  __le32 ;
+typedef int __le32 ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline __le32 *htt_rx_test_get_ints(struct htt_rx_test *rx_test)
 {
-	return (__le32 *)rx_test->payload;
+ return (__le32 *)rx_test->payload;
 }

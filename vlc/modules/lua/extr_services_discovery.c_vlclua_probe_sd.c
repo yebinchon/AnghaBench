@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_probe_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SD_CAT_INTERNET ; 
- int VLC_ENOMEM ; 
- int VLC_PROBE_CONTINUE ; 
- int asprintf (char**,char*,char*) ; 
- char* config_StringEscape (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * luaL_newstate () ; 
- int /*<<< orphan*/  luaL_openlibs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,...) ; 
- int vlc_sd_probe_Add (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ vlclua_add_modules_path (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ vlclua_dofile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- char* vlclua_find_file (char*,char const*) ; 
- char* vlclua_sd_description (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int vlc_probe_t ;
+typedef int vlc_object_t ;
+typedef int lua_State ;
+
+
+ int SD_CAT_INTERNET ;
+ int VLC_ENOMEM ;
+ int VLC_PROBE_CONTINUE ;
+ int asprintf (char**,char*,char*) ;
+ char* config_StringEscape (char const*) ;
+ int free (char*) ;
+ int * luaL_newstate () ;
+ int luaL_openlibs (int *) ;
+ int lua_close (int *) ;
+ int lua_tostring (int *,int) ;
+ int msg_Err (int *,char*,...) ;
+ int vlc_sd_probe_Add (int *,char*,char const*,int ) ;
+ scalar_t__ vlclua_add_modules_path (int *,char*) ;
+ scalar_t__ vlclua_dofile (int *,int *,char*) ;
+ char* vlclua_find_file (char*,char const*) ;
+ char* vlclua_sd_description (int *,int *,char*) ;
 
 int vlclua_probe_sd( vlc_object_t *obj, const char *name )
 {
     vlc_probe_t *probe = (vlc_probe_t *)obj;
 
     char *filename = vlclua_find_file( "sd", name );
-    if( filename == NULL )
+    if( filename == ((void*)0) )
     {
-        // File suddenly disappeared - maybe a race condition, no problem
+
         msg_Err( probe, "Couldn't probe lua services discovery script \"%s\".",
                  name );
         return VLC_PROBE_CONTINUE;
@@ -70,7 +70,7 @@ int vlclua_probe_sd( vlc_object_t *obj, const char *name )
         return VLC_PROBE_CONTINUE;
     }
     const char *description = vlclua_sd_description( obj, L, filename );
-    if( description == NULL )
+    if( description == ((void*)0) )
         description = name;
 
     int r = VLC_ENOMEM;

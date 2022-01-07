@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  url ;
-typedef  scalar_t__ sigproc_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int url ;
+typedef scalar_t__ sigproc_t ;
 struct TYPE_4__ {char* bookmarkName; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ Bookmark ;
+typedef int FILE ;
+typedef TYPE_1__ Bookmark ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BookmarkToURL (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  CloseBookmarkFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ClosePager (int /*<<< orphan*/ *) ; 
- scalar_t__ GetNextBookmark (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ NcSignal (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/ * OpenBookmarkFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OpenPager () ; 
- int /*<<< orphan*/  SIGPIPE ; 
- scalar_t__ SIG_IGN ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
+
+ int BookmarkToURL (TYPE_1__*,char*,int) ;
+ int CloseBookmarkFile (int *) ;
+ int ClosePager (int *) ;
+ scalar_t__ GetNextBookmark (int *,TYPE_1__*) ;
+ scalar_t__ NcSignal (int ,scalar_t__) ;
+ int * OpenBookmarkFile (int *) ;
+ int * OpenPager () ;
+ int SIGPIPE ;
+ scalar_t__ SIG_IGN ;
+ int fprintf (int *,char*,...) ;
 
 __attribute__((used)) static int
 PrintHosts(void)
 {
-	FILE *bookmarks;
-	FILE *pager;
-	int nbm = 0;
-	Bookmark bm;
-	char url[128];
-#ifdef SIGPIPE
-	sigproc_t osigpipe;
-#endif
+ FILE *bookmarks;
+ FILE *pager;
+ int nbm = 0;
+ Bookmark bm;
+ char url[128];
 
-	bookmarks = OpenBookmarkFile(NULL);
-	if (bookmarks == NULL)
-		return (0);
 
-#ifdef SIGPIPE
-	osigpipe = (sigproc_t) NcSignal(SIGPIPE, SIG_IGN);
-#endif
-	pager = OpenPager();
 
-	while (GetNextBookmark(bookmarks, &bm) == 0) {
-		nbm++;
-		if (nbm == 1) {
-			/* header */
-			(void) fprintf(pager, "--BOOKMARK----------URL--------------------------------------------------------\n");
-		}
-		BookmarkToURL(&bm, url, sizeof(url));
-		(void) fprintf(pager, "  %-16s  %s\n", bm.bookmarkName, url);
-	}
 
-	ClosePager(pager);
-	CloseBookmarkFile(bookmarks);
+ bookmarks = OpenBookmarkFile(((void*)0));
+ if (bookmarks == ((void*)0))
+  return (0);
 
-#ifdef SIGPIPE
-	(void) NcSignal(SIGPIPE, osigpipe);
-#endif
-	return (nbm);
+
+
+
+ pager = OpenPager();
+
+ while (GetNextBookmark(bookmarks, &bm) == 0) {
+  nbm++;
+  if (nbm == 1) {
+
+   (void) fprintf(pager, "--BOOKMARK----------URL--------------------------------------------------------\n");
+  }
+  BookmarkToURL(&bm, url, sizeof(url));
+  (void) fprintf(pager, "  %-16s  %s\n", bm.bookmarkName, url);
+ }
+
+ ClosePager(pager);
+ CloseBookmarkFile(bookmarks);
+
+
+
+
+ return (nbm);
 }

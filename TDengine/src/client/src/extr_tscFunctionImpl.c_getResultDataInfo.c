@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tValuePair ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  scalar_t__ int32_t ;
-typedef  int int16_t ;
-typedef  int /*<<< orphan*/  STwaInfo ;
-typedef  int /*<<< orphan*/  STopBotInfo ;
-typedef  int /*<<< orphan*/  SSumInfo ;
-typedef  int /*<<< orphan*/  SStddevInfo ;
-typedef  int /*<<< orphan*/  SSpreadInfo ;
-typedef  int /*<<< orphan*/  SResultInfo ;
-typedef  int /*<<< orphan*/  SLastrowInfo ;
-typedef  int /*<<< orphan*/  SHistogramInfo ;
-typedef  int /*<<< orphan*/  SHistBin ;
-typedef  int /*<<< orphan*/  SFirstLastInfo ;
-typedef  int /*<<< orphan*/  SAvgInfo ;
-typedef  int /*<<< orphan*/  SAPercentileInfo ;
 
-/* Variables and functions */
- scalar_t__ DATA_SET_FLAG_SIZE ; 
- int MAX_HISTOGRAM_BIN ; 
- int POINTER_BYTES ; 
- int TSDB_AVG_FUNCTION_INTER_BUFFER_SIZE ; 
- scalar_t__ TSDB_CODE_INVALID_SQL ; 
- scalar_t__ TSDB_CODE_SUCCESS ; 
- scalar_t__ TSDB_DATA_TYPE_BIGINT ; 
- int TSDB_DATA_TYPE_BINARY ; 
- int TSDB_DATA_TYPE_DOUBLE ; 
- scalar_t__ TSDB_DATA_TYPE_TINYINT ; 
- scalar_t__ TSDB_FUNC_APERCT ; 
- scalar_t__ TSDB_FUNC_ARITHM ; 
- scalar_t__ TSDB_FUNC_AVG ; 
- scalar_t__ TSDB_FUNC_BOTTOM ; 
- scalar_t__ TSDB_FUNC_COUNT ; 
- scalar_t__ TSDB_FUNC_DIFF ; 
- scalar_t__ TSDB_FUNC_FIRST ; 
- scalar_t__ TSDB_FUNC_FIRST_DST ; 
- scalar_t__ TSDB_FUNC_INTERP ; 
- scalar_t__ TSDB_FUNC_LAST ; 
- scalar_t__ TSDB_FUNC_LAST_DST ; 
- scalar_t__ TSDB_FUNC_LAST_ROW ; 
- scalar_t__ TSDB_FUNC_LEASTSQR ; 
- scalar_t__ TSDB_FUNC_MAX ; 
- scalar_t__ TSDB_FUNC_MIN ; 
- scalar_t__ TSDB_FUNC_PERCT ; 
- scalar_t__ TSDB_FUNC_PRJ ; 
- scalar_t__ TSDB_FUNC_SPREAD ; 
- scalar_t__ TSDB_FUNC_STDDEV ; 
- scalar_t__ TSDB_FUNC_SUM ; 
- scalar_t__ TSDB_FUNC_TAG ; 
- scalar_t__ TSDB_FUNC_TAGPRJ ; 
- scalar_t__ TSDB_FUNC_TAG_DUMMY ; 
- scalar_t__ TSDB_FUNC_TOP ; 
- scalar_t__ TSDB_FUNC_TS ; 
- scalar_t__ TSDB_FUNC_TS_COMP ; 
- scalar_t__ TSDB_FUNC_TS_DUMMY ; 
- scalar_t__ TSDB_FUNC_TWA ; 
- int /*<<< orphan*/  isValidDataType (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  pError (char*,scalar_t__,scalar_t__) ; 
+
+
+
+typedef int tValuePair ;
+typedef int int64_t ;
+typedef scalar_t__ int32_t ;
+typedef int int16_t ;
+typedef int STwaInfo ;
+typedef int STopBotInfo ;
+typedef int SSumInfo ;
+typedef int SStddevInfo ;
+typedef int SSpreadInfo ;
+typedef int SResultInfo ;
+typedef int SLastrowInfo ;
+typedef int SHistogramInfo ;
+typedef int SHistBin ;
+typedef int SFirstLastInfo ;
+typedef int SAvgInfo ;
+typedef int SAPercentileInfo ;
+
+
+ scalar_t__ DATA_SET_FLAG_SIZE ;
+ int MAX_HISTOGRAM_BIN ;
+ int POINTER_BYTES ;
+ int TSDB_AVG_FUNCTION_INTER_BUFFER_SIZE ;
+ scalar_t__ TSDB_CODE_INVALID_SQL ;
+ scalar_t__ TSDB_CODE_SUCCESS ;
+ scalar_t__ TSDB_DATA_TYPE_BIGINT ;
+ int TSDB_DATA_TYPE_BINARY ;
+ int TSDB_DATA_TYPE_DOUBLE ;
+ scalar_t__ TSDB_DATA_TYPE_TINYINT ;
+ scalar_t__ TSDB_FUNC_APERCT ;
+ scalar_t__ TSDB_FUNC_ARITHM ;
+ scalar_t__ TSDB_FUNC_AVG ;
+ scalar_t__ TSDB_FUNC_BOTTOM ;
+ scalar_t__ TSDB_FUNC_COUNT ;
+ scalar_t__ TSDB_FUNC_DIFF ;
+ scalar_t__ TSDB_FUNC_FIRST ;
+ scalar_t__ TSDB_FUNC_FIRST_DST ;
+ scalar_t__ TSDB_FUNC_INTERP ;
+ scalar_t__ TSDB_FUNC_LAST ;
+ scalar_t__ TSDB_FUNC_LAST_DST ;
+ scalar_t__ TSDB_FUNC_LAST_ROW ;
+ scalar_t__ TSDB_FUNC_LEASTSQR ;
+ scalar_t__ TSDB_FUNC_MAX ;
+ scalar_t__ TSDB_FUNC_MIN ;
+ scalar_t__ TSDB_FUNC_PERCT ;
+ scalar_t__ TSDB_FUNC_PRJ ;
+ scalar_t__ TSDB_FUNC_SPREAD ;
+ scalar_t__ TSDB_FUNC_STDDEV ;
+ scalar_t__ TSDB_FUNC_SUM ;
+ scalar_t__ TSDB_FUNC_TAG ;
+ scalar_t__ TSDB_FUNC_TAGPRJ ;
+ scalar_t__ TSDB_FUNC_TAG_DUMMY ;
+ scalar_t__ TSDB_FUNC_TOP ;
+ scalar_t__ TSDB_FUNC_TS ;
+ scalar_t__ TSDB_FUNC_TS_COMP ;
+ scalar_t__ TSDB_FUNC_TS_DUMMY ;
+ scalar_t__ TSDB_FUNC_TWA ;
+ int isValidDataType (scalar_t__,scalar_t__) ;
+ int pError (char*,scalar_t__,scalar_t__) ;
 
 int32_t getResultDataInfo(int32_t dataType, int32_t dataBytes, int32_t functionId, int32_t param, int16_t *type,
                           int16_t *bytes, int16_t *intermediateResBytes, int16_t extLength, bool isSuperTable) {
@@ -101,7 +101,7 @@ int32_t getResultDataInfo(int32_t dataType, int32_t dataBytes, int32_t functionI
 
   if (functionId == TSDB_FUNC_TS_COMP) {
     *type = TSDB_DATA_TYPE_BINARY;
-    *bytes = sizeof(int32_t);  // this results is compressed ts data
+    *bytes = sizeof(int32_t);
     *intermediateResBytes = POINTER_BYTES;
     return TSDB_CODE_SUCCESS;
   }
@@ -203,11 +203,11 @@ int32_t getResultDataInfo(int32_t dataType, int32_t dataBytes, int32_t functionI
   } else if (functionId == TSDB_FUNC_PERCT) {
     *type = (int16_t)TSDB_DATA_TYPE_DOUBLE;
     *bytes = (int16_t)sizeof(double);
-    //*intermediateResBytes = POINTER_BYTES;
+
     *intermediateResBytes = (int16_t)sizeof(double);
   } else if (functionId == TSDB_FUNC_LEASTSQR) {
     *type = TSDB_DATA_TYPE_BINARY;
-    *bytes = TSDB_AVG_FUNCTION_INTER_BUFFER_SIZE;  // string
+    *bytes = TSDB_AVG_FUNCTION_INTER_BUFFER_SIZE;
     *intermediateResBytes = *bytes + sizeof(SResultInfo);
   } else if (functionId == TSDB_FUNC_FIRST_DST || functionId == TSDB_FUNC_LAST_DST) {
     *type = TSDB_DATA_TYPE_BINARY;
@@ -219,7 +219,7 @@ int32_t getResultDataInfo(int32_t dataType, int32_t dataBytes, int32_t functionI
 
     size_t size = sizeof(STopBotInfo) + (sizeof(tValuePair) + POINTER_BYTES + extLength) * param;
 
-    // the output column may be larger than sizeof(STopBotInfo)
+
     *intermediateResBytes = size;
   } else if (functionId == TSDB_FUNC_LAST_ROW) {
     *type = (int16_t)dataType;

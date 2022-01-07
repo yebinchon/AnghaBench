@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct demuxer {struct demux_internal* in; } ;
 struct demux_packet {int dummy; } ;
-struct demux_internal {int num_streams; int reading; int /*<<< orphan*/  lock; TYPE_1__** streams; int /*<<< orphan*/  blocked; int /*<<< orphan*/  threading; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ds; } ;
+struct demux_internal {int num_streams; int reading; int lock; TYPE_1__** streams; int blocked; int threading; } ;
+struct TYPE_2__ {int ds; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int dequeue_packet (int /*<<< orphan*/ ,struct demux_packet**) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int thread_work (struct demux_internal*) ; 
+
+ int assert (int) ;
+ int dequeue_packet (int ,struct demux_packet**) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int thread_work (struct demux_internal*) ;
 
 struct demux_packet *demux_read_any_packet(struct demuxer *demuxer)
 {
     struct demux_internal *in = demuxer->in;
     pthread_mutex_lock(&in->lock);
-    assert(!in->threading); // doesn't work with threading
-    struct demux_packet *out_pkt = NULL;
-    bool read_more = true;
+    assert(!in->threading);
+    struct demux_packet *out_pkt = ((void*)0);
+    bool read_more = 1;
     while (read_more && !in->blocked) {
-        bool all_eof = true;
+        bool all_eof = 1;
         for (int n = 0; n < in->num_streams; n++) {
-            in->reading = true; // force read_packet() to read
+            in->reading = 1;
             int r = dequeue_packet(in->streams[n]->ds, &out_pkt);
             if (r > 0)
                 goto done;
             if (r == 0)
-                all_eof = false;
+                all_eof = 0;
         }
-        // retry after calling this
+
         read_more = thread_work(in);
         read_more &= !all_eof;
     }

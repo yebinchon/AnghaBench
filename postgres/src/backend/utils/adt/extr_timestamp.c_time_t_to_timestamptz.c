@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pg_time_t ;
-typedef  scalar_t__ TimestampTz ;
 
-/* Variables and functions */
- int POSTGRES_EPOCH_JDATE ; 
- int SECS_PER_DAY ; 
- int UNIX_EPOCH_JDATE ; 
- scalar_t__ USECS_PER_SEC ; 
+
+
+
+typedef scalar_t__ pg_time_t ;
+typedef scalar_t__ TimestampTz ;
+
+
+ int POSTGRES_EPOCH_JDATE ;
+ int SECS_PER_DAY ;
+ int UNIX_EPOCH_JDATE ;
+ scalar_t__ USECS_PER_SEC ;
 
 TimestampTz
 time_t_to_timestamptz(pg_time_t tm)
 {
-	TimestampTz result;
+ TimestampTz result;
 
-	result = (TimestampTz) tm -
-		((POSTGRES_EPOCH_JDATE - UNIX_EPOCH_JDATE) * SECS_PER_DAY);
-	result *= USECS_PER_SEC;
+ result = (TimestampTz) tm -
+  ((POSTGRES_EPOCH_JDATE - UNIX_EPOCH_JDATE) * SECS_PER_DAY);
+ result *= USECS_PER_SEC;
 
-	return result;
+ return result;
 }

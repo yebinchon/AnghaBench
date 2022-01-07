@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int NUM_KEYS ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
+ unsigned int NUM_KEYS ;
+ int WARN_ON (int) ;
 
 __attribute__((used)) static int key_id_index(unsigned int key_id)
 {
-	if (key_id >= NUM_KEYS) {
-		WARN_ON(1);
-		return 0;
-	}
-	return key_id;
+ if (key_id >= NUM_KEYS) {
+  WARN_ON(1);
+  return 0;
+ }
+ return key_id;
 }

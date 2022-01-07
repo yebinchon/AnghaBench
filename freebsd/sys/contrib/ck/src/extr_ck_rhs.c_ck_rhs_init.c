@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ck_rhs {unsigned int mode; unsigned long seed; int /*<<< orphan*/ * map; int /*<<< orphan*/  load_factor; int /*<<< orphan*/ * compare; int /*<<< orphan*/ * hf; struct ck_malloc* m; } ;
-struct ck_malloc {int /*<<< orphan*/ * free; int /*<<< orphan*/ * malloc; } ;
-typedef  int /*<<< orphan*/  ck_rhs_hash_cb_t ;
-typedef  int /*<<< orphan*/  ck_rhs_compare_cb_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CK_RHS_DEFAULT_LOAD_FACTOR ; 
- int /*<<< orphan*/ * ck_rhs_map_create (struct ck_rhs*,unsigned long) ; 
+
+
+
+struct ck_rhs {unsigned int mode; unsigned long seed; int * map; int load_factor; int * compare; int * hf; struct ck_malloc* m; } ;
+struct ck_malloc {int * free; int * malloc; } ;
+typedef int ck_rhs_hash_cb_t ;
+typedef int ck_rhs_compare_cb_t ;
+
+
+ int CK_RHS_DEFAULT_LOAD_FACTOR ;
+ int * ck_rhs_map_create (struct ck_rhs*,unsigned long) ;
 
 bool
 ck_rhs_init(struct ck_rhs *hs,
@@ -29,16 +29,16 @@ ck_rhs_init(struct ck_rhs *hs,
     unsigned long seed)
 {
 
-	if (m == NULL || m->malloc == NULL || m->free == NULL || hf == NULL)
-		return false;
+ if (m == ((void*)0) || m->malloc == ((void*)0) || m->free == ((void*)0) || hf == ((void*)0))
+  return 0;
 
-	hs->m = m;
-	hs->mode = mode;
-	hs->seed = seed;
-	hs->hf = hf;
-	hs->compare = compare;
-	hs->load_factor = CK_RHS_DEFAULT_LOAD_FACTOR;
+ hs->m = m;
+ hs->mode = mode;
+ hs->seed = seed;
+ hs->hf = hf;
+ hs->compare = compare;
+ hs->load_factor = CK_RHS_DEFAULT_LOAD_FACTOR;
 
-	hs->map = ck_rhs_map_create(hs, n_entries);
-	return hs->map != NULL;
+ hs->map = ck_rhs_map_create(hs, n_entries);
+ return hs->map != ((void*)0);
 }

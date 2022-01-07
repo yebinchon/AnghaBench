@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_7__ {scalar_t__ nSize; } ;
-struct TYPE_9__ {int iPage; scalar_t__ eState; scalar_t__ wrFlag; TYPE_2__** apPage; scalar_t__ validNKey; TYPE_1__ info; scalar_t__* aiIdx; int /*<<< orphan*/ * pBt; } ;
+struct TYPE_9__ {int iPage; scalar_t__ eState; scalar_t__ wrFlag; TYPE_2__** apPage; scalar_t__ validNKey; TYPE_1__ info; scalar_t__* aiIdx; int * pBt; } ;
 struct TYPE_8__ {int nCell; scalar_t__ intKey; } ;
-typedef  TYPE_2__ MemPage ;
-typedef  int /*<<< orphan*/  BtShared ;
-typedef  TYPE_3__ BtCursor ;
+typedef TYPE_2__ MemPage ;
+typedef int BtShared ;
+typedef TYPE_3__ BtCursor ;
 
-/* Variables and functions */
- int BTCURSOR_MAX_DEPTH ; 
- scalar_t__ CURSOR_VALID ; 
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int cursorHoldsMutex (TYPE_3__*) ; 
- int getAndInitPage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**,int) ; 
+
+ int BTCURSOR_MAX_DEPTH ;
+ scalar_t__ CURSOR_VALID ;
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int cursorHoldsMutex (TYPE_3__*) ;
+ int getAndInitPage (int *,int ,TYPE_2__**,int) ;
 
 __attribute__((used)) static int moveToChild(BtCursor *pCur, u32 newPgno){
   int rc;

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_18__ {TYPE_2__** outputs; TYPE_2__** inputs; TYPE_1__* priv; } ;
-struct TYPE_17__ {int /*<<< orphan*/  time_base; } ;
+struct TYPE_17__ {int time_base; } ;
 struct TYPE_16__ {double* var_values; } ;
-typedef  TYPE_1__ SetPTSContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_1__ SetPTSContext ;
+typedef int AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  D2TS (double) ; 
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  TS2T (double,int /*<<< orphan*/ ) ; 
- size_t VAR_POS ; 
- size_t VAR_PTS ; 
- size_t VAR_T ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,double,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d2istr (double) ; 
- double eval_pts (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ff_inlink_acknowledge_status (TYPE_2__*,int*,int /*<<< orphan*/ *) ; 
- int ff_inlink_consume_frame (TYPE_2__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_outlink_set_status (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int filter_frame (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int AV_LOG_TRACE ;
+ int D2TS (double) ;
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS_BACK (TYPE_2__*,TYPE_2__*) ;
+ int FF_FILTER_FORWARD_WANTED (TYPE_2__*,TYPE_2__*) ;
+ int TS2T (double,int ) ;
+ size_t VAR_POS ;
+ size_t VAR_PTS ;
+ size_t VAR_T ;
+ int av_log (TYPE_3__*,int ,char*,int ,double,int ,int ,int ) ;
+ int d2istr (double) ;
+ double eval_pts (TYPE_1__*,TYPE_2__*,int *,int ) ;
+ scalar_t__ ff_inlink_acknowledge_status (TYPE_2__*,int*,int *) ;
+ int ff_inlink_consume_frame (TYPE_2__*,int **) ;
+ int ff_outlink_set_status (TYPE_2__*,int,int ) ;
+ int filter_frame (TYPE_2__*,int *) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
@@ -59,7 +59,7 @@ __attribute__((used)) static int activate(AVFilterContext *ctx)
         return filter_frame(inlink, in);
 
     if (ff_inlink_acknowledge_status(inlink, &status, &pts)) {
-        double d = eval_pts(setpts, inlink, NULL, pts);
+        double d = eval_pts(setpts, inlink, ((void*)0), pts);
 
         av_log(ctx, AV_LOG_TRACE, "N:EOF PTS:%s T:%f POS:%s -> PTS:%s T:%f\n",
                d2istr(setpts->var_values[VAR_PTS]),

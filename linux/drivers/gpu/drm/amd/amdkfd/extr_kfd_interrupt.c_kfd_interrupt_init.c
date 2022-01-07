@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct kfd_dev {int interrupts_active; int /*<<< orphan*/  interrupt_work; int /*<<< orphan*/  interrupt_lock; int /*<<< orphan*/  ih_wq; TYPE_1__* device_info; int /*<<< orphan*/  ih_fifo; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct kfd_dev {int interrupts_active; int interrupt_work; int interrupt_lock; int ih_wq; TYPE_1__* device_info; int ih_fifo; } ;
 struct TYPE_2__ {int ih_ring_entry_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int KFD_IH_NUM_ENTRIES ; 
- int /*<<< orphan*/  WQ_HIGHPRI ; 
- int /*<<< orphan*/  alloc_workqueue (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  interrupt_wq ; 
- int /*<<< orphan*/  kfd_chardev () ; 
- int kfifo_alloc (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smp_wmb () ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int GFP_KERNEL ;
+ int INIT_WORK (int *,int ) ;
+ int KFD_IH_NUM_ENTRIES ;
+ int WQ_HIGHPRI ;
+ int alloc_workqueue (char*,int ,int) ;
+ int dev_err (int ,char*) ;
+ int interrupt_wq ;
+ int kfd_chardev () ;
+ int kfifo_alloc (int *,int,int ) ;
+ int smp_wmb () ;
+ int spin_lock_init (int *) ;
 
 int kfd_interrupt_init(struct kfd_dev *kfd)
 {
-	int r;
+ int r;
 
-	r = kfifo_alloc(&kfd->ih_fifo,
-		KFD_IH_NUM_ENTRIES * kfd->device_info->ih_ring_entry_size,
-		GFP_KERNEL);
-	if (r) {
-		dev_err(kfd_chardev(), "Failed to allocate IH fifo\n");
-		return r;
-	}
+ r = kfifo_alloc(&kfd->ih_fifo,
+  KFD_IH_NUM_ENTRIES * kfd->device_info->ih_ring_entry_size,
+  GFP_KERNEL);
+ if (r) {
+  dev_err(kfd_chardev(), "Failed to allocate IH fifo\n");
+  return r;
+ }
 
-	kfd->ih_wq = alloc_workqueue("KFD IH", WQ_HIGHPRI, 1);
-	spin_lock_init(&kfd->interrupt_lock);
+ kfd->ih_wq = alloc_workqueue("KFD IH", WQ_HIGHPRI, 1);
+ spin_lock_init(&kfd->interrupt_lock);
 
-	INIT_WORK(&kfd->interrupt_work, interrupt_wq);
+ INIT_WORK(&kfd->interrupt_work, interrupt_wq);
 
-	kfd->interrupts_active = true;
+ kfd->interrupts_active = 1;
 
-	/*
-	 * After this function returns, the interrupt will be enabled. This
-	 * barrier ensures that the interrupt running on a different processor
-	 * sees all the above writes.
-	 */
-	smp_wmb();
 
-	return 0;
+
+
+
+
+ smp_wmb();
+
+ return 0;
 }

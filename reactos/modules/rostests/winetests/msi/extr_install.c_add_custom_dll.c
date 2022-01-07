@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSIDBOPEN_TRANSACT ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MsiCreateRecord (int) ; 
- scalar_t__ MsiDatabaseCommit (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ MsiRecordSetStreamA (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  customdll ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- scalar_t__ run_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int MSIDBOPEN_TRANSACT ;
+ int MsiCloseHandle (int ) ;
+ int MsiCreateRecord (int) ;
+ scalar_t__ MsiDatabaseCommit (int ) ;
+ scalar_t__ MsiOpenDatabaseW (int ,int ,int *) ;
+ scalar_t__ MsiRecordSetStreamA (int ,int,int ) ;
+ int customdll ;
+ int msifileW ;
+ int ok (int,char*,scalar_t__,...) ;
+ scalar_t__ run_query (int ,int ,char*) ;
 
 __attribute__((used)) static void add_custom_dll(void)
 {

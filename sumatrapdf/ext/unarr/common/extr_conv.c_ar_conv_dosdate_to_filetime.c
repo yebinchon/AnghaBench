@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int time_t ;
-typedef  int time64_t ;
+
+
+
+
+typedef int uint32_t ;
+typedef int time_t ;
+typedef int time64_t ;
 struct tm {int tm_sec; int tm_min; int tm_hour; int tm_mday; int tm_mon; int tm_year; int tm_isdst; } ;
 
-/* Variables and functions */
- struct tm* gmtime (int*) ; 
- int mktime (struct tm*) ; 
+
+ struct tm* gmtime (int*) ;
+ int mktime (struct tm*) ;
 
 time64_t ar_conv_dosdate_to_filetime(uint32_t dosdate)
 {

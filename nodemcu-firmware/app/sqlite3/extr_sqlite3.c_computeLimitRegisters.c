@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  Vdbe ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u64 ;
+typedef int Vdbe ;
 struct TYPE_9__ {int nMem; } ;
-struct TYPE_8__ {int iLimit; scalar_t__ nSelectRow; int iOffset; int /*<<< orphan*/  pOffset; int /*<<< orphan*/  pLimit; int /*<<< orphan*/  selFlags; } ;
-typedef  TYPE_1__ Select ;
-typedef  TYPE_2__ Parse ;
+struct TYPE_8__ {int iLimit; scalar_t__ nSelectRow; int iOffset; int pOffset; int pLimit; int selFlags; } ;
+typedef TYPE_1__ Select ;
+typedef TYPE_2__ Parse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_IfNot ; 
- int /*<<< orphan*/  OP_Integer ; 
- int /*<<< orphan*/  OP_MustBeInt ; 
- int /*<<< orphan*/  OP_OffsetLimit ; 
- int /*<<< orphan*/  SF_FixedLimit ; 
- int /*<<< orphan*/  VdbeComment (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VdbeCoverage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3ExprCacheClear (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3ExprCode (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3ExprIsInteger (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (TYPE_2__*) ; 
- scalar_t__ sqlite3LogEst (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeGoto (int /*<<< orphan*/ *,int) ; 
+
+ int OP_IfNot ;
+ int OP_Integer ;
+ int OP_MustBeInt ;
+ int OP_OffsetLimit ;
+ int SF_FixedLimit ;
+ int VdbeComment (int *) ;
+ int VdbeCoverage (int *) ;
+ int assert (int) ;
+ int sqlite3ExprCacheClear (TYPE_2__*) ;
+ int sqlite3ExprCode (TYPE_2__*,int ,int) ;
+ scalar_t__ sqlite3ExprIsInteger (int ,int*) ;
+ int * sqlite3GetVdbe (TYPE_2__*) ;
+ scalar_t__ sqlite3LogEst (int ) ;
+ int sqlite3VdbeAddOp1 (int *,int ,int) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int ,int,int,int) ;
+ int sqlite3VdbeGoto (int *,int) ;
 
 __attribute__((used)) static void computeLimitRegisters(Parse *pParse, Select *p, int iBreak){
   Vdbe *v = 0;
@@ -45,12 +45,12 @@ __attribute__((used)) static void computeLimitRegisters(Parse *pParse, Select *p
   int n;
   if( p->iLimit ) return;
 
-  /*
-  ** "LIMIT -1" always shows all rows.  There is some
-  ** controversy about what the correct behavior should be.
-  ** The current implementation interprets "LIMIT 0" to mean
-  ** no rows.
-  */
+
+
+
+
+
+
   sqlite3ExprCacheClear(pParse);
   assert( p->pOffset==0 || p->pLimit!=0 );
   if( p->pLimit ){
@@ -74,7 +74,7 @@ __attribute__((used)) static void computeLimitRegisters(Parse *pParse, Select *p
     }
     if( p->pOffset ){
       p->iOffset = iOffset = ++pParse->nMem;
-      pParse->nMem++;   /* Allocate an extra register for limit+offset */
+      pParse->nMem++;
       sqlite3ExprCode(pParse, p->pOffset, iOffset);
       sqlite3VdbeAddOp1(v, OP_MustBeInt, iOffset); VdbeCoverage(v);
       VdbeComment((v, "OFFSET counter"));

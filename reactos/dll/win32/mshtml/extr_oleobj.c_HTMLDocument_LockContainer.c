@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ container_locked; int /*<<< orphan*/  client; } ;
-typedef  int /*<<< orphan*/  IOleContainer ;
-typedef  TYPE_1__ HTMLDocumentObj ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOleClientSite_GetContainer (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IOleContainer_LockContainer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  IOleContainer_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ container_locked; int client; } ;
+typedef int IOleContainer ;
+typedef TYPE_1__ HTMLDocumentObj ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ int IOleClientSite_GetContainer (int ,int **) ;
+ int IOleContainer_LockContainer (int *,scalar_t__) ;
+ int IOleContainer_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
 
 void HTMLDocument_LockContainer(HTMLDocumentObj *This, BOOL fLock)
 {

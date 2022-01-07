@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  access_time; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int access_time; } ;
 struct TYPE_5__ {TYPE_1__ fe; } ;
-typedef  TYPE_2__ udf_dirent_t ;
-typedef  int /*<<< orphan*/  time_t ;
+typedef TYPE_2__ udf_dirent_t ;
+typedef int time_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  udf_stamp_to_time (int /*<<< orphan*/ *,long*,int /*<<< orphan*/ ) ; 
+
+ int udf_stamp_to_time (int *,long*,int ) ;
 
 time_t
 udf_get_access_time(const udf_dirent_t *p_udf_dirent)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__representation_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__id_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_quick_wrap (int /*<<< orphan*/ *,char const*) ; 
- TYPE_1__* svn_fs_x__id_unparse (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_x__parse_representation (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_create_wrap (char*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_fs_x__representation_t ;
+typedef int svn_fs_x__id_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ char* apr_psprintf (int *,int ,int ) ;
+ int * svn_error_quick_wrap (int *,char const*) ;
+ TYPE_1__* svn_fs_x__id_unparse (int const*,int *) ;
+ int * svn_fs_x__parse_representation (int **,int ,int *,int *) ;
+ int svn_stringbuf_create_wrap (char*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 read_rep_offsets(svn_fs_x__representation_t **rep_p,

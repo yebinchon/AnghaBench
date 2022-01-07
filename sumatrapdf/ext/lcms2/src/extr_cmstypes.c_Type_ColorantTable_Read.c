@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct _cms_typehandler_struct {int dummy; } ;
-typedef  scalar_t__ cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  void cmsNAMEDCOLORLIST ;
-struct TYPE_6__ {int (* Read ) (int /*<<< orphan*/ ,TYPE_1__*,char*,int,int) ;} ;
-typedef  TYPE_1__ cmsIOHANDLER ;
-typedef  int /*<<< orphan*/  cmsContext ;
+typedef scalar_t__ cmsUInt32Number ;
+typedef int cmsUInt16Number ;
+typedef void cmsNAMEDCOLORLIST ;
+struct TYPE_6__ {int (* Read ) (int ,TYPE_1__*,char*,int,int) ;} ;
+typedef TYPE_1__ cmsIOHANDLER ;
+typedef int cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _cmsReadUInt16Array (int /*<<< orphan*/ ,TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _cmsReadUInt32Number (int /*<<< orphan*/ ,TYPE_1__*,scalar_t__*) ; 
- void* cmsAllocNamedColorList (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  cmsAppendNamedColor (int /*<<< orphan*/ ,void*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsERROR_RANGE ; 
- int /*<<< orphan*/  cmsFreeNamedColorList (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ cmsMAXCHANNELS ; 
- int /*<<< orphan*/  cmsSignalError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (scalar_t__) ; 
- int stub1 (int /*<<< orphan*/ ,TYPE_1__*,char*,int,int) ; 
+
+ int _cmsReadUInt16Array (int ,TYPE_1__*,int,int *) ;
+ int _cmsReadUInt32Number (int ,TYPE_1__*,scalar_t__*) ;
+ void* cmsAllocNamedColorList (int ,scalar_t__,int ,char*,char*) ;
+ int cmsAppendNamedColor (int ,void*,char*,int *,int *) ;
+ int cmsERROR_RANGE ;
+ int cmsFreeNamedColorList (int ,void*) ;
+ scalar_t__ cmsMAXCHANNELS ;
+ int cmsSignalError (int ,int ,char*,scalar_t__) ;
+ int cmsUNUSED_PARAMETER (scalar_t__) ;
+ int stub1 (int ,TYPE_1__*,char*,int,int) ;
 
 __attribute__((used)) static
 void *Type_ColorantTable_Read(cmsContext ContextID, struct _cms_typehandler_struct* self, cmsIOHANDLER* io, cmsUInt32Number* nItems, cmsUInt32Number SizeOfTag)
@@ -41,11 +41,11 @@ void *Type_ColorantTable_Read(cmsContext ContextID, struct _cms_typehandler_stru
     cmsUNUSED_PARAMETER(self);
 
 
-    if (!_cmsReadUInt32Number(ContextID, io, &Count)) return NULL;
+    if (!_cmsReadUInt32Number(ContextID, io, &Count)) return ((void*)0);
 
     if (Count > cmsMAXCHANNELS) {
         cmsSignalError(ContextID, cmsERROR_RANGE, "Too many colorants '%d'", Count);
-        return NULL;
+        return ((void*)0);
     }
 
     List = cmsAllocNamedColorList(ContextID, Count, 0, "", "");
@@ -56,7 +56,7 @@ void *Type_ColorantTable_Read(cmsContext ContextID, struct _cms_typehandler_stru
 
         if (!_cmsReadUInt16Array(ContextID, io, 3, PCS)) goto Error;
 
-        if (!cmsAppendNamedColor(ContextID, List, Name, PCS, NULL)) goto Error;
+        if (!cmsAppendNamedColor(ContextID, List, Name, PCS, ((void*)0))) goto Error;
 
     }
 
@@ -66,7 +66,7 @@ void *Type_ColorantTable_Read(cmsContext ContextID, struct _cms_typehandler_stru
 Error:
     *nItems = 0;
     cmsFreeNamedColorList(ContextID, List);
-    return NULL;
+    return ((void*)0);
 
     cmsUNUSED_PARAMETER(SizeOfTag);
 }

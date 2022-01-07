@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- long long atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  auto_create_new_versions ; 
- int binlog_cyclic_mode ; 
- int /*<<< orphan*/  create_day_start ; 
- int custom_version_names ; 
- long long default_timezone ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  ignore_set_timezone ; 
- int index_mode ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ) ; 
- double max_counters_growth_percent ; 
- int /*<<< orphan*/  memcache_auto_answer_mode ; 
- long long memory_to_index ; 
- int mode_ignore_user_id ; 
- int /*<<< orphan*/  monthly_stat ; 
- int /*<<< orphan*/  optarg ; 
- int sscanf (int /*<<< orphan*/ ,char*,double*) ; 
- int /*<<< orphan*/  test_mode ; 
+ long long atoi (int ) ;
+ int auto_create_new_versions ;
+ int binlog_cyclic_mode ;
+ int create_day_start ;
+ int custom_version_names ;
+ long long default_timezone ;
+ int exit (int) ;
+ int ignore_set_timezone ;
+ int index_mode ;
+ int kprintf (char*,int ) ;
+ double max_counters_growth_percent ;
+ int memcache_auto_answer_mode ;
+ long long memory_to_index ;
+ int mode_ignore_user_id ;
+ int monthly_stat ;
+ int optarg ;
+ int sscanf (int ,char*,double*) ;
+ int test_mode ;
 
 int f_parse_option (int val) {
   switch (val) {

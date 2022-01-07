@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  os_lock ; 
- int /*<<< orphan*/  rw_destroy (int /*<<< orphan*/ *) ; 
+ int os_lock ;
+ int rw_destroy (int *) ;
 
 void
 dmu_objset_fini(void)
 {
-	rw_destroy(&os_lock);
+ rw_destroy(&os_lock);
 }

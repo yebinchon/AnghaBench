@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_15__ {int /*<<< orphan*/  db; } ;
-struct TYPE_14__ {int /*<<< orphan*/  hdr; } ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_15__ {int db; } ;
+struct TYPE_14__ {int hdr; } ;
 struct TYPE_13__ {char const* Name; } ;
-typedef  TYPE_1__ MSISIGNATURE ;
-typedef  TYPE_2__ MSIRECORD ;
-typedef  TYPE_3__ MSIPACKAGE ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  char* LPBYTE ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ MSISIGNATURE ;
+typedef TYPE_2__ MSIRECORD ;
+typedef TYPE_3__ MSIPACKAGE ;
+typedef char* LPWSTR ;
+typedef int LPCWSTR ;
+typedef char* LPBYTE ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTION_ConvertRegValue (scalar_t__,char*,scalar_t__,char**) ; 
- int /*<<< orphan*/  ACTION_SearchDirectory (TYPE_3__*,TYPE_1__*,char*,int /*<<< orphan*/ ,char**) ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ ExpandEnvironmentStringsW (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/ * HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/ * HKEY_CURRENT_USER ; 
- int /*<<< orphan*/ * HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/ * HKEY_USERS ; 
- TYPE_2__* MSI_QueryGetRecord (int /*<<< orphan*/ ,char const*,char const*) ; 
- int MSI_RecordGetInteger (TYPE_2__*,int) ; 
- char* MSI_RecordGetString (TYPE_2__*,int) ; 
- scalar_t__ REG_EXPAND_SZ ; 
- scalar_t__ REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,scalar_t__*,char*,scalar_t__*) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- char* app_search_file (char*,TYPE_1__*) ; 
- scalar_t__ debugstr_w (char const*) ; 
- int /*<<< orphan*/  deformat_string (TYPE_3__*,char const*,char**) ; 
- char* msi_alloc (scalar_t__) ; 
- int /*<<< orphan*/  msi_free (char*) ; 
-#define  msidbLocatorTypeDirectory 134 
-#define  msidbLocatorTypeFileName 133 
-#define  msidbLocatorTypeRawValue 132 
-#define  msidbRegistryRootClassesRoot 131 
-#define  msidbRegistryRootCurrentUser 130 
-#define  msidbRegistryRootLocalMachine 129 
-#define  msidbRegistryRootUsers 128 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- char* strchrW (char*,char) ; 
+
+ int ACTION_ConvertRegValue (scalar_t__,char*,scalar_t__,char**) ;
+ int ACTION_SearchDirectory (TYPE_3__*,TYPE_1__*,char*,int ,char**) ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ ExpandEnvironmentStringsW (int ,char*,scalar_t__) ;
+ int FIXME (char*,int,scalar_t__,scalar_t__) ;
+ int * HKEY_CLASSES_ROOT ;
+ int * HKEY_CURRENT_USER ;
+ int * HKEY_LOCAL_MACHINE ;
+ int * HKEY_USERS ;
+ TYPE_2__* MSI_QueryGetRecord (int ,char const*,char const*) ;
+ int MSI_RecordGetInteger (TYPE_2__*,int) ;
+ char* MSI_RecordGetString (TYPE_2__*,int) ;
+ scalar_t__ REG_EXPAND_SZ ;
+ scalar_t__ REG_SZ ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKeyW (int *,char*,int **) ;
+ scalar_t__ RegQueryValueExW (int *,char*,int *,scalar_t__*,char*,scalar_t__*) ;
+ int TRACE (char*,scalar_t__) ;
+ int WARN (char*,int) ;
+ char* app_search_file (char*,TYPE_1__*) ;
+ scalar_t__ debugstr_w (char const*) ;
+ int deformat_string (TYPE_3__*,char const*,char**) ;
+ char* msi_alloc (scalar_t__) ;
+ int msi_free (char*) ;
+
+
+
+
+
+
+
+ int msiobj_release (int *) ;
+ char* strchrW (char*,char) ;
 
 __attribute__((used)) static UINT ACTION_AppSearchReg(MSIPACKAGE *package, LPWSTR *appValue, MSISIGNATURE *sig)
 {
-    static const WCHAR query[] =  {
+    static const WCHAR query[] = {
         'S','E','L','E','C','T',' ','*',' ','F','R','O','M',' ',
         'R','e','g','L','o','c','a','t','o','r',' ','W','H','E','R','E',' ',
         'S','i','g','n','a','t','u','r','e','_',' ','=',' ', '\'','%','s','\'',0};
     const WCHAR *keyPath, *valueName;
-    WCHAR *deformatted = NULL, *ptr = NULL, *end;
+    WCHAR *deformatted = ((void*)0), *ptr = ((void*)0), *end;
     int root, type;
-    HKEY rootKey, key = NULL;
+    HKEY rootKey, key = ((void*)0);
     DWORD sz = 0, regType;
-    LPBYTE value = NULL;
+    LPBYTE value = ((void*)0);
     MSIRECORD *row;
     UINT rc;
 
     TRACE("%s\n", debugstr_w(sig->Name));
 
-    *appValue = NULL;
+    *appValue = ((void*)0);
 
     row = MSI_QueryGetRecord( package->db, query, sig->Name );
     if (!row)
@@ -97,16 +97,16 @@ __attribute__((used)) static UINT ACTION_AppSearchReg(MSIPACKAGE *package, LPWST
 
     switch (root)
     {
-    case msidbRegistryRootClassesRoot:
+    case 131:
         rootKey = HKEY_CLASSES_ROOT;
         break;
-    case msidbRegistryRootCurrentUser:
+    case 130:
         rootKey = HKEY_CURRENT_USER;
         break;
-    case msidbRegistryRootLocalMachine:
+    case 129:
         rootKey = HKEY_LOCAL_MACHINE;
         break;
-    case msidbRegistryRootUsers:
+    case 128:
         rootKey = HKEY_USERS;
         break;
     default:
@@ -124,31 +124,31 @@ __attribute__((used)) static UINT ACTION_AppSearchReg(MSIPACKAGE *package, LPWST
     msi_free(deformatted);
     deformat_string(package, valueName, &deformatted);
 
-    rc = RegQueryValueExW(key, deformatted, NULL, NULL, NULL, &sz);
-    if (rc)
-    {
-        TRACE("RegQueryValueExW returned %d\n", rc);
-        goto end;
-    }
-    /* FIXME: sanity-check sz before allocating (is there an upper-limit
-     * on the value of a property?)
-     */
-    value = msi_alloc( sz );
-    rc = RegQueryValueExW(key, deformatted, NULL, &regType, value, &sz);
+    rc = RegQueryValueExW(key, deformatted, ((void*)0), ((void*)0), ((void*)0), &sz);
     if (rc)
     {
         TRACE("RegQueryValueExW returned %d\n", rc);
         goto end;
     }
 
-    /* bail out if the registry key is empty */
+
+
+    value = msi_alloc( sz );
+    rc = RegQueryValueExW(key, deformatted, ((void*)0), &regType, value, &sz);
+    if (rc)
+    {
+        TRACE("RegQueryValueExW returned %d\n", rc);
+        goto end;
+    }
+
+
     if (sz == 0)
         goto end;
 
-    /* expand if needed */
+
     if (regType == REG_EXPAND_SZ)
     {
-        sz = ExpandEnvironmentStringsW((LPCWSTR)value, NULL, 0);
+        sz = ExpandEnvironmentStringsW((LPCWSTR)value, ((void*)0), 0);
         if (sz)
         {
             LPWSTR buf = msi_alloc(sz * sizeof(WCHAR));
@@ -166,13 +166,13 @@ __attribute__((used)) static UINT ACTION_AppSearchReg(MSIPACKAGE *package, LPWST
 
     switch (type & 0x0f)
     {
-    case msidbLocatorTypeDirectory:
+    case 134:
         ACTION_SearchDirectory(package, sig, ptr, 0, appValue);
         break;
-    case msidbLocatorTypeFileName:
+    case 133:
         *appValue = app_search_file(ptr, sig);
         break;
-    case msidbLocatorTypeRawValue:
+    case 132:
         ACTION_ConvertRegValue(regType, value, sz, appValue);
         break;
     default:

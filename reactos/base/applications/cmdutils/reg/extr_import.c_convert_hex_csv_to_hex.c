@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct parser {int data_size; void* backslash; scalar_t__ data; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  void* BOOL ;
+typedef char WCHAR ;
+typedef int BYTE ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- void* FALSE ; 
- void* TRUE ; 
- scalar_t__ heap_xrealloc (scalar_t__,size_t) ; 
- int lstrlenW (char*) ; 
- unsigned long strtoulW (char*,char**,int) ; 
+
+ void* FALSE ;
+ void* TRUE ;
+ scalar_t__ heap_xrealloc (scalar_t__,size_t) ;
+ int lstrlenW (char*) ;
+ unsigned long strtoulW (char*,char**,int) ;
 
 __attribute__((used)) static BOOL convert_hex_csv_to_hex(struct parser *parser, WCHAR **str)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static BOOL convert_hex_csv_to_hex(struct parser *parser, 
 
     parser->backslash = FALSE;
 
-    /* The worst case is 1 digit + 1 comma per byte */
+
     size = ((lstrlenW(*str) + 1) / 2) + parser->data_size;
     parser->data = heap_xrealloc(parser->data, size);
 

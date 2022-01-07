@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VP8Histogram ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VP8Histogram ;
 struct TYPE_5__ {scalar_t__ yuv_p_; scalar_t__ yuv_in_; } ;
-typedef  TYPE_1__ VP8EncIterator ;
+typedef TYPE_1__ VP8EncIterator ;
 
-/* Variables and functions */
- int DEFAULT_ALPHA ; 
- int GetAlpha (int /*<<< orphan*/ *) ; 
- scalar_t__ IS_BETTER_ALPHA (int,int) ; 
- int /*<<< orphan*/  InitHistogram (int /*<<< orphan*/ *) ; 
- int MAX_UV_MODE ; 
- scalar_t__ U_OFF_ENC ; 
- int /*<<< orphan*/  VP8CollectHistogram (scalar_t__,scalar_t__,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VP8MakeChroma8Preds (TYPE_1__* const) ; 
- int /*<<< orphan*/  VP8SetIntraUVMode (TYPE_1__* const,int) ; 
- scalar_t__* VP8UVModeOffsets ; 
+
+ int DEFAULT_ALPHA ;
+ int GetAlpha (int *) ;
+ scalar_t__ IS_BETTER_ALPHA (int,int) ;
+ int InitHistogram (int *) ;
+ int MAX_UV_MODE ;
+ scalar_t__ U_OFF_ENC ;
+ int VP8CollectHistogram (scalar_t__,scalar_t__,int,int,int *) ;
+ int VP8MakeChroma8Preds (TYPE_1__* const) ;
+ int VP8SetIntraUVMode (TYPE_1__* const,int) ;
+ scalar_t__* VP8UVModeOffsets ;
 
 __attribute__((used)) static int MBAnalyzeBestUVMode(VP8EncIterator* const it) {
   int best_alpha = DEFAULT_ALPHA;
@@ -46,7 +46,7 @@ __attribute__((used)) static int MBAnalyzeBestUVMode(VP8EncIterator* const it) {
     if (IS_BETTER_ALPHA(alpha, best_alpha)) {
       best_alpha = alpha;
     }
-    // The best prediction mode tends to be the one with the smallest alpha.
+
     if (mode == 0 || alpha < smallest_alpha) {
       smallest_alpha = alpha;
       best_mode = mode;

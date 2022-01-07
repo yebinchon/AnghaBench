@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_3__* data; } ;
-typedef  TYPE_1__ stb_cfg ;
-struct TYPE_6__ {int /*<<< orphan*/  key; } ;
+typedef TYPE_1__ stb_cfg ;
+struct TYPE_6__ {int key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stb_arr_fastdelete (TYPE_3__*,int) ; 
- int stb_arr_len (TYPE_3__*) ; 
- int /*<<< orphan*/  stb_stricmp (int /*<<< orphan*/ ,char*) ; 
+
+ int stb_arr_fastdelete (TYPE_3__*,int) ;
+ int stb_arr_len (TYPE_3__*) ;
+ int stb_stricmp (int ,char*) ;
 
 int stb_cfg_delete(stb_cfg *z, char *key)
 {
    int i;
    for (i=0; i < stb_arr_len(z->data); ++i)
-      if (!stb_stricmp(z->data[i].key, key)) {   
+      if (!stb_stricmp(z->data[i].key, key)) {
          stb_arr_fastdelete(z->data, i);
          return 1;
       }

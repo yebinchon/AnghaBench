@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int int16_t ;
-typedef  scalar_t__ UINTFLOAT ;
-struct TYPE_11__ {int lag; scalar_t__* used; int /*<<< orphan*/  coef; } ;
-struct TYPE_14__ {int* swb_offset; scalar_t__* window_sequence; int /*<<< orphan*/  max_sfb; TYPE_2__ ltp; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int int16_t ;
+typedef scalar_t__ UINTFLOAT ;
+struct TYPE_11__ {int lag; scalar_t__* used; int coef; } ;
+struct TYPE_14__ {int* swb_offset; scalar_t__* window_sequence; int max_sfb; TYPE_2__ ltp; } ;
 struct TYPE_13__ {scalar_t__ present; } ;
-struct TYPE_12__ {int /*<<< orphan*/  (* apply_tns ) (scalar_t__*,TYPE_4__*,TYPE_5__*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* windowing_and_mdct_ltp ) (TYPE_3__*,scalar_t__*,scalar_t__*,TYPE_5__*) ;scalar_t__* buf_mdct; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * coeffs; TYPE_5__ ics; TYPE_4__ tns; int /*<<< orphan*/ * ltp_state; scalar_t__* ret; } ;
-typedef  TYPE_1__ SingleChannelElement ;
-typedef  TYPE_2__ LongTermPrediction ;
-typedef  scalar_t__ INTFLOAT ;
-typedef  TYPE_3__ AACContext ;
+struct TYPE_12__ {int (* apply_tns ) (scalar_t__*,TYPE_4__*,TYPE_5__*,int ) ;int (* windowing_and_mdct_ltp ) (TYPE_3__*,scalar_t__*,scalar_t__*,TYPE_5__*) ;scalar_t__* buf_mdct; } ;
+struct TYPE_10__ {int * coeffs; TYPE_5__ ics; TYPE_4__ tns; int * ltp_state; scalar_t__* ret; } ;
+typedef TYPE_1__ SingleChannelElement ;
+typedef TYPE_2__ LongTermPrediction ;
+typedef scalar_t__ INTFLOAT ;
+typedef TYPE_3__ AACContext ;
 
-/* Variables and functions */
- scalar_t__ AAC_MUL30 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ EIGHT_SHORT_SEQUENCE ; 
- int FFMIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAX_LTP_LONG_SFB ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,scalar_t__*,scalar_t__*,TYPE_5__*) ; 
- int /*<<< orphan*/  stub2 (scalar_t__*,TYPE_4__*,TYPE_5__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AAC_MUL30 (int ,int ) ;
+ scalar_t__ EIGHT_SHORT_SEQUENCE ;
+ int FFMIN (int ,int ) ;
+ int MAX_LTP_LONG_SFB ;
+ int memset (scalar_t__*,int ,int) ;
+ int stub1 (TYPE_3__*,scalar_t__*,scalar_t__*,TYPE_5__*) ;
+ int stub2 (scalar_t__*,TYPE_4__*,TYPE_5__*,int ) ;
 
 __attribute__((used)) static void apply_ltp(AACContext *ac, SingleChannelElement *sce)
 {

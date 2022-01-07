@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HUB ;
-typedef  int /*<<< orphan*/  CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetHub (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ReleaseHub (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HUB ;
+typedef int CEDAR ;
+
+
+ int * GetHub (int *,char*) ;
+ int ReleaseHub (int *) ;
 
 bool IsHub(CEDAR *cedar, char *name)
 {
-	HUB *h;
-	// Validate arguments
-	if (cedar == NULL || name == NULL)
-	{
-		return false;
-	}
+ HUB *h;
 
-	h = GetHub(cedar, name);
-	if (h == NULL)
-	{
-		return false;
-	}
+ if (cedar == ((void*)0) || name == ((void*)0))
+ {
+  return 0;
+ }
 
-	ReleaseHub(h);
+ h = GetHub(cedar, name);
+ if (h == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ ReleaseHub(h);
+
+ return 1;
 }

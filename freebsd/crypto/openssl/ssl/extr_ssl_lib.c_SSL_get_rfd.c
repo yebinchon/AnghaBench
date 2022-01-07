@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_TYPE_DESCRIPTOR ; 
- int /*<<< orphan*/ * BIO_find_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_get_fd (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * SSL_get_rbio (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int SSL ;
+typedef int BIO ;
+
+
+ int BIO_TYPE_DESCRIPTOR ;
+ int * BIO_find_type (int *,int ) ;
+ int BIO_get_fd (int *,int*) ;
+ int * SSL_get_rbio (int const*) ;
 
 int SSL_get_rfd(const SSL *s)
 {
@@ -26,7 +26,7 @@ int SSL_get_rfd(const SSL *s)
 
     b = SSL_get_rbio(s);
     r = BIO_find_type(b, BIO_TYPE_DESCRIPTOR);
-    if (r != NULL)
+    if (r != ((void*)0))
         BIO_get_fd(r, &ret);
     return ret;
 }

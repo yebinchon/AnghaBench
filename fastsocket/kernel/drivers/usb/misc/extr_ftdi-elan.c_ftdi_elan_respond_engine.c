@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
-typedef  int u16 ;
-struct usb_ftdi {int* response; int recieved; int* bulk_in_buffer; int bulk_in_left; int bulk_in_last; int expected; struct u132_target* target; TYPE_1__* udev; scalar_t__ ed_found; struct u132_respond* respond; int /*<<< orphan*/  respond_head; int /*<<< orphan*/  bulk_in_size; int /*<<< orphan*/  bulk_in_endpointAddr; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int u16 ;
+struct usb_ftdi {int* response; int recieved; int* bulk_in_buffer; int bulk_in_left; int bulk_in_last; int expected; struct u132_target* target; TYPE_1__* udev; scalar_t__ ed_found; struct u132_respond* respond; int respond_head; int bulk_in_size; int bulk_in_endpointAddr; } ;
 struct u132_target {int halted; int skipped; int toggle_bits; int error_count; int condition_code; } ;
-struct u132_respond {int* value; int /*<<< orphan*/  wait_completion; scalar_t__* result; } ;
-typedef  int /*<<< orphan*/  diag ;
-struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
+struct u132_respond {int* value; int wait_completion; scalar_t__* result; } ;
+typedef int diag ;
+struct TYPE_3__ {int dev; } ;
 
-/* Variables and functions */
- int EILSEQ ; 
- int ENOMEM ; 
- int ETIMEDOUT ; 
- int RESPOND_MASK ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,int,...) ; 
- int /*<<< orphan*/  ftdi_elan_do_callback (struct usb_ftdi*,struct u132_target*,int*,int) ; 
- int* have_ed_get_response (struct usb_ftdi*,struct u132_target*,int,int,int,int*) ; 
- int* have_ed_set_response (struct usb_ftdi*,struct u132_target*,int,int,int,int*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int usb_bulk_msg (TYPE_1__*,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  usb_rcvbulkpipe (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int EILSEQ ;
+ int ENOMEM ;
+ int ETIMEDOUT ;
+ int RESPOND_MASK ;
+ int complete (int *) ;
+ int dev_err (int *,char*,int,...) ;
+ int ftdi_elan_do_callback (struct usb_ftdi*,struct u132_target*,int*,int) ;
+ int* have_ed_get_response (struct usb_ftdi*,struct u132_target*,int,int,int,int*) ;
+ int* have_ed_set_response (struct usb_ftdi*,struct u132_target*,int,int,int,int*) ;
+ int sprintf (char*,char*,...) ;
+ int usb_bulk_msg (TYPE_1__*,int ,int*,int ,int*,int) ;
+ int usb_rcvbulkpipe (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int ftdi_elan_respond_engine(struct usb_ftdi *ftdi)
 {

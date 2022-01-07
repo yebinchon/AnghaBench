@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int R_AL; int R_DL; int /*<<< orphan*/  R_AH; } ;
-typedef  TYPE_1__ x86regs_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOTSUP ; 
- scalar_t__ VGA_PCI_BIOS_SHADOW_ADDR ; 
- int /*<<< orphan*/  X86BIOS_PHYSTOOFF (scalar_t__) ; 
- int /*<<< orphan*/  X86BIOS_PHYSTOSEG (scalar_t__) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  pci_get_bus (int /*<<< orphan*/ ) ; 
- int pci_get_function (int /*<<< orphan*/ ) ; 
- int pci_get_slot (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vga_pci_is_boot_display (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  x86bios_call (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  x86bios_get_intr (int) ; 
- int /*<<< orphan*/ * x86bios_get_orm (scalar_t__) ; 
- int /*<<< orphan*/  x86bios_init_regs (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int R_AL; int R_DL; int R_AH; } ;
+typedef TYPE_1__ x86regs_t ;
+typedef int device_t ;
+
+
+ int EINVAL ;
+ int ENOTSUP ;
+ scalar_t__ VGA_PCI_BIOS_SHADOW_ADDR ;
+ int X86BIOS_PHYSTOOFF (scalar_t__) ;
+ int X86BIOS_PHYSTOSEG (scalar_t__) ;
+ int device_printf (int ,char*) ;
+ int pci_get_bus (int ) ;
+ int pci_get_function (int ) ;
+ int pci_get_slot (int ) ;
+ int vga_pci_is_boot_display (int ) ;
+ int x86bios_call (TYPE_1__*,int ,int ) ;
+ int x86bios_get_intr (int) ;
+ int * x86bios_get_orm (scalar_t__) ;
+ int x86bios_init_regs (TYPE_1__*) ;
 
 int
 vga_pci_repost(device_t dev)
 {
-#if defined(__amd64__) || defined(__i386__)
-	x86regs_t regs;
 
-	if (!vga_pci_is_boot_display(dev))
-		return (EINVAL);
+ x86regs_t regs;
 
-	if (x86bios_get_orm(VGA_PCI_BIOS_SHADOW_ADDR) == NULL)
-		return (ENOTSUP);
+ if (!vga_pci_is_boot_display(dev))
+  return (EINVAL);
 
-	x86bios_init_regs(&regs);
+ if (x86bios_get_orm(VGA_PCI_BIOS_SHADOW_ADDR) == ((void*)0))
+  return (ENOTSUP);
 
-	regs.R_AH = pci_get_bus(dev);
-	regs.R_AL = (pci_get_slot(dev) << 3) | (pci_get_function(dev) & 0x07);
-	regs.R_DL = 0x80;
+ x86bios_init_regs(&regs);
 
-	device_printf(dev, "REPOSTing\n");
-	x86bios_call(&regs, X86BIOS_PHYSTOSEG(VGA_PCI_BIOS_SHADOW_ADDR + 3),
-	    X86BIOS_PHYSTOOFF(VGA_PCI_BIOS_SHADOW_ADDR + 3));
+ regs.R_AH = pci_get_bus(dev);
+ regs.R_AL = (pci_get_slot(dev) << 3) | (pci_get_function(dev) & 0x07);
+ regs.R_DL = 0x80;
 
-	x86bios_get_intr(0x10);
+ device_printf(dev, "REPOSTing\n");
+ x86bios_call(&regs, X86BIOS_PHYSTOSEG(VGA_PCI_BIOS_SHADOW_ADDR + 3),
+     X86BIOS_PHYSTOOFF(VGA_PCI_BIOS_SHADOW_ADDR + 3));
 
-	return (0);
-#else
-	return (ENOTSUP);
-#endif
+ x86bios_get_intr(0x10);
+
+ return (0);
+
+
+
 }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct smbus_softc {scalar_t__ owner; int /*<<< orphan*/  lock; } ;
-typedef  scalar_t__ device_t ;
 
-/* Variables and functions */
- int EACCES ; 
- int SMBUS_CALLBACK (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SMB_RELEASE_BUS ; 
- int /*<<< orphan*/  device_get_parent (scalar_t__) ; 
- struct smbus_softc* device_get_softc (scalar_t__) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wakeup (struct smbus_softc*) ; 
+
+
+
+struct smbus_softc {scalar_t__ owner; int lock; } ;
+typedef scalar_t__ device_t ;
+
+
+ int EACCES ;
+ int SMBUS_CALLBACK (int ,int ,int *) ;
+ int SMB_RELEASE_BUS ;
+ int device_get_parent (scalar_t__) ;
+ struct smbus_softc* device_get_softc (scalar_t__) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int wakeup (struct smbus_softc*) ;
 
 int
 smbus_release_bus(device_t bus, device_t dev)
 {
-	struct smbus_softc *sc = device_get_softc(bus);
-	int error;
+ struct smbus_softc *sc = device_get_softc(bus);
+ int error;
 
-	/* first, ask the underlying layers if the release is ok */
-	error = SMBUS_CALLBACK(device_get_parent(bus), SMB_RELEASE_BUS, NULL);
 
-	if (error)
-		return (error);
+ error = SMBUS_CALLBACK(device_get_parent(bus), SMB_RELEASE_BUS, ((void*)0));
 
-	mtx_lock(&sc->lock);
-	if (sc->owner == dev) {
-		sc->owner = NULL;
+ if (error)
+  return (error);
 
-		/* wakeup waiting processes */
-		wakeup(sc);
-	} else
-		error = EACCES;
-	mtx_unlock(&sc->lock);
+ mtx_lock(&sc->lock);
+ if (sc->owner == dev) {
+  sc->owner = ((void*)0);
 
-	return (error);
+
+  wakeup(sc);
+ } else
+  error = EACCES;
+ mtx_unlock(&sc->lock);
+
+ return (error);
 }

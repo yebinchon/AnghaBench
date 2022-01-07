@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_copyexec_result_data {scalar_t__ random_tag; scalar_t__ binlog_pos; int /*<<< orphan*/  result; int /*<<< orphan*/  transaction_id; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct lev_copyexec_result_data {scalar_t__ random_tag; scalar_t__ binlog_pos; int result; int transaction_id; } ;
 struct TYPE_5__ {scalar_t__ random_tag; scalar_t__ binlog_pos; void* last_action_time; void* last_data_time; void* first_data_time; } ;
-typedef  TYPE_1__ host_t ;
+typedef TYPE_1__ host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- TYPE_1__* get_host_by_random_tag (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__,scalar_t__,...) ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- void* now ; 
- int transaction_set_result (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ int exit (int) ;
+ TYPE_1__* get_host_by_random_tag (scalar_t__,int ) ;
+ int kprintf (char*,scalar_t__,scalar_t__,...) ;
+ int log_cur_pos () ;
+ void* now ;
+ int transaction_set_result (TYPE_1__*,int ,int ) ;
 
 __attribute__((used)) static int set_result (host_t *H, struct lev_copyexec_result_data *E) {
-  if (H == NULL) {
+  if (H == ((void*)0)) {
     H = get_host_by_random_tag (E->random_tag, 0);
-    if (H == NULL) {
+    if (H == ((void*)0)) {
       kprintf ("set_result: get_host_by_random_tag (0x%llx) returns NULL. (log_cur_pos: %lld)\n", E->random_tag, log_cur_pos ());
       exit (1);
     }

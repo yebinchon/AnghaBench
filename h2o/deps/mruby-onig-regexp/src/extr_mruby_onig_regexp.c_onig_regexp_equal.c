@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  OnigRegex ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Data_Get_Struct (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_RUNTIME_ERROR ; 
- int /*<<< orphan*/  mrb_class_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_iv_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_is_kind_of (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_onig_regexp_type ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ mrb_str_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
- scalar_t__ onig_get_options (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int OnigRegex ;
+
+
+ int Data_Get_Struct (int *,int ,int *,int ) ;
+ int E_RUNTIME_ERROR ;
+ int mrb_class_get (int *,char*) ;
+ int mrb_false_value () ;
+ int mrb_get_args (int *,char*,int *) ;
+ int mrb_intern_lit (int *,char*) ;
+ int mrb_iv_get (int *,int ,int ) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ scalar_t__ mrb_obj_equal (int *,int ,int ) ;
+ int mrb_obj_is_kind_of (int *,int ,int ) ;
+ int mrb_onig_regexp_type ;
+ int mrb_raise (int *,int ,char*) ;
+ scalar_t__ mrb_str_equal (int *,int ,int ) ;
+ int mrb_true_value () ;
+ scalar_t__ onig_get_options (int ) ;
 
 __attribute__((used)) static mrb_value
 onig_regexp_equal(mrb_state *mrb, mrb_value self) {

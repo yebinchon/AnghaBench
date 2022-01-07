@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_ucs4 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_NoMemory () ; 
- int SMALL_STRING ; 
- int /*<<< orphan*/  _unistripw (int /*<<< orphan*/ *,int) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+
+
+typedef int npy_ucs4 ;
+
+
+ int PyErr_NoMemory () ;
+ int SMALL_STRING ;
+ int _unistripw (int *,int) ;
+ char* malloc (int) ;
+ int memcpy (char*,char*,int) ;
 
 __attribute__((used)) static char *
 _uni_copy_n_strip(char *original, char *temp, int nc)
@@ -26,7 +26,7 @@ _uni_copy_n_strip(char *original, char *temp, int nc)
         temp = malloc(nc*sizeof(npy_ucs4));
         if (!temp) {
             PyErr_NoMemory();
-            return NULL;
+            return ((void*)0);
         }
     }
     memcpy(temp, original, nc*sizeof(npy_ucs4));

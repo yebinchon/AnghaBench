@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  char WCHAR ;
-typedef  int TAG ;
-typedef  char const* LPCWSTR ;
 
-/* Variables and functions */
-#define  TAG_TYPE_DWORD 130 
-#define  TAG_TYPE_MASK 129 
-#define  TAG_TYPE_WORD 128 
- scalar_t__ lstrcmpW (char const*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* pSdbTagToString (int const) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char const*) ; 
+
+
+
+typedef int WORD ;
+typedef char WCHAR ;
+typedef int TAG ;
+typedef char const* LPCWSTR ;
+
+
+
+
+
+ scalar_t__ lstrcmpW (char const*,char const*) ;
+ int ok (int,char*,int ,int ) ;
+ char* pSdbTagToString (int const) ;
+ int wine_dbgstr_w (char const*) ;
 
 __attribute__((used)) static void test_SdbTagToString(void)
 {
     static const TAG invalid_values[] = {
-        1, TAG_TYPE_WORD, TAG_TYPE_MASK,
-        TAG_TYPE_DWORD | 0xFF,
-        TAG_TYPE_DWORD | (0x800 + 0xEE),
+        1, 128, 129,
+        130 | 0xFF,
+        130 | (0x800 + 0xEE),
         0x900, 0xFFFF, 0xDEAD, 0xBEEF
     };
     static const WCHAR invalid[] = {'I','n','v','a','l','i','d','T','a','g',0};

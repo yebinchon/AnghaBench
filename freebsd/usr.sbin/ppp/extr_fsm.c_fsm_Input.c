@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct mbuf {int /*<<< orphan*/  m_len; } ;
-struct fsmheader {int code; int /*<<< orphan*/  id; int /*<<< orphan*/  length; } ;
-struct fsmcodedesc {int /*<<< orphan*/  (* recv ) (struct fsm*,struct fsmheader*,struct mbuf*) ;scalar_t__ check_reqid; scalar_t__ inc_reqid; int /*<<< orphan*/  name; } ;
-struct fsm {int min_code; int max_code; int /*<<< orphan*/  reqid; int /*<<< orphan*/  bundle; int /*<<< orphan*/  state; TYPE_1__* link; int /*<<< orphan*/  LogLevel; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CODE_CODEREJ ; 
- scalar_t__ Enabled (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct fsmcodedesc* FsmCodes ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  MB_UNKNOWN ; 
- int /*<<< orphan*/  OPT_IDCHECK ; 
- int /*<<< orphan*/  State2Nam (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fsm_Output (struct fsm*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,size_t,int,...) ; 
- int /*<<< orphan*/  m_freem (struct mbuf*) ; 
- size_t m_length (struct mbuf*) ; 
- struct mbuf* m_prepend (struct mbuf*,struct fsmheader*,int,int /*<<< orphan*/ ) ; 
- struct mbuf* m_pullup (struct mbuf*) ; 
- struct mbuf* mbuf_Read (struct mbuf*,struct fsmheader*,int) ; 
- size_t ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct fsm*,struct fsmheader*,struct mbuf*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_char ;
+struct mbuf {int m_len; } ;
+struct fsmheader {int code; int id; int length; } ;
+struct fsmcodedesc {int (* recv ) (struct fsm*,struct fsmheader*,struct mbuf*) ;scalar_t__ check_reqid; scalar_t__ inc_reqid; int name; } ;
+struct fsm {int min_code; int max_code; int reqid; int bundle; int state; TYPE_1__* link; int LogLevel; } ;
+struct TYPE_2__ {int name; } ;
+
+
+ int CODE_CODEREJ ;
+ scalar_t__ Enabled (int ,int ) ;
+ struct fsmcodedesc* FsmCodes ;
+ int LogWARN ;
+ int MBUF_CTOP (struct mbuf*) ;
+ int MB_UNKNOWN ;
+ int OPT_IDCHECK ;
+ int State2Nam (int ) ;
+ int fsm_Output (struct fsm*,int ,int ,int ,int ,int ) ;
+ int log_Printf (int ,char*,int ,size_t,int,...) ;
+ int m_freem (struct mbuf*) ;
+ size_t m_length (struct mbuf*) ;
+ struct mbuf* m_prepend (struct mbuf*,struct fsmheader*,int,int ) ;
+ struct mbuf* m_pullup (struct mbuf*) ;
+ struct mbuf* mbuf_Read (struct mbuf*,struct fsmheader*,int) ;
+ size_t ntohs (int ) ;
+ int stub1 (struct fsm*,struct fsmheader*,struct mbuf*) ;
 
 void
 fsm_Input(struct fsm *fp, struct mbuf *bp)
@@ -60,10 +60,10 @@ fsm_Input(struct fsm *fp, struct mbuf *bp)
 
   if (lh.code < fp->min_code || lh.code > fp->max_code ||
       lh.code > sizeof FsmCodes / sizeof *FsmCodes) {
-    /*
-     * Use a private id.  This is really a response-type packet, but we
-     * MUST send a unique id for each REQ....
-     */
+
+
+
+
     static u_char id;
 
     bp = m_prepend(bp, &lh, sizeof lh, 0);
@@ -86,7 +86,7 @@ fsm_Input(struct fsm *fp, struct mbuf *bp)
 
   if (codep->inc_reqid && (lh.id == fp->reqid ||
       (!Enabled(fp->bundle, OPT_IDCHECK) && codep->check_reqid)))
-    fp->reqid++;	/* That's the end of that ``exchange''.... */
+    fp->reqid++;
 
   (*codep->recv)(fp, &lh, bp);
 }

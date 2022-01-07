@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct sockaddr {int dummy; } ;
-struct TYPE_6__ {int fd; int origlen; int /*<<< orphan*/  thread; int /*<<< orphan*/ * first; scalar_t__ session_count; int /*<<< orphan*/  wait; int /*<<< orphan*/  lock; int /*<<< orphan*/  interval; int /*<<< orphan*/  orig; int /*<<< orphan*/  group; } ;
-typedef  TYPE_1__ sap_address_t ;
+struct TYPE_6__ {int fd; int origlen; int thread; int * first; scalar_t__ session_count; int wait; int lock; int interval; int orig; int group; } ;
+typedef TYPE_1__ sap_address_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPORT_SAP ; 
- int /*<<< orphan*/  RunThread ; 
- int /*<<< orphan*/  VLC_THREAD_PRIORITY_LOW ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  getsockname (int,struct sockaddr*,int*) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  net_Close (int) ; 
- int net_ConnectUDP (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  var_CreateGetInteger (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ vlc_clone (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_cond_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
+
+ int IPPORT_SAP ;
+ int RunThread ;
+ int VLC_THREAD_PRIORITY_LOW ;
+ int free (TYPE_1__*) ;
+ int getsockname (int,struct sockaddr*,int*) ;
+ TYPE_1__* malloc (int) ;
+ int msg_Err (int *,char*) ;
+ int net_Close (int) ;
+ int net_ConnectUDP (int *,char const*,int ,int) ;
+ int strlcpy (int ,char const*,int) ;
+ int var_CreateGetInteger (int *,char*) ;
+ scalar_t__ vlc_clone (int *,int ,TYPE_1__*,int ) ;
+ int vlc_cond_init (int *) ;
+ int vlc_mutex_init (int *) ;
 
 __attribute__((used)) static sap_address_t *AddressCreate (vlc_object_t *obj, const char *group)
 {
     int fd = net_ConnectUDP (obj, group, IPPORT_SAP, 255);
     if (fd == -1)
-        return NULL;
+        return ((void*)0);
 
     sap_address_t *addr = malloc (sizeof (*addr));
-    if (addr == NULL)
+    if (addr == ((void*)0))
     {
         net_Close (fd);
-        return NULL;
+        return ((void*)0);
     }
 
     strlcpy (addr->group, group, sizeof (addr->group));
@@ -54,14 +54,14 @@ __attribute__((used)) static sap_address_t *AddressCreate (vlc_object_t *obj, co
     vlc_mutex_init (&addr->lock);
     vlc_cond_init (&addr->wait);
     addr->session_count = 0;
-    addr->first = NULL;
+    addr->first = ((void*)0);
 
     if (vlc_clone (&addr->thread, RunThread, addr, VLC_THREAD_PRIORITY_LOW))
     {
         msg_Err (obj, "unable to spawn SAP announce thread");
         net_Close (fd);
         free (addr);
-        return NULL;
+        return ((void*)0);
     }
     return addr;
 }

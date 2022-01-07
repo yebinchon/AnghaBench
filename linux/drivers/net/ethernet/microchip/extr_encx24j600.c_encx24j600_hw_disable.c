@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct encx24j600_priv {int hw_enabled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISABLERX ; 
- int /*<<< orphan*/  EIE ; 
- int /*<<< orphan*/  encx24j600_cmd (struct encx24j600_priv*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  encx24j600_write_reg (struct encx24j600_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DISABLERX ;
+ int EIE ;
+ int encx24j600_cmd (struct encx24j600_priv*,int ) ;
+ int encx24j600_write_reg (struct encx24j600_priv*,int ,int ) ;
 
 __attribute__((used)) static void encx24j600_hw_disable(struct encx24j600_priv *priv)
 {
-	/* Disable all interrupts */
-	encx24j600_write_reg(priv, EIE, 0);
 
-	/* Disable RX */
-	encx24j600_cmd(priv, DISABLERX);
+ encx24j600_write_reg(priv, EIE, 0);
 
-	priv->hw_enabled = false;
+
+ encx24j600_cmd(priv, DISABLERX);
+
+ priv->hw_enabled = 0;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct pci_bus {int dummy; } ;
 
-/* Variables and functions */
- int octeon_pcie_read_config (int,struct pci_bus*,unsigned int,int,int,int /*<<< orphan*/ *) ; 
+
+ int octeon_pcie_read_config (int,struct pci_bus*,unsigned int,int,int,int *) ;
 
 __attribute__((used)) static int octeon_pcie1_read_config(struct pci_bus *bus, unsigned int devfn,
-				    int reg, int size, u32 *val)
+        int reg, int size, u32 *val)
 {
-	return octeon_pcie_read_config(1, bus, devfn, reg, size, val);
+ return octeon_pcie_read_config(1, bus, devfn, reg, size, val);
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  skeymat2 ;
-typedef  int /*<<< orphan*/  skeymat1 ;
-typedef  int /*<<< orphan*/  label ;
-typedef  int /*<<< orphan*/  context ;
-typedef  int /*<<< orphan*/  ckeymat2 ;
-typedef  int /*<<< orphan*/  ckeymat1 ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SSL_SESSION ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int SSL_EARLY_DATA_ACCEPTED ; 
- int SSL_READ_EARLY_DATA_ERROR ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_export_keying_material_early (int /*<<< orphan*/ *,unsigned char*,int,char const*,int,unsigned char const*,int) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_get_early_data_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_read_early_data (int /*<<< orphan*/ *,unsigned char*,int,size_t*) ; 
- int /*<<< orphan*/  SSL_write_early_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  TEST_mem_ne (unsigned char*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * clientpsk ; 
- int /*<<< orphan*/ * serverpsk ; 
- int /*<<< orphan*/  setupearly_data_test (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int) ; 
+
+
+
+typedef int skeymat2 ;
+typedef int skeymat1 ;
+typedef int label ;
+typedef int context ;
+typedef int ckeymat2 ;
+typedef int ckeymat1 ;
+typedef int buf ;
+typedef int SSL_SESSION ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int SSL_CTX_free (int *) ;
+ int SSL_EARLY_DATA_ACCEPTED ;
+ int SSL_READ_EARLY_DATA_ERROR ;
+ int SSL_SESSION_free (int *) ;
+ int SSL_export_keying_material_early (int *,unsigned char*,int,char const*,int,unsigned char const*,int) ;
+ int SSL_free (int *) ;
+ int SSL_get_early_data_status (int *) ;
+ int SSL_read_early_data (int *,unsigned char*,int,size_t*) ;
+ int SSL_write_early_data (int *,int *,int ,size_t*) ;
+ int TEST_int_eq (int ,int) ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char*,int) ;
+ int TEST_mem_ne (unsigned char*,int,unsigned char*,int) ;
+ int TEST_true (int ) ;
+ int * clientpsk ;
+ int * serverpsk ;
+ int setupearly_data_test (int **,int **,int **,int **,int **,int) ;
 
 __attribute__((used)) static int test_export_key_mat_early(int idx)
 {
     static const char label[] = "test label";
     static const unsigned char context[] = "context";
     int testresult = 0;
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
-    SSL_SESSION *sess = NULL;
-    const unsigned char *emptycontext = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
+    SSL_SESSION *sess = ((void*)0);
+    const unsigned char *emptycontext = ((void*)0);
     unsigned char ckeymat1[80], ckeymat2[80];
     unsigned char skeymat1[80], skeymat2[80];
     unsigned char buf[1];
@@ -57,8 +57,8 @@ __attribute__((used)) static int test_export_key_mat_early(int idx)
                                         &sess, idx)))
         goto end;
 
-    /* Here writing 0 length early data is enough. */
-    if (!TEST_true(SSL_write_early_data(clientssl, NULL, 0, &written))
+
+    if (!TEST_true(SSL_write_early_data(clientssl, ((void*)0), 0, &written))
             || !TEST_int_eq(SSL_read_early_data(serverssl, buf, sizeof(buf),
                                                 &readbytes),
                             SSL_READ_EARLY_DATA_ERROR)
@@ -78,19 +78,19 @@ __attribute__((used)) static int test_export_key_mat_early(int idx)
             || !TEST_int_eq(SSL_export_keying_material_early(
                             serverssl, skeymat2, sizeof(skeymat2), label,
                             sizeof(label) - 1, emptycontext, 0), 1)
-               /*
-                * Check that both sides created the same key material with the
-                * same context.
-                */
+
+
+
+
             || !TEST_mem_eq(ckeymat1, sizeof(ckeymat1), skeymat1,
                             sizeof(skeymat1))
-               /*
-                * Check that both sides created the same key material with an
-                * empty context.
-                */
+
+
+
+
             || !TEST_mem_eq(ckeymat2, sizeof(ckeymat2), skeymat2,
                             sizeof(skeymat2))
-               /* Different contexts should produce different results */
+
             || !TEST_mem_ne(ckeymat1, sizeof(ckeymat1), ckeymat2,
                             sizeof(ckeymat2)))
         goto end;
@@ -101,7 +101,7 @@ __attribute__((used)) static int test_export_key_mat_early(int idx)
     SSL_SESSION_free(sess);
     SSL_SESSION_free(clientpsk);
     SSL_SESSION_free(serverpsk);
-    clientpsk = serverpsk = NULL;
+    clientpsk = serverpsk = ((void*)0);
     SSL_free(serverssl);
     SSL_free(clientssl);
     SSL_CTX_free(sctx);

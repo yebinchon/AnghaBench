@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+typedef int WINDOW ;
 struct TYPE_13__ {int size; int selectable; int checked; int idx; struct TYPE_13__* items; struct TYPE_13__* name; } ;
 struct TYPE_12__ {scalar_t__ field; scalar_t__ sort; } ;
-struct TYPE_11__ {int /*<<< orphan*/  append_method; int /*<<< orphan*/  append_protocol; int /*<<< orphan*/  bandwidth; int /*<<< orphan*/  serve_usecs; } ;
-typedef  scalar_t__ GSortField ;
-typedef  TYPE_1__ GSort ;
-typedef  size_t GModule ;
-typedef  TYPE_2__ GMenu ;
-typedef  TYPE_2__ GItem ;
+struct TYPE_11__ {int append_method; int append_protocol; int bandwidth; int serve_usecs; } ;
+typedef scalar_t__ GSortField ;
+typedef TYPE_1__ GSort ;
+typedef size_t GModule ;
+typedef TYPE_2__ GMenu ;
+typedef TYPE_2__ GItem ;
 
-/* Variables and functions */
-#define  KEY_DOWN 131 
-#define  KEY_ENTER 130 
-#define  KEY_RESIZE 129 
-#define  KEY_UP 128 
- int /*<<< orphan*/  MTRC_AVGTS_LBL ; 
- int /*<<< orphan*/  MTRC_BW_LBL ; 
- int /*<<< orphan*/  MTRC_CUMTS_LBL ; 
- int /*<<< orphan*/  MTRC_DATA_LBL ; 
- int /*<<< orphan*/  MTRC_HITS_LBL ; 
- int /*<<< orphan*/  MTRC_MAXTS_LBL ; 
- int /*<<< orphan*/  MTRC_METHODS_LBL ; 
- int /*<<< orphan*/  MTRC_PROTOCOLS_LBL ; 
- int /*<<< orphan*/  MTRC_VISITORS_LBL ; 
- int /*<<< orphan*/  REQ_DOWN ; 
- int /*<<< orphan*/  REQ_SEL ; 
- int /*<<< orphan*/  REQ_UP ; 
- int /*<<< orphan*/  SORTDLG_DESC ; 
- int /*<<< orphan*/  SORTDLG_HEAD ; 
- scalar_t__ SORT_ASC ; 
- int /*<<< orphan*/  SORT_ASC_SEL ; 
- scalar_t__ SORT_BY_AVGTS ; 
- scalar_t__ SORT_BY_BW ; 
- scalar_t__ SORT_BY_CUMTS ; 
- scalar_t__ SORT_BY_DATA ; 
- scalar_t__ SORT_BY_HITS ; 
- scalar_t__ SORT_BY_MAXTS ; 
- scalar_t__ SORT_BY_MTHD ; 
- scalar_t__ SORT_BY_PROT ; 
- scalar_t__ SORT_BY_VISITORS ; 
- scalar_t__ SORT_DESC ; 
- int /*<<< orphan*/  SORT_DESC_SEL ; 
- int SORT_MAX_OPTS ; 
- int /*<<< orphan*/  SORT_MENU_H ; 
- int /*<<< orphan*/  SORT_MENU_W ; 
- int /*<<< orphan*/  SORT_MENU_X ; 
- int /*<<< orphan*/  SORT_MENU_Y ; 
- int SORT_WIN_H ; 
- int SORT_WIN_W ; 
- int /*<<< orphan*/  TRUE ; 
- void* alloc_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_win (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  color_panel_header ; 
- TYPE_10__ conf ; 
- int /*<<< orphan*/  draw_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  getmaxyx (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  gmenu_driver (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  keypad (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvwprintw (int /*<<< orphan*/ *,int,int,char*,...) ; 
- TYPE_2__* new_gmenu (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * newwin (int,int,int,int) ; 
- int /*<<< orphan*/  post_gmenu (TYPE_2__*) ; 
- int** sort_choices ; 
- int /*<<< orphan*/  stdscr ; 
- int /*<<< orphan*/  strcmp (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  touchwin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wborder (int /*<<< orphan*/ *,char,char,char,char,char,char,char,char) ; 
- int wgetch (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wrefresh (int /*<<< orphan*/ *) ; 
- scalar_t__ xcalloc (int,int) ; 
+
+
+
+
+
+ int MTRC_AVGTS_LBL ;
+ int MTRC_BW_LBL ;
+ int MTRC_CUMTS_LBL ;
+ int MTRC_DATA_LBL ;
+ int MTRC_HITS_LBL ;
+ int MTRC_MAXTS_LBL ;
+ int MTRC_METHODS_LBL ;
+ int MTRC_PROTOCOLS_LBL ;
+ int MTRC_VISITORS_LBL ;
+ int REQ_DOWN ;
+ int REQ_SEL ;
+ int REQ_UP ;
+ int SORTDLG_DESC ;
+ int SORTDLG_HEAD ;
+ scalar_t__ SORT_ASC ;
+ int SORT_ASC_SEL ;
+ scalar_t__ SORT_BY_AVGTS ;
+ scalar_t__ SORT_BY_BW ;
+ scalar_t__ SORT_BY_CUMTS ;
+ scalar_t__ SORT_BY_DATA ;
+ scalar_t__ SORT_BY_HITS ;
+ scalar_t__ SORT_BY_MAXTS ;
+ scalar_t__ SORT_BY_MTHD ;
+ scalar_t__ SORT_BY_PROT ;
+ scalar_t__ SORT_BY_VISITORS ;
+ scalar_t__ SORT_DESC ;
+ int SORT_DESC_SEL ;
+ int SORT_MAX_OPTS ;
+ int SORT_MENU_H ;
+ int SORT_MENU_W ;
+ int SORT_MENU_X ;
+ int SORT_MENU_Y ;
+ int SORT_WIN_H ;
+ int SORT_WIN_W ;
+ int TRUE ;
+ void* alloc_string (int ) ;
+ int close_win (int *) ;
+ int color_panel_header ;
+ TYPE_10__ conf ;
+ int draw_header (int *,int ,char*,int,int,int,int ) ;
+ int free (TYPE_2__*) ;
+ int getmaxyx (int ,int,int) ;
+ int gmenu_driver (TYPE_2__*,int ) ;
+ int keypad (int *,int ) ;
+ int mvwprintw (int *,int,int,char*,...) ;
+ TYPE_2__* new_gmenu (int *,int ,int ,int ,int ) ;
+ int * newwin (int,int,int,int) ;
+ int post_gmenu (TYPE_2__*) ;
+ int** sort_choices ;
+ int stdscr ;
+ int strcmp (char*,TYPE_2__*) ;
+ int touchwin (int *) ;
+ int wborder (int *,char,char,char,char,char,char,char,char) ;
+ int wgetch (int ) ;
+ int wrefresh (int *) ;
+ scalar_t__ xcalloc (int,int) ;
 
 void
 load_sort_win (WINDOW * main_win, GModule module, GSort * sort)
@@ -99,7 +99,7 @@ load_sort_win (WINDOW * main_win, GModule module, GSort * sort)
 
   getmaxyx (stdscr, y, x);
 
-  /* determine amount of sort choices */
+
   for (i = 0, k = 0; -1 != sort_choices[module][i]; i++) {
     GSortField field = sort_choices[module][i];
     if (SORT_BY_CUMTS == field && !conf.serve_usecs)
@@ -122,15 +122,15 @@ load_sort_win (WINDOW * main_win, GModule module, GSort * sort)
   keypad (win, TRUE);
   wborder (win, '|', '|', '-', '-', '+', '+', '+', '+');
 
-  /* create a new instance of GMenu and make it selectable */
+
   menu = new_gmenu (win, SORT_MENU_H, SORT_MENU_W, SORT_MENU_Y, SORT_MENU_X);
   menu->size = n;
   menu->selectable = 1;
 
-  /* add items to GMenu */
+
   menu->items = (GItem *) xcalloc (n, sizeof (GItem));
 
-  /* set choices, checked option and index */
+
   for (i = 0; i < n; ++i) {
     GSortField field = sort_choices[module][opts[i]];
     if (SORT_BY_HITS == field) {
@@ -203,19 +203,19 @@ load_sort_win (WINDOW * main_win, GModule module, GSort * sort)
   while (quit) {
     c = wgetch (stdscr);
     switch (c) {
-    case KEY_DOWN:
+    case 131:
       gmenu_driver (menu, REQ_DOWN);
       break;
-    case KEY_UP:
+    case 128:
       gmenu_driver (menu, REQ_UP);
       break;
-    case 9:    /* TAB */
+    case 9:
       if (sort->sort == SORT_ASC) {
-        /* ascending */
+
         sort->sort = SORT_DESC;
         mvwprintw (win, SORT_WIN_H - 2, 1, " %s", SORT_DESC_SEL);
       } else {
-        /* descending */
+
         sort->sort = SORT_ASC;
         mvwprintw (win, SORT_WIN_H - 2, 1, " %s", SORT_ASC_SEL);
       }
@@ -223,7 +223,7 @@ load_sort_win (WINDOW * main_win, GModule module, GSort * sort)
     case 32:
     case 0x0a:
     case 0x0d:
-    case KEY_ENTER:
+    case 130:
       gmenu_driver (menu, REQ_SEL);
       for (i = 0; i < n; ++i) {
         if (menu->items[i].checked != 1)
@@ -250,7 +250,7 @@ load_sort_win (WINDOW * main_win, GModule module, GSort * sort)
         break;
       }
       break;
-    case KEY_RESIZE:
+    case 129:
     case 'q':
       quit = 0;
       break;
@@ -258,7 +258,7 @@ load_sort_win (WINDOW * main_win, GModule module, GSort * sort)
     wrefresh (win);
   }
 
-  /* clean stuff up */
+
   for (i = 0; i < n; ++i)
     free (menu->items[i].name);
   free (menu->items);

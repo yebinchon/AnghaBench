@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
-typedef  int /*<<< orphan*/  const hb_dict_t ;
-struct TYPE_3__ {int /*<<< orphan*/  short_name; } ;
-typedef  TYPE_1__ hb_container_t ;
 
-/* Variables and functions */
- int HB_MUX_MASK_MP4 ; 
- int /*<<< orphan*/  HB_VALUE_TYPE_BOOL ; 
- scalar_t__ HB_VALUE_TYPE_STRING ; 
- int /*<<< orphan*/  free (char*) ; 
- int hb_container_get_from_extension (int /*<<< orphan*/ ) ; 
- TYPE_1__* hb_container_get_from_format (int) ; 
- int hb_container_get_from_name (int /*<<< orphan*/ ) ; 
- void* hb_dict_get (int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/  const* hb_dict_init () ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/  const*,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  hb_error (char*,char*) ; 
- int hb_value_get_int (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_get_string (int /*<<< orphan*/ *) ; 
- char* hb_value_get_string_xform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* hb_value_string (int /*<<< orphan*/ ) ; 
- scalar_t__ hb_value_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* hb_value_xform (void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hb_value_t ;
+typedef int const hb_dict_t ;
+struct TYPE_3__ {int short_name; } ;
+typedef TYPE_1__ hb_container_t ;
+
+
+ int HB_MUX_MASK_MP4 ;
+ int HB_VALUE_TYPE_BOOL ;
+ scalar_t__ HB_VALUE_TYPE_STRING ;
+ int free (char*) ;
+ int hb_container_get_from_extension (int ) ;
+ TYPE_1__* hb_container_get_from_format (int) ;
+ int hb_container_get_from_name (int ) ;
+ void* hb_dict_get (int const*,char*) ;
+ int const* hb_dict_init () ;
+ int hb_dict_set (int const*,char*,int const*) ;
+ int hb_error (char*,char*) ;
+ int hb_value_get_int (int *) ;
+ int hb_value_get_string (int *) ;
+ char* hb_value_get_string_xform (int *) ;
+ int const* hb_value_string (int ) ;
+ scalar_t__ hb_value_type (int *) ;
+ int const* hb_value_xform (void*,int ) ;
 
 int hb_preset_apply_mux(const hb_dict_t *preset, hb_dict_t *job_dict)
 {
@@ -51,7 +51,7 @@ int hb_preset_apply_mux(const hb_dict_t *preset, hb_dict_t *job_dict)
         mux = hb_value_get_int(mux_value);
     }
     hb_container_t *container = hb_container_get_from_format(mux);
-    if (container == NULL)
+    if (container == ((void*)0))
     {
         char *str = hb_value_get_string_xform(mux_value);
         hb_error("Invalid container (%s)", str);

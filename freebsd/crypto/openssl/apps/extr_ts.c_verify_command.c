@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_VERIFY_PARAM ;
-typedef  int /*<<< orphan*/  TS_VERIFY_CTX ;
-typedef  int /*<<< orphan*/  TS_RESP ;
-typedef  int /*<<< orphan*/  PKCS7 ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (char const*,char*) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PKCS7_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TS_RESP_free (int /*<<< orphan*/ *) ; 
- int TS_RESP_verify_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int TS_RESP_verify_token (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TS_VERIFY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * create_verify_ctx (char const*,char const*,char const*,char const*,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * d2i_PKCS7_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * d2i_TS_RESP_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+
+
+typedef int X509_VERIFY_PARAM ;
+typedef int TS_VERIFY_CTX ;
+typedef int TS_RESP ;
+typedef int PKCS7 ;
+typedef int BIO ;
+
+
+ int BIO_free_all (int *) ;
+ int * BIO_new_file (char const*,char*) ;
+ int ERR_print_errors (int ) ;
+ int PKCS7_free (int *) ;
+ int TS_RESP_free (int *) ;
+ int TS_RESP_verify_response (int *,int *) ;
+ int TS_RESP_verify_token (int *,int *) ;
+ int TS_VERIFY_CTX_free (int *) ;
+ int bio_err ;
+ int * create_verify_ctx (char const*,char const*,char const*,char const*,char const*,char const*,int *) ;
+ int * d2i_PKCS7_bio (int *,int *) ;
+ int * d2i_TS_RESP_bio (int *,int *) ;
+ int printf (char*) ;
 
 __attribute__((used)) static int verify_command(const char *data, const char *digest, const char *queryfile,
                           const char *in, int token_in,
                           const char *CApath, const char *CAfile, const char *untrusted,
                           X509_VERIFY_PARAM *vpm)
 {
-    BIO *in_bio = NULL;
-    PKCS7 *token = NULL;
-    TS_RESP *response = NULL;
-    TS_VERIFY_CTX *verify_ctx = NULL;
+    BIO *in_bio = ((void*)0);
+    PKCS7 *token = ((void*)0);
+    TS_RESP *response = ((void*)0);
+    TS_VERIFY_CTX *verify_ctx = ((void*)0);
     int ret = 0;
 
-    if ((in_bio = BIO_new_file(in, "rb")) == NULL)
+    if ((in_bio = BIO_new_file(in, "rb")) == ((void*)0))
         goto end;
     if (token_in) {
-        if ((token = d2i_PKCS7_bio(in_bio, NULL)) == NULL)
+        if ((token = d2i_PKCS7_bio(in_bio, ((void*)0))) == ((void*)0))
             goto end;
     } else {
-        if ((response = d2i_TS_RESP_bio(in_bio, NULL)) == NULL)
+        if ((response = d2i_TS_RESP_bio(in_bio, ((void*)0))) == ((void*)0))
             goto end;
     }
 
     if ((verify_ctx = create_verify_ctx(data, digest, queryfile,
                                         CApath, CAfile, untrusted,
-                                        vpm)) == NULL)
+                                        vpm)) == ((void*)0))
         goto end;
 
     ret = token_in

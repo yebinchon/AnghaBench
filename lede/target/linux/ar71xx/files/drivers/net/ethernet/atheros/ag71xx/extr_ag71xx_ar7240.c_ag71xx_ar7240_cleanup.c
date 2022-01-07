@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ar7240sw {int /*<<< orphan*/  swdev; } ;
+
+
+
+
+struct ar7240sw {int swdev; } ;
 struct ag71xx {struct ar7240sw* phy_priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct ar7240sw*) ; 
- int /*<<< orphan*/  unregister_switch (int /*<<< orphan*/ *) ; 
+
+ int kfree (struct ar7240sw*) ;
+ int unregister_switch (int *) ;
 
 void ag71xx_ar7240_cleanup(struct ag71xx *ag)
 {
-	struct ar7240sw *as = ag->phy_priv;
+ struct ar7240sw *as = ag->phy_priv;
 
-	if (!as)
-		return;
+ if (!as)
+  return;
 
-	unregister_switch(&as->swdev);
-	kfree(as);
-	ag->phy_priv = NULL;
+ unregister_switch(&as->swdev);
+ kfree(as);
+ ag->phy_priv = ((void*)0);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pt_entry {TYPE_1__* data; } ;
 struct mem {int dummy; } ;
-typedef  int page_t ;
-struct TYPE_2__ {int /*<<< orphan*/  data; } ;
+typedef int page_t ;
+struct TYPE_2__ {int data; } ;
 
-/* Variables and functions */
- int MEM_PAGES ; 
- int O_CREAT ; 
- int O_RDWR ; 
- int O_TRUNC ; 
- int PAGE_BITS ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ ftruncate (int,int) ; 
- scalar_t__ lseek (int,int,int /*<<< orphan*/ ) ; 
- struct pt_entry* mem_pt (struct mem*,int) ; 
- int open (char const*,int,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printk (char*,int) ; 
- scalar_t__ write (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MEM_PAGES ;
+ int O_CREAT ;
+ int O_RDWR ;
+ int O_TRUNC ;
+ int PAGE_BITS ;
+ int PAGE_SIZE ;
+ int SEEK_SET ;
+ int close (int) ;
+ scalar_t__ ftruncate (int,int) ;
+ scalar_t__ lseek (int,int,int ) ;
+ struct pt_entry* mem_pt (struct mem*,int) ;
+ int open (char const*,int,int) ;
+ int perror (char*) ;
+ int printk (char*,int) ;
+ scalar_t__ write (int,int ,int ) ;
 
 void mem_coredump(struct mem *mem, const char *file) {
     int fd = open(file, O_CREAT | O_RDWR | O_TRUNC, 0666);
@@ -47,7 +47,7 @@ void mem_coredump(struct mem *mem, const char *file) {
     int pages = 0;
     for (page_t page = 0; page < MEM_PAGES; page++) {
         struct pt_entry *entry = mem_pt(mem, page);
-        if (entry == NULL)
+        if (entry == ((void*)0))
             continue;
         pages++;
         if (lseek(fd, page << PAGE_BITS, SEEK_SET) < 0) {

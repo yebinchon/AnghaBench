@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8_t ;
-typedef  int u32_t ;
-typedef  int /*<<< orphan*/  ip_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LWIP_ASSERT (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htonl (int) ; 
- int /*<<< orphan*/  ip4_addr_set_u32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ isdigit (char) ; 
- scalar_t__ islower (char) ; 
- int /*<<< orphan*/  isspace (char) ; 
- scalar_t__ isxdigit (char) ; 
+
+
+
+typedef int u8_t ;
+typedef int u32_t ;
+typedef int ip_addr_t ;
+
+
+ int LWIP_ASSERT (char*,int ) ;
+ int htonl (int) ;
+ int ip4_addr_set_u32 (int *,int ) ;
+ scalar_t__ isdigit (char) ;
+ scalar_t__ islower (char) ;
+ int isspace (char) ;
+ scalar_t__ isxdigit (char) ;
 
 int
 ipaddr_aton(const char *cp, ip_addr_t *addr)
@@ -34,11 +34,11 @@ ipaddr_aton(const char *cp, ip_addr_t *addr)
 
   c = *cp;
   for (;;) {
-    /*
-     * Collect number up to ``.''.
-     * Values are specified as for C:
-     * 0x=hex, 0=octal, 1-9=decimal.
-     */
+
+
+
+
+
     if (!isdigit(c))
       return (0);
     val = 0;
@@ -62,12 +62,12 @@ ipaddr_aton(const char *cp, ip_addr_t *addr)
         break;
     }
     if (c == '.') {
-      /*
-       * Internet format:
-       *  a.b.c.d
-       *  a.b.c   (with c treated as 16 bits)
-       *  a.b (with b treated as 24 bits)
-       */
+
+
+
+
+
+
       if (pp >= parts + 3) {
         return (0);
       }
@@ -76,39 +76,39 @@ ipaddr_aton(const char *cp, ip_addr_t *addr)
     } else
       break;
   }
-  /*
-   * Check for trailing characters.
-   */
+
+
+
   if (c != '\0' && !isspace(c)) {
     return (0);
   }
-  /*
-   * Concoct the address according to
-   * the number of parts specified.
-   */
+
+
+
+
   switch (pp - parts + 1) {
 
   case 0:
-    return (0);       /* initial nondigit */
+    return (0);
 
-  case 1:             /* a -- 32 bits */
+  case 1:
     break;
 
-  case 2:             /* a.b -- 8.24 bits */
+  case 2:
     if (val > 0xffffffUL) {
       return (0);
     }
     val |= parts[0] << 24;
     break;
 
-  case 3:             /* a.b.c -- 8.8.16 bits */
+  case 3:
     if (val > 0xffff) {
       return (0);
     }
     val |= (parts[0] << 24) | (parts[1] << 16);
     break;
 
-  case 4:             /* a.b.c.d -- 8.8.8.8 bits */
+  case 4:
     if (val > 0xff) {
       return (0);
     }

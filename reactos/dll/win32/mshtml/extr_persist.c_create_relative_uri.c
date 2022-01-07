@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_3__ {scalar_t__ uri; } ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  TYPE_1__ HTMLOuterWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int IUri ;
+typedef TYPE_1__ HTMLOuterWindow ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoInternetCombineUrlEx (scalar_t__,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int URL_DONT_ESCAPE_EXTRA_INFO ; 
- int URL_ESCAPE_SPACES_ONLY ; 
- int /*<<< orphan*/  create_uri (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+ int CoInternetCombineUrlEx (scalar_t__,int const*,int,int **,int ) ;
+ int URL_DONT_ESCAPE_EXTRA_INFO ;
+ int URL_ESCAPE_SPACES_ONLY ;
+ int create_uri (int const*,int ,int **) ;
 
 HRESULT create_relative_uri(HTMLOuterWindow *window, const WCHAR *rel_uri, IUri **uri)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  timer_isr_handle_t ;
-struct TYPE_3__ {int /*<<< orphan*/  timer; int /*<<< orphan*/  group; } ;
-typedef  TYPE_1__ example_event_data_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  SYSVIEW_EXAMPLE_WAIT_EVENT_END (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYSVIEW_EXAMPLE_WAIT_EVENT_START () ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  example_timer_isr ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- scalar_t__ timer_isr_register (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ timer_start (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xTaskGetCurrentTaskHandle () ; 
- int /*<<< orphan*/  xTaskNotifyWait (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int timer_isr_handle_t ;
+struct TYPE_3__ {int timer; int group; } ;
+typedef TYPE_1__ example_event_data_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ int ESP_LOGE (int ,char*,int ) ;
+ int ESP_LOGI (int ,char*,int ,...) ;
+ scalar_t__ ESP_OK ;
+ int SYSVIEW_EXAMPLE_WAIT_EVENT_END (int ) ;
+ int SYSVIEW_EXAMPLE_WAIT_EVENT_START () ;
+ int TAG ;
+ int example_timer_isr ;
+ int portMAX_DELAY ;
+ scalar_t__ timer_isr_register (int ,int ,int ,TYPE_1__*,int ,int *) ;
+ scalar_t__ timer_start (int ,int ) ;
+ int xTaskGetCurrentTaskHandle () ;
+ int xTaskNotifyWait (int ,int ,int *,int ) ;
 
 __attribute__((used)) static void example_task(void *p)
 {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dmar_domain {int /*<<< orphan*/  domain; } ;
+
+
+
+
+struct dmar_domain {int domain; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  phys_addr_t ;
-typedef  enum dma_sync_target { ____Placeholder_dma_sync_target } dma_sync_target ;
-typedef  enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
+typedef int phys_addr_t ;
+typedef enum dma_sync_target { ____Placeholder_dma_sync_target } dma_sync_target ;
+typedef enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
+typedef int dma_addr_t ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- struct dmar_domain* find_domain (struct device*) ; 
- int /*<<< orphan*/  intel_iommu_iova_to_phys (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ is_swiotlb_buffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swiotlb_tbl_sync_single (struct device*,int /*<<< orphan*/ ,size_t,int,int) ; 
+
+ scalar_t__ WARN_ON (int) ;
+ struct dmar_domain* find_domain (struct device*) ;
+ int intel_iommu_iova_to_phys (int *,int ) ;
+ scalar_t__ is_swiotlb_buffer (int ) ;
+ int swiotlb_tbl_sync_single (struct device*,int ,size_t,int,int) ;
 
 __attribute__((used)) static void
 bounce_sync_single(struct device *dev, dma_addr_t addr, size_t size,
-		   enum dma_data_direction dir, enum dma_sync_target target)
+     enum dma_data_direction dir, enum dma_sync_target target)
 {
-	struct dmar_domain *domain;
-	phys_addr_t tlb_addr;
+ struct dmar_domain *domain;
+ phys_addr_t tlb_addr;
 
-	domain = find_domain(dev);
-	if (WARN_ON(!domain))
-		return;
+ domain = find_domain(dev);
+ if (WARN_ON(!domain))
+  return;
 
-	tlb_addr = intel_iommu_iova_to_phys(&domain->domain, addr);
-	if (is_swiotlb_buffer(tlb_addr))
-		swiotlb_tbl_sync_single(dev, tlb_addr, size, dir, target);
+ tlb_addr = intel_iommu_iova_to_phys(&domain->domain, addr);
+ if (is_swiotlb_buffer(tlb_addr))
+  swiotlb_tbl_sync_single(dev, tlb_addr, size, dir, target);
 }

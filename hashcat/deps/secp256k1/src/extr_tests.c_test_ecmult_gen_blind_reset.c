@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
-typedef  int /*<<< orphan*/  secp256k1_gej ;
-struct TYPE_3__ {int /*<<< orphan*/  initial; int /*<<< orphan*/  blind; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int secp256k1_scalar ;
+typedef int secp256k1_gej ;
+struct TYPE_3__ {int initial; int blind; } ;
 struct TYPE_4__ {TYPE_1__ ecmult_gen_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ) ; 
- TYPE_2__* ctx ; 
- int /*<<< orphan*/  gej_xyz_equals_gej (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen_blind (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  secp256k1_scalar_eq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int CHECK (int ) ;
+ TYPE_2__* ctx ;
+ int gej_xyz_equals_gej (int *,int *) ;
+ int secp256k1_ecmult_gen_blind (TYPE_1__*,int ) ;
+ int secp256k1_scalar_eq (int *,int *) ;
 
 void test_ecmult_gen_blind_reset(void) {
-    /* Test ecmult_gen() blinding reset and confirm that the blinding is consistent. */
+
     secp256k1_scalar b;
     secp256k1_gej initial;
     secp256k1_ecmult_gen_blind(&ctx->ecmult_gen_ctx, 0);

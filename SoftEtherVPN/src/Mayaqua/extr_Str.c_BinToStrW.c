@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
-typedef  int UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BinToStr (char*,int,void*,int) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  StrToUni (scalar_t__*,int,char*) ; 
- char* ZeroMalloc (int) ; 
+
+
+
+typedef scalar_t__ wchar_t ;
+typedef int UINT ;
+
+
+ int BinToStr (char*,int,void*,int) ;
+ int Free (char*) ;
+ int StrToUni (scalar_t__*,int,char*) ;
+ char* ZeroMalloc (int) ;
 
 void BinToStrW(wchar_t *str, UINT str_size, void *data, UINT data_size)
 {
-	char *tmp;
-	UINT tmp_size;
-	// Validate arguments
-	if (str == NULL || data == NULL)
-	{
-		if (str != NULL)
-		{
-			str[0] = 0;
-		}
-		return;
-	}
+ char *tmp;
+ UINT tmp_size;
 
-	tmp_size = (data_size * 2 + 4) * sizeof(wchar_t);
-	tmp = ZeroMalloc(tmp_size);
+ if (str == ((void*)0) || data == ((void*)0))
+ {
+  if (str != ((void*)0))
+  {
+   str[0] = 0;
+  }
+  return;
+ }
 
-	BinToStr(tmp, tmp_size, data, data_size);
+ tmp_size = (data_size * 2 + 4) * sizeof(wchar_t);
+ tmp = ZeroMalloc(tmp_size);
 
-	StrToUni(str, str_size, tmp);
+ BinToStr(tmp, tmp_size, data, data_size);
 
-	Free(tmp);
+ StrToUni(str, str_size, tmp);
+
+ Free(tmp);
 }

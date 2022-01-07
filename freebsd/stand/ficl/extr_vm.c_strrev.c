@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int strlen (char*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int strlen (char*) ; 
-
-char *strrev( char *string )    
-{                               /* reverse a string in-place */
+char *strrev( char *string )
+{
     int i = strlen(string);
-    char *p1 = string;          /* first char of string */
-    char *p2 = string + i - 1;  /* last non-NULL char of string */
+    char *p1 = string;
+    char *p2 = string + i - 1;
     char c;
 
     if (i > 1)
@@ -31,6 +23,6 @@ char *strrev( char *string )
             p1++; p2--;
         }
     }
-        
+
     return string;
 }

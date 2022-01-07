@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_wc_conflict_reason_t ;
-typedef  scalar_t__ svn_wc_conflict_action_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_wc_conflict_reason_t ;
+typedef scalar_t__ svn_wc_conflict_action_t ;
+typedef int svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
 struct TYPE_10__ {struct conflict_tree_incoming_delete_details* tree_conflict_incoming_details; } ;
-typedef  TYPE_1__ svn_client_conflict_t ;
-struct conflict_tree_incoming_delete_details {int /*<<< orphan*/  wc_move_targets; int /*<<< orphan*/ * moves; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_1__ svn_client_conflict_t ;
+struct conflict_tree_incoming_delete_details {int wc_move_targets; int * moves; } ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  add_resolution_option (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  describe_incoming_move_merge_conflict_option (char const**,TYPE_1__*,int /*<<< orphan*/ *,struct conflict_tree_incoming_delete_details*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resolve_incoming_move_dir_merge ; 
- scalar_t__ svn_client_conflict_get_incoming_change (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_client_conflict_get_incoming_new_repos_location (char const**,int /*<<< orphan*/ *,scalar_t__*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_get_incoming_old_repos_location (char const**,int /*<<< orphan*/ *,scalar_t__*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_client_conflict_get_local_change (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_client_conflict_option_incoming_move_dir_merge ; 
- scalar_t__ svn_client_conflict_tree_get_victim_node_kind (TYPE_1__*) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_none ; 
- scalar_t__ svn_wc_conflict_action_delete ; 
- scalar_t__ svn_wc_conflict_reason_edited ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int add_resolution_option (int *,TYPE_1__*,int ,int ,char const*,int ) ;
+ scalar_t__ apr_hash_count (int ) ;
+ int describe_incoming_move_merge_conflict_option (char const**,TYPE_1__*,int *,struct conflict_tree_incoming_delete_details*,int *,int *) ;
+ int resolve_incoming_move_dir_merge ;
+ scalar_t__ svn_client_conflict_get_incoming_change (TYPE_1__*) ;
+ int svn_client_conflict_get_incoming_new_repos_location (char const**,int *,scalar_t__*,TYPE_1__*,int *,int *) ;
+ int svn_client_conflict_get_incoming_old_repos_location (char const**,int *,scalar_t__*,TYPE_1__*,int *,int *) ;
+ scalar_t__ svn_client_conflict_get_local_change (TYPE_1__*) ;
+ int svn_client_conflict_option_incoming_move_dir_merge ;
+ scalar_t__ svn_client_conflict_tree_get_victim_node_kind (TYPE_1__*) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_none ;
+ scalar_t__ svn_wc_conflict_action_delete ;
+ scalar_t__ svn_wc_conflict_reason_edited ;
 
 __attribute__((used)) static svn_error_t *
 configure_option_incoming_dir_merge(svn_client_conflict_t *conflict,
@@ -80,7 +80,7 @@ configure_option_incoming_dir_merge(svn_client_conflict_t *conflict,
       const char *description;
 
       details = conflict->tree_conflict_incoming_details;
-      if (details == NULL || details->moves == NULL)
+      if (details == ((void*)0) || details->moves == ((void*)0))
         return SVN_NO_ERROR;
 
       if (apr_hash_count(details->wc_move_targets) == 0)

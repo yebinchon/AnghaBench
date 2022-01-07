@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cdrom_device_info {int capacity; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CD_DO_IOCTL ; 
- int /*<<< orphan*/  cdinfo (int /*<<< orphan*/ ,char*) ; 
+
+ int CD_DO_IOCTL ;
+ int cdinfo (int ,char*) ;
 
 __attribute__((used)) static int cdrom_ioctl_changer_nslots(struct cdrom_device_info *cdi)
 {
-	cdinfo(CD_DO_IOCTL, "entering CDROM_CHANGER_NSLOTS\n");
-	return cdi->capacity;
+ cdinfo(CD_DO_IOCTL, "entering CDROM_CHANGER_NSLOTS\n");
+ return cdi->capacity;
 }

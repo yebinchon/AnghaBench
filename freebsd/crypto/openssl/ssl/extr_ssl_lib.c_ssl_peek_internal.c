@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int (* func_read ) (TYPE_3__*,void*,size_t,size_t*) ;} ;
-struct ssl_async_args {size_t num; TYPE_1__ f; int /*<<< orphan*/  type; void* buf; TYPE_3__* s; } ;
-struct TYPE_9__ {int shutdown; int mode; size_t asyncrw; TYPE_2__* method; int /*<<< orphan*/ * handshake_func; } ;
+struct ssl_async_args {size_t num; TYPE_1__ f; int type; void* buf; TYPE_3__* s; } ;
+struct TYPE_9__ {int shutdown; int mode; size_t asyncrw; TYPE_2__* method; int * handshake_func; } ;
 struct TYPE_8__ {int (* ssl_peek ) (TYPE_3__*,void*,size_t,size_t*) ;} ;
-typedef  TYPE_3__ SSL ;
+typedef TYPE_3__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASYNC_get_current_job () ; 
- int /*<<< orphan*/  READFUNC ; 
- int /*<<< orphan*/  SSL_F_SSL_PEEK_INTERNAL ; 
- int SSL_MODE_ASYNC ; 
- int SSL_RECEIVED_SHUTDOWN ; 
- int /*<<< orphan*/  SSL_R_UNINITIALIZED ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssl_io_intern ; 
- int ssl_start_async_job (TYPE_3__*,struct ssl_async_args*,int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_3__*,void*,size_t,size_t*) ; 
+
+ int * ASYNC_get_current_job () ;
+ int READFUNC ;
+ int SSL_F_SSL_PEEK_INTERNAL ;
+ int SSL_MODE_ASYNC ;
+ int SSL_RECEIVED_SHUTDOWN ;
+ int SSL_R_UNINITIALIZED ;
+ int SSLerr (int ,int ) ;
+ int ssl_io_intern ;
+ int ssl_start_async_job (TYPE_3__*,struct ssl_async_args*,int ) ;
+ int stub1 (TYPE_3__*,void*,size_t,size_t*) ;
 
 __attribute__((used)) static int ssl_peek_internal(SSL *s, void *buf, size_t num, size_t *readbytes)
 {
-    if (s->handshake_func == NULL) {
+    if (s->handshake_func == ((void*)0)) {
         SSLerr(SSL_F_SSL_PEEK_INTERNAL, SSL_R_UNINITIALIZED);
         return -1;
     }
@@ -41,7 +41,7 @@ __attribute__((used)) static int ssl_peek_internal(SSL *s, void *buf, size_t num
     if (s->shutdown & SSL_RECEIVED_SHUTDOWN) {
         return 0;
     }
-    if ((s->mode & SSL_MODE_ASYNC) && ASYNC_get_current_job() == NULL) {
+    if ((s->mode & SSL_MODE_ASYNC) && ASYNC_get_current_job() == ((void*)0)) {
         struct ssl_async_args args;
         int ret;
 

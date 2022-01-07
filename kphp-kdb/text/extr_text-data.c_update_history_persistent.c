@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ first_pq; struct incore_persistent_history* persistent_history; } ;
-typedef  TYPE_1__ user_t ;
+typedef TYPE_1__ user_t ;
 struct incore_persistent_history {int alloc_events; int cur_events; int* history; } ;
 
-/* Variables and functions */
- int MIN_PERSISTENT_HISTORY_EVENTS ; 
- scalar_t__ USER_PCONN (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int incore_persistent_history_bytes ; 
- int /*<<< orphan*/  incore_persistent_history_events ; 
- int /*<<< orphan*/  incore_persistent_history_lists ; 
- struct incore_persistent_history* malloc (int) ; 
- int /*<<< orphan*/  persistent_history_enabled ; 
- int /*<<< orphan*/  process_user_persistent_query_queue2 (TYPE_1__*) ; 
- struct incore_persistent_history* realloc (struct incore_persistent_history*,int) ; 
+
+ int MIN_PERSISTENT_HISTORY_EVENTS ;
+ scalar_t__ USER_PCONN (TYPE_1__*) ;
+ int assert (int) ;
+ int incore_persistent_history_bytes ;
+ int incore_persistent_history_events ;
+ int incore_persistent_history_lists ;
+ struct incore_persistent_history* malloc (int) ;
+ int persistent_history_enabled ;
+ int process_user_persistent_query_queue2 (TYPE_1__*) ;
+ struct incore_persistent_history* realloc (struct incore_persistent_history*,int) ;
 
 __attribute__((used)) static void update_history_persistent (user_t *U, int local_id, int flags, int op) {
   assert (U && local_id > 0 && (unsigned) op <= 5);

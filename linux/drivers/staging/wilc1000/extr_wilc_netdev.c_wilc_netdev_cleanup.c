@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wilc {int vif_num; int /*<<< orphan*/  wiphy; int /*<<< orphan*/  bus_data; int /*<<< orphan*/  hif_workqueue; TYPE_1__** vif; int /*<<< orphan*/ * firmware; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wilc {int vif_num; int wiphy; int bus_data; int hif_workqueue; TYPE_1__** vif; int * firmware; } ;
 struct TYPE_2__ {scalar_t__ ndev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_firmware (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unregister_netdev (scalar_t__) ; 
- int /*<<< orphan*/  wilc_wfi_deinit_mon_interface (struct wilc*,int) ; 
- int /*<<< orphan*/  wilc_wlan_cfg_deinit (struct wilc*) ; 
- int /*<<< orphan*/  wiphy_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wiphy_unregister (int /*<<< orphan*/ ) ; 
+
+ int destroy_workqueue (int ) ;
+ int flush_workqueue (int ) ;
+ int kfree (int ) ;
+ int release_firmware (int *) ;
+ int unregister_netdev (scalar_t__) ;
+ int wilc_wfi_deinit_mon_interface (struct wilc*,int) ;
+ int wilc_wlan_cfg_deinit (struct wilc*) ;
+ int wiphy_free (int ) ;
+ int wiphy_unregister (int ) ;
 
 void wilc_netdev_cleanup(struct wilc *wilc)
 {
-	int i;
+ int i;
 
-	if (!wilc)
-		return;
+ if (!wilc)
+  return;
 
-	if (wilc->firmware) {
-		release_firmware(wilc->firmware);
-		wilc->firmware = NULL;
-	}
+ if (wilc->firmware) {
+  release_firmware(wilc->firmware);
+  wilc->firmware = ((void*)0);
+ }
 
-	for (i = 0; i < wilc->vif_num; i++) {
-		if (wilc->vif[i] && wilc->vif[i]->ndev)
-			unregister_netdev(wilc->vif[i]->ndev);
-	}
+ for (i = 0; i < wilc->vif_num; i++) {
+  if (wilc->vif[i] && wilc->vif[i]->ndev)
+   unregister_netdev(wilc->vif[i]->ndev);
+ }
 
-	wilc_wfi_deinit_mon_interface(wilc, false);
-	flush_workqueue(wilc->hif_workqueue);
-	destroy_workqueue(wilc->hif_workqueue);
-	wilc_wlan_cfg_deinit(wilc);
-	kfree(wilc->bus_data);
-	wiphy_unregister(wilc->wiphy);
-	wiphy_free(wilc->wiphy);
+ wilc_wfi_deinit_mon_interface(wilc, 0);
+ flush_workqueue(wilc->hif_workqueue);
+ destroy_workqueue(wilc->hif_workqueue);
+ wilc_wlan_cfg_deinit(wilc);
+ kfree(wilc->bus_data);
+ wiphy_unregister(wilc->wiphy);
+ wiphy_free(wilc->wiphy);
 }

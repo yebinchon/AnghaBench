@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
+
+
+
+
+typedef scalar_t__ u8 ;
 struct mipi_dbi {scalar_t__* read_commands; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static bool mipi_dbi_command_is_read(struct mipi_dbi *dbi, u8 cmd)
 {
-	unsigned int i;
+ unsigned int i;
 
-	if (!dbi->read_commands)
-		return false;
+ if (!dbi->read_commands)
+  return 0;
 
-	for (i = 0; i < 0xff; i++) {
-		if (!dbi->read_commands[i])
-			return false;
-		if (cmd == dbi->read_commands[i])
-			return true;
-	}
+ for (i = 0; i < 0xff; i++) {
+  if (!dbi->read_commands[i])
+   return 0;
+  if (cmd == dbi->read_commands[i])
+   return 1;
+ }
 
-	return false;
+ return 0;
 }

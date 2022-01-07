@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * hb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_array_append (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hb_value_array_init () ; 
- scalar_t__ hb_value_get_bool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_string (char*) ; 
+
+
+
+typedef int hb_value_t ;
+
+
+ int * hb_dict_get (int *,char*) ;
+ int hb_dict_set (int *,char*,int *) ;
+ int hb_value_array_append (int *,int ) ;
+ int * hb_value_array_init () ;
+ scalar_t__ hb_value_get_bool (int *) ;
+ int hb_value_string (char*) ;
 
 __attribute__((used)) static void import_audio_0_0_0(hb_value_t *preset)
 {
     hb_value_t *copy = hb_dict_get(preset, "AudioCopyMask");
-    if (copy != NULL)
+    if (copy != ((void*)0))
         return;
 
     copy = hb_value_array_init();

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct statvfs {int /*<<< orphan*/  f_frsize; int /*<<< orphan*/  f_namemax; int /*<<< orphan*/  f_ffree; int /*<<< orphan*/  f_files; int /*<<< orphan*/  f_bavail; int /*<<< orphan*/  f_bfree; int /*<<< orphan*/  f_blocks; int /*<<< orphan*/  f_bsize; } ;
-struct statfsbuf {int /*<<< orphan*/  frsize; int /*<<< orphan*/  namelen; int /*<<< orphan*/  ffree; int /*<<< orphan*/  files; int /*<<< orphan*/  bavail; int /*<<< orphan*/  bfree; int /*<<< orphan*/  blocks; int /*<<< orphan*/  bsize; } ;
-struct mount {int /*<<< orphan*/  root_fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fstatvfs (int /*<<< orphan*/ ,struct statvfs*) ; 
+
+
+
+struct statvfs {int f_frsize; int f_namemax; int f_ffree; int f_files; int f_bavail; int f_bfree; int f_blocks; int f_bsize; } ;
+struct statfsbuf {int frsize; int namelen; int ffree; int files; int bavail; int bfree; int blocks; int bsize; } ;
+struct mount {int root_fd; } ;
+
+
+ int fstatvfs (int ,struct statvfs*) ;
 
 int realfs_statfs(struct mount *mount, struct statfsbuf *stat) {
     struct statvfs vfs = {};

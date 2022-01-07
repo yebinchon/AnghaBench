@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int connectionState; int /*<<< orphan*/  timeoutTimer; int /*<<< orphan*/  conn; scalar_t__ knownFailureCode; } ;
-typedef  TYPE_1__ ws_info ;
-typedef  int /*<<< orphan*/  os_timer_func_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NODE_DBG (char*) ; 
- int /*<<< orphan*/  SWTIMER_REG_CB (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SWTIMER_RESUME ; 
- int /*<<< orphan*/  WS_FORCE_CLOSE_TIMEOUT_MS ; 
- int /*<<< orphan*/  WS_OPCODE_CLOSE ; 
- int /*<<< orphan*/  disconnect_callback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  os_timer_arm (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  os_timer_disarm (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  os_timer_setfn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ws_forceCloseTimeout ; 
- int /*<<< orphan*/  ws_sendFrame (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int connectionState; int timeoutTimer; int conn; scalar_t__ knownFailureCode; } ;
+typedef TYPE_1__ ws_info ;
+typedef int os_timer_func_t ;
+
+
+ int NODE_DBG (char*) ;
+ int SWTIMER_REG_CB (scalar_t__,int ) ;
+ int SWTIMER_RESUME ;
+ int WS_FORCE_CLOSE_TIMEOUT_MS ;
+ int WS_OPCODE_CLOSE ;
+ int disconnect_callback (int ) ;
+ int os_timer_arm (int *,int ,int) ;
+ int os_timer_disarm (int *) ;
+ int os_timer_setfn (int *,int *,int ) ;
+ scalar_t__ ws_forceCloseTimeout ;
+ int ws_sendFrame (int ,int ,int *,int ) ;
 
 void ws_close(ws_info *ws) {
   NODE_DBG("ws_close\n");
@@ -35,15 +35,15 @@ void ws_close(ws_info *ws) {
     return;
   }
 
-  ws->knownFailureCode = 0; // no error as user requested to close
+  ws->knownFailureCode = 0;
   if (ws->connectionState == 1) {
     disconnect_callback(ws->conn);
   } else {
-    ws_sendFrame(ws->conn, WS_OPCODE_CLOSE, NULL, 0);
+    ws_sendFrame(ws->conn, WS_OPCODE_CLOSE, ((void*)0), 0);
 
     os_timer_disarm(&ws->timeoutTimer);
     os_timer_setfn(&ws->timeoutTimer, (os_timer_func_t *) ws_forceCloseTimeout, ws->conn);
     SWTIMER_REG_CB(ws_forceCloseTimeout, SWTIMER_RESUME);
-    os_timer_arm(&ws->timeoutTimer, WS_FORCE_CLOSE_TIMEOUT_MS, false);
+    os_timer_arm(&ws->timeoutTimer, WS_FORCE_CLOSE_TIMEOUT_MS, 0);
   }
 }

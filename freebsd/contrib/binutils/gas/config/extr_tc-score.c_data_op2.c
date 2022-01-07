@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum score_data_type { ____Placeholder_score_data_type } score_data_type ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum score_data_type { ____Placeholder_score_data_type } score_data_type ;
 struct TYPE_7__ {int X_add_number; int X_unsigned; scalar_t__ X_add_symbol; } ;
-struct TYPE_5__ {TYPE_3__ exp; scalar_t__ pc_rel; int /*<<< orphan*/  type; } ;
+struct TYPE_5__ {TYPE_3__ exp; scalar_t__ pc_rel; int type; } ;
 struct TYPE_8__ {char* error; scalar_t__ type; int instruction; TYPE_1__ reloc; } ;
 struct TYPE_6__ {int bits; int* range; } ;
 
-/* Variables and functions */
- void* BAD_ARGS ; 
- int /*<<< orphan*/  BFD_RELOC_32 ; 
- int /*<<< orphan*/  BFD_RELOC_HI16_S ; 
- int /*<<< orphan*/  BFD_RELOC_LO16 ; 
- int /*<<< orphan*/  BFD_RELOC_SCORE_DUMMY_HI16 ; 
- int /*<<< orphan*/  BFD_RELOC_SCORE_GOT_LO16 ; 
- int /*<<< orphan*/  BFD_RELOC_SCORE_GPREL15 ; 
- scalar_t__ FAIL ; 
- scalar_t__ Insn_Type_SYN ; 
- scalar_t__ Insn_internal ; 
- int MAX_LITERAL_POOL_SIZE ; 
- scalar_t__ Rd_lvalueRs_SI15 ; 
- scalar_t__ Rd_rvalueRs_SI15 ; 
- int SUCCESS ; 
- char TOLOWER (char) ; 
- char* _ (char*) ; 
-#define  _GP_IMM15 133 
- int _IMM10_RSHIFT_2 ; 
- int _IMM14 ; 
- int _IMM15 ; 
- int _IMM16 ; 
-#define  _IMM16_LO16_pic 132 
- int _IMM16_NEG ; 
- int _IMM16_pic ; 
- int _IMM20 ; 
- int _IMM4 ; 
- int _IMM5 ; 
- int _IMM5_RANGE_8_31 ; 
- int _IMM5_RSHIFT_1 ; 
- int _IMM5_RSHIFT_2 ; 
- int _IMM8 ; 
- int _SIMM14 ; 
- int _SIMM14_NEG ; 
- int _SIMM16 ; 
-#define  _SIMM16_LA 131 
- int _SIMM16_LA_POS ; 
- int _SIMM16_NEG ; 
-#define  _SIMM16_pic 130 
-#define  _VALUE_HI16 129 
-#define  _VALUE_LO16 128 
- int /*<<< orphan*/  end_of_line (char*) ; 
- char* err_msg ; 
- TYPE_4__ inst ; 
- int my_get_expression (TYPE_3__*,char**) ; 
- TYPE_2__* score_df_range ; 
- int /*<<< orphan*/  skip_whitespace (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,int,int) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- int validate_immediate (int,int,int) ; 
+
+ void* BAD_ARGS ;
+ int BFD_RELOC_32 ;
+ int BFD_RELOC_HI16_S ;
+ int BFD_RELOC_LO16 ;
+ int BFD_RELOC_SCORE_DUMMY_HI16 ;
+ int BFD_RELOC_SCORE_GOT_LO16 ;
+ int BFD_RELOC_SCORE_GPREL15 ;
+ scalar_t__ FAIL ;
+ scalar_t__ Insn_Type_SYN ;
+ scalar_t__ Insn_internal ;
+ int MAX_LITERAL_POOL_SIZE ;
+ scalar_t__ Rd_lvalueRs_SI15 ;
+ scalar_t__ Rd_rvalueRs_SI15 ;
+ int SUCCESS ;
+ char TOLOWER (char) ;
+ char* _ (char*) ;
+
+ int _IMM10_RSHIFT_2 ;
+ int _IMM14 ;
+ int _IMM15 ;
+ int _IMM16 ;
+
+ int _IMM16_NEG ;
+ int _IMM16_pic ;
+ int _IMM20 ;
+ int _IMM4 ;
+ int _IMM5 ;
+ int _IMM5_RANGE_8_31 ;
+ int _IMM5_RSHIFT_1 ;
+ int _IMM5_RSHIFT_2 ;
+ int _IMM8 ;
+ int _SIMM14 ;
+ int _SIMM14_NEG ;
+ int _SIMM16 ;
+
+ int _SIMM16_LA_POS ;
+ int _SIMM16_NEG ;
+
+
+
+ int end_of_line (char*) ;
+ char* err_msg ;
+ TYPE_4__ inst ;
+ int my_get_expression (TYPE_3__*,char**) ;
+ TYPE_2__* score_df_range ;
+ int skip_whitespace (char*) ;
+ int sprintf (char*,char*,int,int,int) ;
+ int * strstr (char*,char*) ;
+ int validate_immediate (int,int,int) ;
 
 __attribute__((used)) static int
 data_op2 (char **str, int shift, enum score_data_type data_type)
@@ -78,16 +78,16 @@ data_op2 (char **str, int shift, enum score_data_type data_type)
   char data_exp[MAX_LITERAL_POOL_SIZE];
   char *dataptr;
   int cnt = 0;
-  char *pp = NULL;
+  char *pp = ((void*)0);
 
   skip_whitespace (*str);
-  inst.error = NULL;
+  inst.error = ((void*)0);
   dataptr = * str;
 
-  /* Set hex_p to zero.  */
+
   int hex_p = 0;
 
-  while ((*dataptr != '\0') && (*dataptr != '|') && (cnt <= MAX_LITERAL_POOL_SIZE))     /* 0x7c = ='|' */
+  while ((*dataptr != '\0') && (*dataptr != '|') && (cnt <= MAX_LITERAL_POOL_SIZE))
     {
       data_exp[cnt] = *dataptr;
       dataptr++;
@@ -97,16 +97,16 @@ data_op2 (char **str, int shift, enum score_data_type data_type)
   data_exp[cnt] = '\0';
   pp = (char *)&data_exp;
 
-  if (*dataptr == '|')          /* process PCE */
+  if (*dataptr == '|')
     {
       if (my_get_expression (&inst.reloc.exp, &pp) == (int) FAIL)
         return (int) FAIL;
       end_of_line (pp);
       if (inst.error != 0)
-        return (int) FAIL;       /* to ouptut_inst to printf out the error */
+        return (int) FAIL;
       *str = dataptr;
     }
-  else                          /* process  16 bit */
+  else
     {
       if (my_get_expression (&inst.reloc.exp, str) == (int) FAIL)
         {
@@ -122,14 +122,14 @@ data_op2 (char **str, int shift, enum score_data_type data_type)
         }
       dataptr = (char *)data_exp;
 
-      if ((dataptr != NULL)
-          && (((strstr (dataptr, "0x")) != NULL)
-              || ((strstr (dataptr, "0X")) != NULL)))
+      if ((dataptr != ((void*)0))
+          && (((strstr (dataptr, "0x")) != ((void*)0))
+              || ((strstr (dataptr, "0X")) != ((void*)0))))
         {
           hex_p = 1;
-          if ((data_type != _SIMM16_LA)
-              && (data_type != _VALUE_HI16)
-              && (data_type != _VALUE_LO16)
+          if ((data_type != 131)
+              && (data_type != 129)
+              && (data_type != 128)
               && (data_type != _IMM16)
               && (data_type != _IMM15)
               && (data_type != _IMM14)
@@ -142,7 +142,7 @@ data_op2 (char **str, int shift, enum score_data_type data_type)
               && (data_type != _SIMM14_NEG)
               && (data_type != _SIMM16_NEG)
               && (data_type != _IMM10_RSHIFT_2)
-              && (data_type != _GP_IMM15))
+              && (data_type != 133))
             {
               data_type += 24;
             }
@@ -184,22 +184,22 @@ data_op2 (char **str, int shift, enum score_data_type data_type)
     {
       switch (data_type)
         {
-        case _SIMM16_LA:
+        case 131:
           return (int) FAIL;
-        case _VALUE_HI16:
+        case 129:
           inst.reloc.type = BFD_RELOC_HI16_S;
           inst.reloc.pc_rel = 0;
           break;
-        case _VALUE_LO16:
+        case 128:
           inst.reloc.type = BFD_RELOC_LO16;
           inst.reloc.pc_rel = 0;
           break;
-        case _GP_IMM15:
+        case 133:
           inst.reloc.type = BFD_RELOC_SCORE_GPREL15;
           inst.reloc.pc_rel = 0;
           break;
-        case _SIMM16_pic:
-        case _IMM16_LO16_pic:
+        case 130:
+        case 132:
           inst.reloc.type = BFD_RELOC_SCORE_GOT_LO16;
           inst.reloc.pc_rel = 0;
           break;
@@ -212,15 +212,15 @@ data_op2 (char **str, int shift, enum score_data_type data_type)
   else
     {
       if (data_type == _IMM16_pic)
-	{
+ {
           inst.reloc.type = BFD_RELOC_SCORE_DUMMY_HI16;
           inst.reloc.pc_rel = 0;
-	}
+ }
 
-      if (data_type == _SIMM16_LA && inst.reloc.exp.X_unsigned == 1)
+      if (data_type == 131 && inst.reloc.exp.X_unsigned == 1)
         {
           value = validate_immediate (inst.reloc.exp.X_add_number, _SIMM16_LA_POS, hex_p);
-          if (value == (int) FAIL)       /* for advance to check if this is ldis */
+          if (value == (int) FAIL)
             if ((inst.reloc.exp.X_add_number & 0xffff) == 0)
               {
                 inst.instruction |= 0x8000000;

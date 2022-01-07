@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int trust; } ;
-typedef  TYPE_1__ X509_TRUST ;
+typedef TYPE_1__ X509_TRUST ;
 
-/* Variables and functions */
- int X509_TRUST_COUNT ; 
- int X509_TRUST_MAX ; 
- int X509_TRUST_MIN ; 
- int sk_X509_TRUST_find (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * trtable ; 
+
+ int X509_TRUST_COUNT ;
+ int X509_TRUST_MAX ;
+ int X509_TRUST_MIN ;
+ int sk_X509_TRUST_find (int *,TYPE_1__*) ;
+ int * trtable ;
 
 int X509_TRUST_get_by_id(int id)
 {
@@ -28,7 +28,7 @@ int X509_TRUST_get_by_id(int id)
 
     if ((id >= X509_TRUST_MIN) && (id <= X509_TRUST_MAX))
         return id - X509_TRUST_MIN;
-    if (trtable == NULL)
+    if (trtable == ((void*)0))
         return -1;
     tmp.trust = id;
     idx = sk_X509_TRUST_find(trtable, &tmp);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
-struct TYPE_5__ {int format; int sample_rate; int nb_samples; int /*<<< orphan*/  channel_layout; } ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- TYPE_1__* av_frame_alloc () ; 
- int av_frame_get_buffer (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
+struct TYPE_5__ {int format; int sample_rate; int nb_samples; int channel_layout; } ;
+typedef TYPE_1__ AVFrame ;
+
+
+ TYPE_1__* av_frame_alloc () ;
+ int av_frame_get_buffer (TYPE_1__*,int ) ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 __attribute__((used)) static AVFrame *alloc_audio_frame(enum AVSampleFormat sample_fmt,
                                   uint64_t channel_layout,

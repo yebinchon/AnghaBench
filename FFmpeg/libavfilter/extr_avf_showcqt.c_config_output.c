@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_14__ ;
-typedef  struct TYPE_16__   TYPE_13__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_14__ ;
+typedef struct TYPE_16__ TYPE_13__ ;
+
+
 struct TYPE_20__ {TYPE_1__* priv; TYPE_2__** inputs; } ;
-struct TYPE_16__ {int /*<<< orphan*/  den; int /*<<< orphan*/  num; } ;
-struct TYPE_19__ {int w; scalar_t__ format; int sample_rate; int /*<<< orphan*/  time_base; TYPE_13__ frame_rate; int /*<<< orphan*/  sample_aspect_ratio; int /*<<< orphan*/  h; TYPE_3__* src; } ;
+struct TYPE_16__ {int den; int num; } ;
+struct TYPE_19__ {int w; scalar_t__ format; int sample_rate; int time_base; TYPE_13__ frame_rate; int sample_aspect_ratio; int h; TYPE_3__* src; } ;
 struct TYPE_17__ {int num; int den; } ;
-struct TYPE_18__ {int width; scalar_t__ format; int cqt_len; int fcount; int fft_bits; int timeclamp; int fft_len; int remaining_fill_max; double attack; double* attack_data; int cqt_align; int remaining_fill; int count; int step; TYPE_14__ step_frac; TYPE_13__ rate; scalar_t__ remaining_frac; scalar_t__ sono_idx; scalar_t__ next_pts; scalar_t__ sono_count; void* c_buf; void* rcp_h_buf; void* h_buf; int /*<<< orphan*/  sono_frame; scalar_t__ sono_h; scalar_t__ axisfile; int /*<<< orphan*/  axis; scalar_t__ axis_h; int /*<<< orphan*/  update_sono; int /*<<< orphan*/  draw_axis; int /*<<< orphan*/  draw_bar; int /*<<< orphan*/  draw_sono; int /*<<< orphan*/ * permute_coeffs; int /*<<< orphan*/  cqt_calc; void* cqt_result; void* fft_result; void* fft_data; int /*<<< orphan*/  fft_ctx; int /*<<< orphan*/  endfreq; int /*<<< orphan*/  basefreq; int /*<<< orphan*/  freq; int /*<<< orphan*/  bar_h; int /*<<< orphan*/  height; } ;
-typedef  TYPE_1__ ShowCQTContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_18__ {int width; scalar_t__ format; int cqt_len; int fcount; int fft_bits; int timeclamp; int fft_len; int remaining_fill_max; double attack; double* attack_data; int cqt_align; int remaining_fill; int count; int step; TYPE_14__ step_frac; TYPE_13__ rate; scalar_t__ remaining_frac; scalar_t__ sono_idx; scalar_t__ next_pts; scalar_t__ sono_count; void* c_buf; void* rcp_h_buf; void* h_buf; int sono_frame; scalar_t__ sono_h; scalar_t__ axisfile; int axis; scalar_t__ axis_h; int update_sono; int draw_axis; int draw_bar; int draw_sono; int * permute_coeffs; int cqt_calc; void* cqt_result; void* fft_result; void* fft_data; int fft_ctx; int endfreq; int basefreq; int freq; int bar_h; int height; } ;
+typedef TYPE_1__ ShowCQTContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ ARCH_X86 ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_PIX_FMT_RGB24 ; 
- scalar_t__ AV_PIX_FMT_YUV420P ; 
- scalar_t__ AV_PIX_FMT_YUV422P ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int /*<<< orphan*/ ,int) ; 
- int FFMIN (int,int /*<<< orphan*/ ) ; 
- int M_PI ; 
- int PTS_STEP ; 
- int /*<<< orphan*/  alloc_frame_empty (scalar_t__,int,scalar_t__) ; 
- void* av_calloc (int,int) ; 
- TYPE_14__ av_div_q (int /*<<< orphan*/ ,TYPE_13__) ; 
- int /*<<< orphan*/  av_fft_init (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (scalar_t__) ; 
- int /*<<< orphan*/  av_inv_q (TYPE_13__) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_make_q (int,int) ; 
- void* av_malloc_array (int,int) ; 
- int /*<<< orphan*/  av_mul_q (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ceil (int) ; 
- int /*<<< orphan*/  common_uninit (TYPE_1__*) ; 
- double cos (int) ; 
- int /*<<< orphan*/  cqt_calc ; 
- int /*<<< orphan*/  create_freq_table (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  draw_axis_rgb ; 
- int /*<<< orphan*/  draw_axis_yuv ; 
- int /*<<< orphan*/  draw_bar_rgb ; 
- int /*<<< orphan*/  draw_bar_yuv ; 
- int /*<<< orphan*/  draw_sono ; 
- int /*<<< orphan*/  ff_showcqt_init_x86 (TYPE_1__*) ; 
- int init_axis_empty (TYPE_1__*) ; 
- scalar_t__ init_axis_from_file (TYPE_1__*) ; 
- scalar_t__ init_axis_from_font (TYPE_1__*) ; 
- int init_cqt (TYPE_1__*) ; 
- int init_volume (TYPE_1__*) ; 
- int log2 (int) ; 
- int /*<<< orphan*/  update_sono_rgb ; 
- int /*<<< orphan*/  update_sono_yuv ; 
+
+ scalar_t__ ARCH_X86 ;
+ int AVERROR (int ) ;
+ int AV_LOG_INFO ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_PIX_FMT_RGB24 ;
+ scalar_t__ AV_PIX_FMT_YUV420P ;
+ scalar_t__ AV_PIX_FMT_YUV422P ;
+ int ENOMEM ;
+ int FFMAX (int ,int) ;
+ int FFMIN (int,int ) ;
+ int M_PI ;
+ int PTS_STEP ;
+ int alloc_frame_empty (scalar_t__,int,scalar_t__) ;
+ void* av_calloc (int,int) ;
+ TYPE_14__ av_div_q (int ,TYPE_13__) ;
+ int av_fft_init (int,int ) ;
+ int av_get_pix_fmt_name (scalar_t__) ;
+ int av_inv_q (TYPE_13__) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int av_make_q (int,int) ;
+ void* av_malloc_array (int,int) ;
+ int av_mul_q (int ,int ) ;
+ int ceil (int) ;
+ int common_uninit (TYPE_1__*) ;
+ double cos (int) ;
+ int cqt_calc ;
+ int create_freq_table (int ,int ,int) ;
+ int draw_axis_rgb ;
+ int draw_axis_yuv ;
+ int draw_bar_rgb ;
+ int draw_bar_yuv ;
+ int draw_sono ;
+ int ff_showcqt_init_x86 (TYPE_1__*) ;
+ int init_axis_empty (TYPE_1__*) ;
+ scalar_t__ init_axis_from_file (TYPE_1__*) ;
+ scalar_t__ init_axis_from_font (TYPE_1__*) ;
+ int init_cqt (TYPE_1__*) ;
+ int init_volume (TYPE_1__*) ;
+ int log2 (int) ;
+ int update_sono_rgb ;
+ int update_sono_yuv ;
 
 __attribute__((used)) static int config_output(AVFilterLink *outlink)
 {
@@ -121,7 +121,7 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
 
     s->cqt_align = 1;
     s->cqt_calc = cqt_calc;
-    s->permute_coeffs = NULL;
+    s->permute_coeffs = ((void*)0);
     s->draw_sono = draw_sono;
     if (s->format == AV_PIX_FMT_RGB24) {
         s->draw_bar = draw_bar_rgb;

@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_16__ ;
-typedef  struct TYPE_19__   TYPE_15__ ;
-typedef  struct TYPE_18__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_16__ ;
+typedef struct TYPE_19__ TYPE_15__ ;
+typedef struct TYPE_18__ TYPE_14__ ;
+
+
+typedef scalar_t__ ssize_t ;
+typedef int ngx_uint_t ;
 struct TYPE_23__ {TYPE_6__* connection; TYPE_2__* proxy; TYPE_7__* buffer; } ;
-typedef  TYPE_3__ ngx_mail_session_t ;
-struct TYPE_24__ {int /*<<< orphan*/  timeout; } ;
-typedef  TYPE_4__ ngx_mail_proxy_conf_t ;
-struct TYPE_25__ {int /*<<< orphan*/  log; scalar_t__ write; scalar_t__ timedout; TYPE_6__* data; } ;
-typedef  TYPE_5__ ngx_event_t ;
-struct TYPE_26__ {int timedout; scalar_t__ (* send ) (TYPE_6__*,size_t,size_t) ;scalar_t__ (* recv ) (TYPE_6__*,size_t,size_t) ;TYPE_16__* read; TYPE_15__* write; TYPE_14__* log; int /*<<< orphan*/  fd; scalar_t__ close; TYPE_3__* data; } ;
-typedef  TYPE_6__ ngx_connection_t ;
+typedef TYPE_3__ ngx_mail_session_t ;
+struct TYPE_24__ {int timeout; } ;
+typedef TYPE_4__ ngx_mail_proxy_conf_t ;
+struct TYPE_25__ {int log; scalar_t__ write; scalar_t__ timedout; TYPE_6__* data; } ;
+typedef TYPE_5__ ngx_event_t ;
+struct TYPE_26__ {int timedout; scalar_t__ (* send ) (TYPE_6__*,size_t,size_t) ;scalar_t__ (* recv ) (TYPE_6__*,size_t,size_t) ;TYPE_16__* read; TYPE_15__* write; TYPE_14__* log; int fd; scalar_t__ close; TYPE_3__* data; } ;
+typedef TYPE_6__ ngx_connection_t ;
 struct TYPE_27__ {size_t last; size_t pos; scalar_t__ start; size_t end; } ;
-typedef  TYPE_7__ ngx_buf_t ;
+typedef TYPE_7__ ngx_buf_t ;
 struct TYPE_21__ {TYPE_6__* connection; } ;
 struct TYPE_22__ {TYPE_1__ upstream; TYPE_7__* buffer; } ;
 struct TYPE_20__ {int eof; scalar_t__ ready; } ;
 struct TYPE_19__ {scalar_t__ ready; } ;
 struct TYPE_18__ {char* action; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_ETIMEDOUT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_MAIL ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_16__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_handle_read_event (TYPE_16__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_handle_write_event (TYPE_15__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,TYPE_14__*,int /*<<< orphan*/ ,char*) ; 
- TYPE_4__* ngx_mail_get_module_srv_conf (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_mail_proxy_close_session (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_mail_proxy_module ; 
- scalar_t__ stub1 (TYPE_6__*,size_t,size_t) ; 
- scalar_t__ stub2 (TYPE_6__*,size_t,size_t) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_ETIMEDOUT ;
+ int NGX_LOG_DEBUG_MAIL ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ int ngx_add_timer (TYPE_16__*,int ) ;
+ scalar_t__ ngx_handle_read_event (TYPE_16__*,int ) ;
+ scalar_t__ ngx_handle_write_event (TYPE_15__*,int ) ;
+ int ngx_log_debug3 (int ,int ,int ,char*,int,int ,int ) ;
+ int ngx_log_error (int ,TYPE_14__*,int ,char*) ;
+ TYPE_4__* ngx_mail_get_module_srv_conf (TYPE_3__*,int ) ;
+ int ngx_mail_proxy_close_session (TYPE_3__*) ;
+ int ngx_mail_proxy_module ;
+ scalar_t__ stub1 (TYPE_6__*,size_t,size_t) ;
+ scalar_t__ stub2 (TYPE_6__*,size_t,size_t) ;
 
 __attribute__((used)) static void
 ngx_mail_proxy_handler(ngx_event_t *ev)
 {
-    char                   *action, *recv_action, *send_action;
-    size_t                  size;
-    ssize_t                 n;
-    ngx_buf_t              *b;
-    ngx_uint_t              do_write;
-    ngx_connection_t       *c, *src, *dst;
-    ngx_mail_session_t     *s;
-    ngx_mail_proxy_conf_t  *pcf;
+    char *action, *recv_action, *send_action;
+    size_t size;
+    ssize_t n;
+    ngx_buf_t *b;
+    ngx_uint_t do_write;
+    ngx_connection_t *c, *src, *dst;
+    ngx_mail_session_t *s;
+    ngx_mail_proxy_conf_t *pcf;
 
     c = ev->data;
     s = c->data;
@@ -192,7 +192,7 @@ ngx_mail_proxy_handler(ngx_event_t *ev)
             && s->proxy->upstream.connection->read->eof))
     {
         action = c->log->action;
-        c->log->action = NULL;
+        c->log->action = ((void*)0);
         ngx_log_error(NGX_LOG_INFO, c->log, 0, "proxied session done");
         c->log->action = action;
 

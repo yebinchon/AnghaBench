@@ -1,194 +1,172 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KC_0 ; 
- int /*<<< orphan*/  KC_9 ; 
- int /*<<< orphan*/  KC_BSLASH ; 
- int /*<<< orphan*/  KC_C ; 
-#define  KC_COM 156 
- int /*<<< orphan*/  KC_DELETE ; 
-#define  KC_DIR 155 
- int /*<<< orphan*/  KC_DOWN ; 
-#define  KC_DVORAK 154 
-#define  KC_EMAIL 153 
- int /*<<< orphan*/  KC_EQUAL ; 
-#define  KC_EZALT 152 
-#define  KC_EZCOPY 151 
-#define  KC_EZCTRL 150 
-#define  KC_EZCUT 149 
-#define  KC_EZDOWN 148 
-#define  KC_EZGUI 147 
-#define  KC_EZLEFT 146 
-#define  KC_EZPSTE 145 
-#define  KC_EZRGHT 144 
-#define  KC_EZSHFT 143 
-#define  KC_EZUNDO 142 
-#define  KC_EZUP 141 
- int /*<<< orphan*/  KC_GRAVE ; 
- int /*<<< orphan*/  KC_LALT ; 
- int /*<<< orphan*/  KC_LBRACKET ; 
- int /*<<< orphan*/  KC_LCTL ; 
- int /*<<< orphan*/  KC_LEFT ; 
- int /*<<< orphan*/  KC_LGUI ; 
- int /*<<< orphan*/  KC_LSFT ; 
- int /*<<< orphan*/  KC_MINUS ; 
-#define  KC_NAME 140 
-#define  KC_QWERTY 139 
- int /*<<< orphan*/  KC_RALT ; 
- int /*<<< orphan*/  KC_RBRACKET ; 
- int /*<<< orphan*/  KC_RCTL ; 
- int /*<<< orphan*/  KC_RGHT ; 
- int /*<<< orphan*/  KC_RGUI ; 
- int /*<<< orphan*/  KC_RSFT ; 
- int /*<<< orphan*/  KC_SLASH ; 
-#define  KC_T_LALT 138 
-#define  KC_T_LCTL 137 
-#define  KC_T_LGUI 136 
-#define  KC_T_LRSE 135 
-#define  KC_T_LSFT 134 
-#define  KC_T_RALT 133 
-#define  KC_T_RCTL 132 
-#define  KC_T_RGUI 131 
-#define  KC_T_RRSE 130 
-#define  KC_T_RSFT 129 
- int /*<<< orphan*/  KC_UP ; 
-#define  KC_USER 128 
- int /*<<< orphan*/  KC_V ; 
- int /*<<< orphan*/  KC_X ; 
- int /*<<< orphan*/  KC_Z ; 
- int /*<<< orphan*/  MOD_LALT ; 
- int /*<<< orphan*/  MOD_LCTL ; 
- int /*<<< orphan*/  MOD_LGUI ; 
- int /*<<< orphan*/  MOD_LSFT ; 
- int /*<<< orphan*/  ONESHOT_PRESSED ; 
- int /*<<< orphan*/  ONESHOT_START ; 
- int /*<<< orphan*/  S (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAPPING_TERM ; 
- int /*<<< orphan*/  _COMMAND ; 
- int /*<<< orphan*/  _DVORAK ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RISE ; 
- int /*<<< orphan*/  clear_oneshot_layer_state (int /*<<< orphan*/ ) ; 
- int last_mod ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mod_lift (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mod_press (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_string (char*) ; 
- int /*<<< orphan*/  set_oneshot_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_oneshot_mods (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_timer ; 
- int /*<<< orphan*/  timer_elapsed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_read () ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+
+ int C (int ) ;
+ int KC_0 ;
+ int KC_9 ;
+ int KC_BSLASH ;
+ int KC_C ;
+
+ int KC_DELETE ;
+
+ int KC_DOWN ;
+
+
+ int KC_EQUAL ;
+ int KC_GRAVE ;
+ int KC_LALT ;
+ int KC_LBRACKET ;
+ int KC_LCTL ;
+ int KC_LEFT ;
+ int KC_LGUI ;
+ int KC_LSFT ;
+ int KC_MINUS ;
+
+
+ int KC_RALT ;
+ int KC_RBRACKET ;
+ int KC_RCTL ;
+ int KC_RGHT ;
+ int KC_RGUI ;
+ int KC_RSFT ;
+ int KC_SLASH ;
+ int KC_UP ;
+
+ int KC_V ;
+ int KC_X ;
+ int KC_Z ;
+ int MOD_LALT ;
+ int MOD_LCTL ;
+ int MOD_LGUI ;
+ int MOD_LSFT ;
+ int ONESHOT_PRESSED ;
+ int ONESHOT_START ;
+ int S (int ) ;
+ int TAPPING_TERM ;
+ int _COMMAND ;
+ int _DVORAK ;
+ int _QWERTY ;
+ int _RISE ;
+ int clear_oneshot_layer_state (int ) ;
+ int last_mod ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int mod_lift (int ,int ,int) ;
+ int mod_press (int ,int ,int) ;
+ int register_code (int ) ;
+ int send_string (char*) ;
+ int set_oneshot_layer (int ,int ) ;
+ int set_oneshot_mods (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int tap_code16 (int ) ;
+ int tap_timer ;
+ int timer_elapsed (int ) ;
+ int timer_read () ;
+ int unregister_code (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-case KC_DVORAK:
+case 154:
 if (record->event.pressed) {
     set_single_persistent_default_layer(_DVORAK);
 }
-return true;
+return 1;
 break;
 
-case KC_QWERTY:
+case 139:
 if (record->event.pressed) {
     set_single_persistent_default_layer(_QWERTY);
 }
-return true;
+return 1;
 break;
 
-case KC_T_LALT:
+case 138:
 if (record->event.pressed) {
     mod_press(S(KC_9), KC_LALT, 0);
 } else {
     mod_lift(S(KC_9), KC_LALT, 0);
 }
-return false;
+return 0;
 break;
-case KC_T_RALT:
+case 133:
 if (record->event.pressed) {
     mod_press(S(KC_0), KC_RALT, 1);
 } else {
     mod_lift(S(KC_0), KC_RALT, 1);
 }
-return false;
+return 0;
 break;
 
-case KC_T_LGUI:
+case 136:
 if (record->event.pressed) {
     mod_press(KC_GRAVE, KC_LGUI, 2);
 } else {
     mod_lift(KC_GRAVE, KC_LGUI, 2);
 }
-return false;
+return 0;
 break;
-case KC_T_RGUI:
+case 131:
 if (record->event.pressed) {
     mod_press(KC_BSLASH, KC_RGUI, 3);
 } else {
     mod_lift(KC_BSLASH, KC_RGUI, 3);
 }
-return false;
+return 0;
 break;
 
-case KC_T_LCTL:
+case 137:
 if (record->event.pressed) {
     mod_press(KC_LBRACKET, KC_LCTL, 4);
 } else {
     mod_lift(KC_LBRACKET, KC_LCTL, 4);
 }
-return false;
+return 0;
 break;
-case KC_T_RCTL:
+case 132:
 if (record->event.pressed) {
     mod_press(KC_RBRACKET, KC_RCTL, 5);
 } else {
     mod_lift(KC_RBRACKET, KC_RCTL, 5);
 }
-return false;
+return 0;
 break;
 
-case KC_T_LSFT:
+case 134:
 if (record->event.pressed) {
     mod_press(KC_EQUAL, KC_LSFT, 6);
 } else {
     mod_lift(KC_EQUAL, KC_LSFT, 6);
 }
-return false;
+return 0;
 break;
-case KC_T_RSFT:
+case 129:
 if (record->event.pressed) {
     mod_press(KC_MINUS, KC_RSFT, 7);
 } else {
     mod_lift(KC_MINUS, KC_RSFT, 7);
 }
-return false;
+return 0;
 break;
 
-case KC_T_LRSE:
+case 135:
 if (record->event.pressed) {
     tap_timer = timer_read();
     last_mod = 8;
@@ -200,9 +178,9 @@ if (record->event.pressed) {
         last_mod = 10;
     }
 }
-return false;
+return 0;
 break;
-case KC_T_RRSE:
+case 130:
 if (record->event.pressed) {
     tap_timer = timer_read();
     last_mod = 9;
@@ -214,105 +192,105 @@ if (record->event.pressed) {
         last_mod = 10;
     }
 }
-return false;
+return 0;
 break;
 
-case KC_EZSHFT:
+case 143:
 if (record->event.pressed) {
     set_oneshot_mods(MOD_LSFT);
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZCTRL:
+case 150:
 if (record->event.pressed) {
     set_oneshot_mods(MOD_LCTL);
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZALT:
+case 152:
 if (record->event.pressed) {
     set_oneshot_mods(MOD_LALT);
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZGUI:
+case 147:
 if (record->event.pressed) {
     set_oneshot_mods(MOD_LGUI);
     last_mod = 10;
 }
-return false;
+return 0;
 break;
 
-case KC_EZRGHT:
+case 144:
 if (record->event.pressed) {
     register_code(KC_LCTL);
     tap_code16(S(KC_RGHT));
     unregister_code(KC_LCTL);
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZLEFT:
+case 146:
 if (record->event.pressed) {
     register_code(KC_LCTL);
     tap_code16(S(KC_LEFT));
     unregister_code(KC_LCTL);
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZDOWN:
+case 148:
 if (record->event.pressed) {
     register_code(KC_LCTL);
     tap_code16(S(KC_DOWN));
     unregister_code(KC_LCTL);
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZUP:
+case 141:
 if (record->event.pressed) {
     register_code(KC_LCTL);
     tap_code16(S(KC_UP));
     unregister_code(KC_LCTL);
     last_mod = 10;
 }
-return false;
+return 0;
 break;
 
-case KC_EZUNDO:
+case 142:
 if (record->event.pressed) {
     tap_code16(C(KC_Z));
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZCOPY:
+case 151:
 if (record->event.pressed) {
     tap_code16(C(KC_C));
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZCUT:
+case 149:
 if (record->event.pressed) {
     tap_code16(C(KC_X));
     last_mod = 10;
 }
-return false;
+return 0;
 break;
-case KC_EZPSTE:
+case 145:
 if (record->event.pressed) {
     tap_code16(C(KC_V));
     last_mod = 10;
 }
-return false;
+return 0;
 break;
 
-case KC_COM:
+case 156:
 if (record->event.pressed) {
     layer_on(_COMMAND);
     set_oneshot_layer(_COMMAND, ONESHOT_START);
@@ -320,39 +298,39 @@ if (record->event.pressed) {
 } else {
     clear_oneshot_layer_state (ONESHOT_PRESSED);
 }
-return false;
+return 0;
 break;
 
-case KC_USER:
+case 128:
 if (record->event.pressed) {
     send_string("mhostley");
     last_mod = 10;
 }
-return true;
+return 1;
 break;
-case KC_EMAIL:
+case 153:
 if (record->event.pressed) {
     send_string("mhostley@gmail.com");
     last_mod = 10;
 }
-return true;
+return 1;
 break;
-case KC_NAME:
+case 140:
 if (record->event.pressed) {
     send_string("Samuel Jahnke");
     last_mod = 10;
 }
-return true;
+return 1;
 break;
-case KC_DIR:
+case 155:
 if (record->event.pressed) {
     send_string("home/mhostley/");
     last_mod = 10;
 }
-return true;
+return 1;
 break;
 
 }
 last_mod = 10;
-return true;
+return 1;
 }

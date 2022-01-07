@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int server_pos; int last_server_pos; int /*<<< orphan*/  pcb; void* list_ref; void* err_cb_ref; void* sync_cb_ref; } ;
-typedef  TYPE_1__ sntp_state_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ ERR_OK ; 
- int /*<<< orphan*/  IP_ADDR_ANY ; 
- void* LUA_NOREF ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  on_recv ; 
- TYPE_1__* state ; 
- scalar_t__ udp_bind (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udp_new () ; 
- int /*<<< orphan*/  udp_recv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int server_pos; int last_server_pos; int pcb; void* list_ref; void* err_cb_ref; void* sync_cb_ref; } ;
+typedef TYPE_1__ sntp_state_t ;
+typedef int lua_State ;
+
+
+ scalar_t__ ERR_OK ;
+ int IP_ADDR_ANY ;
+ void* LUA_NOREF ;
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int on_recv ;
+ TYPE_1__* state ;
+ scalar_t__ udp_bind (int ,int ,int ) ;
+ int udp_new () ;
+ int udp_recv (int ,int ,int *) ;
 
 __attribute__((used)) static char *state_init(lua_State *L) {
   state = (sntp_state_t *)malloc (sizeof (sntp_state_t));
@@ -50,5 +50,5 @@ __attribute__((used)) static char *state_init(lua_State *L) {
   state->server_pos = -1;
   state->last_server_pos = -1;
 
-  return NULL;
+  return ((void*)0);
 }

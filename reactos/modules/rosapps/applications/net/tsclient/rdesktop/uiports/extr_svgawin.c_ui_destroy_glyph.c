@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {struct TYPE_3__* data; } ;
-typedef  TYPE_1__ bitmap ;
+typedef TYPE_1__ bitmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xfree (TYPE_1__*) ; 
+
+ int xfree (TYPE_1__*) ;
 
 void ui_destroy_glyph(void* glyph)
 {
   bitmap* the_glyph;
 
   the_glyph = (bitmap*)glyph;
-  if (the_glyph != NULL)
+  if (the_glyph != ((void*)0))
   {
-    if (the_glyph->data != NULL)
+    if (the_glyph->data != ((void*)0))
       xfree(the_glyph->data);
     xfree(the_glyph);
   }

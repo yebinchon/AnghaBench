@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int cpu_sched_set; int cpu_sched_policy; scalar_t__ cpu_sched_priority; } ;
-typedef  TYPE_1__ ExecContext ;
+typedef TYPE_1__ ExecContext ;
 
-/* Variables and functions */
- scalar_t__ CLAMP (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int SCHED_OTHER ; 
- int /*<<< orphan*/  assert (void*) ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  sched_get_priority_max (int) ; 
- int /*<<< orphan*/  sched_get_priority_min (int) ; 
- int sched_policy_from_string (char const*) ; 
+
+ scalar_t__ CLAMP (scalar_t__,int ,int ) ;
+ int LOG_ERR ;
+ int SCHED_OTHER ;
+ int assert (void*) ;
+ scalar_t__ isempty (char const*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int ,char*,char const*) ;
+ int sched_get_priority_max (int) ;
+ int sched_get_priority_min (int) ;
+ int sched_policy_from_string (char const*) ;
 
 int config_parse_exec_cpu_sched_policy(const char *unit,
                                        const char *filename,
@@ -45,7 +45,7 @@ int config_parse_exec_cpu_sched_policy(const char *unit,
         assert(data);
 
         if (isempty(rvalue)) {
-                c->cpu_sched_set = false;
+                c->cpu_sched_set = 0;
                 c->cpu_sched_policy = SCHED_OTHER;
                 c->cpu_sched_priority = 0;
                 return 0;
@@ -58,9 +58,9 @@ int config_parse_exec_cpu_sched_policy(const char *unit,
         }
 
         c->cpu_sched_policy = x;
-        /* Moving to or from real-time policy? We need to adjust the priority */
+
         c->cpu_sched_priority = CLAMP(c->cpu_sched_priority, sched_get_priority_min(x), sched_get_priority_max(x));
-        c->cpu_sched_set = true;
+        c->cpu_sched_set = 1;
 
         return 0;
 }

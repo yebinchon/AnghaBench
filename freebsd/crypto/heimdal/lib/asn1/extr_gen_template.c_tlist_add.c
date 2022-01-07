@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tlist {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_TAILQ_INSERT_TAIL (int /*<<< orphan*/ *,struct tlist*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tlistmaster ; 
- int /*<<< orphan*/  tmembers ; 
+
+ int ASN1_TAILQ_INSERT_TAIL (int *,struct tlist*,int ) ;
+ int tlistmaster ;
+ int tmembers ;
 
 __attribute__((used)) static void
 tlist_add(struct tlist *tl)

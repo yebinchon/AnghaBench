@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  h; int /*<<< orphan*/  v; int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  buttons; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debug_mouse ; 
- TYPE_1__ mouse_report ; 
- int /*<<< orphan*/  mousekey_accel ; 
- int /*<<< orphan*/  mousekey_repeat ; 
- int /*<<< orphan*/  phex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  print_dec (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_decs (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int h; int v; int y; int x; int buttons; } ;
+
+
+ int debug_mouse ;
+ TYPE_1__ mouse_report ;
+ int mousekey_accel ;
+ int mousekey_repeat ;
+ int phex (int ) ;
+ int print (char*) ;
+ int print_dec (int ) ;
+ int print_decs (int ) ;
 
 __attribute__((used)) static void mousekey_debug(void) {
     if (!debug_mouse) return;

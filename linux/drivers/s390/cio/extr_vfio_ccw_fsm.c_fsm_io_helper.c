@@ -1,105 +1,105 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  lpm; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int lpm; } ;
 union orb {TYPE_4__ cmd; } ;
-typedef  int /*<<< orphan*/  u32 ;
-struct vfio_ccw_private {int /*<<< orphan*/  state; int /*<<< orphan*/  cp; struct subchannel* sch; } ;
-struct TYPE_5__ {int /*<<< orphan*/  actl; } ;
+typedef int u32 ;
+struct vfio_ccw_private {int state; int cp; struct subchannel* sch; } ;
+struct TYPE_5__ {int actl; } ;
 struct TYPE_6__ {TYPE_1__ cmd; } ;
 struct TYPE_7__ {TYPE_2__ scsw; } ;
-struct subchannel {int /*<<< orphan*/  lock; int /*<<< orphan*/  lpm; TYPE_3__ schib; int /*<<< orphan*/  schid; int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  ccode ;
-typedef  scalar_t__ addr_t ;
-typedef  int /*<<< orphan*/  __u8 ;
+struct subchannel {int lock; int lpm; TYPE_3__ schib; int schid; int dev; } ;
+typedef int ccode ;
+typedef scalar_t__ addr_t ;
+typedef int __u8 ;
 
-/* Variables and functions */
- int EACCES ; 
- int EBUSY ; 
- int EIO ; 
- int ENODEV ; 
- int /*<<< orphan*/  SCSW_ACTL_START_PEND ; 
- int /*<<< orphan*/  VFIO_CCW_HEX_EVENT (int,int*,int) ; 
- int /*<<< orphan*/  VFIO_CCW_STATE_CP_PENDING ; 
- int /*<<< orphan*/  VFIO_CCW_TRACE_EVENT (int,char*) ; 
- int /*<<< orphan*/  cio_update_schib (struct subchannel*) ; 
- union orb* cp_get_orb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* dev_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
- int ssch (int /*<<< orphan*/ ,union orb*) ; 
+
+ int EACCES ;
+ int EBUSY ;
+ int EIO ;
+ int ENODEV ;
+ int SCSW_ACTL_START_PEND ;
+ int VFIO_CCW_HEX_EVENT (int,int*,int) ;
+ int VFIO_CCW_STATE_CP_PENDING ;
+ int VFIO_CCW_TRACE_EVENT (int,char*) ;
+ int cio_update_schib (struct subchannel*) ;
+ union orb* cp_get_orb (int *,int ,int ) ;
+ char* dev_name (int *) ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
+ int ssch (int ,union orb*) ;
 
 __attribute__((used)) static int fsm_io_helper(struct vfio_ccw_private *private)
 {
-	struct subchannel *sch;
-	union orb *orb;
-	int ccode;
-	__u8 lpm;
-	unsigned long flags;
-	int ret;
+ struct subchannel *sch;
+ union orb *orb;
+ int ccode;
+ __u8 lpm;
+ unsigned long flags;
+ int ret;
 
-	sch = private->sch;
+ sch = private->sch;
 
-	spin_lock_irqsave(sch->lock, flags);
+ spin_lock_irqsave(sch->lock, flags);
 
-	orb = cp_get_orb(&private->cp, (u32)(addr_t)sch, sch->lpm);
-	if (!orb) {
-		ret = -EIO;
-		goto out;
-	}
+ orb = cp_get_orb(&private->cp, (u32)(addr_t)sch, sch->lpm);
+ if (!orb) {
+  ret = -EIO;
+  goto out;
+ }
 
-	VFIO_CCW_TRACE_EVENT(5, "stIO");
-	VFIO_CCW_TRACE_EVENT(5, dev_name(&sch->dev));
+ VFIO_CCW_TRACE_EVENT(5, "stIO");
+ VFIO_CCW_TRACE_EVENT(5, dev_name(&sch->dev));
 
-	/* Issue "Start Subchannel" */
-	ccode = ssch(sch->schid, orb);
 
-	VFIO_CCW_HEX_EVENT(5, &ccode, sizeof(ccode));
+ ccode = ssch(sch->schid, orb);
 
-	switch (ccode) {
-	case 0:
-		/*
-		 * Initialize device status information
-		 */
-		sch->schib.scsw.cmd.actl |= SCSW_ACTL_START_PEND;
-		ret = 0;
-		private->state = VFIO_CCW_STATE_CP_PENDING;
-		break;
-	case 1:		/* Status pending */
-	case 2:		/* Busy */
-		ret = -EBUSY;
-		break;
-	case 3:		/* Device/path not operational */
-	{
-		lpm = orb->cmd.lpm;
-		if (lpm != 0)
-			sch->lpm &= ~lpm;
-		else
-			sch->lpm = 0;
+ VFIO_CCW_HEX_EVENT(5, &ccode, sizeof(ccode));
 
-		if (cio_update_schib(sch))
-			ret = -ENODEV;
-		else
-			ret = sch->lpm ? -EACCES : -ENODEV;
-		break;
-	}
-	default:
-		ret = ccode;
-	}
+ switch (ccode) {
+ case 0:
+
+
+
+  sch->schib.scsw.cmd.actl |= SCSW_ACTL_START_PEND;
+  ret = 0;
+  private->state = VFIO_CCW_STATE_CP_PENDING;
+  break;
+ case 1:
+ case 2:
+  ret = -EBUSY;
+  break;
+ case 3:
+ {
+  lpm = orb->cmd.lpm;
+  if (lpm != 0)
+   sch->lpm &= ~lpm;
+  else
+   sch->lpm = 0;
+
+  if (cio_update_schib(sch))
+   ret = -ENODEV;
+  else
+   ret = sch->lpm ? -EACCES : -ENODEV;
+  break;
+ }
+ default:
+  ret = ccode;
+ }
 out:
-	spin_unlock_irqrestore(sch->lock, flags);
-	return ret;
+ spin_unlock_irqrestore(sch->lock, flags);
+ return ret;
 }

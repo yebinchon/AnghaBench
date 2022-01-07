@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int dmax; int /*<<< orphan*/  flags; scalar_t__ top; scalar_t__ neg; int /*<<< orphan*/ * d; } ;
-typedef  TYPE_1__ BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_FLG_FIXED_TOP ; 
- int /*<<< orphan*/  OPENSSL_cleanse (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bn_check_top (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dmax; int flags; scalar_t__ top; scalar_t__ neg; int * d; } ;
+typedef TYPE_1__ BIGNUM ;
+
+
+ int BN_FLG_FIXED_TOP ;
+ int OPENSSL_cleanse (int *,int) ;
+ int bn_check_top (TYPE_1__*) ;
 
 void BN_clear(BIGNUM *a)
 {
-    if (a == NULL)
+    if (a == ((void*)0))
         return;
     bn_check_top(a);
-    if (a->d != NULL)
+    if (a->d != ((void*)0))
         OPENSSL_cleanse(a->d, sizeof(*a->d) * a->dmax);
     a->neg = 0;
     a->top = 0;

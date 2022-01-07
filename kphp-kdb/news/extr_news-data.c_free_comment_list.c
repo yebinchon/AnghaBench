@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ tot_comments; TYPE_2__* last; TYPE_2__* first; } ;
-typedef  TYPE_1__ place_t ;
+typedef TYPE_1__ place_t ;
 struct TYPE_6__ {struct TYPE_6__* next; } ;
-typedef  TYPE_2__ comment_t ;
+typedef TYPE_2__ comment_t ;
 
-/* Variables and functions */
- int COMM_MODE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free_comment (TYPE_2__*) ; 
+
+ int COMM_MODE ;
+ int assert (int) ;
+ int free_comment (TYPE_2__*) ;
 
 __attribute__((used)) static void free_comment_list (place_t *U) {
   assert (COMM_MODE);

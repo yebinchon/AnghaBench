@@ -1,162 +1,141 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  void* uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef void* uint32_t ;
+typedef int uint16_t ;
+struct TYPE_6__ {int pressed; } ;
 struct TYPE_7__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 struct TYPE_9__ {int alive; int led_id; void* time; } ;
 struct TYPE_8__ {int PATTERN_INDEX; int TRAVEL_DISTANCE; int COLOR_PATTERN_INDEX; int WAVE_PERIOD; int WAVE_FRONT_WIDTH; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ANIMATION_SPEED_STEP ; 
- int /*<<< orphan*/  BREATHE_MIN_STEP ; 
- int COLOR_PATTERNS_COUNT ; 
-#define  DBG_KBD 154 
-#define  DBG_MOU 153 
-#define  DBG_MTRX 152 
-#define  DBG_TOG 151 
- int /*<<< orphan*/  I2C3733_Control_Set (int) ; 
- TYPE_5__* KEY_STROKES ; 
- int KEY_STROKES_LENGTH ; 
- scalar_t__ LED_GCR_MAX ; 
- scalar_t__ LED_GCR_STEP ; 
- int /*<<< orphan*/  LED_MODE_MAX_INDEX ; 
- int /*<<< orphan*/  LED_MODE_NORMAL ; 
-#define  L_BRD 150 
-#define  L_BRI 149 
-#define  L_CP_NX 148 
-#define  L_CP_PR 147 
-#define  L_OFF 146 
-#define  L_ON 145 
-#define  L_PSD 144 
-#define  L_PSI 143 
-#define  L_PTN 142 
-#define  L_PTP 141 
-#define  L_SP_FA 140 
-#define  L_SP_NE 139 
-#define  L_SP_NW 138 
-#define  L_SP_PR 137 
-#define  L_SP_SL 136 
-#define  L_SP_WD 135 
-#define  L_T_BR 134 
-#define  L_T_MD 133 
-#define  L_T_ONF 132 
-#define  L_T_PTD 131 
-#define  MD_BOOT 130 
- int /*<<< orphan*/  MODS_CTRL ; 
- int /*<<< orphan*/  MODS_SHIFT ; 
- int PATTERN_COUNT ; 
- int /*<<< orphan*/  TOGGLE_FLAG_AND_PRINT (int /*<<< orphan*/ ,char*) ; 
- TYPE_4__ USER_CONFIG ; 
-#define  U_T_AGCR 129 
-#define  U_T_AUTO 128 
- int breathe_dir ; 
- int /*<<< orphan*/  debug_enable ; 
- int /*<<< orphan*/  debug_keyboard ; 
- int /*<<< orphan*/  debug_matrix ; 
- int /*<<< orphan*/  debug_mouse ; 
- scalar_t__ gcr_breathe ; 
- scalar_t__ gcr_desired ; 
- int ktli (int) ; 
- int /*<<< orphan*/  led_animation_breathe_cur ; 
- int led_animation_breathing ; 
- int led_animation_direction ; 
- int /*<<< orphan*/  led_animation_id ; 
- int /*<<< orphan*/  led_animation_speed ; 
- int led_enabled ; 
- int /*<<< orphan*/  led_lighting_mode ; 
- int /*<<< orphan*/  led_setups_count ; 
- int /*<<< orphan*/  refresh_color_pattern_indicators () ; 
- int /*<<< orphan*/  refresh_pattern_indicators () ; 
- int /*<<< orphan*/  reset_keyboard () ; 
- int timer_elapsed32 (void*) ; 
- void* timer_read32 () ; 
- int /*<<< orphan*/  usb_extra_manual ; 
- int /*<<< orphan*/  usb_gcr_auto ; 
+
+ int ANIMATION_SPEED_STEP ;
+ int BREATHE_MIN_STEP ;
+ int COLOR_PATTERNS_COUNT ;
+
+
+
+
+ int I2C3733_Control_Set (int) ;
+ TYPE_5__* KEY_STROKES ;
+ int KEY_STROKES_LENGTH ;
+ scalar_t__ LED_GCR_MAX ;
+ scalar_t__ LED_GCR_STEP ;
+ int LED_MODE_MAX_INDEX ;
+ int LED_MODE_NORMAL ;
+ int MODS_CTRL ;
+ int MODS_SHIFT ;
+ int PATTERN_COUNT ;
+ int TOGGLE_FLAG_AND_PRINT (int ,char*) ;
+ TYPE_4__ USER_CONFIG ;
+
+
+ int breathe_dir ;
+ int debug_enable ;
+ int debug_keyboard ;
+ int debug_matrix ;
+ int debug_mouse ;
+ scalar_t__ gcr_breathe ;
+ scalar_t__ gcr_desired ;
+ int ktli (int) ;
+ int led_animation_breathe_cur ;
+ int led_animation_breathing ;
+ int led_animation_direction ;
+ int led_animation_id ;
+ int led_animation_speed ;
+ int led_enabled ;
+ int led_lighting_mode ;
+ int led_setups_count ;
+ int refresh_color_pattern_indicators () ;
+ int refresh_pattern_indicators () ;
+ int reset_keyboard () ;
+ int timer_elapsed32 (void*) ;
+ void* timer_read32 () ;
+ int usb_extra_manual ;
+ int usb_gcr_auto ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint32_t key_timer;
 
 
     switch (keycode) {
-        case L_BRI:
+        case 149:
             if (record->event.pressed) {
                 if (LED_GCR_STEP > LED_GCR_MAX - gcr_desired) gcr_desired = LED_GCR_MAX;
                 else gcr_desired += LED_GCR_STEP;
                 if (led_animation_breathing) gcr_breathe = gcr_desired;
             }
-            return false;
-        case L_BRD:
+            return 0;
+        case 150:
             if (record->event.pressed) {
                 if (LED_GCR_STEP > gcr_desired) gcr_desired = 0;
                 else gcr_desired -= LED_GCR_STEP;
                 if (led_animation_breathing) gcr_breathe = gcr_desired;
             }
-            return false;
-        case L_PTN:
+            return 0;
+        case 142:
             if (record->event.pressed) {
                 if (led_animation_id == led_setups_count - 1) led_animation_id = 0;
                 else led_animation_id++;
             }
-            return false;
-        case L_PTP:
+            return 0;
+        case 141:
             if (record->event.pressed) {
                 if (led_animation_id == 0) led_animation_id = led_setups_count - 1;
                 else led_animation_id--;
             }
-            return false;
-        case L_PSI:
+            return 0;
+        case 143:
             if (record->event.pressed) {
                 led_animation_speed += ANIMATION_SPEED_STEP;
             }
-            return false;
-        case L_PSD:
+            return 0;
+        case 144:
             if (record->event.pressed) {
                 led_animation_speed -= ANIMATION_SPEED_STEP;
                 if (led_animation_speed < 0) led_animation_speed = 0;
             }
-            return false;
-        case L_T_MD:
+            return 0;
+        case 133:
             if (record->event.pressed) {
                 led_lighting_mode++;
                 if (led_lighting_mode > LED_MODE_MAX_INDEX) led_lighting_mode = LED_MODE_NORMAL;
             }
-            return false;
-        case L_T_ONF:
+            return 0;
+        case 132:
             if (record->event.pressed) {
                 led_enabled = !led_enabled;
                 I2C3733_Control_Set(led_enabled);
             }
-            return false;
-        case L_ON:
+            return 0;
+        case 145:
             if (record->event.pressed) {
                 led_enabled = 1;
                 I2C3733_Control_Set(led_enabled);
             }
-            return false;
-        case L_OFF:
+            return 0;
+        case 146:
             if (record->event.pressed) {
                 led_enabled = 0;
                 I2C3733_Control_Set(led_enabled);
             }
-            return false;
-        case L_T_BR:
+            return 0;
+        case 134:
             if (record->event.pressed) {
                 led_animation_breathing = !led_animation_breathing;
                 if (led_animation_breathing) {
@@ -165,43 +144,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     breathe_dir = 1;
                 }
             }
-            return false;
-        case L_T_PTD:
+            return 0;
+        case 131:
             if (record->event.pressed) {
                 led_animation_direction = !led_animation_direction;
             }
-            return false;
-        case U_T_AUTO:
+            return 0;
+        case 128:
             if (record->event.pressed && MODS_SHIFT && MODS_CTRL) {
                 TOGGLE_FLAG_AND_PRINT(usb_extra_manual, "USB extra port manual mode");
             }
-            return false;
-        case U_T_AGCR:
+            return 0;
+        case 129:
             if (record->event.pressed && MODS_SHIFT && MODS_CTRL) {
                 TOGGLE_FLAG_AND_PRINT(usb_gcr_auto, "USB GCR auto mode");
             }
-            return false;
-        case DBG_TOG:
+            return 0;
+        case 151:
             if (record->event.pressed) {
                 TOGGLE_FLAG_AND_PRINT(debug_enable, "Debug mode");
             }
-            return false;
-        case DBG_MTRX:
+            return 0;
+        case 152:
             if (record->event.pressed) {
                 TOGGLE_FLAG_AND_PRINT(debug_matrix, "Debug matrix");
             }
-            return false;
-        case DBG_KBD:
+            return 0;
+        case 154:
             if (record->event.pressed) {
                 TOGGLE_FLAG_AND_PRINT(debug_keyboard, "Debug keyboard");
             }
-            return false;
-        case DBG_MOU:
+            return 0;
+        case 153:
             if (record->event.pressed) {
                 TOGGLE_FLAG_AND_PRINT(debug_mouse, "Debug mouse");
             }
-            return false;
-        case MD_BOOT:
+            return 0;
+        case 130:
             if (record->event.pressed) {
                 key_timer = timer_read32();
             } else {
@@ -209,31 +188,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     reset_keyboard();
                 }
             }
-            return false;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        case L_SP_PR: // previous dripple pattern
-        case L_SP_NE: // next dripple pattern
+            return 0;
+        case 137:
+        case 139:
             if (record->event.pressed) {
-#define PATTERN_COUNT 7
-                uint8_t incre = keycode == L_SP_PR ? PATTERN_COUNT-1 : 1;
+
+                uint8_t incre = keycode == 137 ? 7 -1 : 1;
                 USER_CONFIG.PATTERN_INDEX += incre;
-                USER_CONFIG.PATTERN_INDEX %= PATTERN_COUNT;
+                USER_CONFIG.PATTERN_INDEX %= 7;
 
                 if(USER_CONFIG.PATTERN_INDEX <= 4){
                     USER_CONFIG.TRAVEL_DISTANCE = 25;
@@ -242,18 +204,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
 
                 switch(USER_CONFIG.PATTERN_INDEX){
-                case 0: // None
+                case 0:
                     break;
-                case 1: // background off, wave on
+                case 1:
                     USER_CONFIG.WAVE_FRONT_WIDTH = 2;
                     break;
-                case 2: // background on, wave off
+                case 2:
                     USER_CONFIG.WAVE_FRONT_WIDTH = 5;
                     break;
-                case 3: // background off, rainbow wave
+                case 3:
                     USER_CONFIG.WAVE_FRONT_WIDTH = 10;
                     break;
-                case 4: // background on, rainbow wave
+                case 4:
                     USER_CONFIG.WAVE_FRONT_WIDTH = 10;
                     break;
                 case 5:
@@ -272,45 +234,45 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     break;
                 }
 
-                // remove effect after changing pattern
+
                 for(int i = 0; i < KEY_STROKES_LENGTH; ++i){
                     KEY_STROKES[i].alive = 0;
                 }
                 refresh_pattern_indicators();
                 refresh_color_pattern_indicators();
             }
-            return false;
-        case L_SP_WD:
-        case L_SP_NW:
+            return 0;
+        case 135:
+        case 138:
             if(record->event.pressed){
-                short incre = keycode == L_SP_WD ? 1 : -1;
+                short incre = keycode == 135 ? 1 : -1;
                 USER_CONFIG.WAVE_FRONT_WIDTH += incre;
                 if(USER_CONFIG.WAVE_FRONT_WIDTH < 1){
                     USER_CONFIG.WAVE_FRONT_WIDTH = 1;
                 }
             }
-            return false;
-        case L_SP_FA:
-        case L_SP_SL:
+            return 0;
+        case 140:
+        case 136:
             if(record->event.pressed){
-                short incre = keycode == L_SP_FA ? -1 : 1;
+                short incre = keycode == 140 ? -1 : 1;
 
                 USER_CONFIG.WAVE_PERIOD += 10 * incre;
                 if(USER_CONFIG.WAVE_PERIOD < 10){
                     USER_CONFIG.WAVE_PERIOD = 10;
                 }
             }
-            return false;
-        // these are the keys not in range 0x04 - 0x52
-        case L_CP_PR:
-        case L_CP_NX:
+            return 0;
+
+        case 147:
+        case 148:
             if(record->event.pressed){
-                uint8_t incre = keycode == L_CP_PR ? COLOR_PATTERNS_COUNT - 1 : 1;
+                uint8_t incre = keycode == 147 ? COLOR_PATTERNS_COUNT - 1 : 1;
                 USER_CONFIG.COLOR_PATTERN_INDEX += incre;
                 USER_CONFIG.COLOR_PATTERN_INDEX %= COLOR_PATTERNS_COUNT;
                 refresh_color_pattern_indicators();
             }
-            return false;
+            return 0;
         default:
             if (record->event.pressed){
                 uint8_t led_id = ktli(keycode);
@@ -325,6 +287,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     }
                 }
             }
-            return true; //Process all other keycodes normally
+            return 1;
     }
 }

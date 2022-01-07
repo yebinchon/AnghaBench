@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NR_ACTIVE_ANON ; 
- int /*<<< orphan*/  NR_ACTIVE_FILE ; 
- int /*<<< orphan*/  NR_FILE_MAPPED ; 
- int /*<<< orphan*/  NR_INACTIVE_ANON ; 
- int /*<<< orphan*/  NR_INACTIVE_FILE ; 
- int /*<<< orphan*/  NR_SLAB_RECLAIMABLE ; 
- unsigned long global_page_state (int /*<<< orphan*/ ) ; 
+ int NR_ACTIVE_ANON ;
+ int NR_ACTIVE_FILE ;
+ int NR_FILE_MAPPED ;
+ int NR_INACTIVE_ANON ;
+ int NR_INACTIVE_FILE ;
+ int NR_SLAB_RECLAIMABLE ;
+ unsigned long global_page_state (int ) ;
 
 __attribute__((used)) static unsigned long minimum_image_size(unsigned long saveable)
 {
-	unsigned long size;
+ unsigned long size;
 
-	size = global_page_state(NR_SLAB_RECLAIMABLE)
-		+ global_page_state(NR_ACTIVE_ANON)
-		+ global_page_state(NR_INACTIVE_ANON)
-		+ global_page_state(NR_ACTIVE_FILE)
-		+ global_page_state(NR_INACTIVE_FILE)
-		- global_page_state(NR_FILE_MAPPED);
+ size = global_page_state(NR_SLAB_RECLAIMABLE)
+  + global_page_state(NR_ACTIVE_ANON)
+  + global_page_state(NR_INACTIVE_ANON)
+  + global_page_state(NR_ACTIVE_FILE)
+  + global_page_state(NR_INACTIVE_FILE)
+  - global_page_state(NR_FILE_MAPPED);
 
-	return saveable <= size ? 0 : saveable - size;
+ return saveable <= size ? 0 : saveable - size;
 }

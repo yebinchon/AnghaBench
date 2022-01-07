@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  thread; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int thread; } ;
 struct rrdengine_instance {TYPE_1__ worker_config; } ;
-struct rrdeng_cmd {int /*<<< orphan*/  opcode; } ;
+struct rrdeng_cmd {int opcode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RRDENG_FD_BUDGET_PER_INSTANCE ; 
- int /*<<< orphan*/  RRDENG_SHUTDOWN ; 
- int /*<<< orphan*/  assert (int) ; 
- struct rrdengine_instance default_global_ctx ; 
- int /*<<< orphan*/  finalize_rrd_files (struct rrdengine_instance*) ; 
- int /*<<< orphan*/  free_page_cache (struct rrdengine_instance*) ; 
- int /*<<< orphan*/  freez (struct rrdengine_instance*) ; 
- int /*<<< orphan*/  rrd_stat_atomic_add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdeng_enq_cmd (TYPE_1__*,struct rrdeng_cmd*) ; 
- int /*<<< orphan*/  rrdeng_reserved_file_descriptors ; 
- scalar_t__ uv_thread_join (int /*<<< orphan*/ *) ; 
+
+ int RRDENG_FD_BUDGET_PER_INSTANCE ;
+ int RRDENG_SHUTDOWN ;
+ int assert (int) ;
+ struct rrdengine_instance default_global_ctx ;
+ int finalize_rrd_files (struct rrdengine_instance*) ;
+ int free_page_cache (struct rrdengine_instance*) ;
+ int freez (struct rrdengine_instance*) ;
+ int rrd_stat_atomic_add (int *,int ) ;
+ int rrdeng_enq_cmd (TYPE_1__*,struct rrdeng_cmd*) ;
+ int rrdeng_reserved_file_descriptors ;
+ scalar_t__ uv_thread_join (int *) ;
 
 int rrdeng_exit(struct rrdengine_instance *ctx)
 {
     struct rrdeng_cmd cmd;
 
-    if (NULL == ctx) {
+    if (((void*)0) == ctx) {
         return 1;
     }
 
-    /* TODO: add page to page cache */
+
     cmd.opcode = RRDENG_SHUTDOWN;
     rrdeng_enq_cmd(&ctx->worker_config, &cmd);
 

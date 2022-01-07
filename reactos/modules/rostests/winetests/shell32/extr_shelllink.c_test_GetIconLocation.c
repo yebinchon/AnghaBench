@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mypath ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  LPITEMIDLIST ;
-typedef  int /*<<< orphan*/  IShellLinkW ;
-typedef  int /*<<< orphan*/  IShellLinkA ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_ShellLink ; 
- int CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetWindowsDirectoryA (char*,int) ; 
- int /*<<< orphan*/  IID_IShellLinkA ; 
- int /*<<< orphan*/  IID_IShellLinkW ; 
- int INFOTIPSIZE ; 
- int IShellLinkA_GetIconLocation (int /*<<< orphan*/ *,char*,int,int*) ; 
- int IShellLinkA_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IShellLinkA_Release (int /*<<< orphan*/ *) ; 
- int IShellLinkA_SetIDList (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IShellLinkA_SetIconLocation (int /*<<< orphan*/ *,char const*,int) ; 
- int IShellLinkA_SetPath (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  IShellLinkW_Release (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int SUCCEEDED (int) ; 
- int S_FALSE ; 
- int S_OK ; 
- scalar_t__ lstrcmpiA (char*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pILFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  path_to_pidl (char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef int mypath ;
+typedef int buffer ;
+typedef int LPVOID ;
+typedef int LPITEMIDLIST ;
+typedef int IShellLinkW ;
+typedef int IShellLinkA ;
+typedef int HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_ShellLink ;
+ int CoCreateInstance (int *,int *,int ,int *,int *) ;
+ int GetWindowsDirectoryA (char*,int) ;
+ int IID_IShellLinkA ;
+ int IID_IShellLinkW ;
+ int INFOTIPSIZE ;
+ int IShellLinkA_GetIconLocation (int *,char*,int,int*) ;
+ int IShellLinkA_QueryInterface (int *,int *,void**) ;
+ int IShellLinkA_Release (int *) ;
+ int IShellLinkA_SetIDList (int *,int ) ;
+ int IShellLinkA_SetIconLocation (int *,char const*,int) ;
+ int IShellLinkA_SetPath (int *,char const*) ;
+ int IShellLinkW_Release (int *) ;
+ int MAX_PATH ;
+ int SUCCEEDED (int) ;
+ int S_FALSE ;
+ int S_OK ;
+ scalar_t__ lstrcmpiA (char*,char const*) ;
+ int ok (int,char*,...) ;
+ int pILFree (int ) ;
+ int path_to_pidl (char*) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void test_GetIconLocation(void)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static void test_GetIconLocation(void)
     HRESULT r;
     LPITEMIDLIST pidl;
 
-    r = CoCreateInstance(&CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER,
+    r = CoCreateInstance(&CLSID_ShellLink, ((void*)0), CLSCTX_INPROC_SERVER,
             &IID_IShellLinkA, (LPVOID*)&sl);
     ok(r == S_OK, "no IID_IShellLinkA (0x%08x)\n", r);
     if(r != S_OK)
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_GetIconLocation(void)
     ok(lstrcmpiA(buffer,str) == 0, "GetIconLocation returned '%s'\n", buffer);
     ok(i == 0xbabecafe, "GetIconLocation returned %#x.\n", i);
 
-    r = IShellLinkA_SetIconLocation(sl, NULL, 0xcafefe);
+    r = IShellLinkA_SetIconLocation(sl, ((void*)0), 0xcafefe);
     ok(r == S_OK, "SetIconLocation failed (0x%08x)\n", r);
 
     i = 0xdeadbeef;
@@ -118,7 +118,7 @@ __attribute__((used)) static void test_GetIconLocation(void)
     r = IShellLinkA_SetIconLocation(sl, str, 0xbabecafe);
     ok(r == S_OK, "SetIconLocation failed (0x%08x)\n", r);
 
-    r = IShellLinkA_SetIconLocation(sl, NULL, 0xcafefe);
+    r = IShellLinkA_SetIconLocation(sl, ((void*)0), 0xcafefe);
     ok(r == S_OK, "SetIconLocation failed (0x%08x)\n", r);
 
     i = 0xdeadbeef;

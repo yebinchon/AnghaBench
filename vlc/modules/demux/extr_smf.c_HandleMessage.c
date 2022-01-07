@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  stream_t ;
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int stream_t ;
 struct TYPE_16__ {int running_event; scalar_t__ start; scalar_t__ offset; } ;
-typedef  TYPE_1__ mtrk_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  es_out_t ;
-struct TYPE_17__ {TYPE_3__* p_sys; int /*<<< orphan*/ * s; } ;
-typedef  TYPE_2__ demux_t ;
-struct TYPE_18__ {int /*<<< orphan*/  es; int /*<<< orphan*/  pts; } ;
-typedef  TYPE_3__ demux_sys_t ;
-struct TYPE_19__ {int* p_buffer; int /*<<< orphan*/  i_pts; int /*<<< orphan*/  i_dts; } ;
-typedef  TYPE_4__ block_t ;
+typedef TYPE_1__ mtrk_t ;
+typedef int int32_t ;
+typedef int es_out_t ;
+struct TYPE_17__ {TYPE_3__* p_sys; int * s; } ;
+typedef TYPE_2__ demux_t ;
+struct TYPE_18__ {int es; int pts; } ;
+typedef TYPE_3__ demux_sys_t ;
+struct TYPE_19__ {int* p_buffer; int i_pts; int i_dts; } ;
+typedef TYPE_4__ block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HandleMeta (TYPE_2__*,TYPE_1__*) ; 
- int ReadVarInt (int /*<<< orphan*/ *) ; 
- TYPE_4__* block_Alloc (int) ; 
- TYPE_4__* block_Realloc (TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  block_Release (TYPE_4__*) ; 
- int /*<<< orphan*/  date_Get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_out_Send (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*) ; 
- TYPE_4__* vlc_stream_Block (int /*<<< orphan*/ *,int) ; 
- int vlc_stream_Read (int /*<<< orphan*/ *,int*,int) ; 
- scalar_t__ vlc_stream_Seek (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ vlc_stream_Tell (int /*<<< orphan*/ *) ; 
+
+ int HandleMeta (TYPE_2__*,TYPE_1__*) ;
+ int ReadVarInt (int *) ;
+ TYPE_4__* block_Alloc (int) ;
+ TYPE_4__* block_Realloc (TYPE_4__*,int,int) ;
+ int block_Release (TYPE_4__*) ;
+ int date_Get (int *) ;
+ int es_out_Send (int *,int ,TYPE_4__*) ;
+ int msg_Err (TYPE_2__*,char*) ;
+ TYPE_4__* vlc_stream_Block (int *,int) ;
+ int vlc_stream_Read (int *,int*,int) ;
+ scalar_t__ vlc_stream_Seek (int *,scalar_t__) ;
+ scalar_t__ vlc_stream_Tell (int *) ;
 
 __attribute__((used)) static
 int HandleMessage (demux_t *p_demux, mtrk_t *tr, es_out_t *out)
@@ -58,31 +58,31 @@ int HandleMessage (demux_t *p_demux, mtrk_t *tr, es_out_t *out)
 
     switch (event & 0xf0)
     {
-        case 0xF0: /* System Exclusive */
+        case 0xF0:
             switch (event)
             {
-                case 0xF0: /* System Specific start */
-                case 0xF7: /* System Specific continuation */
+                case 0xF0:
+                case 0xF7:
                 {
-                    /* Variable length followed by SysEx event data */
+
                     int32_t len = ReadVarInt (s);
                     if (len == -1)
                         return -1;
 
                     block = vlc_stream_Block (s, len);
-                    if (block == NULL)
+                    if (block == ((void*)0))
                         return -1;
                     block = block_Realloc (block, 1, len);
-                    if (block == NULL)
+                    if (block == ((void*)0))
                         return -1;
                     block->p_buffer[0] = event;
                     goto send;
                 }
-                case 0xFF: /* SMF Meta Event */
+                case 0xFF:
                     if (HandleMeta (p_demux, tr))
                         return -1;
-                    /* We MUST NOT pass this event forward. It would be
-                     * confused as a MIDI Reset real-time event. */
+
+
                     goto skip;
                 case 0xF1:
                 case 0xF3:
@@ -93,9 +93,9 @@ int HandleMessage (demux_t *p_demux, mtrk_t *tr, es_out_t *out)
                     break;
                 case 0xF4:
                 case 0xF5:
-                    /* We cannot handle undefined "common" (non-real-time)
-                     * events inside SMF, as we cannot differentiate a
-                     * one byte delta-time (< 0x80) from event data. */
+
+
+
                 default:
                     datalen = 0;
                     break;
@@ -110,9 +110,9 @@ int HandleMessage (demux_t *p_demux, mtrk_t *tr, es_out_t *out)
             break;
     }
 
-    /* FIXME: one message per block is very inefficient */
+
     block = block_Alloc (1 + datalen);
-    if (block == NULL)
+    if (block == ((void*)0))
         goto skip;
 
     block->p_buffer[0] = event;
@@ -124,7 +124,7 @@ int HandleMessage (demux_t *p_demux, mtrk_t *tr, es_out_t *out)
     else
     {
         if (datalen == 0)
-        {   /* implicit running status requires non-empty payload */
+        {
             msg_Err (p_demux, "malformatted MIDI event");
             goto error;
         }
@@ -137,14 +137,14 @@ int HandleMessage (demux_t *p_demux, mtrk_t *tr, es_out_t *out)
 
 send:
     block->i_dts = block->i_pts = date_Get(&sys->pts);
-    if (out != NULL)
+    if (out != ((void*)0))
         es_out_Send(out, sys->es, block);
     else
         block_Release (block);
 
 skip:
     if (event < 0xF8)
-        /* If event is not real-time, update running status */
+
         tr->running_event = event;
 
     tr->offset = vlc_stream_Tell (s) - tr->start;

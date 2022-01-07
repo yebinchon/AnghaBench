@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  input_thread_t ;
-typedef  int /*<<< orphan*/  demux_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int input_thread_t ;
+typedef int demux_t ;
 struct TYPE_4__ {TYPE_1__* master; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * p_demux; } ;
+struct TYPE_3__ {int * p_demux; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEMUX_GET_SIGNAL ; 
- int /*<<< orphan*/  INPUT_UPDATE_META ; 
- int /*<<< orphan*/  InputUpdateMeta (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  demux_Control (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*,double*) ; 
- scalar_t__ demux_TestAndClearFlags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_SendEventSignal (int /*<<< orphan*/ *,double,double) ; 
- TYPE_2__* input_priv (int /*<<< orphan*/ *) ; 
+
+ int DEMUX_GET_SIGNAL ;
+ int INPUT_UPDATE_META ;
+ int InputUpdateMeta (int *,int *) ;
+ int demux_Control (int *,int ,double*,double*) ;
+ scalar_t__ demux_TestAndClearFlags (int *,int ) ;
+ int input_SendEventSignal (int *,double,double) ;
+ TYPE_2__* input_priv (int *) ;
 
 __attribute__((used)) static void UpdateGenericFromDemux( input_thread_t *p_input )
 {

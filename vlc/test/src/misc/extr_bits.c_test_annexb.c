@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct hxxx_bsfw_ep3b_ctx_s {int dummy; } ;
 struct TYPE_9__ {struct hxxx_bsfw_ep3b_ctx_s* p_priv; void* cb; } ;
-typedef  TYPE_1__ bs_t ;
+typedef TYPE_1__ bs_t ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int const*) ; 
- int /*<<< orphan*/  bs_aligned (TYPE_1__*) ; 
- int /*<<< orphan*/  bs_eof (TYPE_1__*) ; 
- int /*<<< orphan*/  bs_init (TYPE_1__*,int const**,int) ; 
- int /*<<< orphan*/  bs_pos (TYPE_1__*) ; 
- int /*<<< orphan*/  bs_read (TYPE_1__*,int) ; 
- int /*<<< orphan*/  bs_remain (TYPE_1__*) ; 
- int /*<<< orphan*/  bs_skip (TYPE_1__*,int) ; 
- void* hxxx_bsfw_ep3b_callbacks ; 
- int /*<<< orphan*/  hxxx_bsfw_ep3b_ctx_init (struct hxxx_bsfw_ep3b_ctx_s*) ; 
- int /*<<< orphan*/  test_assert (int /*<<< orphan*/ ,int) ; 
+
+ int ARRAY_SIZE (int const*) ;
+ int bs_aligned (TYPE_1__*) ;
+ int bs_eof (TYPE_1__*) ;
+ int bs_init (TYPE_1__*,int const**,int) ;
+ int bs_pos (TYPE_1__*) ;
+ int bs_read (TYPE_1__*,int) ;
+ int bs_remain (TYPE_1__*) ;
+ int bs_skip (TYPE_1__*,int) ;
+ void* hxxx_bsfw_ep3b_callbacks ;
+ int hxxx_bsfw_ep3b_ctx_init (struct hxxx_bsfw_ep3b_ctx_s*) ;
+ int test_assert (int ,int) ;
 
 __attribute__((used)) static int test_annexb( const char *psz_tag )
 {
     const uint8_t annexb[] = { 0xFF, 0x00, 0x00, 0x03, 0x01, 0xFF,
                                0x03, 0x00, 0x00, 0x03, 0x02, 0x00, 0x00, 0x03 };
-    const uint8_t unesc[]  = { 0xFF, 0x00, 0x00,       0x01, 0xFF,
-                               0x03, 0x00, 0x00,       0x02, 0x00, 0x00, 0x03 };
+    const uint8_t unesc[] = { 0xFF, 0x00, 0x00, 0x01, 0xFF,
+                               0x03, 0x00, 0x00, 0x02, 0x00, 0x00, 0x03 };
 
     bs_t bs;
     struct hxxx_bsfw_ep3b_ctx_s bsctx;
@@ -63,7 +63,7 @@ __attribute__((used)) static int test_annexb( const char *psz_tag )
     }
     test_assert(bs_eof( &bs ), 1);
 
-    /* overflows */
+
     bs_init( &bs, &annexb, ARRAY_SIZE(annexb) );
     bs_skip( &bs, (ARRAY_SIZE(annexb) + 1) * 8 );
     test_assert(bs_remain( &bs ), 0);

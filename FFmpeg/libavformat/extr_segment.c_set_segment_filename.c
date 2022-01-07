@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_9__ {int /*<<< orphan*/  url; TYPE_2__* priv_data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  filename; } ;
+typedef int buf ;
+struct TYPE_9__ {int url; TYPE_2__* priv_data; } ;
+struct TYPE_7__ {int filename; } ;
 struct TYPE_8__ {int segment_idx_wrap; int segment_idx; char* entry_prefix; TYPE_1__ cur_entry; scalar_t__ use_strftime; TYPE_3__* avf; } ;
-typedef  TYPE_2__ SegmentContext ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_2__ SegmentContext ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- char* av_basename (int /*<<< orphan*/ ) ; 
- scalar_t__ av_get_frame_filename (char*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_reallocp (int /*<<< orphan*/ *,size_t) ; 
- char* av_strdup (char*) ; 
- int /*<<< orphan*/  ff_format_set_url (TYPE_3__*,char*) ; 
- struct tm* localtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,size_t,char*,char*,char*) ; 
- int /*<<< orphan*/  strftime (char*,int,int /*<<< orphan*/ ,struct tm*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ char* av_basename (int ) ;
+ scalar_t__ av_get_frame_filename (char*,int,int ,int) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int av_reallocp (int *,size_t) ;
+ char* av_strdup (char*) ;
+ int ff_format_set_url (TYPE_3__*,char*) ;
+ struct tm* localtime_r (int *,struct tm*) ;
+ int snprintf (int ,size_t,char*,char*,char*) ;
+ int strftime (char*,int,int ,struct tm*) ;
+ size_t strlen (char*) ;
+ int time (int *) ;
 
 __attribute__((used)) static int set_segment_filename(AVFormatContext *s)
 {
@@ -69,7 +69,7 @@ __attribute__((used)) static int set_segment_filename(AVFormatContext *s)
         return AVERROR(ENOMEM);
     ff_format_set_url(oc, new_name);
 
-    /* copy modified name in list entry */
+
     size = strlen(av_basename(oc->url)) + 1;
     if (seg->entry_prefix)
         size += strlen(seg->entry_prefix);

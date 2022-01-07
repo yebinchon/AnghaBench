@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ capacity; scalar_t__ start; } ;
-typedef  TYPE_4__ buffer_t ;
-typedef  int /*<<< orphan*/  ZSTD_pthread_mutex_t ;
-struct TYPE_11__ {int /*<<< orphan*/  ldmWindowCond; int /*<<< orphan*/  ldmWindow; int /*<<< orphan*/  ldmWindowMutex; } ;
+typedef TYPE_4__ buffer_t ;
+typedef int ZSTD_pthread_mutex_t ;
+struct TYPE_11__ {int ldmWindowCond; int ldmWindow; int ldmWindowMutex; } ;
 struct TYPE_9__ {scalar_t__ enableLdm; } ;
 struct TYPE_10__ {TYPE_1__ ldmParams; } ;
 struct TYPE_13__ {TYPE_3__ serial; TYPE_2__ params; } ;
-typedef  TYPE_5__ ZSTDMT_CCtx ;
+typedef TYPE_5__ ZSTDMT_CCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,...) ; 
- scalar_t__ ZSTDMT_doesOverlapWindow (TYPE_4__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_PTHREAD_MUTEX_LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int DEBUGLOG (int,char*,...) ;
+ scalar_t__ ZSTDMT_doesOverlapWindow (TYPE_4__,int ) ;
+ int ZSTD_PTHREAD_MUTEX_LOCK (int *) ;
+ int ZSTD_pthread_cond_wait (int *,int *) ;
+ int ZSTD_pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void ZSTDMT_waitForLdmComplete(ZSTDMT_CCtx* mtctx, buffer_t buffer)
 {

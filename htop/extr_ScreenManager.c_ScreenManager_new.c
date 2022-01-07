@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int x1; int y1; int x2; int y2; int owner; int allowFocusChange; int /*<<< orphan*/  const* settings; int /*<<< orphan*/  const* header; scalar_t__ panelCount; int /*<<< orphan*/  panels; int /*<<< orphan*/  orientation; } ;
-typedef  int /*<<< orphan*/  Settings ;
-typedef  TYPE_1__ ScreenManager ;
-typedef  int /*<<< orphan*/  Orientation ;
-typedef  int /*<<< orphan*/  Header ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Class (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEFAULT_SIZE ; 
- int /*<<< orphan*/  Panel ; 
- int /*<<< orphan*/  Vector_new (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* xMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int x1; int y1; int x2; int y2; int owner; int allowFocusChange; int const* settings; int const* header; scalar_t__ panelCount; int panels; int orientation; } ;
+typedef int Settings ;
+typedef TYPE_1__ ScreenManager ;
+typedef int Orientation ;
+typedef int Header ;
+
+
+ int Class (int ) ;
+ int DEFAULT_SIZE ;
+ int Panel ;
+ int Vector_new (int ,int,int ) ;
+ TYPE_1__* xMalloc (int) ;
 
 ScreenManager* ScreenManager_new(int x1, int y1, int x2, int y2, Orientation orientation, const Header* header, const Settings* settings, bool owner) {
    ScreenManager* this;
@@ -37,6 +37,6 @@ ScreenManager* ScreenManager_new(int x1, int y1, int x2, int y2, Orientation ori
    this->header = header;
    this->settings = settings;
    this->owner = owner;
-   this->allowFocusChange = true;
+   this->allowFocusChange = 1;
    return this;
 }

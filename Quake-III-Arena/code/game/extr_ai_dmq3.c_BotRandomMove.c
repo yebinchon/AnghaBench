@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int* vec3_t ;
-struct TYPE_5__ {int /*<<< orphan*/  ms; } ;
-typedef  TYPE_1__ bot_state_t ;
-struct TYPE_6__ {int /*<<< orphan*/  movedir; int /*<<< orphan*/  failure; } ;
-typedef  TYPE_2__ bot_moveresult_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AngleVectors (int*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MOVE_WALK ; 
- int /*<<< orphan*/  VectorCopy (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qfalse ; 
- int random () ; 
- int /*<<< orphan*/  trap_BotMoveInDirection (int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int* vec3_t ;
+struct TYPE_5__ {int ms; } ;
+typedef TYPE_1__ bot_state_t ;
+struct TYPE_6__ {int movedir; int failure; } ;
+typedef TYPE_2__ bot_moveresult_t ;
+
+
+ int AngleVectors (int*,int*,int *,int *) ;
+ int MOVE_WALK ;
+ int VectorCopy (int*,int ) ;
+ int qfalse ;
+ int random () ;
+ int trap_BotMoveInDirection (int ,int*,int,int ) ;
 
 void BotRandomMove(bot_state_t *bs, bot_moveresult_t *moveresult) {
-	vec3_t dir, angles;
+ vec3_t dir, angles;
 
-	angles[0] = 0;
-	angles[1] = random() * 360;
-	angles[2] = 0;
-	AngleVectors(angles, dir, NULL, NULL);
+ angles[0] = 0;
+ angles[1] = random() * 360;
+ angles[2] = 0;
+ AngleVectors(angles, dir, ((void*)0), ((void*)0));
 
-	trap_BotMoveInDirection(bs->ms, dir, 400, MOVE_WALK);
+ trap_BotMoveInDirection(bs->ms, dir, 400, MOVE_WALK);
 
-	moveresult->failure = qfalse;
-	VectorCopy(dir, moveresult->movedir);
+ moveresult->failure = qfalse;
+ VectorCopy(dir, moveresult->movedir);
 }

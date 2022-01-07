@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tms_ {void* tms_stime; void* tms_cstime; void* tms_utime; void* tms_cutime; } ;
-struct rusage_ {int /*<<< orphan*/  stime; int /*<<< orphan*/  utime; } ;
-typedef  int /*<<< orphan*/  dword_t ;
-typedef  scalar_t__ addr_t ;
+struct rusage_ {int stime; int utime; } ;
+typedef int dword_t ;
+typedef scalar_t__ addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  _EFAULT ; 
- void* clock_from_timeval (int /*<<< orphan*/ ) ; 
- struct rusage_ rusage_get_current () ; 
- scalar_t__ user_put (scalar_t__,struct tms_) ; 
+
+ int STRACE (char*,scalar_t__) ;
+ int _EFAULT ;
+ void* clock_from_timeval (int ) ;
+ struct rusage_ rusage_get_current () ;
+ scalar_t__ user_put (scalar_t__,struct tms_) ;
 
 dword_t sys_times(addr_t tbuf) {
     STRACE("times(0x%x)", tbuf);

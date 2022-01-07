@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CncConnect () ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int PackGetBool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * RecvPack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendPack (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SOCK ;
+typedef int PACK ;
+
+
+ int * CncConnect () ;
+ int Disconnect (int *) ;
+ int FreePack (int *) ;
+ int * NewPack () ;
+ int PackAddStr (int *,char*,char*) ;
+ int PackGetBool (int *,char*) ;
+ int * RecvPack (int *) ;
+ int ReleaseSock (int *) ;
+ int SendPack (int *,int *) ;
 
 bool CncExecDriverInstaller(char *arg)
 {
-	SOCK *s = CncConnect();
-	PACK *p;
-	bool ret;
-	if (s == NULL)
-	{
-		return false;
-	}
+ SOCK *s = CncConnect();
+ PACK *p;
+ bool ret;
+ if (s == ((void*)0))
+ {
+  return 0;
+ }
 
-	p = NewPack();
-	PackAddStr(p, "function", "exec_driver_installer");
-	PackAddStr(p, "arg", arg);
+ p = NewPack();
+ PackAddStr(p, "function", "exec_driver_installer");
+ PackAddStr(p, "arg", arg);
 
-	SendPack(s, p);
-	FreePack(p);
+ SendPack(s, p);
+ FreePack(p);
 
-	p = RecvPack(s);
-	if (p == NULL)
-	{
-		Disconnect(s);
-		ReleaseSock(s);
-		return false;
-	}
+ p = RecvPack(s);
+ if (p == ((void*)0))
+ {
+  Disconnect(s);
+  ReleaseSock(s);
+  return 0;
+ }
 
-	ret = PackGetBool(p, "ret");
+ ret = PackGetBool(p, "ret");
 
-	FreePack(p);
+ FreePack(p);
 
-	Disconnect(s);
-	ReleaseSock(s);
+ Disconnect(s);
+ ReleaseSock(s);
 
-	return ret;
+ return ret;
 }

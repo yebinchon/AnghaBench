@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct translation {int /*<<< orphan*/ * convert_char_baton; void* convert_char; int /*<<< orphan*/  c_parse_backslash_baton; scalar_t__ c_parse_backslash; int /*<<< orphan*/  c_target_char_has_backslash_escape_baton; scalar_t__ c_target_char_has_backslash_escape; } ;
+
+
+
+
+struct translation {int * convert_char_baton; void* convert_char; int c_parse_backslash_baton; scalar_t__ c_parse_backslash; int c_target_char_has_backslash_escape_baton; scalar_t__ c_target_char_has_backslash_escape; } ;
 struct charset {char* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  c_parse_backslash_baton ; 
- scalar_t__ c_parse_backslash_func ; 
- int /*<<< orphan*/  c_target_char_has_backslash_escape_baton ; 
- scalar_t__ c_target_char_has_backslash_escape_func ; 
- int /*<<< orphan*/  cached_iconv_host_to_target ; 
- int /*<<< orphan*/  cached_iconv_target_to_host ; 
- scalar_t__ check_iconv_cache (int /*<<< orphan*/ *,struct charset*,struct charset*) ; 
- struct charset* current_host_charset ; 
- struct charset* current_target_charset ; 
- scalar_t__ default_c_parse_backslash ; 
- scalar_t__ default_c_target_char_has_backslash_escape ; 
- int /*<<< orphan*/  error (char*,char*,char*) ; 
- int /*<<< orphan*/ * host_char_to_target_baton ; 
- void* host_char_to_target_func ; 
- void* iconv_convert ; 
- void* identity_either_char_to_other ; 
- struct translation* lookup_translation (char*,char*) ; 
- int /*<<< orphan*/ * target_char_to_host_baton ; 
- void* target_char_to_host_func ; 
+
+ int c_parse_backslash_baton ;
+ scalar_t__ c_parse_backslash_func ;
+ int c_target_char_has_backslash_escape_baton ;
+ scalar_t__ c_target_char_has_backslash_escape_func ;
+ int cached_iconv_host_to_target ;
+ int cached_iconv_target_to_host ;
+ scalar_t__ check_iconv_cache (int *,struct charset*,struct charset*) ;
+ struct charset* current_host_charset ;
+ struct charset* current_target_charset ;
+ scalar_t__ default_c_parse_backslash ;
+ scalar_t__ default_c_target_char_has_backslash_escape ;
+ int error (char*,char*,char*) ;
+ int * host_char_to_target_baton ;
+ void* host_char_to_target_func ;
+ void* iconv_convert ;
+ void* identity_either_char_to_other ;
+ struct translation* lookup_translation (char*,char*) ;
+ int * target_char_to_host_baton ;
+ void* target_char_to_host_func ;
 
 __attribute__((used)) static void
 set_host_and_target_charsets (struct charset *host, struct charset *target)
 {
   struct translation *h2t, *t2h;
 
-  /* If they're not both initialized yet, then just do nothing for
-     now.  As soon as we're done running our initialize function,
-     everything will be initialized.  */
+
+
+
   if (! host || ! target)
     {
       current_host_charset = host;
@@ -52,8 +52,8 @@ set_host_and_target_charsets (struct charset *host, struct charset *target)
   h2t = lookup_translation (host->name, target->name);
   t2h = lookup_translation (target->name, host->name);
 
-  /* If the translations don't provide conversion functions, make sure
-     iconv can back them up.  Do this *before* modifying any state.  */
+
+
   if (host != target)
     {
       if (! h2t || ! h2t->convert_char)

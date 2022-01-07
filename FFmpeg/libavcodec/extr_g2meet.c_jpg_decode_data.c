@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_7__ {int /*<<< orphan*/  (* idct ) (int*) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/  (* clear_blocks ) (int*) ;} ;
-struct TYPE_8__ {int* prev_dc; int** block; TYPE_2__ idsp; TYPE_1__ bdsp; int /*<<< orphan*/  buf; } ;
-typedef  TYPE_3__ JPGContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int FFALIGN (int,int) ; 
- int av_reallocp (int /*<<< orphan*/ *,scalar_t__) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int jpg_decode_block (TYPE_3__*,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  jpg_unescape (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (int*) ; 
- int /*<<< orphan*/  stub2 (int*) ; 
- int /*<<< orphan*/  stub3 (int*) ; 
- int /*<<< orphan*/  yuv2rgb (int /*<<< orphan*/ *,int const,int,int,int) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_7__ {int (* idct ) (int*) ;} ;
+struct TYPE_6__ {int (* clear_blocks ) (int*) ;} ;
+struct TYPE_8__ {int* prev_dc; int** block; TYPE_2__ idsp; TYPE_1__ bdsp; int buf; } ;
+typedef TYPE_3__ JPGContext ;
+typedef int GetBitContext ;
+
+
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int FFALIGN (int,int) ;
+ int av_reallocp (int *,scalar_t__) ;
+ int init_get_bits8 (int *,int ,int) ;
+ int jpg_decode_block (TYPE_3__*,int *,int,int*) ;
+ int jpg_unescape (int const*,int,int ,int*) ;
+ int memset (int ,int ,scalar_t__) ;
+ int stub1 (int*) ;
+ int stub2 (int*) ;
+ int stub3 (int*) ;
+ int yuv2rgb (int *,int const,int,int,int) ;
 
 __attribute__((used)) static int jpg_decode_data(JPGContext *c, int width, int height,
                            const uint8_t *src, int src_size,
@@ -55,8 +55,8 @@ __attribute__((used)) static int jpg_decode_data(JPGContext *c, int width, int h
         return ret;
 
     width = FFALIGN(width, 16);
-    mb_w  =  width        >> 4;
-    mb_h  = (height + 15) >> 4;
+    mb_w = width >> 4;
+    mb_h = (height + 15) >> 4;
 
     if (!num_mbs)
         num_mbs = mb_w * mb_h * 4;
@@ -69,7 +69,7 @@ __attribute__((used)) static int jpg_decode_data(JPGContext *c, int width, int h
     for (mb_y = 0; mb_y < mb_h; mb_y++) {
         for (mb_x = 0; mb_x < mb_w; mb_x++) {
             if (mask && !mask[mb_x * 2] && !mask[mb_x * 2 + 1] &&
-                !mask[mb_x * 2 +     mask_stride] &&
+                !mask[mb_x * 2 + mask_stride] &&
                 !mask[mb_x * 2 + 1 + mask_stride]) {
                 bx += 16;
                 continue;
@@ -107,7 +107,7 @@ __attribute__((used)) static int jpg_decode_data(JPGContext *c, int width, int h
                 return 0;
             bx += 16;
         }
-        bx  = 0;
+        bx = 0;
         by += 16;
         if (mask)
             mask += mask_stride * 2;

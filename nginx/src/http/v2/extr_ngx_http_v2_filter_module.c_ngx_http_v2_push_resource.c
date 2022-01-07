@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_32__   TYPE_9__ ;
-typedef  struct TYPE_31__   TYPE_8__ ;
-typedef  struct TYPE_30__   TYPE_7__ ;
-typedef  struct TYPE_29__   TYPE_6__ ;
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
-typedef  struct TYPE_23__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  size_t ngx_uint_t ;
-struct TYPE_28__ {int len; int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_32__ TYPE_9__ ;
+typedef struct TYPE_31__ TYPE_8__ ;
+typedef struct TYPE_30__ TYPE_7__ ;
+typedef struct TYPE_29__ TYPE_6__ ;
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+typedef struct TYPE_23__ TYPE_10__ ;
+
+
+typedef int u_char ;
+typedef size_t ngx_uint_t ;
+struct TYPE_28__ {int len; int * data; } ;
 struct TYPE_27__ {TYPE_5__ value; } ;
-typedef  TYPE_4__ ngx_table_elt_t ;
-typedef  TYPE_5__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_29__ {TYPE_1__* request; int /*<<< orphan*/  queued; TYPE_8__* connection; } ;
-typedef  TYPE_6__ ngx_http_v2_stream_t ;
-struct TYPE_30__ {int offset; int /*<<< orphan*/  name; int /*<<< orphan*/  index; } ;
-typedef  TYPE_7__ ngx_http_v2_push_header_t ;
-typedef  int /*<<< orphan*/  ngx_http_v2_out_frame_t ;
+typedef TYPE_4__ ngx_table_elt_t ;
+typedef TYPE_5__ ngx_str_t ;
+typedef int ngx_int_t ;
+struct TYPE_29__ {TYPE_1__* request; int queued; TYPE_8__* connection; } ;
+typedef TYPE_6__ ngx_http_v2_stream_t ;
+struct TYPE_30__ {int offset; int name; int index; } ;
+typedef TYPE_7__ ngx_http_v2_push_header_t ;
+typedef int ngx_http_v2_out_frame_t ;
 struct TYPE_31__ {scalar_t__ pushing; scalar_t__ concurrent_pushes; int last_push; scalar_t__ table_update; TYPE_2__* connection; } ;
-typedef  TYPE_8__ ngx_http_v2_connection_t ;
-struct TYPE_26__ {int /*<<< orphan*/ * host; } ;
-struct TYPE_32__ {TYPE_3__ headers_in; TYPE_5__ schema; int /*<<< orphan*/  pool; TYPE_6__* stream; TYPE_10__* connection; } ;
-typedef  TYPE_9__ ngx_http_request_t ;
-struct TYPE_23__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_10__ ngx_connection_t ;
-struct TYPE_25__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_8__ ngx_http_v2_connection_t ;
+struct TYPE_26__ {int * host; } ;
+struct TYPE_32__ {TYPE_3__ headers_in; TYPE_5__ schema; int pool; TYPE_6__* stream; TYPE_10__* connection; } ;
+typedef TYPE_9__ ngx_http_request_t ;
+struct TYPE_23__ {int log; } ;
+typedef TYPE_10__ ngx_connection_t ;
+struct TYPE_25__ {int log; } ;
 struct TYPE_24__ {int request_length; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ABORT ; 
- int /*<<< orphan*/  NGX_DECLINED ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int NGX_HTTP_V2_INT_OCTETS ; 
- int NGX_HTTP_V2_MAX_FIELD ; 
- int /*<<< orphan*/  NGX_HTTP_V2_METHOD_GET_INDEX ; 
- int /*<<< orphan*/  NGX_HTTP_V2_PATH_INDEX ; 
- size_t NGX_HTTP_V2_PUSH_HEADERS ; 
- int /*<<< orphan*/  NGX_HTTP_V2_SCHEME_HTTPS_INDEX ; 
- int /*<<< orphan*/  NGX_HTTP_V2_SCHEME_HTTP_INDEX ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_WARN ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/ * ngx_cpymem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ngx_http_v2_create_push_frame (TYPE_9__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* ngx_http_v2_inc_indexed (int /*<<< orphan*/ ) ; 
- void* ngx_http_v2_indexed (int /*<<< orphan*/ ) ; 
- TYPE_7__* ngx_http_v2_push_headers ; 
- TYPE_6__* ngx_http_v2_push_stream (TYPE_6__*,TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_v2_queue_blocked_frame (TYPE_8__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ngx_http_v2_write_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_5__*) ; 
- size_t ngx_max (size_t,int) ; 
- int /*<<< orphan*/ * ngx_palloc (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ngx_path_separator (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_pnalloc (int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ ngx_strncmp (int /*<<< orphan*/ *,char*,int) ; 
+
+ int NGX_ABORT ;
+ int NGX_DECLINED ;
+ int NGX_ERROR ;
+ int NGX_HTTP_V2_INT_OCTETS ;
+ int NGX_HTTP_V2_MAX_FIELD ;
+ int NGX_HTTP_V2_METHOD_GET_INDEX ;
+ int NGX_HTTP_V2_PATH_INDEX ;
+ size_t NGX_HTTP_V2_PUSH_HEADERS ;
+ int NGX_HTTP_V2_SCHEME_HTTPS_INDEX ;
+ int NGX_HTTP_V2_SCHEME_HTTP_INDEX ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_WARN ;
+ int NGX_OK ;
+ int * ngx_cpymem (int *,int *,int) ;
+ int * ngx_http_v2_create_push_frame (TYPE_9__*,int *,int *) ;
+ void* ngx_http_v2_inc_indexed (int ) ;
+ void* ngx_http_v2_indexed (int ) ;
+ TYPE_7__* ngx_http_v2_push_headers ;
+ TYPE_6__* ngx_http_v2_push_stream (TYPE_6__*,TYPE_5__*) ;
+ int ngx_http_v2_queue_blocked_frame (TYPE_8__*,int *) ;
+ int * ngx_http_v2_write_value (int *,int *,int,int *) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,TYPE_5__*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int *,TYPE_5__*) ;
+ int ngx_log_error (int ,int ,int ,char*,TYPE_5__*) ;
+ size_t ngx_max (size_t,int) ;
+ int * ngx_palloc (int ,size_t) ;
+ int ngx_path_separator (int ) ;
+ int * ngx_pnalloc (int ,size_t) ;
+ scalar_t__ ngx_strncmp (int *,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_v2_push_resource(ngx_http_request_t *r, ngx_str_t *path,
     ngx_str_t *binary)
 {
-    u_char                      *start, *pos, *tmp;
-    size_t                       len;
-    ngx_str_t                   *value;
-    ngx_uint_t                   i;
-    ngx_table_elt_t            **h;
-    ngx_connection_t            *fc;
-    ngx_http_v2_stream_t        *stream;
-    ngx_http_v2_out_frame_t     *frame;
-    ngx_http_v2_connection_t    *h2c;
-    ngx_http_v2_push_header_t   *ph;
+    u_char *start, *pos, *tmp;
+    size_t len;
+    ngx_str_t *value;
+    ngx_uint_t i;
+    ngx_table_elt_t **h;
+    ngx_connection_t *fc;
+    ngx_http_v2_stream_t *stream;
+    ngx_http_v2_out_frame_t *frame;
+    ngx_http_v2_connection_t *h2c;
+    ngx_http_v2_push_header_t *ph;
 
     fc = r->connection;
 
@@ -118,7 +118,7 @@ ngx_http_v2_push_resource(ngx_http_request_t *r, ngx_str_t *path,
         return NGX_DECLINED;
     }
 
-    if (r->headers_in.host == NULL) {
+    if (r->headers_in.host == ((void*)0)) {
         return NGX_ABORT;
     }
 
@@ -128,7 +128,7 @@ ngx_http_v2_push_resource(ngx_http_request_t *r, ngx_str_t *path,
 
     if (binary[0].len) {
         tmp = ngx_palloc(r->pool, len);
-        if (tmp == NULL) {
+        if (tmp == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -142,14 +142,14 @@ ngx_http_v2_push_resource(ngx_http_request_t *r, ngx_str_t *path,
         }
 
         tmp = ngx_palloc(r->pool, len);
-        if (tmp == NULL) {
+        if (tmp == ((void*)0)) {
             return NGX_ERROR;
         }
 
         for (i = 0; i < NGX_HTTP_V2_PUSH_HEADERS; i++) {
             h = (ngx_table_elt_t **) ((char *) &r->headers_in + ph[i].offset);
 
-            if (*h == NULL) {
+            if (*h == ((void*)0)) {
                 continue;
             }
 
@@ -158,7 +158,7 @@ ngx_http_v2_push_resource(ngx_http_request_t *r, ngx_str_t *path,
             len = 1 + NGX_HTTP_V2_INT_OCTETS + value->len;
 
             pos = ngx_pnalloc(r->pool, len);
-            if (pos == NULL) {
+            if (pos == ((void*)0)) {
                 return NGX_ERROR;
             }
 
@@ -181,7 +181,7 @@ ngx_http_v2_push_resource(ngx_http_request_t *r, ngx_str_t *path,
     }
 
     pos = ngx_pnalloc(r->pool, len);
-    if (pos == NULL) {
+    if (pos == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -224,7 +224,7 @@ ngx_http_v2_push_resource(ngx_http_request_t *r, ngx_str_t *path,
     for (i = 0; i < NGX_HTTP_V2_PUSH_HEADERS; i++) {
         h = (ngx_table_elt_t **) ((char *) &r->headers_in + ph[i].offset);
 
-        if (*h == NULL) {
+        if (*h == ((void*)0)) {
             continue;
         }
 
@@ -236,7 +236,7 @@ ngx_http_v2_push_resource(ngx_http_request_t *r, ngx_str_t *path,
     }
 
     frame = ngx_http_v2_create_push_frame(r, start, pos);
-    if (frame == NULL) {
+    if (frame == ((void*)0)) {
         return NGX_ERROR;
     }
 

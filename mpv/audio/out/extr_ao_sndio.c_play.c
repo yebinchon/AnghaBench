@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int delay; int playing; int /*<<< orphan*/  hdl; } ;
+
+
+
+
+struct priv {int delay; int playing; int hdl; } ;
 struct ao {int sstride; struct priv* priv; } ;
 
-/* Variables and functions */
- int sio_write (int /*<<< orphan*/ ,void*,int) ; 
+
+ int sio_write (int ,void*,int) ;
 
 __attribute__((used)) static int play(struct ao *ao, void **data, int samples, int flags)
 {
@@ -23,7 +23,7 @@ __attribute__((used)) static int play(struct ao *ao, void **data, int samples, i
 
     n = sio_write(p->hdl, data[0], samples * ao->sstride) / ao->sstride;
     p->delay += n;
-    p->playing = true;
-    /* on AOPLAY_FINAL_CHUNK, just let it underrun */
+    p->playing = 1;
+
     return n;
 }

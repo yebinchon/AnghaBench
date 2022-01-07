@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlc_http_msg {int status; int /*<<< orphan*/ * path; int /*<<< orphan*/ * authority; int /*<<< orphan*/ * scheme; int /*<<< orphan*/ * method; int /*<<< orphan*/ * payload; int /*<<< orphan*/ * headers; scalar_t__ count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- struct vlc_http_msg* malloc (int) ; 
- int /*<<< orphan*/ * strdup (char const*) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  vlc_http_msg_destroy (struct vlc_http_msg*) ; 
+
+
+
+struct vlc_http_msg {int status; int * path; int * authority; int * scheme; int * method; int * payload; int * headers; scalar_t__ count; } ;
+
+
+ int assert (int ) ;
+ struct vlc_http_msg* malloc (int) ;
+ int * strdup (char const*) ;
+ scalar_t__ unlikely (int) ;
+ int vlc_http_msg_destroy (struct vlc_http_msg*) ;
 
 struct vlc_http_msg *
 vlc_http_req_create(const char *method, const char *scheme,
                     const char *authority, const char *path)
 {
     struct vlc_http_msg *m = malloc(sizeof (*m));
-    if (unlikely(m == NULL))
-        return NULL;
+    if (unlikely(m == ((void*)0)))
+        return ((void*)0);
 
-    assert(method != NULL);
+    assert(method != ((void*)0));
     m->status = -1;
     m->method = strdup(method);
-    m->scheme = (scheme != NULL) ? strdup(scheme) : NULL;
-    m->authority = (authority != NULL) ? strdup(authority) : NULL;
-    m->path = (path != NULL) ? strdup(path) : NULL;
+    m->scheme = (scheme != ((void*)0)) ? strdup(scheme) : ((void*)0);
+    m->authority = (authority != ((void*)0)) ? strdup(authority) : ((void*)0);
+    m->path = (path != ((void*)0)) ? strdup(path) : ((void*)0);
     m->count = 0;
-    m->headers = NULL;
-    m->payload = NULL;
+    m->headers = ((void*)0);
+    m->payload = ((void*)0);
 
-    if (unlikely(m->method == NULL
-              || (scheme != NULL && m->scheme == NULL)
-              || (authority != NULL && m->authority == NULL)
-              || (path != NULL && m->path == NULL)))
+    if (unlikely(m->method == ((void*)0)
+              || (scheme != ((void*)0) && m->scheme == ((void*)0))
+              || (authority != ((void*)0) && m->authority == ((void*)0))
+              || (path != ((void*)0) && m->path == ((void*)0))))
     {
         vlc_http_msg_destroy(m);
-        m = NULL;
+        m = ((void*)0);
     }
     return m;
 }

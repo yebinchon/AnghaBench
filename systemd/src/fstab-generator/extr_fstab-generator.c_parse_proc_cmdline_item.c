@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ VolatileMode ;
 
-/* Variables and functions */
- scalar_t__ STR_IN_SET (char const*,char*,char*) ; 
- scalar_t__ VOLATILE_YES ; 
- int arg_fstab_enabled ; 
- int /*<<< orphan*/  arg_root_fstype ; 
- int /*<<< orphan*/  arg_root_hash ; 
- int /*<<< orphan*/  arg_root_options ; 
- int arg_root_rw ; 
- int /*<<< orphan*/  arg_root_what ; 
- int /*<<< orphan*/  arg_usr_fstype ; 
- int /*<<< orphan*/  arg_usr_options ; 
- int /*<<< orphan*/  arg_usr_what ; 
- scalar_t__ arg_volatile_mode ; 
- scalar_t__ free_and_strdup (int /*<<< orphan*/ *,char const*) ; 
- int log_oom () ; 
- int /*<<< orphan*/  log_warning (char*,char const*) ; 
- int parse_boolean (char const*) ; 
- scalar_t__ proc_cmdline_value_missing (char const*,char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
- int /*<<< orphan*/  strextend_with_separator (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ volatile_mode_from_string (char const*) ; 
+
+
+
+typedef scalar_t__ VolatileMode ;
+
+
+ scalar_t__ STR_IN_SET (char const*,char*,char*) ;
+ scalar_t__ VOLATILE_YES ;
+ int arg_fstab_enabled ;
+ int arg_root_fstype ;
+ int arg_root_hash ;
+ int arg_root_options ;
+ int arg_root_rw ;
+ int arg_root_what ;
+ int arg_usr_fstype ;
+ int arg_usr_options ;
+ int arg_usr_what ;
+ scalar_t__ arg_volatile_mode ;
+ scalar_t__ free_and_strdup (int *,char const*) ;
+ int log_oom () ;
+ int log_warning (char*,char const*) ;
+ int parse_boolean (char const*) ;
+ scalar_t__ proc_cmdline_value_missing (char const*,char const*) ;
+ scalar_t__ streq (char const*,char*) ;
+ int strextend_with_separator (int *,char*,char const*,int *) ;
+ scalar_t__ volatile_mode_from_string (char const*) ;
 
 __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const char *value, void *data) {
         int r;
 
-        /* root=, usr=, usrfstype= and roofstype= may occur more than once, the last
-         * instance should take precedence.  In the case of multiple rootflags=
-         * or usrflags= the arguments should be concatenated */
+
+
+
 
         if (STR_IN_SET(key, "fstab", "rd.fstab")) {
 
@@ -70,7 +70,7 @@ __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const 
                 if (proc_cmdline_value_missing(key, value))
                         return 0;
 
-                if (!strextend_with_separator(&arg_root_options, ",", value, NULL))
+                if (!strextend_with_separator(&arg_root_options, ",", value, ((void*)0)))
                         return log_oom();
 
         } else if (streq(key, "roothash")) {
@@ -102,13 +102,13 @@ __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const 
                 if (proc_cmdline_value_missing(key, value))
                         return 0;
 
-                if (!strextend_with_separator(&arg_usr_options, ",", value, NULL))
+                if (!strextend_with_separator(&arg_usr_options, ",", value, ((void*)0)))
                         return log_oom();
 
         } else if (streq(key, "rw") && !value)
-                arg_root_rw = true;
+                arg_root_rw = 1;
         else if (streq(key, "ro") && !value)
-                arg_root_rw = false;
+                arg_root_rw = 0;
         else if (streq(key, "systemd.volatile")) {
                 VolatileMode m;
 

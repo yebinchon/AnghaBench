@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UDPPACKET ;
-struct TYPE_4__ {int Halt; int /*<<< orphan*/  Interrupts; int /*<<< orphan*/  SendPacketList; int /*<<< orphan*/  PortList; int /*<<< orphan*/  Event; int /*<<< orphan*/  Thread; } ;
-typedef  TYPE_1__ UDPLISTENER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeInterruptManager (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeUdpPacket (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseIntList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+typedef int UDPPACKET ;
+struct TYPE_4__ {int Halt; int Interrupts; int SendPacketList; int PortList; int Event; int Thread; } ;
+typedef TYPE_1__ UDPLISTENER ;
+
+
+ int Free (TYPE_1__*) ;
+ int FreeInterruptManager (int ) ;
+ int FreeUdpPacket (int *) ;
+ int INFINITE ;
+ int * LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int ReleaseIntList (int ) ;
+ int ReleaseList (int ) ;
+ int ReleaseSockEvent (int ) ;
+ int ReleaseThread (int ) ;
+ int SetSockEvent (int ) ;
+ int WaitThread (int ,int ) ;
 
 void FreeUdpListener(UDPLISTENER *u)
 {
-	UINT i;
-	// Validate arguments
-	if (u == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	u->Halt = true;
-	SetSockEvent(u->Event);
+ if (u == ((void*)0))
+ {
+  return;
+ }
 
-	WaitThread(u->Thread, INFINITE);
-	ReleaseThread(u->Thread);
-	ReleaseSockEvent(u->Event);
+ u->Halt = 1;
+ SetSockEvent(u->Event);
 
-	ReleaseIntList(u->PortList);
+ WaitThread(u->Thread, INFINITE);
+ ReleaseThread(u->Thread);
+ ReleaseSockEvent(u->Event);
 
-	for (i = 0;i < LIST_NUM(u->SendPacketList);i++)
-	{
-		UDPPACKET *p = LIST_DATA(u->SendPacketList, i);
+ ReleaseIntList(u->PortList);
 
-		FreeUdpPacket(p);
-	}
+ for (i = 0;i < LIST_NUM(u->SendPacketList);i++)
+ {
+  UDPPACKET *p = LIST_DATA(u->SendPacketList, i);
 
-	ReleaseList(u->SendPacketList);
+  FreeUdpPacket(p);
+ }
 
-	FreeInterruptManager(u->Interrupts);
+ ReleaseList(u->SendPacketList);
 
-	Free(u);
+ FreeInterruptManager(u->Interrupts);
+
+ Free(u);
 }

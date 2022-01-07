@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
- scalar_t__ in_interrupt () ; 
- int /*<<< orphan*/  vfree (void*) ; 
+ int BUG () ;
+ scalar_t__ in_interrupt () ;
+ int vfree (void*) ;
 
 void consistent_free(void *vaddr)
 {
-	if (in_interrupt())
-		BUG();
-	vfree(vaddr);
+ if (in_interrupt())
+  BUG();
+ vfree(vaddr);
 }

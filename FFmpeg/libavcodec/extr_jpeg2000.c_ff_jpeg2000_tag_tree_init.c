@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_4__ {struct TYPE_4__* parent; } ;
-typedef  TYPE_1__ Jpeg2000TgtNode ;
+typedef TYPE_1__ Jpeg2000TgtNode ;
 
-/* Variables and functions */
- TYPE_1__* av_mallocz_array (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tag_tree_size (int,int) ; 
+
+ TYPE_1__* av_mallocz_array (int ,int) ;
+ int tag_tree_size (int,int) ;
 
 __attribute__((used)) static Jpeg2000TgtNode *ff_jpeg2000_tag_tree_init(int w, int h)
 {
@@ -29,15 +29,15 @@ __attribute__((used)) static Jpeg2000TgtNode *ff_jpeg2000_tag_tree_init(int w, i
 
     t = res = av_mallocz_array(tt_size, sizeof(*t));
     if (!res)
-        return NULL;
+        return ((void*)0);
 
     while (w > 1 || h > 1) {
         int i, j;
         pw = w;
         ph = h;
 
-        w  = (w + 1) >> 1;
-        h  = (h + 1) >> 1;
+        w = (w + 1) >> 1;
+        h = (h + 1) >> 1;
         t2 = t + pw * ph;
 
         for (i = 0; i < ph; i++)
@@ -46,6 +46,6 @@ __attribute__((used)) static Jpeg2000TgtNode *ff_jpeg2000_tag_tree_init(int w, i
 
         t = t2;
     }
-    t[0].parent = NULL;
+    t[0].parent = ((void*)0);
     return res;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rw_semaphore {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  down_write_trylock (struct rw_semaphore*) ; 
- int /*<<< orphan*/  msleep (int) ; 
+
+ int down_write_trylock (struct rw_semaphore*) ;
+ int msleep (int) ;
 
 void
 cifs_down_write(struct rw_semaphore *sem)
 {
-	while (!down_write_trylock(sem))
-		msleep(10);
+ while (!down_write_trylock(sem))
+  msleep(10);
 }

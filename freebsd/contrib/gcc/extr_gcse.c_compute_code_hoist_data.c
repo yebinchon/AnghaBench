@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CDI_DOMINATORS ; 
- int /*<<< orphan*/  antloc ; 
- int /*<<< orphan*/  calculate_dominance_info (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  comp ; 
- int /*<<< orphan*/  compute_code_hoist_vbeinout () ; 
- int /*<<< orphan*/  compute_local_properties (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compute_transpout () ; 
- scalar_t__ dump_file ; 
- int /*<<< orphan*/  expr_hash_table ; 
- int /*<<< orphan*/  fprintf (scalar_t__,char*) ; 
- int /*<<< orphan*/  transp ; 
+ int CDI_DOMINATORS ;
+ int antloc ;
+ int calculate_dominance_info (int ) ;
+ int comp ;
+ int compute_code_hoist_vbeinout () ;
+ int compute_local_properties (int ,int ,int ,int *) ;
+ int compute_transpout () ;
+ scalar_t__ dump_file ;
+ int expr_hash_table ;
+ int fprintf (scalar_t__,char*) ;
+ int transp ;
 
 __attribute__((used)) static void
 compute_code_hoist_data (void)

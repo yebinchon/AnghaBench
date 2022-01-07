@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_cmd {int dummy; } ;
-struct input_ctx {int /*<<< orphan*/  log; } ;
-typedef  int /*<<< orphan*/  bstr ;
+struct input_ctx {int log; } ;
+typedef int bstr ;
 
-/* Variables and functions */
- struct mp_cmd* mp_input_parse_cmd_str (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+ struct mp_cmd* mp_input_parse_cmd_str (int ,int ,char const*) ;
 
 struct mp_cmd *mp_input_parse_cmd(struct input_ctx *ictx, bstr str,
                                   const char *location)

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spin_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOMIC_ACQ_REL ; 
- int /*<<< orphan*/  ATOMIC_RELAXED ; 
- int /*<<< orphan*/  SPIN_INITIALIZER ; 
- scalar_t__ atomic_compare_exchange_weak_b (int /*<<< orphan*/ *,int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dss_extending ; 
- int /*<<< orphan*/  spin_adaptive (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int spin_t ;
+
+
+ int ATOMIC_ACQ_REL ;
+ int ATOMIC_RELAXED ;
+ int SPIN_INITIALIZER ;
+ scalar_t__ atomic_compare_exchange_weak_b (int *,int*,int,int ,int ) ;
+ int dss_extending ;
+ int spin_adaptive (int *) ;
 
 __attribute__((used)) static void
 extent_dss_extending_start(void) {
-	spin_t spinner = SPIN_INITIALIZER;
-	while (true) {
-		bool expected = false;
-		if (atomic_compare_exchange_weak_b(&dss_extending, &expected,
-		    true, ATOMIC_ACQ_REL, ATOMIC_RELAXED)) {
-			break;
-		}
-		spin_adaptive(&spinner);
-	}
+ spin_t spinner = SPIN_INITIALIZER;
+ while (1) {
+  bool expected = 0;
+  if (atomic_compare_exchange_weak_b(&dss_extending, &expected,
+      1, ATOMIC_ACQ_REL, ATOMIC_RELAXED)) {
+   break;
+  }
+  spin_adaptive(&spinner);
+ }
 }

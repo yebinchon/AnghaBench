@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  BRACKETS 133 
-#define  KEY_NAV 132 
-#define  KEY_SEL 131 
-#define  NUMBER 130 
-#define  SHORTCUTS 129 
-#define  SYMBOL 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ergodox_board_led_off () ; 
- int /*<<< orphan*/  ergodox_right_led_2_off () ; 
- int /*<<< orphan*/  ergodox_right_led_2_on () ; 
- int /*<<< orphan*/  ergodox_right_led_3_off () ; 
- int /*<<< orphan*/  ergodox_right_led_3_on () ; 
- int /*<<< orphan*/  layer_state ; 
+
+
+
+typedef int uint8_t ;
+ int biton32 (int ) ;
+ int ergodox_board_led_off () ;
+ int ergodox_right_led_2_off () ;
+ int ergodox_right_led_2_on () ;
+ int ergodox_right_led_3_off () ;
+ int ergodox_right_led_3_on () ;
+ int layer_state ;
 
 void matrix_scan_user(void) {
 
@@ -35,23 +27,23 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     switch (layer) {
-        case NUMBER:
-        case SYMBOL:
-		case BRACKETS:
-		//case SHELL_LAYER:		
+        case 130:
+        case 128:
+  case 133:
+
             ergodox_right_led_2_on();
             break;
-        case KEY_NAV:
-        case KEY_SEL:
+        case 132:
+        case 131:
             ergodox_right_led_3_on();
-            break;        
-        case SHORTCUTS:
+            break;
+        case 129:
             ergodox_right_led_2_on();
             ergodox_right_led_3_on();
             break;
         default:
-            // none
+
             break;
-    } 
+    }
     return;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct plugind {char* pid; int /*<<< orphan*/  enabled; int /*<<< orphan*/  fullfilename; int /*<<< orphan*/  cmd; scalar_t__ obsolete; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  info (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  killpid (char*) ; 
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/  localhost ; 
- int mypclose (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * mypopen (int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  netdata_exit ; 
- int /*<<< orphan*/  netdata_thread_cleanup_pop (int) ; 
- int /*<<< orphan*/  netdata_thread_cleanup_push (int /*<<< orphan*/ ,void*) ; 
- size_t pluginsd_process (int /*<<< orphan*/ ,struct plugind*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pluginsd_worker_thread_cleanup ; 
- int /*<<< orphan*/  pluginsd_worker_thread_handle_error (struct plugind*,int) ; 
- int /*<<< orphan*/  pluginsd_worker_thread_handle_success (struct plugind*) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+struct plugind {char* pid; int enabled; int fullfilename; int cmd; scalar_t__ obsolete; } ;
+typedef int FILE ;
+
+
+ int error (char*,int ,...) ;
+ int info (char*,int ,char*) ;
+ int killpid (char*) ;
+ scalar_t__ likely (int) ;
+ int localhost ;
+ int mypclose (int *,char*) ;
+ int * mypopen (int ,char**) ;
+ int netdata_exit ;
+ int netdata_thread_cleanup_pop (int) ;
+ int netdata_thread_cleanup_push (int ,void*) ;
+ size_t pluginsd_process (int ,struct plugind*,int *,int ) ;
+ int pluginsd_worker_thread_cleanup ;
+ int pluginsd_worker_thread_handle_error (struct plugind*,int) ;
+ int pluginsd_worker_thread_handle_success (struct plugind*) ;
+ scalar_t__ unlikely (int) ;
 
 void *pluginsd_worker_thread(void *arg) {
     netdata_thread_cleanup_push(pluginsd_worker_thread_cleanup, arg);
@@ -62,5 +62,5 @@ void *pluginsd_worker_thread(void *arg) {
     }
 
     netdata_thread_cleanup_pop(1);
-    return NULL;
+    return ((void*)0);
 }

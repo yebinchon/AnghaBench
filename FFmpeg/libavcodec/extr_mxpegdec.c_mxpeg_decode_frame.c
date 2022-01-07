@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_28__ {int err_recognition; TYPE_1__* priv_data; } ;
-struct TYPE_27__ {int key_frame; int /*<<< orphan*/ * data; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_26__ {int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_25__ {int got_picture; TYPE_4__* picture_ptr; int /*<<< orphan*/  gb; int /*<<< orphan*/  first_picture; int /*<<< orphan*/  interlaced; } ;
-struct TYPE_24__ {int got_sof_data; int picture_index; int has_complete_frame; scalar_t__ got_mxm_bitmask; TYPE_4__** picture; int /*<<< orphan*/  bitmask_size; int /*<<< orphan*/ * mxm_bitmask; TYPE_2__ jpg; } ;
-typedef  TYPE_1__ MXpegDecodeContext ;
-typedef  TYPE_2__ MJpegDecodeContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+struct TYPE_27__ {int key_frame; int * data; int pict_type; } ;
+struct TYPE_26__ {int size; int * data; } ;
+struct TYPE_25__ {int got_picture; TYPE_4__* picture_ptr; int gb; int first_picture; int interlaced; } ;
+struct TYPE_24__ {int got_sof_data; int picture_index; int has_complete_frame; scalar_t__ got_mxm_bitmask; TYPE_4__** picture; int bitmask_size; int * mxm_bitmask; TYPE_2__ jpg; } ;
+typedef TYPE_1__ MXpegDecodeContext ;
+typedef TYPE_2__ MJpegDecodeContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int APP0 ; 
- int APP15 ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_EF_EXPLODE ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
-#define  COM 134 
-#define  DHT 133 
-#define  DQT 132 
- int /*<<< orphan*/  EINVAL ; 
-#define  EOI 131 
-#define  SOF0 130 
-#define  SOI 129 
-#define  SOS 128 
- int av_frame_ref (void*,TYPE_4__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_4__*) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- int ff_get_buffer (TYPE_5__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int ff_mjpeg_decode_dht (TYPE_2__*) ; 
- int ff_mjpeg_decode_dqt (TYPE_2__*) ; 
- int ff_mjpeg_decode_sof (TYPE_2__*) ; 
- int ff_mjpeg_decode_sos (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int ff_mjpeg_find_marker (TYPE_2__*,int /*<<< orphan*/  const**,int /*<<< orphan*/  const*,int /*<<< orphan*/  const**,int*) ; 
- int get_bits_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  mxpeg_check_dimensions (TYPE_1__*,TYPE_2__*,TYPE_4__*) ; 
- int /*<<< orphan*/  mxpeg_decode_app (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
- int mxpeg_decode_com (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
+
+ int APP0 ;
+ int APP15 ;
+ int AVERROR (int ) ;
+ int AV_EF_EXPLODE ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+
+
+
+ int EINVAL ;
+
+
+
+
+ int av_frame_ref (void*,TYPE_4__*) ;
+ int av_frame_unref (TYPE_4__*) ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ int ff_get_buffer (TYPE_5__*,TYPE_4__*,int ) ;
+ int ff_mjpeg_decode_dht (TYPE_2__*) ;
+ int ff_mjpeg_decode_dqt (TYPE_2__*) ;
+ int ff_mjpeg_decode_sof (TYPE_2__*) ;
+ int ff_mjpeg_decode_sos (TYPE_2__*,int *,int ,TYPE_4__*) ;
+ int ff_mjpeg_find_marker (TYPE_2__*,int const**,int const*,int const**,int*) ;
+ int get_bits_count (int *) ;
+ int init_get_bits (int *,int const*,int) ;
+ int mxpeg_check_dimensions (TYPE_1__*,TYPE_2__*,TYPE_4__*) ;
+ int mxpeg_decode_app (TYPE_1__*,int const*,int) ;
+ int mxpeg_decode_com (TYPE_1__*,int const*,int) ;
 
 __attribute__((used)) static int mxpeg_decode_frame(AVCodecContext *avctx,
                           void *data, int *got_frame,
@@ -91,13 +91,13 @@ __attribute__((used)) static int mxpeg_decode_frame(AVCodecContext *avctx,
             }
 
             switch (start_code) {
-            case SOI:
-                if (jpg->got_picture) //emulating EOI
+            case 129:
+                if (jpg->got_picture)
                     goto the_end;
                 break;
-            case EOI:
+            case 131:
                 goto the_end;
-            case DQT:
+            case 132:
                 ret = ff_mjpeg_decode_dqt(jpg);
                 if (ret < 0) {
                     av_log(avctx, AV_LOG_ERROR,
@@ -105,7 +105,7 @@ __attribute__((used)) static int mxpeg_decode_frame(AVCodecContext *avctx,
                     return ret;
                 }
                 break;
-            case DHT:
+            case 133:
                 ret = ff_mjpeg_decode_dht(jpg);
                 if (ret < 0) {
                     av_log(avctx, AV_LOG_ERROR,
@@ -113,13 +113,13 @@ __attribute__((used)) static int mxpeg_decode_frame(AVCodecContext *avctx,
                     return ret;
                 }
                 break;
-            case COM:
+            case 134:
                 ret = mxpeg_decode_com(s, unescaped_buf_ptr,
                                        unescaped_buf_size);
                 if (ret < 0)
                     return ret;
                 break;
-            case SOF0:
+            case 130:
                 s->got_sof_data = 0;
                 ret = ff_mjpeg_decode_sof(jpg);
                 if (ret < 0) {
@@ -134,7 +134,7 @@ __attribute__((used)) static int mxpeg_decode_frame(AVCodecContext *avctx,
                 }
                 s->got_sof_data = 1;
                 break;
-            case SOS:
+            case 128:
                 if (!s->got_sof_data) {
                     av_log(avctx, AV_LOG_WARNING,
                            "Can not process SOS without SOF data, skipping\n");
@@ -151,7 +151,7 @@ __attribute__((used)) static int mxpeg_decode_frame(AVCodecContext *avctx,
                                "Non-key frame has no MXM, skipping\n");
                         break;
                     }
-                    /* use stored SOF data to allocate current picture */
+
                     av_frame_unref(jpg->picture_ptr);
                     if ((ret = ff_get_buffer(avctx, jpg->picture_ptr,
                                              AV_GET_BUFFER_FLAG_REF)) < 0)
@@ -169,7 +169,7 @@ __attribute__((used)) static int mxpeg_decode_frame(AVCodecContext *avctx,
                     if (mxpeg_check_dimensions(s, jpg, reference_ptr) < 0)
                         break;
 
-                    /* allocate dummy reference picture if needed */
+
                     if (!reference_ptr->data[0] &&
                         (ret = ff_get_buffer(avctx, reference_ptr,
                                              AV_GET_BUFFER_FLAG_REF)) < 0)
@@ -179,7 +179,7 @@ __attribute__((used)) static int mxpeg_decode_frame(AVCodecContext *avctx,
                     if (ret < 0 && (avctx->err_recognition & AV_EF_EXPLODE))
                         return ret;
                 } else {
-                    ret = ff_mjpeg_decode_sos(jpg, NULL, 0, NULL);
+                    ret = ff_mjpeg_decode_sos(jpg, ((void*)0), 0, ((void*)0));
                     if (ret < 0 && (avctx->err_recognition & AV_EF_EXPLODE))
                         return ret;
                 }

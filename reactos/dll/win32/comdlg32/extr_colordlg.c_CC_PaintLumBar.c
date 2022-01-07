@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  s; int /*<<< orphan*/  h; int /*<<< orphan*/  hwndSelf; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int s; int h; int hwndSelf; } ;
 struct TYPE_7__ {int bottom; int top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
-typedef  TYPE_2__ CCPRIV ;
+typedef TYPE_1__ RECT ;
+typedef int HWND ;
+typedef int HDC ;
+typedef int HBRUSH ;
+typedef TYPE_2__ CCPRIV ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BDR_SUNKENOUTER ; 
- int /*<<< orphan*/  BF_RECT ; 
- int /*<<< orphan*/  CC_HSLtoRGB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CreateSolidBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DrawEdge (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_COLOR_LUMBAR ; 
- scalar_t__ IsWindowVisible (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int YSTEPS ; 
- int max (int /*<<< orphan*/ ,int) ; 
+
+ int BDR_SUNKENOUTER ;
+ int BF_RECT ;
+ int CC_HSLtoRGB (int ,int ,int) ;
+ int CreateSolidBrush (int ) ;
+ int DeleteObject (int ) ;
+ int DrawEdge (int ,TYPE_1__*,int ,int ) ;
+ int FillRect (int ,TYPE_1__*,int ) ;
+ int GetClientRect (int ,TYPE_1__*) ;
+ int GetDC (int ) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_COLOR_LUMBAR ;
+ scalar_t__ IsWindowVisible (int ) ;
+ int ReleaseDC (int ,int ) ;
+ int YSTEPS ;
+ int max (int ,int) ;
 
 __attribute__((used)) static void CC_PaintLumBar(const CCPRIV *infoPtr)
 {

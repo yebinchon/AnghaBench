@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  protocomm_t ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * pc_ble; } ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  ble_cfg_p ; 
- scalar_t__ ble_gap_adv_stop () ; 
- scalar_t__ esp_nimble_hci_and_controller_deinit () ; 
- int /*<<< orphan*/  free_gatt_ble_misc_memory (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nimble_port_deinit () ; 
- scalar_t__ nimble_port_stop () ; 
- TYPE_1__* protoble_internal ; 
- int /*<<< orphan*/  protocomm_ble_cleanup () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int protocomm_t ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_2__ {int * pc_ble; } ;
+
+
+ scalar_t__ ESP_ERR_INVALID_ARG ;
+ int ESP_LOGD (int ,char*,...) ;
+ int ESP_LOGE (int ,char*,scalar_t__) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ int ble_cfg_p ;
+ scalar_t__ ble_gap_adv_stop () ;
+ scalar_t__ esp_nimble_hci_and_controller_deinit () ;
+ int free_gatt_ble_misc_memory (int ) ;
+ int nimble_port_deinit () ;
+ scalar_t__ nimble_port_stop () ;
+ TYPE_1__* protoble_internal ;
+ int protocomm_ble_cleanup () ;
 
 esp_err_t protocomm_ble_stop(protocomm_t *pc)
 {
     ESP_LOGD(TAG, "protocomm_ble_stop called here...");
-    if ((pc != NULL) &&
-            (protoble_internal != NULL ) &&
+    if ((pc != ((void*)0)) &&
+            (protoble_internal != ((void*)0) ) &&
             (pc == protoble_internal->pc_ble)) {
         esp_err_t ret = ESP_OK;
 

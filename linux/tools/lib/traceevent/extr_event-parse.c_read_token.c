@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tep_event_type { ____Placeholder_tep_event_type } tep_event_type ;
 
-/* Variables and functions */
- int TEP_EVENT_NONE ; 
- int TEP_EVENT_SPACE ; 
- int __read_token (char**) ; 
- int /*<<< orphan*/  free_token (char*) ; 
+
+
+
+typedef enum tep_event_type { ____Placeholder_tep_event_type } tep_event_type ;
+
+
+ int TEP_EVENT_NONE ;
+ int TEP_EVENT_SPACE ;
+ int __read_token (char**) ;
+ int free_token (char*) ;
 
 __attribute__((used)) static enum tep_event_type read_token(char **tok)
 {
-	enum tep_event_type type;
+ enum tep_event_type type;
 
-	for (;;) {
-		type = __read_token(tok);
-		if (type != TEP_EVENT_SPACE)
-			return type;
+ for (;;) {
+  type = __read_token(tok);
+  if (type != TEP_EVENT_SPACE)
+   return type;
 
-		free_token(*tok);
-	}
+  free_token(*tok);
+ }
 
-	/* not reached */
-	*tok = NULL;
-	return TEP_EVENT_NONE;
+
+ *tok = ((void*)0);
+ return TEP_EVENT_NONE;
 }

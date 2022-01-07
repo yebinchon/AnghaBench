@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {size_t buf_len; unsigned int stack_top; scalar_t__* gap; } ;
-typedef  TYPE_1__ stringify_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-struct TYPE_16__ {int /*<<< orphan*/  IDispatchEx_iface; } ;
-typedef  TYPE_2__ jsdisp_t ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DISPID ;
-typedef  int /*<<< orphan*/  BSTR ;
+typedef TYPE_1__ stringify_ctx_t ;
+typedef int jsval_t ;
+struct TYPE_16__ {int IDispatchEx_iface; } ;
+typedef TYPE_2__ jsdisp_t ;
+typedef scalar_t__ HRESULT ;
+typedef int DISPID ;
+typedef int BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPID_STARTENUM ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- scalar_t__ IDispatchEx_GetMemberName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IDispatchEx_GetNextDispID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysStringLen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  append_char (TYPE_1__*,char) ; 
- int /*<<< orphan*/  append_string (TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  fdexEnumDefault ; 
- scalar_t__ is_on_stack (TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ is_undefined (int /*<<< orphan*/ ) ; 
- scalar_t__ jsdisp_propget (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ json_quote (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- scalar_t__ stringify (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stringify_pop_obj (TYPE_1__*) ; 
- int /*<<< orphan*/  stringify_push_obj (TYPE_1__*,TYPE_2__*) ; 
+
+ int DISPID_STARTENUM ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FIXME (char*) ;
+ scalar_t__ IDispatchEx_GetMemberName (int *,int ,int *) ;
+ scalar_t__ IDispatchEx_GetNextDispID (int *,int ,int ,int *) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int SysStringLen (int ) ;
+ int append_char (TYPE_1__*,char) ;
+ int append_string (TYPE_1__*,scalar_t__*) ;
+ int fdexEnumDefault ;
+ scalar_t__ is_on_stack (TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ is_undefined (int ) ;
+ scalar_t__ jsdisp_propget (TYPE_2__*,int ,int *) ;
+ scalar_t__ json_quote (TYPE_1__*,int ,int ) ;
+ int jsval_release (int ) ;
+ int jsval_undefined () ;
+ scalar_t__ stringify (TYPE_1__*,int ) ;
+ int stringify_pop_obj (TYPE_1__*) ;
+ int stringify_push_obj (TYPE_1__*,TYPE_2__*) ;
 
 __attribute__((used)) static HRESULT stringify_object(stringify_ctx_t *ctx, jsdisp_t *obj)
 {

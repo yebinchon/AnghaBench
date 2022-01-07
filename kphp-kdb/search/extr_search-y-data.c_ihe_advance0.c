@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  item; struct TYPE_6__* right; } ;
-typedef  TYPE_1__ tree_t ;
-struct TYPE_7__ {int sp; int* Bt; int /*<<< orphan*/  cur0; TYPE_1__** TS; } ;
-typedef  TYPE_2__ iheap_en_t ;
 
-/* Variables and functions */
- int MAX_TREE_DEPTH ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ ihe_dive (TYPE_2__*) ; 
- int ihe_load (TYPE_2__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int item; struct TYPE_6__* right; } ;
+typedef TYPE_1__ tree_t ;
+struct TYPE_7__ {int sp; int* Bt; int cur0; TYPE_1__** TS; } ;
+typedef TYPE_2__ iheap_en_t ;
+
+
+ int MAX_TREE_DEPTH ;
+ int assert (int) ;
+ scalar_t__ ihe_dive (TYPE_2__*) ;
+ int ihe_load (TYPE_2__*) ;
 
 __attribute__((used)) static int ihe_advance0 (iheap_en_t *A) {
   int sp = A->sp;
   tree_t *T;
 
-  // fprintf (stderr, "ihe_advance(%p): sp=%d\n", A, sp);
+
 
   assert (A->cur0 && sp >= 0);
 

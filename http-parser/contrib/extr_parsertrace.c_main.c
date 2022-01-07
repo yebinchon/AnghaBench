@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  settings ;
-struct TYPE_4__ {int /*<<< orphan*/  on_message_complete; int /*<<< orphan*/  on_body; int /*<<< orphan*/  on_headers_complete; int /*<<< orphan*/  on_header_value; int /*<<< orphan*/  on_header_field; int /*<<< orphan*/  on_url; int /*<<< orphan*/  on_message_begin; } ;
-typedef  TYPE_1__ http_parser_settings ;
-typedef  int /*<<< orphan*/  http_parser ;
-typedef  enum http_parser_type { ____Placeholder_http_parser_type } http_parser_type ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int HTTP_BOTH ; 
- int /*<<< orphan*/  HTTP_PARSER_ERRNO (int /*<<< orphan*/ *) ; 
- int HTTP_REQUEST ; 
- int HTTP_RESPONSE ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- size_t fread (char*,int,long,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ *) ; 
- char* http_errno_description (int /*<<< orphan*/ ) ; 
- char* http_errno_name (int /*<<< orphan*/ ) ; 
- size_t http_parser_execute (int /*<<< orphan*/ *,TYPE_1__*,char*,long) ; 
- int /*<<< orphan*/  http_parser_init (int /*<<< orphan*/ *,int) ; 
- char* malloc (long) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  on_body ; 
- int /*<<< orphan*/  on_header_field ; 
- int /*<<< orphan*/  on_header_value ; 
- int /*<<< orphan*/  on_headers_complete ; 
- int /*<<< orphan*/  on_message_begin ; 
- int /*<<< orphan*/  on_message_complete ; 
- int /*<<< orphan*/  on_url ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int settings ;
+struct TYPE_4__ {int on_message_complete; int on_body; int on_headers_complete; int on_header_value; int on_header_field; int on_url; int on_message_begin; } ;
+typedef TYPE_1__ http_parser_settings ;
+typedef int http_parser ;
+typedef enum http_parser_type { ____Placeholder_http_parser_type } http_parser_type ;
+typedef int FILE ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int HTTP_BOTH ;
+ int HTTP_PARSER_ERRNO (int *) ;
+ int HTTP_REQUEST ;
+ int HTTP_RESPONSE ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ size_t fread (char*,int,long,int *) ;
+ int free (char*) ;
+ int fseek (int *,int ,int ) ;
+ long ftell (int *) ;
+ char* http_errno_description (int ) ;
+ char* http_errno_name (int ) ;
+ size_t http_parser_execute (int *,TYPE_1__*,char*,long) ;
+ int http_parser_init (int *,int) ;
+ char* malloc (long) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int on_body ;
+ int on_header_field ;
+ int on_header_value ;
+ int on_headers_complete ;
+ int on_message_begin ;
+ int on_message_complete ;
+ int on_url ;
+ int perror (char*) ;
+ int stderr ;
+ int usage (char*) ;
 
 int main(int argc, char* argv[]) {
   enum http_parser_type file_type;
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
   }
 
   switch (type[1]) {
-    /* in the case of "-", type[1] will be NUL */
+
     case 'r':
       file_type = HTTP_RESPONSE;
       break;
@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) {
 
   char* filename = argv[2];
   FILE* file = fopen(filename, "r");
-  if (file == NULL) {
+  if (file == ((void*)0)) {
     perror("fopen");
     goto fail;
   }

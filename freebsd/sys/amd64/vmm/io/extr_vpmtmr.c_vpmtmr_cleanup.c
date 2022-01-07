@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vpmtmr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_VPMTMR ; 
- int /*<<< orphan*/  free (struct vpmtmr*,int /*<<< orphan*/ ) ; 
+
+ int M_VPMTMR ;
+ int free (struct vpmtmr*,int ) ;
 
 void
 vpmtmr_cleanup(struct vpmtmr *vpmtmr)
 {
 
-	free(vpmtmr, M_VPMTMR);
+ free(vpmtmr, M_VPMTMR);
 }

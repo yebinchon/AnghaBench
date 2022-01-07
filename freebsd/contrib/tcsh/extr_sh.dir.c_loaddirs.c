@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * STRNULL ; 
- int /*<<< orphan*/  STRdirsfile ; 
-#define  STRsource 128 
- int /*<<< orphan*/ * STRtildotdirs ; 
- int bequiet ; 
- int /*<<< orphan*/  bequiet_cleanup ; 
- int /*<<< orphan*/  cleanup_push (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cleanup_until (int*) ; 
- int /*<<< orphan*/  dosource (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * varval (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Char ;
+
+
+ int * STRNULL ;
+ int STRdirsfile ;
+
+ int * STRtildotdirs ;
+ int bequiet ;
+ int bequiet_cleanup ;
+ int cleanup_push (int*,int ) ;
+ int cleanup_until (int*) ;
+ int dosource (int **,int *) ;
+ int * varval (int ) ;
 
 void
 loaddirs(Char *fname)
 {
-    static Char *loaddirs_cmd[] = { STRsource, NULL, NULL };
+    static Char *loaddirs_cmd[] = { 128, ((void*)0), ((void*)0) };
 
     bequiet = 1;
     cleanup_push(&bequiet, bequiet_cleanup);
     if (fname)
-	loaddirs_cmd[1] = fname;
+ loaddirs_cmd[1] = fname;
     else if ((fname = varval(STRdirsfile)) != STRNULL)
-	loaddirs_cmd[1] = fname;
+ loaddirs_cmd[1] = fname;
     else
-	loaddirs_cmd[1] = STRtildotdirs;
-    dosource(loaddirs_cmd, NULL);
+ loaddirs_cmd[1] = STRtildotdirs;
+    dosource(loaddirs_cmd, ((void*)0));
     cleanup_until(&bequiet);
 }

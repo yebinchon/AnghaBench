@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  p; } ;
-struct TYPE_7__ {int /*<<< orphan*/  next_in; } ;
-struct rar {int ppmd_eod; int dictionary_size; scalar_t__ offset; scalar_t__ unp_size; size_t unp_offset; void* unp_buffer; int offset_outgoing; scalar_t__ crc_calculated; scalar_t__ file_crc; int entry_eof; size_t bytes_uncopied; size_t unp_buffer_size; int start_new_table; int ppmd_escape; int /*<<< orphan*/  filterstart; TYPE_1__ range_dec; int /*<<< orphan*/  ppmd7_context; scalar_t__ is_ppmd_block; TYPE_3__ br; int /*<<< orphan*/  valid; } ;
-struct archive_read {int /*<<< orphan*/  archive; TYPE_2__* format; } ;
-typedef  int int64_t ;
-struct TYPE_8__ {int (* Ppmd7_DecodeSymbol ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int p; } ;
+struct TYPE_7__ {int next_in; } ;
+struct rar {int ppmd_eod; int dictionary_size; scalar_t__ offset; scalar_t__ unp_size; size_t unp_offset; void* unp_buffer; int offset_outgoing; scalar_t__ crc_calculated; scalar_t__ file_crc; int entry_eof; size_t bytes_uncopied; size_t unp_buffer_size; int start_new_table; int ppmd_escape; int filterstart; TYPE_1__ range_dec; int ppmd7_context; scalar_t__ is_ppmd_block; TYPE_3__ br; int valid; } ;
+struct archive_read {int archive; TYPE_2__* format; } ;
+typedef int int64_t ;
+struct TYPE_8__ {int (* Ppmd7_DecodeSymbol ) (int *,int *) ;} ;
 struct TYPE_6__ {scalar_t__ data; } ;
 
-/* Variables and functions */
- int ARCHIVE_EOF ; 
- int /*<<< orphan*/  ARCHIVE_ERRNO_FILE_FORMAT ; 
- int /*<<< orphan*/  ARCHIVE_ERRNO_MISC ; 
- int ARCHIVE_FAILED ; 
- int ARCHIVE_FATAL ; 
- int ARCHIVE_OK ; 
- int ARCHIVE_WARN ; 
- int /*<<< orphan*/  INT64_MAX ; 
- TYPE_4__ __archive_ppmd7_functions ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int copy_from_lzss_window (struct archive_read*,void const**,int,int) ; 
- void* crc32 (scalar_t__,void const*,unsigned int) ; 
- int expand (struct archive_read*,int) ; 
- int /*<<< orphan*/  lzss_emit_literal (struct rar*,int) ; 
- int /*<<< orphan*/  lzss_emit_match (struct rar*,int,int) ; 
- int parse_codes (struct archive_read*) ; 
- int rar_br_preparation (struct archive_read*,TYPE_3__*) ; 
- int stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int stub4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int stub5 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ARCHIVE_EOF ;
+ int ARCHIVE_ERRNO_FILE_FORMAT ;
+ int ARCHIVE_ERRNO_MISC ;
+ int ARCHIVE_FAILED ;
+ int ARCHIVE_FATAL ;
+ int ARCHIVE_OK ;
+ int ARCHIVE_WARN ;
+ int INT64_MAX ;
+ TYPE_4__ __archive_ppmd7_functions ;
+ int archive_set_error (int *,int ,char*) ;
+ int copy_from_lzss_window (struct archive_read*,void const**,int,int) ;
+ void* crc32 (scalar_t__,void const*,unsigned int) ;
+ int expand (struct archive_read*,int) ;
+ int lzss_emit_literal (struct rar*,int) ;
+ int lzss_emit_match (struct rar*,int,int) ;
+ int parse_codes (struct archive_read*) ;
+ int rar_br_preparation (struct archive_read*,TYPE_3__*) ;
+ int stub1 (int *,int *) ;
+ int stub2 (int *,int *) ;
+ int stub3 (int *,int *) ;
+ int stub4 (int *,int *) ;
+ int stub5 (int *,int *) ;
 
 __attribute__((used)) static int
 read_data_compressed(struct archive_read *a, const void **buff, size_t *size,
@@ -64,20 +64,20 @@ read_data_compressed(struct archive_read *a, const void **buff, size_t *size,
        (rar->dictionary_size && rar->offset >= rar->unp_size))
     {
       if (rar->unp_offset > 0) {
-        /*
-         * We have unprocessed extracted data. write it out.
-         */
+
+
+
         *buff = rar->unp_buffer;
         *size = rar->unp_offset;
         *offset = rar->offset_outgoing;
         rar->offset_outgoing += *size;
-        /* Calculate File CRC. */
+
         rar->crc_calculated = crc32(rar->crc_calculated, *buff,
           (unsigned)*size);
         rar->unp_offset = 0;
         return (ARCHIVE_OK);
       }
-      *buff = NULL;
+      *buff = ((void*)0);
       *size = 0;
       *offset = rar->offset;
       if (rar->file_crc != rar->crc_calculated) {
@@ -100,12 +100,12 @@ read_data_compressed(struct archive_read *a, const void **buff, size_t *size,
         return (ret);
       rar->offset += bs;
       rar->bytes_uncopied -= bs;
-      if (*buff != NULL) {
+      if (*buff != ((void*)0)) {
         rar->unp_offset = 0;
         *size = rar->unp_buffer_size;
         *offset = rar->offset_outgoing;
         rar->offset_outgoing += *size;
-        /* Calculate File CRC. */
+
         rar->crc_calculated = crc32(rar->crc_calculated, *buff,
           (unsigned)*size);
         return (ret);
@@ -150,7 +150,7 @@ read_data_compressed(struct archive_read *a, const void **buff, size_t *size,
             return read_data_compressed(a, buff, size, offset);
 
           case 2:
-            rar->ppmd_eod = 1;/* End Of ppmd Data. */
+            rar->ppmd_eod = 1;
             continue;
 
           case 3:
@@ -211,10 +211,10 @@ read_data_compressed(struct archive_read *a, const void **buff, size_t *size,
 
       rar->bytes_uncopied = actualend - start;
       if (rar->bytes_uncopied == 0) {
-          /* Broken RAR files cause this case.
-          * NOTE: If this case were possible on a normal RAR file
-          * we would find out where it was actually bad and
-          * what we would do to solve it. */
+
+
+
+
           archive_set_error(&a->archive, ARCHIVE_ERRNO_FILE_FORMAT,
                             "Internal error extracting RAR file");
           return (ARCHIVE_FATAL);
@@ -229,17 +229,17 @@ read_data_compressed(struct archive_read *a, const void **buff, size_t *size,
       return (ret);
     rar->offset += bs;
     rar->bytes_uncopied -= bs;
-    /*
-     * If *buff is NULL, it means unp_buffer is not full.
-     * So we have to continue extracting a RAR file.
-     */
-  } while (*buff == NULL);
+
+
+
+
+  } while (*buff == ((void*)0));
 
   rar->unp_offset = 0;
   *size = rar->unp_buffer_size;
   *offset = rar->offset_outgoing;
   rar->offset_outgoing += *size;
-  /* Calculate File CRC. */
+
   rar->crc_calculated = crc32(rar->crc_calculated, *buff, (unsigned)*size);
   return ret;
 }

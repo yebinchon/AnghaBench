@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UI_METHOD ;
-typedef  int /*<<< orphan*/  PW_CB_DATA ;
-typedef  int /*<<< orphan*/  OSSL_STORE_SEARCH ;
-typedef  int /*<<< orphan*/  OSSL_STORE_INFO ;
-typedef  int /*<<< orphan*/  OSSL_STORE_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_PKEY_print_params (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_print_private (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
-#define  OSSL_STORE_INFO_CERT 132 
-#define  OSSL_STORE_INFO_CRL 131 
-#define  OSSL_STORE_INFO_NAME 130 
-#define  OSSL_STORE_INFO_PARAMS 129 
-#define  OSSL_STORE_INFO_PKEY 128 
- int /*<<< orphan*/  OSSL_STORE_INFO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OSSL_STORE_INFO_get0_CERT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OSSL_STORE_INFO_get0_CRL (int /*<<< orphan*/ *) ; 
- char* OSSL_STORE_INFO_get0_NAME (int /*<<< orphan*/ *) ; 
- char* OSSL_STORE_INFO_get0_NAME_description (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OSSL_STORE_INFO_get0_PARAMS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OSSL_STORE_INFO_get0_PKEY (int /*<<< orphan*/ *) ; 
- int OSSL_STORE_INFO_get_type (int /*<<< orphan*/ *) ; 
- char* OSSL_STORE_INFO_type_string (int) ; 
- int /*<<< orphan*/  OSSL_STORE_close (int /*<<< orphan*/ *) ; 
- scalar_t__ OSSL_STORE_eof (int /*<<< orphan*/ *) ; 
- scalar_t__ OSSL_STORE_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OSSL_STORE_expect (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OSSL_STORE_find (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OSSL_STORE_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OSSL_STORE_open (char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OSSL_STORE_supports_search (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PEM_write_bio_Parameters (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PEM_write_bio_PrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PEM_write_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PEM_write_bio_X509_CRL (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_CRL_print (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_print (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  bio_out ; 
- int /*<<< orphan*/  indent_printf (int,int /*<<< orphan*/ *,char*,...) ; 
+
+
+
+typedef int UI_METHOD ;
+typedef int PW_CB_DATA ;
+typedef int OSSL_STORE_SEARCH ;
+typedef int OSSL_STORE_INFO ;
+typedef int OSSL_STORE_CTX ;
+typedef int BIO ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int ERR_clear_error () ;
+ int ERR_print_errors (int ) ;
+ int EVP_PKEY_print_params (int *,int ,int ,int *) ;
+ int EVP_PKEY_print_private (int *,int ,int ,int *) ;
+
+
+
+
+
+ int OSSL_STORE_INFO_free (int *) ;
+ int OSSL_STORE_INFO_get0_CERT (int *) ;
+ int OSSL_STORE_INFO_get0_CRL (int *) ;
+ char* OSSL_STORE_INFO_get0_NAME (int *) ;
+ char* OSSL_STORE_INFO_get0_NAME_description (int *) ;
+ int OSSL_STORE_INFO_get0_PARAMS (int *) ;
+ int OSSL_STORE_INFO_get0_PKEY (int *) ;
+ int OSSL_STORE_INFO_get_type (int *) ;
+ char* OSSL_STORE_INFO_type_string (int) ;
+ int OSSL_STORE_close (int *) ;
+ scalar_t__ OSSL_STORE_eof (int *) ;
+ scalar_t__ OSSL_STORE_error (int *) ;
+ int OSSL_STORE_expect (int *,int) ;
+ int OSSL_STORE_find (int *,int *) ;
+ int * OSSL_STORE_load (int *) ;
+ int * OSSL_STORE_open (char const*,int const*,int *,int *,int *) ;
+ int OSSL_STORE_supports_search (int *,int) ;
+ int PEM_write_bio_Parameters (int *,int ) ;
+ int PEM_write_bio_PrivateKey (int *,int ,int *,int *,int ,int *,int *) ;
+ int PEM_write_bio_X509 (int *,int ) ;
+ int PEM_write_bio_X509_CRL (int *,int ) ;
+ int X509_CRL_print (int *,int ) ;
+ int X509_print (int *,int ) ;
+ int bio_err ;
+ int bio_out ;
+ int indent_printf (int,int *,char*,...) ;
 
 __attribute__((used)) static int process(const char *uri, const UI_METHOD *uimeth, PW_CB_DATA *uidata,
                    int expected, int criterion, OSSL_STORE_SEARCH *search,
                    int text, int noout, int recursive, int indent, BIO *out,
                    const char *prog)
 {
-    OSSL_STORE_CTX *store_ctx = NULL;
+    OSSL_STORE_CTX *store_ctx = ((void*)0);
     int ret = 1, items = 0;
 
-    if ((store_ctx = OSSL_STORE_open(uri, uimeth, uidata, NULL, NULL))
-        == NULL) {
+    if ((store_ctx = OSSL_STORE_open(uri, uimeth, uidata, ((void*)0), ((void*)0)))
+        == ((void*)0)) {
         BIO_printf(bio_err, "Couldn't open file or uri %s\n", uri);
         ERR_print_errors(bio_err);
         return ret;
@@ -91,16 +91,16 @@ __attribute__((used)) static int process(const char *uri, const UI_METHOD *uimet
         }
     }
 
-    /* From here on, we count errors, and we'll return the count at the end */
+
     ret = 0;
 
     for (;;) {
         OSSL_STORE_INFO *info = OSSL_STORE_load(store_ctx);
-        int type = info == NULL ? 0 : OSSL_STORE_INFO_get_type(info);
+        int type = info == ((void*)0) ? 0 : OSSL_STORE_INFO_get_type(info);
         const char *infostr =
-            info == NULL ? NULL : OSSL_STORE_INFO_type_string(type);
+            info == ((void*)0) ? ((void*)0) : OSSL_STORE_INFO_type_string(type);
 
-        if (info == NULL) {
+        if (info == ((void*)0)) {
             if (OSSL_STORE_eof(store_ctx))
                 break;
 
@@ -122,24 +122,24 @@ __attribute__((used)) static int process(const char *uri, const UI_METHOD *uimet
             break;
         }
 
-        if (type == OSSL_STORE_INFO_NAME) {
+        if (type == 130) {
             const char *name = OSSL_STORE_INFO_get0_NAME(info);
             const char *desc = OSSL_STORE_INFO_get0_NAME_description(info);
             indent_printf(indent, bio_out, "%d: %s: %s\n", items, infostr,
                           name);
-            if (desc != NULL)
+            if (desc != ((void*)0))
                 indent_printf(indent, bio_out, "%s\n", desc);
         } else {
             indent_printf(indent, bio_out, "%d: %s\n", items, infostr);
         }
 
-        /*
-         * Unfortunately, PEM_X509_INFO_write_bio() is sorely lacking in
-         * functionality, so we must figure out how exactly to write things
-         * ourselves...
-         */
+
+
+
+
+
         switch (type) {
-        case OSSL_STORE_INFO_NAME:
+        case 130:
             if (recursive) {
                 const char *suburi = OSSL_STORE_INFO_get0_NAME(info);
                 ret += process(suburi, uimeth, uidata,
@@ -147,29 +147,29 @@ __attribute__((used)) static int process(const char *uri, const UI_METHOD *uimet
                                text, noout, recursive, indent + 2, out, prog);
             }
             break;
-        case OSSL_STORE_INFO_PARAMS:
+        case 129:
             if (text)
                 EVP_PKEY_print_params(out, OSSL_STORE_INFO_get0_PARAMS(info),
-                                      0, NULL);
+                                      0, ((void*)0));
             if (!noout)
                 PEM_write_bio_Parameters(out,
                                          OSSL_STORE_INFO_get0_PARAMS(info));
             break;
-        case OSSL_STORE_INFO_PKEY:
+        case 128:
             if (text)
                 EVP_PKEY_print_private(out, OSSL_STORE_INFO_get0_PKEY(info),
-                                       0, NULL);
+                                       0, ((void*)0));
             if (!noout)
                 PEM_write_bio_PrivateKey(out, OSSL_STORE_INFO_get0_PKEY(info),
-                                         NULL, NULL, 0, NULL, NULL);
+                                         ((void*)0), ((void*)0), 0, ((void*)0), ((void*)0));
             break;
-        case OSSL_STORE_INFO_CERT:
+        case 132:
             if (text)
                 X509_print(out, OSSL_STORE_INFO_get0_CERT(info));
             if (!noout)
                 PEM_write_bio_X509(out, OSSL_STORE_INFO_get0_CERT(info));
             break;
-        case OSSL_STORE_INFO_CRL:
+        case 131:
             if (text)
                 X509_CRL_print(out, OSSL_STORE_INFO_get0_CRL(info));
             if (!noout)

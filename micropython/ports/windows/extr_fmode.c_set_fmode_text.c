@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  O_TEXT ; 
- int /*<<< orphan*/  set_fmode_impl (int /*<<< orphan*/ ) ; 
+ int O_TEXT ;
+ int set_fmode_impl (int ) ;
 
 void set_fmode_text(void) {
     set_fmode_impl(O_TEXT);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_FORKNUM ; 
- int /*<<< orphan*/  _hash_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+
+
+ int INIT_FORKNUM ;
+ int _hash_init (int ,int ,int ) ;
 
 void
 hashbuildempty(Relation index)
 {
-	_hash_init(index, 0, INIT_FORKNUM);
+ _hash_init(index, 0, INIT_FORKNUM);
 }

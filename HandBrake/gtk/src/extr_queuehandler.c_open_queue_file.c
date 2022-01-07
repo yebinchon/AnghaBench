@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * queue; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  GtkWindow ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkFileFilter ;
-typedef  int /*<<< orphan*/  GtkFileChooser ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_OBJECT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GHB_QUEUE_PENDING ; 
- int /*<<< orphan*/  GHB_STOCK_CANCEL ; 
- int /*<<< orphan*/  GHB_STOCK_OPEN ; 
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_DIALOG (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GTK_FILE_CHOOSER (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_FILE_CHOOSER_ACTION_OPEN ; 
- int /*<<< orphan*/ * GTK_FILE_FILTER (int /*<<< orphan*/ ) ; 
- scalar_t__ GTK_RESPONSE_ACCEPT ; 
- int /*<<< orphan*/  GTK_RESPONSE_CANCEL ; 
- int /*<<< orphan*/ * GTK_WINDOW (int /*<<< orphan*/ ) ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  add_to_queue_list (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  ghb_array_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_array_get (int /*<<< orphan*/ *,int) ; 
- int ghb_array_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_array_new () ; 
- int /*<<< orphan*/ * ghb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_set_int (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghb_queue_buttons_grey (TYPE_1__*) ; 
- int /*<<< orphan*/ * ghb_read_settings_file (char*) ; 
- int /*<<< orphan*/  ghb_save_queue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_value_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ghb_value_incref (int /*<<< orphan*/ *) ; 
- scalar_t__ gtk_dialog_run (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_file_chooser_add_filter (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_file_chooser_dialog_new (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- char* gtk_file_chooser_get_filename (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_file_filter_add_pattern (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  gtk_file_filter_set_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  gtk_widget_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * queue; int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int GtkWindow ;
+typedef int GtkWidget ;
+typedef int GtkFileFilter ;
+typedef int GtkFileChooser ;
+typedef int GhbValue ;
+
+
+ int GHB_OBJECT (int ,char*) ;
+ int GHB_QUEUE_PENDING ;
+ int GHB_STOCK_CANCEL ;
+ int GHB_STOCK_OPEN ;
+ int GHB_WIDGET (int ,char*) ;
+ int GTK_DIALOG (int *) ;
+ int * GTK_FILE_CHOOSER (int *) ;
+ int GTK_FILE_CHOOSER_ACTION_OPEN ;
+ int * GTK_FILE_FILTER (int ) ;
+ scalar_t__ GTK_RESPONSE_ACCEPT ;
+ int GTK_RESPONSE_CANCEL ;
+ int * GTK_WINDOW (int ) ;
+ char* _ (char*) ;
+ int add_to_queue_list (TYPE_1__*,int *) ;
+ int g_free (char*) ;
+ int ghb_array_append (int *,int *) ;
+ int * ghb_array_get (int *,int) ;
+ int ghb_array_len (int *) ;
+ int * ghb_array_new () ;
+ int * ghb_dict_get (int *,char*) ;
+ int ghb_dict_set_int (int *,char*,int ) ;
+ int ghb_queue_buttons_grey (TYPE_1__*) ;
+ int * ghb_read_settings_file (char*) ;
+ int ghb_save_queue (int *) ;
+ int ghb_value_free (int **) ;
+ int ghb_value_incref (int *) ;
+ scalar_t__ gtk_dialog_run (int ) ;
+ int gtk_file_chooser_add_filter (int *,int *) ;
+ int * gtk_file_chooser_dialog_new (char*,int *,int ,int ,int ,int ,scalar_t__,int *) ;
+ char* gtk_file_chooser_get_filename (int *) ;
+ int gtk_file_filter_add_pattern (int *,char*) ;
+ int gtk_file_filter_set_name (int *,char*) ;
+ int gtk_widget_destroy (int *) ;
 
 __attribute__((used)) static void
 open_queue_file(signal_user_data_t *ud)
@@ -66,9 +66,9 @@ open_queue_file(signal_user_data_t *ud)
                       GTK_FILE_CHOOSER_ACTION_OPEN,
                       GHB_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                       GHB_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
-                      NULL);
+                      ((void*)0));
 
-    // Add filters
+
     GtkFileFilter *filter;
     GtkFileChooser *chooser = GTK_FILE_CHOOSER(dialog);
     filter = GTK_FILE_FILTER(GHB_OBJECT(ud->builder, "QueueFilterAll"));
@@ -92,7 +92,7 @@ open_queue_file(signal_user_data_t *ud)
     gtk_widget_destroy(dialog);
 
     queue = ghb_read_settings_file(filename);
-    if (queue != NULL)
+    if (queue != ((void*)0))
     {
         int ii, count;
         count = ghb_array_len(queue);
@@ -106,7 +106,7 @@ open_queue_file(signal_user_data_t *ud)
             ghb_dict_set_int(uiDict, "job_status", GHB_QUEUE_PENDING);
             ghb_dict_set_int(uiDict, "job_unique_id", 0);
 
-            if (ud->queue == NULL)
+            if (ud->queue == ((void*)0))
                 ud->queue = ghb_array_new();
             ghb_array_append(ud->queue, queueDict);
             add_to_queue_list(ud, queueDict);

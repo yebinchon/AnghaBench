@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  unsigned int uint32_t ;
 
-/* Variables and functions */
- scalar_t__ asprintf (char**,char*,int,int,int,char,int,int,int,char,double,double,double,double) ; 
- int exp10 (double) ; 
+
+
+
+typedef int uint8_t ;
+typedef unsigned int uint32_t ;
+
+
+ scalar_t__ asprintf (char**,char*,int,int,int,char,int,int,int,char,double,double,double,double) ;
+ int exp10 (double) ;
 
 __attribute__((used)) static char* format_location(uint32_t latitude, uint32_t longitude, uint32_t altitude,
                              uint8_t size, uint8_t horiz_pre, uint8_t vert_pre) {
@@ -43,7 +43,7 @@ __attribute__((used)) static char* format_location(uint32_t latitude, uint32_t l
                      siz / 100.,
                      hor / 100.,
                      ver / 100.) < 0)
-                return NULL;
+                return ((void*)0);
 
         return s;
 }

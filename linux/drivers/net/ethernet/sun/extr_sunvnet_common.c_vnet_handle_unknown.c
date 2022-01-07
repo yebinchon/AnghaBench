@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lp; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lp; } ;
 struct vnet_port {TYPE_1__ vio; } ;
-struct vio_msg_tag {int /*<<< orphan*/  sid; int /*<<< orphan*/  stype_env; int /*<<< orphan*/  stype; int /*<<< orphan*/  type; } ;
+struct vio_msg_tag {int sid; int stype_env; int stype; int type; } ;
 
-/* Variables and functions */
- int ECONNRESET ; 
- int /*<<< orphan*/  ldc_disconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_err (char*,...) ; 
+
+ int ECONNRESET ;
+ int ldc_disconnect (int ) ;
+ int pr_err (char*,...) ;
 
 __attribute__((used)) static int vnet_handle_unknown(struct vnet_port *port, void *arg)
 {
-	struct vio_msg_tag *pkt = arg;
+ struct vio_msg_tag *pkt = arg;
 
-	pr_err("Received unknown msg [%02x:%02x:%04x:%08x]\n",
-	       pkt->type, pkt->stype, pkt->stype_env, pkt->sid);
-	pr_err("Resetting connection\n");
+ pr_err("Received unknown msg [%02x:%02x:%04x:%08x]\n",
+        pkt->type, pkt->stype, pkt->stype_env, pkt->sid);
+ pr_err("Resetting connection\n");
 
-	ldc_disconnect(port->vio.lp);
+ ldc_disconnect(port->vio.lp);
 
-	return -ECONNRESET;
+ return -ECONNRESET;
 }

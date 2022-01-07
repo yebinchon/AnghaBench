@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
 struct TYPE_21__ {scalar_t__ Action; } ;
-struct TYPE_20__ {int /*<<< orphan*/  db; } ;
-struct TYPE_19__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  TYPE_2__ MSIPACKAGE ;
-typedef  TYPE_3__ MSICOMPONENT ;
-typedef  char* LPWSTR ;
-typedef  TYPE_2__* LPVOID ;
-typedef  char* LPCWSTR ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+struct TYPE_20__ {int db; } ;
+struct TYPE_19__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef TYPE_2__ MSIPACKAGE ;
+typedef TYPE_3__ MSICOMPONENT ;
+typedef char* LPWSTR ;
+typedef TYPE_2__* LPVOID ;
+typedef char* LPCWSTR ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- scalar_t__ GetFileAttributesW (char*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  INSTALLMESSAGE_ACTIONDATA ; 
- scalar_t__ INSTALLSTATE_LOCAL ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- TYPE_1__* MSI_CreateRecord (int) ; 
- int /*<<< orphan*/  MSI_ProcessMessage (TYPE_2__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int MSI_RecordGetInteger (TYPE_1__*,int) ; 
- char* MSI_RecordGetString (TYPE_1__*,int) ; 
- scalar_t__ MSI_RecordIsNull (TYPE_1__*,int) ; 
- int /*<<< orphan*/  MSI_RecordSetInteger (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  MSI_RecordSetStringW (TYPE_1__*,int,char*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  lstrcatW (char*,char*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  move_files_wildcard (char*,char*,int) ; 
- char* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_create_full_path (char*) ; 
- char* msi_dup_property (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  msi_free (char*) ; 
- scalar_t__ msi_get_component_action (TYPE_2__*,TYPE_3__*) ; 
- TYPE_3__* msi_get_loaded_component (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  msi_move_file (char*,char*,int) ; 
- int /*<<< orphan*/  msi_reduce_to_long_filename (char*) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- scalar_t__ strchrW (char*,char) ; 
- char* strdupW (char*) ; 
- char* strrchrW (char*,char) ; 
- char* szBackSlash ; 
+
+ int ERROR_SUCCESS ;
+ scalar_t__ GetFileAttributesW (char*) ;
+ int GetLastError () ;
+ int INSTALLMESSAGE_ACTIONDATA ;
+ scalar_t__ INSTALLSTATE_LOCAL ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ TYPE_1__* MSI_CreateRecord (int) ;
+ int MSI_ProcessMessage (TYPE_2__*,int ,TYPE_1__*) ;
+ int MSI_RecordGetInteger (TYPE_1__*,int) ;
+ char* MSI_RecordGetString (TYPE_1__*,int) ;
+ scalar_t__ MSI_RecordIsNull (TYPE_1__*,int) ;
+ int MSI_RecordSetInteger (TYPE_1__*,int,int) ;
+ int MSI_RecordSetStringW (TYPE_1__*,int,char*) ;
+ int TRACE (char*,int ) ;
+ int WARN (char*,int ) ;
+ int debugstr_w (char*) ;
+ int lstrcatW (char*,char*) ;
+ int lstrcpyW (char*,char*) ;
+ int lstrlenW (char*) ;
+ int move_files_wildcard (char*,char*,int) ;
+ char* msi_alloc (int) ;
+ int msi_create_full_path (char*) ;
+ char* msi_dup_property (int ,char*) ;
+ int msi_free (char*) ;
+ scalar_t__ msi_get_component_action (TYPE_2__*,TYPE_3__*) ;
+ TYPE_3__* msi_get_loaded_component (TYPE_2__*,char*) ;
+ int msi_move_file (char*,char*,int) ;
+ int msi_reduce_to_long_filename (char*) ;
+ int msiobj_release (int *) ;
+ scalar_t__ strchrW (char*,char) ;
+ char* strdupW (char*) ;
+ char* strrchrW (char*,char) ;
+ char* szBackSlash ;
 
 __attribute__((used)) static UINT ITERATE_MoveFiles( MSIRECORD *rec, LPVOID param )
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static UINT ITERATE_MoveFiles( MSIRECORD *rec, LPVOID para
     MSIRECORD *uirow;
     MSICOMPONENT *comp;
     LPCWSTR sourcename, component;
-    LPWSTR sourcedir, destname = NULL, destdir = NULL, source = NULL, dest = NULL;
+    LPWSTR sourcedir, destname = ((void*)0), destdir = ((void*)0), source = ((void*)0), dest = ((void*)0);
     int options;
     DWORD size;
     BOOL wildcards;
@@ -174,7 +174,7 @@ __attribute__((used)) static UINT ITERATE_MoveFiles( MSIRECORD *rec, LPVOID para
 done:
     uirow = MSI_CreateRecord( 9 );
     MSI_RecordSetStringW( uirow, 1, MSI_RecordGetString(rec, 1) );
-    MSI_RecordSetInteger( uirow, 6, 1 ); /* FIXME */
+    MSI_RecordSetInteger( uirow, 6, 1 );
     MSI_RecordSetStringW( uirow, 9, destdir );
     MSI_ProcessMessage(package, INSTALLMESSAGE_ACTIONDATA, uirow);
     msiobj_release( &uirow->hdr );

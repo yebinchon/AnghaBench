@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct mlx5_devcom_list {int dummy; } ;
-struct mlx5_devcom {int /*<<< orphan*/  idx; struct mlx5_devcom_list* priv; } ;
+struct mlx5_devcom {int idx; struct mlx5_devcom_list* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct mlx5_devcom* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ struct mlx5_devcom* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct mlx5_devcom *mlx5_devcom_alloc(struct mlx5_devcom_list *priv,
-					     u8 idx)
+          u8 idx)
 {
-	struct mlx5_devcom *devcom;
+ struct mlx5_devcom *devcom;
 
-	devcom = kzalloc(sizeof(*devcom), GFP_KERNEL);
-	if (!devcom)
-		return NULL;
+ devcom = kzalloc(sizeof(*devcom), GFP_KERNEL);
+ if (!devcom)
+  return ((void*)0);
 
-	devcom->priv = priv;
-	devcom->idx = idx;
-	return devcom;
+ devcom->priv = priv;
+ devcom->idx = idx;
+ return devcom;
 }

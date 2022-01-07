@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  pixel; } ;
-typedef  TYPE_1__ XColor ;
-typedef  int /*<<< orphan*/  Window ;
-typedef  scalar_t__ Pixmap ;
-typedef  int /*<<< orphan*/  Display ;
-typedef  int /*<<< orphan*/  Cursor ;
-typedef  int /*<<< orphan*/  Colormap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DefaultColormap (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DefaultScreen (int /*<<< orphan*/ *) ; 
- scalar_t__ None ; 
- int /*<<< orphan*/  XAllocNamedColor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,TYPE_1__*,TYPE_1__*) ; 
- scalar_t__ XCreateBitmapFromData (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  XCreatePixmapCursor (int /*<<< orphan*/ *,scalar_t__,scalar_t__,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XDefineCursor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFreeColors (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFreeCursor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFreePixmap (int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int pixel; } ;
+typedef TYPE_1__ XColor ;
+typedef int Window ;
+typedef scalar_t__ Pixmap ;
+typedef int Display ;
+typedef int Cursor ;
+typedef int Colormap ;
+
+
+ int DefaultColormap (int *,int ) ;
+ int DefaultScreen (int *) ;
+ scalar_t__ None ;
+ int XAllocNamedColor (int *,int ,char*,TYPE_1__*,TYPE_1__*) ;
+ scalar_t__ XCreateBitmapFromData (int *,int ,char*,int,int) ;
+ int XCreatePixmapCursor (int *,scalar_t__,scalar_t__,TYPE_1__*,TYPE_1__*,int ,int ) ;
+ int XDefineCursor (int *,int ,int ) ;
+ int XFreeColors (int *,int ,int *,int,int ) ;
+ int XFreeCursor (int *,int ) ;
+ int XFreePixmap (int *,scalar_t__) ;
 
 __attribute__((used)) static void x11_hide_mouse(Display *dpy, Window win)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void x11_hide_mouse(Display *dpy, Window win)
    if (!XAllocNamedColor(dpy, colormap, "black", &black, &dummy))
       return;
 
-   bm_no  = XCreateBitmapFromData(dpy, win, bm_no_data, 8, 8);
+   bm_no = XCreateBitmapFromData(dpy, win, bm_no_data, 8, 8);
    no_ptr = XCreatePixmapCursor(dpy, bm_no, bm_no, &black, &black, 0, 0);
 
    XDefineCursor(dpy, win, no_ptr);

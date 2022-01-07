@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int FALSE ;
+ int * lex_open (char const*,char const*) ;
+ int * lex_stack ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/ * lex_open (char const*,char const*) ; 
- int /*<<< orphan*/ * lex_stack ; 
-
-int/*BOOL*/
+int
 lex_init_stack(
-	const char * path,
-	const char * mode
-	)
+ const char * path,
+ const char * mode
+ )
 {
-	if (NULL != lex_stack || NULL == path)
-		return FALSE;
+ if (((void*)0) != lex_stack || ((void*)0) == path)
+  return FALSE;
 
-	lex_stack = lex_open(path, mode);
-	return (NULL != lex_stack);
+ lex_stack = lex_open(path, mode);
+ return (((void*)0) != lex_stack);
 }

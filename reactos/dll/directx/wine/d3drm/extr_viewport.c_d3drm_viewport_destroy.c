@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3drm_viewport {int /*<<< orphan*/  d3drm; int /*<<< orphan*/  camera; int /*<<< orphan*/  material; scalar_t__ d3d_viewport; int /*<<< orphan*/  obj; int /*<<< orphan*/  IDirect3DRMViewport_iface; } ;
-typedef  int /*<<< orphan*/  IDirect3DRMObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDirect3DMaterial_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DRMFrame_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DRM_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DViewport_Release (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,struct d3drm_viewport*) ; 
- int /*<<< orphan*/  d3drm_object_cleanup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heap_free (struct d3drm_viewport*) ; 
+
+
+
+struct d3drm_viewport {int d3drm; int camera; int material; scalar_t__ d3d_viewport; int obj; int IDirect3DRMViewport_iface; } ;
+typedef int IDirect3DRMObject ;
+
+
+ int IDirect3DMaterial_Release (int ) ;
+ int IDirect3DRMFrame_Release (int ) ;
+ int IDirect3DRM_Release (int ) ;
+ int IDirect3DViewport_Release (scalar_t__) ;
+ int TRACE (char*,struct d3drm_viewport*) ;
+ int d3drm_object_cleanup (int *,int *) ;
+ int heap_free (struct d3drm_viewport*) ;
 
 __attribute__((used)) static void d3drm_viewport_destroy(struct d3drm_viewport *viewport)
 {

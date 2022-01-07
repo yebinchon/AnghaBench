@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  User ;
-struct TYPE_6__ {int /*<<< orphan*/  action_job; int /*<<< orphan*/  wall_message; int /*<<< orphan*/  scheduled_shutdown_tty; int /*<<< orphan*/  scheduled_shutdown_type; int /*<<< orphan*/  kill_exclude_users; int /*<<< orphan*/  kill_only_users; int /*<<< orphan*/  reserve_vt_fd; int /*<<< orphan*/  event; int /*<<< orphan*/  bus; int /*<<< orphan*/  polkit_registry; scalar_t__ unlink_nologin; int /*<<< orphan*/  device_button_monitor; int /*<<< orphan*/  device_vcsa_monitor; int /*<<< orphan*/  device_monitor; int /*<<< orphan*/  device_seat_monitor; int /*<<< orphan*/  console_active_fd; int /*<<< orphan*/  utmp_event_source; int /*<<< orphan*/  lid_switch_ignore_event_source; int /*<<< orphan*/  console_active_event_source; int /*<<< orphan*/  wall_message_timeout_source; int /*<<< orphan*/  nologin_timeout_source; int /*<<< orphan*/  scheduled_shutdown_timeout_source; int /*<<< orphan*/  inhibit_timeout_source; int /*<<< orphan*/  idle_action_event_source; int /*<<< orphan*/  session_units; int /*<<< orphan*/  user_units; int /*<<< orphan*/  brightness_writers; int /*<<< orphan*/  buttons; int /*<<< orphan*/  inhibitors; int /*<<< orphan*/  users; int /*<<< orphan*/  sessions_by_leader; int /*<<< orphan*/  sessions; int /*<<< orphan*/  seats; int /*<<< orphan*/  devices; } ;
-typedef  int /*<<< orphan*/  Session ;
-typedef  int /*<<< orphan*/  Seat ;
-typedef  TYPE_1__ Manager ;
-typedef  int /*<<< orphan*/  Inhibitor ;
-typedef  int /*<<< orphan*/  Device ;
-typedef  int /*<<< orphan*/  Button ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bus_verify_polkit_async_registry_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  button_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- void* hashmap_first (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inhibitor_free (int /*<<< orphan*/ *) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  safe_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_bus_flush_close_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_device_monitor_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seat_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  session_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlink_or_warn (char*) ; 
- int /*<<< orphan*/  user_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int User ;
+struct TYPE_6__ {int action_job; int wall_message; int scheduled_shutdown_tty; int scheduled_shutdown_type; int kill_exclude_users; int kill_only_users; int reserve_vt_fd; int event; int bus; int polkit_registry; scalar_t__ unlink_nologin; int device_button_monitor; int device_vcsa_monitor; int device_monitor; int device_seat_monitor; int console_active_fd; int utmp_event_source; int lid_switch_ignore_event_source; int console_active_event_source; int wall_message_timeout_source; int nologin_timeout_source; int scheduled_shutdown_timeout_source; int inhibit_timeout_source; int idle_action_event_source; int session_units; int user_units; int brightness_writers; int buttons; int inhibitors; int users; int sessions_by_leader; int sessions; int seats; int devices; } ;
+typedef int Session ;
+typedef int Seat ;
+typedef TYPE_1__ Manager ;
+typedef int Inhibitor ;
+typedef int Device ;
+typedef int Button ;
+
+
+ int bus_verify_polkit_async_registry_free (int ) ;
+ int button_free (int *) ;
+ int device_free (int *) ;
+ int free (int ) ;
+ void* hashmap_first (int ) ;
+ int hashmap_free (int ) ;
+ int inhibitor_free (int *) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int safe_close (int ) ;
+ int sd_bus_flush_close_unref (int ) ;
+ int sd_device_monitor_unref (int ) ;
+ int sd_event_source_unref (int ) ;
+ int sd_event_unref (int ) ;
+ int seat_free (int *) ;
+ int session_free (int *) ;
+ int strv_free (int ) ;
+ int unlink_or_warn (char*) ;
+ int user_free (int *) ;
 
 __attribute__((used)) static Manager* manager_unref(Manager *m) {
         Session *session;
@@ -49,7 +49,7 @@ __attribute__((used)) static Manager* manager_unref(Manager *m) {
         Button *b;
 
         if (!m)
-                return NULL;
+                return ((void*)0);
 
         while ((session = hashmap_first(m->sessions)))
                 session_free(session);
@@ -90,9 +90,9 @@ __attribute__((used)) static Manager* manager_unref(Manager *m) {
         sd_event_source_unref(m->console_active_event_source);
         sd_event_source_unref(m->lid_switch_ignore_event_source);
 
-#if ENABLE_UTMP
-        sd_event_source_unref(m->utmp_event_source);
-#endif
+
+
+
 
         safe_close(m->console_active_fd);
 

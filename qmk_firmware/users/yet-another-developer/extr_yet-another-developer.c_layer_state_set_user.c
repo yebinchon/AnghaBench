@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  layer_state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  layer_state_set_keymap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_state_set_rgb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int layer_state_t ;
+
+
+ int _ADJUST ;
+ int _LOWER ;
+ int _RAISE ;
+ int layer_state_set_keymap (int ) ;
+ int layer_state_set_rgb (int ) ;
+ int update_tri_layer_state (int ,int ,int ,int ) ;
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _RAISE, _LOWER, _ADJUST);
-#ifdef RGBLIGHT_ENABLE
-  state = layer_state_set_rgb(state);
-#endif // RGBLIGHT_ENABLE
+
+
+
     return layer_state_set_keymap(state);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* pWorker; } ;
-typedef  TYPE_2__ lsm_db ;
-struct TYPE_4__ {int /*<<< orphan*/ * aiAppend; } ;
-typedef  int /*<<< orphan*/  LsmPgno ;
-typedef  int /*<<< orphan*/  CkptBuffer ;
+typedef TYPE_2__ lsm_db ;
+struct TYPE_4__ {int * aiAppend; } ;
+typedef int LsmPgno ;
+typedef int CkptBuffer ;
 
-/* Variables and functions */
- int LSM_APPLIST_SZ ; 
- int /*<<< orphan*/  ckptAppend64 (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ,int*) ; 
+
+ int LSM_APPLIST_SZ ;
+ int ckptAppend64 (int *,int*,int ,int*) ;
 
 __attribute__((used)) static void ckptExportAppendlist(
-  lsm_db *db,                     /* Database connection */
-  CkptBuffer *p,                  /* Checkpoint buffer to write to */
-  int *piOut,                     /* IN/OUT: Offset within checkpoint buffer */
-  int *pRc                        /* IN/OUT: Error code */
+  lsm_db *db,
+  CkptBuffer *p,
+  int *piOut,
+  int *pRc
 ){
   int i;
   LsmPgno *aiAppend = db->pWorker->aiAppend;

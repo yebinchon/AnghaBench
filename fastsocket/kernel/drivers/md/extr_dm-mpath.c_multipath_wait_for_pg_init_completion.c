@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct multipath {int /*<<< orphan*/  pg_init_wait; int /*<<< orphan*/  lock; int /*<<< orphan*/  pg_init_in_progress; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECLARE_WAITQUEUE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TASK_RUNNING ; 
- int /*<<< orphan*/  TASK_UNINTERRUPTIBLE ; 
- int /*<<< orphan*/  add_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  io_schedule () ; 
- int /*<<< orphan*/  remove_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_current_state (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  wait ; 
+
+
+
+struct multipath {int pg_init_wait; int lock; int pg_init_in_progress; } ;
+
+
+ int DECLARE_WAITQUEUE (int ,int ) ;
+ int TASK_RUNNING ;
+ int TASK_UNINTERRUPTIBLE ;
+ int add_wait_queue (int *,int *) ;
+ int current ;
+ int io_schedule () ;
+ int remove_wait_queue (int *,int *) ;
+ int set_current_state (int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int wait ;
 
 __attribute__((used)) static void multipath_wait_for_pg_init_completion(struct multipath *m)
 {
-	DECLARE_WAITQUEUE(wait, current);
-	unsigned long flags;
+ DECLARE_WAITQUEUE(wait, current);
+ unsigned long flags;
 
-	add_wait_queue(&m->pg_init_wait, &wait);
+ add_wait_queue(&m->pg_init_wait, &wait);
 
-	while (1) {
-		set_current_state(TASK_UNINTERRUPTIBLE);
+ while (1) {
+  set_current_state(TASK_UNINTERRUPTIBLE);
 
-		spin_lock_irqsave(&m->lock, flags);
-		if (!m->pg_init_in_progress) {
-			spin_unlock_irqrestore(&m->lock, flags);
-			break;
-		}
-		spin_unlock_irqrestore(&m->lock, flags);
+  spin_lock_irqsave(&m->lock, flags);
+  if (!m->pg_init_in_progress) {
+   spin_unlock_irqrestore(&m->lock, flags);
+   break;
+  }
+  spin_unlock_irqrestore(&m->lock, flags);
 
-		io_schedule();
-	}
-	set_current_state(TASK_RUNNING);
+  io_schedule();
+ }
+ set_current_state(TASK_RUNNING);
 
-	remove_wait_queue(&m->pg_init_wait, &wait);
+ remove_wait_queue(&m->pg_init_wait, &wait);
 }

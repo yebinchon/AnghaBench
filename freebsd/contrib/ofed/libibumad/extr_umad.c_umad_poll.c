@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int,int) ; 
- int dev_poll (int,int) ; 
+ int TRACE (char*,int,int) ;
+ int dev_poll (int,int) ;
 
 int umad_poll(int fd, int timeout_ms)
 {
-	TRACE("fd %d timeout %u", fd, timeout_ms);
-	return dev_poll(fd, timeout_ms);
+ TRACE("fd %d timeout %u", fd, timeout_ms);
+ return dev_poll(fd, timeout_ms);
 }

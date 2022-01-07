@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ifreq {void* ifr_data; int /*<<< orphan*/  ifr_name; } ;
-struct ethtool_cmd {int /*<<< orphan*/  cmd; int /*<<< orphan*/  duplex; } ;
-typedef  int Duplex ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DUPLEX_FULL ; 
- int /*<<< orphan*/  DUPLEX_HALF ; 
-#define  DUP_FULL 129 
-#define  DUP_HALF 128 
- int /*<<< orphan*/  ETHTOOL_GSET ; 
- int /*<<< orphan*/  ETHTOOL_SSET ; 
- int /*<<< orphan*/  IFNAMSIZ ; 
- int /*<<< orphan*/  SIOCETHTOOL ; 
- int _DUP_INVALID ; 
- int errno ; 
- unsigned int ethtool_cmd_speed (struct ethtool_cmd*) ; 
- int /*<<< orphan*/  ethtool_cmd_speed_set (struct ethtool_cmd*,unsigned int) ; 
- int ethtool_connect_or_warn (int*,int) ; 
- int ioctl (int,int /*<<< orphan*/ ,struct ifreq*) ; 
- int /*<<< orphan*/  strscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct ifreq {void* ifr_data; int ifr_name; } ;
+struct ethtool_cmd {int cmd; int duplex; } ;
+typedef int Duplex ;
+
+
+ int DUPLEX_FULL ;
+ int DUPLEX_HALF ;
+
+
+ int ETHTOOL_GSET ;
+ int ETHTOOL_SSET ;
+ int IFNAMSIZ ;
+ int SIOCETHTOOL ;
+ int _DUP_INVALID ;
+ int errno ;
+ unsigned int ethtool_cmd_speed (struct ethtool_cmd*) ;
+ int ethtool_cmd_speed_set (struct ethtool_cmd*,unsigned int) ;
+ int ethtool_connect_or_warn (int*,int) ;
+ int ioctl (int,int ,struct ifreq*) ;
+ int strscpy (int ,int ,char const*) ;
 
 int ethtool_set_speed(int *fd, const char *ifname, unsigned speed, Duplex duplex) {
         struct ethtool_cmd ecmd = {
@@ -38,14 +38,14 @@ int ethtool_set_speed(int *fd, const char *ifname, unsigned speed, Duplex duplex
         struct ifreq ifr = {
                 .ifr_data = (void*) &ecmd
         };
-        bool need_update = false;
+        bool need_update = 0;
         int r;
 
         if (speed == 0 && duplex == _DUP_INVALID)
                 return 0;
 
         if (*fd < 0) {
-                r = ethtool_connect_or_warn(fd, true);
+                r = ethtool_connect_or_warn(fd, 1);
                 if (r < 0)
                         return r;
         }
@@ -58,20 +58,20 @@ int ethtool_set_speed(int *fd, const char *ifname, unsigned speed, Duplex duplex
 
         if (ethtool_cmd_speed(&ecmd) != speed) {
                 ethtool_cmd_speed_set(&ecmd, speed);
-                need_update = true;
+                need_update = 1;
         }
 
         switch (duplex) {
-                case DUP_HALF:
+                case 128:
                         if (ecmd.duplex != DUPLEX_HALF) {
                                 ecmd.duplex = DUPLEX_HALF;
-                                need_update = true;
+                                need_update = 1;
                         }
                         break;
-                case DUP_FULL:
+                case 129:
                         if (ecmd.duplex != DUPLEX_FULL) {
                                 ecmd.duplex = DUPLEX_FULL;
-                                need_update = true;
+                                need_update = 1;
                         }
                         break;
                 default:

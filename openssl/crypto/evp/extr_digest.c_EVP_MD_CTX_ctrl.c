@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_2__* digest; TYPE_1__* pctx; } ;
-struct TYPE_9__ {int (* md_ctrl ) (TYPE_3__*,int,int,void*) ;int /*<<< orphan*/ * prov; } ;
+struct TYPE_9__ {int (* md_ctrl ) (TYPE_3__*,int,int,void*) ;int * prov; } ;
 struct TYPE_8__ {scalar_t__ operation; } ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  TYPE_3__ EVP_MD_CTX ;
+typedef int OSSL_PARAM ;
+typedef TYPE_3__ EVP_MD_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_LIB_EVP ; 
- int /*<<< orphan*/  ERR_raise (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int EVP_CTRL_RET_UNSUPPORTED ; 
-#define  EVP_CTRL_SSL3_MASTER_SECRET 130 
-#define  EVP_MD_CTRL_MICALG 129 
-#define  EVP_MD_CTRL_XOF_LEN 128 
- int EVP_MD_CTX_get_params (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int EVP_MD_CTX_set_params (TYPE_3__*,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_OP_SIGNCTX ; 
- scalar_t__ EVP_PKEY_OP_VERIFYCTX ; 
- int /*<<< orphan*/  EVP_R_CTRL_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  EVP_R_MESSAGE_DIGEST_IS_NULL ; 
- int /*<<< orphan*/  OSSL_DIGEST_PARAM_MICALG ; 
- int /*<<< orphan*/  OSSL_DIGEST_PARAM_SSL3_MS ; 
- int /*<<< orphan*/  OSSL_DIGEST_PARAM_XOFLEN ; 
- int /*<<< orphan*/  OSSL_PARAM_END ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_octet_string (int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_size_t (int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_utf8_string (int /*<<< orphan*/ ,void*,int) ; 
- int stub1 (TYPE_3__*,int,int,void*) ; 
+
+ int ERR_LIB_EVP ;
+ int ERR_raise (int ,int ) ;
+ int EVP_CTRL_RET_UNSUPPORTED ;
+
+
+
+ int EVP_MD_CTX_get_params (TYPE_3__*,int *) ;
+ int EVP_MD_CTX_set_params (TYPE_3__*,int *) ;
+ scalar_t__ EVP_PKEY_OP_SIGNCTX ;
+ scalar_t__ EVP_PKEY_OP_VERIFYCTX ;
+ int EVP_R_CTRL_NOT_IMPLEMENTED ;
+ int EVP_R_MESSAGE_DIGEST_IS_NULL ;
+ int OSSL_DIGEST_PARAM_MICALG ;
+ int OSSL_DIGEST_PARAM_SSL3_MS ;
+ int OSSL_DIGEST_PARAM_XOFLEN ;
+ int OSSL_PARAM_END ;
+ int OSSL_PARAM_construct_octet_string (int ,void*,int) ;
+ int OSSL_PARAM_construct_size_t (int ,size_t*) ;
+ int OSSL_PARAM_construct_utf8_string (int ,void*,int) ;
+ int stub1 (TYPE_3__*,int,int,void*) ;
 
 int EVP_MD_CTX_ctrl(EVP_MD_CTX *ctx, int cmd, int p1, void *p2)
 {
@@ -48,28 +48,28 @@ int EVP_MD_CTX_ctrl(EVP_MD_CTX *ctx, int cmd, int p1, void *p2)
     size_t sz;
     OSSL_PARAM params[2] = { OSSL_PARAM_END, OSSL_PARAM_END };
 
-    if (ctx == NULL || ctx->digest == NULL) {
+    if (ctx == ((void*)0) || ctx->digest == ((void*)0)) {
         ERR_raise(ERR_LIB_EVP, EVP_R_MESSAGE_DIGEST_IS_NULL);
         return 0;
     }
 
-    if (ctx->digest->prov == NULL
-        && (ctx->pctx == NULL
+    if (ctx->digest->prov == ((void*)0)
+        && (ctx->pctx == ((void*)0)
             || (ctx->pctx->operation != EVP_PKEY_OP_VERIFYCTX
                 && ctx->pctx->operation != EVP_PKEY_OP_SIGNCTX)))
         goto legacy;
 
     switch (cmd) {
-    case EVP_MD_CTRL_XOF_LEN:
+    case 128:
         sz = (size_t)p1;
         params[0] = OSSL_PARAM_construct_size_t(OSSL_DIGEST_PARAM_XOFLEN, &sz);
         break;
-    case EVP_MD_CTRL_MICALG:
+    case 129:
         set_params = 0;
         params[0] = OSSL_PARAM_construct_utf8_string(OSSL_DIGEST_PARAM_MICALG,
                                                      p2, p1 ? p1 : 9999);
         break;
-    case EVP_CTRL_SSL3_MASTER_SECRET:
+    case 130:
         params[0] = OSSL_PARAM_construct_octet_string(OSSL_DIGEST_PARAM_SSL3_MS,
                                                       p2, p1);
         break;
@@ -84,9 +84,9 @@ int EVP_MD_CTX_ctrl(EVP_MD_CTX *ctx, int cmd, int p1, void *p2)
     goto conclude;
 
 
-/* TODO(3.0): Remove legacy code below */
+
  legacy:
-    if (ctx->digest->md_ctrl == NULL) {
+    if (ctx->digest->md_ctrl == ((void*)0)) {
         ERR_raise(ERR_LIB_EVP, EVP_R_CTRL_NOT_IMPLEMENTED);
         return 0;
     }

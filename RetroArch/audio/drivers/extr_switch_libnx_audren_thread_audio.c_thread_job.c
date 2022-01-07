@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {unsigned int buffer_size; int /*<<< orphan*/  drv; int /*<<< orphan*/  fifo_condvar; int /*<<< orphan*/  fifo_lock; int /*<<< orphan*/  fifo; scalar_t__ paused; void* mempool; TYPE_2__* wavebufs; scalar_t__ running; } ;
-typedef  TYPE_1__ libnx_audren_thread_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {unsigned int buffer_size; int drv; int fifo_condvar; int fifo_lock; int fifo; scalar_t__ paused; void* mempool; TYPE_2__* wavebufs; scalar_t__ running; } ;
+typedef TYPE_1__ libnx_audren_thread_t ;
 struct TYPE_5__ {scalar_t__ state; } ;
-typedef  TYPE_2__ AudioDriverWaveBuf ;
+typedef TYPE_2__ AudioDriverWaveBuf ;
 
-/* Variables and functions */
- scalar_t__ AudioDriverWaveBufState_Done ; 
- scalar_t__ AudioDriverWaveBufState_Free ; 
- unsigned int BUFFER_COUNT ; 
- size_t MIN (size_t,size_t) ; 
- int /*<<< orphan*/  armDCacheFlush (void*,size_t) ; 
- int /*<<< orphan*/  audrenWaitFrame () ; 
- int /*<<< orphan*/  audrvUpdate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  audrvVoiceAddWaveBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  audrvVoiceIsPlaying (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  audrvVoiceStart (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  condvarWakeAll (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fifo_read (int /*<<< orphan*/ ,void*,size_t) ; 
- size_t fifo_read_avail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutexLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutexUnlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svcSleepThread (unsigned long) ; 
+
+ scalar_t__ AudioDriverWaveBufState_Done ;
+ scalar_t__ AudioDriverWaveBufState_Free ;
+ unsigned int BUFFER_COUNT ;
+ size_t MIN (size_t,size_t) ;
+ int armDCacheFlush (void*,size_t) ;
+ int audrenWaitFrame () ;
+ int audrvUpdate (int *) ;
+ int audrvVoiceAddWaveBuf (int *,int ,TYPE_2__*) ;
+ int audrvVoiceIsPlaying (int *,int ) ;
+ int audrvVoiceStart (int *,int ) ;
+ int condvarWakeAll (int *) ;
+ int fifo_read (int ,void*,size_t) ;
+ size_t fifo_read_avail (int ) ;
+ int mutexLock (int *) ;
+ int mutexUnlock (int *) ;
+ int svcSleepThread (unsigned long) ;
 
 __attribute__((used)) static void thread_job(void* data)
 {
@@ -41,9 +41,9 @@ __attribute__((used)) static void thread_job(void* data)
    size_t available = 0;
    size_t current_size = 0;
    size_t written_tmp = 0;
-   AudioDriverWaveBuf* current_wavebuf = NULL;
-   void* current_pool_ptr = NULL;
-   void* dstbuf = NULL;
+   AudioDriverWaveBuf* current_wavebuf = ((void*)0);
+   void* current_pool_ptr = ((void*)0);
+   void* dstbuf = ((void*)0);
    unsigned i;
 
    if (!aud)
@@ -96,7 +96,7 @@ __attribute__((used)) static void thread_job(void* data)
                audrvVoiceStart(&aud->drv, 0);
             }
 
-            current_wavebuf = NULL;
+            current_wavebuf = ((void*)0);
          }
 
          svcSleepThread(1000UL);

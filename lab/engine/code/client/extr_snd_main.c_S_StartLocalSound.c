@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sfxHandle_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* StartLocalSound ) (int /*<<< orphan*/ ,int) ;} ;
 
-/* Variables and functions */
- TYPE_1__ si ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sfxHandle_t ;
+struct TYPE_2__ {int (* StartLocalSound ) (int ,int) ;} ;
+
+
+ TYPE_1__ si ;
+ int stub1 (int ,int) ;
 
 void S_StartLocalSound( sfxHandle_t sfx, int channelNum )
 {
-	if( si.StartLocalSound ) {
-		si.StartLocalSound( sfx, channelNum );
-	}
+ if( si.StartLocalSound ) {
+  si.StartLocalSound( sfx, channelNum );
+ }
 }

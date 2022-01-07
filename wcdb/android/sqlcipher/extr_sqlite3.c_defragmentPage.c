@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned char u8 ;
-struct TYPE_7__ {scalar_t__ nOverflow; unsigned char* aData; int hdrOffset; int cellOffset; int nCell; int (* xCellSize ) (TYPE_2__*,unsigned char*) ;unsigned char nFree; int /*<<< orphan*/  pDbPage; TYPE_1__* pBt; } ;
-struct TYPE_6__ {int usableSize; int /*<<< orphan*/  pPager; int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_2__ MemPage ;
 
-/* Variables and functions */
- int SQLITE_CORRUPT_PAGE (TYPE_2__*) ; 
- int SQLITE_MAX_PAGE_SIZE ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int get2byte (unsigned char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  put2byte (unsigned char*,int) ; 
- int sqlite3PagerIswriteable (int /*<<< orphan*/ ) ; 
- unsigned char* sqlite3PagerTempSpace (int /*<<< orphan*/ ) ; 
- int sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_2__*,unsigned char*) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef unsigned char u8 ;
+struct TYPE_7__ {scalar_t__ nOverflow; unsigned char* aData; int hdrOffset; int cellOffset; int nCell; int (* xCellSize ) (TYPE_2__*,unsigned char*) ;unsigned char nFree; int pDbPage; TYPE_1__* pBt; } ;
+struct TYPE_6__ {int usableSize; int pPager; int mutex; } ;
+typedef TYPE_2__ MemPage ;
+
+
+ int SQLITE_CORRUPT_PAGE (TYPE_2__*) ;
+ int SQLITE_MAX_PAGE_SIZE ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int get2byte (unsigned char*) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memmove (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int put2byte (unsigned char*,int) ;
+ int sqlite3PagerIswriteable (int ) ;
+ unsigned char* sqlite3PagerTempSpace (int ) ;
+ int sqlite3_mutex_held (int ) ;
+ int stub1 (TYPE_2__*,unsigned char*) ;
+ int testcase (int) ;
 
 __attribute__((used)) static int defragmentPage(MemPage *pPage, int nMaxFrag){
-  int i;                     /* Loop counter */
-  int pc;                    /* Address of the i-th cell */
-  int hdr;                   /* Offset to the page header */
-  int size;                  /* Size of a cell */
-  int usableSize;            /* Number of usable bytes on a page */
-  int cellOffset;            /* Offset to the cell pointer array */
-  int cbrk;                  /* Offset to the cell content area */
-  int nCell;                 /* Number of cells on the page */
-  unsigned char *data;       /* The page data */
-  unsigned char *temp;       /* Temp area for cell content */
-  unsigned char *src;        /* Source of content */
-  int iCellFirst;            /* First allowable cell index */
-  int iCellLast;             /* Last possible cell index */
+  int i;
+  int pc;
+  int hdr;
+  int size;
+  int usableSize;
+  int cellOffset;
+  int cbrk;
+  int nCell;
+  unsigned char *data;
+  unsigned char *temp;
+  unsigned char *src;
+  int iCellFirst;
+  int iCellLast;
 
   assert( sqlite3PagerIswriteable(pPage->pDbPage) );
   assert( pPage->pBt!=0 );
@@ -62,17 +62,17 @@ __attribute__((used)) static int defragmentPage(MemPage *pPage, int nMaxFrag){
   iCellFirst = cellOffset + 2*nCell;
   usableSize = pPage->pBt->usableSize;
 
-  /* This block handles pages with two or fewer free blocks and nMaxFrag
-  ** or fewer fragmented bytes. In this case it is faster to move the
-  ** two (or one) blocks of cells using memmove() and add the required
-  ** offsets to each pointer in the cell-pointer array than it is to 
-  ** reconstruct the entire page.  */
+
+
+
+
+
   if( (int)data[hdr+7]<=nMaxFrag ){
     int iFree = get2byte(&data[hdr+1]);
 
-    /* If the initial freeblock offset were out of bounds, that would
-    ** have been detected by btreeInitPage() when it was computing the
-    ** number of free bytes on the page. */
+
+
+
     assert( iFree<=usableSize-4 );
     if( iFree ){
       int iFree2 = get2byte(&data[iFree]);
@@ -109,14 +109,14 @@ __attribute__((used)) static int defragmentPage(MemPage *pPage, int nMaxFrag){
   cbrk = usableSize;
   iCellLast = usableSize - 4;
   for(i=0; i<nCell; i++){
-    u8 *pAddr;     /* The i-th cell pointer */
+    u8 *pAddr;
     pAddr = &data[cellOffset + i*2];
     pc = get2byte(pAddr);
     testcase( pc==iCellFirst );
     testcase( pc==iCellLast );
-    /* These conditions have already been verified in btreeInitPage()
-    ** if PRAGMA cell_size_check=ON.
-    */
+
+
+
     if( pc<iCellFirst || pc>iCellLast ){
       return SQLITE_CORRUPT_PAGE(pPage);
     }

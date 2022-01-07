@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {size_t nbDDict; int /*<<< orphan*/ ** ddicts; } ;
-typedef  TYPE_1__ ddict_collection_t ;
-typedef  int /*<<< orphan*/  ZSTD_DDict ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ZSTD_createDDict (void const*,size_t) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_1__ kNullDDictCollection ; 
- int /*<<< orphan*/ ** malloc (size_t) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {size_t nbDDict; int ** ddicts; } ;
+typedef TYPE_1__ ddict_collection_t ;
+typedef int ZSTD_DDict ;
+
+
+ int * ZSTD_createDDict (void const*,size_t) ;
+ int assert (int ) ;
+ TYPE_1__ kNullDDictCollection ;
+ int ** malloc (size_t) ;
 
 __attribute__((used)) static ddict_collection_t createDDictCollection(const void* dictBuffer, size_t dictSize, size_t nbDDict)
 {
     ZSTD_DDict** const ddicts = malloc(nbDDict * sizeof(ZSTD_DDict*));
-    assert(ddicts != NULL);
-    if (ddicts==NULL) return kNullDDictCollection;
+    assert(ddicts != ((void*)0));
+    if (ddicts==((void*)0)) return kNullDDictCollection;
     for (size_t dictNb=0; dictNb < nbDDict; dictNb++) {
         ddicts[dictNb] = ZSTD_createDDict(dictBuffer, dictSize);
-        assert(ddicts[dictNb] != NULL);
+        assert(ddicts[dictNb] != ((void*)0));
     }
     ddict_collection_t ddictc;
     ddictc.ddicts = ddicts;

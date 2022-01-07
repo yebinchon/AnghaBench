@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * apply_textdelta; int /*<<< orphan*/ * delete_node_property; int /*<<< orphan*/  close_revision; int /*<<< orphan*/ * close_node; int /*<<< orphan*/ * set_fulltext; int /*<<< orphan*/ * remove_node_props; int /*<<< orphan*/ * set_node_property; int /*<<< orphan*/  set_revision_property; int /*<<< orphan*/ * new_node_record; int /*<<< orphan*/  new_revision_record; int /*<<< orphan*/  uuid_record; int /*<<< orphan*/ * magic_header_record; } ;
-typedef  TYPE_1__ svn_repos_parse_fns3_t ;
-typedef  int /*<<< orphan*/  svn_repos_notify_func_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  void* svn_boolean_t ;
-struct parse_baton {void* normalize_props; void* ignore_dates; void* use_post_commit_hook; void* use_pre_commit_hook; scalar_t__ end_rev; scalar_t__ start_rev; void* last_rev_mapped; void* oldest_dumpstream_rev; int /*<<< orphan*/ * rev_map; int /*<<< orphan*/  notify_pool; int /*<<< orphan*/ * pool; int /*<<< orphan*/ * parent_dir; int /*<<< orphan*/  uuid_action; void* notify_baton; int /*<<< orphan*/  notify_func; void* validate_props; void* use_history; int /*<<< orphan*/  fs; int /*<<< orphan*/ * repos; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- void* SVN_INVALID_REVNUM ; 
- scalar_t__ SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  revprops_close_revision ; 
- int /*<<< orphan*/  revprops_new_revision_record ; 
- int /*<<< orphan*/  set_revision_property ; 
- int /*<<< orphan*/  svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_fs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_load_uuid_ignore ; 
- int /*<<< orphan*/  uuid_record ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_repos_t ;
+struct TYPE_3__ {int * apply_textdelta; int * delete_node_property; int close_revision; int * close_node; int * set_fulltext; int * remove_node_props; int * set_node_property; int set_revision_property; int * new_node_record; int new_revision_record; int uuid_record; int * magic_header_record; } ;
+typedef TYPE_1__ svn_repos_parse_fns3_t ;
+typedef int svn_repos_notify_func_t ;
+typedef int svn_error_t ;
+typedef void* svn_boolean_t ;
+struct parse_baton {void* normalize_props; void* ignore_dates; void* use_post_commit_hook; void* use_pre_commit_hook; scalar_t__ end_rev; scalar_t__ start_rev; void* last_rev_mapped; void* oldest_dumpstream_rev; int * rev_map; int notify_pool; int * pool; int * parent_dir; int uuid_action; void* notify_baton; int notify_func; void* validate_props; void* use_history; int fs; int * repos; } ;
+typedef int apr_pool_t ;
+
+
+ void* FALSE ;
+ int SVN_ERR_ASSERT (int) ;
+ void* SVN_INVALID_REVNUM ;
+ scalar_t__ SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ void* apr_pcalloc (int *,int) ;
+ int revprops_close_revision ;
+ int revprops_new_revision_record ;
+ int set_revision_property ;
+ int svn_pool_create (int *) ;
+ int svn_repos_fs (int *) ;
+ int svn_repos_load_uuid_ignore ;
+ int uuid_record ;
 
 __attribute__((used)) static svn_error_t *
 build_revprop_parser(const svn_repos_parse_fns3_t **callbacks,
@@ -59,18 +59,18 @@ build_revprop_parser(const svn_repos_parse_fns3_t **callbacks,
   if (SVN_IS_VALID_REVNUM(start_rev))
     SVN_ERR_ASSERT(start_rev <= end_rev);
 
-  parser->magic_header_record = NULL;
+  parser->magic_header_record = ((void*)0);
   parser->uuid_record = uuid_record;
   parser->new_revision_record = revprops_new_revision_record;
-  parser->new_node_record = NULL;
+  parser->new_node_record = ((void*)0);
   parser->set_revision_property = set_revision_property;
-  parser->set_node_property = NULL;
-  parser->remove_node_props = NULL;
-  parser->set_fulltext = NULL;
-  parser->close_node = NULL;
+  parser->set_node_property = ((void*)0);
+  parser->remove_node_props = ((void*)0);
+  parser->set_fulltext = ((void*)0);
+  parser->close_node = ((void*)0);
   parser->close_revision = revprops_close_revision;
-  parser->delete_node_property = NULL;
-  parser->apply_textdelta = NULL;
+  parser->delete_node_property = ((void*)0);
+  parser->apply_textdelta = ((void*)0);
 
   pb->repos = repos;
   pb->fs = svn_repos_fs(repos);
@@ -78,11 +78,11 @@ build_revprop_parser(const svn_repos_parse_fns3_t **callbacks,
   pb->validate_props = validate_props;
   pb->notify_func = notify_func;
   pb->notify_baton = notify_baton;
-  pb->uuid_action = svn_repos_load_uuid_ignore; /* Never touch the UUID. */
-  pb->parent_dir = NULL;
+  pb->uuid_action = svn_repos_load_uuid_ignore;
+  pb->parent_dir = ((void*)0);
   pb->pool = result_pool;
   pb->notify_pool = svn_pool_create(result_pool);
-  pb->rev_map = NULL;
+  pb->rev_map = ((void*)0);
   pb->oldest_dumpstream_rev = SVN_INVALID_REVNUM;
   pb->last_rev_mapped = SVN_INVALID_REVNUM;
   pb->start_rev = start_rev;

@@ -1,74 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLS (int) ; 
- int /*<<< orphan*/  ROUNDS (int) ; 
- int /*<<< orphan*/  SUBKEY_L (unsigned int) ; 
- int /*<<< orphan*/  SUBKEY_R (unsigned int) ; 
+
+
+
+typedef int u32 ;
+
+
+ int FLS (int) ;
+ int ROUNDS (int) ;
+ int SUBKEY_L (unsigned int) ;
+ int SUBKEY_R (unsigned int) ;
 
 __attribute__((used)) static void camellia_do_decrypt(const u32 *subkey, u32 *io, unsigned i)
 {
-	u32 il,ir,t0,t1;               /* temporary variables */
+ u32 il,ir,t0,t1;
 
-	/* pre whitening but absorb kw2 */
-	io[0] ^= SUBKEY_L(i);
-	io[1] ^= SUBKEY_R(i);
 
-	/* main iteration */
-#define ROUNDS(i) do { \
-	CAMELLIA_ROUNDSM(io[0],io[1], \
-			 SUBKEY_L(i + 7),SUBKEY_R(i + 7), \
-			 io[2],io[3],il,ir); \
-	CAMELLIA_ROUNDSM(io[2],io[3], \
-			 SUBKEY_L(i + 6),SUBKEY_R(i + 6), \
-			 io[0],io[1],il,ir); \
-	CAMELLIA_ROUNDSM(io[0],io[1], \
-			 SUBKEY_L(i + 5),SUBKEY_R(i + 5), \
-			 io[2],io[3],il,ir); \
-	CAMELLIA_ROUNDSM(io[2],io[3], \
-			 SUBKEY_L(i + 4),SUBKEY_R(i + 4), \
-			 io[0],io[1],il,ir); \
-	CAMELLIA_ROUNDSM(io[0],io[1], \
-			 SUBKEY_L(i + 3),SUBKEY_R(i + 3), \
-			 io[2],io[3],il,ir); \
-	CAMELLIA_ROUNDSM(io[2],io[3], \
-			 SUBKEY_L(i + 2),SUBKEY_R(i + 2), \
-			 io[0],io[1],il,ir); \
-} while (0)
-#define FLS(i) do { \
-	CAMELLIA_FLS(io[0],io[1],io[2],io[3], \
-		     SUBKEY_L(i + 1),SUBKEY_R(i + 1), \
-		     SUBKEY_L(i + 0),SUBKEY_R(i + 0), \
-		     t0,t1,il,ir); \
-} while (0)
+ io[0] ^= SUBKEY_L(i);
+ io[1] ^= SUBKEY_R(i);
+ if (i == 32) {
+  do { CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(24 + 7),SUBKEY_R(24 + 7), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(24 + 6),SUBKEY_R(24 + 6), io[0],io[1],il,ir); CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(24 + 5),SUBKEY_R(24 + 5), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(24 + 4),SUBKEY_R(24 + 4), io[0],io[1],il,ir); CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(24 + 3),SUBKEY_R(24 + 3), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(24 + 2),SUBKEY_R(24 + 2), io[0],io[1],il,ir); } while (0);
+  do { CAMELLIA_FLS(io[0],io[1],io[2],io[3], SUBKEY_L(24 + 1),SUBKEY_R(24 + 1), SUBKEY_L(24 + 0),SUBKEY_R(24 + 0), t0,t1,il,ir); } while (0);
+ }
+ do { CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(16 + 7),SUBKEY_R(16 + 7), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(16 + 6),SUBKEY_R(16 + 6), io[0],io[1],il,ir); CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(16 + 5),SUBKEY_R(16 + 5), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(16 + 4),SUBKEY_R(16 + 4), io[0],io[1],il,ir); CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(16 + 3),SUBKEY_R(16 + 3), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(16 + 2),SUBKEY_R(16 + 2), io[0],io[1],il,ir); } while (0);
+ do { CAMELLIA_FLS(io[0],io[1],io[2],io[3], SUBKEY_L(16 + 1),SUBKEY_R(16 + 1), SUBKEY_L(16 + 0),SUBKEY_R(16 + 0), t0,t1,il,ir); } while (0);
+ do { CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(8 + 7),SUBKEY_R(8 + 7), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(8 + 6),SUBKEY_R(8 + 6), io[0],io[1],il,ir); CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(8 + 5),SUBKEY_R(8 + 5), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(8 + 4),SUBKEY_R(8 + 4), io[0],io[1],il,ir); CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(8 + 3),SUBKEY_R(8 + 3), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(8 + 2),SUBKEY_R(8 + 2), io[0],io[1],il,ir); } while (0);
+ do { CAMELLIA_FLS(io[0],io[1],io[2],io[3], SUBKEY_L(8 + 1),SUBKEY_R(8 + 1), SUBKEY_L(8 + 0),SUBKEY_R(8 + 0), t0,t1,il,ir); } while (0);
+ do { CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(0 + 7),SUBKEY_R(0 + 7), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(0 + 6),SUBKEY_R(0 + 6), io[0],io[1],il,ir); CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(0 + 5),SUBKEY_R(0 + 5), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(0 + 4),SUBKEY_R(0 + 4), io[0],io[1],il,ir); CAMELLIA_ROUNDSM(io[0],io[1], SUBKEY_L(0 + 3),SUBKEY_R(0 + 3), io[2],io[3],il,ir); CAMELLIA_ROUNDSM(io[2],io[3], SUBKEY_L(0 + 2),SUBKEY_R(0 + 2), io[0],io[1],il,ir); } while (0);
 
-	if (i == 32) {
-		ROUNDS(24);
-		FLS(24);
-	}
-	ROUNDS(16);
-	FLS(16);
-	ROUNDS(8);
-	FLS(8);
-	ROUNDS(0);
 
-#undef ROUNDS
-#undef FLS
 
-	/* post whitening but kw4 */
-	io[2] ^= SUBKEY_L(0);
-	io[3] ^= SUBKEY_R(0);
-	/* NB: 0,1 should be swapped with 2,3 by caller! */
+
+
+ io[2] ^= SUBKEY_L(0);
+ io[3] ^= SUBKEY_R(0);
+
 }

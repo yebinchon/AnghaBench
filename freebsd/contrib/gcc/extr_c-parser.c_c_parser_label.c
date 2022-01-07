@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  location_t ;
-typedef  int /*<<< orphan*/  c_parser ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ tree ;
+typedef int location_t ;
+typedef int c_parser ;
 struct TYPE_4__ {scalar_t__ value; } ;
-struct TYPE_3__ {int /*<<< orphan*/  location; scalar_t__ value; } ;
+struct TYPE_3__ {int location; scalar_t__ value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPP_COLON ; 
- int /*<<< orphan*/  CPP_ELLIPSIS ; 
- int /*<<< orphan*/  CPP_NAME ; 
- int /*<<< orphan*/  LABEL_EXPR ; 
- scalar_t__ NULL_TREE ; 
- int /*<<< orphan*/  RID_CASE ; 
- int /*<<< orphan*/  RID_DEFAULT ; 
- int /*<<< orphan*/  SET_EXPR_LOCATION (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ add_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  build_stmt (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ c_parser_attributes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c_parser_consume_token (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c_parser_error (int /*<<< orphan*/ *,char*) ; 
- TYPE_2__ c_parser_expr_no_commas (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ c_parser_next_token_is (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ c_parser_next_token_is_keyword (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* c_parser_peek_token (int /*<<< orphan*/ *) ; 
- scalar_t__ c_parser_require (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  decl_attributes (scalar_t__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ define_label (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ do_case (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  gcc_assert (scalar_t__) ; 
+
+ int CPP_COLON ;
+ int CPP_ELLIPSIS ;
+ int CPP_NAME ;
+ int LABEL_EXPR ;
+ scalar_t__ NULL_TREE ;
+ int RID_CASE ;
+ int RID_DEFAULT ;
+ int SET_EXPR_LOCATION (scalar_t__,int ) ;
+ scalar_t__ add_stmt (int ) ;
+ int build_stmt (int ,scalar_t__) ;
+ scalar_t__ c_parser_attributes (int *) ;
+ int c_parser_consume_token (int *) ;
+ int c_parser_error (int *,char*) ;
+ TYPE_2__ c_parser_expr_no_commas (int *,int *) ;
+ scalar_t__ c_parser_next_token_is (int *,int ) ;
+ scalar_t__ c_parser_next_token_is_keyword (int *,int ) ;
+ TYPE_1__* c_parser_peek_token (int *) ;
+ scalar_t__ c_parser_require (int *,int ,char*) ;
+ int decl_attributes (scalar_t__*,scalar_t__,int ) ;
+ scalar_t__ define_label (int ,scalar_t__) ;
+ scalar_t__ do_case (scalar_t__,scalar_t__) ;
+ int gcc_assert (scalar_t__) ;
 
 __attribute__((used)) static void
 c_parser_label (c_parser *parser)
@@ -51,27 +51,27 @@ c_parser_label (c_parser *parser)
     {
       tree exp1, exp2;
       c_parser_consume_token (parser);
-      exp1 = c_parser_expr_no_commas (parser, NULL).value;
+      exp1 = c_parser_expr_no_commas (parser, ((void*)0)).value;
       if (c_parser_next_token_is (parser, CPP_COLON))
-	{
-	  c_parser_consume_token (parser);
-	  label = do_case (exp1, NULL_TREE);
-	}
+ {
+   c_parser_consume_token (parser);
+   label = do_case (exp1, NULL_TREE);
+ }
       else if (c_parser_next_token_is (parser, CPP_ELLIPSIS))
-	{
-	  c_parser_consume_token (parser);
-	  exp2 = c_parser_expr_no_commas (parser, NULL).value;
-	  if (c_parser_require (parser, CPP_COLON, "expected %<:%>"))
-	    label = do_case (exp1, exp2);
-	}
+ {
+   c_parser_consume_token (parser);
+   exp2 = c_parser_expr_no_commas (parser, ((void*)0)).value;
+   if (c_parser_require (parser, CPP_COLON, "expected %<:%>"))
+     label = do_case (exp1, exp2);
+ }
       else
-	c_parser_error (parser, "expected %<:%> or %<...%>");
+ c_parser_error (parser, "expected %<:%> or %<...%>");
     }
   else if (c_parser_next_token_is_keyword (parser, RID_DEFAULT))
     {
       c_parser_consume_token (parser);
       if (c_parser_require (parser, CPP_COLON, "expected %<:%>"))
-	label = do_case (NULL_TREE, NULL_TREE);
+ label = do_case (NULL_TREE, NULL_TREE);
     }
   else
     {
@@ -87,10 +87,10 @@ c_parser_label (c_parser *parser)
       attrs = c_parser_attributes (parser);
       tlab = define_label (loc2, name);
       if (tlab)
-	{
-	  decl_attributes (&tlab, attrs, 0);
-	  label = add_stmt (build_stmt (LABEL_EXPR, tlab));
-	}
+ {
+   decl_attributes (&tlab, attrs, 0);
+   label = add_stmt (build_stmt (LABEL_EXPR, tlab));
+ }
     }
   if (label)
     SET_EXPR_LOCATION (label, loc1);

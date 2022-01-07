@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPContext {int /*<<< orphan*/  audio_status; int /*<<< orphan*/ * ao_chain; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPV_EVENT_AUDIO_RECONFIG ; 
- int /*<<< orphan*/  STATUS_EOF ; 
- int /*<<< orphan*/  ao_chain_uninit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_notify (struct MPContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct MPContext {int audio_status; int * ao_chain; } ;
+
+
+ int MPV_EVENT_AUDIO_RECONFIG ;
+ int STATUS_EOF ;
+ int ao_chain_uninit (int *) ;
+ int mp_notify (struct MPContext*,int ,int *) ;
 
 void uninit_audio_chain(struct MPContext *mpctx)
 {
     if (mpctx->ao_chain) {
         ao_chain_uninit(mpctx->ao_chain);
-        mpctx->ao_chain = NULL;
+        mpctx->ao_chain = ((void*)0);
 
         mpctx->audio_status = STATUS_EOF;
 
-        mp_notify(mpctx, MPV_EVENT_AUDIO_RECONFIG, NULL);
+        mp_notify(mpctx, MPV_EVENT_AUDIO_RECONFIG, ((void*)0));
     }
 }

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GFS_DYNAMIC ; 
- int /*<<< orphan*/  GFS_GUIDED ; 
- int /*<<< orphan*/  GFS_STATIC ; 
- scalar_t__ errno ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  gomp_error (char*) ; 
- unsigned long gomp_run_sched_chunk ; 
- int /*<<< orphan*/  gomp_run_sched_var ; 
- scalar_t__ isspace (unsigned char) ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
- unsigned long strtoul (char*,char**,int) ; 
+ int GFS_DYNAMIC ;
+ int GFS_GUIDED ;
+ int GFS_STATIC ;
+ scalar_t__ errno ;
+ char* getenv (char*) ;
+ int gomp_error (char*) ;
+ unsigned long gomp_run_sched_chunk ;
+ int gomp_run_sched_var ;
+ scalar_t__ isspace (unsigned char) ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
+ unsigned long strtoul (char*,char**,int) ;
 
 __attribute__((used)) static void
 parse_schedule (void)
@@ -31,7 +23,7 @@ parse_schedule (void)
   unsigned long value;
 
   env = getenv ("OMP_SCHEDULE");
-  if (env == NULL)
+  if (env == ((void*)0))
     return;
 
   while (isspace ((unsigned char) *env))
@@ -84,6 +76,6 @@ parse_schedule (void)
 
  invalid:
   gomp_error ("Invalid value for chunk size in "
-	      "environment variable OMP_SCHEDULE");
+       "environment variable OMP_SCHEDULE");
   return;
 }

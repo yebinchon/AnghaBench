@@ -1,108 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  CT_APPLICATION_FONT_WOFF 149 
-#define  CT_APPLICATION_FONT_WOFF2 148 
-#define  CT_APPLICATION_JSON 147 
-#define  CT_APPLICATION_OCTET_STREAM 146 
-#define  CT_APPLICATION_VND_MS_FONTOBJ 145 
-#define  CT_APPLICATION_XML 144 
-#define  CT_APPLICATION_X_FONT_OPENTYPE 143 
-#define  CT_APPLICATION_X_FONT_TRUETYPE 142 
-#define  CT_APPLICATION_X_JAVASCRIPT 141 
-#define  CT_IMAGE_BMP 140 
-#define  CT_IMAGE_GIF 139 
-#define  CT_IMAGE_ICNS 138 
-#define  CT_IMAGE_JPG 137 
-#define  CT_IMAGE_PNG 136 
-#define  CT_IMAGE_SVG_XML 135 
-#define  CT_IMAGE_XICON 134 
-#define  CT_PROMETHEUS 133 
-#define  CT_TEXT_CSS 132 
-#define  CT_TEXT_HTML 131 
-#define  CT_TEXT_PLAIN 130 
-#define  CT_TEXT_XML 129 
-#define  CT_TEXT_XSL 128 
 
+
+
+typedef int uint8_t ;
 const char *web_content_type_to_string(uint8_t contenttype) {
     switch(contenttype) {
-        case CT_TEXT_HTML:
+        case 131:
             return "text/html; charset=utf-8";
 
-        case CT_APPLICATION_XML:
+        case 144:
             return "application/xml; charset=utf-8";
 
-        case CT_APPLICATION_JSON:
+        case 147:
             return "application/json; charset=utf-8";
 
-        case CT_APPLICATION_X_JAVASCRIPT:
+        case 141:
             return "application/x-javascript; charset=utf-8";
 
-        case CT_TEXT_CSS:
+        case 132:
             return "text/css; charset=utf-8";
 
-        case CT_TEXT_XML:
+        case 129:
             return "text/xml; charset=utf-8";
 
-        case CT_TEXT_XSL:
+        case 128:
             return "text/xsl; charset=utf-8";
 
-        case CT_APPLICATION_OCTET_STREAM:
+        case 146:
             return "application/octet-stream";
 
-        case CT_IMAGE_SVG_XML:
+        case 135:
             return "image/svg+xml";
 
-        case CT_APPLICATION_X_FONT_TRUETYPE:
+        case 142:
             return "application/x-font-truetype";
 
-        case CT_APPLICATION_X_FONT_OPENTYPE:
+        case 143:
             return "application/x-font-opentype";
 
-        case CT_APPLICATION_FONT_WOFF:
+        case 149:
             return "application/font-woff";
 
-        case CT_APPLICATION_FONT_WOFF2:
+        case 148:
             return "application/font-woff2";
 
-        case CT_APPLICATION_VND_MS_FONTOBJ:
+        case 145:
             return "application/vnd.ms-fontobject";
 
-        case CT_IMAGE_PNG:
+        case 136:
             return "image/png";
 
-        case CT_IMAGE_JPG:
+        case 137:
             return "image/jpeg";
 
-        case CT_IMAGE_GIF:
+        case 139:
             return "image/gif";
 
-        case CT_IMAGE_XICON:
+        case 134:
             return "image/x-icon";
 
-        case CT_IMAGE_BMP:
+        case 140:
             return "image/bmp";
 
-        case CT_IMAGE_ICNS:
+        case 138:
             return "image/icns";
 
-        case CT_PROMETHEUS:
+        case 133:
             return "text/plain; version=0.0.4";
 
         default:
-        case CT_TEXT_PLAIN:
+        case 130:
             return "text/plain; charset=utf-8";
     }
 }

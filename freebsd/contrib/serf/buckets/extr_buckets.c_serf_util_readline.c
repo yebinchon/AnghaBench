@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int apr_size_t ;
 
-/* Variables and functions */
-#define  SERF_NEWLINE_CR 132 
-#define  SERF_NEWLINE_CRLF 131 
-#define  SERF_NEWLINE_CRLF_SPLIT 130 
-#define  SERF_NEWLINE_LF 129 
-#define  SERF_NEWLINE_NONE 128 
- int /*<<< orphan*/  find_crlf (char const**,int*,int*) ; 
- char* memchr (char const*,char,int) ; 
+
+
+
+typedef int apr_size_t ;
+
+
+
+
+
+
+
+ int find_crlf (char const**,int*,int*) ;
+ char* memchr (char const*,char,int) ;
 
 void serf_util_readline(
     const char **data,
@@ -34,19 +34,19 @@ void serf_util_readline(
     int want_crlf;
     int want_lf;
 
-    /* If _only_ CRLF is acceptable, then the scanning needs a loop to
-     * skip false hits on CR characters. Use a separate function.
-     */
-    if (acceptable == SERF_NEWLINE_CRLF) {
+
+
+
+    if (acceptable == 131) {
         find_crlf(data, len, found);
         return;
     }
 
     start = *data;
-    cr = lf = NULL;
-    want_cr = acceptable & SERF_NEWLINE_CR;
-    want_crlf = acceptable & SERF_NEWLINE_CRLF;
-    want_lf = acceptable & SERF_NEWLINE_LF;
+    cr = lf = ((void*)0);
+    want_cr = acceptable & 132;
+    want_crlf = acceptable & 131;
+    want_lf = acceptable & 129;
 
     if (want_cr || want_crlf) {
         cr = memchr(start, '\r', *len);
@@ -55,46 +55,46 @@ void serf_util_readline(
         lf = memchr(start, '\n', *len);
     }
 
-    if (cr != NULL) {
-        if (lf != NULL) {
+    if (cr != ((void*)0)) {
+        if (lf != ((void*)0)) {
             if (cr + 1 == lf)
-                *found = want_crlf ? SERF_NEWLINE_CRLF : SERF_NEWLINE_CR;
+                *found = want_crlf ? 131 : 132;
             else if (want_cr && cr < lf)
-                *found = SERF_NEWLINE_CR;
+                *found = 132;
             else
-                *found = SERF_NEWLINE_LF;
+                *found = 129;
         }
         else if (cr == start + *len - 1) {
-            /* the CR occurred in the last byte of the buffer. this could be
-             * a CRLF split across the data boundary.
-             * ### FIX THIS LOGIC? does caller need to detect?
-             */
-            *found = want_crlf ? SERF_NEWLINE_CRLF_SPLIT : SERF_NEWLINE_CR;
+
+
+
+
+            *found = want_crlf ? 130 : 132;
         }
         else if (want_cr)
-            *found = SERF_NEWLINE_CR;
-        else /* want_crlf */
-            *found = SERF_NEWLINE_NONE;
+            *found = 132;
+        else
+            *found = 128;
     }
-    else if (lf != NULL)
-        *found = SERF_NEWLINE_LF;
+    else if (lf != ((void*)0))
+        *found = 129;
     else
-        *found = SERF_NEWLINE_NONE;
+        *found = 128;
 
     switch (*found) {
-      case SERF_NEWLINE_LF:
+      case 129:
         *data = lf + 1;
         break;
-      case SERF_NEWLINE_CR:
-      case SERF_NEWLINE_CRLF:
-      case SERF_NEWLINE_CRLF_SPLIT:
-        *data = cr + 1 + (*found == SERF_NEWLINE_CRLF);
+      case 132:
+      case 131:
+      case 130:
+        *data = cr + 1 + (*found == 131);
         break;
-      case SERF_NEWLINE_NONE:
+      case 128:
         *data += *len;
         break;
       default:
-        /* Not reachable */
+
         return;
     }
 

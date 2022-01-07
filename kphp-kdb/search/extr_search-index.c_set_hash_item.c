@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct item {int extra; int mask; long long* rates; int rates_len; } ;
 
-/* Variables and functions */
- int FLAG_DELETED ; 
- int /*<<< orphan*/  assert (int) ; 
- void* zzrealloc (long long*,int,int) ; 
+
+ int FLAG_DELETED ;
+ int assert (int) ;
+ void* zzrealloc (long long*,int,int) ;
 
 int set_hash_item (struct item *I, long long hc) {
   if (!I || (I->extra & FLAG_DELETED)) {

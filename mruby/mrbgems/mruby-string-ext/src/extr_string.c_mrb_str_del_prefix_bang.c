@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ptr; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ptr; } ;
 struct TYPE_4__ {TYPE_1__ heap; } ;
 struct RString {TYPE_2__ as; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
 
-/* Variables and functions */
- struct RString* RSTRING (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTR_FSHARED_P (struct RString*) ; 
- scalar_t__ RSTR_LEN (struct RString*) ; 
- char* RSTR_PTR (struct RString*) ; 
- int /*<<< orphan*/  RSTR_SET_LEN (struct RString*,scalar_t__) ; 
- scalar_t__ RSTR_SHARED_P (struct RString*) ; 
- scalar_t__ memcmp (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  memmove (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  mrb_frozen_p (struct RString*) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,char**,scalar_t__*) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_str_modify (int /*<<< orphan*/ *,struct RString*) ; 
+
+ struct RString* RSTRING (int ) ;
+ scalar_t__ RSTR_FSHARED_P (struct RString*) ;
+ scalar_t__ RSTR_LEN (struct RString*) ;
+ char* RSTR_PTR (struct RString*) ;
+ int RSTR_SET_LEN (struct RString*,scalar_t__) ;
+ scalar_t__ RSTR_SHARED_P (struct RString*) ;
+ scalar_t__ memcmp (char*,char*,scalar_t__) ;
+ int memmove (char*,char*,scalar_t__) ;
+ int mrb_frozen_p (struct RString*) ;
+ int mrb_get_args (int *,char*,char**,scalar_t__*) ;
+ int mrb_nil_value () ;
+ int mrb_str_modify (int *,struct RString*) ;
 
 __attribute__((used)) static mrb_value
 mrb_str_del_prefix_bang(mrb_state *mrb, mrb_value self)

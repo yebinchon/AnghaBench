@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct br2684_vcc {int /*<<< orphan*/  old_owner; TYPE_1__* atmvcc; int /*<<< orphan*/  (* old_push ) (TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  old_release_cb; int /*<<< orphan*/  brvccs; int /*<<< orphan*/  device; } ;
-struct TYPE_2__ {int /*<<< orphan*/  release_cb; int /*<<< orphan*/ * user_back; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  devs_lock ; 
- int /*<<< orphan*/  kfree (struct br2684_vcc*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_debug (char*,struct br2684_vcc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_unlock_irq (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct br2684_vcc {int old_owner; TYPE_1__* atmvcc; int (* old_push ) (TYPE_1__*,int *) ;int old_release_cb; int brvccs; int device; } ;
+struct TYPE_2__ {int release_cb; int * user_back; } ;
+
+
+ int devs_lock ;
+ int kfree (struct br2684_vcc*) ;
+ int list_del (int *) ;
+ int module_put (int ) ;
+ int pr_debug (char*,struct br2684_vcc*,int ) ;
+ int stub1 (TYPE_1__*,int *) ;
+ int write_lock_irq (int *) ;
+ int write_unlock_irq (int *) ;
 
 __attribute__((used)) static void br2684_close_vcc(struct br2684_vcc *brvcc)
 {
-	pr_debug("removing VCC %p from dev %p\n", brvcc, brvcc->device);
-	write_lock_irq(&devs_lock);
-	list_del(&brvcc->brvccs);
-	write_unlock_irq(&devs_lock);
-	brvcc->atmvcc->user_back = NULL;	/* what about vcc->recvq ??? */
-	brvcc->atmvcc->release_cb = brvcc->old_release_cb;
-	brvcc->old_push(brvcc->atmvcc, NULL);	/* pass on the bad news */
-	module_put(brvcc->old_owner);
-	kfree(brvcc);
+ pr_debug("removing VCC %p from dev %p\n", brvcc, brvcc->device);
+ write_lock_irq(&devs_lock);
+ list_del(&brvcc->brvccs);
+ write_unlock_irq(&devs_lock);
+ brvcc->atmvcc->user_back = ((void*)0);
+ brvcc->atmvcc->release_cb = brvcc->old_release_cb;
+ brvcc->old_push(brvcc->atmvcc, ((void*)0));
+ module_put(brvcc->old_owner);
+ kfree(brvcc);
 }

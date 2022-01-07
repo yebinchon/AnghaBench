@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-struct TYPE_4__ {scalar_t__ state; int /*<<< orphan*/  _scheduler; int /*<<< orphan*/  _link; int /*<<< orphan*/  output_window; } ;
-typedef  TYPE_1__ h2o_http2_stream_t ;
 
-/* Variables and functions */
- scalar_t__ H2O_HTTP2_STREAM_STATE_SEND_BODY_IS_FINAL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  h2o_http2_scheduler_activate (int /*<<< orphan*/ *) ; 
- scalar_t__ h2o_http2_stream_has_pending_data (TYPE_1__*) ; 
- scalar_t__ h2o_http2_window_get_avail (int /*<<< orphan*/ *) ; 
- scalar_t__ h2o_http2_window_update (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  h2o_linklist_is_linked (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ssize_t ;
+struct TYPE_4__ {scalar_t__ state; int _scheduler; int _link; int output_window; } ;
+typedef TYPE_1__ h2o_http2_stream_t ;
+
+
+ scalar_t__ H2O_HTTP2_STREAM_STATE_SEND_BODY_IS_FINAL ;
+ int assert (int) ;
+ int h2o_http2_scheduler_activate (int *) ;
+ scalar_t__ h2o_http2_stream_has_pending_data (TYPE_1__*) ;
+ scalar_t__ h2o_http2_window_get_avail (int *) ;
+ scalar_t__ h2o_http2_window_update (int *,scalar_t__) ;
+ int h2o_linklist_is_linked (int *) ;
 
 __attribute__((used)) static int update_stream_output_window(h2o_http2_stream_t *stream, ssize_t delta)
 {

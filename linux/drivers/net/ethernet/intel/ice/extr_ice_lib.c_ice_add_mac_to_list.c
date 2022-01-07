@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct list_head {int dummy; } ;
-struct ice_vsi {int /*<<< orphan*/  idx; struct ice_pf* back; } ;
+struct ice_vsi {int idx; struct ice_pf* back; } ;
 struct ice_pf {TYPE_1__* pdev; } ;
-struct TYPE_6__ {int /*<<< orphan*/  mac_addr; } ;
+struct TYPE_6__ {int mac_addr; } ;
 struct TYPE_7__ {TYPE_2__ mac; } ;
-struct TYPE_8__ {TYPE_3__ l_data; int /*<<< orphan*/  vsi_handle; int /*<<< orphan*/  fltr_act; int /*<<< orphan*/  lkup_type; int /*<<< orphan*/  src_id; int /*<<< orphan*/  flag; } ;
-struct ice_fltr_list_entry {int /*<<< orphan*/  list_entry; TYPE_4__ fltr_info; } ;
-struct TYPE_5__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_8__ {TYPE_3__ l_data; int vsi_handle; int fltr_act; int lkup_type; int src_id; int flag; } ;
+struct ice_fltr_list_entry {int list_entry; TYPE_4__ fltr_info; } ;
+struct TYPE_5__ {int dev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  ICE_FLTR_TX ; 
- int /*<<< orphan*/  ICE_FWD_TO_VSI ; 
- int /*<<< orphan*/  ICE_SRC_ID_VSI ; 
- int /*<<< orphan*/  ICE_SW_LKUP_MAC ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct ice_fltr_list_entry* devm_kzalloc (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ether_addr_copy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,struct list_head*) ; 
+
+ int ENOMEM ;
+ int GFP_ATOMIC ;
+ int ICE_FLTR_TX ;
+ int ICE_FWD_TO_VSI ;
+ int ICE_SRC_ID_VSI ;
+ int ICE_SW_LKUP_MAC ;
+ int INIT_LIST_HEAD (int *) ;
+ struct ice_fltr_list_entry* devm_kzalloc (int *,int,int ) ;
+ int ether_addr_copy (int ,int const*) ;
+ int list_add (int *,struct list_head*) ;
 
 int ice_add_mac_to_list(struct ice_vsi *vsi, struct list_head *add_list,
-			const u8 *macaddr)
+   const u8 *macaddr)
 {
-	struct ice_fltr_list_entry *tmp;
-	struct ice_pf *pf = vsi->back;
+ struct ice_fltr_list_entry *tmp;
+ struct ice_pf *pf = vsi->back;
 
-	tmp = devm_kzalloc(&pf->pdev->dev, sizeof(*tmp), GFP_ATOMIC);
-	if (!tmp)
-		return -ENOMEM;
+ tmp = devm_kzalloc(&pf->pdev->dev, sizeof(*tmp), GFP_ATOMIC);
+ if (!tmp)
+  return -ENOMEM;
 
-	tmp->fltr_info.flag = ICE_FLTR_TX;
-	tmp->fltr_info.src_id = ICE_SRC_ID_VSI;
-	tmp->fltr_info.lkup_type = ICE_SW_LKUP_MAC;
-	tmp->fltr_info.fltr_act = ICE_FWD_TO_VSI;
-	tmp->fltr_info.vsi_handle = vsi->idx;
-	ether_addr_copy(tmp->fltr_info.l_data.mac.mac_addr, macaddr);
+ tmp->fltr_info.flag = ICE_FLTR_TX;
+ tmp->fltr_info.src_id = ICE_SRC_ID_VSI;
+ tmp->fltr_info.lkup_type = ICE_SW_LKUP_MAC;
+ tmp->fltr_info.fltr_act = ICE_FWD_TO_VSI;
+ tmp->fltr_info.vsi_handle = vsi->idx;
+ ether_addr_copy(tmp->fltr_info.l_data.mac.mac_addr, macaddr);
 
-	INIT_LIST_HEAD(&tmp->list_entry);
-	list_add(&tmp->list_entry, add_list);
+ INIT_LIST_HEAD(&tmp->list_entry);
+ list_add(&tmp->list_entry, add_list);
 
-	return 0;
+ return 0;
 }

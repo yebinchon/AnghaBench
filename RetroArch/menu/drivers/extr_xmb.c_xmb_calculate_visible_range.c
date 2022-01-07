@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {float margins_screen_top; float icon_size; } ;
-typedef  TYPE_1__ xmb_handle_t ;
+typedef TYPE_1__ xmb_handle_t ;
 
-/* Variables and functions */
- float xmb_item_y (TYPE_1__ const*,unsigned int,unsigned int) ; 
+
+ float xmb_item_y (TYPE_1__ const*,unsigned int,unsigned int) ;
 
 __attribute__((used)) static void xmb_calculate_visible_range(const xmb_handle_t *xmb,
       unsigned height, size_t list_size, unsigned current,
       unsigned *first, unsigned *last)
 {
    unsigned j;
-   float    base_y = xmb->margins_screen_top;
+   float base_y = xmb->margins_screen_top;
 
    *first = 0;
-   *last  = (unsigned)(list_size ? list_size - 1 : 0);
+   *last = (unsigned)(list_size ? list_size - 1 : 0);
 
    if (current)
    {

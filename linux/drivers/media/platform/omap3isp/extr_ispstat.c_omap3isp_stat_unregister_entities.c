@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ispstat {int /*<<< orphan*/  subdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  v4l2_device_unregister_subdev (int /*<<< orphan*/ *) ; 
+
+
+
+struct ispstat {int subdev; } ;
+
+
+ int v4l2_device_unregister_subdev (int *) ;
 
 void omap3isp_stat_unregister_entities(struct ispstat *stat)
 {
-	v4l2_device_unregister_subdev(&stat->subdev);
+ v4l2_device_unregister_subdev(&stat->subdev);
 }

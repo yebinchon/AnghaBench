@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  was ;
-struct TYPE_4__ {int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ pli ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int dl_abs (int /*<<< orphan*/ ) ; 
- int engine_n ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int was ;
+struct TYPE_4__ {int x; } ;
+typedef TYPE_1__ pli ;
+
+
+ int assert (int) ;
+ int dl_abs (int ) ;
+ int engine_n ;
+ int memset (int*,int ,int) ;
 
 void cnt_srt (pli *a, int n, pli *b) {
   static int was[10001] = {0},

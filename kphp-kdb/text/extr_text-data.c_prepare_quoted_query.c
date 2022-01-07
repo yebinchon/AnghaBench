@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_QUERY_QUOTES ; 
- char** QStr ; 
- int Qq ; 
- int /*<<< orphan*/  assert (int) ; 
- char* dyn_cur ; 
- char* dyn_top ; 
- int get_notword (char*) ; 
- int get_word (char*) ; 
- int /*<<< orphan*/  lc_str (char*,char*,int) ; 
+ int MAX_QUERY_QUOTES ;
+ char** QStr ;
+ int Qq ;
+ int assert (int) ;
+ char* dyn_cur ;
+ char* dyn_top ;
+ int get_notword (char*) ;
+ int get_word (char*) ;
+ int lc_str (char*,char*,int) ;
 
 void prepare_quoted_query (const char *query) {
   char *ptr = (char *) query, *to = dyn_cur;

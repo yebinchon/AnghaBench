@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  void sd_bus ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void sd_bus_message ;
+typedef int sd_bus_error ;
+typedef void sd_bus ;
 struct TYPE_8__ {scalar_t__ sa_family; } ;
-struct TYPE_7__ {int /*<<< orphan*/  sin6_addr; } ;
-struct TYPE_6__ {int /*<<< orphan*/  sin_addr; } ;
+struct TYPE_7__ {int sin6_addr; } ;
+struct TYPE_6__ {int sin_addr; } ;
 struct TYPE_9__ {TYPE_3__ sa; TYPE_2__ in6; TYPE_1__ in; } ;
 struct TYPE_10__ {TYPE_4__ sockaddr; } ;
-typedef  TYPE_5__ ServerAddress ;
+typedef TYPE_5__ ServerAddress ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  FAMILY_ADDRESS_SIZE (scalar_t__) ; 
- void* IN_SET (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (void*) ; 
- int sd_bus_message_append (void*,char*,scalar_t__,...) ; 
- int sd_bus_message_append_array (void*,char,void*,int /*<<< orphan*/ ) ; 
- int sd_bus_message_close_container (void*) ; 
- int sd_bus_message_open_container (void*,char,char*) ; 
+
+ scalar_t__ AF_INET ;
+ int AF_INET6 ;
+ int AF_UNSPEC ;
+ int FAMILY_ADDRESS_SIZE (scalar_t__) ;
+ void* IN_SET (scalar_t__,scalar_t__,int ) ;
+ int assert (void*) ;
+ int sd_bus_message_append (void*,char*,scalar_t__,...) ;
+ int sd_bus_message_append_array (void*,char,void*,int ) ;
+ int sd_bus_message_close_container (void*) ;
+ int sd_bus_message_open_container (void*,char,char*) ;
 
 __attribute__((used)) static int property_get_current_server_address(
                 sd_bus *bus,

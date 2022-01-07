@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_4__** inputs; TYPE_3__* priv; } ;
-struct TYPE_9__ {int num; int /*<<< orphan*/  den; } ;
-struct TYPE_8__ {int den; int /*<<< orphan*/  num; } ;
-struct TYPE_11__ {int h; int /*<<< orphan*/  w; TYPE_2__ frame_rate; TYPE_1__ time_base; int /*<<< orphan*/  format; TYPE_5__* src; } ;
-struct TYPE_10__ {int /*<<< orphan*/  nb_planes; } ;
-typedef  TYPE_3__ SeparateFieldsContext ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+struct TYPE_9__ {int num; int den; } ;
+struct TYPE_8__ {int den; int num; } ;
+struct TYPE_11__ {int h; int w; TYPE_2__ frame_rate; TYPE_1__ time_base; int format; TYPE_5__* src; } ;
+struct TYPE_10__ {int nb_planes; } ;
+typedef TYPE_3__ SeparateFieldsContext ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ int av_pix_fmt_count_planes (int ) ;
 
 __attribute__((used)) static int config_props_output(AVFilterLink *outlink)
 {

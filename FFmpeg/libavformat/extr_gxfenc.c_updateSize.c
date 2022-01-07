@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef scalar_t__ int64_t ;
+typedef int AVIOContext ;
+
+
+ int SEEK_SET ;
+ int avio_seek (int *,scalar_t__,int ) ;
+ scalar_t__ avio_tell (int *) ;
+ int avio_wb16 (int *,scalar_t__) ;
 
 __attribute__((used)) static int64_t updateSize(AVIOContext *pb, int64_t pos)
 {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {char* data; } ;
-typedef  TYPE_3__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+typedef TYPE_3__ svn_stringbuf_t ;
+typedef int svn_error_t ;
 struct TYPE_9__ {scalar_t__ current; scalar_t__ end; } ;
-struct TYPE_12__ {TYPE_2__* patch; int /*<<< orphan*/  apr_file; TYPE_1__ diff_text_range; } ;
-typedef  TYPE_4__ svn_diff_hunk_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_off_t ;
+struct TYPE_12__ {TYPE_2__* patch; int apr_file; TYPE_1__ diff_text_range; } ;
+typedef TYPE_4__ svn_diff_hunk_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef scalar_t__ apr_size_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_off_t ;
 struct TYPE_10__ {scalar_t__ reverse; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_SET ; 
- scalar_t__ APR_SIZE_MAX ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  svn_io_file_get_offset (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_readline (int /*<<< orphan*/ ,TYPE_3__**,char const**,scalar_t__*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
+
+ int APR_SET ;
+ scalar_t__ APR_SIZE_MAX ;
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int svn_io_file_get_offset (scalar_t__*,int ,int *) ;
+ int svn_io_file_readline (int ,TYPE_3__**,char const**,scalar_t__*,scalar_t__,int *,int *) ;
+ int svn_io_file_seek (int ,int ,scalar_t__*,int *) ;
+ TYPE_3__* svn_stringbuf_create_empty (int *) ;
 
 svn_error_t *
 svn_diff_hunk_readline_diff_text(svn_diff_hunk_t *hunk,
@@ -57,9 +57,9 @@ svn_diff_hunk_readline_diff_text(svn_diff_hunk_t *hunk,
 
   if (hunk->diff_text_range.current >= hunk->diff_text_range.end)
     {
-      /* We're past the range. Indicate that no bytes can be read. */
+
       *eof = TRUE;
-      *eol = NULL;
+      *eol = ((void*)0);
       *stringbuf = svn_stringbuf_create_empty(result_pool);
       return SVN_NO_ERROR;
     }
@@ -76,32 +76,32 @@ svn_diff_hunk_readline_diff_text(svn_diff_hunk_t *hunk,
 
   if (*eof && !*eol && *line->data)
     {
-      /* Ok, we miss a final EOL in the patch file, but didn't see a
-          no eol marker line.
 
-          We should report that we had an EOL or the patch code will
-          misbehave (and it knows nothing about no eol markers) */
+
+
+
+
 
       if (eol != &eol_p)
         {
-          /* Lets pick the first eol we find in our patch file */
+
           apr_off_t start = 0;
           svn_stringbuf_t *str;
 
           SVN_ERR(svn_io_file_seek(hunk->apr_file, APR_SET, &start,
                                    scratch_pool));
 
-          SVN_ERR(svn_io_file_readline(hunk->apr_file, &str, eol, NULL,
+          SVN_ERR(svn_io_file_readline(hunk->apr_file, &str, eol, ((void*)0),
                                        APR_SIZE_MAX,
                                        scratch_pool, scratch_pool));
 
-          /* Every patch file that has hunks has at least one EOL*/
-          SVN_ERR_ASSERT(*eol != NULL);
+
+          SVN_ERR_ASSERT(*eol != ((void*)0));
         }
 
       *eof = FALSE;
 
-      /* Fall through to seek back to the right location */
+
     }
 
   SVN_ERR(svn_io_file_seek(hunk->apr_file, APR_SET, &pos, scratch_pool));

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int const pix_fmt; } ;
-struct TYPE_4__ {int hwdec_request_reinit; int hwdec_failed; TYPE_1__ hwdec; int /*<<< orphan*/  use_hwdec; } ;
-typedef  TYPE_2__ vd_ffmpeg_ctx ;
+struct TYPE_4__ {int hwdec_request_reinit; int hwdec_failed; TYPE_1__ hwdec; int use_hwdec; } ;
+typedef TYPE_2__ vd_ffmpeg_ctx ;
 struct mp_filter {TYPE_2__* priv; } ;
-struct AVCodecContext {int /*<<< orphan*/  profile; int /*<<< orphan*/  codec_id; struct mp_filter* opaque; } ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct AVCodecContext {int profile; int codec_id; struct mp_filter* opaque; } ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 
-/* Variables and functions */
- int const AV_PIX_FMT_NONE ; 
- int /*<<< orphan*/  MP_VERBOSE (struct mp_filter*,char*,...) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- char const* av_get_pix_fmt_name (int const) ; 
- int avcodec_default_get_format (struct AVCodecContext*,int const*) ; 
- char* avcodec_profile_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ init_generic_hwaccel (struct mp_filter*,int const) ; 
+
+ int const AV_PIX_FMT_NONE ;
+ int MP_VERBOSE (struct mp_filter*,char*,...) ;
+ int assert (int ) ;
+ char const* av_get_pix_fmt_name (int const) ;
+ int avcodec_default_get_format (struct AVCodecContext*,int const*) ;
+ char* avcodec_profile_name (int ,int ) ;
+ scalar_t__ init_generic_hwaccel (struct mp_filter*,int const) ;
 
 __attribute__((used)) static enum AVPixelFormat get_format_hwdec(struct AVCodecContext *avctx,
                                            const enum AVPixelFormat *fmt)
@@ -46,7 +46,7 @@ __attribute__((used)) static enum AVPixelFormat get_format_hwdec(struct AVCodecC
     assert(ctx->use_hwdec);
 
     ctx->hwdec_request_reinit |= ctx->hwdec_failed;
-    ctx->hwdec_failed = false;
+    ctx->hwdec_failed = 0;
 
     enum AVPixelFormat select = AV_PIX_FMT_NONE;
     for (int i = 0; fmt[i] != AV_PIX_FMT_NONE; i++) {
@@ -59,7 +59,7 @@ __attribute__((used)) static enum AVPixelFormat get_format_hwdec(struct AVCodecC
     }
 
     if (select == AV_PIX_FMT_NONE) {
-        ctx->hwdec_failed = true;
+        ctx->hwdec_failed = 1;
         select = avcodec_default_get_format(avctx, fmt);
     }
 

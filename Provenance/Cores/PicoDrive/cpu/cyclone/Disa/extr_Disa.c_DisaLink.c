@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DisaGetEa (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DisaText ; 
- int /*<<< orphan*/  GetOffset (char*) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
+ int DisaGetEa (char*,int,int ) ;
+ int DisaText ;
+ int GetOffset (char*) ;
+ int sprintf (int ,char*,char*,char*) ;
 
 __attribute__((used)) static int DisaLink(int op)
 {
-  // Link opcode, 01001110 01010nnn dd   link An,#offset
+
   char eat[64]="";
   char offset[32]="";
 

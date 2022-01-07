@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  R_InitData () ; 
- int /*<<< orphan*/  R_InitLightTables () ; 
- int /*<<< orphan*/  R_InitPlanes () ; 
- int /*<<< orphan*/  R_InitPointToAngle () ; 
- int /*<<< orphan*/  R_InitSkyMap () ; 
- int /*<<< orphan*/  R_InitTables () ; 
- int /*<<< orphan*/  R_InitTranslationTables () ; 
- int /*<<< orphan*/  R_SetViewSize (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  detailLevel ; 
- scalar_t__ framecount ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  screenblocks ; 
+ int R_InitData () ;
+ int R_InitLightTables () ;
+ int R_InitPlanes () ;
+ int R_InitPointToAngle () ;
+ int R_InitSkyMap () ;
+ int R_InitTables () ;
+ int R_InitTranslationTables () ;
+ int R_SetViewSize (int ,int ) ;
+ int detailLevel ;
+ scalar_t__ framecount ;
+ int printf (char*) ;
+ int screenblocks ;
 
 void R_Init (void)
 {
@@ -32,7 +24,7 @@ void R_Init (void)
     R_InitPointToAngle ();
     printf ("\nR_InitPointToAngle");
     R_InitTables ();
-    // viewwidth / viewheight / detailLevel are set by the defaults
+
     printf ("\nR_InitTables");
 
     R_SetViewSize (screenblocks, detailLevel);
@@ -44,6 +36,6 @@ void R_Init (void)
     printf ("\nR_InitSkyMap");
     R_InitTranslationTables ();
     printf ("\nR_InitTranslationsTables");
-	
+
     framecount = 0;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned int oom; } ;
-typedef  TYPE_1__ LinuxProcess ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ LinuxProcess ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_NAME ; 
- int /*<<< orphan*/  PROC_LINE_LENGTH ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int sscanf (char*,char*,unsigned int*) ; 
- int /*<<< orphan*/  xSnprintf (char*,int /*<<< orphan*/ ,char*,char const*,char const*) ; 
+
+ int MAX_NAME ;
+ int PROC_LINE_LENGTH ;
+ int fclose (int *) ;
+ scalar_t__ fgets (char*,int ,int *) ;
+ int * fopen (char*,char*) ;
+ int sscanf (char*,char*,unsigned int*) ;
+ int xSnprintf (char*,int ,char*,char const*,char const*) ;
 
 __attribute__((used)) static void LinuxProcessList_readOomData(LinuxProcess* process, const char* dirname, const char* name) {
    char filename[MAX_NAME+1];

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nLength; int /*<<< orphan*/  bInheritHandle; int /*<<< orphan*/ * lpSecurityDescriptor; } ;
-typedef  TYPE_1__ SECURITY_ATTRIBUTES ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- scalar_t__ CreateFileW (char*,int /*<<< orphan*/ ,int,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nLength; int bInheritHandle; int * lpSecurityDescriptor; } ;
+typedef TYPE_1__ SECURITY_ATTRIBUTES ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+
+
+ scalar_t__ CreateFileW (char*,int ,int,TYPE_1__*,int ,int ,int *) ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int TRUE ;
 
 int uv__create_nul_handle(HANDLE* handle_ptr,
     DWORD access) {
@@ -31,7 +31,7 @@ int uv__create_nul_handle(HANDLE* handle_ptr,
   SECURITY_ATTRIBUTES sa;
 
   sa.nLength = sizeof sa;
-  sa.lpSecurityDescriptor = NULL;
+  sa.lpSecurityDescriptor = ((void*)0);
   sa.bInheritHandle = TRUE;
 
   handle = CreateFileW(L"NUL",
@@ -40,7 +40,7 @@ int uv__create_nul_handle(HANDLE* handle_ptr,
                        &sa,
                        OPEN_EXISTING,
                        0,
-                       NULL);
+                       ((void*)0));
   if (handle == INVALID_HANDLE_VALUE) {
     return GetLastError();
   }

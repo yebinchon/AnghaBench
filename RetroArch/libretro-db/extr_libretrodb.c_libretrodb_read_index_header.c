@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_3__ {int /*<<< orphan*/  next; int /*<<< orphan*/  key_size; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ libretrodb_index_t ;
-typedef  int /*<<< orphan*/  RFILE ;
 
-/* Variables and functions */
- int rmsgpack_dom_read_into (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_3__ {int next; int key_size; int name; } ;
+typedef TYPE_1__ libretrodb_index_t ;
+typedef int RFILE ;
+
+
+ int rmsgpack_dom_read_into (int *,char*,int ,int*,char*,int *,char*,int *,int *) ;
 
 __attribute__((used)) static int libretrodb_read_index_header(RFILE *fd, libretrodb_index_t *idx)
 {
@@ -25,5 +25,5 @@ __attribute__((used)) static int libretrodb_read_index_header(RFILE *fd, libretr
    return rmsgpack_dom_read_into(fd,
          "name", idx->name, &name_len,
          "key_size", &idx->key_size,
-         "next", &idx->next, NULL);
+         "next", &idx->next, ((void*)0));
 }

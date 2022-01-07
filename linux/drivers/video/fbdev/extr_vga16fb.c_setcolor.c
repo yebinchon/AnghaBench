@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  VGA_GFX_D ; 
- int /*<<< orphan*/  VGA_GFX_SR_VALUE ; 
- int vga_io_rgfx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vga_io_w (int /*<<< orphan*/ ,int) ; 
+ int VGA_GFX_D ;
+ int VGA_GFX_SR_VALUE ;
+ int vga_io_rgfx (int ) ;
+ int vga_io_w (int ,int) ;
 
 __attribute__((used)) static inline int setcolor(int color)
 {
-	int oldcolor;
+ int oldcolor;
 
-	oldcolor = vga_io_rgfx(VGA_GFX_SR_VALUE);
-	vga_io_w(VGA_GFX_D, color);
-	return oldcolor;
+ oldcolor = vga_io_rgfx(VGA_GFX_SR_VALUE);
+ vga_io_w(VGA_GFX_D, color);
+ return oldcolor;
 }

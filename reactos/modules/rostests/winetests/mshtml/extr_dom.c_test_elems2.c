@@ -1,91 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  outer_types ;
-typedef  int /*<<< orphan*/  elem_type_t ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLFormElement ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
 
-/* Variables and functions */
-#define  ET_A 129 
-#define  ET_BR 128 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  IHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLFormElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/ * get_doc_elem_by_id (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * get_elem_by_id (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_textarea_form (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iface_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  link_put_disabled (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  link_put_href (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  link_put_rel (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  link_put_rev (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  link_put_type (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_attr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_blocked (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_elem_all (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  test_elem_istextedit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_elem_names (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_elem_set_innerhtml (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_elem_set_outerhtml (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_form_action (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_form_elements (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_form_encoding (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_form_item (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_form_length (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_form_method (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_form_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_form_put_action (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_form_put_encoding (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_form_put_method (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_form_put_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_form_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_form_target (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_input_defaultValue (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_input_get_form (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_input_put_defaultValue (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_input_put_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_input_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_insert_adjacent_elems (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_link_disabled (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_link_href (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_link_media (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_link_rel (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_link_rev (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_link_type (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_option_form (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_select_form (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_textarea_defaultvalue (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_textarea_put_defaultvalue (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_textarea_put_readonly (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_textarea_put_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_textarea_readonly (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_textarea_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_textarea_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int outer_types ;
+typedef int elem_type_t ;
+typedef int IUnknown ;
+typedef int IHTMLFormElement ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument2 ;
+
+
+
+
+ int E_INVALIDARG ;
+ int IHTMLElement_Release (int *) ;
+ int IHTMLFormElement_Release (int *) ;
+ int S_OK ;
+ int TRUE ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
+ int * get_doc_elem_by_id (int *,char*) ;
+ int * get_elem_by_id (int *,char*,int ) ;
+ int * get_textarea_form (int *) ;
+ int iface_cmp (int *,int *) ;
+ int link_put_disabled (int *,int ) ;
+ int link_put_href (int *,char*) ;
+ int link_put_rel (int *,char*) ;
+ int link_put_rev (int *,char*) ;
+ int link_put_type (int *,char*) ;
+ int ok (int,char*,...) ;
+ int test_attr (int *) ;
+ int test_blocked (int *,int *) ;
+ int test_elem_all (int *,int const*,int) ;
+ int test_elem_istextedit (int *,int ) ;
+ int test_elem_names (int *) ;
+ int test_elem_set_innerhtml (int *,char*) ;
+ int test_elem_set_outerhtml (int *,char*) ;
+ int test_form_action (int *,int *) ;
+ int test_form_elements (int *) ;
+ int test_form_encoding (int *,char*) ;
+ int test_form_item (int *) ;
+ int test_form_length (int *,int) ;
+ int test_form_method (int *,char*) ;
+ int test_form_name (int *,int *) ;
+ int test_form_put_action (int *,char*) ;
+ int test_form_put_encoding (int *,int ,char*) ;
+ int test_form_put_method (int *,int ,char*) ;
+ int test_form_put_name (int *,char*) ;
+ int test_form_reset (int *) ;
+ int test_form_target (int *) ;
+ int test_input_defaultValue (int *,char*) ;
+ int test_input_get_form (int *,char*) ;
+ int test_input_put_defaultValue (int *,char*) ;
+ int test_input_put_value (int *,char*) ;
+ int test_input_value (int *,char*) ;
+ int test_insert_adjacent_elems (int *,int *) ;
+ int test_link_disabled (int *,int ) ;
+ int test_link_href (int *,char*) ;
+ int test_link_media (int *,char*) ;
+ int test_link_rel (int *,char*) ;
+ int test_link_rev (int *,int *) ;
+ int test_link_type (int *,char*) ;
+ int test_option_form (int *,int *) ;
+ int test_select_form (int *,int *) ;
+ int test_textarea_defaultvalue (int *,char*) ;
+ int test_textarea_put_defaultvalue (int *,char*) ;
+ int test_textarea_put_readonly (int *,int ) ;
+ int test_textarea_put_value (int *,char*) ;
+ int test_textarea_readonly (int *,int ) ;
+ int test_textarea_type (int *) ;
+ int test_textarea_value (int *,int *) ;
 
 __attribute__((used)) static void test_elems2(IHTMLDocument2 *doc)
 {
     IHTMLElement *elem, *elem2, *div;
 
     static const elem_type_t outer_types[] = {
-        ET_BR,
-        ET_A
+        128,
+        129
     };
 
     div = get_doc_elem_by_id(doc, "divid");
@@ -94,7 +94,7 @@ __attribute__((used)) static void test_elems2(IHTMLDocument2 *doc)
     if(elem) {
         test_link_disabled(elem, VARIANT_FALSE);
         test_link_rel(elem, "stylesheet");
-        test_link_rev(elem, NULL);
+        test_link_rev(elem, ((void*)0));
         test_link_type(elem, "text/css");
         test_link_href(elem, "about:blank");
         test_link_media(elem, "all");
@@ -108,13 +108,13 @@ __attribute__((used)) static void test_elems2(IHTMLDocument2 *doc)
 
     test_elem_set_innerhtml((IUnknown*)div, "<div id=\"innerid\"></div>");
     elem2 = get_doc_elem_by_id(doc, "innerid");
-    ok(elem2 != NULL, "elem2 == NULL\n");
+    ok(elem2 != ((void*)0), "elem2 == NULL\n");
     test_elem_set_outerhtml((IUnknown*)elem2, "<br><a href=\"about:blank\" id=\"aid\">a</a>");
     test_elem_all((IUnknown*)div, outer_types, sizeof(outer_types)/sizeof(*outer_types));
     IHTMLElement_Release(elem2);
 
     elem2 = get_doc_elem_by_id(doc, "aid");
-    ok(elem2 != NULL, "elem2 == NULL\n");
+    ok(elem2 != ((void*)0), "elem2 == NULL\n");
     test_elem_set_outerhtml((IUnknown*)elem2, "");
     test_elem_all((IUnknown*)div, outer_types, 1);
     IHTMLElement_Release(elem2);
@@ -124,9 +124,9 @@ __attribute__((used)) static void test_elems2(IHTMLDocument2 *doc)
     if(elem) {
         IHTMLFormElement *form;
 
-        test_textarea_value((IUnknown*)elem, NULL);
+        test_textarea_value((IUnknown*)elem, ((void*)0));
         test_textarea_put_value((IUnknown*)elem, "test");
-        test_textarea_defaultvalue((IUnknown*)elem, NULL);
+        test_textarea_defaultvalue((IUnknown*)elem, ((void*)0));
         test_textarea_put_defaultvalue((IUnknown*)elem, "defval text");
         test_textarea_put_value((IUnknown*)elem, "test");
         test_textarea_readonly((IUnknown*)elem, VARIANT_FALSE);
@@ -155,10 +155,10 @@ __attribute__((used)) static void test_elems2(IHTMLDocument2 *doc)
         IHTMLFormElement *form;
 
         elem2 = get_elem_by_id(doc, "fid", TRUE);
-        ok(elem2 != NULL, "elem2 == NULL\n");
+        ok(elem2 != ((void*)0), "elem2 == NULL\n");
 
         form = get_textarea_form((IUnknown*)elem);
-        ok(form != NULL, "form = NULL\n");
+        ok(form != ((void*)0), "form = NULL\n");
         ok(iface_cmp((IUnknown*)form, (IUnknown*)elem2), "form != elem2\n");
 
         IHTMLFormElement_Release(form);
@@ -186,13 +186,13 @@ __attribute__((used)) static void test_elems2(IHTMLDocument2 *doc)
     if(elem) {
         test_form_length((IUnknown*)elem, 2);
         test_form_item(elem);
-        test_form_action((IUnknown*)elem, NULL);
+        test_form_action((IUnknown*)elem, ((void*)0));
         test_form_put_action((IUnknown*)elem, "about:blank");
         test_form_method((IUnknown*)elem, "get");
         test_form_put_method((IUnknown*)elem, S_OK, "post");
         test_form_put_method((IUnknown*)elem, E_INVALIDARG, "put");
         test_form_method((IUnknown*)elem, "post");
-        test_form_name((IUnknown*)elem, NULL);
+        test_form_name((IUnknown*)elem, ((void*)0));
         test_form_put_name((IUnknown*)elem, "Name");
         test_form_encoding((IUnknown*)elem, "application/x-www-form-urlencoded");
         test_form_put_encoding((IUnknown*)elem, S_OK, "text/plain");

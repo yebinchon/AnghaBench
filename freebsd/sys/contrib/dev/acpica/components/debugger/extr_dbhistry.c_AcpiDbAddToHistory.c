@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT16 ;
-struct TYPE_2__ {char* Command; int /*<<< orphan*/  CmdNum; } ;
 
-/* Variables and functions */
- TYPE_1__* AcpiGbl_HistoryBuffer ; 
- size_t AcpiGbl_LoHistory ; 
- int /*<<< orphan*/  AcpiGbl_NextCmdNum ; 
- size_t AcpiGbl_NextHistoryIndex ; 
- size_t AcpiGbl_NumHistory ; 
- void* AcpiOsAllocate (scalar_t__) ; 
- int /*<<< orphan*/  AcpiOsFree (char*) ; 
- size_t HISTORY_SIZE ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT16 ;
+struct TYPE_2__ {char* Command; int CmdNum; } ;
+
+
+ TYPE_1__* AcpiGbl_HistoryBuffer ;
+ size_t AcpiGbl_LoHistory ;
+ int AcpiGbl_NextCmdNum ;
+ size_t AcpiGbl_NextHistoryIndex ;
+ size_t AcpiGbl_NumHistory ;
+ void* AcpiOsAllocate (scalar_t__) ;
+ int AcpiOsFree (char*) ;
+ size_t HISTORY_SIZE ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 void
 AcpiDbAddToHistory (
-    char                    *CommandLine)
+    char *CommandLine)
 {
-    UINT16                  CmdLen;
-    UINT16                  BufferLen;
+    UINT16 CmdLen;
+    UINT16 BufferLen;
 
-    /* Put command into the next available slot */
+
 
     CmdLen = (UINT16) strlen (CommandLine);
     if (!CmdLen)
@@ -41,7 +41,7 @@ AcpiDbAddToHistory (
         return;
     }
 
-    if (AcpiGbl_HistoryBuffer[AcpiGbl_NextHistoryIndex].Command != NULL)
+    if (AcpiGbl_HistoryBuffer[AcpiGbl_NextHistoryIndex].Command != ((void*)0))
     {
         BufferLen = (UINT16) strlen (
             AcpiGbl_HistoryBuffer[AcpiGbl_NextHistoryIndex].Command);
@@ -66,7 +66,7 @@ AcpiDbAddToHistory (
     AcpiGbl_HistoryBuffer[AcpiGbl_NextHistoryIndex].CmdNum =
         AcpiGbl_NextCmdNum;
 
-    /* Adjust indexes */
+
 
     if ((AcpiGbl_NumHistory == HISTORY_SIZE) &&
         (AcpiGbl_NextHistoryIndex == AcpiGbl_LoHistory))

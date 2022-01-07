@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  builder; int /*<<< orphan*/  settings; } ;
-typedef  TYPE_1__ signal_user_data_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int builder; int settings; } ;
+typedef TYPE_1__ signal_user_data_t ;
 struct TYPE_8__ {scalar_t__* str; } ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  TYPE_2__ GString ;
+typedef int GtkWidget ;
+typedef TYPE_2__ GString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * GTK_WIDGET (int /*<<< orphan*/ ) ; 
- int HB_VCODEC_X264_MASK ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup_printf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  g_string_append_printf (TYPE_2__*,char*,char const*,...) ; 
- char* g_string_free (TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* g_string_new (char*) ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ ,char*) ; 
- int ghb_dict_get_int (int /*<<< orphan*/ ,char*) ; 
- char* ghb_dict_get_string (int /*<<< orphan*/ ,char*) ; 
- int ghb_get_video_encoder (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gtk_widget_get_tooltip_text (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_widget_set_tooltip_text (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  hb_video_encoder_get_depth (int) ; 
- char* hb_x264_param_unparse (int /*<<< orphan*/ ,char const*,char*,char const*,char const*,char const*,int,int) ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/ * video_option_tooltip ; 
+
+ int FALSE ;
+ int GHB_WIDGET (int ,char*) ;
+ int * GTK_WIDGET (int ) ;
+ int HB_VCODEC_X264_MASK ;
+ int _ (char*) ;
+ int g_free (char*) ;
+ char* g_strdup_printf (int ,int *,...) ;
+ int g_string_append_printf (TYPE_2__*,char*,char const*,...) ;
+ char* g_string_free (TYPE_2__*,int ) ;
+ TYPE_2__* g_string_new (char*) ;
+ scalar_t__ ghb_dict_get_bool (int ,char*) ;
+ int ghb_dict_get_int (int ,char*) ;
+ char* ghb_dict_get_string (int ,char*) ;
+ int ghb_get_video_encoder (int ) ;
+ int * gtk_widget_get_tooltip_text (int *) ;
+ int gtk_widget_set_tooltip_text (int *,char*) ;
+ int hb_video_encoder_get_depth (int) ;
+ char* hb_x264_param_unparse (int ,char const*,char*,char const*,char const*,char const*,int,int) ;
+ int strcasecmp (char const*,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int * video_option_tooltip ;
 
 __attribute__((used)) static void
 update_adv_settings_tooltip(signal_user_data_t *ud)
 {
-    if (video_option_tooltip == NULL)
+    if (video_option_tooltip == ((void*)0))
     {
         GtkWidget *eo = GTK_WIDGET(GHB_WIDGET(ud->builder, "VideoOptionExtra"));
         video_option_tooltip = gtk_widget_get_tooltip_text(eo);
@@ -61,11 +61,11 @@ update_adv_settings_tooltip(signal_user_data_t *ud)
         const char *opts;
         char *tunes;
 
-        preset  = ghb_dict_get_string(ud->settings, "VideoPreset");
-        tune    = ghb_dict_get_string(ud->settings, "VideoTune");
+        preset = ghb_dict_get_string(ud->settings, "VideoPreset");
+        tune = ghb_dict_get_string(ud->settings, "VideoTune");
         profile = ghb_dict_get_string(ud->settings, "VideoProfile");
-        level   = ghb_dict_get_string(ud->settings, "VideoLevel");
-        opts    = ghb_dict_get_string(ud->settings, "VideoOptionExtra");
+        level = ghb_dict_get_string(ud->settings, "VideoLevel");
+        opts = ghb_dict_get_string(ud->settings, "VideoOptionExtra");
 
         if (tune[0] && strcmp(tune, "none"))
         {

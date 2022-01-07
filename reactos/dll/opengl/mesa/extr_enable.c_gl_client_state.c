@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* EdgeFlagEnabled; void* TexCoordEnabled; void* IndexEnabled; void* ColorEnabled; void* NormalEnabled; void* VertexEnabled; } ;
 struct TYPE_6__ {TYPE_1__ Array; } ;
-typedef  int GLenum ;
-typedef  TYPE_2__ GLcontext ;
-typedef  void* GLboolean ;
+typedef int GLenum ;
+typedef TYPE_2__ GLcontext ;
+typedef void* GLboolean ;
 
-/* Variables and functions */
-#define  GL_COLOR_ARRAY 133 
-#define  GL_EDGE_FLAG_ARRAY 132 
-#define  GL_INDEX_ARRAY 131 
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
-#define  GL_NORMAL_ARRAY 130 
-#define  GL_TEXTURE_COORD_ARRAY 129 
-#define  GL_VERTEX_ARRAY 128 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
+
+
+
+
+ int GL_INVALID_ENUM ;
+
+
+
+ int gl_error (TYPE_2__*,int ,char*) ;
 
 void gl_client_state( GLcontext *ctx, GLenum cap, GLboolean state )
 {
    switch (cap) {
-      case GL_VERTEX_ARRAY:
+      case 128:
          ctx->Array.VertexEnabled = state;
          break;
-      case GL_NORMAL_ARRAY:
+      case 130:
          ctx->Array.NormalEnabled = state;
          break;
-      case GL_COLOR_ARRAY:
+      case 133:
          ctx->Array.ColorEnabled = state;
          break;
-      case GL_INDEX_ARRAY:
+      case 131:
          ctx->Array.IndexEnabled = state;
          break;
-      case GL_TEXTURE_COORD_ARRAY:
+      case 129:
          ctx->Array.TexCoordEnabled = state;
          break;
-      case GL_EDGE_FLAG_ARRAY:
+      case 132:
          ctx->Array.EdgeFlagEnabled = state;
          break;
       default:

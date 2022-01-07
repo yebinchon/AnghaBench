@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* plugin_host; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * disp; } ;
-typedef  TYPE_1__ PluginHost ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  TYPE_2__ HTMLPluginContainer ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_5__ {int * disp; } ;
+typedef TYPE_1__ PluginHost ;
+typedef int IDispatch ;
+typedef TYPE_2__ HTMLPluginContainer ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDispatch_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  check_script_safety (TYPE_1__*) ; 
+
+ int ERR (char*) ;
+ int E_FAIL ;
+ int E_UNEXPECTED ;
+ int FIXME (char*) ;
+ int IDispatch_AddRef (int *) ;
+ int S_OK ;
+ int check_script_safety (TYPE_1__*) ;
 
 HRESULT get_plugin_disp(HTMLPluginContainer *plugin_container, IDispatch **ret)
 {
@@ -39,7 +39,7 @@ HRESULT get_plugin_disp(HTMLPluginContainer *plugin_container, IDispatch **ret)
     }
 
     if(!host->disp) {
-        *ret = NULL;
+        *ret = ((void*)0);
         return S_OK;
     }
 

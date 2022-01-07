@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcpiOsExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSL_NOTIFY_HANDLER ; 
- int /*<<< orphan*/  acpi_cmbat_init_battery ; 
+
+
+
+typedef int device_t ;
+
+
+ int AcpiOsExecute (int ,int ,int ) ;
+ int OSL_NOTIFY_HANDLER ;
+ int acpi_cmbat_init_battery ;
 
 __attribute__((used)) static int
 acpi_cmbat_resume(device_t dev)

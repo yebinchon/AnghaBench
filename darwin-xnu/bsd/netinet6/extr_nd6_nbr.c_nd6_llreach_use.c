@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct llinfo_nd6 {int /*<<< orphan*/  ln_lastused; int /*<<< orphan*/ * ln_llreach; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  net_uptime () ; 
+
+
+
+struct llinfo_nd6 {int ln_lastused; int * ln_llreach; } ;
+
+
+ int net_uptime () ;
 
 void
 nd6_llreach_use(struct llinfo_nd6 *ln)
 {
-	if (ln->ln_llreach != NULL)
-		ln->ln_lastused = net_uptime();
+ if (ln->ln_llreach != ((void*)0))
+  ln->ln_lastused = net_uptime();
 }

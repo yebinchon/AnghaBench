@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static unsigned parse_hex4(const unsigned char * const input)
 {
     unsigned int h = 0;
@@ -20,7 +11,7 @@ __attribute__((used)) static unsigned parse_hex4(const unsigned char * const inp
 
     for (i = 0; i < 4; i++)
     {
-        /* parse digit */
+
         if ((input[i] >= '0') && (input[i] <= '9'))
         {
             h += (unsigned int) input[i] - '0';
@@ -33,14 +24,14 @@ __attribute__((used)) static unsigned parse_hex4(const unsigned char * const inp
         {
             h += (unsigned int) 10 + input[i] - 'a';
         }
-        else /* invalid */
+        else
         {
             return 0;
         }
 
         if (i < 3)
         {
-            /* shift left to make place for the next nibble */
+
             h = h << 4;
         }
     }

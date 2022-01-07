@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
- scalar_t__ abs (int const) ; 
- int clip23 (int) ; 
- int /*<<< orphan*/  clp_v (int*,int) ; 
- int /*<<< orphan*/  dct_a (int*,int*) ; 
- int /*<<< orphan*/  dct_b (int*,int*) ; 
- int /*<<< orphan*/  mod_a (int*,int*) ; 
- int /*<<< orphan*/  mod_b (int*,int*) ; 
- int /*<<< orphan*/  mod_c (int*,int*) ; 
- int /*<<< orphan*/  sum_a (int*,int*,int) ; 
- int /*<<< orphan*/  sum_b (int*,int*,int) ; 
- int /*<<< orphan*/  sum_c (int*,int*,int) ; 
- int /*<<< orphan*/  sum_d (int*,int*,int) ; 
+
+
+
+typedef int int32_t ;
+
+
+ scalar_t__ abs (int const) ;
+ int clip23 (int) ;
+ int clp_v (int*,int) ;
+ int dct_a (int*,int*) ;
+ int dct_b (int*,int*) ;
+ int mod_a (int*,int*) ;
+ int mod_b (int*,int*) ;
+ int mod_c (int*,int*) ;
+ int sum_a (int*,int*,int) ;
+ int sum_b (int*,int*,int) ;
+ int sum_c (int*,int*,int) ;
+ int sum_d (int*,int*,int) ;
 
 __attribute__((used)) static void imdct_half_32(int32_t *output, const int32_t *input)
 {
@@ -41,23 +41,23 @@ __attribute__((used)) static void imdct_half_32(int32_t *output, const int32_t *
     for (i = 0; i < 32; i++)
         buf_a[i] = (input[i] + round) >> shift;
 
-    sum_a(buf_a, buf_b +  0, 16);
+    sum_a(buf_a, buf_b + 0, 16);
     sum_b(buf_a, buf_b + 16, 16);
     clp_v(buf_b, 32);
 
-    sum_a(buf_b +  0, buf_a +  0, 8);
-    sum_b(buf_b +  0, buf_a +  8, 8);
+    sum_a(buf_b + 0, buf_a + 0, 8);
+    sum_b(buf_b + 0, buf_a + 8, 8);
     sum_c(buf_b + 16, buf_a + 16, 8);
     sum_d(buf_b + 16, buf_a + 24, 8);
     clp_v(buf_a, 32);
 
-    dct_a(buf_a +  0, buf_b +  0);
-    dct_b(buf_a +  8, buf_b +  8);
+    dct_a(buf_a + 0, buf_b + 0);
+    dct_b(buf_a + 8, buf_b + 8);
     dct_b(buf_a + 16, buf_b + 16);
     dct_b(buf_a + 24, buf_b + 24);
     clp_v(buf_b, 32);
 
-    mod_a(buf_b +  0, buf_a +  0);
+    mod_a(buf_b + 0, buf_a + 0);
     mod_b(buf_b + 16, buf_a + 16);
     clp_v(buf_a, 32);
 
@@ -67,7 +67,7 @@ __attribute__((used)) static void imdct_half_32(int32_t *output, const int32_t *
         buf_b[i] = clip23(buf_b[i] * (1 << shift));
 
     for (i = 0, k = 31; i < 16; i++, k--) {
-        output[     i] = clip23(buf_b[i] - buf_b[k]);
+        output[ i] = clip23(buf_b[i] - buf_b[k]);
         output[16 + i] = clip23(buf_b[i] + buf_b[k]);
     }
 }

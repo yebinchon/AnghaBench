@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int cElements; scalar_t__ lLbound; } ;
-typedef  TYPE_1__ SAFEARRAYBOUND ;
-typedef  int /*<<< orphan*/  SAFEARRAY ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ SAFEARRAYBOUND ;
+typedef int SAFEARRAY ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_1__*) ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ E_UNEXPECTED ; 
- scalar_t__ FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * SafeArrayCreate (int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- scalar_t__ SafeArrayDestroy (int /*<<< orphan*/ *) ; 
- scalar_t__ SafeArrayLock (int /*<<< orphan*/ *) ; 
- scalar_t__ SafeArrayUnlock (int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  VT_UI1 ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/ * pSafeArrayCreateVector (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int ARRAY_SIZE (TYPE_1__*) ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ E_UNEXPECTED ;
+ scalar_t__ FALSE ;
+ scalar_t__ S_OK ;
+ int * SafeArrayCreate (int ,int,TYPE_1__*) ;
+ scalar_t__ SafeArrayDestroy (int *) ;
+ scalar_t__ SafeArrayLock (int *) ;
+ scalar_t__ SafeArrayUnlock (int *) ;
+ scalar_t__ TRUE ;
+ int VT_UI1 ;
+ int ok (int,char*,scalar_t__,...) ;
+ int * pSafeArrayCreateVector (int ,int ,int) ;
 
 __attribute__((used)) static void test_LockUnlock(void)
 {
@@ -40,10 +40,10 @@ __attribute__((used)) static void test_LockUnlock(void)
   BOOL bVector = FALSE;
   int dimension;
 
-  /* Failure cases */
-  hres = SafeArrayLock(NULL);
+
+  hres = SafeArrayLock(((void*)0));
   ok(hres == E_INVALIDARG, "Lock NULL array hres 0x%x\n", hres);
-  hres = SafeArrayUnlock(NULL);
+  hres = SafeArrayUnlock(((void*)0));
   ok(hres == E_INVALIDARG, "Lock NULL array hres 0x%x\n", hres);
 
   for (dimension = 0; dimension < ARRAY_SIZE(sab); dimension++)
@@ -54,7 +54,7 @@ __attribute__((used)) static void test_LockUnlock(void)
 
   sa = SafeArrayCreate(VT_UI1, ARRAY_SIZE(sab), sab);
 
-  /* Test maximum locks */
+
 test_LockUnlock_Vector:
   if (sa)
   {
@@ -83,7 +83,7 @@ test_LockUnlock_Vector:
 
   if (bVector == FALSE && pSafeArrayCreateVector)
   {
-    /* Test again with a vector */
+
     sa = pSafeArrayCreateVector(VT_UI1, 0, 100);
     bVector = TRUE;
     goto test_LockUnlock_Vector;

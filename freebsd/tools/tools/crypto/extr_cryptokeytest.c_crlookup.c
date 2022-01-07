@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct crypt_find_op {int crid; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIOCFINDDEV ; 
- int /*<<< orphan*/  devcrypto () ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct crypt_find_op*) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char const*,int) ; 
+
+
+
+struct crypt_find_op {int crid; int name; } ;
+
+
+ int CIOCFINDDEV ;
+ int devcrypto () ;
+ int err (int,char*) ;
+ int ioctl (int ,int ,struct crypt_find_op*) ;
+ int strlcpy (int ,char const*,int) ;
 
 __attribute__((used)) static int
 crlookup(const char *devname)
 {
-	struct crypt_find_op find;
+ struct crypt_find_op find;
 
-	find.crid = -1;
-	strlcpy(find.name, devname, sizeof(find.name));
-	if (ioctl(devcrypto(), CIOCFINDDEV, &find) == -1)
-		err(1, "ioctl(CIOCFINDDEV)");
-	return find.crid;
+ find.crid = -1;
+ strlcpy(find.name, devname, sizeof(find.name));
+ if (ioctl(devcrypto(), CIOCFINDDEV, &find) == -1)
+  err(1, "ioctl(CIOCFINDDEV)");
+ return find.crid;
 }

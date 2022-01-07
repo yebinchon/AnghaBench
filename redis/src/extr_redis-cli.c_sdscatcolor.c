@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
 
-/* Variables and functions */
- int /*<<< orphan*/  isColorTerm () ; 
- int /*<<< orphan*/  sdscat (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sdscatfmt (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
+
+
+
+typedef int sds ;
+
+
+ int isColorTerm () ;
+ int sdscat (int ,char*) ;
+ int sdscatfmt (int ,char*,int,int) ;
+ int sdscatlen (int ,char*,size_t) ;
+ int * strstr (char*,char*) ;
 
 sds sdscatcolor(sds o, char *s, size_t len, char *color) {
     if (!isColorTerm()) return sdscatlen(o,s,len);
 
-    int bold = strstr(color,"bold") != NULL;
-    int ccode = 37; /* Defaults to white. */
+    int bold = strstr(color,"bold") != ((void*)0);
+    int ccode = 37;
     if (strstr(color,"red")) ccode = 31;
     else if (strstr(color,"green")) ccode = 32;
     else if (strstr(color,"yellow")) ccode = 33;

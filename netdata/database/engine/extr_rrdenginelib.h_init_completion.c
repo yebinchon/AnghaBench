@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct completion {int /*<<< orphan*/  mutex; int /*<<< orphan*/  cond; scalar_t__ completed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ uv_cond_init (int /*<<< orphan*/ *) ; 
- scalar_t__ uv_mutex_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct completion {int mutex; int cond; scalar_t__ completed; } ;
+
+
+ int assert (int) ;
+ scalar_t__ uv_cond_init (int *) ;
+ scalar_t__ uv_mutex_init (int *) ;
 
 __attribute__((used)) static inline void init_completion(struct completion *p)
 {

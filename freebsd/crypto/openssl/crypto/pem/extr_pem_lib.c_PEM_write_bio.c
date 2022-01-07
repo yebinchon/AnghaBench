@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_ENCODE_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int BIO_write (int /*<<< orphan*/ *,char const*,int) ; 
- int ERR_R_BUF_LIB ; 
- int ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  EVP_ENCODE_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_ENCODE_CTX_new () ; 
- int /*<<< orphan*/  EVP_EncodeFinal (int /*<<< orphan*/ *,unsigned char*,int*) ; 
- int /*<<< orphan*/  EVP_EncodeInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_EncodeUpdate (int /*<<< orphan*/ *,unsigned char*,int*,unsigned char const*,int) ; 
- int /*<<< orphan*/  OPENSSL_clear_free (unsigned char*,int) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int PEM_BUFSIZE ; 
- int /*<<< orphan*/  PEM_F_PEM_WRITE_BIO ; 
- int /*<<< orphan*/  PEMerr (int /*<<< orphan*/ ,int) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int EVP_ENCODE_CTX ;
+typedef int BIO ;
+
+
+ int BIO_write (int *,char const*,int) ;
+ int ERR_R_BUF_LIB ;
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_ENCODE_CTX_free (int *) ;
+ int * EVP_ENCODE_CTX_new () ;
+ int EVP_EncodeFinal (int *,unsigned char*,int*) ;
+ int EVP_EncodeInit (int *) ;
+ int EVP_EncodeUpdate (int *,unsigned char*,int*,unsigned char const*,int) ;
+ int OPENSSL_clear_free (unsigned char*,int) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int PEM_BUFSIZE ;
+ int PEM_F_PEM_WRITE_BIO ;
+ int PEMerr (int ,int) ;
+ int strlen (char const*) ;
 
 int PEM_write_bio(BIO *bp, const char *name, const char *header,
                   const unsigned char *data, long len)
 {
     int nlen, n, i, j, outl;
-    unsigned char *buf = NULL;
+    unsigned char *buf = ((void*)0);
     EVP_ENCODE_CTX *ctx = EVP_ENCODE_CTX_new();
     int reason = ERR_R_BUF_LIB;
     int retval = 0;
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         reason = ERR_R_MALLOC_FAILURE;
         goto err;
     }
@@ -58,7 +58,7 @@ int PEM_write_bio(BIO *bp, const char *name, const char *header,
     }
 
     buf = OPENSSL_malloc(PEM_BUFSIZE * 8);
-    if (buf == NULL) {
+    if (buf == ((void*)0)) {
         reason = ERR_R_MALLOC_FAILURE;
         goto err;
     }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * distance_; int /*<<< orphan*/ * literal_; int /*<<< orphan*/ * blue_; int /*<<< orphan*/ * red_; int /*<<< orphan*/ * alpha_; } ;
-typedef  TYPE_1__ VP8LHistogram ;
-typedef  int /*<<< orphan*/  PixOrCopy ;
 
-/* Variables and functions */
- int NUM_LENGTH_CODES ; 
- int NUM_LITERAL_CODES ; 
- int PixOrCopyCacheIdx (int /*<<< orphan*/  const* const) ; 
- int PixOrCopyDistance (int /*<<< orphan*/  const* const) ; 
- scalar_t__ PixOrCopyIsCacheIdx (int /*<<< orphan*/  const* const) ; 
- scalar_t__ PixOrCopyIsLiteral (int /*<<< orphan*/  const* const) ; 
- int PixOrCopyLength (int /*<<< orphan*/  const* const) ; 
- size_t PixOrCopyLiteral (int /*<<< orphan*/  const* const,int) ; 
- int /*<<< orphan*/  VP8LPrefixEncodeBits (int,int*,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * distance_; int * literal_; int * blue_; int * red_; int * alpha_; } ;
+typedef TYPE_1__ VP8LHistogram ;
+typedef int PixOrCopy ;
+
+
+ int NUM_LENGTH_CODES ;
+ int NUM_LITERAL_CODES ;
+ int PixOrCopyCacheIdx (int const* const) ;
+ int PixOrCopyDistance (int const* const) ;
+ scalar_t__ PixOrCopyIsCacheIdx (int const* const) ;
+ scalar_t__ PixOrCopyIsLiteral (int const* const) ;
+ int PixOrCopyLength (int const* const) ;
+ size_t PixOrCopyLiteral (int const* const,int) ;
+ int VP8LPrefixEncodeBits (int,int*,int*) ;
 
 void VP8LHistogramAddSinglePixOrCopy(VP8LHistogram* const histo,
                                      const PixOrCopy* const v,
@@ -43,7 +43,7 @@ void VP8LHistogramAddSinglePixOrCopy(VP8LHistogram* const histo,
     int code, extra_bits;
     VP8LPrefixEncodeBits(PixOrCopyLength(v), &code, &extra_bits);
     ++histo->literal_[NUM_LITERAL_CODES + code];
-    if (distance_modifier == NULL) {
+    if (distance_modifier == ((void*)0)) {
       VP8LPrefixEncodeBits(PixOrCopyDistance(v), &code, &extra_bits);
     } else {
       VP8LPrefixEncodeBits(

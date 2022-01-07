@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  audio_output_t ;
-struct TYPE_7__ {int /*<<< orphan*/  lock; } ;
-struct TYPE_8__ {TYPE_4__* list; int /*<<< orphan*/  lock; } ;
-struct TYPE_9__ {int /*<<< orphan*/  lock; TYPE_1__ vp; TYPE_2__ dev; int /*<<< orphan*/  refs; } ;
-typedef  TYPE_3__ aout_owner_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int audio_output_t ;
+struct TYPE_7__ {int lock; } ;
+struct TYPE_8__ {TYPE_4__* list; int lock; } ;
+struct TYPE_9__ {int lock; TYPE_1__ vp; TYPE_2__ dev; int refs; } ;
+typedef TYPE_3__ aout_owner_t ;
 struct TYPE_10__ {struct TYPE_10__* name; struct TYPE_10__* next; } ;
-typedef  TYPE_4__ aout_dev_t ;
+typedef TYPE_4__ aout_dev_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_OBJECT (int /*<<< orphan*/ *) ; 
- TYPE_3__* aout_owner (int /*<<< orphan*/ *) ; 
- scalar_t__ atomic_fetch_sub_explicit (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atomic_thread_fence (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_4__*) ; 
- int /*<<< orphan*/  memory_order_acquire ; 
- int /*<<< orphan*/  memory_order_release ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_object_delete (int /*<<< orphan*/ ) ; 
+
+ int VLC_OBJECT (int *) ;
+ TYPE_3__* aout_owner (int *) ;
+ scalar_t__ atomic_fetch_sub_explicit (int *,int,int ) ;
+ int atomic_thread_fence (int ) ;
+ int free (TYPE_4__*) ;
+ int memory_order_acquire ;
+ int memory_order_release ;
+ int vlc_mutex_destroy (int *) ;
+ int vlc_object_delete (int ) ;
 
 void aout_Release(audio_output_t *aout)
 {
@@ -43,7 +43,7 @@ void aout_Release(audio_output_t *aout)
     atomic_thread_fence(memory_order_acquire);
 
     vlc_mutex_destroy (&owner->dev.lock);
-    for (aout_dev_t *dev = owner->dev.list, *next; dev != NULL; dev = next)
+    for (aout_dev_t *dev = owner->dev.list, *next; dev != ((void*)0); dev = next)
     {
         next = dev->next;
         free (dev->name);

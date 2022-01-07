@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  ipid; } ;
-struct ifproxy {TYPE_3__* parent; int /*<<< orphan*/  refs; TYPE_1__ stdobjref; } ;
-struct TYPE_7__ {int /*<<< orphan*/  remoting_mutex; int /*<<< orphan*/  oid; int /*<<< orphan*/  oxid; } ;
-struct TYPE_6__ {scalar_t__ cPrivateRefs; int /*<<< orphan*/  cPublicRefs; int /*<<< orphan*/  ipid; } ;
-typedef  TYPE_2__ REMINTERFACEREF ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  IRemUnknown ;
-typedef  struct ifproxy* HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,struct ifproxy*) ; 
- struct ifproxy* E_UNEXPECTED ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  IRemUnknown_Release (int /*<<< orphan*/ *) ; 
- struct ifproxy* IRemUnknown_RemRelease (int /*<<< orphan*/ *,int,TYPE_2__*) ; 
- int /*<<< orphan*/  InterlockedExchangeAdd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct ifproxy* RPC_E_DISCONNECTED ; 
- int /*<<< orphan*/  ReleaseMutex (int /*<<< orphan*/ ) ; 
- struct ifproxy* S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct ifproxy* proxy_manager_get_remunknown (TYPE_3__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  wine_dbgstr_longlong (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int ipid; } ;
+struct ifproxy {TYPE_3__* parent; int refs; TYPE_1__ stdobjref; } ;
+struct TYPE_7__ {int remoting_mutex; int oid; int oxid; } ;
+struct TYPE_6__ {scalar_t__ cPrivateRefs; int cPublicRefs; int ipid; } ;
+typedef TYPE_2__ REMINTERFACEREF ;
+typedef int LONG ;
+typedef int IRemUnknown ;
+typedef struct ifproxy* HRESULT ;
+
+
+ int ERR (char*,struct ifproxy*) ;
+ struct ifproxy* E_UNEXPECTED ;
+ int INFINITE ;
+ int IRemUnknown_Release (int *) ;
+ struct ifproxy* IRemUnknown_RemRelease (int *,int,TYPE_2__*) ;
+ int InterlockedExchangeAdd (int *,int ) ;
+ struct ifproxy* RPC_E_DISCONNECTED ;
+ int ReleaseMutex (int ) ;
+ struct ifproxy* S_OK ;
+ int TRACE (char*,int ) ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ int WARN (char*,int ,int ) ;
+ scalar_t__ WaitForSingleObject (int ,int ) ;
+ struct ifproxy* proxy_manager_get_remunknown (TYPE_3__*,int **) ;
+ int wine_dbgstr_longlong (int ) ;
 
 __attribute__((used)) static HRESULT ifproxy_release_public_refs(struct ifproxy * This)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static HRESULT ifproxy_release_public_refs(struct ifproxy 
     public_refs = This->refs;
     if (public_refs > 0)
     {
-        IRemUnknown *remunk = NULL;
+        IRemUnknown *remunk = ((void*)0);
 
         TRACE("releasing %d refs\n", public_refs);
 

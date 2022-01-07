@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dictEntry ;
-typedef  int /*<<< orphan*/  dict ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * dictFind (int /*<<< orphan*/ *,void const*) ; 
- void* dictGetVal (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int dictEntry ;
+typedef int dict ;
+
+
+ int * dictFind (int *,void const*) ;
+ void* dictGetVal (int *) ;
 
 void *dictFetchValue(dict *d, const void *key) {
     dictEntry *he;
 
     he = dictFind(d,key);
-    return he ? dictGetVal(he) : NULL;
+    return he ? dictGetVal(he) : ((void*)0);
 }

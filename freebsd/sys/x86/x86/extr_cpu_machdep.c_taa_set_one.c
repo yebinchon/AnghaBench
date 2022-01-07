@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int IA32_TSX_CTRL_RTM_DISABLE ; 
- int IA32_TSX_CTRL_TSX_CPUID_CLEAR ; 
- int /*<<< orphan*/  MSR_IA32_TSX_CTRL ; 
- int /*<<< orphan*/  rdmsr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wrmsr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int IA32_TSX_CTRL_RTM_DISABLE ;
+ int IA32_TSX_CTRL_TSX_CPUID_CLEAR ;
+ int MSR_IA32_TSX_CTRL ;
+ int rdmsr (int ) ;
+ int wrmsr (int ,int ) ;
 
 __attribute__((used)) static void
 taa_set_one(bool enable)
 {
-	uint64_t v;
+ uint64_t v;
 
-	v = rdmsr(MSR_IA32_TSX_CTRL);
-	if (enable)
-		v |= (uint64_t)(IA32_TSX_CTRL_RTM_DISABLE |
-		    IA32_TSX_CTRL_TSX_CPUID_CLEAR);
-	else
-		v &= ~(uint64_t)(IA32_TSX_CTRL_RTM_DISABLE |
-		    IA32_TSX_CTRL_TSX_CPUID_CLEAR);
+ v = rdmsr(MSR_IA32_TSX_CTRL);
+ if (enable)
+  v |= (uint64_t)(IA32_TSX_CTRL_RTM_DISABLE |
+      IA32_TSX_CTRL_TSX_CPUID_CLEAR);
+ else
+  v &= ~(uint64_t)(IA32_TSX_CTRL_RTM_DISABLE |
+      IA32_TSX_CTRL_TSX_CPUID_CLEAR);
 
-	wrmsr(MSR_IA32_TSX_CTRL, v);
+ wrmsr(MSR_IA32_TSX_CTRL, v);
 }

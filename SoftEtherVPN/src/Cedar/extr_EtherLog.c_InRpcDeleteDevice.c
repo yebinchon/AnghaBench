@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  DeviceName; } ;
-typedef  TYPE_1__ RPC_DELETE_DEVICE ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PackGetStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int DeviceName; } ;
+typedef TYPE_1__ RPC_DELETE_DEVICE ;
+typedef int PACK ;
+
+
+ int PackGetStr (int *,char*,int ,int) ;
+ int Zero (TYPE_1__*,int) ;
 
 void InRpcDeleteDevice(RPC_DELETE_DEVICE *t, PACK *p)
 {
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
 
-	Zero(t, sizeof(RPC_DELETE_DEVICE));
-	PackGetStr(p, "DeviceName", t->DeviceName, sizeof(t->DeviceName));
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
+
+ Zero(t, sizeof(RPC_DELETE_DEVICE));
+ PackGetStr(p, "DeviceName", t->DeviceName, sizeof(t->DeviceName));
 }

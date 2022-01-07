@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  block_len; int /*<<< orphan*/ * max_exponent; int /*<<< orphan*/ * exponents; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ WMACodecContext ;
 
-/* Variables and functions */
- int NB_LSP_COEFS ; 
- float** ff_wma_lsp_codebook ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wma_lsp_to_curve (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,float*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int block_len; int * max_exponent; int * exponents; int gb; } ;
+typedef TYPE_1__ WMACodecContext ;
+
+
+ int NB_LSP_COEFS ;
+ float** ff_wma_lsp_codebook ;
+ int get_bits (int *,int) ;
+ int wma_lsp_to_curve (TYPE_1__*,int ,int *,int ,float*) ;
 
 __attribute__((used)) static void decode_exp_lsp(WMACodecContext *s, int ch)
 {

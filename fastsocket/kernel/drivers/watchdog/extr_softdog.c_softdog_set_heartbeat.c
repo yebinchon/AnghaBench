@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int soft_margin ; 
+ int EINVAL ;
+ int soft_margin ;
 
 __attribute__((used)) static int softdog_set_heartbeat(int t)
 {
-	if ((t < 0x0001) || (t > 0xFFFF))
-		return -EINVAL;
+ if ((t < 0x0001) || (t > 0xFFFF))
+  return -EINVAL;
 
-	soft_margin = t;
-	return 0;
+ soft_margin = t;
+ return 0;
 }

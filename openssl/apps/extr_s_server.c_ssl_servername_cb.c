@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uc ;
-struct TYPE_2__ {int extension_error; int /*<<< orphan*/ * biodebug; int /*<<< orphan*/ * servername; } ;
-typedef  TYPE_1__ tlsextctx ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int SSL_TLSEXT_ERR_NOACK ; 
- int SSL_TLSEXT_ERR_OK ; 
- char* SSL_get_servername (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_set_SSL_CTX (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TLSEXT_NAMETYPE_host_name ; 
- int /*<<< orphan*/ * ctx2 ; 
- scalar_t__ isprint (unsigned char) ; 
- scalar_t__ strcasecmp (char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uc ;
+struct TYPE_2__ {int extension_error; int * biodebug; int * servername; } ;
+typedef TYPE_1__ tlsextctx ;
+typedef int SSL ;
+
+
+ int BIO_printf (int *,char*,...) ;
+ int SSL_TLSEXT_ERR_NOACK ;
+ int SSL_TLSEXT_ERR_OK ;
+ char* SSL_get_servername (int *,int ) ;
+ int SSL_set_SSL_CTX (int *,int *) ;
+ int TLSEXT_NAMETYPE_host_name ;
+ int * ctx2 ;
+ scalar_t__ isprint (unsigned char) ;
+ scalar_t__ strcasecmp (char const*,int *) ;
 
 __attribute__((used)) static int ssl_servername_cb(SSL *s, int *ad, void *arg)
 {
     tlsextctx *p = (tlsextctx *) arg;
     const char *servername = SSL_get_servername(s, TLSEXT_NAMETYPE_host_name);
 
-    if (servername != NULL && p->biodebug != NULL) {
+    if (servername != ((void*)0) && p->biodebug != ((void*)0)) {
         const char *cp = servername;
         unsigned char uc;
 
@@ -43,13 +43,13 @@ __attribute__((used)) static int ssl_servername_cb(SSL *s, int *ad, void *arg)
         BIO_printf(p->biodebug, "\"\n");
     }
 
-    if (p->servername == NULL)
+    if (p->servername == ((void*)0))
         return SSL_TLSEXT_ERR_NOACK;
 
-    if (servername != NULL) {
+    if (servername != ((void*)0)) {
         if (strcasecmp(servername, p->servername))
             return p->extension_error;
-        if (ctx2 != NULL) {
+        if (ctx2 != ((void*)0)) {
             BIO_printf(p->biodebug, "Switching server context.\n");
             SSL_set_SSL_CTX(s, ctx2);
         }

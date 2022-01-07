@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  keep_win; scalar_t__ input; scalar_t__ caller; int /*<<< orphan*/  win; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int keep_win; scalar_t__ input; scalar_t__ caller; int win; } ;
 struct TYPE_7__ {int percent; TYPE_3__ obj; } ;
-typedef  TYPE_1__ MY_OBJ ;
-typedef  int /*<<< orphan*/  DIALOG_CALLBACK ;
+typedef TYPE_1__ MY_OBJ ;
+typedef int DIALOG_CALLBACK ;
 
-/* Variables and functions */
- int DLG_EXIT_OK ; 
- int /*<<< orphan*/  DLG_TRACE (char*) ; 
- int /*<<< orphan*/  DLG_TRACE2N (char*,int) ; 
- int /*<<< orphan*/  DLG_TRACE2S (char*,char const*) ; 
- int /*<<< orphan*/  FALSE ; 
- int KEY_RESIZE ; 
- int /*<<< orphan*/  dlg_add_callback_ref (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- void* dlg_allocate_gauge (char const*,char const*,int,int,int) ; 
- int /*<<< orphan*/  dlg_clear () ; 
- int /*<<< orphan*/  dlg_free_gauge (TYPE_1__*) ; 
- int dlg_getc (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  dlg_mouse_free_regions () ; 
- int /*<<< orphan*/  dlg_remove_callback (TYPE_3__*) ; 
- int /*<<< orphan*/  dlg_trace_win (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dlg_update_gauge (TYPE_1__*,int) ; 
- int /*<<< orphan*/  dlg_will_resize (int /*<<< orphan*/ ) ; 
- scalar_t__ handle_my_getc (TYPE_3__*,int,int,int*) ; 
- int /*<<< orphan*/  my_cleanup ; 
- int /*<<< orphan*/  refresh () ; 
- scalar_t__ valid (TYPE_1__*) ; 
+
+ int DLG_EXIT_OK ;
+ int DLG_TRACE (char*) ;
+ int DLG_TRACE2N (char*,int) ;
+ int DLG_TRACE2S (char*,char const*) ;
+ int FALSE ;
+ int KEY_RESIZE ;
+ int dlg_add_callback_ref (int **,int ) ;
+ void* dlg_allocate_gauge (char const*,char const*,int,int,int) ;
+ int dlg_clear () ;
+ int dlg_free_gauge (TYPE_1__*) ;
+ int dlg_getc (int ,int*) ;
+ int dlg_mouse_free_regions () ;
+ int dlg_remove_callback (TYPE_3__*) ;
+ int dlg_trace_win (int ) ;
+ int dlg_update_gauge (TYPE_1__*,int) ;
+ int dlg_will_resize (int ) ;
+ scalar_t__ handle_my_getc (TYPE_3__*,int,int,int*) ;
+ int my_cleanup ;
+ int refresh () ;
+ scalar_t__ valid (TYPE_1__*) ;
 
 int
 dialog_gauge(const char *title,
-	     const char *cprompt,
-	     int height,
-	     int width,
-	     int percent)
+      const char *cprompt,
+      int height,
+      int width,
+      int percent)
 {
     int fkey;
     int ch, result;
@@ -63,34 +63,7 @@ dialog_gauge(const char *title,
 
     dlg_trace_win(obj->obj.win);
     do {
-	ch = dlg_getc(obj->obj.win, &fkey);
-#ifdef KEY_RESIZE
-	if (fkey && ch == KEY_RESIZE) {
-	    MY_OBJ *oldobj = obj;
-
-	    dlg_will_resize(obj->obj.win);
-	    dlg_mouse_free_regions();
-
-	    obj = dlg_allocate_gauge(title,
-				     cprompt,
-				     height,
-				     width,
-				     oldobj->percent);
-
-	    /* avoid breaking new window in dlg_remove_callback */
-	    oldobj->obj.caller = 0;
-	    oldobj->obj.input = 0;
-	    oldobj->obj.keep_win = FALSE;
-
-	    /* remove the old version of the gauge */
-	    dlg_clear();
-	    dlg_remove_callback(&(oldobj->obj));
-	    refresh();
-
-	    dlg_add_callback_ref((DIALOG_CALLBACK **) & obj, my_cleanup);
-	    dlg_update_gauge(obj, obj->percent);
-	}
-#endif
+ ch = dlg_getc(obj->obj.win, &fkey);
     }
     while (valid(obj) && handle_my_getc(&(obj->obj), ch, fkey, &result));
 

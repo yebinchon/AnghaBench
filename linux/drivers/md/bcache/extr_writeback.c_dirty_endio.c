@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct keybuf_key {int /*<<< orphan*/  key; struct dirty_io* private; } ;
-struct dirty_io {int /*<<< orphan*/  cl; int /*<<< orphan*/  dc; } ;
+
+
+
+
+struct keybuf_key {int key; struct dirty_io* private; } ;
+struct dirty_io {int cl; int dc; } ;
 struct bio {scalar_t__ bi_status; struct keybuf_key* bi_private; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SET_KEY_DIRTY (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bch_count_backing_io_errors (int /*<<< orphan*/ ,struct bio*) ; 
- int /*<<< orphan*/  closure_put (int /*<<< orphan*/ *) ; 
+
+ int SET_KEY_DIRTY (int *,int) ;
+ int bch_count_backing_io_errors (int ,struct bio*) ;
+ int closure_put (int *) ;
 
 __attribute__((used)) static void dirty_endio(struct bio *bio)
 {
-	struct keybuf_key *w = bio->bi_private;
-	struct dirty_io *io = w->private;
+ struct keybuf_key *w = bio->bi_private;
+ struct dirty_io *io = w->private;
 
-	if (bio->bi_status) {
-		SET_KEY_DIRTY(&w->key, false);
-		bch_count_backing_io_errors(io->dc, bio);
-	}
+ if (bio->bi_status) {
+  SET_KEY_DIRTY(&w->key, 0);
+  bch_count_backing_io_errors(io->dc, bio);
+ }
 
-	closure_put(&io->cl);
+ closure_put(&io->cl);
 }

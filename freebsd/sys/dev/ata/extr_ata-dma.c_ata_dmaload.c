@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ata_request {int bytecount; int flags; TYPE_2__* dma; int /*<<< orphan*/  parent; int /*<<< orphan*/  data; int /*<<< orphan*/  ccb; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ata_request {int bytecount; int flags; TYPE_2__* dma; int parent; int data; int ccb; } ;
 struct ata_dmasetprd_args {int error; int nsegs; void* dmatab; } ;
-struct TYPE_3__ {int alignment; int max_iosize; int /*<<< orphan*/  setprd; TYPE_2__* slot; } ;
+struct TYPE_3__ {int alignment; int max_iosize; int setprd; TYPE_2__* slot; } ;
 struct ata_channel {TYPE_1__ dma; } ;
-struct TYPE_4__ {int /*<<< orphan*/  data_map; int /*<<< orphan*/  data_tag; int /*<<< orphan*/  sg_map; int /*<<< orphan*/  sg_tag; void* sg; } ;
+struct TYPE_4__ {int data_map; int data_tag; int sg_map; int sg_tag; void* sg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATA_DEBUG_RQ (struct ata_request*,char*) ; 
- int ATA_R_DATA_IN_CCB ; 
- int ATA_R_READ ; 
- int /*<<< orphan*/  BUS_DMASYNC_PREREAD ; 
- int /*<<< orphan*/  BUS_DMASYNC_PREWRITE ; 
- int /*<<< orphan*/  BUS_DMA_NOWAIT ; 
- int EIO ; 
- int /*<<< orphan*/  ata_dmaunload (struct ata_request*) ; 
- int bus_dmamap_load (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct ata_dmasetprd_args*,int /*<<< orphan*/ ) ; 
- int bus_dmamap_load_ccb (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ata_dmasetprd_args*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_sync (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct ata_channel* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,...) ; 
+
+ int ATA_DEBUG_RQ (struct ata_request*,char*) ;
+ int ATA_R_DATA_IN_CCB ;
+ int ATA_R_READ ;
+ int BUS_DMASYNC_PREREAD ;
+ int BUS_DMASYNC_PREWRITE ;
+ int BUS_DMA_NOWAIT ;
+ int EIO ;
+ int ata_dmaunload (struct ata_request*) ;
+ int bus_dmamap_load (int ,int ,int ,int,int ,struct ata_dmasetprd_args*,int ) ;
+ int bus_dmamap_load_ccb (int ,int ,int ,int ,struct ata_dmasetprd_args*,int ) ;
+ int bus_dmamap_sync (int ,int ,int ) ;
+ struct ata_channel* device_get_softc (int ) ;
+ int device_printf (int ,char*,...) ;
 
 __attribute__((used)) static int
 ata_dmaload(struct ata_request *request, void *addr, int *entries)
@@ -43,57 +43,57 @@ ata_dmaload(struct ata_request *request, void *addr, int *entries)
     ATA_DEBUG_RQ(request, "dmaload");
 
     if (request->dma) {
-	device_printf(request->parent,
-		      "FAILURE - already active DMA on this device\n");
-	return EIO;
+ device_printf(request->parent,
+        "FAILURE - already active DMA on this device\n");
+ return EIO;
     }
     if (!request->bytecount) {
-	device_printf(request->parent,
-		      "FAILURE - zero length DMA transfer attempted\n");
-	return EIO;
+ device_printf(request->parent,
+        "FAILURE - zero length DMA transfer attempted\n");
+ return EIO;
     }
     if (request->bytecount & (ch->dma.alignment - 1)) {
-	device_printf(request->parent,
-		      "FAILURE - odd-sized DMA transfer attempt %d %% %d\n",
-		      request->bytecount, ch->dma.alignment);
-	return EIO;
+ device_printf(request->parent,
+        "FAILURE - odd-sized DMA transfer attempt %d %% %d\n",
+        request->bytecount, ch->dma.alignment);
+ return EIO;
     }
     if (request->bytecount > ch->dma.max_iosize) {
-	device_printf(request->parent,
-		      "FAILURE - oversized DMA transfer attempt %d > %d\n",
-		      request->bytecount, ch->dma.max_iosize);
-	return EIO;
+ device_printf(request->parent,
+        "FAILURE - oversized DMA transfer attempt %d > %d\n",
+        request->bytecount, ch->dma.max_iosize);
+ return EIO;
     }
 
-    /* set our slot. XXX SOS NCQ will change that */
+
     request->dma = &ch->dma.slot[0];
 
     if (addr)
-	dspa.dmatab = addr;
+ dspa.dmatab = addr;
     else
-	dspa.dmatab = request->dma->sg;
+ dspa.dmatab = request->dma->sg;
 
     if (request->flags & ATA_R_DATA_IN_CCB)
         error = bus_dmamap_load_ccb(request->dma->data_tag,
-				request->dma->data_map, request->ccb,
-				ch->dma.setprd, &dspa, BUS_DMA_NOWAIT);
+    request->dma->data_map, request->ccb,
+    ch->dma.setprd, &dspa, BUS_DMA_NOWAIT);
     else
         error = bus_dmamap_load(request->dma->data_tag, request->dma->data_map,
-				request->data, request->bytecount,
-				ch->dma.setprd, &dspa, BUS_DMA_NOWAIT);
+    request->data, request->bytecount,
+    ch->dma.setprd, &dspa, BUS_DMA_NOWAIT);
     if (error || (error = dspa.error)) {
-	device_printf(request->parent, "FAILURE - load data\n");
-	goto error;
+ device_printf(request->parent, "FAILURE - load data\n");
+ goto error;
     }
 
     if (entries)
-	*entries = dspa.nsegs;
+ *entries = dspa.nsegs;
 
     bus_dmamap_sync(request->dma->sg_tag, request->dma->sg_map,
-		    BUS_DMASYNC_PREWRITE);
+      BUS_DMASYNC_PREWRITE);
     bus_dmamap_sync(request->dma->data_tag, request->dma->data_map,
-		    (request->flags & ATA_R_READ) ?
-		    BUS_DMASYNC_PREREAD : BUS_DMASYNC_PREWRITE);
+      (request->flags & ATA_R_READ) ?
+      BUS_DMASYNC_PREREAD : BUS_DMASYNC_PREWRITE);
     return 0;
 
 error:

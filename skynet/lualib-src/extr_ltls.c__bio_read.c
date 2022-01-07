@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tls_context {int /*<<< orphan*/  out_bio; } ;
-typedef  int /*<<< orphan*/  outbuff ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
 
-/* Variables and functions */
- int BIO_ctrl_pending (int /*<<< orphan*/ ) ; 
- int BIO_read (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
+
+
+
+struct tls_context {int out_bio; } ;
+typedef int outbuff ;
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+
+
+ int BIO_ctrl_pending (int ) ;
+ int BIO_read (int ,char*,int) ;
+ int luaL_addlstring (int *,char const*,int) ;
+ int luaL_buffinit (int *,int *) ;
+ int luaL_error (int *,char*,int) ;
+ int luaL_pushresult (int *) ;
 
 __attribute__((used)) static int
 _bio_read(lua_State* L, struct tls_context* tls_p) {
@@ -34,7 +34,7 @@ _bio_read(lua_State* L, struct tls_context* tls_p) {
         luaL_buffinit(L, &b);
         while(pending > 0) {
             read = BIO_read(tls_p->out_bio, outbuff, sizeof(outbuff));
-            // printf("BIO_read read:%d pending:%d\n", read, pending);
+
             if(read <= 0) {
                 luaL_error(L, "BIO_read error:%d", read);
             }else if(read <= sizeof(outbuff)) {

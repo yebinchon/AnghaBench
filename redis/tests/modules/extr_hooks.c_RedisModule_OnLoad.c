@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_APIVER_1 ; 
- scalar_t__ REDISMODULE_ERR ; 
- int /*<<< orphan*/  REDISMODULE_NOT_USED (int) ; 
- int REDISMODULE_OK ; 
- int /*<<< orphan*/  RedisModuleEvent_ClientChange ; 
- int /*<<< orphan*/  RedisModuleEvent_CronLoop ; 
- int /*<<< orphan*/  RedisModuleEvent_FlushDB ; 
- int /*<<< orphan*/  RedisModuleEvent_Loading ; 
- int /*<<< orphan*/  RedisModuleEvent_LoadingProgress ; 
- int /*<<< orphan*/  RedisModuleEvent_MasterLinkChange ; 
- int /*<<< orphan*/  RedisModuleEvent_ModuleChange ; 
- int /*<<< orphan*/  RedisModuleEvent_Persistence ; 
- int /*<<< orphan*/  RedisModuleEvent_ReplicaChange ; 
- int /*<<< orphan*/  RedisModuleEvent_ReplicationRoleChanged ; 
- int /*<<< orphan*/  RedisModuleEvent_Shutdown ; 
- scalar_t__ RedisModule_CreateCommand (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_CreateDict (int /*<<< orphan*/ *) ; 
- scalar_t__ RedisModule_Init (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_SubscribeToServerEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clientChangeCallback ; 
- int /*<<< orphan*/  cmdEventCount ; 
- int /*<<< orphan*/  cmdEventLast ; 
- int /*<<< orphan*/  cmdEventsClear ; 
- int /*<<< orphan*/  cronLoopCallback ; 
- int /*<<< orphan*/  event_log ; 
- int /*<<< orphan*/  flushdbCallback ; 
- int /*<<< orphan*/  loadingCallback ; 
- int /*<<< orphan*/  loadingProgressCallback ; 
- int /*<<< orphan*/  moduleChangeCallback ; 
- int /*<<< orphan*/  persistenceCallback ; 
- int /*<<< orphan*/  rasterLinkChangeCallback ; 
- int /*<<< orphan*/  replicationChangeCallback ; 
- int /*<<< orphan*/  roleChangeCallback ; 
- int /*<<< orphan*/  shutdownCallback ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ int REDISMODULE_APIVER_1 ;
+ scalar_t__ REDISMODULE_ERR ;
+ int REDISMODULE_NOT_USED (int) ;
+ int REDISMODULE_OK ;
+ int RedisModuleEvent_ClientChange ;
+ int RedisModuleEvent_CronLoop ;
+ int RedisModuleEvent_FlushDB ;
+ int RedisModuleEvent_Loading ;
+ int RedisModuleEvent_LoadingProgress ;
+ int RedisModuleEvent_MasterLinkChange ;
+ int RedisModuleEvent_ModuleChange ;
+ int RedisModuleEvent_Persistence ;
+ int RedisModuleEvent_ReplicaChange ;
+ int RedisModuleEvent_ReplicationRoleChanged ;
+ int RedisModuleEvent_Shutdown ;
+ scalar_t__ RedisModule_CreateCommand (int *,char*,int ,char*,int ,int ,int ) ;
+ int RedisModule_CreateDict (int *) ;
+ scalar_t__ RedisModule_Init (int *,char*,int,int ) ;
+ int RedisModule_SubscribeToServerEvent (int *,int ,int ) ;
+ int clientChangeCallback ;
+ int cmdEventCount ;
+ int cmdEventLast ;
+ int cmdEventsClear ;
+ int cronLoopCallback ;
+ int event_log ;
+ int flushdbCallback ;
+ int loadingCallback ;
+ int loadingProgressCallback ;
+ int moduleChangeCallback ;
+ int persistenceCallback ;
+ int rasterLinkChangeCallback ;
+ int replicationChangeCallback ;
+ int roleChangeCallback ;
+ int shutdownCallback ;
 
 int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     REDISMODULE_NOT_USED(argv);
@@ -56,7 +56,7 @@ int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) 
     if (RedisModule_Init(ctx,"testhook",1,REDISMODULE_APIVER_1)
         == REDISMODULE_ERR) return REDISMODULE_ERR;
 
-    /* replication related hooks */
+
     RedisModule_SubscribeToServerEvent(ctx,
         RedisModuleEvent_ReplicationRoleChanged, roleChangeCallback);
     RedisModule_SubscribeToServerEvent(ctx,
@@ -64,7 +64,7 @@ int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) 
     RedisModule_SubscribeToServerEvent(ctx,
         RedisModuleEvent_MasterLinkChange, rasterLinkChangeCallback);
 
-    /* persistence related hooks */
+
     RedisModule_SubscribeToServerEvent(ctx,
         RedisModuleEvent_Persistence, persistenceCallback);
     RedisModule_SubscribeToServerEvent(ctx,
@@ -72,7 +72,7 @@ int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) 
     RedisModule_SubscribeToServerEvent(ctx,
         RedisModuleEvent_LoadingProgress, loadingProgressCallback);
 
-    /* other hooks */
+
     RedisModule_SubscribeToServerEvent(ctx,
         RedisModuleEvent_ClientChange, clientChangeCallback);
     RedisModule_SubscribeToServerEvent(ctx,

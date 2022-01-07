@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  IOC_INPUT_TEST (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZFS_IOC_CHANGE_KEY ; 
+ int EINVAL ;
+ int IOC_INPUT_TEST (int ,char const*,int *,int *,int ) ;
+ int ZFS_IOC_CHANGE_KEY ;
 
 __attribute__((used)) static void
 test_change_key(const char *dataset)
 {
-	IOC_INPUT_TEST(ZFS_IOC_CHANGE_KEY, dataset, NULL, NULL, EINVAL);
+ IOC_INPUT_TEST(ZFS_IOC_CHANGE_KEY, dataset, ((void*)0), ((void*)0), EINVAL);
 }

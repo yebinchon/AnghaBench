@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sample_t {int* values; int min; int max; } ;
 
-/* Variables and functions */
+
 
 void update_sample(struct sample_t *sample, int sample_new) {
   int sample_size = sizeof(sample->values) / sizeof(sample->values[0]);
@@ -21,7 +21,7 @@ void update_sample(struct sample_t *sample, int sample_new) {
   }
   sample->values[0] = sample_new;
 
-  // get the minimum and maximum measured samples
+
   sample->min = sample->values[0];
   sample->max = sample->values[0];
   for (int i = 1; i < sample_size; i++) {

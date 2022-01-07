@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  data ;
-struct TYPE_7__ {int /*<<< orphan*/  buffer_start; } ;
-struct TYPE_5__ {int /*<<< orphan*/  buffer_end; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int data ;
+struct TYPE_7__ {int buffer_start; } ;
+struct TYPE_5__ {int buffer_end; } ;
 struct TYPE_6__ {TYPE_1__ send_array; TYPE_4__ recv_array; } ;
-typedef  int /*<<< orphan*/  Net_Crypto ;
-typedef  TYPE_2__ Crypto_Connection ;
+typedef int Net_Crypto ;
+typedef TYPE_2__ Crypto_Connection ;
 
-/* Variables and functions */
- int MAX_CRYPTO_DATA_SIZE ; 
- int generate_request_packet (int /*<<< orphan*/ *,int,TYPE_4__*) ; 
- TYPE_2__* get_crypto_connection (int /*<<< orphan*/ *,int) ; 
- int send_data_packet_helper (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int MAX_CRYPTO_DATA_SIZE ;
+ int generate_request_packet (int *,int,TYPE_4__*) ;
+ TYPE_2__* get_crypto_connection (int *,int) ;
+ int send_data_packet_helper (int *,int,int ,int ,int *,int) ;
 
 __attribute__((used)) static int send_request_packet(Net_Crypto *c, int crypt_connection_id)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct st_quicly_handle_payload_state_t {int /*<<< orphan*/  end; int /*<<< orphan*/  src; } ;
-struct TYPE_5__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-struct TYPE_4__ {TYPE_3__ reason_phrase; int /*<<< orphan*/  frame_type; int /*<<< orphan*/  error_code; } ;
-typedef  TYPE_1__ quicly_transport_close_frame_t ;
-typedef  int /*<<< orphan*/  quicly_conn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUICLY_ERROR_FROM_TRANSPORT_ERROR_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QUICLY_PROBE (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QUICLY_PROBE_ESCAPE_UNSAFE_STRING (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRANSPORT_CLOSE_RECEIVE ; 
- int handle_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__) ; 
- int /*<<< orphan*/  probe_now () ; 
- int quicly_decode_transport_close_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct st_quicly_handle_payload_state_t {int end; int src; } ;
+struct TYPE_5__ {int len; int base; } ;
+struct TYPE_4__ {TYPE_3__ reason_phrase; int frame_type; int error_code; } ;
+typedef TYPE_1__ quicly_transport_close_frame_t ;
+typedef int quicly_conn_t ;
+
+
+ int QUICLY_ERROR_FROM_TRANSPORT_ERROR_CODE (int ) ;
+ int QUICLY_PROBE (int ,int *,int ,int ,int ,int ) ;
+ int QUICLY_PROBE_ESCAPE_UNSAFE_STRING (int ,int ) ;
+ int TRANSPORT_CLOSE_RECEIVE ;
+ int handle_close (int *,int ,int ,TYPE_3__) ;
+ int probe_now () ;
+ int quicly_decode_transport_close_frame (int *,int ,TYPE_1__*) ;
 
 __attribute__((used)) static int handle_transport_close_frame(quicly_conn_t *conn, struct st_quicly_handle_payload_state_t *state)
 {

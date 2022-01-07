@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct agp_i810_softc {int /*<<< orphan*/  bdev; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- struct agp_i810_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  intel_agp ; 
+
+
+
+struct agp_i810_softc {int bdev; } ;
+typedef int device_t ;
+
+
+ struct agp_i810_softc* device_get_softc (int ) ;
+ int intel_agp ;
 
 device_t
 intel_gtt_get_bridge_device(void)
 {
-	struct agp_i810_softc *sc;
+ struct agp_i810_softc *sc;
 
-	sc = device_get_softc(intel_agp);
-	return (sc->bdev);
+ sc = device_get_softc(intel_agp);
+ return (sc->bdev);
 }

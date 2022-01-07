@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int num; int denom; } ;
-typedef  TYPE_1__ tjscalingfactor ;
-typedef  int /*<<< orphan*/  tjhandle ;
+typedef TYPE_1__ tjscalingfactor ;
+typedef int tjhandle ;
 
-/* Variables and functions */
- int TJFLAG_BOTTOMUP ; 
- int TJSCALED (int,TYPE_1__) ; 
- int /*<<< orphan*/  _throw (char*) ; 
- int /*<<< orphan*/  _throwtj () ; 
- int /*<<< orphan*/  _tj (int /*<<< orphan*/ ) ; 
- scalar_t__ checkBuf (unsigned char*,int,int,int,int,TYPE_1__,int) ; 
- scalar_t__ checkBufYUV (unsigned char*,int,int,int,TYPE_1__) ; 
- scalar_t__ doYUV ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- scalar_t__ malloc (unsigned long) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  pad ; 
- char** pixFormatStr ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char** subNameLong ; 
- unsigned long tjBufSizeYUV2 (int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  tjDecodeYUV (int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ,int,unsigned char*,int,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  tjDecompress2 (int /*<<< orphan*/ ,unsigned char*,unsigned long,unsigned char*,int,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  tjDecompressHeader2 (int /*<<< orphan*/ ,unsigned char*,unsigned long,int*,int*,int*) ; 
- int /*<<< orphan*/  tjDecompressToYUV2 (int /*<<< orphan*/ ,unsigned char*,unsigned long,unsigned char*,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  tjDestroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tjInitDecompress () ; 
- int* tjPixelSize ; 
+
+ int TJFLAG_BOTTOMUP ;
+ int TJSCALED (int,TYPE_1__) ;
+ int _throw (char*) ;
+ int _throwtj () ;
+ int _tj (int ) ;
+ scalar_t__ checkBuf (unsigned char*,int,int,int,int,TYPE_1__,int) ;
+ scalar_t__ checkBufYUV (unsigned char*,int,int,int,TYPE_1__) ;
+ scalar_t__ doYUV ;
+ int free (unsigned char*) ;
+ scalar_t__ malloc (unsigned long) ;
+ int memset (unsigned char*,int ,unsigned long) ;
+ int pad ;
+ char** pixFormatStr ;
+ int printf (char*,...) ;
+ char** subNameLong ;
+ unsigned long tjBufSizeYUV2 (int,int ,int,int) ;
+ int tjDecodeYUV (int ,unsigned char*,int ,int,unsigned char*,int,int ,int,int,int) ;
+ int tjDecompress2 (int ,unsigned char*,unsigned long,unsigned char*,int,int ,int,int,int) ;
+ int tjDecompressHeader2 (int ,unsigned char*,unsigned long,int*,int*,int*) ;
+ int tjDecompressToYUV2 (int ,unsigned char*,unsigned long,unsigned char*,int,int ,int,int) ;
+ int tjDestroy (int ) ;
+ int tjInitDecompress () ;
+ int* tjPixelSize ;
 
 void _decompTest(tjhandle handle, unsigned char *jpegBuf,
                  unsigned long jpegSize, int w, int h, int pf, char *basename,
                  int subsamp, int flags, tjscalingfactor sf)
 {
-  unsigned char *dstBuf = NULL, *yuvBuf = NULL;
+  unsigned char *dstBuf = ((void*)0), *yuvBuf = ((void*)0);
   int _hdrw = 0, _hdrh = 0, _hdrsubsamp = -1;
   int scaledWidth = TJSCALED(w, sf);
   int scaledHeight = TJSCALED(h, sf);
@@ -56,7 +56,7 @@ void _decompTest(tjhandle handle, unsigned char *jpegBuf,
     _throw("Incorrect JPEG header");
 
   dstSize = scaledWidth * scaledHeight * tjPixelSize[pf];
-  if ((dstBuf = (unsigned char *)malloc(dstSize)) == NULL)
+  if ((dstBuf = (unsigned char *)malloc(dstSize)) == ((void*)0))
     _throw("Memory allocation failure");
   memset(dstBuf, 0, dstSize);
 
@@ -67,7 +67,7 @@ void _decompTest(tjhandle handle, unsigned char *jpegBuf,
 
     if (!handle2) _throwtj();
 
-    if ((yuvBuf = (unsigned char *)malloc(yuvSize)) == NULL)
+    if ((yuvBuf = (unsigned char *)malloc(yuvSize)) == ((void*)0))
       _throw("Memory allocation failure");
     memset(yuvBuf, 0, yuvSize);
 

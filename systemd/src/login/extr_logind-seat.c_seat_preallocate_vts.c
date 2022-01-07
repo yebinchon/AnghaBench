@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned int n_autovts; struct TYPE_5__* manager; } ;
-typedef  TYPE_1__ Seat ;
+typedef TYPE_1__ Seat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int log_error_errno (int,char*,unsigned int) ; 
- int /*<<< orphan*/  seat_has_vts (TYPE_1__*) ; 
- int vt_allocate (unsigned int) ; 
+
+ int assert (TYPE_1__*) ;
+ int log_debug (char*) ;
+ int log_error_errno (int,char*,unsigned int) ;
+ int seat_has_vts (TYPE_1__*) ;
+ int vt_allocate (unsigned int) ;
 
 int seat_preallocate_vts(Seat *s) {
         int r = 0;

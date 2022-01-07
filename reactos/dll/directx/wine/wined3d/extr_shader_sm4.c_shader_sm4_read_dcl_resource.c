@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct wined3d_sm4_data {int dummy; } ;
-struct TYPE_3__ {void* resource_data_type; int /*<<< orphan*/  reg; void* resource_type; } ;
+struct TYPE_3__ {void* resource_data_type; int reg; void* resource_type; } ;
 struct TYPE_4__ {TYPE_1__ semantic; } ;
 struct wined3d_shader_instruction {scalar_t__ flags; TYPE_2__ declaration; } ;
-typedef  enum wined3d_sm4_resource_type { ____Placeholder_wined3d_sm4_resource_type } wined3d_sm4_resource_type ;
-typedef  enum wined3d_sm4_data_type { ____Placeholder_wined3d_sm4_data_type } wined3d_sm4_data_type ;
-typedef  enum wined3d_data_type { ____Placeholder_wined3d_data_type } wined3d_data_type ;
-typedef  scalar_t__ DWORD ;
+typedef enum wined3d_sm4_resource_type { ____Placeholder_wined3d_sm4_resource_type } wined3d_sm4_resource_type ;
+typedef enum wined3d_sm4_data_type { ____Placeholder_wined3d_sm4_data_type } wined3d_sm4_data_type ;
+typedef enum wined3d_data_type { ____Placeholder_wined3d_data_type } wined3d_data_type ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (void**) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- void* WINED3D_DATA_FLOAT ; 
- int WINED3D_DATA_RESOURCE ; 
- int WINED3D_DATA_UAV ; 
- void* WINED3D_SHADER_RESOURCE_NONE ; 
- scalar_t__ WINED3D_SM4_OP_DCL_RESOURCE ; 
- scalar_t__ WINED3D_SM4_RESOURCE_TYPE_MASK ; 
- scalar_t__ WINED3D_SM4_RESOURCE_TYPE_SHIFT ; 
- scalar_t__ WINED3D_SM5_UAV_FLAGS_MASK ; 
- scalar_t__ WINED3D_SM5_UAV_FLAGS_SHIFT ; 
- void** data_type_table ; 
- void** resource_type_table ; 
- int /*<<< orphan*/  shader_sm4_read_dst_param (struct wined3d_sm4_data*,scalar_t__ const**,scalar_t__ const*,int,int /*<<< orphan*/ *) ; 
+
+ int ARRAY_SIZE (void**) ;
+ int FIXME (char*,int) ;
+ void* WINED3D_DATA_FLOAT ;
+ int WINED3D_DATA_RESOURCE ;
+ int WINED3D_DATA_UAV ;
+ void* WINED3D_SHADER_RESOURCE_NONE ;
+ scalar_t__ WINED3D_SM4_OP_DCL_RESOURCE ;
+ scalar_t__ WINED3D_SM4_RESOURCE_TYPE_MASK ;
+ scalar_t__ WINED3D_SM4_RESOURCE_TYPE_SHIFT ;
+ scalar_t__ WINED3D_SM5_UAV_FLAGS_MASK ;
+ scalar_t__ WINED3D_SM5_UAV_FLAGS_SHIFT ;
+ void** data_type_table ;
+ void** resource_type_table ;
+ int shader_sm4_read_dst_param (struct wined3d_sm4_data*,scalar_t__ const**,scalar_t__ const*,int,int *) ;
 
 __attribute__((used)) static void shader_sm4_read_dcl_resource(struct wined3d_shader_instruction *ins,
         DWORD opcode, DWORD opcode_token, const DWORD *tokens, unsigned int token_count,

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int buf ;
 struct TYPE_4__ {long long vm_size; long long vm_rss; long long vm_data; long long mem_free; long long swap_total; long long swap_free; long long swap_used; } ;
-typedef  TYPE_1__ am_memory_stat_t ;
+typedef TYPE_1__ am_memory_stat_t ;
 
-/* Variables and functions */
- int AM_GET_MEMORY_USAGE_OVERALL ; 
- int AM_GET_MEMORY_USAGE_SELF ; 
- scalar_t__ am_get_memory_usage (int /*<<< orphan*/ ,long long*,int) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ read_whole_file (char*,char*,int) ; 
- int sscanf (char*,char*,char*,long long*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strtok (char*,char*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
+
+ int AM_GET_MEMORY_USAGE_OVERALL ;
+ int AM_GET_MEMORY_USAGE_SELF ;
+ scalar_t__ am_get_memory_usage (int ,long long*,int) ;
+ int getpid () ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ read_whole_file (char*,char*,int) ;
+ int sscanf (char*,char*,char*,long long*,char*) ;
+ int strcmp (char*,char*) ;
+ char* strtok (char*,char*) ;
+ int vkprintf (int,char*,char*) ;
 
 int am_get_memory_stats (am_memory_stat_t *S, int flags) {
   if (!flags) {
@@ -52,7 +52,7 @@ int am_get_memory_stats (am_memory_stat_t *S, int flags) {
     char key[32], suffix[32];
     long long value;
     int r = 0;
-    for (p = strtok (buf, "\n"); p != NULL; p = strtok (NULL, "\n")) {
+    for (p = strtok (buf, "\n"); p != ((void*)0); p = strtok (((void*)0), "\n")) {
       if (sscanf (p, "%31s%lld%31s", key, &value, suffix) == 3 && !strcmp (suffix, "kB")) {
         if (!strcmp (key, "MemFree:")) {
           S->mem_free = value << 10;

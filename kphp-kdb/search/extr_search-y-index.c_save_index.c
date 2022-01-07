@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  replica_prefix; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  build_pairs_from_text () ; 
- int /*<<< orphan*/  build_word_lists () ; 
- scalar_t__ close (int /*<<< orphan*/ ) ; 
- TYPE_1__* engine_snapshot_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ fsync (int /*<<< orphan*/ ) ; 
- char* get_new_snapshot_name (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- int /*<<< orphan*/  log_cur_pos () ; 
- int /*<<< orphan*/  open_file (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  print_snapshot_name (char*) ; 
- scalar_t__ rename_temporary_snapshot (char*) ; 
- int /*<<< orphan*/  set_read_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_write_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sort_items () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  unlink (char*) ; 
- int /*<<< orphan*/  write_header0 () ; 
- int /*<<< orphan*/  write_header1 () ; 
- int /*<<< orphan*/  write_text () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int replica_prefix; } ;
+
+
+ int assert (int) ;
+ int build_pairs_from_text () ;
+ int build_word_lists () ;
+ scalar_t__ close (int ) ;
+ TYPE_1__* engine_snapshot_replica ;
+ int exit (int) ;
+ int * fd ;
+ int fprintf (int ,char*) ;
+ scalar_t__ fsync (int ) ;
+ char* get_new_snapshot_name (TYPE_1__*,int ,int ) ;
+ int kprintf (char*,char*) ;
+ int log_cur_pos () ;
+ int open_file (int ,char*,int) ;
+ int print_snapshot_name (char*) ;
+ scalar_t__ rename_temporary_snapshot (char*) ;
+ int set_read_file (int ) ;
+ int set_write_file (int ) ;
+ int sort_items () ;
+ int stderr ;
+ int unlink (char*) ;
+ int write_header0 () ;
+ int write_header1 () ;
+ int write_text () ;
 
 void save_index (void) {
-  char *newidxname = NULL;
+  char *newidxname = ((void*)0);
   if (engine_snapshot_replica) {
     newidxname = get_new_snapshot_name (engine_snapshot_replica, log_cur_pos(), engine_snapshot_replica->replica_prefix);
   }

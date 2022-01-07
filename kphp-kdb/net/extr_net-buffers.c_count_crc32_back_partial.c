@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int pptr; int unprocessed_bytes; int total_bytes; scalar_t__ wptr; scalar_t__ rptr; struct TYPE_3__* next; struct TYPE_3__* prev; } ;
-typedef  TYPE_1__ netbuffer_t ;
+typedef TYPE_1__ netbuffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- unsigned int crc32_partial (int,int,unsigned int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int assert (int) ;
+ unsigned int crc32_partial (int,int,unsigned int) ;
+ int fprintf (int ,char*,int,int) ;
+ int stderr ;
 
 unsigned count_crc32_back_partial (netbuffer_t *H, int len, unsigned complement_crc32) {
   netbuffer_t *X = H->prev;
@@ -45,5 +45,5 @@ unsigned count_crc32_back_partial (netbuffer_t *H, int len, unsigned complement_
     complement_crc32 = crc32_partial ((X->pptr ? X->pptr : X->rptr), X->wptr - (X->pptr ? X->pptr : X->rptr), complement_crc32);
     X = X->next;
   }
-  return complement_crc32;  
+  return complement_crc32;
 }

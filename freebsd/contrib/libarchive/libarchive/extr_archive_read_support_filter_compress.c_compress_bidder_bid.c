@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct archive_read_filter_bidder {int dummy; } ;
 struct archive_read_filter {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- unsigned char* __archive_read_filter_ahead (struct archive_read_filter*,int,int /*<<< orphan*/ *) ; 
+
+ unsigned char* __archive_read_filter_ahead (struct archive_read_filter*,int,int *) ;
 
 __attribute__((used)) static int
 compress_bidder_bid(struct archive_read_filter_bidder *self,
     struct archive_read_filter *filter)
 {
-	const unsigned char *buffer;
-	ssize_t avail;
-	int bits_checked;
+ const unsigned char *buffer;
+ ssize_t avail;
+ int bits_checked;
 
-	(void)self; /* UNUSED */
+ (void)self;
 
-	/* Shortest valid compress file is 3 bytes. */
-	buffer = __archive_read_filter_ahead(filter, 3, &avail);
 
-	if (buffer == NULL)
-		return (0);
+ buffer = __archive_read_filter_ahead(filter, 3, &avail);
 
-	bits_checked = 0;
-	/* First two bytes are the magic value */
-	if (buffer[0] != 0x1F || buffer[1] != 0x9D)
-		return (0);
-	/* Third byte holds compression parameters. */
-	if (buffer[2] & 0x20) /* Reserved bit, must be zero. */
-		return (0);
-	if (buffer[2] & 0x40) /* Reserved bit, must be zero. */
-		return (0);
-	bits_checked += 18;
+ if (buffer == ((void*)0))
+  return (0);
 
-	return (bits_checked);
+ bits_checked = 0;
+
+ if (buffer[0] != 0x1F || buffer[1] != 0x9D)
+  return (0);
+
+ if (buffer[2] & 0x20)
+  return (0);
+ if (buffer[2] & 0x40)
+  return (0);
+ bits_checked += 18;
+
+ return (bits_checked);
 }

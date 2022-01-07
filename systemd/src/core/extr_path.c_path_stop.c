@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_6__ {int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ Path ;
 
-/* Variables and functions */
- TYPE_1__* IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* PATH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PATH_RUNNING ; 
- int /*<<< orphan*/  PATH_SUCCESS ; 
- int /*<<< orphan*/  PATH_WAITING ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  path_enter_dead (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_6__ {int state; } ;
+typedef TYPE_1__ Path ;
+
+
+ TYPE_1__* IN_SET (int ,int ,int ) ;
+ TYPE_1__* PATH (int *) ;
+ int PATH_RUNNING ;
+ int PATH_SUCCESS ;
+ int PATH_WAITING ;
+ int assert (TYPE_1__*) ;
+ int path_enter_dead (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int path_stop(Unit *u) {
         Path *p = PATH(u);

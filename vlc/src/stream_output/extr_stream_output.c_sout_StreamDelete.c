@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  p_cfg; int /*<<< orphan*/  psz_name; int /*<<< orphan*/ * p_module; scalar_t__ pace_nocontrol; } ;
-typedef  TYPE_1__ sout_stream_t ;
-struct TYPE_9__ {int /*<<< orphan*/  i_out_pace_nocontrol; } ;
-typedef  TYPE_2__ sout_instance_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREENULL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_ChainDestroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  module_unneed (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  vlc_object_delete (TYPE_1__*) ; 
- scalar_t__ vlc_object_parent (TYPE_1__*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int p_cfg; int psz_name; int * p_module; scalar_t__ pace_nocontrol; } ;
+typedef TYPE_1__ sout_stream_t ;
+struct TYPE_9__ {int i_out_pace_nocontrol; } ;
+typedef TYPE_2__ sout_instance_t ;
+
+
+ int FREENULL (int ) ;
+ int config_ChainDestroy (int ) ;
+ int module_unneed (TYPE_1__*,int *) ;
+ int msg_Dbg (TYPE_1__*,char*,...) ;
+ int vlc_object_delete (TYPE_1__*) ;
+ scalar_t__ vlc_object_parent (TYPE_1__*) ;
 
 __attribute__((used)) static void sout_StreamDelete( sout_stream_t *p_stream )
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static void sout_StreamDelete( sout_stream_t *p_stream )
 
     p_sout->i_out_pace_nocontrol -= p_stream->pace_nocontrol;
 
-    if( p_stream->p_module != NULL )
+    if( p_stream->p_module != ((void*)0) )
         module_unneed( p_stream, p_stream->p_module );
 
     FREENULL( p_stream->psz_name );

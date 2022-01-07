@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int next_time; char* key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int GET_TIME_ID (int /*<<< orphan*/ ) ; 
- int MAX_TIME_GAP ; 
- size_t TIME_TABLE_SIZE ; 
- int /*<<< orphan*/  del_entry (size_t) ; 
- TYPE_1__* entry_buffer ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*,int) ; 
- int /*<<< orphan*/  get_utime (int /*<<< orphan*/ ) ; 
- size_t last_del_time ; 
- int /*<<< orphan*/  stderr ; 
- int* time_st ; 
- scalar_t__ verbosity ; 
+
+ int CLOCK_MONOTONIC ;
+ int GET_TIME_ID (int ) ;
+ int MAX_TIME_GAP ;
+ size_t TIME_TABLE_SIZE ;
+ int del_entry (size_t) ;
+ TYPE_1__* entry_buffer ;
+ int fprintf (int ,char*,int,char*,int) ;
+ int get_utime (int ) ;
+ size_t last_del_time ;
+ int stderr ;
+ int* time_st ;
+ scalar_t__ verbosity ;
 
 void free_by_time (int mx) {
   int en = GET_TIME_ID (get_utime (CLOCK_MONOTONIC)), st = time_st[last_del_time];

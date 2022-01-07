@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Size ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  BTPageOpaqueData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PageInit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int Size ;
+typedef int Page ;
+typedef int BTPageOpaqueData ;
+
+
+ int PageInit (int ,int ,int) ;
 
 void
 _bt_pageinit(Page page, Size size)
 {
-	PageInit(page, size, sizeof(BTPageOpaqueData));
+ PageInit(page, size, sizeof(BTPageOpaqueData));
 }

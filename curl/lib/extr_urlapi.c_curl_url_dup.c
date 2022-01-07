@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Curl_URL {int /*<<< orphan*/  portnum; } ;
-typedef  struct Curl_URL CURLU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DUP (struct Curl_URL*,struct Curl_URL*,int /*<<< orphan*/ ) ; 
- struct Curl_URL* calloc (int,int) ; 
- int /*<<< orphan*/  curl_url_cleanup (struct Curl_URL*) ; 
- int /*<<< orphan*/  fragment ; 
- int /*<<< orphan*/  host ; 
- int /*<<< orphan*/  options ; 
- int /*<<< orphan*/  password ; 
- int /*<<< orphan*/  path ; 
- int /*<<< orphan*/  port ; 
- int /*<<< orphan*/  query ; 
- int /*<<< orphan*/  scheme ; 
- int /*<<< orphan*/  user ; 
+
+
+
+struct Curl_URL {int portnum; } ;
+typedef struct Curl_URL CURLU ;
+
+
+ int DUP (struct Curl_URL*,struct Curl_URL*,int ) ;
+ struct Curl_URL* calloc (int,int) ;
+ int curl_url_cleanup (struct Curl_URL*) ;
+ int fragment ;
+ int host ;
+ int options ;
+ int password ;
+ int path ;
+ int port ;
+ int query ;
+ int scheme ;
+ int user ;
 
 CURLU *curl_url_dup(CURLU *in)
 {
@@ -45,5 +45,5 @@ CURLU *curl_url_dup(CURLU *in)
   return u;
   fail:
   curl_url_cleanup(u);
-  return NULL;
+  return ((void*)0);
 }

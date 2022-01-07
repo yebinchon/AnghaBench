@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMMouseEvent ;
-typedef  int /*<<< orphan*/  nsIDOMEvent ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int INT16 ;
-typedef  int /*<<< orphan*/  HTMLElement ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_nsIDOMMouseEvent ; 
- scalar_t__ NS_OK ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  navigate_href (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  navigate_href_new_window (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- scalar_t__ nsIDOMEvent_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ nsIDOMMouseEvent_GetButton (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  nsIDOMMouseEvent_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ nsresult ;
+typedef int nsIDOMMouseEvent ;
+typedef int nsIDOMEvent ;
+typedef int nsAString ;
+typedef int INT16 ;
+typedef int HTMLElement ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int IID_nsIDOMMouseEvent ;
+ scalar_t__ NS_OK ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int TRUE ;
+ int assert (int) ;
+ int navigate_href (int *,int *,int *) ;
+ int navigate_href_new_window (int *,int *,int *) ;
+ int nsAString_Finish (int *) ;
+ scalar_t__ nsIDOMEvent_QueryInterface (int *,int *,void**) ;
+ scalar_t__ nsIDOMMouseEvent_GetButton (int *,int*) ;
+ int nsIDOMMouseEvent_Release (int *) ;
 
 HRESULT handle_link_click_event(HTMLElement *element, nsAString *href_str, nsAString *target_str,
                                 nsIDOMEvent *event, BOOL *prevent_default)
@@ -59,7 +59,7 @@ HRESULT handle_link_click_event(HTMLElement *element, nsAString *href_str, nsASt
         break;
     case 1:
         *prevent_default = TRUE;
-        hres = navigate_href_new_window(element, href_str, NULL);
+        hres = navigate_href_new_window(element, href_str, ((void*)0));
         break;
     default:
         *prevent_default = FALSE;

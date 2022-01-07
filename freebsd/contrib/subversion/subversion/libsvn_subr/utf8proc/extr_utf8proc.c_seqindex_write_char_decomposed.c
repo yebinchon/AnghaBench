@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int utf8proc_uint16_t ;
-typedef  int utf8proc_ssize_t ;
-typedef  int /*<<< orphan*/  utf8proc_option_t ;
-typedef  int /*<<< orphan*/  utf8proc_int32_t ;
 
-/* Variables and functions */
- int UTF8PROC_ERROR_OVERFLOW ; 
- int /*<<< orphan*/  seqindex_decode_entry (int const**) ; 
- int utf8proc_decompose_char (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int*) ; 
- int* utf8proc_sequences ; 
+
+
+
+typedef int utf8proc_uint16_t ;
+typedef int utf8proc_ssize_t ;
+typedef int utf8proc_option_t ;
+typedef int utf8proc_int32_t ;
+
+
+ int UTF8PROC_ERROR_OVERFLOW ;
+ int seqindex_decode_entry (int const**) ;
+ int utf8proc_decompose_char (int ,int *,int,int ,int*) ;
+ int* utf8proc_sequences ;
 
 __attribute__((used)) static utf8proc_ssize_t seqindex_write_char_decomposed(utf8proc_uint16_t seqindex, utf8proc_int32_t *dst, utf8proc_ssize_t bufsize, utf8proc_option_t options, int *last_boundclass) {
   utf8proc_ssize_t written = 0;

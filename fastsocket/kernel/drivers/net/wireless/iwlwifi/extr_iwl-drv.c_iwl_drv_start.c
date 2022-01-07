@@ -1,87 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iwl_trans {void* dbgfs_drv; void* dbgfs_dir; struct iwl_trans* trans; int /*<<< orphan*/  dev; int /*<<< orphan*/  list; int /*<<< orphan*/  request_firmware_complete; struct iwl_cfg const* cfg; } ;
-struct iwl_drv {void* dbgfs_drv; void* dbgfs_dir; struct iwl_drv* trans; int /*<<< orphan*/  dev; int /*<<< orphan*/  list; int /*<<< orphan*/  request_firmware_complete; struct iwl_cfg const* cfg; } ;
+
+
+
+
+struct iwl_trans {void* dbgfs_drv; void* dbgfs_dir; struct iwl_trans* trans; int dev; int list; int request_firmware_complete; struct iwl_cfg const* cfg; } ;
+struct iwl_drv {void* dbgfs_drv; void* dbgfs_dir; struct iwl_drv* trans; int dev; int list; int request_firmware_complete; struct iwl_cfg const* cfg; } ;
 struct iwl_cfg {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- struct iwl_trans* ERR_PTR (int) ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWL_ERR (struct iwl_trans*,char*) ; 
- void* debugfs_create_dir (char*,void*) ; 
- int /*<<< orphan*/  debugfs_remove_recursive (void*) ; 
- char* dev_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- void* iwl_dbgfs_root ; 
- int iwl_request_firmware (struct iwl_trans*,int) ; 
- int /*<<< orphan*/  kfree (struct iwl_trans*) ; 
- struct iwl_trans* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ struct iwl_trans* ERR_PTR (int) ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int IWL_ERR (struct iwl_trans*,char*) ;
+ void* debugfs_create_dir (char*,void*) ;
+ int debugfs_remove_recursive (void*) ;
+ char* dev_name (int ) ;
+ int init_completion (int *) ;
+ void* iwl_dbgfs_root ;
+ int iwl_request_firmware (struct iwl_trans*,int) ;
+ int kfree (struct iwl_trans*) ;
+ struct iwl_trans* kzalloc (int,int ) ;
 
 struct iwl_drv *iwl_drv_start(struct iwl_trans *trans,
-			      const struct iwl_cfg *cfg)
+         const struct iwl_cfg *cfg)
 {
-	struct iwl_drv *drv;
-	int ret;
+ struct iwl_drv *drv;
+ int ret;
 
-	drv = kzalloc(sizeof(*drv), GFP_KERNEL);
-	if (!drv)
-		return NULL;
+ drv = kzalloc(sizeof(*drv), GFP_KERNEL);
+ if (!drv)
+  return ((void*)0);
 
-	drv->trans = trans;
-	drv->dev = trans->dev;
-	drv->cfg = cfg;
+ drv->trans = trans;
+ drv->dev = trans->dev;
+ drv->cfg = cfg;
 
-	init_completion(&drv->request_firmware_complete);
-	INIT_LIST_HEAD(&drv->list);
+ init_completion(&drv->request_firmware_complete);
+ INIT_LIST_HEAD(&drv->list);
+ ret = iwl_request_firmware(drv, 1);
+ if (ret) {
+  IWL_ERR(trans, "Couldn't request the fw\n");
+  goto err_fw;
+ }
 
-#ifdef CONFIG_IWLWIFI_DEBUGFS
-	/* Create the device debugfs entries. */
-	drv->dbgfs_drv = debugfs_create_dir(dev_name(trans->dev),
-					    iwl_dbgfs_root);
-
-	if (!drv->dbgfs_drv) {
-		IWL_ERR(drv, "failed to create debugfs directory\n");
-		ret = -ENOMEM;
-		goto err_free_drv;
-	}
-
-	/* Create transport layer debugfs dir */
-	drv->trans->dbgfs_dir = debugfs_create_dir("trans", drv->dbgfs_drv);
-
-	if (!drv->trans->dbgfs_dir) {
-		IWL_ERR(drv, "failed to create transport debugfs directory\n");
-		ret = -ENOMEM;
-		goto err_free_dbgfs;
-	}
-#endif
-
-	ret = iwl_request_firmware(drv, true);
-	if (ret) {
-		IWL_ERR(trans, "Couldn't request the fw\n");
-		goto err_fw;
-	}
-
-	return drv;
+ return drv;
 
 err_fw:
-#ifdef CONFIG_IWLWIFI_DEBUGFS
-err_free_dbgfs:
-	debugfs_remove_recursive(drv->dbgfs_drv);
-err_free_drv:
-#endif
-	kfree(drv);
 
-	return ERR_PTR(ret);
+
+
+
+
+ kfree(drv);
+
+ return ERR_PTR(ret);
 }

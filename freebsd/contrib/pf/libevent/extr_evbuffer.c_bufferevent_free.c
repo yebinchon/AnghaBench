@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bufferevent {int /*<<< orphan*/  output; int /*<<< orphan*/  input; int /*<<< orphan*/  ev_write; int /*<<< orphan*/  ev_read; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  evbuffer_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  event_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct bufferevent*) ; 
+
+
+
+struct bufferevent {int output; int input; int ev_write; int ev_read; } ;
+
+
+ int evbuffer_free (int ) ;
+ int event_del (int *) ;
+ int free (struct bufferevent*) ;
 
 void
 bufferevent_free(struct bufferevent *bufev)
 {
-	event_del(&bufev->ev_read);
-	event_del(&bufev->ev_write);
+ event_del(&bufev->ev_read);
+ event_del(&bufev->ev_write);
 
-	evbuffer_free(bufev->input);
-	evbuffer_free(bufev->output);
+ evbuffer_free(bufev->input);
+ evbuffer_free(bufev->output);
 
-	free(bufev);
+ free(bufev);
 }

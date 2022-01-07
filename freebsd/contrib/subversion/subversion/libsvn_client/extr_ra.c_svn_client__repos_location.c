@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-struct TYPE_5__ {int /*<<< orphan*/  repos_uuid; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  rev; int /*<<< orphan*/  url; } ;
-typedef  TYPE_1__ svn_client__pathrev_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * repos_locations (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__ensure_ra_session_url (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_client__pathrev_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_reparent (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+struct TYPE_5__ {int repos_uuid; int repos_root_url; int rev; int url; } ;
+typedef TYPE_1__ svn_client__pathrev_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int * repos_locations (char const**,int *,int *,int ,int ,int ,int ,int ,int *,int *) ;
+ int svn_client__ensure_ra_session_url (char const**,int *,int ,int *) ;
+ TYPE_1__* svn_client__pathrev_create (int ,int ,int ,char const*,int *) ;
+ int svn_error_compose_create (int *,int ) ;
+ int svn_ra_reparent (int *,char const*,int *) ;
 
 svn_error_t *
 svn_client__repos_location(svn_client__pathrev_t **op_loc_p,
@@ -44,7 +44,7 @@ svn_client__repos_location(svn_client__pathrev_t **op_loc_p,
 
   SVN_ERR(svn_client__ensure_ra_session_url(&old_session_url, ra_session,
                                             peg_loc->url, scratch_pool));
-  err = repos_locations(&op_url, NULL, ra_session,
+  err = repos_locations(&op_url, ((void*)0), ra_session,
                         peg_loc->url, peg_loc->rev,
                         op_revnum, SVN_INVALID_REVNUM, SVN_INVALID_REVNUM,
                         result_pool, scratch_pool);

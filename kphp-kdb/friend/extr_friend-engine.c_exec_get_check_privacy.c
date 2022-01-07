@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
-typedef  int /*<<< orphan*/  privacy_key_t ;
+typedef int privacy_key_t ;
 
-/* Variables and functions */
- int check_privacy (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int /*<<< orphan*/ ,int) ; 
- int parse_privacy_key (char const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,char*,int) ; 
- int sscanf (char const*,char*,int*,int*,int*) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int check_privacy (int,int,int ) ;
+ int fprintf (int ,char*,int,int,int ,int) ;
+ int parse_privacy_key (char const*,int *,int) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int sscanf (char const*,char*,int*,int*,int*) ;
+ char* stats_buff ;
+ int stderr ;
+ int verbosity ;
 
 void exec_get_check_privacy (struct connection *c, const char *str, int len) {
   int checker_id, user_id, i, j, k;

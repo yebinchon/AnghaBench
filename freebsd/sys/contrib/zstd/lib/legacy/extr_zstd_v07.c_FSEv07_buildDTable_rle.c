@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ fastMode; scalar_t__ tableLog; } ;
-struct TYPE_3__ {scalar_t__ nbBits; int /*<<< orphan*/  symbol; scalar_t__ newState; } ;
-typedef  TYPE_1__ FSEv07_decode_t ;
-typedef  TYPE_2__ FSEv07_DTableHeader ;
-typedef  int /*<<< orphan*/  FSEv07_DTable ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_3__ {scalar_t__ nbBits; int symbol; scalar_t__ newState; } ;
+typedef TYPE_1__ FSEv07_decode_t ;
+typedef TYPE_2__ FSEv07_DTableHeader ;
+typedef int FSEv07_DTable ;
+typedef int BYTE ;
 
-/* Variables and functions */
+
 
 size_t FSEv07_buildDTable_rle (FSEv07_DTable* dt, BYTE symbolValue)
 {

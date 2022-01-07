@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ name; } ;
-typedef  TYPE_1__ type_t ;
+typedef TYPE_1__ type_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  strcmp (scalar_t__,scalar_t__) ; 
- scalar_t__ type_get_type_detect_alias (TYPE_1__ const*) ; 
+
+ int FALSE ;
+ int strcmp (scalar_t__,scalar_t__) ;
+ scalar_t__ type_get_type_detect_alias (TYPE_1__ const*) ;
 
 int type_is_equal(const type_t *type1, const type_t *type2)
 {
@@ -29,7 +29,7 @@ int type_is_equal(const type_t *type1, const type_t *type2)
     else if ((!type1->name && type2->name) || (type1->name && !type2->name))
         return FALSE;
 
-    /* FIXME: do deep inspection of types to determine if they are equal */
+
 
     return FALSE;
 }

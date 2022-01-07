@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int nCol; int* aiCol; } ;
 struct TYPE_10__ {scalar_t__ rc; TYPE_1__* pConfig; } ;
 struct TYPE_9__ {int nCol; } ;
-typedef  TYPE_2__ Fts5Parse ;
-typedef  TYPE_3__ Fts5Colset ;
+typedef TYPE_2__ Fts5Parse ;
+typedef TYPE_3__ Fts5Colset ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_NOMEM ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_3__* sqlite3_realloc64 (TYPE_3__*,int) ; 
+
+ scalar_t__ SQLITE_NOMEM ;
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ TYPE_3__* sqlite3_realloc64 (TYPE_3__*,int) ;
 
 __attribute__((used)) static Fts5Colset *fts5ParseColset(
-  Fts5Parse *pParse,              /* Store SQLITE_NOMEM here if required */
-  Fts5Colset *p,                  /* Existing colset object */
-  int iCol                        /* New column to add to colset object */
+  Fts5Parse *pParse,
+  Fts5Colset *p,
+  int iCol
 ){
-  int nCol = p ? p->nCol : 0;     /* Num. columns already in colset object */
-  Fts5Colset *pNew;               /* New colset object to return */
+  int nCol = p ? p->nCol : 0;
+  Fts5Colset *pNew;
 
   assert( pParse->rc==SQLITE_OK );
   assert( iCol>=0 && iCol<pParse->pConfig->nCol );
@@ -52,10 +52,10 @@ __attribute__((used)) static Fts5Colset *fts5ParseColset(
     aiCol[i] = iCol;
     pNew->nCol = nCol+1;
 
-#ifndef NDEBUG
-    /* Check that the array is in order and contains no duplicate entries. */
+
+
     for(i=1; i<pNew->nCol; i++) assert( pNew->aiCol[i]>pNew->aiCol[i-1] );
-#endif
+
   }
 
   return pNew;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_rendertarget_view {int dummy; } ;
-struct d3d9_surface {struct wined3d_rendertarget_view* wined3d_rtv; int /*<<< orphan*/  rtv_entry; TYPE_1__* texture; int /*<<< orphan*/  IDirect3DSurface9_iface; int /*<<< orphan*/  sub_resource_idx; int /*<<< orphan*/  wined3d_texture; } ;
-struct TYPE_2__ {int /*<<< orphan*/  rtv_list; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct d3d9_surface {struct wined3d_rendertarget_view* wined3d_rtv; int rtv_entry; TYPE_1__* texture; int IDirect3DSurface9_iface; int sub_resource_idx; int wined3d_texture; } ;
+struct TYPE_2__ {int rtv_list; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3d9_surface_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  d3d9_surface_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  d3d9_view_wined3d_parent_ops ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wined3d_rendertarget_view_create_from_sub_resource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct d3d9_surface*,int /*<<< orphan*/ *,struct wined3d_rendertarget_view**) ; 
+
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int d3d9_surface_AddRef (int *) ;
+ int d3d9_surface_Release (int *) ;
+ int d3d9_view_wined3d_parent_ops ;
+ int list_add_head (int *,int *) ;
+ int wined3d_rendertarget_view_create_from_sub_resource (int ,int ,struct d3d9_surface*,int *,struct wined3d_rendertarget_view**) ;
 
 struct wined3d_rendertarget_view *d3d9_surface_acquire_rendertarget_view(struct d3d9_surface *surface)
 {
     HRESULT hr;
 
-    /* The surface reference count can be equal to 0 when this function is
-     * called. In order to properly manage the render target view reference
-     * count, we temporarily increment the surface reference count. */
+
+
+
     d3d9_surface_AddRef(&surface->IDirect3DSurface9_iface);
 
     if (surface->wined3d_rtv)
@@ -42,7 +42,7 @@ struct wined3d_rendertarget_view *d3d9_surface_acquire_rendertarget_view(struct 
     {
         ERR("Failed to create rendertarget view, hr %#x.\n", hr);
         d3d9_surface_Release(&surface->IDirect3DSurface9_iface);
-        return NULL;
+        return ((void*)0);
     }
 
     if (surface->texture)

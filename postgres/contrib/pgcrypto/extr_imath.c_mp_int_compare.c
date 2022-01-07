@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ mp_sign ;
-typedef  int /*<<< orphan*/ * mp_int ;
 
-/* Variables and functions */
- scalar_t__ MP_SIGN (int /*<<< orphan*/ *) ; 
- scalar_t__ MP_ZPOS ; 
- int /*<<< orphan*/  assert (int) ; 
- int s_ucmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ mp_sign ;
+typedef int * mp_int ;
+
+
+ scalar_t__ MP_SIGN (int *) ;
+ scalar_t__ MP_ZPOS ;
+ int assert (int) ;
+ int s_ucmp (int *,int *) ;
 
 int
 mp_int_compare(mp_int a, mp_int b)
 {
-	assert(a != NULL && b != NULL);
+ assert(a != ((void*)0) && b != ((void*)0));
 
-	mp_sign		sa = MP_SIGN(a);
+ mp_sign sa = MP_SIGN(a);
 
-	if (sa == MP_SIGN(b))
-	{
-		int			cmp = s_ucmp(a, b);
+ if (sa == MP_SIGN(b))
+ {
+  int cmp = s_ucmp(a, b);
 
-		/*
-		 * If they're both zero or positive, the normal comparison applies; if
-		 * both negative, the sense is reversed.
-		 */
-		if (sa == MP_ZPOS)
-		{
-			return cmp;
-		}
-		else
-		{
-			return -cmp;
-		}
-	}
-	else if (sa == MP_ZPOS)
-	{
-		return 1;
-	}
-	else
-	{
-		return -1;
-	}
+
+
+
+
+  if (sa == MP_ZPOS)
+  {
+   return cmp;
+  }
+  else
+  {
+   return -cmp;
+  }
+ }
+ else if (sa == MP_ZPOS)
+ {
+  return 1;
+ }
+ else
+ {
+  return -1;
+ }
 }

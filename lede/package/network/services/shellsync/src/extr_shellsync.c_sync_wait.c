@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct timespec {int /*<<< orphan*/  tv_sec; } ;
-typedef  int /*<<< orphan*/  sem_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_REALTIME ; 
- scalar_t__ ETIMEDOUT ; 
- int O_CREAT ; 
- int O_RDWR ; 
- int /*<<< orphan*/  SEM_BLOCK_NAME ; 
- int /*<<< orphan*/  SEM_COUNT_NAME ; 
- int /*<<< orphan*/ * SEM_FAILED ; 
- int clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sem_close (int /*<<< orphan*/ *) ; 
- scalar_t__ sem_getvalue (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * sem_open (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sem_post (int /*<<< orphan*/ *) ; 
- scalar_t__ sem_timedwait (int /*<<< orphan*/ *,struct timespec*) ; 
- int /*<<< orphan*/  sem_unlink (int /*<<< orphan*/ ) ; 
- scalar_t__ wait_timeout ; 
+
+
+
+struct timespec {int tv_sec; } ;
+typedef int sem_t ;
+
+
+ int CLOCK_REALTIME ;
+ scalar_t__ ETIMEDOUT ;
+ int O_CREAT ;
+ int O_RDWR ;
+ int SEM_BLOCK_NAME ;
+ int SEM_COUNT_NAME ;
+ int * SEM_FAILED ;
+ int clock_gettime (int ,struct timespec*) ;
+ scalar_t__ errno ;
+ int printf (char*,...) ;
+ int sem_close (int *) ;
+ scalar_t__ sem_getvalue (int *,int*) ;
+ int * sem_open (int ,int,int,int ) ;
+ scalar_t__ sem_post (int *) ;
+ scalar_t__ sem_timedwait (int *,struct timespec*) ;
+ int sem_unlink (int ) ;
+ scalar_t__ wait_timeout ;
 
 int sync_wait(int nproc)
 {
     int flags;
     int value;
-    sem_t *block; 
+    sem_t *block;
     sem_t *count;
     struct timespec ts;
 

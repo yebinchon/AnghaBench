@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  pb; TYPE_2__** streams; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int pb; TYPE_2__** streams; } ;
 struct TYPE_12__ {TYPE_1__* codecpar; } ;
-struct TYPE_11__ {int /*<<< orphan*/  codecpar; } ;
-struct TYPE_10__ {int sample_rate; void* channels; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_11__ {int codecpar; } ;
+struct TYPE_10__ {int sample_rate; void* channels; int codec_id; int codec_type; } ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CODEC_ID_ADPCM_ADX ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- TYPE_3__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- void* avio_r8 (int /*<<< orphan*/ ) ; 
- unsigned int avio_rb16 (int /*<<< orphan*/ ) ; 
- int avio_rb32 (int /*<<< orphan*/ ) ; 
- scalar_t__ avio_rl32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int,int) ; 
- int /*<<< orphan*/  ff_get_extradata (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CODEC_ID_ADPCM_ADX ;
+ int ENOMEM ;
+ scalar_t__ MKTAG (char,char,char,char) ;
+ int SEEK_SET ;
+ TYPE_3__* avformat_new_stream (TYPE_4__*,int *) ;
+ void* avio_r8 (int ) ;
+ unsigned int avio_rb16 (int ) ;
+ int avio_rb32 (int ) ;
+ scalar_t__ avio_rl32 (int ) ;
+ int avio_seek (int ,unsigned int,int ) ;
+ int avio_skip (int ,int) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int,int) ;
+ int ff_get_extradata (TYPE_4__*,int ,int ,unsigned int) ;
 
 __attribute__((used)) static int aix_read_header(AVFormatContext *s)
 {
@@ -63,14 +63,14 @@ __attribute__((used)) static int aix_read_header(AVFormatContext *s)
         return AVERROR_INVALIDDATA;
     avio_skip(s->pb, 7);
     for (i = 0; i < nb_streams; i++) {
-        AVStream *st = avformat_new_stream(s, NULL);
+        AVStream *st = avformat_new_stream(s, ((void*)0));
 
         if (!st)
             return AVERROR(ENOMEM);
-        st->codecpar->codec_type  = AVMEDIA_TYPE_AUDIO;
-        st->codecpar->codec_id    = AV_CODEC_ID_ADPCM_ADX;
+        st->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
+        st->codecpar->codec_id = AV_CODEC_ID_ADPCM_ADX;
         st->codecpar->sample_rate = avio_rb32(s->pb);
-        st->codecpar->channels    = avio_r8(s->pb);
+        st->codecpar->channels = avio_r8(s->pb);
         avpriv_set_pts_info(st, 64, 1, st->codecpar->sample_rate);
         avio_skip(s->pb, 3);
     }

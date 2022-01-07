@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* str; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVBPrint ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVBPrint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_bprint_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  avio_feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_line_to_bprint_escaped (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int av_bprint_clear (TYPE_1__*) ;
+ int avio_feof (int *) ;
+ int read_line_to_bprint_escaped (int *,TYPE_1__*) ;
 
 __attribute__((used)) static void get_bprint_line(AVIOContext *s, AVBPrint *bp)
 {

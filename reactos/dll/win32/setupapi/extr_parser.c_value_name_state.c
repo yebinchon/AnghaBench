@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct parser {int* start; } ;
-typedef  int WCHAR ;
+typedef int WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMMENT ; 
- int /*<<< orphan*/  EOL_BACKSLASH ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LEADING_SPACES ; 
- int /*<<< orphan*/  LINE_START ; 
- int /*<<< orphan*/  QUOTES ; 
- int /*<<< orphan*/  TRAILING_SPACES ; 
- int /*<<< orphan*/  VALUE_NAME ; 
- int /*<<< orphan*/  add_field_from_token (struct parser*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_eol (struct parser*,int const*) ; 
- int /*<<< orphan*/  isspaceW (int const) ; 
- int /*<<< orphan*/  push_state (struct parser*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_token (struct parser*,int const*) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+ int COMMENT ;
+ int EOL_BACKSLASH ;
+ int FALSE ;
+ int LEADING_SPACES ;
+ int LINE_START ;
+ int QUOTES ;
+ int TRAILING_SPACES ;
+ int VALUE_NAME ;
+ int add_field_from_token (struct parser*,int ) ;
+ int is_eol (struct parser*,int const*) ;
+ int isspaceW (int const) ;
+ int push_state (struct parser*,int ) ;
+ int push_token (struct parser*,int const*) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static const WCHAR *value_name_state( struct parser *parser, const WCHAR *pos )
 {
@@ -39,13 +39,13 @@ __attribute__((used)) static const WCHAR *value_name_state( struct parser *parse
         {
         case ';':
             push_token( parser, token_end );
-            if (!add_field_from_token( parser, FALSE )) return NULL;
+            if (!add_field_from_token( parser, FALSE )) return ((void*)0);
             push_state( parser, LINE_START );
             set_state( parser, COMMENT );
             return p + 1;
         case ',':
             push_token( parser, token_end );
-            if (!add_field_from_token( parser, FALSE )) return NULL;
+            if (!add_field_from_token( parser, FALSE )) return ((void*)0);
             parser->start = p + 1;
             push_state( parser, VALUE_NAME );
             set_state( parser, LEADING_SPACES );
@@ -75,7 +75,7 @@ __attribute__((used)) static const WCHAR *value_name_state( struct parser *parse
         }
     }
     push_token( parser, token_end );
-    if (!add_field_from_token( parser, FALSE )) return NULL;
+    if (!add_field_from_token( parser, FALSE )) return ((void*)0);
     set_state( parser, LINE_START );
     return p;
 }

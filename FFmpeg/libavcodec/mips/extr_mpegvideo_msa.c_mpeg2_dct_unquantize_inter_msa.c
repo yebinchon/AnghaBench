@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  int v4i32 ;
-typedef  int /*<<< orphan*/  v16u8 ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  const int16_t ;
 
-/* Variables and functions */
- scalar_t__ HADD_SW_S32 (int) ; 
- int /*<<< orphan*/  LD_SH4 (int /*<<< orphan*/  const*,int,int,int,int,int) ; 
- int /*<<< orphan*/  ST_SH (int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  UNPCK_SH_SW (int,int,int) ; 
- scalar_t__ __msa_bmnz_v (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int __msa_ceqi_h (int,int /*<<< orphan*/ ) ; 
- int __msa_clti_s_h (int,int /*<<< orphan*/ ) ; 
- int __msa_fill_h (int) ; 
- int __msa_hadd_s_w (int,int) ; 
- int __msa_pckev_h (int,int) ; 
+
+
+
+typedef int v8i16 ;
+typedef int v4i32 ;
+typedef int v16u8 ;
+typedef int int32_t ;
+typedef int const int16_t ;
+
+
+ scalar_t__ HADD_SW_S32 (int) ;
+ int LD_SH4 (int const*,int,int,int,int,int) ;
+ int ST_SH (int,int const*) ;
+ int UNPCK_SH_SW (int,int,int) ;
+ scalar_t__ __msa_bmnz_v (int ,int ,int ) ;
+ int __msa_ceqi_h (int,int ) ;
+ int __msa_clti_s_h (int,int ) ;
+ int __msa_fill_h (int) ;
+ int __msa_hadd_s_w (int,int) ;
+ int __msa_pckev_h (int,int) ;
 
 __attribute__((used)) static int32_t mpeg2_dct_unquantize_inter_msa(int16_t *block,
                                               int32_t qscale,

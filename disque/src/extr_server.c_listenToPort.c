@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int bindaddr_count; char** bindaddr; int /*<<< orphan*/  neterr; int /*<<< orphan*/  tcp_backlog; } ;
 
-/* Variables and functions */
- int ANET_ERR ; 
- int C_ERR ; 
- int C_OK ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  anetNonBlock (int /*<<< orphan*/ *,int) ; 
- int anetTcp6Server (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ) ; 
- int anetTcpServer (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ strchr (char*,char) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int bindaddr_count; char** bindaddr; int neterr; int tcp_backlog; } ;
+
+
+ int ANET_ERR ;
+ int C_ERR ;
+ int C_OK ;
+ int LL_WARNING ;
+ int anetNonBlock (int *,int) ;
+ int anetTcp6Server (int ,int,char*,int ) ;
+ int anetTcpServer (int ,int,char*,int ) ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,char*,int,int ) ;
+ scalar_t__ strchr (char*,char) ;
 
 int listenToPort(int port, int *fds, int *count) {
     int j;
 
-    /* Force binding of 0.0.0.0 if no bind address is specified, always
-     * entering the loop if j == 0. */
-    if (server.bindaddr_count == 0) server.bindaddr[0] = NULL;
+
+
+    if (server.bindaddr_count == 0) server.bindaddr[0] = ((void*)0);
     for (j = 0; j < server.bindaddr_count || j == 0; j++) {
-        if (server.bindaddr[j] == NULL) {
-            /* Bind * for both IPv6 and IPv4, we enter here only if
-             * server.bindaddr_count == 0. */
-            fds[*count] = anetTcp6Server(server.neterr,port,NULL,
+        if (server.bindaddr[j] == ((void*)0)) {
+
+
+            fds[*count] = anetTcp6Server(server.neterr,port,((void*)0),
                 server.tcp_backlog);
             if (fds[*count] != ANET_ERR) {
-                anetNonBlock(NULL,fds[*count]);
+                anetNonBlock(((void*)0),fds[*count]);
                 (*count)++;
             }
-            fds[*count] = anetTcpServer(server.neterr,port,NULL,
+            fds[*count] = anetTcpServer(server.neterr,port,((void*)0),
                 server.tcp_backlog);
             if (fds[*count] != ANET_ERR) {
-                anetNonBlock(NULL,fds[*count]);
+                anetNonBlock(((void*)0),fds[*count]);
                 (*count)++;
             }
-            /* Exit the loop if we were able to bind * on IPv4 or IPv6,
-             * otherwise fds[*count] will be ANET_ERR and we'll print an
-             * error and return to the caller with an error. */
+
+
+
             if (*count) break;
         } else if (strchr(server.bindaddr[j],':')) {
-            /* Bind IPv6 address. */
+
             fds[*count] = anetTcp6Server(server.neterr,port,server.bindaddr[j],
                 server.tcp_backlog);
         } else {
-            /* Bind IPv4 address. */
+
             fds[*count] = anetTcpServer(server.neterr,port,server.bindaddr[j],
                 server.tcp_backlog);
         }
@@ -67,7 +67,7 @@ int listenToPort(int port, int *fds, int *count) {
                 port, server.neterr);
             return C_ERR;
         }
-        anetNonBlock(NULL,fds[*count]);
+        anetNonBlock(((void*)0),fds[*count]);
         (*count)++;
     }
     return C_OK;

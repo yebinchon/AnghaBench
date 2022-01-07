@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int lineno; int /*<<< orphan*/ * in; } ;
-typedef  TYPE_1__ ShellState ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- char* find_home_dir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  process_input (TYPE_1__*) ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ stdin_is_interactive ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int lineno; int * in; } ;
+typedef TYPE_1__ ShellState ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ char* find_home_dir (int ) ;
+ int * fopen (char const*,char*) ;
+ int process_input (TYPE_1__*) ;
+ int raw_printf (int ,char*) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char*) ;
+ int stderr ;
+ scalar_t__ stdin_is_interactive ;
+ int utf8_printf (int ,char*,char const*) ;
 
 __attribute__((used)) static void process_sqliterc(
-  ShellState *p,                  /* Configuration data */
-  const char *sqliterc_override   /* Name of config file. NULL to use default */
+  ShellState *p,
+  const char *sqliterc_override
 ){
-  char *home_dir = NULL;
+  char *home_dir = ((void*)0);
   const char *sqliterc = sqliterc_override;
   char *zBuf = 0;
   FILE *inSaved = p->in;
   int savedLineno = p->lineno;
 
-  if (sqliterc == NULL) {
+  if (sqliterc == ((void*)0)) {
     home_dir = find_home_dir(0);
     if( home_dir==0 ){
       raw_printf(stderr, "-- warning: cannot find home directory;"

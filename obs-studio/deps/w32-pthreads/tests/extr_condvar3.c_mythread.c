@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cv ; 
- char** error_string ; 
- int /*<<< orphan*/  mutex ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int pthread_cond_signal (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shared ; 
+ int assert (int) ;
+ int cv ;
+ char** error_string ;
+ int mutex ;
+ int printf (char*,char*) ;
+ int pthread_cond_signal (int *) ;
+ scalar_t__ pthread_mutex_lock (int *) ;
+ scalar_t__ pthread_mutex_unlock (int *) ;
+ int shared ;
 
 void *
 mythread(void * arg)

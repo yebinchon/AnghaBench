@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned int active_seq_parameter_set_id; } ;
-typedef  TYPE_1__ HEVCSEI ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ HEVCSEI ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- unsigned int HEVC_MAX_SPS_COUNT ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  get_bits (int /*<<< orphan*/ *,int) ; 
- void* get_ue_golomb_long (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ unsigned int HEVC_MAX_SPS_COUNT ;
+ int av_log (void*,int ,char*,unsigned int) ;
+ int get_bits (int *,int) ;
+ void* get_ue_golomb_long (int *) ;
 
 __attribute__((used)) static int decode_nal_sei_active_parameter_sets(HEVCSEI *s, GetBitContext *gb, void *logctx)
 {
@@ -29,10 +29,10 @@ __attribute__((used)) static int decode_nal_sei_active_parameter_sets(HEVCSEI *s
     int i;
     unsigned active_seq_parameter_set_id;
 
-    get_bits(gb, 4); // active_video_parameter_set_id
-    get_bits(gb, 1); // self_contained_cvs_flag
-    get_bits(gb, 1); // num_sps_ids_minus1
-    num_sps_ids_minus1 = get_ue_golomb_long(gb); // num_sps_ids_minus1
+    get_bits(gb, 4);
+    get_bits(gb, 1);
+    get_bits(gb, 1);
+    num_sps_ids_minus1 = get_ue_golomb_long(gb);
 
     if (num_sps_ids_minus1 < 0 || num_sps_ids_minus1 > 15) {
         av_log(logctx, AV_LOG_ERROR, "num_sps_ids_minus1 %d invalid\n", num_sps_ids_minus1);
@@ -47,7 +47,7 @@ __attribute__((used)) static int decode_nal_sei_active_parameter_sets(HEVCSEI *s
     s->active_seq_parameter_set_id = active_seq_parameter_set_id;
 
     for (i = 1; i <= num_sps_ids_minus1; i++)
-        get_ue_golomb_long(gb); // active_seq_parameter_set_id[i]
+        get_ue_golomb_long(gb);
 
     return 0;
 }

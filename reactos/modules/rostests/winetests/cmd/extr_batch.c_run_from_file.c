@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  UnmapViewOfFile (char const*) ; 
- int /*<<< orphan*/  map_file (char const*,char const**) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  run_test (char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
+
+
+
+typedef int DWORD ;
+
+
+ int GetLastError () ;
+ int MAX_PATH ;
+ int UnmapViewOfFile (char const*) ;
+ int map_file (char const*,char const**) ;
+ int ok (int ,char*,char const*,int ) ;
+ int run_test (char const*,int ,char const*,int ) ;
+ int sprintf (char*,char*,char const*) ;
 
 __attribute__((used)) static void run_from_file(const char *file_name)
 {

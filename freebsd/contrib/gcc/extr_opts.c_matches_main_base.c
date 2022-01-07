@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int base_of_path (char const*,char const**) ; 
- int main_input_baselength ; 
- int /*<<< orphan*/  main_input_basename ; 
- scalar_t__ memcmp (char const*,int /*<<< orphan*/ ,int) ; 
+ int base_of_path (char const*,char const**) ;
+ int main_input_baselength ;
+ int main_input_basename ;
+ scalar_t__ memcmp (char const*,int ,int) ;
 
 __attribute__((used)) static int
 matches_main_base (const char *path)
 {
-  /* Cache the last query. */
-  static const char *last_path = NULL;
+
+  static const char *last_path = ((void*)0);
   static int last_match = 0;
   if (path != last_path)
     {

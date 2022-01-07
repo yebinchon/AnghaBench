@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int,char const*) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char const*) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_isnumber (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_tonumber (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int luaL_error (int *,char*,int,char const*) ;
+ int lua_getfield (int *,int,char const*) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ int lua_isnumber (int *,int) ;
+ scalar_t__ lua_tonumber (int *,int) ;
 
 int luaT_getfieldcheckint(lua_State *L, int ud, const char *field)
 {

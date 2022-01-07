@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_9__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  line ;
-struct TYPE_10__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_11__ {int /*<<< orphan*/  guid; TYPE_1__ member_0; } ;
-typedef  TYPE_2__ _GLFWmapping ;
-struct TYPE_12__ {int /*<<< orphan*/  mapping; scalar_t__ present; } ;
-typedef  TYPE_3__ _GLFWjoystick ;
+
+
+typedef struct TYPE_13__ TYPE_9__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int line ;
+struct TYPE_10__ {int member_0; } ;
+struct TYPE_11__ {int guid; TYPE_1__ member_0; } ;
+typedef TYPE_2__ _GLFWmapping ;
+struct TYPE_12__ {int mapping; scalar_t__ present; } ;
+typedef TYPE_3__ _GLFWjoystick ;
 struct TYPE_13__ {int mappingCount; TYPE_3__* joysticks; TYPE_2__* mappings; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_FALSE ; 
- int GLFW_JOYSTICK_LAST ; 
- int GLFW_TRUE ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int /*<<< orphan*/ ) ; 
- TYPE_9__ _glfw ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_2__* findMapping (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  findValidMapping (TYPE_3__*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t const) ; 
- scalar_t__ parseMapping (TYPE_2__*,char*) ; 
- TYPE_2__* realloc (TYPE_2__*,int) ; 
- size_t strcspn (char const*,char*) ; 
- int /*<<< orphan*/  strspn (char const*,char*) ; 
+
+ int GLFW_FALSE ;
+ int GLFW_JOYSTICK_LAST ;
+ int GLFW_TRUE ;
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int ) ;
+ TYPE_9__ _glfw ;
+ int assert (int ) ;
+ TYPE_2__* findMapping (int ) ;
+ int findValidMapping (TYPE_3__*) ;
+ int memcpy (char*,char const*,size_t const) ;
+ scalar_t__ parseMapping (TYPE_2__*,char*) ;
+ TYPE_2__* realloc (TYPE_2__*,int) ;
+ size_t strcspn (char const*,char*) ;
+ int strspn (char const*,char*) ;
 
 int glfwUpdateGamepadMappings(const char* string)
 {
     int jid;
     const char* c = string;
 
-    assert(string != NULL);
+    assert(string != ((void*)0));
 
     _GLFW_REQUIRE_INIT_OR_RETURN(GLFW_FALSE);
 
@@ -87,7 +87,7 @@ int glfwUpdateGamepadMappings(const char* string)
         }
     }
 
-    for (jid = 0;  jid <= GLFW_JOYSTICK_LAST;  jid++)
+    for (jid = 0; jid <= GLFW_JOYSTICK_LAST; jid++)
     {
         _GLFWjoystick* js = _glfw.joysticks + jid;
         if (js->present)

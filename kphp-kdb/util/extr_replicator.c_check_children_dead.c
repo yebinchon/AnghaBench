@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  SIGKILL ; 
- scalar_t__ WIFEXITED (int) ; 
- scalar_t__ WIFSIGNALED (int) ; 
- int /*<<< orphan*/  WNOHANG ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  kill (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,int) ; 
- int* pids ; 
- int /*<<< orphan*/  usleep (int) ; 
- int waitpid (int,int*,int /*<<< orphan*/ ) ; 
- int workers ; 
+ scalar_t__ EINTR ;
+ int SIGKILL ;
+ scalar_t__ WIFEXITED (int) ;
+ scalar_t__ WIFSIGNALED (int) ;
+ int WNOHANG ;
+ scalar_t__ errno ;
+ int kill (int,int ) ;
+ int kprintf (char*,int) ;
+ int* pids ;
+ int usleep (int) ;
+ int waitpid (int,int*,int ) ;
+ int workers ;
 
 __attribute__((used)) static void check_children_dead (void) {
   int i, j;

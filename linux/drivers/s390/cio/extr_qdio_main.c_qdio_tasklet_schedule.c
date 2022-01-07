@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct qdio_q {int /*<<< orphan*/  tasklet; TYPE_1__* irq_ptr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct qdio_q {int tasklet; TYPE_1__* irq_ptr; } ;
 struct TYPE_2__ {scalar_t__ state; } ;
 
-/* Variables and functions */
- int EPERM ; 
- scalar_t__ QDIO_IRQ_STATE_ACTIVE ; 
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
+
+ int EPERM ;
+ scalar_t__ QDIO_IRQ_STATE_ACTIVE ;
+ scalar_t__ likely (int) ;
+ int tasklet_schedule (int *) ;
 
 __attribute__((used)) static inline int qdio_tasklet_schedule(struct qdio_q *q)
 {
-	if (likely(q->irq_ptr->state == QDIO_IRQ_STATE_ACTIVE)) {
-		tasklet_schedule(&q->tasklet);
-		return 0;
-	}
-	return -EPERM;
+ if (likely(q->irq_ptr->state == QDIO_IRQ_STATE_ACTIVE)) {
+  tasklet_schedule(&q->tasklet);
+  return 0;
+ }
+ return -EPERM;
 }

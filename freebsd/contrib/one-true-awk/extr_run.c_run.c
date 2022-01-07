@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  closeall () ; 
- int /*<<< orphan*/  execute (int /*<<< orphan*/ *) ; 
 
-void run(Node *a)	/* execution of parse tree starts here */
+
+
+typedef int Node ;
+
+
+ int closeall () ;
+ int execute (int *) ;
+
+void run(Node *a)
 {
-	extern void stdinit(void);
+ extern void stdinit(void);
 
-	stdinit();
-	execute(a);
-	closeall();
+ stdinit();
+ execute(a);
+ closeall();
 }

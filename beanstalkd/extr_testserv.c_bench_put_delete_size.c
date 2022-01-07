@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64 ;
-struct TYPE_3__ {int use; int filesize; int syncrate; int wantsync; int /*<<< orphan*/  dir; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int64 ;
+struct TYPE_3__ {int use; int filesize; int syncrate; int wantsync; int dir; } ;
 struct TYPE_4__ {TYPE_1__ wal; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JOB_DATA_SIZE_LIMIT_MAX ; 
- int SERVER () ; 
- int /*<<< orphan*/  ckresp (int,char*) ; 
- int /*<<< orphan*/  ckrespsub (int,char*) ; 
- int /*<<< orphan*/  ctdir () ; 
- int /*<<< orphan*/  ctresettimer () ; 
- int /*<<< orphan*/  ctsetbytes (int) ; 
- int /*<<< orphan*/  ctstoptimer () ; 
- int /*<<< orphan*/  job_data_size_limit ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int mustdiallocal (int) ; 
- int /*<<< orphan*/  mustsend (int,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- TYPE_2__ srv ; 
+
+ int JOB_DATA_SIZE_LIMIT_MAX ;
+ int SERVER () ;
+ int ckresp (int,char*) ;
+ int ckrespsub (int,char*) ;
+ int ctdir () ;
+ int ctresettimer () ;
+ int ctsetbytes (int) ;
+ int ctstoptimer () ;
+ int job_data_size_limit ;
+ int memset (char*,char,int) ;
+ int mustdiallocal (int) ;
+ int mustsend (int,char*) ;
+ int sprintf (char*,char*,int) ;
+ TYPE_2__ srv ;
 
 __attribute__((used)) static void
 bench_put_delete_size(int n, int size, int walsize, int sync, int64 syncrate_ms)

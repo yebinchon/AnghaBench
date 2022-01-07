@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct buffer_list {scalar_t__ size; int /*<<< orphan*/ * tail; struct buffer_entry* head; } ;
-struct buffer_entry {int /*<<< orphan*/  buf; struct buffer_entry* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct buffer_entry*) ; 
- int /*<<< orphan*/  free_buf (int /*<<< orphan*/ *) ; 
+
+
+
+struct buffer_list {scalar_t__ size; int * tail; struct buffer_entry* head; } ;
+struct buffer_entry {int buf; struct buffer_entry* next; } ;
+
+
+ int free (struct buffer_entry*) ;
+ int free_buf (int *) ;
 
 void
 buffer_list_reset(struct buffer_list *ol)
@@ -28,6 +28,6 @@ buffer_list_reset(struct buffer_list *ol)
         free(e);
         e = next;
     }
-    ol->head = ol->tail = NULL;
+    ol->head = ol->tail = ((void*)0);
     ol->size = 0;
 }

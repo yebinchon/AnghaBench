@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct X500TokenW {int end; int start; } ;
 struct KeynameKeeper {int keyLen; char* keyName; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int DWORD ;
+typedef int WCHAR ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPT_FreeKeynameKeeper (struct KeynameKeeper*) ; 
- char* CryptMemAlloc (int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  memcpy (char*,int,int) ; 
+
+ int CRYPT_FreeKeynameKeeper (struct KeynameKeeper*) ;
+ char* CryptMemAlloc (int) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (char*) ;
+ int memcpy (char*,int,int) ;
 
 __attribute__((used)) static void CRYPT_KeynameKeeperFromTokenW(struct KeynameKeeper *keeper,
  const struct X500TokenW *key)

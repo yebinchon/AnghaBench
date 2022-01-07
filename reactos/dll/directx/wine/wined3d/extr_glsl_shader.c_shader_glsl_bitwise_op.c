@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
 struct wined3d_shader_instruction {int handler_idx; unsigned int src_count; struct wined3d_shader_dst_param* dst; TYPE_6__* src; TYPE_1__* ctx; } ;
 struct TYPE_11__ {scalar_t__ type; scalar_t__ data_type; TYPE_2__* idx; } ;
@@ -26,23 +26,23 @@ struct TYPE_12__ {TYPE_4__ reg; } ;
 struct TYPE_9__ {scalar_t__ offset; } ;
 struct TYPE_8__ {scalar_t__ offset; } ;
 struct TYPE_7__ {struct wined3d_string_buffer* buffer; } ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
-#define  WINED3DSIH_BFI 130 
-#define  WINED3DSIH_IBFE 129 
-#define  WINED3DSIH_UBFE 128 
- unsigned int WINED3DSP_WRITEMASK_0 ; 
- scalar_t__ WINED3D_DATA_FLOAT ; 
- scalar_t__ WINED3D_DATA_INT ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,char const*,...) ; 
- int /*<<< orphan*/  shader_glsl_add_src_param (struct wined3d_shader_instruction const*,TYPE_6__*,int /*<<< orphan*/ ,struct glsl_src_param*) ; 
- int /*<<< orphan*/  shader_glsl_append_dst_ext (struct wined3d_string_buffer*,struct wined3d_shader_instruction const*,struct wined3d_shader_dst_param*,scalar_t__) ; 
- int /*<<< orphan*/  shader_glsl_get_write_mask (struct wined3d_shader_dst_param*,char*) ; 
+
+ int ERR (char*,int) ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+
+
+
+ unsigned int WINED3DSP_WRITEMASK_0 ;
+ scalar_t__ WINED3D_DATA_FLOAT ;
+ scalar_t__ WINED3D_DATA_INT ;
+ int shader_addline (struct wined3d_string_buffer*,char*,char const*,...) ;
+ int shader_glsl_add_src_param (struct wined3d_shader_instruction const*,TYPE_6__*,int ,struct glsl_src_param*) ;
+ int shader_glsl_append_dst_ext (struct wined3d_string_buffer*,struct wined3d_shader_instruction const*,struct wined3d_shader_dst_param*,scalar_t__) ;
+ int shader_glsl_get_write_mask (struct wined3d_shader_dst_param*,char*) ;
 
 __attribute__((used)) static void shader_glsl_bitwise_op(const struct wined3d_shader_instruction *ins)
 {
@@ -57,9 +57,9 @@ __attribute__((used)) static void shader_glsl_bitwise_op(const struct wined3d_sh
 
     switch (ins->handler_idx)
     {
-        case WINED3DSIH_BFI:  instruction = "bitfieldInsert";  break;
-        case WINED3DSIH_IBFE: instruction = "bitfieldExtract"; break;
-        case WINED3DSIH_UBFE: instruction = "bitfieldExtract"; break;
+        case 130: instruction = "bitfieldInsert"; break;
+        case 129: instruction = "bitfieldExtract"; break;
+        case 128: instruction = "bitfieldExtract"; break;
         default:
             ERR("Unhandled opcode %#x.\n", ins->handler_idx);
             return;

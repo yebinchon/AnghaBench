@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct serve_files_priv {int /*<<< orphan*/  auto_index_readme; } ;
+
+
+
+
+struct serve_files_priv {int auto_index_readme; } ;
 struct lwan_strbuf {int dummy; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  buffer ;
+typedef scalar_t__ ssize_t ;
+typedef int buffer ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- size_t N_ELEMENTS (char const**) ; 
- int O_CLOEXEC ; 
- int O_RDONLY ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  lwan_strbuf_append_str (struct lwan_strbuf*,char*,size_t) ; 
- char const* lwan_strbuf_get_buffer (struct lwan_strbuf*) ; 
- int open (char*,int) ; 
- scalar_t__ read (int,char*,int) ; 
- int snprintf (char*,int,char*,char const*,char const*) ; 
+
+ scalar_t__ EINTR ;
+ size_t N_ELEMENTS (char const**) ;
+ int O_CLOEXEC ;
+ int O_RDONLY ;
+ int PATH_MAX ;
+ int close (int) ;
+ scalar_t__ errno ;
+ int lwan_strbuf_append_str (struct lwan_strbuf*,char*,size_t) ;
+ char const* lwan_strbuf_get_buffer (struct lwan_strbuf*) ;
+ int open (char*,int) ;
+ scalar_t__ read (int,char*,int) ;
+ int snprintf (char*,int,char*,char const*,char const*) ;
 
 __attribute__((used)) static const char *dirlist_find_readme(struct lwan_strbuf *readme,
                                        struct serve_files_priv *priv,
@@ -38,7 +38,7 @@ __attribute__((used)) static const char *dirlist_find_readme(struct lwan_strbuf 
     int fd = -1;
 
     if (!priv->auto_index_readme)
-        return NULL;
+        return ((void*)0);
 
     for (size_t i = 0; i < N_ELEMENTS(candidates); i++) {
         char buffer[PATH_MAX];
@@ -52,7 +52,7 @@ __attribute__((used)) static const char *dirlist_find_readme(struct lwan_strbuf 
         if (fd < 0)
             continue;
 
-        while (true) {
+        while (1) {
             ssize_t n = read(fd, buffer, sizeof(buffer));
 
             if (n < 0) {
@@ -74,5 +74,5 @@ __attribute__((used)) static const char *dirlist_find_readme(struct lwan_strbuf 
 error:
     if (fd >= 0)
         close(fd);
-    return NULL;
+    return ((void*)0);
 }

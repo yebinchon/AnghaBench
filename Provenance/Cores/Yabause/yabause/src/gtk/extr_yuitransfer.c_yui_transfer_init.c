@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_23__ {int /*<<< orphan*/  mode; struct TYPE_23__* to_entry; struct TYPE_23__* to_label; struct TYPE_23__* transfer_button; struct TYPE_23__* from_entry; struct TYPE_23__* file_entry; } ;
-typedef  TYPE_1__ YuiTransfer ;
-typedef  TYPE_1__ GtkWidget ;
-typedef  int /*<<< orphan*/  GSList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GTK_BOX (TYPE_1__*) ; 
- int /*<<< orphan*/  GTK_CAN_DEFAULT ; 
- int /*<<< orphan*/  GTK_CONTAINER (TYPE_1__*) ; 
- int /*<<< orphan*/  GTK_LABEL (TYPE_1__*) ; 
- int /*<<< orphan*/  GTK_MISC (TYPE_1__*) ; 
- int /*<<< orphan*/  GTK_RADIO_BUTTON (TYPE_1__*) ; 
- int /*<<< orphan*/  GTK_WIDGET (TYPE_1__*) ; 
- int /*<<< orphan*/  GTK_WIDGET_SET_FLAGS (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GTK_WINDOW (TYPE_1__*) ; 
- int /*<<< orphan*/  G_CALLBACK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  YUI_TRANSFER_LOAD_EXEC ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  g_signal_connect (TYPE_1__*,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  g_signal_connect_swapped (TYPE_1__*,char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  gtk_box_pack_start (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* gtk_button_new_from_stock (char*) ; 
- void* gtk_button_new_with_mnemonic (char*) ; 
- int /*<<< orphan*/  gtk_container_add (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  gtk_container_set_border_width (int /*<<< orphan*/ ,int) ; 
- void* gtk_entry_new () ; 
- TYPE_1__* gtk_hbox_new (int /*<<< orphan*/ ,int) ; 
- TYPE_1__* gtk_hbutton_box_new () ; 
- void* gtk_label_new (char const*) ; 
- int /*<<< orphan*/  gtk_label_set_width_chars (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_misc_set_alignment (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/ * gtk_radio_button_get_group (int /*<<< orphan*/ ) ; 
- TYPE_1__* gtk_radio_button_new_with_mnemonic (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  gtk_radio_button_set_group (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* gtk_vbox_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_widget_destroy ; 
- int /*<<< orphan*/  gtk_widget_set_sensitive (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_widget_show_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_window_set_title (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  yui_transfer_browse ; 
- int /*<<< orphan*/  yui_transfer_check ; 
- int /*<<< orphan*/  yui_transfer_exec ; 
- int /*<<< orphan*/  yui_transfer_load ; 
- int /*<<< orphan*/  yui_transfer_load_exec ; 
- int /*<<< orphan*/  yui_transfer_store ; 
+
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+struct TYPE_23__ {int mode; struct TYPE_23__* to_entry; struct TYPE_23__* to_label; struct TYPE_23__* transfer_button; struct TYPE_23__* from_entry; struct TYPE_23__* file_entry; } ;
+typedef TYPE_1__ YuiTransfer ;
+typedef TYPE_1__ GtkWidget ;
+typedef int GSList ;
+
+
+ int FALSE ;
+ int GTK_BOX (TYPE_1__*) ;
+ int GTK_CAN_DEFAULT ;
+ int GTK_CONTAINER (TYPE_1__*) ;
+ int GTK_LABEL (TYPE_1__*) ;
+ int GTK_MISC (TYPE_1__*) ;
+ int GTK_RADIO_BUTTON (TYPE_1__*) ;
+ int GTK_WIDGET (TYPE_1__*) ;
+ int GTK_WIDGET_SET_FLAGS (TYPE_1__*,int ) ;
+ int GTK_WINDOW (TYPE_1__*) ;
+ int G_CALLBACK (int ) ;
+ int TRUE ;
+ int YUI_TRANSFER_LOAD_EXEC ;
+ char* _ (char*) ;
+ int g_signal_connect (TYPE_1__*,char*,int ,TYPE_1__*) ;
+ int g_signal_connect_swapped (TYPE_1__*,char*,int ,TYPE_1__*) ;
+ int gtk_box_pack_start (int ,TYPE_1__*,int ,int ,int ) ;
+ TYPE_1__* gtk_button_new_from_stock (char*) ;
+ void* gtk_button_new_with_mnemonic (char*) ;
+ int gtk_container_add (int ,TYPE_1__*) ;
+ int gtk_container_set_border_width (int ,int) ;
+ void* gtk_entry_new () ;
+ TYPE_1__* gtk_hbox_new (int ,int) ;
+ TYPE_1__* gtk_hbutton_box_new () ;
+ void* gtk_label_new (char const*) ;
+ int gtk_label_set_width_chars (int ,int ) ;
+ int gtk_misc_set_alignment (int ,int ,double) ;
+ int * gtk_radio_button_get_group (int ) ;
+ TYPE_1__* gtk_radio_button_new_with_mnemonic (int *,char*) ;
+ int gtk_radio_button_set_group (int ,int *) ;
+ TYPE_1__* gtk_vbox_new (int ,int ) ;
+ int gtk_widget_destroy ;
+ int gtk_widget_set_sensitive (int ,int ) ;
+ int gtk_widget_show_all (int ) ;
+ int gtk_window_set_title (int ,char*) ;
+ int strlen (char const*) ;
+ int yui_transfer_browse ;
+ int yui_transfer_check ;
+ int yui_transfer_exec ;
+ int yui_transfer_load ;
+ int yui_transfer_load_exec ;
+ int yui_transfer_store ;
 
 __attribute__((used)) static void yui_transfer_init (YuiTransfer * yt) {
   GtkWidget *vbox1;
@@ -70,7 +70,7 @@ __attribute__((used)) static void yui_transfer_init (YuiTransfer * yt) {
   GtkWidget *hbuttonbox1;
   GtkWidget *button5;
   GtkWidget *hbox3;
-  GSList *radiobutton1_group = NULL;
+  GSList *radiobutton1_group = ((void*)0);
   GtkWidget *radiobutton1;
   GtkWidget *radiobutton2;
   GtkWidget *radiobutton3;
@@ -103,19 +103,19 @@ __attribute__((used)) static void yui_transfer_init (YuiTransfer * yt) {
   gtk_box_pack_start (GTK_BOX (vbox1), hbox3, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (hbox3), 10);
 
-  radiobutton1 = gtk_radio_button_new_with_mnemonic (NULL, _("Load as executable"));
+  radiobutton1 = gtk_radio_button_new_with_mnemonic (((void*)0), _("Load as executable"));
   g_signal_connect(radiobutton1, "toggled", G_CALLBACK(yui_transfer_load_exec), yt);
   gtk_box_pack_start (GTK_BOX (hbox3), radiobutton1, FALSE, FALSE, 0);
   gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton1), radiobutton1_group);
   radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton1));
 
-  radiobutton2 = gtk_radio_button_new_with_mnemonic (NULL, _("Load"));
+  radiobutton2 = gtk_radio_button_new_with_mnemonic (((void*)0), _("Load"));
   g_signal_connect(radiobutton2, "toggled", G_CALLBACK(yui_transfer_load), yt);
   gtk_box_pack_start (GTK_BOX (hbox3), radiobutton2, FALSE, FALSE, 0);
   gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton2), radiobutton1_group);
   radiobutton1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton2));
 
-  radiobutton3 = gtk_radio_button_new_with_mnemonic (NULL, _("Store"));
+  radiobutton3 = gtk_radio_button_new_with_mnemonic (((void*)0), _("Store"));
   g_signal_connect(radiobutton3, "toggled", G_CALLBACK(yui_transfer_store), yt);
   gtk_box_pack_start (GTK_BOX (hbox3), radiobutton3, FALSE, FALSE, 0);
   gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton3), radiobutton1_group);
@@ -161,8 +161,8 @@ __attribute__((used)) static void yui_transfer_init (YuiTransfer * yt) {
 
   gtk_widget_show_all (GTK_WIDGET(yt));
 
-	gtk_widget_set_sensitive(GTK_WIDGET(yt->to_label), FALSE);
-	gtk_widget_set_sensitive(GTK_WIDGET(yt->to_entry), FALSE);
+ gtk_widget_set_sensitive(GTK_WIDGET(yt->to_label), FALSE);
+ gtk_widget_set_sensitive(GTK_WIDGET(yt->to_entry), FALSE);
 
   yt->mode = YUI_TRANSFER_LOAD_EXEC;
 

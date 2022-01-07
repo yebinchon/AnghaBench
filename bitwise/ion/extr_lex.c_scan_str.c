@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  line; } ;
-struct TYPE_4__ {char* str_val; int /*<<< orphan*/  kind; int /*<<< orphan*/  mod; TYPE_1__ pos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOD_MULTILINE ; 
- int /*<<< orphan*/  TOKEN_STR ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  buf_push (char*,char) ; 
- int /*<<< orphan*/  error_here (char*,...) ; 
- char* escape_to_char ; 
- char scan_hex_escape () ; 
- char* stream ; 
- TYPE_2__ token ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int line; } ;
+struct TYPE_4__ {char* str_val; int kind; int mod; TYPE_1__ pos; } ;
+
+
+ int MOD_MULTILINE ;
+ int TOKEN_STR ;
+ int assert (int) ;
+ int buf_push (char*,char) ;
+ int error_here (char*,...) ;
+ char* escape_to_char ;
+ char scan_hex_escape () ;
+ char* stream ;
+ TYPE_2__ token ;
 
 void scan_str(void) {
     assert(*stream == '"');
     stream++;
-    char *str = NULL;
+    char *str = ((void*)0);
     if (stream[0] == '"' && stream[1] == '"') {
         stream += 2;
         while (*stream) {
@@ -38,7 +38,7 @@ void scan_str(void) {
                 break;
             }
             if (*stream != '\r') {
-                // TODO: Should probably just read files in text mode instead.
+
                 buf_push(str, *stream);
             }
             if (*stream == '\n') {

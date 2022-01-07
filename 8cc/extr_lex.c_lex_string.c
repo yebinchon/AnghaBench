@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Token ;
-typedef  int /*<<< orphan*/  Pos ;
 
-/* Variables and functions */
- scalar_t__ EOF ; 
- int /*<<< orphan*/ * do_read_token () ; 
- int /*<<< orphan*/  errorp (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  get_pos (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  make_file_string (char*) ; 
- int /*<<< orphan*/  next (char) ; 
- scalar_t__ peek () ; 
- int /*<<< orphan*/  stream_stash (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stream_unstash () ; 
+
+
+
+typedef int Token ;
+typedef int Pos ;
+
+
+ scalar_t__ EOF ;
+ int * do_read_token () ;
+ int errorp (int ,char*,char*) ;
+ int get_pos (int ) ;
+ int make_file_string (char*) ;
+ int next (char) ;
+ scalar_t__ peek () ;
+ int stream_stash (int ) ;
+ int stream_unstash () ;
 
 Token *lex_string(char *s) {
     stream_stash(make_file_string(s));

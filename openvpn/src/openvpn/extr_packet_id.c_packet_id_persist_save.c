@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct packet_id_persist_file_image {scalar_t__ time; scalar_t__ id; } ;
-struct packet_id_persist {scalar_t__ time; scalar_t__ time_last_written; scalar_t__ id; scalar_t__ id_last_written; int /*<<< orphan*/  filename; int /*<<< orphan*/  fd; } ;
+struct packet_id_persist {scalar_t__ time; scalar_t__ time_last_written; scalar_t__ id; scalar_t__ id_last_written; int filename; int fd; } ;
 struct gc_arena {int dummy; } ;
-typedef  int ssize_t ;
-typedef  scalar_t__ off_t ;
-typedef  int /*<<< orphan*/  image ;
+typedef int ssize_t ;
+typedef scalar_t__ off_t ;
+typedef int image ;
 
-/* Variables and functions */
- int D_PID_PERSIST ; 
- int /*<<< orphan*/  D_PID_PERSIST_DEBUG ; 
- int M_ERRNO ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg (int,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ packet_id_persist_enabled (struct packet_id_persist*) ; 
- int /*<<< orphan*/  packet_id_persist_print (struct packet_id_persist*,struct gc_arena*) ; 
- int write (int /*<<< orphan*/ ,struct packet_id_persist_file_image*,int) ; 
+
+ int D_PID_PERSIST ;
+ int D_PID_PERSIST_DEBUG ;
+ int M_ERRNO ;
+ int SEEK_SET ;
+ int dmsg (int ,char*,int ,int ) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ scalar_t__ lseek (int ,scalar_t__,int ) ;
+ int msg (int,char*,int ) ;
+ scalar_t__ packet_id_persist_enabled (struct packet_id_persist*) ;
+ int packet_id_persist_print (struct packet_id_persist*,struct gc_arena*) ;
+ int write (int ,struct packet_id_persist_file_image*,int) ;
 
 void
 packet_id_persist_save(struct packet_id_persist *p)

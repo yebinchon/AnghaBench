@@ -1,41 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u32 ;
+typedef int u16 ;
 struct i2c_device_addr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRXDAP_FASI_RMW ; 
- int EINVAL ; 
- int EIO ; 
- int drxdap_fasi_read_reg16 (struct i2c_device_addr*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int drxdap_fasi_write_reg16 (struct i2c_device_addr*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DRXDAP_FASI_RMW ;
+ int EINVAL ;
+ int EIO ;
+ int drxdap_fasi_read_reg16 (struct i2c_device_addr*,int ,int *,int ) ;
+ int drxdap_fasi_write_reg16 (struct i2c_device_addr*,int ,int ,int ) ;
 
 __attribute__((used)) static int drxdap_fasi_read_modify_write_reg16(struct i2c_device_addr *dev_addr,
-						    u32 waddr,
-						    u32 raddr,
-						    u16 wdata, u16 *rdata)
+          u32 waddr,
+          u32 raddr,
+          u16 wdata, u16 *rdata)
 {
-	int rc = -EIO;
-
-#if (DRXDAPFASI_LONG_ADDR_ALLOWED == 1)
-	if (rdata == NULL)
-		return -EINVAL;
-
-	rc = drxdap_fasi_write_reg16(dev_addr, waddr, wdata, DRXDAP_FASI_RMW);
-	if (rc == 0)
-		rc = drxdap_fasi_read_reg16(dev_addr, raddr, rdata, 0);
-#endif
-
-	return rc;
+ int rc = -EIO;
+ return rc;
 }

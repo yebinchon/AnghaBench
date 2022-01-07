@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64 ;
-struct TYPE_11__ {int /*<<< orphan*/  fd; scalar_t__ f; TYPE_3__* x; } ;
-struct TYPE_8__ {int /*<<< orphan*/  setpos; int /*<<< orphan*/  less; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int64 ;
+struct TYPE_11__ {int fd; scalar_t__ f; TYPE_3__* x; } ;
+struct TYPE_8__ {int setpos; int less; } ;
 struct TYPE_10__ {TYPE_5__ sock; TYPE_1__ conns; } ;
-struct TYPE_9__ {int /*<<< orphan*/  x; int /*<<< orphan*/  (* f ) (int /*<<< orphan*/ ,int) ;} ;
-typedef  TYPE_2__ Socket ;
-typedef  TYPE_3__ Server ;
-typedef  scalar_t__ Handle ;
+struct TYPE_9__ {int x; int (* f ) (int ,int) ;} ;
+typedef TYPE_2__ Socket ;
+typedef TYPE_3__ Server ;
+typedef scalar_t__ Handle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  conn_less ; 
- int /*<<< orphan*/  conn_setpos ; 
- int /*<<< orphan*/  exit (int) ; 
- int listen (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  prottick (TYPE_3__*) ; 
- int sockinit () ; 
- int socknext (TYPE_2__**,int /*<<< orphan*/ ) ; 
- int sockwant (TYPE_5__*,char) ; 
- scalar_t__ srvaccept ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  twarn (char*) ; 
- int /*<<< orphan*/  twarnx (char*) ; 
+
+ int conn_less ;
+ int conn_setpos ;
+ int exit (int) ;
+ int listen (int ,int) ;
+ int prottick (TYPE_3__*) ;
+ int sockinit () ;
+ int socknext (TYPE_2__**,int ) ;
+ int sockwant (TYPE_5__*,char) ;
+ scalar_t__ srvaccept ;
+ int stub1 (int ,int) ;
+ int twarn (char*) ;
+ int twarnx (char*) ;
 
 void
 srvserve(Server *s)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_1__* waves_info; TYPE_2__* channels; } ;
-struct TYPE_10__ {int /*<<< orphan*/  phase_index; } ;
+struct TYPE_10__ {int phase_index; } ;
 struct TYPE_9__ {size_t start_index; int num_wavs; } ;
 struct TYPE_8__ {TYPE_3__* tones_info; } ;
 struct TYPE_7__ {int num_tone_bands; TYPE_4__* waves; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ Atrac3pWavesData ;
-typedef  TYPE_4__ Atrac3pWaveParam ;
-typedef  TYPE_5__ Atrac3pChanUnitCtx ;
+typedef int GetBitContext ;
+typedef TYPE_3__ Atrac3pWavesData ;
+typedef TYPE_4__ Atrac3pWaveParam ;
+typedef TYPE_5__ Atrac3pChanUnitCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_bits (int /*<<< orphan*/ *,int) ; 
+
+ int get_bits (int *,int) ;
 
 __attribute__((used)) static void decode_tones_phase(GetBitContext *gb, Atrac3pChanUnitCtx *ctx,
                                int ch_num, int band_has_tones[])

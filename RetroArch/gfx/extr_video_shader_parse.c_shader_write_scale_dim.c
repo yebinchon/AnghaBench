@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  key ;
-typedef  enum gfx_scale_type { ____Placeholder_gfx_scale_type } gfx_scale_type ;
-typedef  int /*<<< orphan*/  config_file_t ;
 
-/* Variables and functions */
- int RARCH_SCALE_ABSOLUTE ; 
- int /*<<< orphan*/  config_set_float (int /*<<< orphan*/ *,char*,float) ; 
- int /*<<< orphan*/  config_set_int (int /*<<< orphan*/ *,char*,unsigned int) ; 
- int /*<<< orphan*/  config_set_string (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scale_type_to_str (int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,unsigned int) ; 
+
+
+
+typedef int key ;
+typedef enum gfx_scale_type { ____Placeholder_gfx_scale_type } gfx_scale_type ;
+typedef int config_file_t ;
+
+
+ int RARCH_SCALE_ABSOLUTE ;
+ int config_set_float (int *,char*,float) ;
+ int config_set_int (int *,char*,unsigned int) ;
+ int config_set_string (int *,char*,int ) ;
+ int scale_type_to_str (int) ;
+ int snprintf (char*,int,char*,char const*,unsigned int) ;
 
 __attribute__((used)) static void shader_write_scale_dim(config_file_t *conf,
       const char *dim,

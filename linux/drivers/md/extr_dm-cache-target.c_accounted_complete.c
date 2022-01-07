@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct per_bio_data {int /*<<< orphan*/  len; } ;
-struct cache {int /*<<< orphan*/  tracker; } ;
+
+
+
+
+struct per_bio_data {int len; } ;
+struct cache {int tracker; } ;
 struct bio {int dummy; } ;
 
-/* Variables and functions */
- struct per_bio_data* get_per_bio_data (struct bio*) ; 
- int /*<<< orphan*/  iot_io_end (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ struct per_bio_data* get_per_bio_data (struct bio*) ;
+ int iot_io_end (int *,int ) ;
 
 __attribute__((used)) static void accounted_complete(struct cache *cache, struct bio *bio)
 {
-	struct per_bio_data *pb = get_per_bio_data(bio);
+ struct per_bio_data *pb = get_per_bio_data(bio);
 
-	iot_io_end(&cache->tracker, pb->len);
+ iot_io_end(&cache->tracker, pb->len);
 }

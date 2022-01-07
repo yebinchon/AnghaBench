@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-struct TYPE_5__ {int lfCharSet; int lfClipPrecision; int lfItalic; int lfOutPrecision; int lfPitchAndFamily; int lfQuality; int lfStrikeOut; int lfUnderline; void* lfHeight; scalar_t__ lfWeight; scalar_t__ lfOrientation; int /*<<< orphan*/  lfFaceName; scalar_t__ lfEscapement; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+struct TYPE_5__ {int lfCharSet; int lfClipPrecision; int lfItalic; int lfOutPrecision; int lfPitchAndFamily; int lfQuality; int lfStrikeOut; int lfUnderline; void* lfHeight; scalar_t__ lfWeight; scalar_t__ lfOrientation; int lfFaceName; scalar_t__ lfEscapement; } ;
 struct TYPE_6__ {scalar_t__ top; scalar_t__ bottom; scalar_t__ left; scalar_t__ right; } ;
-struct TYPE_7__ {int bWrapLongLines; int bShowStatusBar; scalar_t__ hFont; int /*<<< orphan*/  hEdit; TYPE_1__ lfFont; int /*<<< orphan*/  szFooter; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  szHeader; TYPE_2__ lMargins; TYPE_2__ main_rect; } ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  double INT ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ HFONT ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_7__ {int bWrapLongLines; int bShowStatusBar; scalar_t__ hFont; int hEdit; TYPE_1__ lfFont; int szFooter; int hInstance; int szHeader; TYPE_2__ lMargins; TYPE_2__ main_rect; } ;
+typedef int LPARAM ;
+typedef double INT ;
+typedef int * HKEY ;
+typedef scalar_t__ HFONT ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int ANSI_CHARSET ; 
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int CLIP_STROKE_PRECIS ; 
- scalar_t__ CreateFontIndirect (TYPE_1__*) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- scalar_t__ ERROR_SUCCESS ; 
- void* FALSE ; 
- int FF_MODERN ; 
- int FIXED_PITCH ; 
- scalar_t__ FW_NORMAL ; 
- scalar_t__ GetSystemMetrics (int /*<<< orphan*/ ) ; 
- TYPE_3__ Globals ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- void* HeightFromPointSize (int) ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int OUT_STRING_PRECIS ; 
- int PROOF_QUALITY ; 
- int /*<<< orphan*/  QueryBool (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  QueryByte (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  QueryDword (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  QueryString (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SM_CXSCREEN ; 
- int /*<<< orphan*/  SM_CYSCREEN ; 
- int /*<<< orphan*/  STRING_PAGESETUP_FOOTERVALUE ; 
- int /*<<< orphan*/  STRING_PAGESETUP_HEADERVALUE ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetRect (TYPE_2__*,int,int,int,int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WM_SETFONT ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tcscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s_szRegistryKey ; 
+
+ int ANSI_CHARSET ;
+ int ARRAY_SIZE (int ) ;
+ int CLIP_STROKE_PRECIS ;
+ scalar_t__ CreateFontIndirect (TYPE_1__*) ;
+ int DeleteObject (scalar_t__) ;
+ scalar_t__ ERROR_SUCCESS ;
+ void* FALSE ;
+ int FF_MODERN ;
+ int FIXED_PITCH ;
+ scalar_t__ FW_NORMAL ;
+ scalar_t__ GetSystemMetrics (int ) ;
+ TYPE_3__ Globals ;
+ int HKEY_CURRENT_USER ;
+ void* HeightFromPointSize (int) ;
+ int LoadString (int ,int ,int ,int ) ;
+ int OUT_STRING_PRECIS ;
+ int PROOF_QUALITY ;
+ int QueryBool (int *,int ,int*) ;
+ int QueryByte (int *,int ,int*) ;
+ int QueryDword (int *,int ,scalar_t__*) ;
+ int QueryString (int *,int ,int ,int ) ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKey (int ,int ,int **) ;
+ int SM_CXSCREEN ;
+ int SM_CYSCREEN ;
+ int STRING_PAGESETUP_FOOTERVALUE ;
+ int STRING_PAGESETUP_HEADERVALUE ;
+ int SendMessage (int ,int ,int ,int ) ;
+ int SetRect (TYPE_2__*,int,int,int,int) ;
+ scalar_t__ TRUE ;
+ int WM_SETFONT ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int _T (char*) ;
+ int _tcscpy (int ,int ) ;
+ int s_szRegistryKey ;
 
 void NOTEPAD_LoadSettingsFromRegistry(void)
 {
-    HKEY hKey = NULL;
+    HKEY hKey = ((void*)0);
     HFONT hFont;
     DWORD dwPointSize = 0;
     INT base_length, dx, dy;
@@ -106,7 +106,7 @@ void NOTEPAD_LoadSettingsFromRegistry(void)
         Globals.main_rect.right = Globals.main_rect.left + dx;
         Globals.main_rect.bottom = Globals.main_rect.top + dy;
 
-        /* invert value because DIALOG_ViewStatusBar will be called to show it */
+
         Globals.bShowStatusBar = !Globals.bShowStatusBar;
 
         if (dwPointSize != 0)
@@ -118,13 +118,13 @@ void NOTEPAD_LoadSettingsFromRegistry(void)
     }
     else
     {
-        /* If no settings are found in the registry, then use default values */
+
         Globals.bShowStatusBar = FALSE;
         Globals.bWrapLongLines = FALSE;
         SetRect(&Globals.lMargins, 750, 1000, 750, 1000);
 
-        /* FIXME: Globals.fSaveWindowPositions = FALSE; */
-        /* FIXME: Globals.fMLE_is_broken = FALSE; */
+
+
 
         LoadString(Globals.hInstance, STRING_PAGESETUP_HEADERVALUE, Globals.szHeader,
                    ARRAY_SIZE(Globals.szHeader));

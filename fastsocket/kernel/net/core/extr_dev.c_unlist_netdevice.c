@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  index_hlist; int /*<<< orphan*/  name_hlist; int /*<<< orphan*/  dev_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_RTNL () ; 
- int /*<<< orphan*/  dev_base_lock ; 
- int /*<<< orphan*/  hlist_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_unlock_bh (int /*<<< orphan*/ *) ; 
+
+
+
+struct net_device {int index_hlist; int name_hlist; int dev_list; } ;
+
+
+ int ASSERT_RTNL () ;
+ int dev_base_lock ;
+ int hlist_del (int *) ;
+ int list_del (int *) ;
+ int write_lock_bh (int *) ;
+ int write_unlock_bh (int *) ;
 
 __attribute__((used)) static void unlist_netdevice(struct net_device *dev)
 {
-	ASSERT_RTNL();
+ ASSERT_RTNL();
 
-	/* Unlink dev from the device chain */
-	write_lock_bh(&dev_base_lock);
-	list_del(&dev->dev_list);
-	hlist_del(&dev->name_hlist);
-	hlist_del(&dev->index_hlist);
-	write_unlock_bh(&dev_base_lock);
+
+ write_lock_bh(&dev_base_lock);
+ list_del(&dev->dev_list);
+ hlist_del(&dev->name_hlist);
+ hlist_del(&dev->index_hlist);
+ write_unlock_bh(&dev_base_lock);
 }

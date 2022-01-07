@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int*** sb_int8_array ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avpriv_request_sample (int /*<<< orphan*/ *,char*) ; 
- int** coding_method_table ; 
- int /*<<< orphan*/  fix_coding_method_array (int,int,int***) ; 
- int** tone_level_idx_offset_table ; 
+
+
+
+typedef int*** sb_int8_array ;
+typedef int int64_t ;
+
+
+ int avpriv_request_sample (int *,char*) ;
+ int** coding_method_table ;
+ int fix_coding_method_array (int,int,int***) ;
+ int** tone_level_idx_offset_table ;
 
 __attribute__((used)) static void fill_coding_method_array(sb_int8_array tone_level_idx,
                                      sb_int8_array tone_level_idx_temp,
@@ -32,12 +32,12 @@ __attribute__((used)) static void fill_coding_method_array(sb_int8_array tone_le
     int64_t multres;
 
     if (!superblocktype_2_3) {
-        /* This case is untested, no samples available */
-        avpriv_request_sample(NULL, "!superblocktype_2_3");
+
+        avpriv_request_sample(((void*)0), "!superblocktype_2_3");
         return;
         for (ch = 0; ch < nb_channels; ch++) {
             for (sb = 0; sb < 30; sb++) {
-                for (j = 1; j < 63; j++) {  // The loop only iterates to 63 so the code doesn't overflow the buffer
+                for (j = 1; j < 63; j++) {
                     add1 = tone_level_idx[ch][sb][j] - 10;
                     if (add1 < 0)
                         add1 = 0;
@@ -73,13 +73,13 @@ __attribute__((used)) static void fill_coding_method_array(sb_int8_array tone_le
 
         multres = 0x66666667LL * (acc * 10);
         esp_40 = (multres >> 32) / 8 + ((multres & 0xffffffff) >> 31);
-        for (ch = 0;  ch < nb_channels; ch++)
+        for (ch = 0; ch < nb_channels; ch++)
             for (sb = 0; sb < 30; sb++)
                 for (j = 0; j < 64; j++) {
                     comp = tone_level_idx_temp[ch][sb][j]* esp_40 * 10;
                     if (comp < 0)
                         comp += 0xff;
-                    comp /= 256; // signed shift
+                    comp /= 256;
                     switch(sb) {
                         case 0:
                             if (comp < 30)
@@ -126,7 +126,7 @@ __attribute__((used)) static void fill_coding_method_array(sb_int8_array tone_le
                                 coding_method[ch][sb][j] = 30;
                         }
                     }
-    } else { // superblocktype_2_3 != 0
+    } else {
         for (ch = 0; ch < nb_channels; ch++)
             for (sb = 0; sb < 30; sb++)
                 for (j = 0; j < 64; j++)

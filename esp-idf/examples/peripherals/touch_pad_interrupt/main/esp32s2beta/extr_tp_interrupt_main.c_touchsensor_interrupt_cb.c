@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int intr_mask; int /*<<< orphan*/  pad_val; int /*<<< orphan*/  pad_num; int /*<<< orphan*/  pad_status; } ;
-typedef  TYPE_1__ touch_event_t ;
 
-/* Variables and functions */
- int TOUCH_PAD_INTR_MASK_DONE ; 
- int pdFALSE ; 
- int pdTRUE ; 
- int /*<<< orphan*/  portYIELD_FROM_ISR () ; 
- int /*<<< orphan*/  que_touch ; 
- int /*<<< orphan*/  touch_pad_filter_baseline_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  touch_pad_get_scan_curr () ; 
- int /*<<< orphan*/  touch_pad_get_status () ; 
- int touch_pad_intr_status_get_mask () ; 
- int /*<<< orphan*/  xQueueSendFromISR (int /*<<< orphan*/ ,TYPE_1__*,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int intr_mask; int pad_val; int pad_num; int pad_status; } ;
+typedef TYPE_1__ touch_event_t ;
+
+
+ int TOUCH_PAD_INTR_MASK_DONE ;
+ int pdFALSE ;
+ int pdTRUE ;
+ int portYIELD_FROM_ISR () ;
+ int que_touch ;
+ int touch_pad_filter_baseline_read (int ,int *) ;
+ int touch_pad_get_scan_curr () ;
+ int touch_pad_get_status () ;
+ int touch_pad_intr_status_get_mask () ;
+ int xQueueSendFromISR (int ,TYPE_1__*,int*) ;
 
 __attribute__((used)) static void touchsensor_interrupt_cb(void *arg)
 {

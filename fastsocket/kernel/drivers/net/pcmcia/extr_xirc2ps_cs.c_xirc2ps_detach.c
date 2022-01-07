@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pcmcia_device {scalar_t__ dev_node; struct net_device* priv; } ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*,struct pcmcia_device*) ; 
- int /*<<< orphan*/  free_netdev (struct net_device*) ; 
- int /*<<< orphan*/  unregister_netdev (struct net_device*) ; 
- int /*<<< orphan*/  xirc2ps_release (struct pcmcia_device*) ; 
+
+ int DEBUG (int ,char*,struct pcmcia_device*) ;
+ int free_netdev (struct net_device*) ;
+ int unregister_netdev (struct net_device*) ;
+ int xirc2ps_release (struct pcmcia_device*) ;
 
 __attribute__((used)) static void
 xirc2ps_detach(struct pcmcia_device *link)
@@ -27,7 +27,7 @@ xirc2ps_detach(struct pcmcia_device *link)
     DEBUG(0, "detach(0x%p)\n", link);
 
     if (link->dev_node)
-	unregister_netdev(dev);
+ unregister_netdev(dev);
 
     xirc2ps_release(link);
 

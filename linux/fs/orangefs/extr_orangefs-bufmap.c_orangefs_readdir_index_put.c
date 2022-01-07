@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  put (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  readdir_map ; 
+ int put (int *,int) ;
+ int readdir_map ;
 
 void orangefs_readdir_index_put(int buffer_index)
 {
-	put(&readdir_map, buffer_index);
+ put(&readdir_map, buffer_index);
 }

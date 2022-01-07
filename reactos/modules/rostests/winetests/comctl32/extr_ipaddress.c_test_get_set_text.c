@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowTextA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPM_SETADDRESS ; 
- int /*<<< orphan*/  MAKEIPADDRESS (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ipaddress_control () ; 
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int INT ;
+typedef int HWND ;
+typedef int CHAR ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int DestroyWindow (int ) ;
+ int GetWindowTextA (int ,int *,int ) ;
+ int IPM_SETADDRESS ;
+ int MAKEIPADDRESS (int,int ,int ,int) ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int create_ipaddress_control () ;
+ int expect (int,int ) ;
+ int ok (int,char*,int *) ;
+ scalar_t__ strcmp (int *,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_get_set_text(void)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void test_get_set_text(void)
         return;
     }
 
-    /* check text just after creation */
+
     r = GetWindowTextA(hwnd, ip, ARRAY_SIZE(ip));
     expect(7, r);
     ok(strcmp(ip, "0.0.0.0") == 0, "Expected null IP address, got %s\n", ip);

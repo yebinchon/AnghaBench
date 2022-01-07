@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ buffer_size; scalar_t__ buffer_size_recommended; scalar_t__ buffer_size_min; scalar_t__ buffer_num; scalar_t__ buffer_num_recommended; scalar_t__ buffer_num_min; scalar_t__ is_enabled; int /*<<< orphan*/  format; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMAL_QUEUE_T ;
-typedef  TYPE_1__ MMAL_PORT_T ;
-typedef  int /*<<< orphan*/  MMAL_POOL_T ;
 
-/* Variables and functions */
- void* MMAL_MAX (scalar_t__,scalar_t__) ; 
- scalar_t__ MMAL_SUCCESS ; 
- scalar_t__ enable_tunneling () ; 
- int /*<<< orphan*/ * generic_input_port_cb ; 
- scalar_t__ mmal_format_full_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_pool_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ mmal_port_connect (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  mmal_port_disable (TYPE_1__*) ; 
- int /*<<< orphan*/  mmal_port_disconnect (TYPE_1__*) ; 
- scalar_t__ mmal_port_enable (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ mmal_port_format_commit (TYPE_1__*) ; 
- int /*<<< orphan*/  mmal_queue_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ setup_output_port (TYPE_1__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ buffer_size; scalar_t__ buffer_size_recommended; scalar_t__ buffer_size_min; scalar_t__ buffer_num; scalar_t__ buffer_num_recommended; scalar_t__ buffer_num_min; scalar_t__ is_enabled; int format; } ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef int MMAL_QUEUE_T ;
+typedef TYPE_1__ MMAL_PORT_T ;
+typedef int MMAL_POOL_T ;
+
+
+ void* MMAL_MAX (scalar_t__,scalar_t__) ;
+ scalar_t__ MMAL_SUCCESS ;
+ scalar_t__ enable_tunneling () ;
+ int * generic_input_port_cb ;
+ scalar_t__ mmal_format_full_copy (int ,int ) ;
+ int mmal_pool_destroy (int *) ;
+ scalar_t__ mmal_port_connect (TYPE_1__*,TYPE_1__*) ;
+ int mmal_port_disable (TYPE_1__*) ;
+ int mmal_port_disconnect (TYPE_1__*) ;
+ scalar_t__ mmal_port_enable (TYPE_1__*,int *) ;
+ scalar_t__ mmal_port_format_commit (TYPE_1__*) ;
+ int mmal_queue_destroy (int *) ;
+ scalar_t__ setup_output_port (TYPE_1__*,int **,int **) ;
 
 __attribute__((used)) static MMAL_STATUS_T connect_ports(MMAL_PORT_T *output_port, MMAL_PORT_T *input_port, MMAL_QUEUE_T **p_queue, MMAL_POOL_T **p_pool)
 {
@@ -50,14 +50,14 @@ __attribute__((used)) static MMAL_STATUS_T connect_ports(MMAL_PORT_T *output_por
       if (status != MMAL_SUCCESS)
          return status;
 
-      status = mmal_port_enable(output_port, NULL);
+      status = mmal_port_enable(output_port, ((void*)0));
       if (status != MMAL_SUCCESS)
          mmal_port_disconnect(output_port);
 
       return status;
    }
 
-   /* Non-tunneling setup */
+
    input_port->buffer_size = input_port->buffer_size_recommended;
    if (input_port->buffer_size < input_port->buffer_size_min)
       input_port->buffer_size = input_port->buffer_size_min;

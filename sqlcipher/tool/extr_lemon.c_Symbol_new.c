@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct symbol {int prec; scalar_t__ useCnt; int /*<<< orphan*/  name; scalar_t__ datatype; scalar_t__ destLineno; scalar_t__ destructor; int /*<<< orphan*/  lambda; scalar_t__ firstset; int /*<<< orphan*/  assoc; scalar_t__ fallback; scalar_t__ rule; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- scalar_t__ ISUPPER (char const) ; 
- int /*<<< orphan*/  LEMON_FALSE ; 
- int /*<<< orphan*/  MemoryCheck (struct symbol*) ; 
- int /*<<< orphan*/  NONTERMINAL ; 
- int /*<<< orphan*/  Strsafe (char const*) ; 
- struct symbol* Symbol_find (char const*) ; 
- int /*<<< orphan*/  Symbol_insert (struct symbol*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TERMINAL ; 
- int /*<<< orphan*/  UNK ; 
- scalar_t__ calloc (int,int) ; 
+
+
+
+struct symbol {int prec; scalar_t__ useCnt; int name; scalar_t__ datatype; scalar_t__ destLineno; scalar_t__ destructor; int lambda; scalar_t__ firstset; int assoc; scalar_t__ fallback; scalar_t__ rule; int type; } ;
+
+
+ scalar_t__ ISUPPER (char const) ;
+ int LEMON_FALSE ;
+ int MemoryCheck (struct symbol*) ;
+ int NONTERMINAL ;
+ int Strsafe (char const*) ;
+ struct symbol* Symbol_find (char const*) ;
+ int Symbol_insert (struct symbol*,int ) ;
+ int TERMINAL ;
+ int UNK ;
+ scalar_t__ calloc (int,int) ;
 
 struct symbol *Symbol_new(const char *x)
 {

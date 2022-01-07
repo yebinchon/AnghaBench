@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
 struct clknode {int dummy; } ;
-struct aw_clk_prediv_mux_sc {int /*<<< orphan*/  prediv; int /*<<< orphan*/  div; int /*<<< orphan*/  offset; } ;
+struct aw_clk_prediv_mux_sc {int prediv; int div; int offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_LOCK (struct clknode*) ; 
- int /*<<< orphan*/  DEVICE_UNLOCK (struct clknode*) ; 
- int /*<<< orphan*/  READ4 (struct clknode*,int /*<<< orphan*/ ,int*) ; 
- int aw_clk_get_factor (int,int /*<<< orphan*/ *) ; 
- struct aw_clk_prediv_mux_sc* clknode_get_softc (struct clknode*) ; 
+
+ int DEVICE_LOCK (struct clknode*) ;
+ int DEVICE_UNLOCK (struct clknode*) ;
+ int READ4 (struct clknode*,int ,int*) ;
+ int aw_clk_get_factor (int,int *) ;
+ struct aw_clk_prediv_mux_sc* clknode_get_softc (struct clknode*) ;
 
 __attribute__((used)) static int
 aw_clk_prediv_mux_recalc(struct clknode *clk, uint64_t *freq)
 {
-	struct aw_clk_prediv_mux_sc *sc;
-	uint32_t val, div, prediv;
+ struct aw_clk_prediv_mux_sc *sc;
+ uint32_t val, div, prediv;
 
-	sc = clknode_get_softc(clk);
+ sc = clknode_get_softc(clk);
 
-	DEVICE_LOCK(clk);
-	READ4(clk, sc->offset, &val);
-	DEVICE_UNLOCK(clk);
+ DEVICE_LOCK(clk);
+ READ4(clk, sc->offset, &val);
+ DEVICE_UNLOCK(clk);
 
-	div = aw_clk_get_factor(val, &sc->div);
-	prediv = aw_clk_get_factor(val, &sc->prediv);
+ div = aw_clk_get_factor(val, &sc->div);
+ prediv = aw_clk_get_factor(val, &sc->prediv);
 
-	*freq = *freq / prediv / div;
-	return (0);
+ *freq = *freq / prediv / div;
+ return (0);
 }

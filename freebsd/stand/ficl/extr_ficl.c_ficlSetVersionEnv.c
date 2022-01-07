@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FICL_SYSTEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FICL_ROBUST ; 
- int /*<<< orphan*/  FICL_VER_MAJOR ; 
- int /*<<< orphan*/  FICL_VER_MINOR ; 
- int /*<<< orphan*/  ficlSetEnv (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ficlSetEnvD (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FICL_SYSTEM ;
+
+
+ int FICL_ROBUST ;
+ int FICL_VER_MAJOR ;
+ int FICL_VER_MINOR ;
+ int ficlSetEnv (int *,char*,int ) ;
+ int ficlSetEnvD (int *,char*,int ,int ) ;
 
 __attribute__((used)) static void ficlSetVersionEnv(FICL_SYSTEM *pSys)
 {
     ficlSetEnvD(pSys, "ficl-version", FICL_VER_MAJOR, FICL_VER_MINOR);
-    ficlSetEnv (pSys, "ficl-robust",  FICL_ROBUST);
+    ficlSetEnv (pSys, "ficl-robust", FICL_ROBUST);
     return;
 }

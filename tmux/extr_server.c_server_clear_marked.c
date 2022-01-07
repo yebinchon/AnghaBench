@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cmd_find_clear_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  marked_pane ; 
+ int cmd_find_clear_state (int *,int ) ;
+ int marked_pane ;
 
 void
 server_clear_marked(void)
 {
-	cmd_find_clear_state(&marked_pane, 0);
+ cmd_find_clear_state(&marked_pane, 0);
 }

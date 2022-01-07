@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
 
-/* Variables and functions */
+
+
+
+typedef int WINDOW ;
+
+
 
 int
 pmcpl_cg_topkeypress(int c, void *arg)
 {
-	WINDOW *w;
+ WINDOW *w;
 
-	w = (WINDOW *)arg;
+ w = (WINDOW *)arg;
 
-	(void) c; (void) w;
+ (void) c; (void) w;
 
-	return 0;
+ return 0;
 }

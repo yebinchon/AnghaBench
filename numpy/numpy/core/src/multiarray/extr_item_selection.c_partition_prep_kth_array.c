@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t npy_intp ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_INTP ; 
- int /*<<< orphan*/  NPY_QUICKSORT ; 
- int /*<<< orphan*/  PyArray_CanCastSafely (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PyArray_Cast (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t* PyArray_DATA (int /*<<< orphan*/ *) ; 
- int PyArray_NDIM (int /*<<< orphan*/ *) ; 
- size_t* PyArray_SHAPE (int /*<<< orphan*/ *) ; 
- int PyArray_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_Sort (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_TYPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t npy_intp ;
+typedef int PyArrayObject ;
+
+
+ int NPY_INTP ;
+ int NPY_QUICKSORT ;
+ int PyArray_CanCastSafely (int ,int ) ;
+ scalar_t__ PyArray_Cast (int *,int ) ;
+ size_t* PyArray_DATA (int *) ;
+ int PyArray_NDIM (int *) ;
+ size_t* PyArray_SHAPE (int *) ;
+ int PyArray_SIZE (int *) ;
+ int PyArray_Sort (int *,int,int ) ;
+ int PyArray_TYPE (int *) ;
+ int PyErr_Format (int ,char*,...) ;
+ int PyExc_TypeError ;
+ int PyExc_ValueError ;
+ int Py_XDECREF (int *) ;
 
 __attribute__((used)) static PyArrayObject *
 partition_prep_kth_array(PyArrayObject * ktharray,
@@ -41,17 +41,17 @@ partition_prep_kth_array(PyArrayObject * ktharray,
 
     if (!PyArray_CanCastSafely(PyArray_TYPE(ktharray), NPY_INTP)) {
         PyErr_Format(PyExc_TypeError, "Partition index must be integer");
-        return NULL;
+        return ((void*)0);
     }
 
     if (PyArray_NDIM(ktharray) > 1) {
         PyErr_Format(PyExc_ValueError, "kth array must have dimension <= 1");
-        return NULL;
+        return ((void*)0);
     }
     kthrvl = (PyArrayObject *)PyArray_Cast(ktharray, NPY_INTP);
 
-    if (kthrvl == NULL)
-        return NULL;
+    if (kthrvl == ((void*)0))
+        return ((void*)0);
 
     kth = PyArray_DATA(kthrvl);
     nkth = PyArray_SIZE(kthrvl);
@@ -65,14 +65,14 @@ partition_prep_kth_array(PyArrayObject * ktharray,
             PyErr_Format(PyExc_ValueError, "kth(=%zd) out of bounds (%zd)",
                          kth[i], shape[axis]);
             Py_XDECREF(kthrvl);
-            return NULL;
+            return ((void*)0);
         }
     }
 
-    /*
-     * sort the array of kths so the partitions will
-     * not trample on each other
-     */
+
+
+
+
     if (PyArray_SIZE(kthrvl) > 1) {
         PyArray_Sort(kthrvl, -1, NPY_QUICKSORT);
     }

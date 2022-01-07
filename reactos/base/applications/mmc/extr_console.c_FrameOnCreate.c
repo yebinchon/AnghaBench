@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  idFirstChild; int /*<<< orphan*/  hWindowMenu; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int idFirstChild; int hWindowMenu; } ;
 struct TYPE_6__ {scalar_t__ lpCreateParams; } ;
-struct TYPE_5__ {int /*<<< orphan*/  hwndMDIClient; void* hMenuConsoleLarge; int /*<<< orphan*/  hwnd; void* hMenuConsoleSmall; void* AppAuthorMode; } ;
-typedef  TYPE_1__* PCONSOLE_MAINFRAME_WND ;
-typedef  int LRESULT ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/ * LPCTSTR ;
-typedef  TYPE_2__* LPCREATESTRUCT ;
-typedef  scalar_t__ LPARAM ;
-typedef  int /*<<< orphan*/  LONG_PTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  int /*<<< orphan*/  CONSOLE_MAINFRAME_WND ;
-typedef  TYPE_3__ CLIENTCREATESTRUCT ;
+struct TYPE_5__ {int hwndMDIClient; void* hMenuConsoleLarge; int hwnd; void* hMenuConsoleSmall; void* AppAuthorMode; } ;
+typedef TYPE_1__* PCONSOLE_MAINFRAME_WND ;
+typedef int LRESULT ;
+typedef int LPVOID ;
+typedef int * LPCTSTR ;
+typedef TYPE_2__* LPCREATESTRUCT ;
+typedef scalar_t__ LPARAM ;
+typedef int LONG_PTR ;
+typedef int HWND ;
+typedef int HMENU ;
+typedef int CONSOLE_MAINFRAME_WND ;
+typedef TYPE_3__ CLIENTCREATESTRUCT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CW_USEDEFAULT ; 
- int /*<<< orphan*/  CreateWindowEx (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSubMenu (void*,int) ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDM_CONSOLE_LARGE ; 
- int /*<<< orphan*/  IDM_CONSOLE_SMALL ; 
- int /*<<< orphan*/  IDM_MDI_FIRSTCHILD ; 
- void* LoadMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SW_SHOW ; 
- int /*<<< orphan*/  SetMenu (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  SetWindowLongPtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowText (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- void* TRUE ; 
- int WS_BORDER ; 
- int WS_CHILD ; 
- int WS_CLIPCHILDREN ; 
- int /*<<< orphan*/  WS_EX_CLIENTEDGE ; 
- int WS_HSCROLL ; 
- int WS_VISIBLE ; 
- int WS_VSCROLL ; 
- int /*<<< orphan*/  hAppHeap ; 
- int /*<<< orphan*/  hAppInstance ; 
- int /*<<< orphan*/  hwndMDIClient ; 
+
+ int CW_USEDEFAULT ;
+ int CreateWindowEx (int ,char*,int *,int,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int GetSubMenu (void*,int) ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int IDM_CONSOLE_LARGE ;
+ int IDM_CONSOLE_SMALL ;
+ int IDM_MDI_FIRSTCHILD ;
+ void* LoadMenu (int ,int ) ;
+ int MAKEINTRESOURCE (int ) ;
+ int SW_SHOW ;
+ int SetMenu (int ,void*) ;
+ int SetWindowLongPtr (int ,int ,int ) ;
+ int SetWindowText (int ,int ) ;
+ int ShowWindow (int ,int ) ;
+ int TEXT (char*) ;
+ void* TRUE ;
+ int WS_BORDER ;
+ int WS_CHILD ;
+ int WS_CLIPCHILDREN ;
+ int WS_EX_CLIENTEDGE ;
+ int WS_HSCROLL ;
+ int WS_VISIBLE ;
+ int WS_VSCROLL ;
+ int hAppHeap ;
+ int hAppInstance ;
+ int hwndMDIClient ;
 
 __attribute__((used)) static LRESULT
 FrameOnCreate(HWND hwnd,
@@ -68,7 +68,7 @@ FrameOnCreate(HWND hwnd,
     Info = HeapAlloc(hAppHeap,
                      HEAP_ZERO_MEMORY,
                      sizeof(CONSOLE_MAINFRAME_WND));
-    if (Info == NULL)
+    if (Info == ((void*)0))
         return -1;
 
     Info->hwnd = hwnd;
@@ -83,16 +83,16 @@ FrameOnCreate(HWND hwnd,
     Info->hMenuConsoleLarge = LoadMenu(hAppInstance,
                                        MAKEINTRESOURCE(IDM_CONSOLE_LARGE));
 
-    if (lpFileName == NULL)
+    if (lpFileName == ((void*)0))
     {
-        /* FIXME */
+
         Info->AppAuthorMode = TRUE;
-//        Info->lpConsoleTitle = TEXT("ReactOS Management Console");
+
     }
     else
     {
         Info->AppAuthorMode = TRUE;
-//        Info->lpConsoleTitle = CreateNewConsoleTitle();
+
     }
 
     SetMenu(Info->hwnd,
@@ -103,10 +103,10 @@ FrameOnCreate(HWND hwnd,
     ccs.hWindowMenu = GetSubMenu(Info->hMenuConsoleLarge, 1);
     ccs.idFirstChild = IDM_MDI_FIRSTCHILD;
 
-    /* Create the MDI client window */
+
     hwndMDIClient = CreateWindowEx(WS_EX_CLIENTEDGE,
                                    L"MDICLIENT",
-                                   (LPCTSTR)NULL,
+                                   (LPCTSTR)((void*)0),
                                    WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL | WS_VISIBLE | WS_BORDER,
                                    CW_USEDEFAULT,
                                    CW_USEDEFAULT,

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ GLboolean ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GLFW_AUTO_ICONIFY ; 
- int /*<<< orphan*/  GLFW_FOCUSED ; 
- int /*<<< orphan*/  GLFW_ICONIFIED ; 
- scalar_t__ GL_FALSE ; 
- scalar_t__ GL_TRUE ; 
- int /*<<< orphan*/ ** calloc (int,int) ; 
- int /*<<< orphan*/ * create_window (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  framebuffer_size_callback ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/ ** glfwGetMonitors (int*) ; 
- int /*<<< orphan*/ * glfwGetPrimaryMonitor () ; 
- scalar_t__ glfwGetWindowAttrib (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowFocusCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowIconifyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowRefreshCallback (int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  glfwSetWindowSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/  printf (char*,char*,char*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  window_focus_callback ; 
- int /*<<< orphan*/  window_iconify_callback ; 
- int /*<<< orphan*/  window_refresh_callback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  window_size_callback ; 
+
+
+
+typedef scalar_t__ GLboolean ;
+typedef int GLFWwindow ;
+typedef int GLFWmonitor ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GLFW_AUTO_ICONIFY ;
+ int GLFW_FOCUSED ;
+ int GLFW_ICONIFIED ;
+ scalar_t__ GL_FALSE ;
+ scalar_t__ GL_TRUE ;
+ int ** calloc (int,int) ;
+ int * create_window (int *) ;
+ int error_callback ;
+ int exit (int ) ;
+ int fflush (int ) ;
+ int framebuffer_size_callback ;
+ int getopt (int,char**,char*) ;
+ int ** glfwGetMonitors (int*) ;
+ int * glfwGetPrimaryMonitor () ;
+ scalar_t__ glfwGetWindowAttrib (int *,int ) ;
+ int glfwInit () ;
+ int glfwPollEvents () ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetFramebufferSizeCallback (int *,int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSetWindowFocusCallback (int *,int ) ;
+ int glfwSetWindowIconifyCallback (int *,int ) ;
+ int glfwSetWindowRefreshCallback (int *,int (*) (int *)) ;
+ int glfwSetWindowSizeCallback (int *,int ) ;
+ int glfwTerminate () ;
+ int glfwWindowHint (int ,scalar_t__) ;
+ scalar_t__ glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ int printf (char*,char*,char*) ;
+ int stdout ;
+ int usage () ;
+ int window_focus_callback ;
+ int window_iconify_callback ;
+ int window_refresh_callback (int *) ;
+ int window_size_callback ;
 
 int main(int argc, char** argv)
 {
@@ -100,7 +100,7 @@ int main(int argc, char** argv)
         window_count = monitor_count;
         windows = calloc(window_count, sizeof(GLFWwindow*));
 
-        for (i = 0;  i < monitor_count;  i++)
+        for (i = 0; i < monitor_count; i++)
         {
             windows[i] = create_window(monitors[i]);
             if (!windows[i])
@@ -109,7 +109,7 @@ int main(int argc, char** argv)
     }
     else
     {
-        GLFWmonitor* monitor = NULL;
+        GLFWmonitor* monitor = ((void*)0);
 
         if (fullscreen)
             monitor = glfwGetPrimaryMonitor();
@@ -119,7 +119,7 @@ int main(int argc, char** argv)
         windows[0] = create_window(monitor);
     }
 
-    for (i = 0;  i < window_count;  i++)
+    for (i = 0; i < window_count; i++)
     {
         glfwSetKeyCallback(windows[i], key_callback);
         glfwSetFramebufferSizeCallback(windows[i], framebuffer_size_callback);
@@ -139,7 +139,7 @@ int main(int argc, char** argv)
     {
         glfwPollEvents();
 
-        for (i = 0;  i < window_count;  i++)
+        for (i = 0; i < window_count; i++)
         {
             if (glfwWindowShouldClose(windows[i]))
                 break;
@@ -148,7 +148,7 @@ int main(int argc, char** argv)
         if (i < window_count)
             break;
 
-        // Workaround for an issue with msvcrt and mintty
+
         fflush(stdout);
     }
 

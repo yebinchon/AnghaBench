@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct consdev {int dummy; } ;
 
-/* Variables and functions */
- int RB_VERBOSE ; 
- int boothowto ; 
- int /*<<< orphan*/  bvm_cnputc (struct consdev*,char const) ; 
- int strlen (char const*) ; 
+
+ int RB_VERBOSE ;
+ int boothowto ;
+ int bvm_cnputc (struct consdev*,char const) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void
 bvm_cninit(struct consdev *cp)
 {
-	int i;
-	const char *bootmsg = "Using bvm console.\n";
+ int i;
+ const char *bootmsg = "Using bvm console.\n";
 
-	if (boothowto & RB_VERBOSE) {
-		for (i = 0; i < strlen(bootmsg); i++)
-			bvm_cnputc(cp, bootmsg[i]);
-	}
+ if (boothowto & RB_VERBOSE) {
+  for (i = 0; i < strlen(bootmsg); i++)
+   bvm_cnputc(cp, bootmsg[i]);
+ }
 }

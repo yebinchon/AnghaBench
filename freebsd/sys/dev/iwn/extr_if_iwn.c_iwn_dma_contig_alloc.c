@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iwn_softc {int /*<<< orphan*/  sc_dev; } ;
-struct iwn_dma_info {void* vaddr; int /*<<< orphan*/  map; int /*<<< orphan*/ * tag; int /*<<< orphan*/  paddr; int /*<<< orphan*/  size; } ;
-typedef  int /*<<< orphan*/  bus_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_DMASYNC_PREWRITE ; 
- int BUS_DMA_COHERENT ; 
- int BUS_DMA_NOWAIT ; 
- int BUS_DMA_ZERO ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR_32BIT ; 
- int bus_dma_tag_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int bus_dmamap_load (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bus_dmamap_sync (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int bus_dmamem_alloc (int /*<<< orphan*/ *,void**,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_get_dma_tag (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iwn_dma_contig_free (struct iwn_dma_info*) ; 
- int /*<<< orphan*/  iwn_dma_map_addr ; 
+
+
+
+struct iwn_softc {int sc_dev; } ;
+struct iwn_dma_info {void* vaddr; int map; int * tag; int paddr; int size; } ;
+typedef int bus_size_t ;
+
+
+ int BUS_DMASYNC_PREWRITE ;
+ int BUS_DMA_COHERENT ;
+ int BUS_DMA_NOWAIT ;
+ int BUS_DMA_ZERO ;
+ int BUS_SPACE_MAXADDR ;
+ int BUS_SPACE_MAXADDR_32BIT ;
+ int bus_dma_tag_create (int ,int ,int ,int ,int ,int *,int *,int ,int,int ,int ,int *,int *,int **) ;
+ int bus_dmamap_load (int *,int ,void*,int ,int ,int *,int) ;
+ int bus_dmamap_sync (int *,int ,int ) ;
+ int bus_dmamem_alloc (int *,void**,int,int *) ;
+ int bus_get_dma_tag (int ) ;
+ int iwn_dma_contig_free (struct iwn_dma_info*) ;
+ int iwn_dma_map_addr ;
 
 __attribute__((used)) static int
 iwn_dma_contig_alloc(struct iwn_softc *sc, struct iwn_dma_info *dma,
     void **kvap, bus_size_t size, bus_size_t alignment)
 {
-	int error;
+ int error;
 
-	dma->tag = NULL;
-	dma->size = size;
+ dma->tag = ((void*)0);
+ dma->size = size;
 
-	error = bus_dma_tag_create(bus_get_dma_tag(sc->sc_dev), alignment,
-	    0, BUS_SPACE_MAXADDR_32BIT, BUS_SPACE_MAXADDR, NULL, NULL, size,
-	    1, size, 0, NULL, NULL, &dma->tag);
-	if (error != 0)
-		goto fail;
+ error = bus_dma_tag_create(bus_get_dma_tag(sc->sc_dev), alignment,
+     0, BUS_SPACE_MAXADDR_32BIT, BUS_SPACE_MAXADDR, ((void*)0), ((void*)0), size,
+     1, size, 0, ((void*)0), ((void*)0), &dma->tag);
+ if (error != 0)
+  goto fail;
 
-	error = bus_dmamem_alloc(dma->tag, (void **)&dma->vaddr,
-	    BUS_DMA_NOWAIT | BUS_DMA_ZERO | BUS_DMA_COHERENT, &dma->map);
-	if (error != 0)
-		goto fail;
+ error = bus_dmamem_alloc(dma->tag, (void **)&dma->vaddr,
+     BUS_DMA_NOWAIT | BUS_DMA_ZERO | BUS_DMA_COHERENT, &dma->map);
+ if (error != 0)
+  goto fail;
 
-	error = bus_dmamap_load(dma->tag, dma->map, dma->vaddr, size,
-	    iwn_dma_map_addr, &dma->paddr, BUS_DMA_NOWAIT);
-	if (error != 0)
-		goto fail;
+ error = bus_dmamap_load(dma->tag, dma->map, dma->vaddr, size,
+     iwn_dma_map_addr, &dma->paddr, BUS_DMA_NOWAIT);
+ if (error != 0)
+  goto fail;
 
-	bus_dmamap_sync(dma->tag, dma->map, BUS_DMASYNC_PREWRITE);
+ bus_dmamap_sync(dma->tag, dma->map, BUS_DMASYNC_PREWRITE);
 
-	if (kvap != NULL)
-		*kvap = dma->vaddr;
+ if (kvap != ((void*)0))
+  *kvap = dma->vaddr;
 
-	return 0;
+ return 0;
 
-fail:	iwn_dma_contig_free(dma);
-	return error;
+fail: iwn_dma_contig_free(dma);
+ return error;
 }

@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ BACKGROUND ; 
- scalar_t__ MENUITEM ; 
- int* buffer ; 
- int /*<<< orphan*/  clrscr () ; 
- int /*<<< orphan*/  cputs (char*) ; 
- int /*<<< orphan*/  gotoxy (int,int) ; 
- size_t hi ; 
- int /*<<< orphan*/  key_done () ; 
- int /*<<< orphan*/  key_init () ; 
- size_t lo ; 
- int* pressed ; 
- int /*<<< orphan*/  showjoy (int,int,int) ; 
- int /*<<< orphan*/  textattr (scalar_t__) ; 
+ scalar_t__ BACKGROUND ;
+ scalar_t__ MENUITEM ;
+ int* buffer ;
+ int clrscr () ;
+ int cputs (char*) ;
+ int gotoxy (int,int) ;
+ size_t hi ;
+ int key_done () ;
+ int key_init () ;
+ size_t lo ;
+ int* pressed ;
+ int showjoy (int,int,int) ;
+ int textattr (scalar_t__) ;
 
 void testcollisions()
 {
@@ -52,7 +44,7 @@ void testcollisions()
     lo++;
     if (lo==100) lo=0;
   }while(!pressed[1]);
-  /*wait until ESC is depressed*/
+
   do{
     while (hi==lo);
     pressed[buffer[lo]&0xff]=buffer[lo]<0x100;

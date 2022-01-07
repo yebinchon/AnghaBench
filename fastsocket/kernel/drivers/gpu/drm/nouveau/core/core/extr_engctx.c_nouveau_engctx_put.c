@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nouveau_object {int /*<<< orphan*/  engine; } ;
-struct nouveau_engine {int /*<<< orphan*/  lock; } ;
-struct nouveau_engctx {int /*<<< orphan*/  save; } ;
 
-/* Variables and functions */
- struct nouveau_engctx* nv_engctx (struct nouveau_object*) ; 
- struct nouveau_engine* nv_engine (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct nouveau_object {int engine; } ;
+struct nouveau_engine {int lock; } ;
+struct nouveau_engctx {int save; } ;
+
+
+ struct nouveau_engctx* nv_engctx (struct nouveau_object*) ;
+ struct nouveau_engine* nv_engine (int ) ;
+ int spin_unlock_irqrestore (int *,int ) ;
 
 void
 nouveau_engctx_put(struct nouveau_object *object)
 {
-	if (object) {
-		struct nouveau_engine *engine = nv_engine(object->engine);
-		struct nouveau_engctx *engctx = nv_engctx(object);
-		spin_unlock_irqrestore(&engine->lock, engctx->save);
-	}
+ if (object) {
+  struct nouveau_engine *engine = nv_engine(object->engine);
+  struct nouveau_engctx *engctx = nv_engctx(object);
+  spin_unlock_irqrestore(&engine->lock, engctx->save);
+ }
 }

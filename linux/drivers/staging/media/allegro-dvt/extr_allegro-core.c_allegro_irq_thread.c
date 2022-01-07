@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct allegro_dev {int dummy; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+typedef int irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  allegro_receive_message (struct allegro_dev*) ; 
+
+ int IRQ_HANDLED ;
+ int allegro_receive_message (struct allegro_dev*) ;
 
 __attribute__((used)) static irqreturn_t allegro_irq_thread(int irq, void *data)
 {
-	struct allegro_dev *dev = data;
+ struct allegro_dev *dev = data;
 
-	allegro_receive_message(dev);
+ allegro_receive_message(dev);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

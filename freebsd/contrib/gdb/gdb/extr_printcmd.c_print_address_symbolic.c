@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ui_file {int dummy; } ;
 struct cleanup {int dummy; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- scalar_t__ build_address_symbolic (int /*<<< orphan*/ ,int,char**,int*,char**,int*,int*) ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- int /*<<< orphan*/  fprintf_filtered (struct ui_file*,char*,...) ; 
- int /*<<< orphan*/  fputs_filtered (char*,struct ui_file*) ; 
- int /*<<< orphan*/  free_current_contents ; 
- struct cleanup* make_cleanup (int /*<<< orphan*/ ,char**) ; 
- scalar_t__ print_symbol_filename ; 
+
+ scalar_t__ build_address_symbolic (int ,int,char**,int*,char**,int*,int*) ;
+ int do_cleanups (struct cleanup*) ;
+ int fprintf_filtered (struct ui_file*,char*,...) ;
+ int fputs_filtered (char*,struct ui_file*) ;
+ int free_current_contents ;
+ struct cleanup* make_cleanup (int ,char**) ;
+ scalar_t__ print_symbol_filename ;
 
 void
 print_address_symbolic (CORE_ADDR addr, struct ui_file *stream, int do_demangle,
-			char *leadin)
+   char *leadin)
 {
-  char *name = NULL;
-  char *filename = NULL;
+  char *name = ((void*)0);
+  char *filename = ((void*)0);
   int unmapped = 0;
   int offset = 0;
   int line = 0;
 
-  /* throw away both name and filename */
+
   struct cleanup *cleanup_chain = make_cleanup (free_current_contents, &name);
   make_cleanup (free_current_contents, &filename);
 
@@ -52,14 +52,14 @@ print_address_symbolic (CORE_ADDR addr, struct ui_file *stream, int do_demangle,
   if (offset != 0)
     fprintf_filtered (stream, "+%u", (unsigned int) offset);
 
-  /* Append source filename and line number if desired.  Give specific
-     line # of this addr, if we have it; else line # of the nearest symbol.  */
-  if (print_symbol_filename && filename != NULL)
+
+
+  if (print_symbol_filename && filename != ((void*)0))
     {
       if (line != -1)
-	fprintf_filtered (stream, " at %s:%d", filename, line);
+ fprintf_filtered (stream, " at %s:%d", filename, line);
       else
-	fprintf_filtered (stream, " in %s", filename);
+ fprintf_filtered (stream, " in %s", filename);
     }
   if (unmapped)
     fputs_filtered ("*>", stream);

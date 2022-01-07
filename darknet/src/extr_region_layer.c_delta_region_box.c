@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int x; int y; int w; int h; } ;
-typedef  TYPE_1__ box ;
+typedef TYPE_1__ box ;
 
-/* Variables and functions */
- float box_iou (TYPE_1__,TYPE_1__) ; 
- TYPE_1__ get_region_box (float*,float*,int,int,int,int,int,int,int) ; 
- float log (int) ; 
+
+ float box_iou (TYPE_1__,TYPE_1__) ;
+ TYPE_1__ get_region_box (float*,float*,int,int,int,int,int,int,int) ;
+ float log (int) ;
 
 float delta_region_box(box truth, float *x, float *biases, int n, int index, int i, int j, int w, int h, float *delta, float scale, int stride)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sigaction {scalar_t__ sa_flags; int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_handler; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigusr1_handler ; 
+
+
+
+struct sigaction {scalar_t__ sa_flags; int sa_mask; int sa_handler; } ;
+typedef int sigset_t ;
+
+
+ int SIGUSR1 ;
+ int assert (int) ;
+ int sigaction (int ,struct sigaction*,int *) ;
+ int sigemptyset (int *) ;
+ int sigusr1_handler ;
 
 void set_sigusr1_handler (void) {
   struct sigaction act;
@@ -27,5 +27,5 @@ void set_sigusr1_handler (void) {
   act.sa_handler = sigusr1_handler;
   act.sa_mask = signal_set;
   act.sa_flags = 0;
-  assert (!sigaction (SIGUSR1, &act, NULL));
+  assert (!sigaction (SIGUSR1, &act, ((void*)0)));
 }

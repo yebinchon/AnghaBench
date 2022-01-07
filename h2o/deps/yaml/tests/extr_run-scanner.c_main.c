@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ type; } ;
-typedef  TYPE_1__ yaml_token_t ;
-typedef  int /*<<< orphan*/  yaml_parser_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ yaml_token_t ;
+typedef int yaml_parser_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ YAML_STREAM_END_TOKEN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  yaml_parser_delete (int /*<<< orphan*/ *) ; 
- int yaml_parser_initialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_parser_scan (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  yaml_parser_set_input_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yaml_token_delete (TYPE_1__*) ; 
+
+ scalar_t__ YAML_STREAM_END_TOKEN ;
+ int assert (int) ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ int * fopen (char*,char*) ;
+ int printf (char*,...) ;
+ int stdout ;
+ int yaml_parser_delete (int *) ;
+ int yaml_parser_initialize (int *) ;
+ int yaml_parser_scan (int *,TYPE_1__*) ;
+ int yaml_parser_set_input_file (int *,int *) ;
+ int yaml_token_delete (TYPE_1__*) ;
 
 int
 main(int argc, char *argv[])

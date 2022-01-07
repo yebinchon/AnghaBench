@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  int /*<<< orphan*/  AVBitStreamFilter ;
-typedef  int /*<<< orphan*/  AVBSFList ;
-typedef  int /*<<< orphan*/  AVBSFContext ;
 
-/* Variables and functions */
- int AVERROR_BSF_NOT_FOUND ; 
- int /*<<< orphan*/  AV_OPT_SEARCH_CHILDREN ; 
- int av_bsf_alloc (int /*<<< orphan*/  const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_bsf_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * av_bsf_get_by_name (char const*) ; 
- int av_bsf_list_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int av_opt_set_dict2 (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int AVDictionary ;
+typedef int AVBitStreamFilter ;
+typedef int AVBSFList ;
+typedef int AVBSFContext ;
+
+
+ int AVERROR_BSF_NOT_FOUND ;
+ int AV_OPT_SEARCH_CHILDREN ;
+ int av_bsf_alloc (int const*,int **) ;
+ int av_bsf_free (int **) ;
+ int * av_bsf_get_by_name (char const*) ;
+ int av_bsf_list_append (int *,int *) ;
+ int av_opt_set_dict2 (int *,int **,int ) ;
 
 int av_bsf_list_append2(AVBSFList *lst, const char *bsf_name, AVDictionary ** options)
 {

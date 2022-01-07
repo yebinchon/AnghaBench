@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  inq_info; } ;
-typedef  TYPE_1__ tINQ_DB_ENT ;
-typedef  int /*<<< orphan*/  tBTM_INQ_INFO ;
-typedef  int /*<<< orphan*/ * BD_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTM_TRACE_API (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* btm_inq_db_find (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int inq_info; } ;
+typedef TYPE_1__ tINQ_DB_ENT ;
+typedef int tBTM_INQ_INFO ;
+typedef int * BD_ADDR ;
+
+
+ int BTM_TRACE_API (char*,int ,int ,int ,int ,int ,int ) ;
+ TYPE_1__* btm_inq_db_find (int *) ;
 
 tBTM_INQ_INFO *BTM_InqDbRead (BD_ADDR p_bda)
 {
@@ -27,7 +27,7 @@ tBTM_INQ_INFO *BTM_InqDbRead (BD_ADDR p_bda)
 
     tINQ_DB_ENT *p_ent = btm_inq_db_find(p_bda);
     if (!p_ent) {
-        return NULL;
+        return ((void*)0);
     }
 
     return &p_ent->inq_info;

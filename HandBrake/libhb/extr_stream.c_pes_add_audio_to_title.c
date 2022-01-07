@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_21__ {int /*<<< orphan*/  list_audio; } ;
-typedef  TYPE_5__ hb_title_t ;
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_21__ {int list_audio; } ;
+typedef TYPE_5__ hb_title_t ;
 struct TYPE_17__ {TYPE_7__* list; } ;
-struct TYPE_22__ {int /*<<< orphan*/  reg_desc; TYPE_1__ pes; } ;
-typedef  TYPE_6__ hb_stream_t ;
-struct TYPE_23__ {int stream_id_ext; int stream_id; int /*<<< orphan*/  stream_type; int /*<<< orphan*/  lang_code; int /*<<< orphan*/  codec_param; int /*<<< orphan*/  codec; } ;
-typedef  TYPE_7__ hb_pes_stream_t ;
+struct TYPE_22__ {int reg_desc; TYPE_1__ pes; } ;
+typedef TYPE_6__ hb_stream_t ;
+struct TYPE_23__ {int stream_id_ext; int stream_id; int stream_type; int lang_code; int codec_param; int codec; } ;
+typedef TYPE_7__ hb_pes_stream_t ;
 struct TYPE_18__ {int num; int den; } ;
-struct TYPE_19__ {int substream_type; int track; TYPE_2__ timebase; int /*<<< orphan*/  codec_param; int /*<<< orphan*/  codec; int /*<<< orphan*/  stream_type; int /*<<< orphan*/  reg_desc; } ;
+struct TYPE_19__ {int substream_type; int track; TYPE_2__ timebase; int codec_param; int codec; int stream_type; int reg_desc; } ;
 struct TYPE_20__ {TYPE_3__ in; } ;
 struct TYPE_24__ {int id; TYPE_4__ config; } ;
-typedef  TYPE_8__ hb_audio_t ;
+typedef TYPE_8__ hb_audio_t ;
 
-/* Variables and functions */
- TYPE_8__* calloc (int,int) ; 
- int get_id (TYPE_7__*) ; 
- int /*<<< orphan*/  hb_list_add (int /*<<< orphan*/ ,TYPE_8__*) ; 
- int hb_list_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_list_insert (int /*<<< orphan*/ ,int,TYPE_8__*) ; 
- TYPE_8__* hb_list_item (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hb_log (char*,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  lang_for_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_audio_description (TYPE_8__*,int /*<<< orphan*/ ) ; 
+
+ TYPE_8__* calloc (int,int) ;
+ int get_id (TYPE_7__*) ;
+ int hb_list_add (int ,TYPE_8__*) ;
+ int hb_list_count (int ) ;
+ int hb_list_insert (int ,int,TYPE_8__*) ;
+ TYPE_8__* hb_list_item (int ,int) ;
+ int hb_log (char*,int,int ,int,int) ;
+ int lang_for_code (int ) ;
+ int set_audio_description (TYPE_8__*,int ) ;
 
 __attribute__((used)) static void pes_add_audio_to_title(
     hb_stream_t *stream,
-    int         idx,
-    hb_title_t  *title,
-    int         sort)
+    int idx,
+    hb_title_t *title,
+    int sort)
 {
     hb_pes_stream_t *pes = &stream->pes.list[idx];
 
-    // Sort by id when adding to the list
-    // This assures that they are always displayed in the same order
+
+
     int id = get_id( pes );
     int i;
-    hb_audio_t *tmp = NULL;
+    hb_audio_t *tmp = ((void*)0);
 
     int count = hb_list_count( title->list_audio );
 
-    // Don't add the same audio twice.  Search for audio.
+
     for ( i = 0; i < count; i++ )
     {
         tmp = hb_list_item( title->list_audio, i );
@@ -85,7 +85,7 @@ __attribute__((used)) static void pes_add_audio_to_title(
 
     audio->config.in.track = idx;
 
-    // Search for the sort position
+
     if ( sort >= 0 )
     {
         sort = sort < count ? sort : count;

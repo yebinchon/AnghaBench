@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* bitss ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
+ int* bitss ;
+ int printf (char*,char*,...) ;
 
 void BitConv(int src, int dest, char *wt)
 {
- if((src^dest)&1) /* signed/unsigned change. */
-  if(src&1)	/* Source unsigned, dest signed. */
+ if((src^dest)&1)
+  if(src&1)
   {
    if(src==1) printf(" tmp%s-=128;\n",wt);
    else if(src==3) printf(" tmp%s-=32768;\n",wt);
    else if(src==5) printf(" tmp%s-=32768;\n",wt);
    else if(src==7) printf(" tmp%s-=(1<<23);\n",wt);
   }
-  else		/* Source signed, dest unsigned */
+  else
   {
    if(src==0) printf(" tmp%s+=128;\n",wt);
    else if(src==2) printf(" tmp%s+=32768;\n",wt);

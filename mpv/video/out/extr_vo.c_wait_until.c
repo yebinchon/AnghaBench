@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_internal {int queued_events; int /*<<< orphan*/  lock; int /*<<< orphan*/  wakeup; } ;
+
+
+
+
+struct vo_internal {int queued_events; int lock; int wakeup; } ;
 struct vo {struct vo_internal* in; } ;
 struct timespec {int dummy; } ;
-typedef  scalar_t__ int64_t ;
+typedef scalar_t__ int64_t ;
 
-/* Variables and functions */
- int VO_EVENT_LIVE_RESIZING ; 
- scalar_t__ mp_time_us () ; 
- struct timespec mp_time_us_to_timespec (scalar_t__) ; 
- scalar_t__ pthread_cond_timedwait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timespec*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int VO_EVENT_LIVE_RESIZING ;
+ scalar_t__ mp_time_us () ;
+ struct timespec mp_time_us_to_timespec (scalar_t__) ;
+ scalar_t__ pthread_cond_timedwait (int *,int *,struct timespec*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void wait_until(struct vo *vo, int64_t target)
 {

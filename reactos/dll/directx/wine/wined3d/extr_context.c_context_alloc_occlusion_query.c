@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_occlusion_query {int /*<<< orphan*/  entry; struct wined3d_context* context; scalar_t__ id; } ;
+
+
+
+
+struct wined3d_occlusion_query {int entry; struct wined3d_context* context; scalar_t__ id; } ;
 struct wined3d_gl_info {scalar_t__* supported; } ;
-struct wined3d_context {int free_occlusion_query_count; int /*<<< orphan*/  occlusion_queries; scalar_t__* free_occlusion_queries; struct wined3d_gl_info* gl_info; } ;
+struct wined3d_context {int free_occlusion_query_count; int occlusion_queries; scalar_t__* free_occlusion_queries; struct wined3d_gl_info* gl_info; } ;
 
-/* Variables and functions */
- size_t ARB_OCCLUSION_QUERY ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,struct wined3d_context*) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glGenQueries (int,scalar_t__*) ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ size_t ARB_OCCLUSION_QUERY ;
+ int GL_EXTCALL (int ) ;
+ int TRACE (char*,scalar_t__,struct wined3d_context*) ;
+ int WARN (char*) ;
+ int checkGLcall (char*) ;
+ int glGenQueries (int,scalar_t__*) ;
+ int list_add_head (int *,int *) ;
 
 void context_alloc_occlusion_query(struct wined3d_context *context, struct wined3d_occlusion_query *query)
 {

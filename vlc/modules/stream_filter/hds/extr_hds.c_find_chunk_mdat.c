@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- scalar_t__ U32_AT (int /*<<< orphan*/ *) ; 
- int U64_AT (int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+
+
+ scalar_t__ U32_AT (int *) ;
+ int U64_AT (int *) ;
+ scalar_t__ memcmp (int *,char*,int) ;
+ int msg_Err (int *,char*) ;
 
 __attribute__((used)) static uint32_t find_chunk_mdat( vlc_object_t* p_this,
                                  uint8_t* chunkdata, uint8_t* chunkdata_end,
                                  uint8_t** mdatptr )
 {
-    uint8_t* boxname = NULL;
-    uint8_t* boxdata = NULL;
+    uint8_t* boxname = ((void*)0);
+    uint8_t* boxdata = ((void*)0);
     uint64_t boxsize = 0;
 
     do {
@@ -48,7 +48,7 @@ __attribute__((used)) static uint32_t find_chunk_mdat( vlc_object_t* p_this,
         {
             if( chunkdata_end - chunkdata >= 12 )
             {
-                boxsize =  U64_AT(chunkdata);
+                boxsize = U64_AT(chunkdata);
                 chunkdata += 8;
             }
             else

@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PDEBUG (char*,...) ; 
- int /*<<< orphan*/  RTLD_NEXT ; 
- int /*<<< orphan*/  abort () ; 
- char* dlerror () ; 
- void* dlsym (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+ int PDEBUG (char*,...) ;
+ int RTLD_NEXT ;
+ int abort () ;
+ char* dlerror () ;
+ void* dlsym (int ,char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int stderr ;
 
 __attribute__((used)) static void* load_sym(char* symname, void* proxyfunc) {
 
-	void *funcptr = dlsym(RTLD_NEXT, symname);
+ void *funcptr = dlsym(RTLD_NEXT, symname);
 
-	if(!funcptr) {
-		fprintf(stderr, "Cannot load symbol '%s' %s\n", symname, dlerror());
-		exit(1);
-	} else {
-		PDEBUG("loaded symbol '%s'" " real addr %p  wrapped addr %p\n", symname, funcptr, proxyfunc);
-	}
-	if(funcptr == proxyfunc) {
-		PDEBUG("circular reference detected, aborting!\n");
-		abort();
-	}
-	return funcptr;
+ if(!funcptr) {
+  fprintf(stderr, "Cannot load symbol '%s' %s\n", symname, dlerror());
+  exit(1);
+ } else {
+  PDEBUG("loaded symbol '%s'" " real addr %p  wrapped addr %p\n", symname, funcptr, proxyfunc);
+ }
+ if(funcptr == proxyfunc) {
+  PDEBUG("circular reference detected, aborting!\n");
+  abort();
+ }
+ return funcptr;
 }

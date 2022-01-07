@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kcf_req_params_t ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int kcf_req_params_t ;
 struct TYPE_10__ {scalar_t__ pd_prov_type; } ;
-typedef  TYPE_1__ kcf_provider_desc_t ;
+typedef TYPE_1__ kcf_provider_desc_t ;
 struct TYPE_11__ {TYPE_1__* kc_prov_desc; } ;
-typedef  TYPE_2__ kcf_context_t ;
-typedef  int /*<<< orphan*/  crypto_key_t ;
-struct TYPE_12__ {int /*<<< orphan*/  cc_session; scalar_t__ cc_framework_private; } ;
-typedef  TYPE_3__ crypto_ctx_t ;
-typedef  scalar_t__ crypto_context_t ;
-typedef  int /*<<< orphan*/  crypto_call_req_t ;
+typedef TYPE_2__ kcf_context_t ;
+typedef int crypto_key_t ;
+struct TYPE_12__ {int cc_session; scalar_t__ cc_framework_private; } ;
+typedef TYPE_3__ crypto_ctx_t ;
+typedef scalar_t__ crypto_context_t ;
+typedef int crypto_call_req_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  B_FALSE ; 
- scalar_t__ CHECK_FASTPATH (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int CRYPTO_INVALID_CONTEXT ; 
- scalar_t__ CRYPTO_LOGICAL_PROVIDER ; 
- int /*<<< orphan*/  KCF_OP_DIGEST_KEY ; 
- int KCF_PROV_DIGEST_KEY (TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KCF_PROV_INCRSTATS (TYPE_1__*,int) ; 
- int /*<<< orphan*/  KCF_WRAP_DIGEST_OPS_PARAMS (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int kcf_submit_request (TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int B_FALSE ;
+ scalar_t__ CHECK_FASTPATH (int *,TYPE_1__*) ;
+ int CRYPTO_INVALID_CONTEXT ;
+ scalar_t__ CRYPTO_LOGICAL_PROVIDER ;
+ int KCF_OP_DIGEST_KEY ;
+ int KCF_PROV_DIGEST_KEY (TYPE_1__*,TYPE_3__*,int *,int *) ;
+ int KCF_PROV_INCRSTATS (TYPE_1__*,int) ;
+ int KCF_WRAP_DIGEST_OPS_PARAMS (int *,int ,int ,int *,int *,int *,int *) ;
+ int kcf_submit_request (TYPE_1__*,TYPE_3__*,int *,int *,int ) ;
 
 int
 crypto_digest_key_prov(crypto_context_t context, crypto_key_t *key,
     crypto_call_req_t *cr)
 {
-	crypto_ctx_t *ctx = (crypto_ctx_t *)context;
-	kcf_context_t *kcf_ctx;
-	kcf_provider_desc_t *pd;
-	int error;
-	kcf_req_params_t params;
+ crypto_ctx_t *ctx = (crypto_ctx_t *)context;
+ kcf_context_t *kcf_ctx;
+ kcf_provider_desc_t *pd;
+ int error;
+ kcf_req_params_t params;
 
-	if ((ctx == NULL) ||
-	    ((kcf_ctx = (kcf_context_t *)ctx->cc_framework_private) == NULL) ||
-	    ((pd = kcf_ctx->kc_prov_desc) == NULL)) {
-		return (CRYPTO_INVALID_CONTEXT);
-	}
+ if ((ctx == ((void*)0)) ||
+     ((kcf_ctx = (kcf_context_t *)ctx->cc_framework_private) == ((void*)0)) ||
+     ((pd = kcf_ctx->kc_prov_desc) == ((void*)0))) {
+  return (CRYPTO_INVALID_CONTEXT);
+ }
 
-	ASSERT(pd->pd_prov_type != CRYPTO_LOGICAL_PROVIDER);
+ ASSERT(pd->pd_prov_type != CRYPTO_LOGICAL_PROVIDER);
 
-	/* The fast path for SW providers. */
-	if (CHECK_FASTPATH(cr, pd)) {
-		error = KCF_PROV_DIGEST_KEY(pd, ctx, key, NULL);
-		KCF_PROV_INCRSTATS(pd, error);
-	} else {
-		KCF_WRAP_DIGEST_OPS_PARAMS(&params, KCF_OP_DIGEST_KEY,
-		    ctx->cc_session, NULL, key, NULL, NULL);
-		error = kcf_submit_request(pd, ctx, cr, &params, B_FALSE);
-	}
 
-	return (error);
+ if (CHECK_FASTPATH(cr, pd)) {
+  error = KCF_PROV_DIGEST_KEY(pd, ctx, key, ((void*)0));
+  KCF_PROV_INCRSTATS(pd, error);
+ } else {
+  KCF_WRAP_DIGEST_OPS_PARAMS(&params, KCF_OP_DIGEST_KEY,
+      ctx->cc_session, ((void*)0), key, ((void*)0), ((void*)0));
+  error = kcf_submit_request(pd, ctx, cr, &params, B_FALSE);
+ }
+
+ return (error);
 }

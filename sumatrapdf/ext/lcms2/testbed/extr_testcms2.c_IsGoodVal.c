@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ cmsFloat64Number ;
-typedef  int /*<<< orphan*/  cmsBool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  Fail (char*,char const*,scalar_t__,scalar_t__) ; 
- scalar_t__ MaxErr ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ fabs (scalar_t__) ; 
+
+
+
+typedef scalar_t__ cmsFloat64Number ;
+typedef int cmsBool ;
+
+
+ int FALSE ;
+ int Fail (char*,char const*,scalar_t__,scalar_t__) ;
+ scalar_t__ MaxErr ;
+ int TRUE ;
+ scalar_t__ fabs (scalar_t__) ;
 
 cmsBool IsGoodVal(const char *title, cmsFloat64Number in, cmsFloat64Number out, cmsFloat64Number max)
 {

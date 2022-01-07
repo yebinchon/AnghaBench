@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  loop; } ;
-typedef  TYPE_1__ uv_stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  alloc_cb ; 
- int /*<<< orphan*/  connection_cb_called ; 
- int /*<<< orphan*/  incoming ; 
- int /*<<< orphan*/  read_cb ; 
- scalar_t__ uv_accept (TYPE_1__*,TYPE_1__*) ; 
- scalar_t__ uv_read_start (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_tcp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int loop; } ;
+typedef TYPE_1__ uv_stream_t ;
+
+
+ int ASSERT (int) ;
+ int alloc_cb ;
+ int connection_cb_called ;
+ int incoming ;
+ int read_cb ;
+ scalar_t__ uv_accept (TYPE_1__*,TYPE_1__*) ;
+ scalar_t__ uv_read_start (TYPE_1__*,int ,int ) ;
+ scalar_t__ uv_tcp_init (int ,int *) ;
 
 __attribute__((used)) static void connection_cb(uv_stream_t* tcp, int status) {
   ASSERT(status == 0);

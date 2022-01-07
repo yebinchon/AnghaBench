@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct ixl_vf {int dummy; } ;
 struct ixl_pf {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I40E_SUCCESS ; 
- int /*<<< orphan*/  ixl_send_vf_msg (struct ixl_pf*,struct ixl_vf*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int I40E_SUCCESS ;
+ int ixl_send_vf_msg (struct ixl_pf*,struct ixl_vf*,int ,int ,int *,int ) ;
 
 __attribute__((used)) static void
 ixl_send_vf_ack(struct ixl_pf *pf, struct ixl_vf *vf, uint16_t op)
 {
 
-	ixl_send_vf_msg(pf, vf, op, I40E_SUCCESS, NULL, 0);
+ ixl_send_vf_msg(pf, vf, op, I40E_SUCCESS, ((void*)0), 0);
 }

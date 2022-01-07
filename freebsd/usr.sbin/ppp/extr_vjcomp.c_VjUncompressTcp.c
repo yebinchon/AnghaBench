@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_char ;
 struct mbuf {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  slstat; int /*<<< orphan*/  cslc; } ;
+struct TYPE_2__ {int slstat; int cslc; } ;
 struct ipcp {int my_compproto; TYPE_1__ vj; } ;
 
-/* Variables and functions */
- int MAX_HDR ; 
- int MAX_VJHEADER ; 
- int /*<<< orphan*/ * MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  MB_VJIN ; 
- int /*<<< orphan*/  TYPE_UNCOMPRESSED_TCP ; 
- int /*<<< orphan*/  m_freem (struct mbuf*) ; 
- int m_length (struct mbuf*) ; 
- struct mbuf* m_prepend (struct mbuf*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- struct mbuf* m_pullup (struct mbuf*) ; 
- int /*<<< orphan*/  m_settype (struct mbuf*,int /*<<< orphan*/ ) ; 
- struct mbuf* mbuf_Read (struct mbuf*,int /*<<< orphan*/ *,int) ; 
- int sl_uncompress_tcp (int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int MAX_HDR ;
+ int MAX_VJHEADER ;
+ int * MBUF_CTOP (struct mbuf*) ;
+ int MB_VJIN ;
+ int TYPE_UNCOMPRESSED_TCP ;
+ int m_freem (struct mbuf*) ;
+ int m_length (struct mbuf*) ;
+ struct mbuf* m_prepend (struct mbuf*,int *,int,int ) ;
+ struct mbuf* m_pullup (struct mbuf*) ;
+ int m_settype (struct mbuf*,int ) ;
+ struct mbuf* mbuf_Read (struct mbuf*,int *,int) ;
+ int sl_uncompress_tcp (int **,int,int ,int *,int *,int) ;
 
 __attribute__((used)) static struct mbuf *
 VjUncompressTcp(struct ipcp *ipcp, struct mbuf *bp, u_char type)
 {
   u_char *bufp;
   int len, olen, rlen;
-  u_char work[MAX_HDR + MAX_VJHEADER];	/* enough to hold TCP/IP header */
+  u_char work[MAX_HDR + MAX_VJHEADER];
 
   bp = m_pullup(bp);
   olen = len = m_length(bp);
   if (type == TYPE_UNCOMPRESSED_TCP) {
-    /*
-     * Uncompressed packet does NOT change its size, so that we can use mbuf
-     * space for uncompression job.
-     */
+
+
+
+
     bufp = MBUF_CTOP(bp);
     len = sl_uncompress_tcp(&bufp, len, type, &ipcp->vj.cslc, &ipcp->vj.slstat,
                             (ipcp->my_compproto >> 8) & 255);
     if (len <= 0) {
       m_freem(bp);
-      bp = NULL;
+      bp = ((void*)0);
     } else
       m_settype(bp, MB_VJIN);
     return bp;
   }
 
-  /*
-   * Handle compressed packet. 1) Read up to MAX_VJHEADER bytes into work
-   * space. 2) Try to uncompress it. 3) Compute amount of necessary space. 4)
-   * Copy unread data info there.
-   */
+
+
+
+
+
   if (len > MAX_VJHEADER)
     len = MAX_VJHEADER;
   rlen = len;
@@ -69,7 +69,7 @@ VjUncompressTcp(struct ipcp *ipcp, struct mbuf *bp, u_char type)
                           (ipcp->my_compproto >> 8) & 255);
   if (len <= 0) {
     m_freem(bp);
-    return NULL;
+    return ((void*)0);
   }
   len -= olen;
   len += rlen;

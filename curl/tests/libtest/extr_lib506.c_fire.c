@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char curl_slist ;
+
+
+
+
+typedef char curl_slist ;
 struct Tdata {char* url; char* share; } ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_COOKIEFILE ; 
- int /*<<< orphan*/  CURLOPT_HTTPHEADER ; 
- int /*<<< orphan*/  CURLOPT_SHARE ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  curl_slist_free_all (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  printf (char*) ; 
- char* sethost (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int CURLOPT_COOKIEFILE ;
+ int CURLOPT_HTTPHEADER ;
+ int CURLOPT_SHARE ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ scalar_t__ curl_easy_perform (int *) ;
+ int curl_easy_setopt (int *,int ,...) ;
+ int curl_slist_free_all (char*) ;
+ int fprintf (int ,char*,...) ;
+ int printf (char*) ;
+ char* sethost (int *) ;
+ int stderr ;
 
 __attribute__((used)) static void *fire(void *ptr)
 {
@@ -41,13 +41,13 @@ __attribute__((used)) static void *fire(void *ptr)
   curl = curl_easy_init();
   if(!curl) {
     fprintf(stderr, "curl_easy_init() failed\n");
-    return NULL;
+    return ((void*)0);
   }
 
-  headers = sethost(NULL);
-  curl_easy_setopt(curl, CURLOPT_VERBOSE,    1L);
+  headers = sethost(((void*)0));
+  curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
   curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-  curl_easy_setopt(curl, CURLOPT_URL,        tdata->url);
+  curl_easy_setopt(curl, CURLOPT_URL, tdata->url);
   curl_easy_setopt(curl, CURLOPT_COOKIEFILE, "");
   printf("CURLOPT_SHARE\n");
   curl_easy_setopt(curl, CURLOPT_SHARE, tdata->share);
@@ -64,5 +64,5 @@ __attribute__((used)) static void *fire(void *ptr)
   curl_easy_cleanup(curl);
   curl_slist_free_all(headers);
 
-  return NULL;
+  return ((void*)0);
 }

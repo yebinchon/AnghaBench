@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* Name; int /*<<< orphan*/ * LastKey; int /*<<< orphan*/ * FirstKey; struct TYPE_5__* Next; } ;
-typedef  TYPE_1__* PINICACHESECTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * IniCacheFreeKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ProcessHeap ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* Name; int * LastKey; int * FirstKey; struct TYPE_5__* Next; } ;
+typedef TYPE_1__* PINICACHESECTION ;
+
+
+ int * IniCacheFreeKey (int *) ;
+ int ProcessHeap ;
+ int RtlFreeHeap (int ,int ,TYPE_1__*) ;
 
 __attribute__((used)) static
 PINICACHESECTION
@@ -26,20 +26,20 @@ IniCacheFreeSection(
 {
     PINICACHESECTION Next;
 
-    if (Section == NULL)
-        return NULL;
+    if (Section == ((void*)0))
+        return ((void*)0);
 
     Next = Section->Next;
-    while (Section->FirstKey != NULL)
+    while (Section->FirstKey != ((void*)0))
     {
         Section->FirstKey = IniCacheFreeKey(Section->FirstKey);
     }
-    Section->LastKey = NULL;
+    Section->LastKey = ((void*)0);
 
-    if (Section->Name != NULL)
+    if (Section->Name != ((void*)0))
     {
         RtlFreeHeap(ProcessHeap, 0, Section->Name);
-        Section->Name = NULL;
+        Section->Name = ((void*)0);
     }
 
     RtlFreeHeap(ProcessHeap, 0, Section);

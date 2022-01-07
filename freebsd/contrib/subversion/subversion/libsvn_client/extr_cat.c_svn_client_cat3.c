@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_43__   TYPE_5__ ;
-typedef  struct TYPE_42__   TYPE_4__ ;
-typedef  struct TYPE_41__   TYPE_3__ ;
-typedef  struct TYPE_40__   TYPE_2__ ;
-typedef  struct TYPE_39__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_subst_eol_style_t ;
-struct TYPE_39__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
+
+
+typedef struct TYPE_43__ TYPE_5__ ;
+typedef struct TYPE_42__ TYPE_4__ ;
+typedef struct TYPE_41__ TYPE_3__ ;
+typedef struct TYPE_40__ TYPE_2__ ;
+typedef struct TYPE_39__ TYPE_1__ ;
+
+
+typedef int svn_subst_eol_style_t ;
+struct TYPE_39__ {int * data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_stream_t ;
+typedef int svn_ra_session_t ;
 struct TYPE_40__ {scalar_t__ kind; } ;
-typedef  TYPE_2__ svn_opt_revision_t ;
+typedef TYPE_2__ svn_opt_revision_t ;
 struct TYPE_41__ {scalar_t__ apr_err; } ;
-typedef  TYPE_3__ svn_error_t ;
-struct TYPE_42__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_4__ svn_client_ctx_t ;
-struct TYPE_43__ {int /*<<< orphan*/  rev; int /*<<< orphan*/  url; } ;
-typedef  TYPE_5__ svn_client__pathrev_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
+typedef TYPE_3__ svn_error_t ;
+struct TYPE_42__ {int cancel_baton; int cancel_func; int wc_ctx; } ;
+typedef TYPE_4__ svn_client_ctx_t ;
+struct TYPE_43__ {int rev; int url; } ;
+typedef TYPE_5__ svn_client__pathrev_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_time_t ;
+typedef int apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ SVN_CLIENT__REVKIND_IS_LOCAL_TO_WC (scalar_t__) ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_3__*) ; 
- int /*<<< orphan*/  SVN_ERR_CLIENT_IS_DIRECTORY ; 
- scalar_t__ SVN_ERR_FS_NOT_FILE ; 
- TYPE_3__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_ENTRY_COMMITTED_DATE ; 
- int /*<<< orphan*/  SVN_PROP_ENTRY_COMMITTED_REV ; 
- int /*<<< orphan*/  SVN_PROP_ENTRY_LAST_AUTHOR ; 
- int /*<<< orphan*/  SVN_PROP_EOL_STYLE ; 
- int /*<<< orphan*/  SVN_PROP_KEYWORDS ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ *,void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this (int /*<<< orphan*/ *,void const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_cl__rev_default_to_head_or_base (TYPE_2__ const*,char const*) ; 
- TYPE_2__* svn_cl__rev_default_to_head_or_working (TYPE_2__ const*,char const*) ; 
- TYPE_2__* svn_cl__rev_default_to_peg (TYPE_2__ const*,TYPE_2__ const*) ; 
- TYPE_3__* svn_client__get_normalized_stream (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,TYPE_2__ const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_client__ra_session_from_path2 (int /*<<< orphan*/ **,TYPE_5__**,char const*,int /*<<< orphan*/ *,TYPE_2__ const*,TYPE_2__ const*,TYPE_4__*,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_error_createf (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* svn_error_trace (TYPE_3__*) ; 
- TYPE_1__* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_opt_revision_unspecified ; 
- int /*<<< orphan*/  svn_path_is_url (char const*) ; 
- TYPE_3__* svn_ra_get_file (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_ra_get_repos_root2 (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_stream_close (int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_disown (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_subst_build_keywords3 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_eol_style_from_value (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_eol_style_none ; 
- int /*<<< orphan*/ * svn_subst_stream_translated (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_time_from_cstring (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_is_normal_prop (void const*) ; 
- TYPE_3__* svn_wc_prop_list2 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ scalar_t__ SVN_CLIENT__REVKIND_IS_LOCAL_TO_WC (scalar_t__) ;
+ int SVN_ERR (TYPE_3__*) ;
+ int SVN_ERR_CLIENT_IS_DIRECTORY ;
+ scalar_t__ SVN_ERR_FS_NOT_FILE ;
+ TYPE_3__* SVN_NO_ERROR ;
+ int SVN_PROP_ENTRY_COMMITTED_DATE ;
+ int SVN_PROP_ENTRY_COMMITTED_REV ;
+ int SVN_PROP_ENTRY_LAST_AUTHOR ;
+ int SVN_PROP_EOL_STYLE ;
+ int SVN_PROP_KEYWORDS ;
+ int TRUE ;
+ int _ (char*) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_set (int *,void const*,int ,int *) ;
+ int apr_hash_this (int *,void const**,int *,int *) ;
+ TYPE_2__* svn_cl__rev_default_to_head_or_base (TYPE_2__ const*,char const*) ;
+ TYPE_2__* svn_cl__rev_default_to_head_or_working (TYPE_2__ const*,char const*) ;
+ TYPE_2__* svn_cl__rev_default_to_peg (TYPE_2__ const*,TYPE_2__ const*) ;
+ TYPE_3__* svn_client__get_normalized_stream (int **,int ,char const*,TYPE_2__ const*,scalar_t__,int ,int ,int ,int *,int *) ;
+ TYPE_3__* svn_client__ra_session_from_path2 (int **,TYPE_5__**,char const*,int *,TYPE_2__ const*,TYPE_2__ const*,TYPE_4__*,int *) ;
+ TYPE_3__* svn_dirent_get_absolute (char const**,char const*,int *) ;
+ TYPE_3__* svn_error_createf (int ,TYPE_3__*,int ,int ) ;
+ TYPE_3__* svn_error_trace (TYPE_3__*) ;
+ TYPE_1__* svn_hash_gets (int *,int ) ;
+ scalar_t__ svn_opt_revision_unspecified ;
+ int svn_path_is_url (char const*) ;
+ TYPE_3__* svn_ra_get_file (int *,char*,int ,int *,int *,int **,int *) ;
+ TYPE_3__* svn_ra_get_repos_root2 (int *,char const**,int *) ;
+ TYPE_3__* svn_stream_close (int *) ;
+ TYPE_3__* svn_stream_copy3 (int *,int *,int ,int ,int *) ;
+ int * svn_stream_disown (int *,int *) ;
+ TYPE_3__* svn_subst_build_keywords3 (int **,int *,int *,int ,char const*,int ,int *,int *) ;
+ int svn_subst_eol_style_from_value (int *,char const**,int *) ;
+ int svn_subst_eol_style_none ;
+ int * svn_subst_stream_translated (int *,char const*,int ,int *,int ,int *) ;
+ TYPE_3__* svn_time_from_cstring (int *,int *,int *) ;
+ int svn_wc_is_normal_prop (void const*) ;
+ TYPE_3__* svn_wc_prop_list2 (int **,int ,char const*,int *,int *) ;
 
 svn_error_t *
 svn_client_cat3(apr_hash_t **returned_props,
@@ -92,12 +92,12 @@ svn_client_cat3(apr_hash_t **returned_props,
   svn_client__pathrev_t *loc;
   svn_string_t *eol_style;
   svn_string_t *keywords;
-  apr_hash_t *props = NULL;
+  apr_hash_t *props = ((void*)0);
   const char *repos_root_url;
   svn_stream_t *output = out;
   svn_error_t *err;
 
-  /* ### Inconsistent default revision logic in this command. */
+
   if (peg_revision->kind == svn_opt_revision_unspecified)
     {
       peg_revision = svn_cl__rev_default_to_head_or_working(peg_revision,
@@ -124,7 +124,7 @@ svn_client_cat3(apr_hash_t **returned_props,
                                             ctx->cancel_func, ctx->cancel_baton,
                                             scratch_pool, scratch_pool));
 
-      /* We don't promise to close output, so disown it to ensure we don't. */
+
       output = svn_stream_disown(output, scratch_pool);
 
       if (returned_props)
@@ -136,18 +136,18 @@ svn_client_cat3(apr_hash_t **returned_props,
                                               ctx->cancel_baton, scratch_pool));
     }
 
-  /* Get an RA plugin for this filesystem object. */
+
   SVN_ERR(svn_client__ra_session_from_path2(&ra_session, &loc,
-                                            path_or_url, NULL,
+                                            path_or_url, ((void*)0),
                                             peg_revision,
                                             revision, ctx, scratch_pool));
 
-  /* Find the repos root URL */
+
   SVN_ERR(svn_ra_get_repos_root2(ra_session, &repos_root_url, scratch_pool));
 
-  /* Grab some properties we need to know in order to figure out if anything
-     special needs to be done with this file. */
-  err = svn_ra_get_file(ra_session, "", loc->rev, NULL, NULL, &props,
+
+
+  err = svn_ra_get_file(ra_session, "", loc->rev, ((void*)0), ((void*)0), &props,
                         result_pool);
   if (err)
     {
@@ -168,7 +168,7 @@ svn_client_cat3(apr_hash_t **returned_props,
 
   if (eol_style || keywords)
     {
-      /* It's a file with no special eol style or keywords. */
+
       svn_subst_eol_style_t eol;
       const char *eol_str;
       apr_hash_t *kw;
@@ -178,7 +178,7 @@ svn_client_cat3(apr_hash_t **returned_props,
       else
         {
           eol = svn_subst_eol_style_none;
-          eol_str = NULL;
+          eol_str = ((void*)0);
         }
 
 
@@ -197,13 +197,13 @@ svn_client_cat3(apr_hash_t **returned_props,
                                             cmt_rev->data, loc->url,
                                             repos_root_url, when,
                                             cmt_author ?
-                                              cmt_author->data : NULL,
+                                              cmt_author->data : ((void*)0),
                                             scratch_pool));
         }
       else
-        kw = NULL;
+        kw = ((void*)0);
 
-      /* Interject a translating stream */
+
       output = svn_subst_stream_translated(svn_stream_disown(out,
                                                              scratch_pool),
                                            eol_str, FALSE, kw, TRUE,
@@ -212,7 +212,7 @@ svn_client_cat3(apr_hash_t **returned_props,
 
   if (returned_props)
     {
-      /* filter entry and WC props */
+
       apr_hash_index_t *hi;
       const void *key;
       apr_ssize_t klen;
@@ -220,19 +220,19 @@ svn_client_cat3(apr_hash_t **returned_props,
       for (hi = apr_hash_first(scratch_pool, props);
            hi; hi = apr_hash_next(hi))
         {
-          apr_hash_this(hi, &key, &klen, NULL);
+          apr_hash_this(hi, &key, &klen, ((void*)0));
           if (!svn_wc_is_normal_prop(key))
-            apr_hash_set(props, key, klen, NULL);
+            apr_hash_set(props, key, klen, ((void*)0));
         }
 
       *returned_props = props;
     }
 
-  SVN_ERR(svn_ra_get_file(ra_session, "", loc->rev, output, NULL, NULL,
+  SVN_ERR(svn_ra_get_file(ra_session, "", loc->rev, output, ((void*)0), ((void*)0),
                           scratch_pool));
 
   if (out != output)
-    /* Close the interjected stream */
+
     SVN_ERR(svn_stream_close(output));
 
   return SVN_NO_ERROR;

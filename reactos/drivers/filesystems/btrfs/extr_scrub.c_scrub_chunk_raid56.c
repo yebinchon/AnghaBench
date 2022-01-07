@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_8__ ;
-typedef  struct TYPE_25__   TYPE_7__ ;
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_26__ TYPE_8__ ;
+typedef struct TYPE_25__ TYPE_7__ ;
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_23__ {TYPE_4__* item; } ;
-typedef  TYPE_5__ traverse_ptr ;
+typedef TYPE_5__ traverse_ptr ;
 struct TYPE_20__ {scalar_t__ node_size; scalar_t__ sector_size; } ;
-struct TYPE_24__ {TYPE_2__ superblock; int /*<<< orphan*/  extent_root; } ;
-typedef  TYPE_6__ device_extension ;
+struct TYPE_24__ {TYPE_2__ superblock; int extent_root; } ;
+typedef TYPE_6__ device_extension ;
 struct TYPE_25__ {scalar_t__ offset; TYPE_1__* chunk_item; } ;
-typedef  TYPE_7__ chunk ;
-typedef  int ULONG ;
+typedef TYPE_7__ chunk ;
+typedef int ULONG ;
 struct TYPE_26__ {int offset; scalar_t__ obj_type; scalar_t__ obj_id; } ;
 struct TYPE_21__ {scalar_t__ obj_id; scalar_t__ obj_type; scalar_t__ offset; } ;
 struct TYPE_22__ {TYPE_3__ key; } ;
 struct TYPE_19__ {int type; int num_stripes; int stripe_length; scalar_t__ size; } ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_8__ KEY ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_8__ KEY ;
 
-/* Variables and functions */
- int BLOCK_FLAG_RAID6 ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__,...) ; 
- int /*<<< orphan*/  NT_SUCCESS (scalar_t__) ; 
- scalar_t__ STATUS_INTERNAL_ERROR ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- scalar_t__ TYPE_EXTENT_ITEM ; 
- scalar_t__ TYPE_METADATA_ITEM ; 
- scalar_t__ find_item (TYPE_6__*,int /*<<< orphan*/ ,TYPE_5__*,TYPE_8__*,int,int /*<<< orphan*/ *) ; 
- int find_next_item (TYPE_6__*,TYPE_5__*,TYPE_5__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ scrub_chunk_raid56_stripe_run (TYPE_6__*,TYPE_7__*,scalar_t__,scalar_t__) ; 
+
+ int BLOCK_FLAG_RAID6 ;
+ int ERR (char*,scalar_t__,...) ;
+ int NT_SUCCESS (scalar_t__) ;
+ scalar_t__ STATUS_INTERNAL_ERROR ;
+ scalar_t__ STATUS_SUCCESS ;
+ int TRACE (char*,scalar_t__) ;
+ scalar_t__ TYPE_EXTENT_ITEM ;
+ scalar_t__ TYPE_METADATA_ITEM ;
+ scalar_t__ find_item (TYPE_6__*,int ,TYPE_5__*,TYPE_8__*,int,int *) ;
+ int find_next_item (TYPE_6__*,TYPE_5__*,TYPE_5__*,int,int *) ;
+ scalar_t__ scrub_chunk_raid56_stripe_run (TYPE_6__*,TYPE_7__*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static NTSTATUS scrub_chunk_raid56(device_extension* Vcb, chunk* c, uint64_t* offset, bool* changed) {
     NTSTATUS Status;
@@ -64,13 +64,13 @@ __attribute__((used)) static NTSTATUS scrub_chunk_raid56(device_extension* Vcb, 
     searchkey.obj_type = TYPE_METADATA_ITEM;
     searchkey.offset = 0xffffffffffffffff;
 
-    Status = find_item(Vcb, Vcb->extent_root, &tp, &searchkey, false, NULL);
+    Status = find_item(Vcb, Vcb->extent_root, &tp, &searchkey, 0, ((void*)0));
     if (!NT_SUCCESS(Status)) {
         ERR("find_item returned %08x\n", Status);
         return Status;
     }
 
-    *changed = false;
+    *changed = 0;
 
     do {
         traverse_ptr next_tp;
@@ -105,17 +105,17 @@ __attribute__((used)) static NTSTATUS scrub_chunk_raid56(device_extension* Vcb, 
 
             stripe_end = (tp.item->key.obj_id + size - 1 - c->offset) / full_stripe_len;
 
-            *changed = true;
+            *changed = 1;
 
             total_data += size;
             num_extents++;
 
-            // only do so much at a time
-            if (num_extents >= 64 || total_data >= 0x8000000) // 128 MB
+
+            if (num_extents >= 64 || total_data >= 0x8000000)
                 break;
         }
 
-        b = find_next_item(Vcb, &tp, &next_tp, false, NULL);
+        b = find_next_item(Vcb, &tp, &next_tp, 0, ((void*)0));
 
         if (b)
             tp = next_tp;

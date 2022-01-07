@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_12__ {int suppressErr; } ;
-typedef  TYPE_2__ sqlite3 ;
-typedef  int /*<<< orphan*/  nc ;
+typedef TYPE_2__ sqlite3 ;
+typedef int nc ;
 struct TYPE_16__ {int nExpr; TYPE_1__* a; } ;
-struct TYPE_15__ {scalar_t__ nErr; int /*<<< orphan*/  ncFlags; TYPE_6__* pEList; int /*<<< orphan*/  pSrcList; TYPE_4__* pParse; } ;
+struct TYPE_15__ {scalar_t__ nErr; int ncFlags; TYPE_6__* pEList; int pSrcList; TYPE_4__* pParse; } ;
 struct TYPE_14__ {TYPE_2__* db; } ;
-struct TYPE_13__ {int /*<<< orphan*/  pSrc; TYPE_6__* pEList; } ;
-struct TYPE_11__ {int /*<<< orphan*/  pExpr; } ;
-typedef  TYPE_3__ Select ;
-typedef  TYPE_4__ Parse ;
-typedef  TYPE_5__ NameContext ;
-typedef  TYPE_6__ ExprList ;
-typedef  int /*<<< orphan*/  Expr ;
+struct TYPE_13__ {int pSrc; TYPE_6__* pEList; } ;
+struct TYPE_11__ {int pExpr; } ;
+typedef TYPE_3__ Select ;
+typedef TYPE_4__ Parse ;
+typedef TYPE_5__ NameContext ;
+typedef TYPE_6__ ExprList ;
+typedef int Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_AllowAgg ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int sqlite3ExprCompare (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3ExprIsInteger (int /*<<< orphan*/ *,int*) ; 
- int sqlite3ResolveExprNames (TYPE_5__*,int /*<<< orphan*/ *) ; 
+
+ int NC_AllowAgg ;
+ int assert (int) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int sqlite3ExprCompare (int ,int *) ;
+ scalar_t__ sqlite3ExprIsInteger (int *,int*) ;
+ int sqlite3ResolveExprNames (TYPE_5__*,int *) ;
 
 __attribute__((used)) static int resolveOrderByTermToExprList(
-  Parse *pParse,     /* Parsing context for error messages */
-  Select *pSelect,   /* The SELECT statement with the ORDER BY clause */
-  Expr *pE           /* The specific ORDER BY term */
+  Parse *pParse,
+  Select *pSelect,
+  Expr *pE
 ){
-  int i;             /* Loop counter */
-  ExprList *pEList;  /* The columns of the result set */
-  NameContext nc;    /* Name context for resolving pE */
-  sqlite3 *db;       /* Database connection */
-  int rc;            /* Return code from subprocedures */
-  u8 savedSuppErr;   /* Saved value of db->suppressErr */
+  int i;
+  ExprList *pEList;
+  NameContext nc;
+  sqlite3 *db;
+  int rc;
+  u8 savedSuppErr;
 
   assert( sqlite3ExprIsInteger(pE, &i)==0 );
   pEList = pSelect->pEList;
 
-  /* Resolve all names in the ORDER BY term expression
-  */
+
+
   memset(&nc, 0, sizeof(nc));
   nc.pParse = pParse;
   nc.pSrcList = pSelect->pSrc;
@@ -69,16 +69,16 @@ __attribute__((used)) static int resolveOrderByTermToExprList(
   db->suppressErr = savedSuppErr;
   if( rc ) return 0;
 
-  /* Try to match the ORDER BY expression against an expression
-  ** in the result set.  Return an 1-based index of the matching
-  ** result-set entry.
-  */
+
+
+
+
   for(i=0; i<pEList->nExpr; i++){
     if( sqlite3ExprCompare(pEList->a[i].pExpr, pE)<2 ){
       return i+1;
     }
   }
 
-  /* If no match, return 0. */
+
   return 0;
 }

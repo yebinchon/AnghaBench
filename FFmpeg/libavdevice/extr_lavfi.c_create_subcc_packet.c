@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int stream_index; int /*<<< orphan*/  pos; int /*<<< orphan*/  pts; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int stream_index; int pos; int pts; int data; } ;
 struct TYPE_11__ {TYPE_1__* priv_data; } ;
-struct TYPE_10__ {int nb_side_data; int /*<<< orphan*/  pkt_pos; int /*<<< orphan*/  pts; TYPE_2__** side_data; } ;
-struct TYPE_9__ {scalar_t__ type; int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
+struct TYPE_10__ {int nb_side_data; int pkt_pos; int pts; TYPE_2__** side_data; } ;
+struct TYPE_9__ {scalar_t__ type; int size; int data; } ;
 struct TYPE_8__ {int* sink_stream_subcc_map; TYPE_7__ subcc_packet; } ;
-typedef  TYPE_1__ LavfiContext ;
-typedef  TYPE_2__ AVFrameSideData ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_1__ LavfiContext ;
+typedef TYPE_2__ AVFrameSideData ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AV_FRAME_DATA_A53_CC ; 
- int av_new_packet (TYPE_7__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AV_FRAME_DATA_A53_CC ;
+ int av_new_packet (TYPE_7__*,int ) ;
+ int memcpy (int ,int ,int ) ;
 
 __attribute__((used)) static int create_subcc_packet(AVFormatContext *avctx, AVFrame *frame,
                                int sink_idx)

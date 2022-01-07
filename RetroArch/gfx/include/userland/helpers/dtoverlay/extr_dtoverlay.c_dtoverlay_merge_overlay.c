@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fdt32_t ;
-struct TYPE_6__ {int /*<<< orphan*/  max_phandle; int /*<<< orphan*/  fdt; } ;
-typedef  TYPE_1__ DTBLOB_T ;
 
-/* Variables and functions */
- int FDT_ERR_BADSTRUCTURE ; 
- int NON_FATAL (int) ; 
- int /*<<< orphan*/  dtoverlay_debug (char*,char const*,...) ; 
- int /*<<< orphan*/  dtoverlay_error (char*,...) ; 
- int dtoverlay_merge_fragment (TYPE_1__*,int,TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fdt32_to_cpu (int /*<<< orphan*/ ) ; 
- int fdt_first_subnode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* fdt_get_name (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- void* fdt_getprop (int /*<<< orphan*/ ,int,char*,int*) ; 
- int fdt_next_subnode (int /*<<< orphan*/ ,int) ; 
- int fdt_node_offset_by_phandle (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fdt_path_offset_namelen (int /*<<< orphan*/ ,char const*,int) ; 
- int fdt_subnode_offset (int /*<<< orphan*/ ,int,char*) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int fdt32_t ;
+struct TYPE_6__ {int max_phandle; int fdt; } ;
+typedef TYPE_1__ DTBLOB_T ;
+
+
+ int FDT_ERR_BADSTRUCTURE ;
+ int NON_FATAL (int) ;
+ int dtoverlay_debug (char*,char const*,...) ;
+ int dtoverlay_error (char*,...) ;
+ int dtoverlay_merge_fragment (TYPE_1__*,int,TYPE_1__*,int,int ) ;
+ int fdt32_to_cpu (int ) ;
+ int fdt_first_subnode (int ,int ) ;
+ char* fdt_get_name (int ,int,int *) ;
+ void* fdt_getprop (int ,int,char*,int*) ;
+ int fdt_next_subnode (int ,int) ;
+ int fdt_node_offset_by_phandle (int ,int ) ;
+ int fdt_path_offset_namelen (int ,char const*,int) ;
+ int fdt_subnode_offset (int ,int,char*) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
 
 int dtoverlay_merge_overlay(DTBLOB_T *base_dtb, DTBLOB_T *overlay_dtb)
 {
-   // Merge each fragment node
+
    int frag_off;
 
    for (frag_off = fdt_first_subnode(overlay_dtb->fdt, 0);
@@ -45,7 +45,7 @@ int dtoverlay_merge_overlay(DTBLOB_T *base_dtb, DTBLOB_T *overlay_dtb)
       int target_off, overlay_off;
       int len, err;
 
-      node_name = fdt_get_name(overlay_dtb->fdt, frag_off, NULL);
+      node_name = fdt_get_name(overlay_dtb->fdt, frag_off, ((void*)0));
 
       if (strncmp(node_name, "fragment@", 9) != 0 &&
           strncmp(node_name, "fragment-", 9) != 0)
@@ -54,7 +54,7 @@ int dtoverlay_merge_overlay(DTBLOB_T *base_dtb, DTBLOB_T *overlay_dtb)
 
       dtoverlay_debug("Found fragment %s (offset %d)", frag_name, frag_off);
 
-      // Find the target and overlay nodes
+
       overlay_off = fdt_subnode_offset(overlay_dtb->fdt, frag_off, "__overlay__");
       if (overlay_off < 0)
       {
@@ -100,7 +100,7 @@ int dtoverlay_merge_overlay(DTBLOB_T *base_dtb, DTBLOB_T *overlay_dtb)
          }
       }
 
-      // Now do the merge
+
       err = dtoverlay_merge_fragment(base_dtb, target_off, overlay_dtb,
                                      overlay_off, 0);
       if (err != 0)

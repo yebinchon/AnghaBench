@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {char member_0; char member_1; float member_2; char member_3; char member_4; char member_5; char member_6; char member_7; char member_8; char member_9; char member_10; char member_11; char member_12; char member_13; char member_14; float member_15; char member_16; char member_17; char member_18; int /*<<< orphan*/  member_19; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {char member_0; char member_1; float member_2; char member_3; char member_4; char member_5; char member_6; char member_7; char member_8; char member_9; char member_10; char member_11; char member_12; char member_13; char member_14; float member_15; char member_16; char member_17; char member_18; int member_19; } ;
 struct TYPE_5__ {int member_0; } ;
-struct test_data {TYPE_2__ member_5; int /*<<< orphan*/ * member_4; TYPE_1__ member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  const member_0; } ;
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
+struct test_data {TYPE_2__ member_5; int * member_4; TYPE_1__ member_3; int member_2; int member_1; int const member_0; } ;
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
 struct TYPE_7__ {int QuadPart; } ;
-typedef  TYPE_3__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IWICPersistStream ;
-typedef  int /*<<< orphan*/  IWICMetadataReader ;
-typedef  int /*<<< orphan*/  IWICMetadataHandlerInfo ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IMD_data ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  CLSID ;
+typedef TYPE_3__ LARGE_INTEGER ;
+typedef int IWICPersistStream ;
+typedef int IWICMetadataReader ;
+typedef int IWICMetadataHandlerInfo ;
+typedef int IStream ;
+typedef int IMD_data ;
+typedef scalar_t__ HRESULT ;
+typedef int GUID ;
+typedef int CLSID ;
 
-/* Variables and functions */
- scalar_t__ ARRAY_SIZE (struct test_data const*) ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_WICIMDMetadataReader ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ E_NOINTERFACE ; 
- int /*<<< orphan*/  GUID_MetadataFormatIMD ; 
- int /*<<< orphan*/  IID_IWICMetadataReader ; 
- int /*<<< orphan*/  IID_IWICPersistStream ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IStream_Seek (int /*<<< orphan*/ *,TYPE_3__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IWICMetadataHandlerInfo_GetCLSID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IWICMetadataHandlerInfo_GetFriendlyName (int /*<<< orphan*/ *,int,char*,scalar_t__*) ; 
- int /*<<< orphan*/  IWICMetadataHandlerInfo_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWICMetadataReader_GetCount (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IWICMetadataReader_GetMetadataFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IWICMetadataReader_GetMetadataHandlerInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWICMetadataReader_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWICPersistStream_Load (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICPersistStream_Release (int /*<<< orphan*/ *) ; 
- int IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ REGDB_E_CLASSNOTREG ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
-#define  VT_BOOL 130 
-#define  VT_UI1 129 
-#define  VT_UI2 128 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  compare_metadata (int /*<<< orphan*/ *,struct test_data const*,scalar_t__) ; 
- int /*<<< orphan*/ * create_stream (char const*,int) ; 
- scalar_t__ lstrcmpW (char*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
- scalar_t__ wine_dbgstr_w (char*) ; 
+
+ scalar_t__ ARRAY_SIZE (struct test_data const*) ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_WICIMDMetadataReader ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ scalar_t__ E_NOINTERFACE ;
+ int GUID_MetadataFormatIMD ;
+ int IID_IWICMetadataReader ;
+ int IID_IWICPersistStream ;
+ int IStream_Release (int *) ;
+ scalar_t__ IStream_Seek (int *,TYPE_3__,int ,int *) ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ scalar_t__ IWICMetadataHandlerInfo_GetCLSID (int *,int *) ;
+ scalar_t__ IWICMetadataHandlerInfo_GetFriendlyName (int *,int,char*,scalar_t__*) ;
+ int IWICMetadataHandlerInfo_Release (int *) ;
+ scalar_t__ IWICMetadataReader_GetCount (int *,scalar_t__*) ;
+ scalar_t__ IWICMetadataReader_GetMetadataFormat (int *,int *) ;
+ scalar_t__ IWICMetadataReader_GetMetadataHandlerInfo (int *,int **) ;
+ int IWICMetadataReader_Release (int *) ;
+ scalar_t__ IWICPersistStream_Load (int *,int *) ;
+ int IWICPersistStream_Release (int *) ;
+ int IsEqualGUID (int *,int *) ;
+ scalar_t__ REGDB_E_CLASSNOTREG ;
+ int SEEK_SET ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+
+
+
+ scalar_t__ broken (int) ;
+ int compare_metadata (int *,struct test_data const*,scalar_t__) ;
+ int * create_stream (char const*,int) ;
+ scalar_t__ lstrcmpW (char*,char const*) ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ wine_dbgstr_guid (int *) ;
+ scalar_t__ wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_metadata_IMD(void)
 {
@@ -72,14 +72,14 @@ __attribute__((used)) static void test_metadata_IMD(void)
     static const char IMD_data[] = "hello world!\x1\x2\x3\x4\x5\x6\x7\x8\xed\xa\xb\xc\xd\xe\xf";
     static const struct test_data td[8] =
     {
-        { VT_UI2, 0, 0, { 0x201 }, NULL, { 'L','e','f','t',0 } },
-        { VT_UI2, 0, 0, { 0x403 }, NULL, { 'T','o','p',0 } },
-        { VT_UI2, 0, 0, { 0x605 }, NULL, { 'W','i','d','t','h',0 } },
-        { VT_UI2, 0, 0, { 0x807 }, NULL, { 'H','e','i','g','h','t',0 } },
-        { VT_BOOL, 0, 0, { 1 }, NULL, { 'L','o','c','a','l','C','o','l','o','r','T','a','b','l','e','F','l','a','g',0 } },
-        { VT_BOOL, 0, 0, { 1 }, NULL, { 'I','n','t','e','r','l','a','c','e','F','l','a','g',0 } },
-        { VT_BOOL, 0, 0, { 1 }, NULL, { 'S','o','r','t','F','l','a','g',0 } },
-        { VT_UI1, 0, 0, { 5 }, NULL, { 'L','o','c','a','l','C','o','l','o','r','T','a','b','l','e','S','i','z','e',0 } }
+        { 128, 0, 0, { 0x201 }, ((void*)0), { 'L','e','f','t',0 } },
+        { 128, 0, 0, { 0x403 }, ((void*)0), { 'T','o','p',0 } },
+        { 128, 0, 0, { 0x605 }, ((void*)0), { 'W','i','d','t','h',0 } },
+        { 128, 0, 0, { 0x807 }, ((void*)0), { 'H','e','i','g','h','t',0 } },
+        { 130, 0, 0, { 1 }, ((void*)0), { 'L','o','c','a','l','C','o','l','o','r','T','a','b','l','e','F','l','a','g',0 } },
+        { 130, 0, 0, { 1 }, ((void*)0), { 'I','n','t','e','r','l','a','c','e','F','l','a','g',0 } },
+        { 130, 0, 0, { 1 }, ((void*)0), { 'S','o','r','t','F','l','a','g',0 } },
+        { 129, 0, 0, { 5 }, ((void*)0), { 'L','o','c','a','l','C','o','l','o','r','T','a','b','l','e','S','i','z','e',0 } }
     };
     LARGE_INTEGER pos;
     HRESULT hr;
@@ -92,9 +92,9 @@ __attribute__((used)) static void test_metadata_IMD(void)
     GUID format;
     CLSID id;
 
-    hr = CoCreateInstance(&CLSID_WICIMDMetadataReader, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance(&CLSID_WICIMDMetadataReader, ((void*)0), CLSCTX_INPROC_SERVER,
                           &IID_IWICMetadataReader, (void **)&reader);
-    ok(hr == S_OK || broken(hr == E_NOINTERFACE || hr == REGDB_E_CLASSNOTREG) /* before Win7 */,
+    ok(hr == S_OK || broken(hr == E_NOINTERFACE || hr == REGDB_E_CLASSNOTREG) ,
        "CoCreateInstance error %#x\n", hr);
 
     stream = create_stream(IMD_data, sizeof(IMD_data));
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_metadata_IMD(void)
     if (SUCCEEDED(hr))
     {
         pos.QuadPart = 12;
-        hr = IStream_Seek(stream, pos, SEEK_SET, NULL);
+        hr = IStream_Seek(stream, pos, SEEK_SET, ((void*)0));
         ok(hr == S_OK, "IStream_Seek error %#x\n", hr);
 
         hr = IUnknown_QueryInterface(reader, &IID_IWICPersistStream, (void **)&persist);

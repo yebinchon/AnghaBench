@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {int maxSessions; } ;
 struct TYPE_4__ {TYPE_1__ cfg; } ;
-typedef  int /*<<< orphan*/  TSCKSUM ;
-typedef  int /*<<< orphan*/  SCompHeader ;
+typedef int TSCKSUM ;
+typedef int SCompHeader ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int S_IRWXG ; 
- int S_IRWXO ; 
- int S_IRWXU ; 
- int TSDB_FILENAME_LEN ; 
- int /*<<< orphan*/  TSDB_FILE_HEADER_LEN ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  dError (char*,...) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosCalcChecksumAppend (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  twrite (int,char*,int) ; 
- int /*<<< orphan*/  vnodeCreateFileHeaderFd (int) ; 
- scalar_t__ vnodeCreateHeadDataFile (int,int,char*,char*,char*) ; 
- TYPE_2__* vnodeList ; 
+
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int SEEK_SET ;
+ int S_IRWXG ;
+ int S_IRWXO ;
+ int S_IRWXU ;
+ int TSDB_FILENAME_LEN ;
+ int TSDB_FILE_HEADER_LEN ;
+ int close (int) ;
+ int dError (char*,...) ;
+ int errno ;
+ int free (char*) ;
+ int lseek (int,int ,int ) ;
+ char* malloc (int) ;
+ int memset (char*,int ,int) ;
+ int open (char*,int,int) ;
+ int strerror (int ) ;
+ int taosCalcChecksumAppend (int ,int *,int) ;
+ int twrite (int,char*,int) ;
+ int vnodeCreateFileHeaderFd (int) ;
+ scalar_t__ vnodeCreateHeadDataFile (int,int,char*,char*,char*) ;
+ TYPE_2__* vnodeList ;
 
 int vnodeCreateEmptyCompFile(int vnode, int fileId) {
-  char  headName[TSDB_FILENAME_LEN];
-  char  dataName[TSDB_FILENAME_LEN];
-  char  lastName[TSDB_FILENAME_LEN];
-  int   tfd;
+  char headName[TSDB_FILENAME_LEN];
+  char dataName[TSDB_FILENAME_LEN];
+  char lastName[TSDB_FILENAME_LEN];
+  int tfd;
   char *temp;
 
   if (vnodeCreateHeadDataFile(vnode, fileId, headName, dataName, lastName) < 0) {

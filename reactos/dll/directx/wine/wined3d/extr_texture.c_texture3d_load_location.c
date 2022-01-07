@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_texture_sub_resource {int locations; TYPE_2__* buffer; int /*<<< orphan*/  buffer_object; int /*<<< orphan*/  offset; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * heap_memory; } ;
-struct wined3d_texture {int /*<<< orphan*/  download_count; TYPE_1__ resource; struct wined3d_texture_sub_resource* sub_resources; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct wined3d_texture_sub_resource {int locations; TYPE_2__* buffer; int buffer_object; int offset; } ;
+struct TYPE_3__ {int * heap_memory; } ;
+struct wined3d_texture {int download_count; TYPE_1__ resource; struct wined3d_texture_sub_resource* sub_resources; } ;
 struct wined3d_context {int dummy; } ;
-struct wined3d_const_bo_address {int /*<<< orphan*/ * member_1; int /*<<< orphan*/  member_0; int /*<<< orphan*/  addr; } ;
-struct wined3d_bo_address {int /*<<< orphan*/ * member_1; int /*<<< orphan*/  member_0; int /*<<< orphan*/  addr; } ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+struct wined3d_const_bo_address {int * member_1; int member_0; int addr; } ;
+struct wined3d_bo_address {int * member_1; int member_0; int addr; } ;
+struct TYPE_4__ {int name; } ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ,...) ; 
- int TRUE ; 
-#define  WINED3D_LOCATION_BUFFER 131 
-#define  WINED3D_LOCATION_SYSMEM 130 
-#define  WINED3D_LOCATION_TEXTURE_RGB 129 
-#define  WINED3D_LOCATION_TEXTURE_SRGB 128 
- int /*<<< orphan*/  texture3d_download_data (struct wined3d_texture*,unsigned int,struct wined3d_context*,struct wined3d_bo_address*) ; 
- int /*<<< orphan*/  texture3d_srgb_transfer (struct wined3d_texture*,unsigned int,struct wined3d_context*,int) ; 
- int /*<<< orphan*/  texture3d_upload_data (struct wined3d_texture*,unsigned int,struct wined3d_context*,int /*<<< orphan*/ *,struct wined3d_const_bo_address*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  wined3d_debug_location (int) ; 
- int /*<<< orphan*/  wined3d_texture_bind_and_dirtify (struct wined3d_texture*,struct wined3d_context*,int) ; 
- int /*<<< orphan*/  wined3d_texture_get_pitch (struct wined3d_texture*,unsigned int,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  wined3d_texture_prepare_location (struct wined3d_texture*,unsigned int,struct wined3d_context*,int) ; 
+
+ int FALSE ;
+ int FIXME (char*,int ,...) ;
+ int TRUE ;
+
+
+
+
+ int texture3d_download_data (struct wined3d_texture*,unsigned int,struct wined3d_context*,struct wined3d_bo_address*) ;
+ int texture3d_srgb_transfer (struct wined3d_texture*,unsigned int,struct wined3d_context*,int) ;
+ int texture3d_upload_data (struct wined3d_texture*,unsigned int,struct wined3d_context*,int *,struct wined3d_const_bo_address*,unsigned int,unsigned int) ;
+ int wined3d_debug_location (int) ;
+ int wined3d_texture_bind_and_dirtify (struct wined3d_texture*,struct wined3d_context*,int) ;
+ int wined3d_texture_get_pitch (struct wined3d_texture*,unsigned int,unsigned int*,unsigned int*) ;
+ int wined3d_texture_prepare_location (struct wined3d_texture*,unsigned int,struct wined3d_context*,int) ;
 
 __attribute__((used)) static BOOL texture3d_load_location(struct wined3d_texture *texture, unsigned int sub_resource_idx,
         struct wined3d_context *context, DWORD location)
@@ -49,34 +49,34 @@ __attribute__((used)) static BOOL texture3d_load_location(struct wined3d_texture
 
     switch (location)
     {
-        case WINED3D_LOCATION_TEXTURE_RGB:
-        case WINED3D_LOCATION_TEXTURE_SRGB:
-            if (sub_resource->locations & WINED3D_LOCATION_SYSMEM)
+        case 129:
+        case 128:
+            if (sub_resource->locations & 130)
             {
                 struct wined3d_const_bo_address data = {0, texture->resource.heap_memory};
                 data.addr += sub_resource->offset;
                 wined3d_texture_bind_and_dirtify(texture, context,
-                        location == WINED3D_LOCATION_TEXTURE_SRGB);
+                        location == 128);
                 wined3d_texture_get_pitch(texture, sub_resource_idx, &row_pitch, &slice_pitch);
-                texture3d_upload_data(texture, sub_resource_idx, context, NULL, &data, row_pitch, slice_pitch);
+                texture3d_upload_data(texture, sub_resource_idx, context, ((void*)0), &data, row_pitch, slice_pitch);
             }
-            else if (sub_resource->locations & WINED3D_LOCATION_BUFFER)
+            else if (sub_resource->locations & 131)
             {
-#if !defined(STAGING_CSMT)
-                struct wined3d_const_bo_address data = {sub_resource->buffer_object, NULL};
-#else  /* STAGING_CSMT */
-                struct wined3d_const_bo_address data = {sub_resource->buffer->name, NULL};
-#endif /* STAGING_CSMT */
+
+                struct wined3d_const_bo_address data = {sub_resource->buffer_object, ((void*)0)};
+
+
+
                 wined3d_texture_bind_and_dirtify(texture, context,
-                        location == WINED3D_LOCATION_TEXTURE_SRGB);
+                        location == 128);
                 wined3d_texture_get_pitch(texture, sub_resource_idx, &row_pitch, &slice_pitch);
-                texture3d_upload_data(texture, sub_resource_idx, context, NULL, &data, row_pitch, slice_pitch);
+                texture3d_upload_data(texture, sub_resource_idx, context, ((void*)0), &data, row_pitch, slice_pitch);
             }
-            else if (sub_resource->locations & WINED3D_LOCATION_TEXTURE_RGB)
+            else if (sub_resource->locations & 129)
             {
                 texture3d_srgb_transfer(texture, sub_resource_idx, context, TRUE);
             }
-            else if (sub_resource->locations & WINED3D_LOCATION_TEXTURE_SRGB)
+            else if (sub_resource->locations & 128)
             {
                 texture3d_srgb_transfer(texture, sub_resource_idx, context, FALSE);
             }
@@ -87,13 +87,13 @@ __attribute__((used)) static BOOL texture3d_load_location(struct wined3d_texture
             }
             break;
 
-        case WINED3D_LOCATION_SYSMEM:
-            if (sub_resource->locations & (WINED3D_LOCATION_TEXTURE_RGB | WINED3D_LOCATION_TEXTURE_SRGB))
+        case 130:
+            if (sub_resource->locations & (129 | 128))
             {
                 struct wined3d_bo_address data = {0, texture->resource.heap_memory};
 
                 data.addr += sub_resource->offset;
-                if (sub_resource->locations & WINED3D_LOCATION_TEXTURE_RGB)
+                if (sub_resource->locations & 129)
                     wined3d_texture_bind_and_dirtify(texture, context, FALSE);
                 else
                     wined3d_texture_bind_and_dirtify(texture, context, TRUE);
@@ -109,16 +109,16 @@ __attribute__((used)) static BOOL texture3d_load_location(struct wined3d_texture
             }
             break;
 
-        case WINED3D_LOCATION_BUFFER:
-            if (sub_resource->locations & (WINED3D_LOCATION_TEXTURE_RGB | WINED3D_LOCATION_TEXTURE_SRGB))
+        case 131:
+            if (sub_resource->locations & (129 | 128))
             {
-#if !defined(STAGING_CSMT)
-                struct wined3d_bo_address data = {sub_resource->buffer_object, NULL};
-#else  /* STAGING_CSMT */
-                struct wined3d_bo_address data = {sub_resource->buffer->name, NULL};
-#endif /* STAGING_CSMT */
 
-                if (sub_resource->locations & WINED3D_LOCATION_TEXTURE_RGB)
+                struct wined3d_bo_address data = {sub_resource->buffer_object, ((void*)0)};
+
+
+
+
+                if (sub_resource->locations & 129)
                     wined3d_texture_bind_and_dirtify(texture, context, FALSE);
                 else
                     wined3d_texture_bind_and_dirtify(texture, context, TRUE);

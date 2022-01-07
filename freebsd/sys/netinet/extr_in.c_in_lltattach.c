@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lltable {int /*<<< orphan*/  llt_mark_used; int /*<<< orphan*/  llt_match_prefix; int /*<<< orphan*/  llt_free_entry; int /*<<< orphan*/  llt_fill_sa_entry; int /*<<< orphan*/  llt_hash; int /*<<< orphan*/  llt_dump_entry; int /*<<< orphan*/  llt_delete_entry; int /*<<< orphan*/  llt_alloc_entry; int /*<<< orphan*/  llt_lookup; struct ifnet* llt_ifp; int /*<<< orphan*/  llt_af; } ;
+
+
+
+
+struct lltable {int llt_mark_used; int llt_match_prefix; int llt_free_entry; int llt_fill_sa_entry; int llt_hash; int llt_dump_entry; int llt_delete_entry; int llt_alloc_entry; int llt_lookup; struct ifnet* llt_ifp; int llt_af; } ;
 struct ifnet {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  IN_LLTBL_DEFAULT_HSIZE ; 
- int /*<<< orphan*/  in_lltable_alloc ; 
- int /*<<< orphan*/  in_lltable_delete_entry ; 
- int /*<<< orphan*/  in_lltable_dump_entry ; 
- int /*<<< orphan*/  in_lltable_fill_sa_entry ; 
- int /*<<< orphan*/  in_lltable_free_entry ; 
- int /*<<< orphan*/  in_lltable_hash ; 
- int /*<<< orphan*/  in_lltable_lookup ; 
- int /*<<< orphan*/  in_lltable_mark_used ; 
- int /*<<< orphan*/  in_lltable_match_prefix ; 
- struct lltable* lltable_allocate_htbl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lltable_link (struct lltable*) ; 
+
+ int AF_INET ;
+ int IN_LLTBL_DEFAULT_HSIZE ;
+ int in_lltable_alloc ;
+ int in_lltable_delete_entry ;
+ int in_lltable_dump_entry ;
+ int in_lltable_fill_sa_entry ;
+ int in_lltable_free_entry ;
+ int in_lltable_hash ;
+ int in_lltable_lookup ;
+ int in_lltable_mark_used ;
+ int in_lltable_match_prefix ;
+ struct lltable* lltable_allocate_htbl (int ) ;
+ int lltable_link (struct lltable*) ;
 
 __attribute__((used)) static struct lltable *
 in_lltattach(struct ifnet *ifp)
 {
-	struct lltable *llt;
+ struct lltable *llt;
 
-	llt = lltable_allocate_htbl(IN_LLTBL_DEFAULT_HSIZE);
- 	llt->llt_af = AF_INET;
- 	llt->llt_ifp = ifp;
+ llt = lltable_allocate_htbl(IN_LLTBL_DEFAULT_HSIZE);
+  llt->llt_af = AF_INET;
+  llt->llt_ifp = ifp;
 
-	llt->llt_lookup = in_lltable_lookup;
-	llt->llt_alloc_entry = in_lltable_alloc;
-	llt->llt_delete_entry = in_lltable_delete_entry;
-	llt->llt_dump_entry = in_lltable_dump_entry;
-	llt->llt_hash = in_lltable_hash;
-	llt->llt_fill_sa_entry = in_lltable_fill_sa_entry;
-	llt->llt_free_entry = in_lltable_free_entry;
-	llt->llt_match_prefix = in_lltable_match_prefix;
-	llt->llt_mark_used = in_lltable_mark_used;
- 	lltable_link(llt);
+ llt->llt_lookup = in_lltable_lookup;
+ llt->llt_alloc_entry = in_lltable_alloc;
+ llt->llt_delete_entry = in_lltable_delete_entry;
+ llt->llt_dump_entry = in_lltable_dump_entry;
+ llt->llt_hash = in_lltable_hash;
+ llt->llt_fill_sa_entry = in_lltable_fill_sa_entry;
+ llt->llt_free_entry = in_lltable_free_entry;
+ llt->llt_match_prefix = in_lltable_match_prefix;
+ llt->llt_mark_used = in_lltable_mark_used;
+  lltable_link(llt);
 
-	return (llt);
+ return (llt);
 }

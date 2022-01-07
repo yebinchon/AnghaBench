@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bq25890_state {int dummy; } ;
-struct bq25890_device {int /*<<< orphan*/  charger; int /*<<< orphan*/  lock; struct bq25890_state state; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+struct bq25890_device {int charger; int lock; struct bq25890_state state; } ;
+typedef int irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int bq25890_get_chip_state (struct bq25890_device*,struct bq25890_state*) ; 
- int /*<<< orphan*/  bq25890_handle_state_change (struct bq25890_device*,struct bq25890_state*) ; 
- int /*<<< orphan*/  bq25890_state_changed (struct bq25890_device*,struct bq25890_state*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  power_supply_changed (int /*<<< orphan*/ ) ; 
+
+ int IRQ_HANDLED ;
+ int bq25890_get_chip_state (struct bq25890_device*,struct bq25890_state*) ;
+ int bq25890_handle_state_change (struct bq25890_device*,struct bq25890_state*) ;
+ int bq25890_state_changed (struct bq25890_device*,struct bq25890_state*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int power_supply_changed (int ) ;
 
 __attribute__((used)) static irqreturn_t bq25890_irq_handler_thread(int irq, void *private)
 {
-	struct bq25890_device *bq = private;
-	int ret;
-	struct bq25890_state state;
+ struct bq25890_device *bq = private;
+ int ret;
+ struct bq25890_state state;
 
-	ret = bq25890_get_chip_state(bq, &state);
-	if (ret < 0)
-		goto handled;
+ ret = bq25890_get_chip_state(bq, &state);
+ if (ret < 0)
+  goto handled;
 
-	if (!bq25890_state_changed(bq, &state))
-		goto handled;
+ if (!bq25890_state_changed(bq, &state))
+  goto handled;
 
-	bq25890_handle_state_change(bq, &state);
+ bq25890_handle_state_change(bq, &state);
 
-	mutex_lock(&bq->lock);
-	bq->state = state;
-	mutex_unlock(&bq->lock);
+ mutex_lock(&bq->lock);
+ bq->state = state;
+ mutex_unlock(&bq->lock);
 
-	power_supply_changed(bq->charger);
+ power_supply_changed(bq->charger);
 
 handled:
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

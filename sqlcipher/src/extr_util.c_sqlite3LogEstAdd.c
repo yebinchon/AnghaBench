@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LogEst ;
 
-/* Variables and functions */
+
+
+
+typedef scalar_t__ LogEst ;
+
+
 
 LogEst sqlite3LogEstAdd(LogEst a, LogEst b){
   static const unsigned char x[] = {
-     10, 10,                         /* 0,1 */
-      9, 9,                          /* 2,3 */
-      8, 8,                          /* 4,5 */
-      7, 7, 7,                       /* 6,7,8 */
-      6, 6, 6,                       /* 9,10,11 */
-      5, 5, 5,                       /* 12-14 */
-      4, 4, 4, 4,                    /* 15-18 */
-      3, 3, 3, 3, 3, 3,              /* 19-24 */
-      2, 2, 2, 2, 2, 2, 2,           /* 25-31 */
+     10, 10,
+      9, 9,
+      8, 8,
+      7, 7, 7,
+      6, 6, 6,
+      5, 5, 5,
+      4, 4, 4, 4,
+      3, 3, 3, 3, 3, 3,
+      2, 2, 2, 2, 2, 2, 2,
   };
   if( a>=b ){
     if( a>b+49 ) return a;

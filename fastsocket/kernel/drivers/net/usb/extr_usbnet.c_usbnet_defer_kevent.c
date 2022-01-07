@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usbnet {int /*<<< orphan*/  net; int /*<<< orphan*/  kevent; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- scalar_t__ net_ratelimit () ; 
- int /*<<< orphan*/  netdev_dbg (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  netdev_err (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_bit (int,int /*<<< orphan*/ *) ; 
+
+
+
+struct usbnet {int net; int kevent; int flags; } ;
+
+
+ scalar_t__ net_ratelimit () ;
+ int netdev_dbg (int ,char*,int) ;
+ int netdev_err (int ,char*,int) ;
+ int schedule_work (int *) ;
+ int set_bit (int,int *) ;
 
 void usbnet_defer_kevent (struct usbnet *dev, int work)
 {
-	set_bit (work, &dev->flags);
-	if (!schedule_work (&dev->kevent)) {
-		if (net_ratelimit())
-			netdev_err(dev->net, "kevent %d may have been dropped\n", work);
-	} else {
-		netdev_dbg(dev->net, "kevent %d scheduled\n", work);
-	}
+ set_bit (work, &dev->flags);
+ if (!schedule_work (&dev->kevent)) {
+  if (net_ratelimit())
+   netdev_err(dev->net, "kevent %d may have been dropped\n", work);
+ } else {
+  netdev_dbg(dev->net, "kevent %d scheduled\n", work);
+ }
 }

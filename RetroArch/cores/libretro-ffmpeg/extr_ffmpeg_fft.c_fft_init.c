@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int size; int depth; unsigned int steps; int /*<<< orphan*/  pbo; TYPE_1__* passes; int /*<<< orphan*/  blur; int /*<<< orphan*/  resolve; int /*<<< orphan*/  output; int /*<<< orphan*/  input_tex; int /*<<< orphan*/  window_tex; void* prog_blur; void* prog_resolve; void* prog_complex; void* prog_real; } ;
-typedef  TYPE_2__ fft_t ;
-struct TYPE_8__ {int /*<<< orphan*/  parameter_tex; int /*<<< orphan*/  target; } ;
-typedef  int /*<<< orphan*/  GLushort ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLshort ;
-typedef  float GLfloat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_CHECK_ERROR () ; 
- int /*<<< orphan*/  GL_DYNAMIC_DRAW ; 
- int /*<<< orphan*/  GL_LINEAR_MIPMAP_LINEAR ; 
- int /*<<< orphan*/  GL_NEAREST ; 
- int /*<<< orphan*/  GL_PIXEL_UNPACK_BUFFER ; 
- int /*<<< orphan*/  GL_R16UI ; 
- int /*<<< orphan*/  GL_RED_INTEGER ; 
- int /*<<< orphan*/  GL_RG16I ; 
- int /*<<< orphan*/  GL_RG32UI ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int /*<<< orphan*/  GL_RG_INTEGER ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_UNSIGNED_INT ; 
- int /*<<< orphan*/  GL_UNSIGNED_SHORT ; 
- int /*<<< orphan*/  KAISER_BETA ; 
- int /*<<< orphan*/  MAX (int,int) ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  fft_build_params (TYPE_2__*,int /*<<< orphan*/ *,unsigned int,int) ; 
- void* fft_compile_program (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fft_fragment_program_blur ; 
- int /*<<< orphan*/  fft_fragment_program_complex ; 
- int /*<<< orphan*/  fft_fragment_program_real ; 
- int /*<<< orphan*/  fft_fragment_program_resolve ; 
- int /*<<< orphan*/  fft_init_target (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fft_init_texture (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fft_vertex_program ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBufferData (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenBuffers (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGetUniformLocation (void*,char*) ; 
- int /*<<< orphan*/  glTexSubImage2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glUniform1i (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glUniform4fv (int /*<<< orphan*/ ,int,float const*) ; 
- int /*<<< orphan*/  glUseProgram (void*) ; 
- double kaiser_window_function (double,int /*<<< orphan*/ ) ; 
- int log2i (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  round (int) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int size; int depth; unsigned int steps; int pbo; TYPE_1__* passes; int blur; int resolve; int output; int input_tex; int window_tex; void* prog_blur; void* prog_resolve; void* prog_complex; void* prog_real; } ;
+typedef TYPE_2__ fft_t ;
+struct TYPE_8__ {int parameter_tex; int target; } ;
+typedef int GLushort ;
+typedef int GLuint ;
+typedef int GLshort ;
+typedef float GLfloat ;
+
+
+ int GL_CHECK_ERROR () ;
+ int GL_DYNAMIC_DRAW ;
+ int GL_LINEAR_MIPMAP_LINEAR ;
+ int GL_NEAREST ;
+ int GL_PIXEL_UNPACK_BUFFER ;
+ int GL_R16UI ;
+ int GL_RED_INTEGER ;
+ int GL_RG16I ;
+ int GL_RG32UI ;
+ int GL_RGBA8 ;
+ int GL_RG_INTEGER ;
+ int GL_TEXTURE_2D ;
+ int GL_UNSIGNED_INT ;
+ int GL_UNSIGNED_SHORT ;
+ int KAISER_BETA ;
+ int MAX (int,int) ;
+ scalar_t__ calloc (int,int) ;
+ int fft_build_params (TYPE_2__*,int *,unsigned int,int) ;
+ void* fft_compile_program (TYPE_2__*,int ,int ) ;
+ int fft_fragment_program_blur ;
+ int fft_fragment_program_complex ;
+ int fft_fragment_program_real ;
+ int fft_fragment_program_resolve ;
+ int fft_init_target (TYPE_2__*,int *,int ,int,int,int,int ,int ) ;
+ int fft_init_texture (TYPE_2__*,int *,int ,int,int,int,int ,int ) ;
+ int fft_vertex_program ;
+ int free (int *) ;
+ int glBindBuffer (int ,int ) ;
+ int glBindTexture (int ,int ) ;
+ int glBufferData (int ,int,int ,int ) ;
+ int glGenBuffers (int,int *) ;
+ int glGetUniformLocation (void*,char*) ;
+ int glTexSubImage2D (int ,int ,int ,int ,unsigned int,int,int ,int ,int *) ;
+ int glUniform1i (int ,int) ;
+ int glUniform4fv (int ,int,float const*) ;
+ int glUseProgram (void*) ;
+ double kaiser_window_function (double,int ) ;
+ int log2i (int ) ;
+ int round (int) ;
 
 __attribute__((used)) static void fft_init(fft_t *fft)
 {
    unsigned i;
    double window_mod;
-   GLushort *window             = NULL;
+   GLushort *window = ((void*)0);
    static const GLfloat unity[] = { 0.0f, 0.0f, 1.0f, 1.0f };
 
-   fft->prog_real    = fft_compile_program(fft, fft_vertex_program, fft_fragment_program_real);
+   fft->prog_real = fft_compile_program(fft, fft_vertex_program, fft_fragment_program_real);
    fft->prog_complex = fft_compile_program(fft, fft_vertex_program, fft_fragment_program_complex);
    fft->prog_resolve = fft_compile_program(fft, fft_vertex_program, fft_fragment_program_resolve);
-   fft->prog_blur    = fft_compile_program(fft, fft_vertex_program, fft_fragment_program_blur);
+   fft->prog_blur = fft_compile_program(fft, fft_vertex_program, fft_fragment_program_blur);
    GL_CHECK_ERROR();
 
    glUseProgram(fft->prog_real);
@@ -106,8 +106,8 @@ __attribute__((used)) static void fft_init(fft_t *fft)
    for (i = 0; i < fft->size; i++)
    {
       double phase = (double)(i - (int)(fft->size) / 2) / ((int)(fft->size) / 2);
-      double     w = kaiser_window_function(phase, KAISER_BETA);
-      window[i]    = round(0xffff * w * window_mod);
+      double w = kaiser_window_function(phase, KAISER_BETA);
+      window[i] = round(0xffff * w * window_mod);
    }
    glBindTexture(GL_TEXTURE_2D, fft->window_tex);
    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0,
@@ -130,7 +130,7 @@ __attribute__((used)) static void fft_init(fft_t *fft)
 
    for (i = 0; i < fft->steps; i++)
    {
-      GLuint *param_buffer = NULL;
+      GLuint *param_buffer = ((void*)0);
       fft_init_target(fft, &fft->passes[i].target,
             GL_RG32UI, fft->size, 1, 1, GL_NEAREST, GL_NEAREST);
       fft_init_texture(fft, &fft->passes[i].parameter_tex,

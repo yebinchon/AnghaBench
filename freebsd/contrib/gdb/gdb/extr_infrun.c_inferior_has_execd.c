@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  execd_pathname; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int execd_pathname; } ;
 struct target_waitstatus {scalar_t__ kind; TYPE_1__ value; } ;
-typedef  int /*<<< orphan*/  ptid_t ;
+typedef int ptid_t ;
 
-/* Variables and functions */
- scalar_t__ TARGET_WAITKIND_EXECD ; 
- int /*<<< orphan*/  get_last_target_status (int /*<<< orphan*/ *,struct target_waitstatus*) ; 
- int ptid_get_pid (int /*<<< orphan*/ ) ; 
- char* xstrdup (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ TARGET_WAITKIND_EXECD ;
+ int get_last_target_status (int *,struct target_waitstatus*) ;
+ int ptid_get_pid (int ) ;
+ char* xstrdup (int ) ;
 
 int
 inferior_has_execd (int pid, char **execd_pathname)

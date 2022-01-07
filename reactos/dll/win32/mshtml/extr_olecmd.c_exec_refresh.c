@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  header; TYPE_3__* window; } ;
-typedef  TYPE_4__ refresh_task_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int header; TYPE_3__* window; } ;
+typedef TYPE_4__ refresh_task_t ;
+typedef int VARIANT ;
 struct TYPE_13__ {TYPE_3__* window; TYPE_1__* doc_obj; } ;
-struct TYPE_10__ {int /*<<< orphan*/  IHTMLWindow2_iface; } ;
-struct TYPE_11__ {int /*<<< orphan*/  task_magic; TYPE_2__ base; } ;
+struct TYPE_10__ {int IHTMLWindow2_iface; } ;
+struct TYPE_11__ {int task_magic; TYPE_2__ base; } ;
 struct TYPE_9__ {scalar_t__ client; } ;
-typedef  int /*<<< orphan*/  IOleCommandTarget ;
-typedef  TYPE_5__ HTMLDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int IOleCommandTarget ;
+typedef TYPE_5__ HTMLDocument ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGID_DocHostCommandHandler ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int /*<<< orphan*/  IHTMLWindow2_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IOleCommandTarget ; 
- int /*<<< orphan*/  IOleClientSite_QueryInterface (scalar_t__,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IOleCommandTarget_Exec (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleCommandTarget_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- TYPE_4__* heap_alloc (int) ; 
- int /*<<< orphan*/  push_task (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  refresh_destr ; 
- int /*<<< orphan*/  refresh_proc ; 
+
+ int CGID_DocHostCommandHandler ;
+ int E_OUTOFMEMORY ;
+ int E_UNEXPECTED ;
+ int IHTMLWindow2_AddRef (int *) ;
+ int IID_IOleCommandTarget ;
+ int IOleClientSite_QueryInterface (scalar_t__,int *,void**) ;
+ int IOleCommandTarget_Exec (int *,int *,int,int ,int *,int *) ;
+ int IOleCommandTarget_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_5__*,int ,int ,int *) ;
+ int debugstr_variant (int *) ;
+ TYPE_4__* heap_alloc (int) ;
+ int push_task (int *,int ,int ,int ) ;
+ int refresh_destr ;
+ int refresh_proc ;
 
 __attribute__((used)) static HRESULT exec_refresh(HTMLDocument *This, DWORD nCmdexecopt, VARIANT *pvaIn, VARIANT *pvaOut)
 {

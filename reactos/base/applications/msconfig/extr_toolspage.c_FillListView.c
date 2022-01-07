@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AddItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CSIDL_SYSTEM ; 
- int /*<<< orphan*/  CSIDL_WINDOWS ; 
- int /*<<< orphan*/  IDS_TOOLS_CMD_CMD ; 
- int /*<<< orphan*/  IDS_TOOLS_CMD_DESCR ; 
- int /*<<< orphan*/  IDS_TOOLS_CMD_NAME ; 
- int /*<<< orphan*/  IDS_TOOLS_CMD_PARAM ; 
- int /*<<< orphan*/  IDS_TOOLS_INFO_CMD ; 
- int /*<<< orphan*/  IDS_TOOLS_INFO_DESCR ; 
- int /*<<< orphan*/  IDS_TOOLS_INFO_NAME ; 
- int /*<<< orphan*/  IDS_TOOLS_INFO_PARAM ; 
- int /*<<< orphan*/  IDS_TOOLS_REGEDIT_CMD ; 
- int /*<<< orphan*/  IDS_TOOLS_REGEDIT_DESCR ; 
- int /*<<< orphan*/  IDS_TOOLS_REGEDIT_NAME ; 
- int /*<<< orphan*/  IDS_TOOLS_REGEDIT_PARAM ; 
- int /*<<< orphan*/  IDS_TOOLS_SYSDM_CMD ; 
- int /*<<< orphan*/  IDS_TOOLS_SYSDM_DESCR ; 
- int /*<<< orphan*/  IDS_TOOLS_SYSDM_NAME ; 
- int /*<<< orphan*/  IDS_TOOLS_SYSDM_PARAM ; 
+ int AddItem (int ,int ,int ,int ,int ) ;
+ int CSIDL_SYSTEM ;
+ int CSIDL_WINDOWS ;
+ int IDS_TOOLS_CMD_CMD ;
+ int IDS_TOOLS_CMD_DESCR ;
+ int IDS_TOOLS_CMD_NAME ;
+ int IDS_TOOLS_CMD_PARAM ;
+ int IDS_TOOLS_INFO_CMD ;
+ int IDS_TOOLS_INFO_DESCR ;
+ int IDS_TOOLS_INFO_NAME ;
+ int IDS_TOOLS_INFO_PARAM ;
+ int IDS_TOOLS_REGEDIT_CMD ;
+ int IDS_TOOLS_REGEDIT_DESCR ;
+ int IDS_TOOLS_REGEDIT_NAME ;
+ int IDS_TOOLS_REGEDIT_PARAM ;
+ int IDS_TOOLS_SYSDM_CMD ;
+ int IDS_TOOLS_SYSDM_DESCR ;
+ int IDS_TOOLS_SYSDM_NAME ;
+ int IDS_TOOLS_SYSDM_PARAM ;
 
 void FillListView ( void ) {
     AddItem(IDS_TOOLS_CMD_NAME, IDS_TOOLS_CMD_DESCR, IDS_TOOLS_CMD_CMD, IDS_TOOLS_CMD_PARAM, CSIDL_SYSTEM);

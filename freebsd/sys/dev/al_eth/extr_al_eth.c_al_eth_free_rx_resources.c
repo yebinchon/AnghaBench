@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct al_udma_q_params {scalar_t__ cdesc_phy_base; int /*<<< orphan*/ * cdesc_base; int /*<<< orphan*/  cdesc_phy_base_map; int /*<<< orphan*/  cdesc_phy_base_tag; int /*<<< orphan*/ * desc_base; int /*<<< orphan*/  desc_phy_base_map; int /*<<< orphan*/  desc_phy_base_tag; } ;
-struct al_eth_ring {int sw_count; int /*<<< orphan*/  lro; TYPE_1__* rx_buffer_info; int /*<<< orphan*/  dma_buf_tag; int /*<<< orphan*/  enqueue_tq; int /*<<< orphan*/  enqueue_task; struct al_udma_q_params q_params; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct al_udma_q_params {scalar_t__ cdesc_phy_base; int * cdesc_base; int cdesc_phy_base_map; int cdesc_phy_base_tag; int * desc_base; int desc_phy_base_map; int desc_phy_base_tag; } ;
+struct al_eth_ring {int sw_count; int lro; TYPE_1__* rx_buffer_info; int dma_buf_tag; int enqueue_tq; int enqueue_task; struct al_udma_q_params q_params; } ;
 struct al_eth_adapter {struct al_eth_ring* rx_ring; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dma_map; int /*<<< orphan*/ * m; } ;
+struct TYPE_2__ {int dma_map; int * m; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_IFAL ; 
- int /*<<< orphan*/  al_dma_free_coherent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamap_unload (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m_freem (int /*<<< orphan*/ *) ; 
- scalar_t__ taskqueue_cancel (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_drain (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_lro_free (int /*<<< orphan*/ *) ; 
+
+ int M_IFAL ;
+ int al_dma_free_coherent (int ,int ,int *) ;
+ int bus_dma_tag_destroy (int ) ;
+ int bus_dmamap_destroy (int ,int ) ;
+ int bus_dmamap_unload (int ,int ) ;
+ int free (TYPE_1__*,int ) ;
+ int m_freem (int *) ;
+ scalar_t__ taskqueue_cancel (int ,int *,int *) ;
+ int taskqueue_drain (int ,int *) ;
+ int taskqueue_free (int ) ;
+ int tcp_lro_free (int *) ;
 
 __attribute__((used)) static void
 al_eth_free_rx_resources(struct al_eth_adapter *adapter, unsigned int qid)
 {
-	struct al_eth_ring *rx_ring = &adapter->rx_ring[qid];
-	struct al_udma_q_params *q_params = &rx_ring->q_params;
-	int size;
+ struct al_eth_ring *rx_ring = &adapter->rx_ring[qid];
+ struct al_udma_q_params *q_params = &rx_ring->q_params;
+ int size;
 
-	/* At this point interrupts' handlers must be deactivated */
-	while (taskqueue_cancel(rx_ring->enqueue_tq,
-	    &rx_ring->enqueue_task, NULL)) {
-		taskqueue_drain(rx_ring->enqueue_tq, &rx_ring->enqueue_task);
-	}
 
-	taskqueue_free(rx_ring->enqueue_tq);
+ while (taskqueue_cancel(rx_ring->enqueue_tq,
+     &rx_ring->enqueue_task, ((void*)0))) {
+  taskqueue_drain(rx_ring->enqueue_tq, &rx_ring->enqueue_task);
+ }
 
-	for (size = 0; size < rx_ring->sw_count; size++) {
-		m_freem(rx_ring->rx_buffer_info[size].m);
-		rx_ring->rx_buffer_info[size].m = NULL;
-		bus_dmamap_unload(rx_ring->dma_buf_tag,
-		    rx_ring->rx_buffer_info[size].dma_map);
-		bus_dmamap_destroy(rx_ring->dma_buf_tag,
-		    rx_ring->rx_buffer_info[size].dma_map);
-	}
-	bus_dma_tag_destroy(rx_ring->dma_buf_tag);
+ taskqueue_free(rx_ring->enqueue_tq);
 
-	free(rx_ring->rx_buffer_info, M_IFAL);
-	rx_ring->rx_buffer_info = NULL;
+ for (size = 0; size < rx_ring->sw_count; size++) {
+  m_freem(rx_ring->rx_buffer_info[size].m);
+  rx_ring->rx_buffer_info[size].m = ((void*)0);
+  bus_dmamap_unload(rx_ring->dma_buf_tag,
+      rx_ring->rx_buffer_info[size].dma_map);
+  bus_dmamap_destroy(rx_ring->dma_buf_tag,
+      rx_ring->rx_buffer_info[size].dma_map);
+ }
+ bus_dma_tag_destroy(rx_ring->dma_buf_tag);
 
-	/* if not set, then don't free */
-	if (q_params->desc_base == NULL)
-		return;
+ free(rx_ring->rx_buffer_info, M_IFAL);
+ rx_ring->rx_buffer_info = ((void*)0);
 
-	al_dma_free_coherent(q_params->desc_phy_base_tag,
-	    q_params->desc_phy_base_map, q_params->desc_base);
 
-	q_params->desc_base = NULL;
+ if (q_params->desc_base == ((void*)0))
+  return;
 
-	/* if not set, then don't free */
-	if (q_params->cdesc_base == NULL)
-		return;
+ al_dma_free_coherent(q_params->desc_phy_base_tag,
+     q_params->desc_phy_base_map, q_params->desc_base);
 
-	al_dma_free_coherent(q_params->cdesc_phy_base_tag,
-	    q_params->cdesc_phy_base_map, q_params->cdesc_base);
+ q_params->desc_base = ((void*)0);
 
-	q_params->cdesc_phy_base = 0;
 
-	/* Free LRO resources */
-	tcp_lro_free(&rx_ring->lro);
+ if (q_params->cdesc_base == ((void*)0))
+  return;
+
+ al_dma_free_coherent(q_params->cdesc_phy_base_tag,
+     q_params->cdesc_phy_base_map, q_params->cdesc_base);
+
+ q_params->cdesc_phy_base = 0;
+
+
+ tcp_lro_free(&rx_ring->lro);
 }

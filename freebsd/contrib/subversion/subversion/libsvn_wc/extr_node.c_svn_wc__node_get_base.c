@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
 struct TYPE_14__ {char* token; } ;
-typedef  TYPE_2__ svn_wc__db_lock_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
+typedef TYPE_2__ svn_wc__db_lock_t ;
+typedef int svn_revnum_t ;
+typedef int svn_node_kind_t ;
 struct TYPE_15__ {scalar_t__ apr_err; } ;
-typedef  TYPE_3__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- TYPE_3__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_3__*) ; 
- TYPE_3__* svn_error_createf (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* svn_error_trace (TYPE_3__*) ; 
- int /*<<< orphan*/  svn_node_unknown ; 
- TYPE_3__* svn_wc__db_base_get_info (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_incomplete ; 
- scalar_t__ svn_wc__db_status_normal ; 
+
+ int SVN_ERR_ASSERT (int) ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ int SVN_INVALID_REVNUM ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ TYPE_3__* SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int svn_error_clear (TYPE_3__*) ;
+ TYPE_3__* svn_error_createf (scalar_t__,int *,int ,int ) ;
+ TYPE_3__* svn_error_trace (TYPE_3__*) ;
+ int svn_node_unknown ;
+ TYPE_3__* svn_wc__db_base_get_info (scalar_t__*,int *,int *,char const**,char const**,char const**,int *,int *,int *,int *,int *,int *,TYPE_2__**,int *,int *,int *,int ,char const*,int *,int *) ;
+ scalar_t__ svn_wc__db_status_incomplete ;
+ scalar_t__ svn_wc__db_status_normal ;
 
 svn_error_t *
 svn_wc__node_get_base(svn_node_kind_t *kind,
@@ -60,10 +60,10 @@ svn_wc__node_get_base(svn_node_kind_t *kind,
   svn_node_kind_t db_kind;
 
   err = svn_wc__db_base_get_info(&status, &db_kind, revision, repos_relpath,
-                                 repos_root_url, repos_uuid, NULL,
-                                 NULL, NULL, NULL, NULL, NULL,
-                                 lock_token ? &lock : NULL,
-                                 NULL, NULL, NULL,
+                                 repos_root_url, repos_uuid, ((void*)0),
+                                 ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                 lock_token ? &lock : ((void*)0),
+                                 ((void*)0), ((void*)0), ((void*)0),
                                  wc_ctx->db, local_abspath,
                                  result_pool, scratch_pool);
 
@@ -78,7 +78,7 @@ svn_wc__node_get_base(svn_node_kind_t *kind,
           if (err)
             return svn_error_trace(err);
           else
-            return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+            return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                                      _("The node '%s' was not found."),
                                      svn_dirent_local_style(local_abspath,
                                                             scratch_pool));
@@ -90,20 +90,20 @@ svn_wc__node_get_base(svn_node_kind_t *kind,
       if (revision)
         *revision = SVN_INVALID_REVNUM;
       if (repos_relpath)
-        *repos_relpath = NULL;
+        *repos_relpath = ((void*)0);
       if (repos_root_url)
-        *repos_root_url = NULL;
+        *repos_root_url = ((void*)0);
       if (repos_uuid)
-        *repos_uuid = NULL;
+        *repos_uuid = ((void*)0);
       if (lock_token)
-        *lock_token = NULL;
+        *lock_token = ((void*)0);
       return SVN_NO_ERROR;
     }
 
   if (kind)
     *kind = db_kind;
   if (lock_token)
-    *lock_token = lock ? lock->token : NULL;
+    *lock_token = lock ? lock->token : ((void*)0);
 
   SVN_ERR_ASSERT(!revision || SVN_IS_VALID_REVNUM(*revision));
   SVN_ERR_ASSERT(!repos_relpath || *repos_relpath);

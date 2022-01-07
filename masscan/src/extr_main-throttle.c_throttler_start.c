@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct Throttler {double max_rate; int batch_size; TYPE_1__* buckets; } ;
-struct TYPE_2__ {scalar_t__ packet_count; int /*<<< orphan*/  timestamp; } ;
+struct TYPE_2__ {scalar_t__ packet_count; int timestamp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int,char*,double) ; 
- int /*<<< orphan*/  memset (struct Throttler*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pixie_gettime () ; 
+
+ int LOG (int,char*,double) ;
+ int memset (struct Throttler*,int ,int) ;
+ int pixie_gettime () ;
 
 void
 throttler_start(struct Throttler *throttler, double max_rate)

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rand_state ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
 
-/* Variables and functions */
- int RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_modify (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_ptr (int /*<<< orphan*/ ) ; 
- size_t mrb_fixnum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  random_check (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * random_default_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * random_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  random_rand (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rand_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+
+
+ int RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ int mrb_ary_modify (int *,int ) ;
+ int mrb_ary_ptr (int ) ;
+ size_t mrb_fixnum (int ) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_get_args (int *,char*,int *) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int random_check (int *,int ) ;
+ int * random_default_state (int *) ;
+ int * random_ptr (int ) ;
+ int random_rand (int *,int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_ary_shuffle_bang(mrb_state *mrb, mrb_value ary)
@@ -50,7 +50,7 @@ mrb_ary_shuffle_bang(mrb_state *mrb, mrb_value ary)
     }
     mrb_ary_modify(mrb, mrb_ary_ptr(ary));
     max = mrb_fixnum_value(RARRAY_LEN(ary));
-    for (i = RARRAY_LEN(ary) - 1; i > 0; i--)  {
+    for (i = RARRAY_LEN(ary) - 1; i > 0; i--) {
       mrb_int j;
       mrb_value *ptr = RARRAY_PTR(ary);
       mrb_value tmp;

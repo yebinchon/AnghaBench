@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_char ;
 
-/* Variables and functions */
+
+
+
+typedef int u_char ;
+
+
 
 __attribute__((used)) static u_char
 DecodeASyncParams(u_char si2, u_char * p)
 {
-	u_char info;
+ u_char info;
 
-	switch (p[5]) {
-		case 66:	// 1200 bit/s
+ switch (p[5]) {
+  case 66:
 
-			break;	// si2 don't change
+   break;
 
-		case 88:	// 1200/75 bit/s
+  case 88:
 
-			si2 += 1;
-			break;
-		case 87:	// 75/1200 bit/s
+   si2 += 1;
+   break;
+  case 87:
 
-			si2 += 2;
-			break;
-		case 67:	// 2400 bit/s
+   si2 += 2;
+   break;
+  case 67:
 
-			si2 += 3;
-			break;
-		case 69:	// 4800 bit/s
+   si2 += 3;
+   break;
+  case 69:
 
-			si2 += 4;
-			break;
-		case 72:	// 9600 bit/s
+   si2 += 4;
+   break;
+  case 72:
 
-			si2 += 5;
-			break;
-		case 73:	// 14400 bit/s
+   si2 += 5;
+   break;
+  case 73:
 
-			si2 += 6;
-			break;
-		case 75:	// 19200 bit/s
+   si2 += 6;
+   break;
+  case 75:
 
-			si2 += 7;
-			break;
-	}
+   si2 += 7;
+   break;
+ }
 
-	info = p[7] & 0x7f;
-	if ((info & 16) && (!(info & 8)))	// 7 data bits
+ info = p[7] & 0x7f;
+ if ((info & 16) && (!(info & 8)))
 
-		si2 += 32;	// else 8 data bits
+  si2 += 32;
 
-	if ((info & 96) == 96)	// 2 stop bits
+ if ((info & 96) == 96)
 
-		si2 += 16;	// else 1 stop bit
+  si2 += 16;
 
-	if ((info & 2) && (!(info & 1)))	// even parity
+ if ((info & 2) && (!(info & 1)))
 
-		si2 += 8;	// else no parity
+  si2 += 8;
 
-	return si2;
+ return si2;
 }

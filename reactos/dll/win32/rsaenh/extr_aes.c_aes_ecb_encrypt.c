@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ulong32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ulong32 ;
 struct TYPE_3__ {int Nr; int* eK; } ;
-typedef  TYPE_1__ aes_key ;
+typedef TYPE_1__ aes_key ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOAD32H (int,unsigned char const*) ; 
- int /*<<< orphan*/  STORE32H (int,unsigned char*) ; 
- int Te0 (size_t) ; 
- int Te1 (size_t) ; 
- int Te2 (size_t) ; 
- int Te3 (size_t) ; 
- int* Te4_0 ; 
- int* Te4_1 ; 
- int* Te4_2 ; 
- int* Te4_3 ; 
- size_t byte (int,int) ; 
+
+ int LOAD32H (int,unsigned char const*) ;
+ int STORE32H (int,unsigned char*) ;
+ int Te0 (size_t) ;
+ int Te1 (size_t) ;
+ int Te2 (size_t) ;
+ int Te3 (size_t) ;
+ int* Te4_0 ;
+ int* Te4_1 ;
+ int* Te4_2 ;
+ int* Te4_3 ;
+ size_t byte (int,int) ;
 
 void aes_ecb_encrypt(const unsigned char *pt, unsigned char *ct, aes_key *skey)
 {
@@ -36,10 +36,10 @@ void aes_ecb_encrypt(const unsigned char *pt, unsigned char *ct, aes_key *skey)
     Nr = skey->Nr;
     rk = skey->eK;
 
-    LOAD32H(s0, pt      ); s0 ^= rk[0];
-    LOAD32H(s1, pt  +  4); s1 ^= rk[1];
-    LOAD32H(s2, pt  +  8); s2 ^= rk[2];
-    LOAD32H(s3, pt  + 12); s3 ^= rk[3];
+    LOAD32H(s0, pt ); s0 ^= rk[0];
+    LOAD32H(s1, pt + 4); s1 ^= rk[1];
+    LOAD32H(s2, pt + 8); s2 ^= rk[2];
+    LOAD32H(s3, pt + 12); s3 ^= rk[3];
 
     r = Nr >> 1;
     for (;;) {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  DeleteFileW (char*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  lstrcmpW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int pSHGetIniStringW (char const*,char const*,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcmp_wa (char*,char*) ; 
- int wine_dbgstr_w (char const*) ; 
- int /*<<< orphan*/  write_inifile (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int DeleteFileW (char*) ;
+ int GetLastError () ;
+ int MAX_PATH ;
+ int SetLastError (int) ;
+ int lstrcmpW (char*,char const*) ;
+ int lstrcpyW (char*,char const*) ;
+ int ok (int,char*,int,...) ;
+ int pSHGetIniStringW (char const*,char const*,char*,int ,char*) ;
+ int strcmp_wa (char*,char*) ;
+ int wine_dbgstr_w (char const*) ;
+ int write_inifile (char*) ;
 
 __attribute__((used)) static void test_SHGetIniString(void)
 {
@@ -45,19 +45,19 @@ __attribute__((used)) static void test_SHGetIniString(void)
         return;
 
     if(0){
-        /* these crash on Windows */
-        pSHGetIniStringW(NULL, NULL, NULL, 0, NULL);
-        pSHGetIniStringW(NULL, AKeyW, out, ARRAY_SIZE(out), pathW);
-        pSHGetIniStringW(TestAppW, AKeyW, NULL, ARRAY_SIZE(out), pathW);
+
+        pSHGetIniStringW(((void*)0), ((void*)0), ((void*)0), 0, ((void*)0));
+        pSHGetIniStringW(((void*)0), AKeyW, out, ARRAY_SIZE(out), pathW);
+        pSHGetIniStringW(TestAppW, AKeyW, ((void*)0), ARRAY_SIZE(out), pathW);
     }
 
     ret = pSHGetIniStringW(TestAppW, AKeyW, out, 0, pathW);
     ok(ret == 0, "SHGetIniStringW should have given 0, instead: %d\n", ret);
 
-    /* valid arguments */
+
     out[0] = 0;
     SetLastError(0xdeadbeef);
-    ret = pSHGetIniStringW(TestAppW, NULL, out, ARRAY_SIZE(out), pathW);
+    ret = pSHGetIniStringW(TestAppW, ((void*)0), out, ARRAY_SIZE(out), pathW);
     ok(ret == 4, "SHGetIniStringW should have given 4, instead: %d\n", ret);
     ok(!lstrcmpW(out, AKeyW), "Expected %s, got: %s, %d\n",
                 wine_dbgstr_w(AKeyW), wine_dbgstr_w(out), GetLastError());

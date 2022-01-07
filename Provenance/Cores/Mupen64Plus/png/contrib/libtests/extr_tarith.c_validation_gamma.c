@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double png_uint_16 ;
-typedef  double png_fixed_point ;
-typedef  double png_byte ;
 
-/* Variables and functions */
- double PNG_FP_1 ; 
- int exp (int) ; 
- double fabs (double) ; 
- double floor (double) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int log (int) ; 
- int png_exp (int) ; 
- int png_exp16bit (int) ; 
- int png_exp8bit (int) ; 
- double png_gamma_16bit_correct (unsigned int,double) ; 
- double png_gamma_8bit_correct (unsigned int,double) ; 
- int png_log16bit (int) ; 
- int png_log8bit (int) ; 
- int pow (unsigned int,double) ; 
- int /*<<< orphan*/  printf (char*,double,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef double png_uint_16 ;
+typedef double png_fixed_point ;
+typedef double png_byte ;
+
+
+ double PNG_FP_1 ;
+ int exp (int) ;
+ double fabs (double) ;
+ double floor (double) ;
+ int fprintf (int ,char*,...) ;
+ int log (int) ;
+ int png_exp (int) ;
+ int png_exp16bit (int) ;
+ int png_exp8bit (int) ;
+ double png_gamma_16bit_correct (unsigned int,double) ;
+ double png_gamma_8bit_correct (unsigned int,double) ;
+ int png_log16bit (int) ;
+ int png_log8bit (int) ;
+ int pow (unsigned int,double) ;
+ int printf (char*,double,...) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int validation_gamma(int argc, char **argv)
 {
@@ -39,7 +39,7 @@ int validation_gamma(int argc, char **argv)
    double maxerr;
    int i, silent=0, onlygamma=0;
 
-   /* Silence the output with -s, just test the gamma functions with -g: */
+
    while (--argc > 0)
       if (strcmp(*++argv, "-s") == 0)
          silent = 1;
@@ -53,7 +53,7 @@ int validation_gamma(int argc, char **argv)
 
    if (!onlygamma)
    {
-      /* First validate the log functions: */
+
       maxerr = 0;
       for (i=0; i<256; ++i)
       {
@@ -86,7 +86,7 @@ int validation_gamma(int argc, char **argv)
          if (i == 0 && png_log16bit(i) != 0xffffffff ||
              i != 0 && png_log16bit(i) != floor(correct+.5))
          {
-            if (error > .68) /* By experiment error is less than .68 */
+            if (error > .68)
             {
                fprintf(stderr, "16-bit log error: %d: got %u, expected %f"
                   " error: %f\n", i, png_log16bit(i), correct, error);
@@ -97,7 +97,7 @@ int validation_gamma(int argc, char **argv)
       if (!silent)
          printf("maximum 16-bit log error = %f\n", maxerr);
 
-      /* Now exponentiations. */
+
       maxerr = 0;
       for (i=0; i<=0xfffff; ++i)
       {
@@ -106,7 +106,7 @@ int validation_gamma(int argc, char **argv)
 
          if (fabs(error) > maxerr)
             maxerr = fabs(error);
-         if (fabs(error) > 1883) /* By experiment. */
+         if (fabs(error) > 1883)
          {
             fprintf(stderr, "32-bit exp error: %d: got %u, expected %f"
                   " error: %f\n", i, png_exp(i), correct, error);
@@ -124,7 +124,7 @@ int validation_gamma(int argc, char **argv)
 
          if (fabs(error) > maxerr)
             maxerr = fabs(error);
-         if (fabs(error) > .50002) /* By experiment */
+         if (fabs(error) > .50002)
          {
             fprintf(stderr, "8-bit exp error: %d: got %u, expected %f"
                   " error: %f\n", i, png_exp8bit(i), correct, error);
@@ -142,7 +142,7 @@ int validation_gamma(int argc, char **argv)
 
          if (fabs(error) > maxerr)
             maxerr = fabs(error);
-         if (fabs(error) > .524) /* By experiment */
+         if (fabs(error) > .524)
          {
             fprintf(stderr, "16-bit exp error: %d: got %u, expected %f"
                   " error: %f\n", i, png_exp16bit(i), correct, error);
@@ -151,9 +151,9 @@ int validation_gamma(int argc, char **argv)
 
       if (!silent)
          printf("maximum 16-bit exp error = %f\n", maxerr);
-   } /* !onlygamma */
+   }
 
-   /* Test the overall gamma correction. */
+
    for (i=0; i<9; ++i)
    {
       unsigned j;

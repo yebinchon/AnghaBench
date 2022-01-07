@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hb_builtin_presets_json ; 
- int /*<<< orphan*/  hb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int hb_presets_add_internal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_presets_clean (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_presets_cli_default ; 
- int /*<<< orphan*/  hb_value_dup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * hb_value_json (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int hb_value_t ;
+
+
+ int hb_builtin_presets_json ;
+ int hb_dict_get (int *,char*) ;
+ int hb_presets_add_internal (int ) ;
+ int hb_presets_clean (int ) ;
+ int hb_presets_cli_default ;
+ int hb_value_dup (int ) ;
+ int hb_value_free (int **) ;
+ int * hb_value_json (int ) ;
 
 int hb_presets_cli_default_init(void)
 {

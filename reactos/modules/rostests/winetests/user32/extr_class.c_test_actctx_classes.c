@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wc ;
-typedef  int /*<<< orphan*/  path ;
-typedef  int /*<<< orphan*/  buff ;
-struct TYPE_5__ {char const* lpszClassName; int /*<<< orphan*/  hIcon; int /*<<< orphan*/  lpfnWndProc; } ;
-typedef  TYPE_1__ WNDCLASSA ;
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int BOOL ;
-typedef  scalar_t__ ATOM ;
 
-/* Variables and functions */
- int ActivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ClassTest_WndProc ; 
- int /*<<< orphan*/ * CreateWindowExA (int /*<<< orphan*/ ,char const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int DeactivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int DeleteFileA (char*) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ *) ; 
- int GetClassInfoA (int /*<<< orphan*/ ,char const*,TYPE_1__*) ; 
- int GetClassNameA (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetModuleHandleW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTempPathA (int,char*) ; 
- scalar_t__ IDI_APPLICATION ; 
- int /*<<< orphan*/  LoadIconW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAX_PATH ; 
- scalar_t__ RegisterClassA (TYPE_1__*) ; 
- int /*<<< orphan*/  ReleaseActCtx (int /*<<< orphan*/ ) ; 
- int UnregisterClassA (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_manifest_file (char*,char const*) ; 
- int /*<<< orphan*/  create_test_actctx (char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wc ;
+typedef int path ;
+typedef int buff ;
+struct TYPE_5__ {char const* lpszClassName; int hIcon; int lpfnWndProc; } ;
+typedef TYPE_1__ WNDCLASSA ;
+typedef int ULONG_PTR ;
+typedef int LPCWSTR ;
+typedef int * HWND ;
+typedef int HINSTANCE ;
+typedef int HANDLE ;
+typedef int BOOL ;
+typedef scalar_t__ ATOM ;
+
+
+ int ActivateActCtx (int ,int *) ;
+ int ClassTest_WndProc ;
+ int * CreateWindowExA (int ,char const*,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int DeactivateActCtx (int ,int ) ;
+ int DeleteFileA (char*) ;
+ int DestroyWindow (int *) ;
+ int GetClassInfoA (int ,char const*,TYPE_1__*) ;
+ int GetClassNameA (int *,char*,int) ;
+ int GetLastError () ;
+ int GetModuleHandleW (int ) ;
+ int GetTempPathA (int,char*) ;
+ scalar_t__ IDI_APPLICATION ;
+ int LoadIconW (int ,int ) ;
+ int MAX_PATH ;
+ scalar_t__ RegisterClassA (TYPE_1__*) ;
+ int ReleaseActCtx (int ) ;
+ int UnregisterClassA (char const*,int ) ;
+ int create_manifest_file (char*,char const*) ;
+ int create_test_actctx (char*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,...) ;
+ int strcat (char*,char*) ;
+ int strcmp (char*,char const*) ;
 
 __attribute__((used)) static void test_actctx_classes(void)
 {
@@ -93,12 +93,12 @@ __attribute__((used)) static void test_actctx_classes(void)
     class = RegisterClassA(&wc);
     ok(class != 0, "Failed to register class.\n");
 
-    /* Class info is available by versioned and regular names. */
+
     ret = GetClassInfoA(hinst, testclass, &wc);
     ok(ret, "Failed to get class info.\n");
 
     hwnd = CreateWindowExA(0, testclass, "test", 0, 0, 0, 0, 0, 0, 0, hinst, 0);
-    ok(hwnd != NULL, "Failed to create a window.\n");
+    ok(hwnd != ((void*)0), "Failed to create a window.\n");
 
     ret = GetClassNameA(hwnd, buff, sizeof(buff));
     ok(ret, "Failed to get class name.\n");
@@ -131,7 +131,7 @@ __attribute__((used)) static void test_actctx_classes(void)
     ret = UnregisterClassA("4.3.2.1!MyTestClass", hinst);
     ok(ret, "Failed to unregister class.\n");
 
-    /* Register versioned class without active context. */
+
     wc.lpszClassName = "4.3.2.1!MyTestClass";
     class = RegisterClassA(&wc);
     ok(class != 0, "Failed to register class.\n");
@@ -149,7 +149,7 @@ __attribute__((used)) static void test_actctx_classes(void)
     ret = UnregisterClassA("4.3.2.1!MyTestClass", hinst);
     ok(ret, "Failed to unregister class.\n");
 
-    /* Only versioned name is registered. */
+
     ret = ActivateActCtx(context, &cookie);
     ok(ret, "Failed to activate context.\n");
 
@@ -169,7 +169,7 @@ __attribute__((used)) static void test_actctx_classes(void)
     ret = UnregisterClassA("4.3.2.1!MyTestClass", hinst);
     ok(ret, "Failed to unregister class.\n");
 
-    /* Register regular name first, it's not considered when versioned name is registered. */
+
     wc.lpszClassName = "MyTestClass";
     class = RegisterClassA(&wc);
     ok(class != 0, "Failed to register class.\n");

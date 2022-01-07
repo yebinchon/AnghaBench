@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mxs_saif_put_mclk (int /*<<< orphan*/ ) ; 
+
+ int mxs_saif_put_mclk (int ) ;
 
 __attribute__((used)) static int mxs_sgtl5000_remove(struct platform_device *pdev)
 {
-	mxs_saif_put_mclk(0);
+ mxs_saif_put_mclk(0);
 
-	return 0;
+ return 0;
 }

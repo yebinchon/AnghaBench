@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVLFG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FFMIN (int,int) ; 
- int /*<<< orphan*/  FF_DWT53 ; 
- int /*<<< orphan*/  FF_DWT97_INT ; 
- int FF_DWT_MAX_DECLVLS ; 
- int MAX_W ; 
- int* array ; 
- int* arrayf ; 
- int av_lfg_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_lfg_init (int /*<<< orphan*/ *,int) ; 
- int* ref ; 
- int* reff ; 
- int test_dwt (int*,int*,int**,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int test_dwtf (int*,int*,int**,int,double) ; 
+
+
+
+typedef int AVLFG ;
+
+
+ int FFMIN (int,int) ;
+ int FF_DWT53 ;
+ int FF_DWT97_INT ;
+ int FF_DWT_MAX_DECLVLS ;
+ int MAX_W ;
+ int* array ;
+ int* arrayf ;
+ int av_lfg_get (int *) ;
+ int av_lfg_init (int *,int) ;
+ int* ref ;
+ int* reff ;
+ int test_dwt (int*,int*,int**,int,int ,int ) ;
+ int test_dwtf (int*,int*,int**,int,double) ;
 
 int main(void) {
     AVLFG prng;
@@ -36,7 +36,7 @@ int main(void) {
     av_lfg_init(&prng, 1);
 
     for (i = 0; i<MAX_W * MAX_W; i++)
-        arrayf[i] = reff[i] = array[i] = ref[i] =  av_lfg_get(&prng) % 2048;
+        arrayf[i] = reff[i] = array[i] = ref[i] = av_lfg_get(&prng) % 2048;
 
     for (i = 0; i < 100; i++) {
         for (j=0; j<4; j++)

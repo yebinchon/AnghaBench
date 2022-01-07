@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uart_port {int dummy; } ;
-struct imx_port {int /*<<< orphan*/  timer; } ;
+struct imx_port {int timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int jiffies ;
+ int mod_timer (int *,int ) ;
 
 __attribute__((used)) static void imx_enable_ms(struct uart_port *port)
 {
-	struct imx_port *sport = (struct imx_port *)port;
+ struct imx_port *sport = (struct imx_port *)port;
 
-	mod_timer(&sport->timer, jiffies);
+ mod_timer(&sport->timer, jiffies);
 }

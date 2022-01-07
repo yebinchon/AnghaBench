@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* Dir; TYPE_1__* shared; } ;
-struct TYPE_6__ {int num_slots; int* page_number; scalar_t__* page_status; int /*<<< orphan*/  ControlLock; int /*<<< orphan*/ * page_dirty; } ;
-typedef  TYPE_1__* SlruShared ;
-typedef  TYPE_2__* SlruCtl ;
+struct TYPE_6__ {int num_slots; int* page_number; scalar_t__* page_status; int ControlLock; int * page_dirty; } ;
+typedef TYPE_1__* SlruShared ;
+typedef TYPE_2__* SlruCtl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG2 ; 
- int /*<<< orphan*/  LWLockAcquire (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LWLockRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LW_EXCLUSIVE ; 
- int MAXPGPATH ; 
- int SLRU_PAGES_PER_SEGMENT ; 
- scalar_t__ SLRU_PAGE_EMPTY ; 
- scalar_t__ SLRU_PAGE_VALID ; 
- int /*<<< orphan*/  SimpleLruWaitIO (TYPE_2__*,int) ; 
- int /*<<< orphan*/  SlruInternalWritePage (TYPE_2__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ int DEBUG2 ;
+ int LWLockAcquire (int ,int ) ;
+ int LWLockRelease (int ) ;
+ int LW_EXCLUSIVE ;
+ int MAXPGPATH ;
+ int SLRU_PAGES_PER_SEGMENT ;
+ scalar_t__ SLRU_PAGE_EMPTY ;
+ scalar_t__ SLRU_PAGE_VALID ;
+ int SimpleLruWaitIO (TYPE_2__*,int) ;
+ int SlruInternalWritePage (TYPE_2__*,int,int *) ;
+ int ereport (int ,int ) ;
+ int errmsg (char*,char*) ;
+ int snprintf (char*,int,char*,char*,int) ;
+ int unlink (char*) ;
 
 void
 SlruDeleteSegment(SlruCtl ctl, int segno)
 {
-	SlruShared	shared = ctl->shared;
-	int			slotno;
-	char		path[MAXPGPATH];
-	bool		did_write;
+ SlruShared shared = ctl->shared;
+ int slotno;
+ char path[MAXPGPATH];
+ bool did_write;
 
-	/* Clean out any possibly existing references to the segment. */
-	LWLockAcquire(shared->ControlLock, LW_EXCLUSIVE);
+
+ LWLockAcquire(shared->ControlLock, LW_EXCLUSIVE);
 restart:
-	did_write = false;
-	for (slotno = 0; slotno < shared->num_slots; slotno++)
-	{
-		int			pagesegno = shared->page_number[slotno] / SLRU_PAGES_PER_SEGMENT;
+ did_write = 0;
+ for (slotno = 0; slotno < shared->num_slots; slotno++)
+ {
+  int pagesegno = shared->page_number[slotno] / SLRU_PAGES_PER_SEGMENT;
 
-		if (shared->page_status[slotno] == SLRU_PAGE_EMPTY)
-			continue;
+  if (shared->page_status[slotno] == SLRU_PAGE_EMPTY)
+   continue;
 
-		/* not the segment we're looking for */
-		if (pagesegno != segno)
-			continue;
 
-		/* If page is clean, just change state to EMPTY (expected case). */
-		if (shared->page_status[slotno] == SLRU_PAGE_VALID &&
-			!shared->page_dirty[slotno])
-		{
-			shared->page_status[slotno] = SLRU_PAGE_EMPTY;
-			continue;
-		}
+  if (pagesegno != segno)
+   continue;
 
-		/* Same logic as SimpleLruTruncate() */
-		if (shared->page_status[slotno] == SLRU_PAGE_VALID)
-			SlruInternalWritePage(ctl, slotno, NULL);
-		else
-			SimpleLruWaitIO(ctl, slotno);
 
-		did_write = true;
-	}
+  if (shared->page_status[slotno] == SLRU_PAGE_VALID &&
+   !shared->page_dirty[slotno])
+  {
+   shared->page_status[slotno] = SLRU_PAGE_EMPTY;
+   continue;
+  }
 
-	/*
-	 * Be extra careful and re-check. The IO functions release the control
-	 * lock, so new pages could have been read in.
-	 */
-	if (did_write)
-		goto restart;
 
-	snprintf(path, MAXPGPATH, "%s/%04X", ctl->Dir, segno);
-	ereport(DEBUG2,
-			(errmsg("removing file \"%s\"", path)));
-	unlink(path);
+  if (shared->page_status[slotno] == SLRU_PAGE_VALID)
+   SlruInternalWritePage(ctl, slotno, ((void*)0));
+  else
+   SimpleLruWaitIO(ctl, slotno);
 
-	LWLockRelease(shared->ControlLock);
+  did_write = 1;
+ }
+
+
+
+
+
+ if (did_write)
+  goto restart;
+
+ snprintf(path, MAXPGPATH, "%s/%04X", ctl->Dir, segno);
+ ereport(DEBUG2,
+   (errmsg("removing file \"%s\"", path)));
+ unlink(path);
+
+ LWLockRelease(shared->ControlLock);
 }

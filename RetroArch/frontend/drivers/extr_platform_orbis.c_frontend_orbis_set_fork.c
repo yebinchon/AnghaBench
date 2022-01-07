@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum frontend_fork { ____Placeholder_frontend_fork } frontend_fork ;
 
-/* Variables and functions */
-#define  FRONTEND_FORK_CORE 131 
-#define  FRONTEND_FORK_CORE_WITH_ARGS 130 
-#define  FRONTEND_FORK_NONE 129 
-#define  FRONTEND_FORK_RESTART 128 
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- int orbis_fork_mode ; 
+
+
+
+typedef enum frontend_fork { ____Placeholder_frontend_fork } frontend_fork ;
+
+
+
+
+
+
+ int RARCH_LOG (char*) ;
+ int orbis_fork_mode ;
 
 __attribute__((used)) static bool frontend_orbis_set_fork(enum frontend_fork fork_mode)
 {
    switch (fork_mode)
    {
-      case FRONTEND_FORK_CORE:
+      case 131:
          RARCH_LOG("FRONTEND_FORK_CORE\n");
-         orbis_fork_mode  = fork_mode;
+         orbis_fork_mode = fork_mode;
          break;
-      case FRONTEND_FORK_CORE_WITH_ARGS:
+      case 130:
          RARCH_LOG("FRONTEND_FORK_CORE_WITH_ARGS\n");
-         orbis_fork_mode  = fork_mode;
+         orbis_fork_mode = fork_mode;
          break;
-      case FRONTEND_FORK_RESTART:
+      case 128:
          RARCH_LOG("FRONTEND_FORK_RESTART\n");
-         /* NOTE: We don't implement Salamander, so just turn
-          * this into FRONTEND_FORK_CORE. */
-         orbis_fork_mode  = FRONTEND_FORK_CORE;
+
+
+         orbis_fork_mode = 131;
          break;
-      case FRONTEND_FORK_NONE:
+      case 129:
       default:
-         return false;
+         return 0;
    }
 
-   return true;
+   return 1;
 }

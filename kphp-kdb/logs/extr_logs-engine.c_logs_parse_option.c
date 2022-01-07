@@ -1,48 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FN ; 
- int MCL_CURRENT ; 
- int MCL_FUTURE ; 
- int /*<<< orphan*/  assert (int) ; 
- void* atoi (char*) ; 
- int atol (char*) ; 
- int dump_index_mode ; 
- int dump_mode ; 
- char* dump_name ; 
- char* dump_query ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/ * field_names ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- void* from_ts ; 
- int index_mode ; 
- int /*<<< orphan*/  is_name (int /*<<< orphan*/ ) ; 
- int max_memory ; 
- int mean_event_size ; 
- int /*<<< orphan*/  mlockall (int) ; 
- int /*<<< orphan*/  my_verbosity ; 
- int /*<<< orphan*/  nice (void*) ; 
- char* optarg ; 
- int /*<<< orphan*/  perror (char*) ; 
- int query_memory ; 
- int sscanf (char*,char*,int*,int*) ; 
- char* stat_queries_file ; 
- int /*<<< orphan*/  stderr ; 
- int test_mode ; 
- void* to_ts ; 
- int /*<<< orphan*/  usage () ; 
- int write_only ; 
+ int FN ;
+ int MCL_CURRENT ;
+ int MCL_FUTURE ;
+ int assert (int) ;
+ void* atoi (char*) ;
+ int atol (char*) ;
+ int dump_index_mode ;
+ int dump_mode ;
+ char* dump_name ;
+ char* dump_query ;
+ int errno ;
+ int * field_names ;
+ int fprintf (int ,char*,...) ;
+ void* from_ts ;
+ int index_mode ;
+ int is_name (int ) ;
+ int max_memory ;
+ int mean_event_size ;
+ int mlockall (int) ;
+ int my_verbosity ;
+ int nice (void*) ;
+ char* optarg ;
+ int perror (char*) ;
+ int query_memory ;
+ int sscanf (char*,char*,int*,int*) ;
+ char* stat_queries_file ;
+ int stderr ;
+ int test_mode ;
+ void* to_ts ;
+ int usage () ;
+ int write_only ;
 
 int logs_parse_option (int val) {
   switch (val) {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int /*<<< orphan*/  cmsNAMEDCOLORLIST ;
-typedef  int cmsInt32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  _cmsStageAllocNamedColor (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsAT_END ; 
- int /*<<< orphan*/ * cmsAllocNamedColorList (int /*<<< orphan*/ ,int,int,char*,char*) ; 
- int /*<<< orphan*/  cmsAppendNamedColor (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int*,int*) ; 
- int /*<<< orphan*/  cmsFreeNamedColorList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int cmsMAXCHANNELS ; 
- int /*<<< orphan*/ * cmsPipelineAlloc (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  cmsPipelineEval16 (int /*<<< orphan*/ ,int*,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPipelineFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsPipeline ;
+typedef int cmsNAMEDCOLORLIST ;
+typedef int cmsInt32Number ;
+
+
+ int DbgThread () ;
+ int FALSE ;
+ int _cmsStageAllocNamedColor (int ,int *,int ) ;
+ int cmsAT_END ;
+ int * cmsAllocNamedColorList (int ,int,int,char*,char*) ;
+ int cmsAppendNamedColor (int ,int *,char*,int*,int*) ;
+ int cmsFreeNamedColorList (int ,int *) ;
+ int cmsMAXCHANNELS ;
+ int * cmsPipelineAlloc (int ,int,int) ;
+ int cmsPipelineEval16 (int ,int*,int*,int *) ;
+ int cmsPipelineFree (int ,int *) ;
+ int cmsPipelineInsertStage (int ,int *,int ,int ) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckNamedColorLUT(void)
@@ -44,7 +44,7 @@ cmsInt32Number CheckNamedColorLUT(void)
 
 
     nc = cmsAllocNamedColorList(DbgThread(), 256, 3, "pre", "post");
-    if (nc == NULL) return 0;
+    if (nc == ((void*)0)) return 0;
 
     for (i=0; i < 256; i++) {
 

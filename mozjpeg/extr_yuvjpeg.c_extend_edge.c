@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char JSAMPLE ;
 
-/* Variables and functions */
+
+
+
+typedef unsigned char JSAMPLE ;
+
+
 
 void extend_edge(JSAMPLE *image, int width, int height, unsigned char *yuv,
  int luma_width, int luma_height, int chroma_width, int chroma_height) {
@@ -33,7 +33,7 @@ void extend_edge(JSAMPLE *image, int width, int height, unsigned char *yuv,
     }
   }
 
-  /* Perform right edge extension. */
+
   for (y = 0; y < luma_height; y++) {
     for (x = luma_width; x < width; x++) {
       image[width*y + x] = image[width*y + (x - 1)];
@@ -48,7 +48,7 @@ void extend_edge(JSAMPLE *image, int width, int height, unsigned char *yuv,
     }
   }
 
-  /* Perform bottom edge extension. */
+
   for (x = 0; x < width; x++) {
     for (y = luma_height; y < height; y++) {
       image[width*y + x] = image[width*(y - 1) + x];

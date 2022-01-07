@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xdrproc_t ;
-typedef  size_t uint32_t ;
-struct TYPE_9__ {int /*<<< orphan*/  count; int /*<<< orphan*/  aces; } ;
-typedef  TYPE_2__ nfsacl41 ;
-typedef  int /*<<< orphan*/  nfsace4 ;
-struct TYPE_10__ {char* owner; char* owner_group; int /*<<< orphan*/  suppattr_exclcreat; int /*<<< orphan*/  mdsthreshold; int /*<<< orphan*/  fs_layout_types; TYPE_2__* acl; int /*<<< orphan*/  time_modify; int /*<<< orphan*/ * time_delta; int /*<<< orphan*/  time_create; int /*<<< orphan*/  time_access; int /*<<< orphan*/  system; int /*<<< orphan*/  space_total; int /*<<< orphan*/  space_free; int /*<<< orphan*/  space_avail; int /*<<< orphan*/  numlinks; int /*<<< orphan*/  mode; int /*<<< orphan*/  maxwrite; int /*<<< orphan*/  maxread; int /*<<< orphan*/  hidden; int /*<<< orphan*/  fs_locations; int /*<<< orphan*/  fileid; int /*<<< orphan*/  case_preserving; int /*<<< orphan*/  case_insensitive; int /*<<< orphan*/  cansettime; int /*<<< orphan*/  archive; int /*<<< orphan*/  aclsupport; int /*<<< orphan*/  rdattr_error; int /*<<< orphan*/  lease_time; int /*<<< orphan*/  fsid; int /*<<< orphan*/  symlink_support; int /*<<< orphan*/  link_support; int /*<<< orphan*/  size; int /*<<< orphan*/  change; int /*<<< orphan*/  type; int /*<<< orphan*/  supported_attrs; } ;
-typedef  TYPE_3__ nfs41_file_info ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int xdrproc_t ;
+typedef size_t uint32_t ;
+struct TYPE_9__ {int count; int aces; } ;
+typedef TYPE_2__ nfsacl41 ;
+typedef int nfsace4 ;
+struct TYPE_10__ {char* owner; char* owner_group; int suppattr_exclcreat; int mdsthreshold; int fs_layout_types; TYPE_2__* acl; int time_modify; int * time_delta; int time_create; int time_access; int system; int space_total; int space_free; int space_avail; int numlinks; int mode; int maxwrite; int maxread; int hidden; int fs_locations; int fileid; int case_preserving; int case_insensitive; int cansettime; int archive; int aclsupport; int rdattr_error; int lease_time; int fsid; int symlink_support; int link_support; int size; int change; int type; int supported_attrs; } ;
+typedef TYPE_3__ nfs41_file_info ;
 struct TYPE_8__ {int count; int* arr; } ;
 struct TYPE_11__ {TYPE_1__ attrmask; } ;
-typedef  TYPE_4__ fattr4 ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
+typedef TYPE_4__ fattr4 ;
+typedef int bool_t ;
+typedef int XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int FATTR4_WORD0_ACL ; 
- int FATTR4_WORD0_ACLSUPPORT ; 
- int FATTR4_WORD0_ARCHIVE ; 
- int FATTR4_WORD0_CANSETTIME ; 
- int FATTR4_WORD0_CASE_INSENSITIVE ; 
- int FATTR4_WORD0_CASE_PRESERVING ; 
- int FATTR4_WORD0_CHANGE ; 
- int FATTR4_WORD0_FILEID ; 
- int FATTR4_WORD0_FSID ; 
- int FATTR4_WORD0_FS_LOCATIONS ; 
- int FATTR4_WORD0_HIDDEN ; 
- int FATTR4_WORD0_LEASE_TIME ; 
- int FATTR4_WORD0_LINK_SUPPORT ; 
- int FATTR4_WORD0_MAXREAD ; 
- int FATTR4_WORD0_MAXWRITE ; 
- int FATTR4_WORD0_RDATTR_ERROR ; 
- int FATTR4_WORD0_SIZE ; 
- int FATTR4_WORD0_SUPPORTED_ATTRS ; 
- int FATTR4_WORD0_SYMLINK_SUPPORT ; 
- int FATTR4_WORD0_TYPE ; 
- int FATTR4_WORD1_DACL ; 
- int FATTR4_WORD1_FS_LAYOUT_TYPE ; 
- int FATTR4_WORD1_MODE ; 
- int FATTR4_WORD1_NUMLINKS ; 
- int FATTR4_WORD1_OWNER ; 
- int FATTR4_WORD1_OWNER_GROUP ; 
- int FATTR4_WORD1_SPACE_AVAIL ; 
- int FATTR4_WORD1_SPACE_FREE ; 
- int FATTR4_WORD1_SPACE_TOTAL ; 
- int FATTR4_WORD1_SYSTEM ; 
- int FATTR4_WORD1_TIME_ACCESS ; 
- int FATTR4_WORD1_TIME_CREATE ; 
- int FATTR4_WORD1_TIME_DELTA ; 
- int FATTR4_WORD1_TIME_MODIFY ; 
- int FATTR4_WORD2_MDSTHRESHOLD ; 
- int FATTR4_WORD2_SUPPATTR_EXCLCREAT ; 
- int /*<<< orphan*/  NFS4_OPAQUE_LIMIT ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  decode_fs_locations4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_array (int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_bitmap4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_bool (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_bytes (int /*<<< orphan*/ *,char**,size_t*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdr_fsid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_layout_types (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_mdsthreshold (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ xdr_nfsace4 ; 
- int /*<<< orphan*/  xdr_nfsdacl41 (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  xdr_nfstime4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_u_hyper (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int FATTR4_WORD0_ACL ;
+ int FATTR4_WORD0_ACLSUPPORT ;
+ int FATTR4_WORD0_ARCHIVE ;
+ int FATTR4_WORD0_CANSETTIME ;
+ int FATTR4_WORD0_CASE_INSENSITIVE ;
+ int FATTR4_WORD0_CASE_PRESERVING ;
+ int FATTR4_WORD0_CHANGE ;
+ int FATTR4_WORD0_FILEID ;
+ int FATTR4_WORD0_FSID ;
+ int FATTR4_WORD0_FS_LOCATIONS ;
+ int FATTR4_WORD0_HIDDEN ;
+ int FATTR4_WORD0_LEASE_TIME ;
+ int FATTR4_WORD0_LINK_SUPPORT ;
+ int FATTR4_WORD0_MAXREAD ;
+ int FATTR4_WORD0_MAXWRITE ;
+ int FATTR4_WORD0_RDATTR_ERROR ;
+ int FATTR4_WORD0_SIZE ;
+ int FATTR4_WORD0_SUPPORTED_ATTRS ;
+ int FATTR4_WORD0_SYMLINK_SUPPORT ;
+ int FATTR4_WORD0_TYPE ;
+ int FATTR4_WORD1_DACL ;
+ int FATTR4_WORD1_FS_LAYOUT_TYPE ;
+ int FATTR4_WORD1_MODE ;
+ int FATTR4_WORD1_NUMLINKS ;
+ int FATTR4_WORD1_OWNER ;
+ int FATTR4_WORD1_OWNER_GROUP ;
+ int FATTR4_WORD1_SPACE_AVAIL ;
+ int FATTR4_WORD1_SPACE_FREE ;
+ int FATTR4_WORD1_SPACE_TOTAL ;
+ int FATTR4_WORD1_SYSTEM ;
+ int FATTR4_WORD1_TIME_ACCESS ;
+ int FATTR4_WORD1_TIME_CREATE ;
+ int FATTR4_WORD1_TIME_DELTA ;
+ int FATTR4_WORD1_TIME_MODIFY ;
+ int FATTR4_WORD2_MDSTHRESHOLD ;
+ int FATTR4_WORD2_SUPPATTR_EXCLCREAT ;
+ int NFS4_OPAQUE_LIMIT ;
+ int TRUE ;
+ int decode_fs_locations4 (int *,int ) ;
+ int xdr_array (int *,char**,int *,int,int,int ) ;
+ int xdr_bitmap4 (int *,int ) ;
+ int xdr_bool (int *,int *) ;
+ int xdr_bytes (int *,char**,size_t*,int ) ;
+ int xdr_fsid (int *,int *) ;
+ int xdr_layout_types (int *,int *) ;
+ int xdr_mdsthreshold (int *,int *) ;
+ scalar_t__ xdr_nfsace4 ;
+ int xdr_nfsdacl41 (int *,TYPE_2__*) ;
+ int xdr_nfstime4 (int *,int *) ;
+ int xdr_u_hyper (int *,int *) ;
+ int xdr_u_int32_t (int *,int *) ;
 
 __attribute__((used)) static bool_t decode_file_attrs(
     XDR *xdr,
@@ -182,7 +182,7 @@ __attribute__((used)) static bool_t decode_file_attrs(
         if (attrs->attrmask.arr[1] & FATTR4_WORD1_OWNER) {
             char *ptr = &info->owner[0];
             uint32_t owner_len;
-            if (!xdr_bytes(xdr, &ptr, &owner_len, 
+            if (!xdr_bytes(xdr, &ptr, &owner_len,
                             NFS4_OPAQUE_LIMIT))
                 return FALSE;
             info->owner[owner_len] = '\0';
@@ -190,7 +190,7 @@ __attribute__((used)) static bool_t decode_file_attrs(
         if (attrs->attrmask.arr[1] & FATTR4_WORD1_OWNER_GROUP) {
             char *ptr = &info->owner_group[0];
             uint32_t owner_group_len;
-            if (!xdr_bytes(xdr, &ptr, &owner_group_len, 
+            if (!xdr_bytes(xdr, &ptr, &owner_group_len,
                             NFS4_OPAQUE_LIMIT))
                 return FALSE;
             info->owner_group[owner_group_len] = '\0';

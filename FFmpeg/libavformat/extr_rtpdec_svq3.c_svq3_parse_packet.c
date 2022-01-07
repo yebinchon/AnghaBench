@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_8__ {int /*<<< orphan*/  codec_id; scalar_t__ extradata; scalar_t__ extradata_size; } ;
-struct TYPE_7__ {int /*<<< orphan*/  index; TYPE_5__* codecpar; } ;
-struct TYPE_6__ {int /*<<< orphan*/  timestamp; int /*<<< orphan*/  pktbuf; } ;
-typedef  TYPE_1__ PayloadContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_CODEC_ID_SVQ3 ; 
- int /*<<< orphan*/  AV_WB32 (scalar_t__,int) ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  av_freep (scalar_t__*) ; 
- int avio_open_dyn_buf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ ,int const*,int) ; 
- scalar_t__ ff_alloc_extradata (TYPE_5__*,int) ; 
- int ff_rtp_finalize_packet (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ffio_free_dyn_buf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,...) ; 
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_8__ {int codec_id; scalar_t__ extradata; scalar_t__ extradata_size; } ;
+struct TYPE_7__ {int index; TYPE_5__* codecpar; } ;
+struct TYPE_6__ {int timestamp; int pktbuf; } ;
+typedef TYPE_1__ PayloadContext ;
+typedef TYPE_2__ AVStream ;
+typedef int AVPacket ;
+typedef int AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_CODEC_ID_SVQ3 ;
+ int AV_WB32 (scalar_t__,int) ;
+ int EAGAIN ;
+ int av_freep (scalar_t__*) ;
+ int avio_open_dyn_buf (int *) ;
+ int avio_write (int ,int const*,int) ;
+ scalar_t__ ff_alloc_extradata (TYPE_5__*,int) ;
+ int ff_rtp_finalize_packet (int *,int *,int ) ;
+ int ffio_free_dyn_buf (int *) ;
+ int memcpy (scalar_t__,...) ;
 
 __attribute__((used)) static int svq3_parse_packet (AVFormatContext *s, PayloadContext *sv,
                               AVStream *st, AVPacket *pkt,
@@ -50,9 +50,9 @@ __attribute__((used)) static int svq3_parse_packet (AVFormatContext *s, PayloadC
         return AVERROR_INVALIDDATA;
 
     config_packet = buf[0] & 0x40;
-    start_packet  = buf[0] & 0x20;
-    end_packet    = buf[0] & 0x10;
-    buf += 2;     // ignore buf[1]
+    start_packet = buf[0] & 0x20;
+    end_packet = buf[0] & 0x10;
+    buf += 2;
     len -= 2;
 
     if (config_packet) {
@@ -67,11 +67,11 @@ __attribute__((used)) static int svq3_parse_packet (AVFormatContext *s, PayloadC
         AV_WB32(st->codecpar->extradata + 4, len);
         memcpy(st->codecpar->extradata + 8, buf, len);
 
-        /* We set codec_id to AV_CODEC_ID_NONE initially to
-         * delay decoder initialization since extradata is
-         * carried within the RTP stream, not SDP. Here,
-         * by setting codec_id to AV_CODEC_ID_SVQ3, we are signalling
-         * to the decoder that it is OK to initialize. */
+
+
+
+
+
         st->codecpar->codec_id = AV_CODEC_ID_SVQ3;
 
         return AVERROR(EAGAIN);
@@ -83,7 +83,7 @@ __attribute__((used)) static int svq3_parse_packet (AVFormatContext *s, PayloadC
         ffio_free_dyn_buf(&sv->pktbuf);
         if ((res = avio_open_dyn_buf(&sv->pktbuf)) < 0)
             return res;
-        sv->timestamp   = *timestamp;
+        sv->timestamp = *timestamp;
     }
 
     if (!sv->pktbuf)
@@ -96,7 +96,7 @@ __attribute__((used)) static int svq3_parse_packet (AVFormatContext *s, PayloadC
         if (ret < 0)
             return ret;
 
-        *timestamp        = sv->timestamp;
+        *timestamp = sv->timestamp;
         return 0;
     }
 

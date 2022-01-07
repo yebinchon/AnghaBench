@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringInfo ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
 
-/* Variables and functions */
- int /*<<< orphan*/  appendStringInfo (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  appendStringInfoString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  format_type_be (int /*<<< orphan*/ ) ; 
- int get_func_trftypes (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int StringInfo ;
+typedef int Oid ;
+typedef int HeapTuple ;
+
+
+ int appendStringInfo (int ,char*,int ) ;
+ int appendStringInfoString (int ,char*) ;
+ int format_type_be (int ) ;
+ int get_func_trftypes (int ,int **) ;
 
 __attribute__((used)) static void
 print_function_trftypes(StringInfo buf, HeapTuple proctup)
 {
-	Oid		   *trftypes;
-	int			ntypes;
+ Oid *trftypes;
+ int ntypes;
 
-	ntypes = get_func_trftypes(proctup, &trftypes);
-	if (ntypes > 0)
-	{
-		int			i;
+ ntypes = get_func_trftypes(proctup, &trftypes);
+ if (ntypes > 0)
+ {
+  int i;
 
-		appendStringInfoString(buf, "\n TRANSFORM ");
-		for (i = 0; i < ntypes; i++)
-		{
-			if (i != 0)
-				appendStringInfoString(buf, ", ");
-			appendStringInfo(buf, "FOR TYPE %s", format_type_be(trftypes[i]));
-		}
-	}
+  appendStringInfoString(buf, "\n TRANSFORM ");
+  for (i = 0; i < ntypes; i++)
+  {
+   if (i != 0)
+    appendStringInfoString(buf, ", ");
+   appendStringInfo(buf, "FOR TYPE %s", format_type_be(trftypes[i]));
+  }
+ }
 }

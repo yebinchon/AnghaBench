@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct strm_array {size_t len; int /*<<< orphan*/ * ptr; scalar_t__ headers; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
-typedef  size_t strm_int ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/ * strm_ary_ptr (scalar_t__) ; 
- struct strm_array* strm_ary_struct (int /*<<< orphan*/ ) ; 
- scalar_t__ strm_number_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_raise (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ strm_str_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strm_string_p (int /*<<< orphan*/ ) ; 
- size_t strm_value_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_value_str (int /*<<< orphan*/ ) ; 
+
+
+
+struct strm_array {size_t len; int * ptr; scalar_t__ headers; } ;
+typedef int strm_value ;
+typedef int strm_stream ;
+typedef size_t strm_int ;
+
+
+ int STRM_NG ;
+ int STRM_OK ;
+ int * strm_ary_ptr (scalar_t__) ;
+ struct strm_array* strm_ary_struct (int ) ;
+ scalar_t__ strm_number_p (int ) ;
+ int strm_raise (int *,char*) ;
+ scalar_t__ strm_str_eq (int ,int ) ;
+ scalar_t__ strm_string_p (int ) ;
+ size_t strm_value_int (int ) ;
+ int strm_value_str (int ) ;
 
 __attribute__((used)) static int
 ary_get(strm_stream* strm, strm_value ary, int argc, strm_value* argv, strm_value* ret)

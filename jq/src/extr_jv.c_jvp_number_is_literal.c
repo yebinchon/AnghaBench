@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JVP_FLAGS_NUMBER_LITERAL ; 
- int JVP_HAS_FLAGS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JVP_HAS_KIND (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JV_KIND_NUMBER ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jv ;
+
+
+ int JVP_FLAGS_NUMBER_LITERAL ;
+ int JVP_HAS_FLAGS (int ,int ) ;
+ int JVP_HAS_KIND (int ,int ) ;
+ int JV_KIND_NUMBER ;
+ int assert (int ) ;
 
 __attribute__((used)) static inline int jvp_number_is_literal(jv n) {
   assert(JVP_HAS_KIND(n, JV_KIND_NUMBER));

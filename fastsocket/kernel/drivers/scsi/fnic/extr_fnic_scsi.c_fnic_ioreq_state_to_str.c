@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int ARRAY_SIZE (char const**) ; 
- char const** fnic_ioreq_state_str ; 
+ unsigned int ARRAY_SIZE (char const**) ;
+ char const** fnic_ioreq_state_str ;
 
 __attribute__((used)) static const char *fnic_ioreq_state_to_str(unsigned int state)
 {
-	if (state >= ARRAY_SIZE(fnic_ioreq_state_str) ||
-	    !fnic_ioreq_state_str[state])
-		return "unknown";
+ if (state >= ARRAY_SIZE(fnic_ioreq_state_str) ||
+     !fnic_ioreq_state_str[state])
+  return "unknown";
 
-	return fnic_ioreq_state_str[state];
+ return fnic_ioreq_state_str[state];
 }

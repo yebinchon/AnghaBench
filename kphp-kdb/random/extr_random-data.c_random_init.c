@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  B ; 
- scalar_t__ bbs_init (int /*<<< orphan*/ *,int,char const* const,int) ; 
- int /*<<< orphan*/  bbs_next_random_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buffer ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*) ; 
- scalar_t__ qleft ; 
- scalar_t__ qright ; 
- int qsize ; 
- scalar_t__ qtotal ; 
- int /*<<< orphan*/  zmalloc (int) ; 
+ int B ;
+ scalar_t__ bbs_init (int *,int,char const* const,int) ;
+ int bbs_next_random_byte (int *) ;
+ int buffer ;
+ int exit (int) ;
+ int kprintf (char*) ;
+ scalar_t__ qleft ;
+ scalar_t__ qright ;
+ int qsize ;
+ scalar_t__ qtotal ;
+ int zmalloc (int) ;
 
 void random_init (int key_size, int buffer_size, const char *const password_filename, int password_length) {
   int i;

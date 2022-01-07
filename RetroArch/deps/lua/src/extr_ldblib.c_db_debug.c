@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ luaL_loadbuffer (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ lua_pcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_writestringerror (char*,char*) ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+
+
+typedef int lua_State ;
+typedef int buffer ;
+
+
+ scalar_t__ fgets (char*,int,int ) ;
+ scalar_t__ luaL_loadbuffer (int *,char*,int ,char*) ;
+ scalar_t__ lua_pcall (int *,int ,int ,int ) ;
+ int lua_settop (int *,int ) ;
+ char* lua_tostring (int *,int) ;
+ int lua_writestringerror (char*,char*) ;
+ int stdin ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int db_debug (lua_State *L) {
   for (;;) {
@@ -34,6 +34,6 @@ __attribute__((used)) static int db_debug (lua_State *L) {
     if (luaL_loadbuffer(L, buffer, strlen(buffer), "=(debug command)") ||
         lua_pcall(L, 0, 0, 0))
       lua_writestringerror("%s\n", lua_tostring(L, -1));
-    lua_settop(L, 0);  /* remove eventual returns */
+    lua_settop(L, 0);
   }
 }

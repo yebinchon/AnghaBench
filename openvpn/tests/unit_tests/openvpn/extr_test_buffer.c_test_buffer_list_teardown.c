@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct test_buffer_list_aggregate_ctx {int /*<<< orphan*/  empty_buffers; int /*<<< orphan*/  zero_length_strings; int /*<<< orphan*/  one_two_three; int /*<<< orphan*/  empty; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buffer_list_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct test_buffer_list_aggregate_ctx*) ; 
+
+
+
+struct test_buffer_list_aggregate_ctx {int empty_buffers; int zero_length_strings; int one_two_three; int empty; } ;
+
+
+ int buffer_list_free (int ) ;
+ int free (struct test_buffer_list_aggregate_ctx*) ;
 
 __attribute__((used)) static int test_buffer_list_teardown(void **state)
 {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_search_text_short_entry {int rate; int rate2; int obj_id; char* text; scalar_t__ type; } ;
-struct lev_search_text_long_entry {int rate; int rate2; int obj_id; int text_len; char* text; int /*<<< orphan*/  type; } ;
+struct lev_search_text_long_entry {int rate; int rate2; int obj_id; int text_len; char* text; int type; } ;
 
-/* Variables and functions */
- int* I ; 
- int* L ; 
- int /*<<< orphan*/  LEV_SEARCH_TEXT_LONG ; 
- scalar_t__ LEV_SEARCH_TEXT_SHORT ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- size_t ap_description ; 
- size_t ap_enabled ; 
- size_t ap_id ; 
- size_t ap_language_id ; 
- size_t ap_name ; 
- size_t ap_rate ; 
- size_t ap_server ; 
- size_t ap_size ; 
- size_t ap_type ; 
- int /*<<< orphan*/  fits (int) ; 
- int make_tag (char*,char,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- void* write_alloc (int) ; 
+
+ int* I ;
+ int* L ;
+ int LEV_SEARCH_TEXT_LONG ;
+ scalar_t__ LEV_SEARCH_TEXT_SHORT ;
+ char** S ;
+ int adj_rec ;
+ size_t ap_description ;
+ size_t ap_enabled ;
+ size_t ap_id ;
+ size_t ap_language_id ;
+ size_t ap_name ;
+ size_t ap_rate ;
+ size_t ap_server ;
+ size_t ap_size ;
+ size_t ap_type ;
+ int fits (int) ;
+ int make_tag (char*,char,int) ;
+ int memcpy (char*,char*,int) ;
+ void* write_alloc (int) ;
 
 void process_applications_row (void) {
   char *p, *q;

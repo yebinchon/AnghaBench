@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct BlobReader {int /*<<< orphan*/  member_1; int /*<<< orphan*/  const* member_0; } ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  int /*<<< orphan*/  CRYPT_DATA_BLOB ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPT_ReadSerializedStore (struct BlobReader*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_blob_wrapper ; 
+
+
+
+struct BlobReader {int member_1; int const* member_0; } ;
+typedef int HCERTSTORE ;
+typedef int CRYPT_DATA_BLOB ;
+typedef int BOOL ;
+
+
+ int CRYPT_ReadSerializedStore (struct BlobReader*,int ,int ) ;
+ int read_blob_wrapper ;
 
 BOOL CRYPT_ReadSerializedStoreFromBlob(const CRYPT_DATA_BLOB *blob,
  HCERTSTORE store)

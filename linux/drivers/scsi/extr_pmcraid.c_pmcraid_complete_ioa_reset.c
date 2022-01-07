@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pmcraid_instance {int /*<<< orphan*/  worker_q; TYPE_1__* host; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pmcraid_instance {int worker_q; TYPE_1__* host; } ;
 struct pmcraid_cmd {struct pmcraid_instance* drv_inst; } ;
-struct TYPE_2__ {int /*<<< orphan*/  host_lock; } ;
+struct TYPE_2__ {int host_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pmcraid_ioa_reset (struct pmcraid_cmd*) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scsi_unblock_requests (TYPE_1__*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
+
+ int pmcraid_ioa_reset (struct pmcraid_cmd*) ;
+ int schedule_work (int *) ;
+ int scsi_unblock_requests (TYPE_1__*) ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
 
 __attribute__((used)) static void pmcraid_complete_ioa_reset(struct pmcraid_cmd *cmd)
 {
-	struct pmcraid_instance *pinstance = cmd->drv_inst;
-	unsigned long flags;
+ struct pmcraid_instance *pinstance = cmd->drv_inst;
+ unsigned long flags;
 
-	spin_lock_irqsave(pinstance->host->host_lock, flags);
-	pmcraid_ioa_reset(cmd);
-	spin_unlock_irqrestore(pinstance->host->host_lock, flags);
-	scsi_unblock_requests(pinstance->host);
-	schedule_work(&pinstance->worker_q);
+ spin_lock_irqsave(pinstance->host->host_lock, flags);
+ pmcraid_ioa_reset(cmd);
+ spin_unlock_irqrestore(pinstance->host->host_lock, flags);
+ scsi_unblock_requests(pinstance->host);
+ schedule_work(&pinstance->worker_q);
 }

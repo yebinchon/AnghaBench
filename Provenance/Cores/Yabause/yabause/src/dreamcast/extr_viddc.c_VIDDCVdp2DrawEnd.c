@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int dmadone ;
+ int framecount ;
+ scalar_t__ lastup ;
+ int printf (char*,int,scalar_t__,float) ;
+ int pvr_scene_finish () ;
+ int sem_signal (int *) ;
+ int sem_wait (int *) ;
+ scalar_t__ time (int *) ;
 
-/* Forward declarations */
+__attribute__((used)) static void VIDDCVdp2DrawEnd(void) {
 
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  dmadone ; 
- int framecount ; 
- scalar_t__ lastup ; 
- int /*<<< orphan*/  printf (char*,int,scalar_t__,float) ; 
- int /*<<< orphan*/  pvr_scene_finish () ; 
- int /*<<< orphan*/  sem_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sem_wait (int /*<<< orphan*/ *) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
-
-__attribute__((used)) static void VIDDCVdp2DrawEnd(void)  {
-    /* Make sure we don't have any texture dma still going on... */
     sem_wait(&dmadone);
     sem_signal(&dmadone);
 
@@ -30,10 +22,10 @@ __attribute__((used)) static void VIDDCVdp2DrawEnd(void)  {
 
     ++framecount;
 
-    if(lastup + 10 <= time(NULL))    {
-        printf("%d frames in %d seconds FPS: %f\n", framecount, time(NULL) -
-               lastup, ((float)(framecount)) / (time(NULL) - lastup));
+    if(lastup + 10 <= time(((void*)0))) {
+        printf("%d frames in %d seconds FPS: %f\n", framecount, time(((void*)0)) -
+               lastup, ((float)(framecount)) / (time(((void*)0)) - lastup));
         framecount = 0;
-        lastup = time(NULL);
+        lastup = time(((void*)0));
     }
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+
+
+typedef int tree ;
 struct loop {int dummy; } ;
-typedef  int /*<<< orphan*/  htab_t ;
+typedef int htab_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FOLD_CONVERSIONS ; 
- int /*<<< orphan*/  del_scev_info ; 
- int /*<<< orphan*/  eq_scev_info ; 
- int /*<<< orphan*/  hash_scev_info ; 
- int /*<<< orphan*/  htab_create (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htab_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  instantiate_parameters_1 (struct loop*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FOLD_CONVERSIONS ;
+ int del_scev_info ;
+ int eq_scev_info ;
+ int hash_scev_info ;
+ int htab_create (int,int ,int ,int ) ;
+ int htab_delete (int ) ;
+ int instantiate_parameters_1 (struct loop*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static tree
 resolve_mixers (struct loop *loop, tree chrec)

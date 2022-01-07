@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_2__ {int /*<<< orphan*/  tcp_onion_callback_object; int /*<<< orphan*/  (* tcp_onion_callback ) (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ TCP_Connections ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_2__ {int tcp_onion_callback_object; int (* tcp_onion_callback ) (int ,int const*,int ) ;} ;
+typedef TYPE_1__ TCP_Connections ;
+
+
+ int stub1 (int ,int const*,int ) ;
 
 __attribute__((used)) static int tcp_onion_callback(void *object, const uint8_t *data, uint16_t length)
 {

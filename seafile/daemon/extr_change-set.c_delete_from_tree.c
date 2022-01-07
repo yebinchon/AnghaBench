@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
-struct TYPE_13__ {int /*<<< orphan*/  fs_mgr; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int gboolean ;
+struct TYPE_13__ {int fs_mgr; } ;
 struct TYPE_12__ {char* repo_id; TYPE_2__* tree_root; } ;
-struct TYPE_11__ {int /*<<< orphan*/  dents; int /*<<< orphan*/  version; } ;
-struct TYPE_10__ {int /*<<< orphan*/  mode; TYPE_2__* subdir; int /*<<< orphan*/  id; } ;
-typedef  int /*<<< orphan*/  SeafDir ;
-typedef  TYPE_1__ ChangeSetDirent ;
-typedef  TYPE_2__ ChangeSetDir ;
-typedef  TYPE_3__ ChangeSet ;
+struct TYPE_11__ {int dents; int version; } ;
+struct TYPE_10__ {int mode; TYPE_2__* subdir; int id; } ;
+typedef int SeafDir ;
+typedef TYPE_1__ ChangeSetDirent ;
+typedef TYPE_2__ ChangeSetDir ;
+typedef TYPE_3__ ChangeSet ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* g_hash_table_lookup (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ g_hash_table_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_strfreev (char**) ; 
- char** g_strsplit (char const*,char*,int /*<<< orphan*/ ) ; 
- int g_strv_length (char**) ; 
- int /*<<< orphan*/  remove_dent_from_dir (TYPE_2__*,char*) ; 
- TYPE_5__* seaf ; 
- int /*<<< orphan*/  seaf_dir_free (int /*<<< orphan*/ *) ; 
- TYPE_2__* seaf_dir_to_changeset_dir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * seaf_fs_manager_get_seafdir (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int TRUE ;
+ TYPE_1__* g_hash_table_lookup (int ,char*) ;
+ scalar_t__ g_hash_table_size (int ) ;
+ int g_strfreev (char**) ;
+ char** g_strsplit (char const*,char*,int ) ;
+ int g_strv_length (char**) ;
+ int remove_dent_from_dir (TYPE_2__*,char*) ;
+ TYPE_5__* seaf ;
+ int seaf_dir_free (int *) ;
+ TYPE_2__* seaf_dir_to_changeset_dir (int *) ;
+ int * seaf_fs_manager_get_seafdir (int ,char*,int ,int ) ;
+ int seaf_warning (char*,char*,int ) ;
 
 __attribute__((used)) static ChangeSetDirent *
 delete_from_tree (ChangeSet *changeset,
@@ -51,7 +51,7 @@ delete_from_tree (ChangeSet *changeset,
     char **parts, *dname;
     int n, i;
     ChangeSetDir *dir;
-    ChangeSetDirent *dent, *ret = NULL;
+    ChangeSetDirent *dent, *ret = ((void*)0);
     SeafDir *seaf_dir;
 
     *parent_empty = FALSE;
@@ -68,7 +68,7 @@ delete_from_tree (ChangeSet *changeset,
 
         if (S_ISDIR(dent->mode)) {
             if (i == (n-1)) {
-                /* Remove from hash table without freeing dent. */
+
                 remove_dent_from_dir (dir, dname);
                 if (g_hash_table_size (dir->dents) == 0)
                     *parent_empty = TRUE;
@@ -92,7 +92,7 @@ delete_from_tree (ChangeSet *changeset,
             dir = dent->subdir;
         } else if (S_ISREG(dent->mode)) {
             if (i == (n-1)) {
-                /* Remove from hash table without freeing dent. */
+
                 remove_dent_from_dir (dir, dname);
                 if (g_hash_table_size (dir->dents) == 0)
                     *parent_empty = TRUE;

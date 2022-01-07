@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mbuf {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  STAILQ_EMPTY (int /*<<< orphan*/ *) ; 
- struct mbuf* STAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_mbufq ; 
- int /*<<< orphan*/  mbuf_free (struct mbuf*) ; 
- int /*<<< orphan*/  mbuf_remove (int /*<<< orphan*/ *,struct mbuf*) ; 
- scalar_t__ nfree_mbufq ; 
+
+ int ASSERT (int) ;
+ int STAILQ_EMPTY (int *) ;
+ struct mbuf* STAILQ_FIRST (int *) ;
+ int free_mbufq ;
+ int mbuf_free (struct mbuf*) ;
+ int mbuf_remove (int *,struct mbuf*) ;
+ scalar_t__ nfree_mbufq ;
 
 void
 mbuf_deinit(void)

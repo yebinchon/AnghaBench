@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zPrefix ;
-struct TYPE_6__ {int flgProgress; int /*<<< orphan*/  db; int /*<<< orphan*/  out; scalar_t__ nProgress; } ;
-typedef  TYPE_1__ ShellState ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BEGIN_TIMER ; 
- int /*<<< orphan*/  END_TIMER ; 
- int SHELL_PROGRESS_RESET ; 
- int /*<<< orphan*/  SHFLG_Backslash ; 
- int /*<<< orphan*/  SHFLG_CountChanges ; 
- scalar_t__ ShellHasFlag (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  open_db (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_backslashes (char*) ; 
- int shell_exec (TYPE_1__*,char*,char**) ; 
- int /*<<< orphan*/  sqlite3_changes (int /*<<< orphan*/ ) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,...) ; 
- int /*<<< orphan*/  sqlite3_total_changes (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin_is_interactive ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,char*,char*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int zPrefix ;
+struct TYPE_6__ {int flgProgress; int db; int out; scalar_t__ nProgress; } ;
+typedef TYPE_1__ ShellState ;
+typedef int FILE ;
+
+
+ int BEGIN_TIMER ;
+ int END_TIMER ;
+ int SHELL_PROGRESS_RESET ;
+ int SHFLG_Backslash ;
+ int SHFLG_CountChanges ;
+ scalar_t__ ShellHasFlag (TYPE_1__*,int ) ;
+ int open_db (TYPE_1__*,int ) ;
+ int raw_printf (int ,char*,int ,int ) ;
+ int resolve_backslashes (char*) ;
+ int shell_exec (TYPE_1__*,char*,char**) ;
+ int sqlite3_changes (int ) ;
+ char* sqlite3_errmsg (int ) ;
+ int sqlite3_free (char*) ;
+ int sqlite3_snprintf (int,char*,char*,...) ;
+ int sqlite3_total_changes (int ) ;
+ int stderr ;
+ int stdin_is_interactive ;
+ int utf8_printf (int ,char*,char*,char*) ;
 
 __attribute__((used)) static int runOneSqlLine(ShellState *p, char *zSql, FILE *in, int startline){
   int rc;

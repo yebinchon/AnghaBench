@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_1__* bundle; scalar_t__ col_lastval; int /*<<< orphan*/ * col_high; } ;
-struct TYPE_4__ {int /*<<< orphan*/  data; int /*<<< orphan*/  cur_ptr; int /*<<< orphan*/  cur_dec; int /*<<< orphan*/  tree; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ BinkContext ;
 
-/* Variables and functions */
- int BINK_SRC_COLORS ; 
- int BINK_SRC_INTER_DC ; 
- int BINK_SRC_INTRA_DC ; 
- int read_tree (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_1__* bundle; scalar_t__ col_lastval; int * col_high; } ;
+struct TYPE_4__ {int data; int cur_ptr; int cur_dec; int tree; } ;
+typedef int GetBitContext ;
+typedef TYPE_2__ BinkContext ;
+
+
+ int BINK_SRC_COLORS ;
+ int BINK_SRC_INTER_DC ;
+ int BINK_SRC_INTRA_DC ;
+ int read_tree (int *,int *) ;
 
 __attribute__((used)) static int read_bundle(GetBitContext *gb, BinkContext *c, int bundle_num)
 {

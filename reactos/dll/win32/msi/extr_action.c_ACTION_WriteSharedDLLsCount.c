@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegDeleteValueW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_reg_set_val_dword (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  openSharedDLLsKey () ; 
+
+
+
+typedef int UINT ;
+typedef int LPCWSTR ;
+typedef int HKEY ;
+
+
+ int RegCloseKey (int ) ;
+ int RegDeleteValueW (int ,int ) ;
+ int msi_reg_set_val_dword (int ,int ,int ) ;
+ int openSharedDLLsKey () ;
 
 __attribute__((used)) static UINT ACTION_WriteSharedDLLsCount(LPCWSTR path, UINT count)
 {

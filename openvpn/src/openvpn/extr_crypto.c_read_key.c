@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct key_type {int cipher_length; int hmac_length; } ;
 struct key {int* cipher; int* hmac; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (struct key) ; 
- int /*<<< orphan*/  D_TLS_ERRORS ; 
- int /*<<< orphan*/  buf_read (struct buffer*,int*,int) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,...) ; 
+
+ int CLEAR (struct key) ;
+ int D_TLS_ERRORS ;
+ int buf_read (struct buffer*,int*,int) ;
+ int msg (int ,char*,...) ;
 
 int
 read_key(struct key *key, const struct key_type *kt, struct buffer *buf)

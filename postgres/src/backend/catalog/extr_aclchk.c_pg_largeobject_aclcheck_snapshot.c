@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Snapshot ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  AclResult ;
-typedef  int /*<<< orphan*/  AclMode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACLCHECK_NO_PRIV ; 
- int /*<<< orphan*/  ACLCHECK_OK ; 
- int /*<<< orphan*/  ACLMASK_ANY ; 
- scalar_t__ pg_largeobject_aclmask_snapshot (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Snapshot ;
+typedef int Oid ;
+typedef int AclResult ;
+typedef int AclMode ;
+
+
+ int ACLCHECK_NO_PRIV ;
+ int ACLCHECK_OK ;
+ int ACLMASK_ANY ;
+ scalar_t__ pg_largeobject_aclmask_snapshot (int ,int ,int ,int ,int ) ;
 
 AclResult
 pg_largeobject_aclcheck_snapshot(Oid lobj_oid, Oid roleid, AclMode mode,
-								 Snapshot snapshot)
+         Snapshot snapshot)
 {
-	if (pg_largeobject_aclmask_snapshot(lobj_oid, roleid, mode,
-										ACLMASK_ANY, snapshot) != 0)
-		return ACLCHECK_OK;
-	else
-		return ACLCHECK_NO_PRIV;
+ if (pg_largeobject_aclmask_snapshot(lobj_oid, roleid, mode,
+          ACLMASK_ANY, snapshot) != 0)
+  return ACLCHECK_OK;
+ else
+  return ACLCHECK_NO_PRIV;
 }

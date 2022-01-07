@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int irq_active; int /*<<< orphan*/  irq; } ;
-struct atkbdc_softc {int* ram; TYPE_1__ aux; int /*<<< orphan*/  ctx; } ;
 
-/* Variables and functions */
- int KBD_ENABLE_AUX_INT ; 
- int /*<<< orphan*/  vm_isa_pulse_irq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int irq_active; int irq; } ;
+struct atkbdc_softc {int* ram; TYPE_1__ aux; int ctx; } ;
+
+
+ int KBD_ENABLE_AUX_INT ;
+ int vm_isa_pulse_irq (int ,int ,int ) ;
 
 __attribute__((used)) static void
 atkbdc_assert_aux_intr(struct atkbdc_softc *sc)
 {
-	if ((sc->ram[0] & KBD_ENABLE_AUX_INT) != 0) {
-		sc->aux.irq_active = true;
-		vm_isa_pulse_irq(sc->ctx, sc->aux.irq, sc->aux.irq);
-	}
+ if ((sc->ram[0] & KBD_ENABLE_AUX_INT) != 0) {
+  sc->aux.irq_active = 1;
+  vm_isa_pulse_irq(sc->ctx, sc->aux.irq, sc->aux.irq);
+ }
 }

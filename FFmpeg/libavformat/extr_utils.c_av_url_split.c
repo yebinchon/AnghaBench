@@ -16,21 +16,21 @@ void av_url_split(char *proto, int proto_size,
     if (path_size > 0)
         path[0] = 0;
 
-    /* parse protocol */
+
     if ((p = strchr(url, ':'))) {
         av_strlcpy(proto, url, FFMIN(proto_size, p + 1 - url));
-        p++; /* skip ':' */
+        p++;
         if (*p == '/')
             p++;
         if (*p == '/')
             p++;
     } else {
-        /* no protocol means plain filename */
+
         av_strlcpy(path, url, path_size);
         return;
     }
 
-    /* separate path from hostname */
+
     ls = strchr(p, '/');
     ls2 = strchr(p, '?');
     if (!ls)
@@ -40,20 +40,20 @@ void av_url_split(char *proto, int proto_size,
     if (ls)
         av_strlcpy(path, ls, path_size);
     else
-        ls = &p[strlen(p)];  // XXX
+        ls = &p[strlen(p)];
 
-    /* the rest is hostname, use that to parse auth/port */
+
     if (ls != p) {
-        /* authorization (user[:pass]@hostname) */
+
         at2 = p;
         while ((at = strchr(p, '@')) && at < ls) {
             av_strlcpy(authorization, at2,
                        FFMIN(authorization_size, at + 1 - at2));
-            p = at + 1; /* skip '@' */
+            p = at + 1;
         }
 
         if (*p == '[' && (brk = strchr(p, ']')) && brk < ls) {
-            /* [host]:port */
+
             av_strlcpy(hostname, p + 1,
                        FFMIN(hostname_size, brk - p));
             if (brk[1] == ':' && port_ptr)

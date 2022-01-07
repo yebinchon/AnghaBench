@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char menu_thumbnails; char menu_left_thumbnails; } ;
 struct TYPE_5__ {TYPE_1__ uints; } ;
-typedef  TYPE_2__ settings_t ;
+typedef TYPE_2__ settings_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_OFF ; 
- TYPE_2__* config_get_ptr () ; 
- char const* msg_hash_to_str (int /*<<< orphan*/ ) ; 
+
+ int MENU_ENUM_LABEL_VALUE_OFF ;
+ TYPE_2__* config_get_ptr () ;
+ char const* msg_hash_to_str (int ) ;
 
 __attribute__((used)) static const char *stripes_thumbnails_ident(char pos)
 {
-   char folder          = 0;
+   char folder = 0;
    settings_t *settings = config_get_ptr();
 
    if (pos == 'R')

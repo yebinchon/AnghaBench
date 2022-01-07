@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
-typedef  scalar_t__ RTX_CODE ;
 
-/* Variables and functions */
- scalar_t__ GET_CODE (scalar_t__) ; 
- char* GET_RTX_FORMAT (scalar_t__) ; 
- int GET_RTX_LENGTH (scalar_t__) ; 
- scalar_t__ MATCH_OPERAND ; 
- scalar_t__ MATCH_OPERATOR ; 
- scalar_t__ MATCH_PARALLEL ; 
- int /*<<< orphan*/  MAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ XEXP (scalar_t__,int) ; 
- int /*<<< orphan*/  XINT (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ XVECEXP (scalar_t__,int,int) ; 
- int XVECLEN (scalar_t__,int) ; 
- int /*<<< orphan*/  max_opno ; 
+
+
+
+typedef scalar_t__ rtx ;
+typedef scalar_t__ RTX_CODE ;
+
+
+ scalar_t__ GET_CODE (scalar_t__) ;
+ char* GET_RTX_FORMAT (scalar_t__) ;
+ int GET_RTX_LENGTH (scalar_t__) ;
+ scalar_t__ MATCH_OPERAND ;
+ scalar_t__ MATCH_OPERATOR ;
+ scalar_t__ MATCH_PARALLEL ;
+ int MAX (int ,int ) ;
+ scalar_t__ XEXP (scalar_t__,int) ;
+ int XINT (scalar_t__,int ) ;
+ scalar_t__ XVECEXP (scalar_t__,int,int) ;
+ int XVECLEN (scalar_t__,int) ;
+ int max_opno ;
 
 __attribute__((used)) static void
 max_operand_1 (rtx x)
@@ -49,12 +49,12 @@ max_operand_1 (rtx x)
   for (i = 0; i < len; i++)
     {
       if (fmt[i] == 'e' || fmt[i] == 'u')
-	max_operand_1 (XEXP (x, i));
+ max_operand_1 (XEXP (x, i));
       else if (fmt[i] == 'E')
-	{
-	  int j;
-	  for (j = 0; j < XVECLEN (x, i); j++)
-	    max_operand_1 (XVECEXP (x, i, j));
-	}
+ {
+   int j;
+   for (j = 0; j < XVECLEN (x, i); j++)
+     max_operand_1 (XVECEXP (x, i, j));
+ }
     }
 }

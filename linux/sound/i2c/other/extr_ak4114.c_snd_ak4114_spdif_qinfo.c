@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_kcontrol {int dummy; } ;
-struct snd_ctl_elem_info {int /*<<< orphan*/  count; int /*<<< orphan*/  type; } ;
+struct snd_ctl_elem_info {int count; int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AK4114_REG_QSUB_SIZE ; 
- int /*<<< orphan*/  SNDRV_CTL_ELEM_TYPE_BYTES ; 
+
+ int AK4114_REG_QSUB_SIZE ;
+ int SNDRV_CTL_ELEM_TYPE_BYTES ;
 
 __attribute__((used)) static int snd_ak4114_spdif_qinfo(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_info *uinfo)
 {
-	uinfo->type = SNDRV_CTL_ELEM_TYPE_BYTES;
-	uinfo->count = AK4114_REG_QSUB_SIZE;
-	return 0;
+ uinfo->type = SNDRV_CTL_ELEM_TYPE_BYTES;
+ uinfo->count = AK4114_REG_QSUB_SIZE;
+ return 0;
 }

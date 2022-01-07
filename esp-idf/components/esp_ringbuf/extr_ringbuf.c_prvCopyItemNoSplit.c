@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  Ringbuffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/ * prvAcquireItemNoSplit (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  prvSendItemDoneNoSplit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int Ringbuffer_t ;
+
+
+ int memcpy (int *,int const*,size_t) ;
+ int * prvAcquireItemNoSplit (int *,size_t) ;
+ int prvSendItemDoneNoSplit (int *,int *) ;
 
 __attribute__((used)) static void prvCopyItemNoSplit(Ringbuffer_t *pxRingbuffer, const uint8_t *pucItem, size_t xItemSize)
 {

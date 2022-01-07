@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {struct TYPE_11__* pAfter; struct TYPE_11__* pBefore; struct TYPE_11__* pUp; } ;
-typedef  TYPE_1__ amatch_avl ;
+typedef TYPE_1__ amatch_avl ;
 
-/* Variables and functions */
- TYPE_1__* amatchAvlBalance (TYPE_1__*) ; 
- TYPE_1__* amatchAvlFirst (TYPE_1__*) ; 
- TYPE_1__** amatchAvlFromPtr (TYPE_1__*,TYPE_1__**) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ TYPE_1__* amatchAvlBalance (TYPE_1__*) ;
+ TYPE_1__* amatchAvlFirst (TYPE_1__*) ;
+ TYPE_1__** amatchAvlFromPtr (TYPE_1__*,TYPE_1__**) ;
+ int assert (int) ;
 
 __attribute__((used)) static void amatchAvlRemove(amatch_avl **ppHead, amatch_avl *pOld){
   amatch_avl **ppParent;
   amatch_avl *pBalance = 0;
-  /* assert( amatchAvlSearch(*ppHead, pOld->zKey)==pOld ); */
+
   ppParent = amatchAvlFromPtr(pOld, ppHead);
   if( pOld->pBefore==0 && pOld->pAfter==0 ){
     *ppParent = 0;
@@ -56,6 +56,6 @@ __attribute__((used)) static void amatchAvlRemove(amatch_avl **ppHead, amatch_av
   pOld->pUp = 0;
   pOld->pBefore = 0;
   pOld->pAfter = 0;
-  /* assert( amatchAvlIntegrity(*ppHead) ); */
-  /* assert( amatchAvlIntegrity2(*ppHead) ); */
+
+
 }

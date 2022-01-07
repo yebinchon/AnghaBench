@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
 struct request_sock {int dummy; } ;
-struct dccp_sock {int /*<<< orphan*/  dccps_featneg; } ;
-struct dccp_request_sock {int /*<<< orphan*/  dreq_featneg; scalar_t__ dreq_timestamp_echo; int /*<<< orphan*/  dreq_lock; } ;
-struct TYPE_4__ {int /*<<< orphan*/  dccph_dport; int /*<<< orphan*/  dccph_sport; } ;
-struct TYPE_3__ {scalar_t__ acked; int /*<<< orphan*/  ir_num; int /*<<< orphan*/  ir_rmt_port; } ;
+struct dccp_sock {int dccps_featneg; } ;
+struct dccp_request_sock {int dreq_featneg; scalar_t__ dreq_timestamp_echo; int dreq_lock; } ;
+struct TYPE_4__ {int dccph_dport; int dccph_sport; } ;
+struct TYPE_3__ {scalar_t__ acked; int ir_num; int ir_rmt_port; } ;
 
-/* Variables and functions */
- int dccp_feat_clone_list (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* dccp_hdr (struct sk_buff const*) ; 
- struct dccp_request_sock* dccp_rsk (struct request_sock*) ; 
- TYPE_1__* inet_rsk (struct request_sock*) ; 
- int /*<<< orphan*/  ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int dccp_feat_clone_list (int *,int *) ;
+ TYPE_2__* dccp_hdr (struct sk_buff const*) ;
+ struct dccp_request_sock* dccp_rsk (struct request_sock*) ;
+ TYPE_1__* inet_rsk (struct request_sock*) ;
+ int ntohs (int ) ;
+ int spin_lock_init (int *) ;
 
 int dccp_reqsk_init(struct request_sock *req,
-		    struct dccp_sock const *dp, struct sk_buff const *skb)
+      struct dccp_sock const *dp, struct sk_buff const *skb)
 {
-	struct dccp_request_sock *dreq = dccp_rsk(req);
+ struct dccp_request_sock *dreq = dccp_rsk(req);
 
-	spin_lock_init(&dreq->dreq_lock);
-	inet_rsk(req)->ir_rmt_port = dccp_hdr(skb)->dccph_sport;
-	inet_rsk(req)->ir_num	   = ntohs(dccp_hdr(skb)->dccph_dport);
-	inet_rsk(req)->acked	   = 0;
-	dreq->dreq_timestamp_echo  = 0;
+ spin_lock_init(&dreq->dreq_lock);
+ inet_rsk(req)->ir_rmt_port = dccp_hdr(skb)->dccph_sport;
+ inet_rsk(req)->ir_num = ntohs(dccp_hdr(skb)->dccph_dport);
+ inet_rsk(req)->acked = 0;
+ dreq->dreq_timestamp_echo = 0;
 
-	/* inherit feature negotiation options from listening socket */
-	return dccp_feat_clone_list(&dp->dccps_featneg, &dreq->dreq_featneg);
+
+ return dccp_feat_clone_list(&dp->dccps_featneg, &dreq->dreq_featneg);
 }

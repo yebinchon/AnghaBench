@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  out ;
-typedef  int /*<<< orphan*/  expected ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_CTX_new_id (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_CTX_set1_pbe_pass (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ EVP_PKEY_CTX_set1_scrypt_salt (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ EVP_PKEY_CTX_set_scrypt_N (int /*<<< orphan*/ *,int) ; 
- scalar_t__ EVP_PKEY_CTX_set_scrypt_maxmem_bytes (int /*<<< orphan*/ *,int) ; 
- scalar_t__ EVP_PKEY_CTX_set_scrypt_p (int /*<<< orphan*/ *,int) ; 
- scalar_t__ EVP_PKEY_CTX_set_scrypt_r (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  EVP_PKEY_SCRYPT ; 
- scalar_t__ EVP_PKEY_derive (int /*<<< orphan*/ *,unsigned char*,size_t*) ; 
- scalar_t__ EVP_PKEY_derive_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_error (char*) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ; 
+
+
+
+typedef int out ;
+typedef int expected ;
+typedef int EVP_PKEY_CTX ;
+
+
+ int EVP_PKEY_CTX_free (int *) ;
+ int * EVP_PKEY_CTX_new_id (int ,int *) ;
+ scalar_t__ EVP_PKEY_CTX_set1_pbe_pass (int *,char*,int) ;
+ scalar_t__ EVP_PKEY_CTX_set1_scrypt_salt (int *,char*,int) ;
+ scalar_t__ EVP_PKEY_CTX_set_scrypt_N (int *,int) ;
+ scalar_t__ EVP_PKEY_CTX_set_scrypt_maxmem_bytes (int *,int) ;
+ scalar_t__ EVP_PKEY_CTX_set_scrypt_p (int *,int) ;
+ scalar_t__ EVP_PKEY_CTX_set_scrypt_r (int *,int) ;
+ int EVP_PKEY_SCRYPT ;
+ scalar_t__ EVP_PKEY_derive (int *,unsigned char*,size_t*) ;
+ scalar_t__ EVP_PKEY_derive_init (int *) ;
+ int TEST_error (char*) ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ;
 
 __attribute__((used)) static int test_kdf_scrypt(void)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int test_kdf_scrypt(void)
     unsigned char out[64];
     size_t outlen = sizeof(out);
 
-    if ((pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_SCRYPT, NULL)) == NULL) {
+    if ((pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_SCRYPT, ((void*)0))) == ((void*)0)) {
         TEST_error("EVP_PKEY_SCRYPT");
         goto err;
     }

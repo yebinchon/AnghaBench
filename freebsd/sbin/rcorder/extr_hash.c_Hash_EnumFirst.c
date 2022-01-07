@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * hashEntryPtr; scalar_t__ nextIndex; int /*<<< orphan*/ * tablePtr; } ;
-typedef  int /*<<< orphan*/  Hash_Table ;
-typedef  TYPE_1__ Hash_Search ;
-typedef  int /*<<< orphan*/  Hash_Entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * Hash_EnumNext (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * hashEntryPtr; scalar_t__ nextIndex; int * tablePtr; } ;
+typedef int Hash_Table ;
+typedef TYPE_1__ Hash_Search ;
+typedef int Hash_Entry ;
+
+
+ int * Hash_EnumNext (TYPE_1__*) ;
 
 Hash_Entry *
 Hash_EnumFirst(
-	Hash_Table *t,			/* Table to be searched. */
-	register Hash_Search *searchPtr)/* Area in which to keep state
-					 * about search.*/
+ Hash_Table *t,
+ register Hash_Search *searchPtr)
+
 {
-	searchPtr->tablePtr = t;
-	searchPtr->nextIndex = 0;
-	searchPtr->hashEntryPtr = NULL;
-	return Hash_EnumNext(searchPtr);
+ searchPtr->tablePtr = t;
+ searchPtr->nextIndex = 0;
+ searchPtr->hashEntryPtr = ((void*)0);
+ return Hash_EnumNext(searchPtr);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  scalar_t__ off_t ;
-typedef  int /*<<< orphan*/  krb5_storage ;
-typedef  int /*<<< orphan*/  krb5_error_code ;
-struct TYPE_4__ {size_t length; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ krb5_data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INSIST (int) ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  krb5_data_alloc (TYPE_1__*,scalar_t__) ; 
- scalar_t__ krb5_storage_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ krb5_storage_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ssize_t ;
+typedef scalar_t__ off_t ;
+typedef int krb5_storage ;
+typedef int krb5_error_code ;
+struct TYPE_4__ {size_t length; int data; } ;
+typedef TYPE_1__ krb5_data ;
+
+
+ int CHECK (int ) ;
+ int INSIST (int) ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int krb5_data_alloc (TYPE_1__*,scalar_t__) ;
+ scalar_t__ krb5_storage_read (int *,int ,size_t) ;
+ scalar_t__ krb5_storage_seek (int *,int ,int ) ;
 
 __attribute__((used)) static krb5_error_code
 copyheader(krb5_storage *sp, krb5_data *data)

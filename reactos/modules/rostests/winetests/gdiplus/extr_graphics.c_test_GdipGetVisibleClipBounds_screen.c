@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int X; int Y; int Width; int Height; } ;
 struct TYPE_5__ {int X; int Y; int Width; int Height; } ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_1__ GpRectF ;
-typedef  TYPE_2__ GpRect ;
-typedef  int /*<<< orphan*/  GpGraphics ;
+typedef int * HDC ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpRectF ;
+typedef TYPE_2__ GpRect ;
+typedef int GpGraphics ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineModeReplace ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetVisibleClipBounds (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  GdipGetVisibleClipBoundsI (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  GdipSetClipRect (int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ ) ; 
- void* GetDeviceCaps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HORZRES ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VERTRES ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int CombineModeReplace ;
+ int GdipCreateFromHDC (int *,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipGetVisibleClipBounds (int *,TYPE_1__*) ;
+ int GdipGetVisibleClipBoundsI (int *,TYPE_2__*) ;
+ int GdipSetClipRect (int *,int,int,int,int,int ) ;
+ int * GetDC (int ) ;
+ void* GetDeviceCaps (int *,int ) ;
+ int HORZRES ;
+ int Ok ;
+ int ReleaseDC (int ,int *) ;
+ int VERTRES ;
+ int expect (int ,int ) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_GdipGetVisibleClipBounds_screen(void)
 {
     GpStatus status;
-    GpGraphics *graphics = NULL;
+    GpGraphics *graphics = ((void*)0);
     HDC hdc = GetDC(0);
     GpRectF rectf, exp, clipr;
     GpRect recti;
 
-    ok(hdc != NULL, "Expected HDC to be initialized\n");
+    ok(hdc != ((void*)0), "Expected HDC to be initialized\n");
 
     status = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, status);
-    ok(graphics != NULL, "Expected graphics to be initialized\n");
+    ok(graphics != ((void*)0), "Expected graphics to be initialized\n");
 
-    /* no clipping rect */
+
     exp.X = 0;
     exp.Y = 0;
     exp.Width = GetDeviceCaps(hdc, HORZRES);
@@ -67,7 +67,7 @@ __attribute__((used)) static void test_GdipGetVisibleClipBounds_screen(void)
         rectf.X, rectf.Y, rectf.Width, rectf.Height,
         exp.X, exp.Y, exp.Width, exp.Height);
 
-    /* clipping rect entirely within window */
+
     exp.X = clipr.X = 10;
     exp.Y = clipr.Y = 12;
     exp.Width = clipr.Width = 14;
@@ -87,7 +87,7 @@ __attribute__((used)) static void test_GdipGetVisibleClipBounds_screen(void)
         rectf.X, rectf.Y, rectf.Width, rectf.Height,
         exp.X, exp.Y, exp.Width, exp.Height);
 
-    /* clipping rect partially outside of screen */
+
     clipr.X = -10;
     clipr.Y = -12;
     clipr.Width = 20;

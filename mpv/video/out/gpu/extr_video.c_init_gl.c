@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gl_video {int /*<<< orphan*/  ra; void* osd_timer; void* blit_timer; void* upload_timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSGL_DEBUG ; 
- int /*<<< orphan*/  debug_check_gl (struct gl_video*,char*) ; 
- int /*<<< orphan*/  ra_dump_img_formats (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_dump_tex_formats (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* timer_pool_create (int /*<<< orphan*/ ) ; 
+
+
+
+struct gl_video {int ra; void* osd_timer; void* blit_timer; void* upload_timer; } ;
+
+
+ int MSGL_DEBUG ;
+ int debug_check_gl (struct gl_video*,char*) ;
+ int ra_dump_img_formats (int ,int ) ;
+ int ra_dump_tex_formats (int ,int ) ;
+ void* timer_pool_create (int ) ;
 
 __attribute__((used)) static void init_gl(struct gl_video *p)
 {

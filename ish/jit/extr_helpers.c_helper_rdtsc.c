@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct timespec {long tv_sec; int tv_nsec; } ;
 struct cpu_state {int eax; int edx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
+
+ int CLOCK_MONOTONIC ;
+ int clock_gettime (int ,struct timespec*) ;
 
 void helper_rdtsc(struct cpu_state *cpu) {
     struct timespec now;

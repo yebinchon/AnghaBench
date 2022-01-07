@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* diff_int16 ) (int*,int const*,int const*,scalar_t__,int) ;} ;
-struct TYPE_5__ {int /*<<< orphan*/  (* diff_bytes ) (int*,int const*,int const*,int) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_6__ {int (* diff_int16 ) (int*,int const*,int const*,scalar_t__,int) ;} ;
+struct TYPE_5__ {int (* diff_bytes ) (int*,int const*,int const*,int) ;} ;
 struct TYPE_7__ {int bps; scalar_t__ n; TYPE_2__ hencdsp; TYPE_1__ llvidencdsp; } ;
-typedef  TYPE_3__ HYuvContext ;
+typedef TYPE_3__ HYuvContext ;
 
-/* Variables and functions */
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  stub1 (int*,int const*,int const*,int) ; 
- int /*<<< orphan*/  stub2 (int*,int const*,int const*,scalar_t__,int) ; 
+
+ int FFMIN (int,int) ;
+ int stub1 (int*,int const*,int const*,int) ;
+ int stub2 (int*,int const*,int const*,scalar_t__,int) ;
 
 __attribute__((used)) static inline int sub_left_prediction(HYuvContext *s, uint8_t *dst,
                                       const uint8_t *src, int w, int left)
@@ -32,10 +32,10 @@ __attribute__((used)) static inline int sub_left_prediction(HYuvContext *s, uint
     int min_width = FFMIN(w, 32);
 
     if (s->bps <= 8) {
-        for (i = 0; i < min_width; i++) { /* scalar loop before dsp call */
+        for (i = 0; i < min_width; i++) {
             const int temp = src[i];
             dst[i] = temp - left;
-            left   = temp;
+            left = temp;
         }
         if (w < 32)
             return left;
@@ -43,11 +43,11 @@ __attribute__((used)) static inline int sub_left_prediction(HYuvContext *s, uint
         return src[w-1];
     } else {
         const uint16_t *src16 = (const uint16_t *)src;
-        uint16_t       *dst16 = (      uint16_t *)dst;
-        for (i = 0; i < min_width; i++) { /* scalar loop before dsp call */
+        uint16_t *dst16 = ( uint16_t *)dst;
+        for (i = 0; i < min_width; i++) {
             const int temp = src16[i];
             dst16[i] = temp - left;
-            left   = temp;
+            left = temp;
         }
         if (w < 32)
             return left;

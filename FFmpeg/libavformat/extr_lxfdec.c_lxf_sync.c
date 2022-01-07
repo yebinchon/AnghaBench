@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pb; } ;
-typedef  TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int /*<<< orphan*/  LXF_IDENT ; 
- int LXF_IDENT_LENGTH ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_r8 (int /*<<< orphan*/ ) ; 
- int avio_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int pb; } ;
+typedef TYPE_1__ AVFormatContext ;
+
+
+ int AVERROR_EOF ;
+ int LXF_IDENT ;
+ int LXF_IDENT_LENGTH ;
+ scalar_t__ avio_feof (int ) ;
+ int avio_r8 (int ) ;
+ int avio_read (int ,int *,int) ;
+ scalar_t__ memcmp (int *,int ,int) ;
+ int memcpy (int *,int ,int) ;
+ int memmove (int *,int *,int) ;
 
 __attribute__((used)) static int lxf_sync(AVFormatContext *s, uint8_t *header)
 {

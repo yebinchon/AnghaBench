@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char const*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int MAX_PATH ; 
- char* build_assembly_name (char const*,char const*,char const*,char const*,unsigned int*) ; 
- scalar_t__ build_sxs_path (char*) ; 
- int /*<<< orphan*/  strcatW (char*,char const*) ; 
- int /*<<< orphan*/  strcpyW (char*,char*) ; 
+
+
+
+typedef char WCHAR ;
+
+
+ int ARRAY_SIZE (char const*) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,unsigned int) ;
+ int HeapFree (int ,int ,char*) ;
+ int MAX_PATH ;
+ char* build_assembly_name (char const*,char const*,char const*,char const*,unsigned int*) ;
+ scalar_t__ build_sxs_path (char*) ;
+ int strcatW (char*,char const*) ;
+ int strcpyW (char*,char*) ;
 
 __attribute__((used)) static WCHAR *build_manifest_filename( const WCHAR *arch, const WCHAR *name, const WCHAR *token,
                                        const WCHAR *version )
@@ -31,14 +31,14 @@ __attribute__((used)) static WCHAR *build_manifest_filename( const WCHAR *arch, 
     WCHAR sxsdir[MAX_PATH], *ret, *fullname;
     unsigned int len;
 
-    if (!(fullname = build_assembly_name( arch, name, token, version, &len ))) return NULL;
+    if (!(fullname = build_assembly_name( arch, name, token, version, &len ))) return ((void*)0);
     len += build_sxs_path( sxsdir );
     len += ARRAY_SIZE(manifestsW) - 1;
     len += ARRAY_SIZE(suffixW) - 1;
     if (!(ret = HeapAlloc( GetProcessHeap(), 0, (len + 1) * sizeof(WCHAR) )))
     {
         HeapFree( GetProcessHeap(), 0, fullname );
-        return NULL;
+        return ((void*)0);
     }
     strcpyW( ret, sxsdir );
     strcatW( ret, manifestsW );

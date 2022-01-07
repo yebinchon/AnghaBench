@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_8__ {int* addr; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ IP ;
+typedef int LIST ;
+typedef TYPE_1__ IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeHostIPAddressList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetHostIPAddressList () ; 
- scalar_t__ IsIP4 (TYPE_1__*) ; 
- scalar_t__ IsInSameNetwork4Standard (TYPE_1__*,TYPE_1__*) ; 
- int IsZeroIp (TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
+
+ int FreeHostIPAddressList (int *) ;
+ int * GetHostIPAddressList () ;
+ scalar_t__ IsIP4 (TYPE_1__*) ;
+ scalar_t__ IsInSameNetwork4Standard (TYPE_1__*,TYPE_1__*) ;
+ int IsZeroIp (TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
 
 bool IsIPAddressInSameLocalNetwork(IP *a)
 {
-	bool ret = false;
-	LIST *o;
-	UINT i;
-	// Validate arguments
-	if (a == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
+ LIST *o;
+ UINT i;
 
-	o = GetHostIPAddressList();
+ if (a == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (o != NULL)
-	{
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			IP *p = LIST_DATA(o, i);
+ o = GetHostIPAddressList();
 
-			if (IsIP4(p))
-			{
-				if (IsZeroIp(p) == false && p->addr[0] != 127)
-				{
-					if (IsInSameNetwork4Standard(p, a))
-					{
-						ret = true;
-						break;
-					}
-				}
-			}
-		}
+ if (o != ((void*)0))
+ {
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   IP *p = LIST_DATA(o, i);
 
-		FreeHostIPAddressList(o);
-	}
+   if (IsIP4(p))
+   {
+    if (IsZeroIp(p) == 0 && p->addr[0] != 127)
+    {
+     if (IsInSameNetwork4Standard(p, a))
+     {
+      ret = 1;
+      break;
+     }
+    }
+   }
+  }
 
-	return ret;
+  FreeHostIPAddressList(o);
+ }
+
+ return ret;
 }

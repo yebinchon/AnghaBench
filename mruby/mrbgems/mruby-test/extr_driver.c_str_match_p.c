@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
-typedef  int /*<<< orphan*/  mrb_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COPY_AND_INC (char*,char const*,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  mrb_free (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ mrb_malloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  str_match_no_brace_p (char const*,int,char const*,int) ; 
+
+
+
+typedef int mrb_state ;
+typedef int mrb_int ;
+typedef int mrb_bool ;
+
+
+ int COPY_AND_INC (char*,char const*,int) ;
+ int FALSE ;
+ int mrb_free (int *,char*) ;
+ scalar_t__ mrb_malloc (int *,int) ;
+ int str_match_no_brace_p (char const*,int,char const*,int) ;
 
 __attribute__((used)) static mrb_bool
 str_match_p(mrb_state *mrb,
@@ -27,7 +27,7 @@ str_match_p(mrb_state *mrb,
             const char *str, mrb_int str_len)
 {
   const char *p = pat, *pat_end = pat + pat_len;
-  const char *lbrace = NULL, *rbrace = NULL;
+  const char *lbrace = ((void*)0), *rbrace = ((void*)0);
   int nest = 0;
   mrb_bool ret = FALSE;
 
@@ -38,8 +38,8 @@ str_match_p(mrb_state *mrb,
   }
 
   if (lbrace && rbrace) {
-    /* expand brace */
-    char *ex_pat = (char *)mrb_malloc(mrb, pat_len-2);  /* expanded pattern */
+
+    char *ex_pat = (char *)mrb_malloc(mrb, pat_len-2);
     char *ex_p = ex_pat;
 
     COPY_AND_INC(ex_p, pat, lbrace-pat);

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TEST_STATUS ;
-typedef  scalar_t__ PVOID ;
-typedef  scalar_t__ HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAILED ; 
- int /*<<< orphan*/  GMEM_FIXED ; 
- int /*<<< orphan*/  GMEM_MOVEABLE ; 
- scalar_t__ GlobalAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalFree (scalar_t__) ; 
- scalar_t__ GlobalHandle (scalar_t__) ; 
- scalar_t__ GlobalLock (scalar_t__) ; 
- int /*<<< orphan*/  GlobalUnlock (scalar_t__) ; 
- int /*<<< orphan*/  MEM_BLOCK_SIZE ; 
- int /*<<< orphan*/  OUTPUT_Banner (char*) ; 
- int /*<<< orphan*/  OUTPUT_Handle (scalar_t__) ; 
- int /*<<< orphan*/  OUTPUT_Line (char*) ; 
- int /*<<< orphan*/  OUTPUT_Result (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PASSED ; 
- int /*<<< orphan*/  SKIPPED ; 
- int /*<<< orphan*/  TEST_CombineStatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int TEST_STATUS ;
+typedef scalar_t__ PVOID ;
+typedef scalar_t__ HGLOBAL ;
+
+
+ int FAILED ;
+ int GMEM_FIXED ;
+ int GMEM_MOVEABLE ;
+ scalar_t__ GlobalAlloc (int ,int ) ;
+ int GlobalFree (scalar_t__) ;
+ scalar_t__ GlobalHandle (scalar_t__) ;
+ scalar_t__ GlobalLock (scalar_t__) ;
+ int GlobalUnlock (scalar_t__) ;
+ int MEM_BLOCK_SIZE ;
+ int OUTPUT_Banner (char*) ;
+ int OUTPUT_Handle (scalar_t__) ;
+ int OUTPUT_Line (char*) ;
+ int OUTPUT_Result (int ) ;
+ int PASSED ;
+ int SKIPPED ;
+ int TEST_CombineStatus (int ,int ) ;
 
 TEST_STATUS TestGlobalHandle()
 {
-    HGLOBAL     hMem    = 0;
-    HGLOBAL     hTest   = 0;
-    PVOID       pMem    = 0;
+    HGLOBAL hMem = 0;
+    HGLOBAL hTest = 0;
+    PVOID pMem = 0;
     TEST_STATUS subtest = SKIPPED;
-    TEST_STATUS result  = SKIPPED;
+    TEST_STATUS result = SKIPPED;
 
     OUTPUT_Banner("Testing GlobalHandle()");
 

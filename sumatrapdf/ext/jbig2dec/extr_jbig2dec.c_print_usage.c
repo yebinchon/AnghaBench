@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 __attribute__((used)) static int
 print_usage(void)
@@ -41,11 +33,11 @@ print_usage(void)
             "                   Defaults to the the input with a different\n"
             "                   extension. Pass '-' for stdout.\n"
             "    -t <type>      force a particular output file format\n"
-#ifdef HAVE_LIBPNG
-            "                   supported options are 'png' and 'pbm'\n"
-#else
+
+
+
             "                   the only supported option is 'pbm'\n"
-#endif
+
             "\n");
 
     return 1;

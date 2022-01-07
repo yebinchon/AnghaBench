@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ node_status; int /*<<< orphan*/  depth; int /*<<< orphan*/  file_external; scalar_t__ switched; } ;
-typedef  TYPE_1__ svn_wc_status3_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct pre_merge_status_baton_t {int /*<<< orphan*/  missing_subtrees; int /*<<< orphan*/  shallow_subtrees; int /*<<< orphan*/  pool; int /*<<< orphan*/  switched_subtrees; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_pmemdup (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- char* apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  store_path (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_depth_empty ; 
- int /*<<< orphan*/  svn_depth_files ; 
- scalar_t__ svn_dirent_is_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_status_missing ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ node_status; int depth; int file_external; scalar_t__ switched; } ;
+typedef TYPE_1__ svn_wc_status3_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct pre_merge_status_baton_t {int missing_subtrees; int shallow_subtrees; int pool; int switched_subtrees; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_index_t ;
+
+
+ scalar_t__ FALSE ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int * apr_hash_first (int *,int ) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ int * apr_pmemdup (int ,int *,int) ;
+ char* apr_pstrdup (int ,char const*) ;
+ int store_path (int ,char const*) ;
+ int svn_depth_empty ;
+ int svn_depth_files ;
+ scalar_t__ svn_dirent_is_ancestor (char const*,char const*) ;
+ int svn_hash_sets (int ,char const*,int *) ;
+ scalar_t__ svn_wc_status_missing ;
 
 __attribute__((used)) static svn_error_t *
 pre_merge_status_cb(void *baton,

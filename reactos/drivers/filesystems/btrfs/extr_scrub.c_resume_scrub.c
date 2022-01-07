@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int paused; int /*<<< orphan*/  resume_time; int /*<<< orphan*/  event; int /*<<< orphan*/  thread; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int paused; int resume_time; int event; int thread; } ;
 struct TYPE_5__ {TYPE_1__ scrub; } ;
-typedef  TYPE_2__ device_extension ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  KPROCESSOR_MODE ;
+typedef TYPE_2__ device_extension ;
+typedef int NTSTATUS ;
+typedef int KPROCESSOR_MODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KeQuerySystemTime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeSetEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RtlConvertLongToLuid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SE_MANAGE_VOLUME_PRIVILEGE ; 
- int /*<<< orphan*/  STATUS_DEVICE_NOT_READY ; 
- int /*<<< orphan*/  STATUS_PRIVILEGE_NOT_HELD ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  SeSinglePrivilegeCheck (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int KeQuerySystemTime (int *) ;
+ int KeSetEvent (int *,int ,int) ;
+ int RtlConvertLongToLuid (int ) ;
+ int SE_MANAGE_VOLUME_PRIVILEGE ;
+ int STATUS_DEVICE_NOT_READY ;
+ int STATUS_PRIVILEGE_NOT_HELD ;
+ int STATUS_SUCCESS ;
+ int SeSinglePrivilegeCheck (int ,int ) ;
 
 NTSTATUS resume_scrub(device_extension* Vcb, KPROCESSOR_MODE processor_mode) {
     if (!SeSinglePrivilegeCheck(RtlConvertLongToLuid(SE_MANAGE_VOLUME_PRIVILEGE), processor_mode))
@@ -38,8 +38,8 @@ NTSTATUS resume_scrub(device_extension* Vcb, KPROCESSOR_MODE processor_mode) {
     if (!Vcb->scrub.paused)
         return STATUS_DEVICE_NOT_READY;
 
-    Vcb->scrub.paused = false;
-    KeSetEvent(&Vcb->scrub.event, 0, false);
+    Vcb->scrub.paused = 0;
+    KeSetEvent(&Vcb->scrub.event, 0, 0);
 
     KeQuerySystemTime(&Vcb->scrub.resume_time);
 

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RDPCLIENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_CLIPBOARD (char*) ; 
- int /*<<< orphan*/  xclip_notify_change (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xclip_probe_selections (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RDPCLIENT ;
+
+
+ int DEBUG_CLIPBOARD (char*) ;
+ int xclip_notify_change (int *) ;
+ int xclip_probe_selections (int *) ;
 
 void
 xclip_handle_SelectionClear(RDPCLIENT * This)
 {
-	DEBUG_CLIPBOARD(("xclip_handle_SelectionClear\n"));
-	xclip_notify_change(This);
-	xclip_probe_selections(This);
+ DEBUG_CLIPBOARD(("xclip_handle_SelectionClear\n"));
+ xclip_notify_change(This);
+ xclip_probe_selections(This);
 }

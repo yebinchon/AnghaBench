@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct ufs_hba {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REG_UIC_COMMAND_ARG_3 ; 
- int /*<<< orphan*/  ufshcd_readl (struct ufs_hba*,int /*<<< orphan*/ ) ; 
+
+ int REG_UIC_COMMAND_ARG_3 ;
+ int ufshcd_readl (struct ufs_hba*,int ) ;
 
 __attribute__((used)) static inline u32 ufshcd_get_dme_attr_val(struct ufs_hba *hba)
 {
-	return ufshcd_readl(hba, REG_UIC_COMMAND_ARG_3);
+ return ufshcd_readl(hba, REG_UIC_COMMAND_ARG_3);
 }

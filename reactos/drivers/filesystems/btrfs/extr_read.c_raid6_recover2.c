@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RtlCopyMemory (int*,int*,int) ; 
- int /*<<< orphan*/  RtlZeroMemory (int*,int) ; 
- int /*<<< orphan*/  do_xor (int*,int*,int) ; 
- int /*<<< orphan*/  galois_divpower (int*,int,int) ; 
- int /*<<< orphan*/  galois_double (int*,int) ; 
- int gdiv (int,int) ; 
- int gmul (int,int) ; 
- int gpow2 (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int ULONG ;
+
+
+ int RtlCopyMemory (int*,int*,int) ;
+ int RtlZeroMemory (int*,int) ;
+ int do_xor (int*,int*,int) ;
+ int galois_divpower (int*,int,int) ;
+ int galois_double (int*,int) ;
+ int gdiv (int,int) ;
+ int gmul (int,int) ;
+ int gpow2 (int) ;
 
 void raid6_recover2(uint8_t* sectors, uint16_t num_stripes, ULONG sector_size, uint16_t missing1, uint16_t missing2, uint8_t* out) {
-    if (missing1 == num_stripes - 2 || missing2 == num_stripes - 2) { // reconstruct from q and data
+    if (missing1 == num_stripes - 2 || missing2 == num_stripes - 2) {
         uint16_t missing = missing1 == (num_stripes - 2) ? missing2 : missing1;
         uint16_t stripe;
 
@@ -50,7 +50,7 @@ void raid6_recover2(uint8_t* sectors, uint16_t num_stripes, ULONG sector_size, u
 
         if (missing != 0)
             galois_divpower(out, (uint8_t)missing, sector_size);
-    } else { // reconstruct from p and q
+    } else {
         uint16_t x, y, stripe;
         uint8_t gyx, gx, denom, a, b, *p, *q, *pxy, *qxy;
         uint32_t j;

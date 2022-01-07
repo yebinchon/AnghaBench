@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_5__ {int /*<<< orphan*/  mutex; TYPE_1__* pConn; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_5__ {int mutex; TYPE_1__* pConn; } ;
 struct TYPE_4__ {scalar_t__ ip; short port; int killConnection; struct TYPE_4__* next; TYPE_2__* pAcct; } ;
-typedef  TYPE_1__ SConnObj ;
-typedef  TYPE_2__ SAcctObj ;
+typedef TYPE_1__ SConnObj ;
+typedef TYPE_2__ SAcctObj ;
 
-/* Variables and functions */
- int TSDB_CODE_INVALID_CONNECTION ; 
- int /*<<< orphan*/  atoi (char*) ; 
- short htons (int /*<<< orphan*/ ) ; 
- scalar_t__ inet_addr (char*) ; 
- int /*<<< orphan*/  mTrace (char*,char*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+ int TSDB_CODE_INVALID_CONNECTION ;
+ int atoi (char*) ;
+ short htons (int ) ;
+ scalar_t__ inet_addr (char*) ;
+ int mTrace (char*,char*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ char* strchr (char*,char) ;
+ int strcpy (char*,char*) ;
 
 int mgmtKillConnection(char *qidstr, SConnObj *pConn) {
-  SConnObj *pConn1 = NULL;
-  char *    temp, *chr, idstr[64];
+  SConnObj *pConn1 = ((void*)0);
+  char * temp, *chr, idstr[64];
   strcpy(idstr, qidstr);
 
   temp = idstr;
   chr = strchr(temp, ':');
-  if (chr == NULL) goto _error;
+  if (chr == ((void*)0)) goto _error;
   *chr = 0;
   uint32_t ip = inet_addr(temp);
 
@@ -50,8 +50,8 @@ int mgmtKillConnection(char *qidstr, SConnObj *pConn) {
   pConn = pAcct->pConn;
   while (pConn) {
     if (pConn->ip == ip && pConn->port == port) {
-      // there maybe two connections from a shell
-      if (pConn1 == NULL)
+
+      if (pConn1 == ((void*)0))
         pConn1 = pConn;
       else
         break;
@@ -65,7 +65,7 @@ int mgmtKillConnection(char *qidstr, SConnObj *pConn) {
 
   pthread_mutex_unlock(&pAcct->mutex);
 
-  if (pConn1 == NULL) goto _error;
+  if (pConn1 == ((void*)0)) goto _error;
 
   mTrace("connection:%s is there, kill it", qidstr);
   return 0;

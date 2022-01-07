@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PLATFORM_I2C_DIRECTION_TRANSMITTER ; 
- int /*<<< orphan*/  bmp085_i2c_addr ; 
- int /*<<< orphan*/  bmp085_i2c_id ; 
- int /*<<< orphan*/  os_delay_us (int) ; 
- int /*<<< orphan*/  platform_i2c_send_address (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  platform_i2c_send_byte (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  platform_i2c_send_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  platform_i2c_send_stop (int /*<<< orphan*/ ) ; 
- int r8u (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int int32_t ;
+
+
+ int PLATFORM_I2C_DIRECTION_TRANSMITTER ;
+ int bmp085_i2c_addr ;
+ int bmp085_i2c_id ;
+ int os_delay_us (int) ;
+ int platform_i2c_send_address (int ,int ,int ) ;
+ int platform_i2c_send_byte (int ,int) ;
+ int platform_i2c_send_start (int ) ;
+ int platform_i2c_send_stop (int ) ;
+ int r8u (int ,int) ;
 
 __attribute__((used)) static int32_t bmp085_pressure_raw(int oss) {
     int32_t p;
@@ -33,7 +33,7 @@ __attribute__((used)) static int32_t bmp085_pressure_raw(int oss) {
     platform_i2c_send_byte(bmp085_i2c_id, 0x34 + 64 * oss);
     platform_i2c_send_stop(bmp085_i2c_id);
 
-    // Wait for device to complete sampling
+
     switch (oss) {
         case 0: os_delay_us( 4500); break;
         case 1: os_delay_us( 7500); break;

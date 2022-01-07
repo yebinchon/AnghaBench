@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZBUFFv07_DCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ZBUFFv07_createDCtx_advanced (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  defaultCustomMem ; 
+
+
+
+typedef int ZBUFFv07_DCtx ;
+
+
+ int * ZBUFFv07_createDCtx_advanced (int ) ;
+ int defaultCustomMem ;
 
 ZBUFFv07_DCtx* ZBUFFv07_createDCtx(void)
 {

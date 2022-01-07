@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stats_buffer_t ;
 
-/* Variables and functions */
- scalar_t__ HASH_TABLE_SIZE ; 
- int /*<<< orphan*/  cache_deletes ; 
- scalar_t__ cache_free ; 
- int /*<<< orphan*/  cache_miss ; 
- int /*<<< orphan*/  cache_ok ; 
- int /*<<< orphan*/  cache_size ; 
- int /*<<< orphan*/  cache_update ; 
- int /*<<< orphan*/  entry_memory ; 
- int /*<<< orphan*/  get_entry_cnt () ; 
- int /*<<< orphan*/  init_memory ; 
- int /*<<< orphan*/  memory_for_cache ; 
- int /*<<< orphan*/  memory_for_entries ; 
- int /*<<< orphan*/  memory_for_metafiles ; 
- int /*<<< orphan*/  sb_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int stats_buffer_t ;
+
+
+ scalar_t__ HASH_TABLE_SIZE ;
+ int cache_deletes ;
+ scalar_t__ cache_free ;
+ int cache_miss ;
+ int cache_ok ;
+ int cache_size ;
+ int cache_update ;
+ int entry_memory ;
+ int get_entry_cnt () ;
+ int init_memory ;
+ int memory_for_cache ;
+ int memory_for_entries ;
+ int memory_for_metafiles ;
+ int sb_printf (int *,char*,int ,int ,int ,scalar_t__,scalar_t__,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 void data_prepare_stats (stats_buffer_t *sb) {
   sb_printf (sb,

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* meth; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* finish ) (TYPE_2__*) ;} ;
-typedef  TYPE_2__ COMP_CTX ;
+struct TYPE_6__ {int (* finish ) (TYPE_2__*) ;} ;
+typedef TYPE_2__ COMP_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
+
+ int OPENSSL_free (TYPE_2__*) ;
+ int stub1 (TYPE_2__*) ;
 
 void COMP_CTX_free(COMP_CTX *ctx)
 {
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         return;
-    if (ctx->meth->finish != NULL)
+    if (ctx->meth->finish != ((void*)0))
         ctx->meth->finish(ctx);
 
     OPENSSL_free(ctx);

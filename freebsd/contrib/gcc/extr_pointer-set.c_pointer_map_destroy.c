@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pointer_map_t {int /*<<< orphan*/  values; int /*<<< orphan*/  keys; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XDELETE (struct pointer_map_t*) ; 
- int /*<<< orphan*/  XDELETEVEC (int /*<<< orphan*/ ) ; 
+
+
+
+struct pointer_map_t {int values; int keys; } ;
+
+
+ int XDELETE (struct pointer_map_t*) ;
+ int XDELETEVEC (int ) ;
 
 void pointer_map_destroy (struct pointer_map_t *pmap)
 {

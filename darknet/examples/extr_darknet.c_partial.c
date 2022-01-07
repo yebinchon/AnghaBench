@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network ;
 
-/* Variables and functions */
- int gpu_index ; 
- int /*<<< orphan*/ * load_network (char*,char*,int) ; 
- int /*<<< orphan*/  save_weights_upto (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef int network ;
+
+
+ int gpu_index ;
+ int * load_network (char*,char*,int) ;
+ int save_weights_upto (int *,char*,int) ;
 
 void partial(char *cfgfile, char *weightfile, char *outfile, int max)
 {

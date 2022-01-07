@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16 ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  LOCKTAG ;
-typedef  int /*<<< orphan*/  LOCKMODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcceptInvalidationMessages () ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  LockAcquire (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  SET_LOCKTAG_OBJECT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16 ;
+typedef int Oid ;
+typedef int LOCKTAG ;
+typedef int LOCKMODE ;
+
+
+ int AcceptInvalidationMessages () ;
+ int InvalidOid ;
+ int LockAcquire (int *,int ,int,int) ;
+ int SET_LOCKTAG_OBJECT (int ,int ,int ,int ,int ) ;
 
 void
 LockSharedObject(Oid classid, Oid objid, uint16 objsubid,
-				 LOCKMODE lockmode)
+     LOCKMODE lockmode)
 {
-	LOCKTAG		tag;
+ LOCKTAG tag;
 
-	SET_LOCKTAG_OBJECT(tag,
-					   InvalidOid,
-					   classid,
-					   objid,
-					   objsubid);
+ SET_LOCKTAG_OBJECT(tag,
+        InvalidOid,
+        classid,
+        objid,
+        objsubid);
 
-	(void) LockAcquire(&tag, lockmode, false, false);
+ (void) LockAcquire(&tag, lockmode, 0, 0);
 
-	/* Make sure syscaches are up-to-date with any changes we waited for */
-	AcceptInvalidationMessages();
+
+ AcceptInvalidationMessages();
 }

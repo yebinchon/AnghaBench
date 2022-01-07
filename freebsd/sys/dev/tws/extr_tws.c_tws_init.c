@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union ccb {int dummy; } ccb ;
-typedef  int u_int32_t ;
+
+
+
+
+typedef union ccb {int dummy; } ccb ;
+typedef int u_int32_t ;
 struct tws_stats {int dummy; } ;
-struct tws_softc {int is64bit; void* dma_mem; int dma_mem_phys; int /*<<< orphan*/  stats; int /*<<< orphan*/  tws_dev; int /*<<< orphan*/  ioctl_data_map; int /*<<< orphan*/  ioctl_data_mem; int /*<<< orphan*/  data_tag; void* scan_ccb; void* sense_bufs; void* reqs; int /*<<< orphan*/  io_lock; int /*<<< orphan*/  parent_tag; int /*<<< orphan*/  cmd_map; int /*<<< orphan*/  cmd_tag; scalar_t__ seq_id; } ;
+struct tws_softc {int is64bit; void* dma_mem; int dma_mem_phys; int stats; int tws_dev; int ioctl_data_map; int ioctl_data_mem; int data_tag; void* scan_ccb; void* sense_bufs; void* reqs; int io_lock; int parent_tag; int cmd_map; int cmd_tag; scalar_t__ seq_id; } ;
 struct tws_sense {int dummy; } ;
 struct tws_request {int dummy; } ;
 struct tws_command_packet {int dummy; } ;
-typedef  int /*<<< orphan*/  bus_addr_t ;
+typedef int bus_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_DMA_ALLOCNOW ; 
- int BUS_DMA_NOWAIT ; 
- int BUS_DMA_ZERO ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR_32BIT ; 
- int BUS_SPACE_MAXSIZE ; 
- int ENOMEM ; 
- int FAILURE ; 
- int /*<<< orphan*/  M_TWS ; 
- int M_WAITOK ; 
- int M_ZERO ; 
- int SUCCESS ; 
- int /*<<< orphan*/  TWS_ALIGNMENT ; 
- int TWS_BIT1 ; 
- int TWS_I2O0_CTL ; 
- int /*<<< orphan*/  TWS_IN_MF_ALIGNMENT ; 
- int TWS_MAX_32BIT_SG_ELEMENTS ; 
- int TWS_MAX_64BIT_SG_ELEMENTS ; 
- int TWS_MAX_IO_SIZE ; 
- int TWS_MAX_REQS ; 
- int TWS_RESERVED_REQS ; 
- int TWS_SECTOR_SIZE ; 
- int /*<<< orphan*/  TWS_TRACE_DEBUG (struct tws_softc*,char*,int,int) ; 
- scalar_t__ bus_dma_tag_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int bus_dmamap_load (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- scalar_t__ bus_dmamem_alloc (int /*<<< orphan*/ ,void**,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_get_dma_tag (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * busdma_lock_mutex ; 
- int /*<<< orphan*/  bzero (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- void* malloc (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tws_ctlr_ready (struct tws_softc*) ; 
- int /*<<< orphan*/  tws_ctlr_reset (struct tws_softc*) ; 
- int /*<<< orphan*/  tws_dmamap_cmds_load_cbfn ; 
- int tws_init_aen_q (struct tws_softc*) ; 
- int /*<<< orphan*/  tws_init_qs (struct tws_softc*) ; 
- int tws_init_reqs (struct tws_softc*,int) ; 
- int tws_queue_depth ; 
- int tws_read_reg (struct tws_softc*,int,int) ; 
- int /*<<< orphan*/  tws_turn_off_interrupts (struct tws_softc*) ; 
- int /*<<< orphan*/  tws_use_32bit_sgls ; 
- int /*<<< orphan*/  tws_write_reg (struct tws_softc*,int,int,int) ; 
+
+ int BUS_DMA_ALLOCNOW ;
+ int BUS_DMA_NOWAIT ;
+ int BUS_DMA_ZERO ;
+ int BUS_SPACE_MAXADDR ;
+ int BUS_SPACE_MAXADDR_32BIT ;
+ int BUS_SPACE_MAXSIZE ;
+ int ENOMEM ;
+ int FAILURE ;
+ int M_TWS ;
+ int M_WAITOK ;
+ int M_ZERO ;
+ int SUCCESS ;
+ int TWS_ALIGNMENT ;
+ int TWS_BIT1 ;
+ int TWS_I2O0_CTL ;
+ int TWS_IN_MF_ALIGNMENT ;
+ int TWS_MAX_32BIT_SG_ELEMENTS ;
+ int TWS_MAX_64BIT_SG_ELEMENTS ;
+ int TWS_MAX_IO_SIZE ;
+ int TWS_MAX_REQS ;
+ int TWS_RESERVED_REQS ;
+ int TWS_SECTOR_SIZE ;
+ int TWS_TRACE_DEBUG (struct tws_softc*,char*,int,int) ;
+ scalar_t__ bus_dma_tag_create (int ,int ,int ,int ,int ,int *,int *,int,int,int,int ,int *,int *,int *) ;
+ int bus_dmamap_load (int ,int ,void*,int,int ,int*,int ) ;
+ scalar_t__ bus_dmamem_alloc (int ,void**,int,int *) ;
+ int bus_get_dma_tag (int ) ;
+ int * busdma_lock_mutex ;
+ int bzero (int *,int) ;
+ int device_printf (int ,char*) ;
+ void* malloc (int,int ,int) ;
+ int tws_ctlr_ready (struct tws_softc*) ;
+ int tws_ctlr_reset (struct tws_softc*) ;
+ int tws_dmamap_cmds_load_cbfn ;
+ int tws_init_aen_q (struct tws_softc*) ;
+ int tws_init_qs (struct tws_softc*) ;
+ int tws_init_reqs (struct tws_softc*,int) ;
+ int tws_queue_depth ;
+ int tws_read_reg (struct tws_softc*,int,int) ;
+ int tws_turn_off_interrupts (struct tws_softc*) ;
+ int tws_use_32bit_sgls ;
+ int tws_write_reg (struct tws_softc*,int,int,int) ;
 
 __attribute__((used)) static int
 tws_init(struct tws_softc *sc)
@@ -77,45 +77,45 @@ tws_init(struct tws_softc *sc)
         tws_queue_depth = TWS_MAX_REQS;
     if (tws_queue_depth < TWS_RESERVED_REQS+1)
         tws_queue_depth = TWS_RESERVED_REQS+1;
-    sc->is64bit = (sizeof(bus_addr_t) == 8) ? true : false;
-    max_sg_elements = (sc->is64bit && !tws_use_32bit_sgls) ? 
-                                 TWS_MAX_64BIT_SG_ELEMENTS : 
+    sc->is64bit = (sizeof(bus_addr_t) == 8) ? 1 : 0;
+    max_sg_elements = (sc->is64bit && !tws_use_32bit_sgls) ?
+                                 TWS_MAX_64BIT_SG_ELEMENTS :
                                  TWS_MAX_32BIT_SG_ELEMENTS;
     dma_mem_size = (sizeof(struct tws_command_packet) * tws_queue_depth) +
                              (TWS_SECTOR_SIZE) ;
-    if ( bus_dma_tag_create(bus_get_dma_tag(sc->tws_dev), /* PCI parent */ 
-                            TWS_ALIGNMENT,           /* alignment */
-                            0,                       /* boundary */
-                            BUS_SPACE_MAXADDR_32BIT, /* lowaddr */
-                            BUS_SPACE_MAXADDR,       /* highaddr */
-                            NULL, NULL,              /* filter, filterarg */
-                            BUS_SPACE_MAXSIZE,       /* maxsize */
-                            max_sg_elements,         /* numsegs */
-                            BUS_SPACE_MAXSIZE,       /* maxsegsize */
-                            0,                       /* flags */
-                            NULL, NULL,              /* lockfunc, lockfuncarg */
-                            &sc->parent_tag          /* tag */
+    if ( bus_dma_tag_create(bus_get_dma_tag(sc->tws_dev),
+                            TWS_ALIGNMENT,
+                            0,
+                            BUS_SPACE_MAXADDR_32BIT,
+                            BUS_SPACE_MAXADDR,
+                            ((void*)0), ((void*)0),
+                            BUS_SPACE_MAXSIZE,
+                            max_sg_elements,
+                            BUS_SPACE_MAXSIZE,
+                            0,
+                            ((void*)0), ((void*)0),
+                            &sc->parent_tag
                            )) {
-        TWS_TRACE_DEBUG(sc, "DMA parent tag Create fail", max_sg_elements, 
+        TWS_TRACE_DEBUG(sc, "DMA parent tag Create fail", max_sg_elements,
                                                     sc->is64bit);
         return(ENOMEM);
     }
-    /* In bound message frame requires 16byte alignment.
-     * Outbound MF's can live with 4byte alignment - for now just 
-     * use 16 for both.
-     */
-    if ( bus_dma_tag_create(sc->parent_tag,       /* parent */          
-                            TWS_IN_MF_ALIGNMENT,  /* alignment */
-                            0,                    /* boundary */
-                            BUS_SPACE_MAXADDR_32BIT, /* lowaddr */
-                            BUS_SPACE_MAXADDR,    /* highaddr */
-                            NULL, NULL,           /* filter, filterarg */
-                            dma_mem_size,         /* maxsize */
-                            1,                    /* numsegs */
-                            BUS_SPACE_MAXSIZE,    /* maxsegsize */
-                            0,                    /* flags */
-                            NULL, NULL,           /* lockfunc, lockfuncarg */
-                            &sc->cmd_tag          /* tag */
+
+
+
+
+    if ( bus_dma_tag_create(sc->parent_tag,
+                            TWS_IN_MF_ALIGNMENT,
+                            0,
+                            BUS_SPACE_MAXADDR_32BIT,
+                            BUS_SPACE_MAXADDR,
+                            ((void*)0), ((void*)0),
+                            dma_mem_size,
+                            1,
+                            BUS_SPACE_MAXSIZE,
+                            0,
+                            ((void*)0), ((void*)0),
+                            &sc->cmd_tag
                            )) {
         TWS_TRACE_DEBUG(sc, "DMA cmd tag Create fail", max_sg_elements, sc->is64bit);
         return(ENOMEM);
@@ -127,29 +127,29 @@ tws_init(struct tws_softc *sc)
         return(ENOMEM);
     }
 
-    /* if bus_dmamem_alloc succeeds then bus_dmamap_load will succeed */
+
     sc->dma_mem_phys=0;
     error = bus_dmamap_load(sc->cmd_tag, sc->cmd_map, sc->dma_mem,
                     dma_mem_size, tws_dmamap_cmds_load_cbfn,
                     &sc->dma_mem_phys, 0);
 
-   /*
-    * Create a dma tag for data buffers; size will be the maximum
-    * possible I/O size (128kB).
-    */
-    if (bus_dma_tag_create(sc->parent_tag,         /* parent */
-                           TWS_ALIGNMENT,          /* alignment */
-                           0,                      /* boundary */
-                           BUS_SPACE_MAXADDR_32BIT,/* lowaddr */
-                           BUS_SPACE_MAXADDR,      /* highaddr */
-                           NULL, NULL,             /* filter, filterarg */
-                           TWS_MAX_IO_SIZE,        /* maxsize */
-                           max_sg_elements,        /* nsegments */
-                           TWS_MAX_IO_SIZE,        /* maxsegsize */
-                           BUS_DMA_ALLOCNOW,       /* flags */
-                           busdma_lock_mutex,      /* lockfunc */
-                           &sc->io_lock,           /* lockfuncarg */
-                           &sc->data_tag           /* tag */)) {
+
+
+
+
+    if (bus_dma_tag_create(sc->parent_tag,
+                           TWS_ALIGNMENT,
+                           0,
+                           BUS_SPACE_MAXADDR_32BIT,
+                           BUS_SPACE_MAXADDR,
+                           ((void*)0), ((void*)0),
+                           TWS_MAX_IO_SIZE,
+                           max_sg_elements,
+                           TWS_MAX_IO_SIZE,
+                           BUS_DMA_ALLOCNOW,
+                           busdma_lock_mutex,
+                           &sc->io_lock,
+                           &sc->data_tag )) {
         TWS_TRACE_DEBUG(sc, "DMA cmd tag Create fail", max_sg_elements, sc->is64bit);
         return(ENOMEM);
     }
@@ -168,25 +168,10 @@ tws_init(struct tws_softc *sc)
     if ( !tws_ctlr_ready(sc) )
         if( !tws_ctlr_reset(sc) )
             return(FAILURE);
-    
+
     bzero(&sc->stats, sizeof(struct tws_stats));
     tws_init_qs(sc);
     tws_turn_off_interrupts(sc);
-
-    /* 
-     * enable pull mode by setting bit1 .
-     * setting bit0 to 1 will enable interrupt coalesing 
-     * will revisit. 
-     */
-
-#ifdef TWS_PULL_MODE_ENABLE
-
-    reg = tws_read_reg(sc, TWS_I2O0_CTL, 4);
-    TWS_TRACE_DEBUG(sc, "i20 ctl", reg, TWS_I2O0_CTL);
-    tws_write_reg(sc, TWS_I2O0_CTL, reg | TWS_BIT1, 4);
-
-#endif
-
     TWS_TRACE_DEBUG(sc, "dma_mem_phys", sc->dma_mem_phys, TWS_I2O0_CTL);
     if ( tws_init_reqs(sc, dma_mem_size) == FAILURE )
         return(FAILURE);
@@ -194,5 +179,5 @@ tws_init(struct tws_softc *sc)
         return(FAILURE);
 
     return(SUCCESS);
-    
+
 }

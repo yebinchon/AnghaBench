@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ht_forall (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ident_hash ; 
- int /*<<< orphan*/  mark_ident ; 
+ int ht_forall (int ,int ,int *) ;
+ int ident_hash ;
+ int mark_ident ;
 
 void
 ggc_mark_stringpool (void)
 {
-  ht_forall (ident_hash, mark_ident, NULL);
+  ht_forall (ident_hash, mark_ident, ((void*)0));
 }

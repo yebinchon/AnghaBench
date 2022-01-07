@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfs4_client {int /*<<< orphan*/  cl_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NFSD4_CLIENT_UPCALL_LOCK ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  smp_mb__after_atomic () ; 
- int /*<<< orphan*/  smp_mb__before_atomic () ; 
- int /*<<< orphan*/  wake_up_bit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct nfs4_client {int cl_flags; } ;
+
+
+ int NFSD4_CLIENT_UPCALL_LOCK ;
+ int clear_bit (int ,int *) ;
+ int smp_mb__after_atomic () ;
+ int smp_mb__before_atomic () ;
+ int wake_up_bit (int *,int ) ;
 
 __attribute__((used)) static void
 nfsd4_cltrack_upcall_unlock(struct nfs4_client *clp)
 {
-	smp_mb__before_atomic();
-	clear_bit(NFSD4_CLIENT_UPCALL_LOCK, &clp->cl_flags);
-	smp_mb__after_atomic();
-	wake_up_bit(&clp->cl_flags, NFSD4_CLIENT_UPCALL_LOCK);
+ smp_mb__before_atomic();
+ clear_bit(NFSD4_CLIENT_UPCALL_LOCK, &clp->cl_flags);
+ smp_mb__after_atomic();
+ wake_up_bit(&clp->cl_flags, NFSD4_CLIENT_UPCALL_LOCK);
 }

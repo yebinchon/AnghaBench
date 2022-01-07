@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct File_Transfers {scalar_t__ status; int /*<<< orphan*/  id; int /*<<< orphan*/  paused; scalar_t__ slots_allocated; scalar_t__ requested; scalar_t__ transferred; int /*<<< orphan*/  size; } ;
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef size_t uint32_t ;
+typedef int uint16_t ;
+struct File_Transfers {scalar_t__ status; int id; int paused; scalar_t__ slots_allocated; scalar_t__ requested; scalar_t__ transferred; int size; } ;
+typedef size_t int32_t ;
 struct TYPE_7__ {TYPE_1__* friendlist; } ;
-struct TYPE_6__ {int /*<<< orphan*/  num_sending_files; struct File_Transfers* file_sending; } ;
-typedef  TYPE_2__ Messenger ;
+struct TYPE_6__ {int num_sending_files; struct File_Transfers* file_sending; } ;
+typedef TYPE_2__ Messenger ;
 
-/* Variables and functions */
- scalar_t__ FILESTATUS_NONE ; 
- scalar_t__ FILESTATUS_NOT_ACCEPTED ; 
- int /*<<< orphan*/  FILE_ID_LENGTH ; 
- int /*<<< orphan*/  FILE_PAUSE_NOT ; 
- size_t MAX_CONCURRENT_FILE_PIPES ; 
- int /*<<< orphan*/  MAX_FILENAME_LENGTH ; 
- scalar_t__ file_sendrequest (TYPE_2__ const*,size_t,size_t,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- scalar_t__ friend_not_valid (TYPE_2__ const*,size_t) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FILESTATUS_NONE ;
+ scalar_t__ FILESTATUS_NOT_ACCEPTED ;
+ int FILE_ID_LENGTH ;
+ int FILE_PAUSE_NOT ;
+ size_t MAX_CONCURRENT_FILE_PIPES ;
+ int MAX_FILENAME_LENGTH ;
+ scalar_t__ file_sendrequest (TYPE_2__ const*,size_t,size_t,size_t,int ,int const*,int const*,int ) ;
+ scalar_t__ friend_not_valid (TYPE_2__ const*,size_t) ;
+ int memcpy (int ,int const*,int ) ;
 
 long int new_filesender(const Messenger *m, int32_t friendnumber, uint32_t file_type, uint64_t filesize,
                         const uint8_t *file_id, const uint8_t *filename, uint16_t filename_length)

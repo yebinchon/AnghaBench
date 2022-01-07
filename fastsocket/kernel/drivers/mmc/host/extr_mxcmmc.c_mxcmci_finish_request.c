@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mxcmci_host {int /*<<< orphan*/  mmc; int /*<<< orphan*/ * data; int /*<<< orphan*/ * cmd; int /*<<< orphan*/ * req; scalar_t__ base; } ;
+
+
+
+
+struct mxcmci_host {int mmc; int * data; int * cmd; int * req; scalar_t__ base; } ;
 struct mmc_request {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ MMC_REG_INT_CNTR ; 
- int /*<<< orphan*/  mmc_request_done (int /*<<< orphan*/ ,struct mmc_request*) ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ MMC_REG_INT_CNTR ;
+ int mmc_request_done (int ,struct mmc_request*) ;
+ int writel (int ,scalar_t__) ;
 
 __attribute__((used)) static void mxcmci_finish_request(struct mxcmci_host *host,
-		struct mmc_request *req)
+  struct mmc_request *req)
 {
-	writel(0, host->base + MMC_REG_INT_CNTR);
+ writel(0, host->base + MMC_REG_INT_CNTR);
 
-	host->req = NULL;
-	host->cmd = NULL;
-	host->data = NULL;
+ host->req = ((void*)0);
+ host->cmd = ((void*)0);
+ host->data = ((void*)0);
 
-	mmc_request_done(host->mmc, req);
+ mmc_request_done(host->mmc, req);
 }

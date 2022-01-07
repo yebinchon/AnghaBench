@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_crap ; 
- scalar_t__ luaL_newmetatable (int /*<<< orphan*/ *,char*) ; 
- void** lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- void* talloc_new (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int destroy_crap ;
+ scalar_t__ luaL_newmetatable (int *,char*) ;
+ void** lua_newuserdata (int *,int) ;
+ int lua_pushcfunction (int *,int ) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setmetatable (int *,int) ;
+ void* talloc_new (int *) ;
 
 __attribute__((used)) static void *mp_lua_PITA(lua_State *L)
 {
-    void **data = lua_newuserdata(L, sizeof(void *)); // u
-    if (luaL_newmetatable(L, "ohthispain")) { // u metatable
-        lua_pushvalue(L, -1);  // u metatable metatable
-        lua_setfield(L, -2, "__index");  // u metatable
-        lua_pushcfunction(L, destroy_crap); // u metatable gc
-        lua_setfield(L, -2, "__gc"); // u metatable
+    void **data = lua_newuserdata(L, sizeof(void *));
+    if (luaL_newmetatable(L, "ohthispain")) {
+        lua_pushvalue(L, -1);
+        lua_setfield(L, -2, "__index");
+        lua_pushcfunction(L, destroy_crap);
+        lua_setfield(L, -2, "__gc");
     }
-    lua_setmetatable(L, -2); // u
-    *data = talloc_new(NULL);
+    lua_setmetatable(L, -2);
+    *data = talloc_new(((void*)0));
     return *data;
 }

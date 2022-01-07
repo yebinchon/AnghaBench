@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ltree_gist ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ltree_gist ;
 struct TYPE_7__ {scalar_t__ numlevel; } ;
-typedef  TYPE_1__ ltree ;
+typedef TYPE_1__ ltree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LTG_GETLNODE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LTG_GETRNODE (int /*<<< orphan*/ *) ; 
- TYPE_1__* copy_ltree (int /*<<< orphan*/ ) ; 
- scalar_t__ ltree_compare (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  pfree (TYPE_1__*) ; 
+
+ int LTG_GETLNODE (int *) ;
+ int LTG_GETRNODE (int *) ;
+ TYPE_1__* copy_ltree (int ) ;
+ scalar_t__ ltree_compare (TYPE_1__*,TYPE_1__*) ;
+ int pfree (TYPE_1__*) ;
 
 __attribute__((used)) static bool
 gist_ischild(ltree_gist *key, ltree *query)
 {
-	ltree	   *left = copy_ltree(LTG_GETLNODE(key));
-	ltree	   *right = copy_ltree(LTG_GETRNODE(key));
-	bool		res = true;
+ ltree *left = copy_ltree(LTG_GETLNODE(key));
+ ltree *right = copy_ltree(LTG_GETRNODE(key));
+ bool res = 1;
 
-	if (left->numlevel > query->numlevel)
-		left->numlevel = query->numlevel;
+ if (left->numlevel > query->numlevel)
+  left->numlevel = query->numlevel;
 
-	if (ltree_compare(query, left) < 0)
-		res = false;
+ if (ltree_compare(query, left) < 0)
+  res = 0;
 
-	if (right->numlevel > query->numlevel)
-		right->numlevel = query->numlevel;
+ if (right->numlevel > query->numlevel)
+  right->numlevel = query->numlevel;
 
-	if (res && ltree_compare(query, right) > 0)
-		res = false;
+ if (res && ltree_compare(query, right) > 0)
+  res = 0;
 
-	pfree(left);
-	pfree(right);
+ pfree(left);
+ pfree(right);
 
-	return res;
+ return res;
 }

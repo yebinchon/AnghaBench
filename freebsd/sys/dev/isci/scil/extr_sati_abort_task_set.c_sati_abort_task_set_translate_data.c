@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int U8 ;
-struct TYPE_7__ {int ncq_tag; scalar_t__ nq; int /*<<< orphan*/  error; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int U8 ;
+struct TYPE_7__ {int ncq_tag; scalar_t__ nq; int error; } ;
 struct TYPE_6__ {scalar_t__ state; } ;
-typedef  int /*<<< orphan*/  SCI_IO_STATUS ;
-typedef  TYPE_1__ SATI_TRANSLATOR_SEQUENCE_T ;
-typedef  int /*<<< orphan*/  SATI_STATUS ;
-typedef  TYPE_2__ ATA_NCQ_COMMAND_ERROR_LOG_T ;
+typedef int SCI_IO_STATUS ;
+typedef TYPE_1__ SATI_TRANSLATOR_SEQUENCE_T ;
+typedef int SATI_STATUS ;
+typedef TYPE_2__ ATA_NCQ_COMMAND_ERROR_LOG_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SATI_COMPLETE ; 
- scalar_t__ SATI_SEQUENCE_STATE_FINAL ; 
- scalar_t__ SATI_SEQUENCE_STATE_READ_ERROR ; 
- scalar_t__ SATI_SEQUENCE_STATE_TRANSLATE_DATA ; 
- int /*<<< orphan*/  SCI_IO_FAILURE_RESPONSE_VALID ; 
- int /*<<< orphan*/  SCI_IO_FAILURE_TERMINATED ; 
- int /*<<< orphan*/  SCSI_ASCQ_UNRECOVERED_READ_ERROR ; 
- int /*<<< orphan*/  SCSI_ASC_UNRECOVERED_READ_ERROR ; 
- int /*<<< orphan*/  SCSI_SENSE_MEDIUM_ERROR ; 
- int /*<<< orphan*/  SCSI_STATUS_CHECK_CONDITION ; 
- int /*<<< orphan*/  sati_cb_device_get_request_by_ncq_tag (void*,int,void*) ; 
- int /*<<< orphan*/  sati_cb_io_request_complete (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sati_scsi_read_ncq_error_sense_construct (TYPE_1__*,void*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sati_translate_error (TYPE_1__*,void*,int /*<<< orphan*/ ) ; 
+
+ int SATI_COMPLETE ;
+ scalar_t__ SATI_SEQUENCE_STATE_FINAL ;
+ scalar_t__ SATI_SEQUENCE_STATE_READ_ERROR ;
+ scalar_t__ SATI_SEQUENCE_STATE_TRANSLATE_DATA ;
+ int SCI_IO_FAILURE_RESPONSE_VALID ;
+ int SCI_IO_FAILURE_TERMINATED ;
+ int SCSI_ASCQ_UNRECOVERED_READ_ERROR ;
+ int SCSI_ASC_UNRECOVERED_READ_ERROR ;
+ int SCSI_SENSE_MEDIUM_ERROR ;
+ int SCSI_STATUS_CHECK_CONDITION ;
+ int sati_cb_device_get_request_by_ncq_tag (void*,int,void*) ;
+ int sati_cb_io_request_complete (void*,int ) ;
+ int sati_scsi_read_ncq_error_sense_construct (TYPE_1__*,void*,void*,int ,int ,int ,int ) ;
+ int sati_translate_error (TYPE_1__*,void*,int ) ;
 
 SATI_STATUS sati_abort_task_set_translate_data(
    SATI_TRANSLATOR_SEQUENCE_T * sequence,
-   void                       * ata_input_data,
-   void                       * scsi_task
+   void * ata_input_data,
+   void * scsi_task
 )
 {
    ATA_NCQ_COMMAND_ERROR_LOG_T * log =
@@ -50,7 +50,7 @@ SATI_STATUS sati_abort_task_set_translate_data(
 
    for (tag_index = 0; tag_index < 32; tag_index++)
    {
-      void *        matching_command;
+      void * matching_command;
       SCI_IO_STATUS completion_status;
       sati_cb_device_get_request_by_ncq_tag(
          scsi_task,
@@ -58,12 +58,12 @@ SATI_STATUS sati_abort_task_set_translate_data(
          matching_command
       );
 
-      if (matching_command != NULL)
+      if (matching_command != ((void*)0))
       {
          if (
               (log->ncq_tag == tag_index) &&
-              (log->nq == 0) // nq==1 means a non-queued command
-                             //  caused this failure
+              (log->nq == 0)
+
             )
          {
             sati_translate_error(sequence, matching_command, log->error);
@@ -71,7 +71,7 @@ SATI_STATUS sati_abort_task_set_translate_data(
 
             if(sequence->state == SATI_SEQUENCE_STATE_READ_ERROR)
             {
-               //Uncorrectable read error, return additional sense data
+
                sati_scsi_read_ncq_error_sense_construct(
                   sequence,
                   matching_command,

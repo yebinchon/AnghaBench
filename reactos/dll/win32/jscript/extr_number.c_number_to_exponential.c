@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  char WCHAR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int NUMBER_DTOA_SIZE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * jsstr_alloc_buf (int,char**) ; 
- int /*<<< orphan*/  number_to_str (double,char*,int,int*) ; 
+
+
+
+typedef int jsstr_t ;
+typedef char WCHAR ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int NUMBER_DTOA_SIZE ;
+ scalar_t__ TRUE ;
+ int * jsstr_alloc_buf (int,char**) ;
+ int number_to_str (double,char*,int,int*) ;
 
 __attribute__((used)) static inline jsstr_t *number_to_exponential(double val, int prec)
 {
@@ -50,17 +50,17 @@ __attribute__((used)) static inline jsstr_t *number_to_exponential(double val, i
     }
 
     if(buf_size == 1)
-        size = buf_size+2+exp_size; /* 2 = strlen(e+) */
+        size = buf_size+2+exp_size;
     else if(prec == -1)
-        size = buf_size+3+exp_size; /* 3 = strlen(.e+) */
+        size = buf_size+3+exp_size;
     else
-        size = prec+4+exp_size; /* 4 = strlen(0.e+) */
+        size = prec+4+exp_size;
     if(neg)
         size++;
 
     ret = jsstr_alloc_buf(size, &str);
     if(!ret)
-        return NULL;
+        return ((void*)0);
 
     size = 0;
     pbuf = buf;

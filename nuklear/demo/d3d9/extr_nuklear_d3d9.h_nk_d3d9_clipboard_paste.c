@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
+
+
+
+
+typedef int wchar_t ;
 struct nk_text_edit {int dummy; } ;
-typedef  int /*<<< orphan*/  nk_handle ;
-typedef  scalar_t__ SIZE_T ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
+typedef int nk_handle ;
+typedef scalar_t__ SIZE_T ;
+typedef int LPCWSTR ;
+typedef int HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_UNICODETEXT ; 
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/  CloseClipboard () ; 
- int /*<<< orphan*/  GetClipboardData (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalLock (int /*<<< orphan*/ ) ; 
- scalar_t__ GlobalSize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsClipboardFormatAvailable (int /*<<< orphan*/ ) ; 
- scalar_t__ OpenClipboard (int /*<<< orphan*/ *) ; 
- int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  nk_textedit_paste (struct nk_text_edit*,char*,int) ; 
+
+ int CF_UNICODETEXT ;
+ int CP_UTF8 ;
+ int CloseClipboard () ;
+ int GetClipboardData (int ) ;
+ int GlobalLock (int ) ;
+ scalar_t__ GlobalSize (int ) ;
+ int GlobalUnlock (int ) ;
+ int IsClipboardFormatAvailable (int ) ;
+ scalar_t__ OpenClipboard (int *) ;
+ int WideCharToMultiByte (int ,int ,int ,int,char*,int,int *,int *) ;
+ int free (char*) ;
+ scalar_t__ malloc (int) ;
+ int nk_textedit_paste (struct nk_text_edit*,char*,int) ;
 
 __attribute__((used)) static void
 nk_d3d9_clipboard_paste(nk_handle usr, struct nk_text_edit *edit)
 {
     (void)usr;
-    if (!IsClipboardFormatAvailable(CF_UNICODETEXT) && OpenClipboard(NULL)) {
+    if (!IsClipboardFormatAvailable(CF_UNICODETEXT) && OpenClipboard(((void*)0))) {
         return;
     }
 
@@ -58,16 +58,16 @@ nk_d3d9_clipboard_paste(nk_handle usr, struct nk_text_edit *edit)
         return;
     }
 
-    int utf8size = WideCharToMultiByte(CP_UTF8, 0, wstr, (int)size / sizeof(wchar_t), NULL, 0, NULL, NULL);
+    int utf8size = WideCharToMultiByte(CP_UTF8, 0, wstr, (int)size / sizeof(wchar_t), ((void*)0), 0, ((void*)0), ((void*)0));
     if (utf8size) {
         char *utf8 = (char *)malloc(utf8size);
         if (utf8) {
-            WideCharToMultiByte(CP_UTF8, 0, wstr, (int)size / sizeof(wchar_t), utf8, utf8size, NULL, NULL);
+            WideCharToMultiByte(CP_UTF8, 0, wstr, (int)size / sizeof(wchar_t), utf8, utf8size, ((void*)0), ((void*)0));
             nk_textedit_paste(edit, utf8, utf8size);
             free(utf8);
         }
     }
 
-    GlobalUnlock(mem); 
+    GlobalUnlock(mem);
     CloseClipboard();
 }

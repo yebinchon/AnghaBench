@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct address_space {int /*<<< orphan*/  private_list; int /*<<< orphan*/  private_lock; struct address_space* assoc_mapping; } ;
 
-/* Variables and functions */
- int fsync_buffers_list (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
+
+
+
+struct address_space {int private_list; int private_lock; struct address_space* assoc_mapping; } ;
+
+
+ int fsync_buffers_list (int *,int *) ;
+ scalar_t__ list_empty (int *) ;
 
 int sync_mapping_buffers(struct address_space *mapping)
 {
-	struct address_space *buffer_mapping = mapping->assoc_mapping;
+ struct address_space *buffer_mapping = mapping->assoc_mapping;
 
-	if (buffer_mapping == NULL || list_empty(&mapping->private_list))
-		return 0;
+ if (buffer_mapping == ((void*)0) || list_empty(&mapping->private_list))
+  return 0;
 
-	return fsync_buffers_list(&buffer_mapping->private_lock,
-					&mapping->private_list);
+ return fsync_buffers_list(&buffer_mapping->private_lock,
+     &mapping->private_list);
 }

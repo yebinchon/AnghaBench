@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_playlist_t ;
-struct vlc_playlist_sort_criterion {int /*<<< orphan*/  order; int /*<<< orphan*/  key; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_PLAYLIST_SORT_ORDER_ASCENDING ; 
- int /*<<< orphan*/  VLC_PLAYLIST_SORT_ORDER_DESCENDING ; 
- int VLC_SUCCESS ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ luaL_optboolean (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  vlc_playlist_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_playlist_Shuffle (int /*<<< orphan*/ *) ; 
- int vlc_playlist_Sort (int /*<<< orphan*/ *,struct vlc_playlist_sort_criterion*,int) ; 
- int /*<<< orphan*/  vlc_playlist_Unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sort_key_from_string (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlclua_get_playlist_internal (int /*<<< orphan*/ *) ; 
- int vlclua_push_ret (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int vlc_playlist_t ;
+struct vlc_playlist_sort_criterion {int order; int key; } ;
+typedef int lua_State ;
+
+
+ int VLC_PLAYLIST_SORT_ORDER_ASCENDING ;
+ int VLC_PLAYLIST_SORT_ORDER_DESCENDING ;
+ int VLC_SUCCESS ;
+ char* luaL_checkstring (int *,int) ;
+ int luaL_error (int *,char*) ;
+ scalar_t__ luaL_optboolean (int *,int,int ) ;
+ int strcmp (char const*,char*) ;
+ int vlc_playlist_Lock (int *) ;
+ int vlc_playlist_Shuffle (int *) ;
+ int vlc_playlist_Sort (int *,struct vlc_playlist_sort_criterion*,int) ;
+ int vlc_playlist_Unlock (int *) ;
+ int vlc_sort_key_from_string (char const*,int *) ;
+ int * vlclua_get_playlist_internal (int *) ;
+ int vlclua_push_ret (int *,int) ;
 
 __attribute__((used)) static int vlclua_playlist_sort( lua_State *L )
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static int vlclua_playlist_sort( lua_State *L )
     int ret;
     if (!strcmp(keyname, "random"))
     {
-        /* sort randomly -> shuffle */
+
         vlc_playlist_Lock(playlist);
         vlc_playlist_Shuffle(playlist);
         vlc_playlist_Unlock(playlist);

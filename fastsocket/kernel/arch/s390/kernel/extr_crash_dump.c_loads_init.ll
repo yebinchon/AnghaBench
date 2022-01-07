@@ -1,0 +1,158 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/arch/s390/kernel/extr_crash_dump.c_loads_init.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/arch/s390/kernel/extr_crash_dump.c_loads_init.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_3__ = type { i64, i64, i32, i32, i32, i32, i32, i32 }
+%struct.mem_chunk = type { i64, i64, i32 }
+
+@MEMORY_CHUNKS = common dso_local global i32 0, align 4
+@CHUNK_READ_WRITE = common dso_local global i64 0, align 8
+@CHUNK_READ_ONLY = common dso_local global i64 0, align 8
+@PT_LOAD = common dso_local global i32 0, align 4
+@PF_R = common dso_local global i32 0, align 4
+@PF_W = common dso_local global i32 0, align 4
+@PF_X = common dso_local global i32 0, align 4
+@PAGE_SIZE = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.TYPE_3__*, i32)* @loads_init to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @loads_init(%struct.TYPE_3__* %0, i32 %1) #0 {
+  %3 = alloca %struct.TYPE_3__*, align 8
+  %4 = alloca i32, align 4
+  %5 = alloca %struct.mem_chunk*, align 8
+  %6 = alloca %struct.mem_chunk*, align 8
+  %7 = alloca i32, align 4
+  store %struct.TYPE_3__* %0, %struct.TYPE_3__** %3, align 8
+  store i32 %1, i32* %4, align 4
+  %8 = call %struct.mem_chunk* (...) @get_memory_layout()
+  store %struct.mem_chunk* %8, %struct.mem_chunk** %5, align 8
+  store i32 0, i32* %7, align 4
+  br label %9
+
+9:                                                ; preds = %84, %2
+  %10 = load i32, i32* %7, align 4
+  %11 = load i32, i32* @MEMORY_CHUNKS, align 4
+  %12 = icmp slt i32 %10, %11
+  br i1 %12, label %13, label %87
+
+13:                                               ; preds = %9
+  %14 = load %struct.mem_chunk*, %struct.mem_chunk** %5, align 8
+  %15 = load i32, i32* %7, align 4
+  %16 = sext i32 %15 to i64
+  %17 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %14, i64 %16
+  store %struct.mem_chunk* %17, %struct.mem_chunk** %6, align 8
+  %18 = load %struct.mem_chunk*, %struct.mem_chunk** %6, align 8
+  %19 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %18, i32 0, i32 0
+  %20 = load i64, i64* %19, align 8
+  %21 = icmp eq i64 %20, 0
+  br i1 %21, label %22, label %23
+
+22:                                               ; preds = %13
+  br label %87
+
+23:                                               ; preds = %13
+  %24 = load %struct.mem_chunk*, %struct.mem_chunk** %5, align 8
+  %25 = load i32, i32* %7, align 4
+  %26 = sext i32 %25 to i64
+  %27 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %24, i64 %26
+  %28 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %27, i32 0, i32 1
+  %29 = load i64, i64* %28, align 8
+  %30 = load i64, i64* @CHUNK_READ_WRITE, align 8
+  %31 = icmp ne i64 %29, %30
+  br i1 %31, label %32, label %42
+
+32:                                               ; preds = %23
+  %33 = load %struct.mem_chunk*, %struct.mem_chunk** %5, align 8
+  %34 = load i32, i32* %7, align 4
+  %35 = sext i32 %34 to i64
+  %36 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %33, i64 %35
+  %37 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %36, i32 0, i32 1
+  %38 = load i64, i64* %37, align 8
+  %39 = load i64, i64* @CHUNK_READ_ONLY, align 8
+  %40 = icmp ne i64 %38, %39
+  br i1 %40, label %41, label %42
+
+41:                                               ; preds = %32
+  br label %84
+
+42:                                               ; preds = %32, %23
+  %43 = load %struct.mem_chunk*, %struct.mem_chunk** %6, align 8
+  %44 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %43, i32 0, i32 0
+  %45 = load i64, i64* %44, align 8
+  %46 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %47 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %46, i32 0, i32 0
+  store i64 %45, i64* %47, align 8
+  br label %48
+
+48:                                               ; preds = %42
+  %49 = load i32, i32* @PT_LOAD, align 4
+  %50 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %51 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %50, i32 0, i32 7
+  store i32 %49, i32* %51, align 4
+  %52 = load %struct.mem_chunk*, %struct.mem_chunk** %6, align 8
+  %53 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %52, i32 0, i32 2
+  %54 = load i32, i32* %53, align 8
+  %55 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %56 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %55, i32 0, i32 6
+  store i32 %54, i32* %56, align 8
+  %57 = load %struct.mem_chunk*, %struct.mem_chunk** %6, align 8
+  %58 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %57, i32 0, i32 2
+  %59 = load i32, i32* %58, align 8
+  %60 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %61 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %60, i32 0, i32 5
+  store i32 %59, i32* %61, align 4
+  %62 = load %struct.mem_chunk*, %struct.mem_chunk** %6, align 8
+  %63 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %62, i32 0, i32 2
+  %64 = load i32, i32* %63, align 8
+  %65 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %66 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %65, i32 0, i32 4
+  store i32 %64, i32* %66, align 8
+  %67 = load %struct.mem_chunk*, %struct.mem_chunk** %6, align 8
+  %68 = getelementptr inbounds %struct.mem_chunk, %struct.mem_chunk* %67, i32 0, i32 0
+  %69 = load i64, i64* %68, align 8
+  %70 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %71 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %70, i32 0, i32 1
+  store i64 %69, i64* %71, align 8
+  %72 = load i32, i32* @PF_R, align 4
+  %73 = load i32, i32* @PF_W, align 4
+  %74 = or i32 %72, %73
+  %75 = load i32, i32* @PF_X, align 4
+  %76 = or i32 %74, %75
+  %77 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %78 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %77, i32 0, i32 2
+  store i32 %76, i32* %78, align 8
+  %79 = load i32, i32* @PAGE_SIZE, align 4
+  %80 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %81 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %80, i32 0, i32 3
+  store i32 %79, i32* %81, align 4
+  %82 = load %struct.TYPE_3__*, %struct.TYPE_3__** %3, align 8
+  %83 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %82, i32 1
+  store %struct.TYPE_3__* %83, %struct.TYPE_3__** %3, align 8
+  br label %84
+
+84:                                               ; preds = %48, %41
+  %85 = load i32, i32* %7, align 4
+  %86 = add nsw i32 %85, 1
+  store i32 %86, i32* %7, align 4
+  br label %9
+
+87:                                               ; preds = %22, %9
+  %88 = load %struct.mem_chunk*, %struct.mem_chunk** %5, align 8
+  %89 = call i32 @kfree(%struct.mem_chunk* %88)
+  %90 = load i32, i32* %7, align 4
+  ret i32 %90
+}
+
+declare dso_local %struct.mem_chunk* @get_memory_layout(...) #1
+
+declare dso_local i32 @kfree(%struct.mem_chunk*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int buf; scalar_t__ ct; } ;
-typedef  TYPE_1__ opj_bio_t ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
+typedef TYPE_1__ opj_bio_t ;
+typedef int OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- int /*<<< orphan*/  opj_bio_bytein (TYPE_1__*) ; 
+
+ int OPJ_FALSE ;
+ int OPJ_TRUE ;
+ int opj_bio_bytein (TYPE_1__*) ;
 
 OPJ_BOOL opj_bio_inalign(opj_bio_t *bio)
 {

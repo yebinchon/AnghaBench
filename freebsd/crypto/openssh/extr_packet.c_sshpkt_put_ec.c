@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ssh {TYPE_1__* state; } ;
-struct TYPE_2__ {int /*<<< orphan*/  outgoing_packet; } ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
+struct TYPE_2__ {int outgoing_packet; } ;
+typedef int EC_POINT ;
+typedef int EC_GROUP ;
 
-/* Variables and functions */
- int sshbuf_put_ec (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+ int sshbuf_put_ec (int ,int const*,int const*) ;
 
 int
 sshpkt_put_ec(struct ssh *ssh, const EC_POINT *v, const EC_GROUP *g)
 {
-	return sshbuf_put_ec(ssh->state->outgoing_packet, v, g);
+ return sshbuf_put_ec(ssh->state->outgoing_packet, v, g);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ptunit_result {int dummy; } ;
-struct image_fixture {int /*<<< orphan*/  image; } ;
+struct image_fixture {int image; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pt_image_fini (int /*<<< orphan*/ *) ; 
- struct ptunit_result ptu_passed () ; 
+
+ int pt_image_fini (int *) ;
+ struct ptunit_result ptu_passed () ;
 
 __attribute__((used)) static struct ptunit_result dfix_fini(struct image_fixture *ifix)
 {
-	pt_image_fini(&ifix->image);
+ pt_image_fini(&ifix->image);
 
-	return ptu_passed();
+ return ptu_passed();
 }

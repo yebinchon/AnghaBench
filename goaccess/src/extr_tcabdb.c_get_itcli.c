@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCLIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * tcbdbget4 (void*,int*,int) ; 
+
+
+
+typedef int TCLIST ;
+
+
+ int * tcbdbget4 (void*,int*,int) ;
 
 __attribute__((used)) static TCLIST *
 get_itcli (void *hash, int key)
 {
-  TCLIST *list = NULL;
+  TCLIST *list = ((void*)0);
 
   if (!hash)
-    return NULL;
+    return ((void*)0);
 
-  /* key found, return current value */
-  if ((list = tcbdbget4 (hash, &key, sizeof (int))) != NULL)
+
+  if ((list = tcbdbget4 (hash, &key, sizeof (int))) != ((void*)0))
     return list;
 
-  return NULL;
+  return ((void*)0);
 }

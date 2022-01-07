@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_6__ {TYPE_1__* priv_data; } ;
 struct TYPE_5__ {int width; int height; int* current; int* previous; } ;
-typedef  TYPE_1__ Hnm4VideoContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_1__ Hnm4VideoContext ;
+typedef int GetByteContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int*,int) ; 
- int bytestream2_peek_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ int bytestream2_init (int *,int*,int) ;
+ int bytestream2_peek_byte (int *) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell (int *) ;
 
 __attribute__((used)) static int decode_interframe_v4(AVCodecContext *avctx, uint8_t *src, uint32_t size)
 {
@@ -83,7 +83,7 @@ __attribute__((used)) static int decode_interframe_v4(AVCodecContext *avctx, uin
             backline = bytestream2_peek_byte(&gb) & 0x40;
             backward = bytestream2_peek_byte(&gb) & 0x80;
             bytestream2_skip(&gb, 1);
-            swap   = bytestream2_peek_byte(&gb) & 0x01;
+            swap = bytestream2_peek_byte(&gb) & 0x01;
             offset = bytestream2_get_le16(&gb);
             offset = (offset >> 1) & 0x7FFF;
             offset = writeoffset + (offset * 2) - 0x8000;
@@ -145,7 +145,7 @@ __attribute__((used)) static int decode_interframe_v4(AVCodecContext *avctx, uin
             }
 
             if (swap) {
-                left         = count;
+                left = count;
                 writeoffset -= count * 2;
                 while (left > 0) {
                     swap = hnm->current[writeoffset];

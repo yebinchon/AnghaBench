@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__* LPCWSTR ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REG_MULTI_SZ ; 
- int /*<<< orphan*/  RegSetValueExW (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ lstrlenW (scalar_t__*) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__* LPCWSTR ;
+typedef int LONG ;
+typedef int HKEY ;
+typedef int BYTE ;
+
+
+ int REG_MULTI_SZ ;
+ int RegSetValueExW (int ,scalar_t__*,int ,int ,int const*,int) ;
+ scalar_t__ lstrlenW (scalar_t__*) ;
 
 LONG msi_reg_set_val_multi_str( HKEY hkey, LPCWSTR name, LPCWSTR value )
 {

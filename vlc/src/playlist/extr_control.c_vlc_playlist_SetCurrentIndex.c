@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  has_next; int /*<<< orphan*/  has_prev; int /*<<< orphan*/  current; } ;
-typedef  TYPE_1__ vlc_playlist_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int has_next; int has_prev; int current; } ;
+typedef TYPE_1__ vlc_playlist_t ;
 struct vlc_playlist_state {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_playlist_ComputeHasNext (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_playlist_ComputeHasPrev (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_playlist_state_NotifyChanges (TYPE_1__*,struct vlc_playlist_state*) ; 
- int /*<<< orphan*/  vlc_playlist_state_Save (TYPE_1__*,struct vlc_playlist_state*) ; 
+
+ int vlc_playlist_ComputeHasNext (TYPE_1__*) ;
+ int vlc_playlist_ComputeHasPrev (TYPE_1__*) ;
+ int vlc_playlist_state_NotifyChanges (TYPE_1__*,struct vlc_playlist_state*) ;
+ int vlc_playlist_state_Save (TYPE_1__*,struct vlc_playlist_state*) ;
 
 __attribute__((used)) static void
 vlc_playlist_SetCurrentIndex(vlc_playlist_t *playlist, ssize_t index)

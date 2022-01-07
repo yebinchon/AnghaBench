@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int CCREG ; 
- int /*<<< orphan*/  FP ; 
- int MMREG ; 
- int /*<<< orphan*/  assem_debug (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dynarec_local ; 
- int /*<<< orphan*/  emit_movimm (int,int) ; 
- int /*<<< orphan*/  master_cc ; 
- scalar_t__ master_reg ; 
- scalar_t__ memory_map ; 
- int /*<<< orphan*/  output_w32 (int) ; 
- int rd_rn_rm (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * regname ; 
- scalar_t__ slave ; 
- int /*<<< orphan*/  slave_cc ; 
- scalar_t__ slave_reg ; 
+
+
+
+typedef int u32 ;
+
+
+ int CCREG ;
+ int FP ;
+ int MMREG ;
+ int assem_debug (char*,int ,int) ;
+ int assert (int) ;
+ int dynarec_local ;
+ int emit_movimm (int,int) ;
+ int master_cc ;
+ scalar_t__ master_reg ;
+ scalar_t__ memory_map ;
+ int output_w32 (int) ;
+ int rd_rn_rm (int,int ,int ) ;
+ int * regname ;
+ scalar_t__ slave ;
+ int slave_cc ;
+ scalar_t__ slave_reg ;
 
 void emit_loadreg(int r, int hr)
 {

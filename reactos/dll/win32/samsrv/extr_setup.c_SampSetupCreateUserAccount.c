@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  char* ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef char* ULONG ;
+typedef int UCHAR ;
 struct TYPE_14__ {int Attributes; void* RelativeId; } ;
 struct TYPE_12__ {scalar_t__ QuadPart; } ;
-struct TYPE_11__ {int /*<<< orphan*/  QuadPart; } ;
+struct TYPE_11__ {int QuadPart; } ;
 struct TYPE_10__ {scalar_t__ QuadPart; } ;
 struct TYPE_9__ {scalar_t__ QuadPart; } ;
 struct TYPE_8__ {scalar_t__ QuadPart; } ;
 struct TYPE_13__ {int Version; char* UserId; char* UserAccountControl; scalar_t__ OperatorCount; scalar_t__ AdminCount; scalar_t__ LogonCount; scalar_t__ BadPasswordCount; scalar_t__ CodePage; scalar_t__ CountryCode; void* PrimaryGroupId; TYPE_5__ LastBadPasswordTime; TYPE_4__ AccountExpires; TYPE_3__ PasswordLastSet; TYPE_2__ LastLogoff; TYPE_1__ LastLogon; scalar_t__ Reserved; } ;
-typedef  TYPE_6__ SAM_USER_FIXED_DATA ;
-typedef  int* PUSHORT ;
-typedef  int /*<<< orphan*/ * PSID ;
-typedef  int /*<<< orphan*/ * PSECURITY_DESCRIPTOR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  LogonHours ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  TYPE_7__ GROUP_MEMBERSHIP ;
-typedef  int /*<<< orphan*/  ENCRYPTED_NT_OWF_PASSWORD ;
-typedef  int /*<<< orphan*/  ENCRYPTED_LM_OWF_PASSWORD ;
+typedef TYPE_6__ SAM_USER_FIXED_DATA ;
+typedef int* PUSHORT ;
+typedef int * PSID ;
+typedef int * PSECURITY_DESCRIPTOR ;
+typedef int NTSTATUS ;
+typedef int LogonHours ;
+typedef char* LPWSTR ;
+typedef int * LPVOID ;
+typedef char* LPCWSTR ;
+typedef int * HANDLE ;
+typedef TYPE_7__ GROUP_MEMBERSHIP ;
+typedef int ENCRYPTED_NT_OWF_PASSWORD ;
+typedef int ENCRYPTED_LM_OWF_PASSWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * AppendRidToSid (int /*<<< orphan*/ *,char*) ; 
- void* DOMAIN_GROUP_RID_USERS ; 
- int /*<<< orphan*/  EmptyLmHash ; 
- int /*<<< orphan*/  EmptyNtHash ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  MAXLONGLONG ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_BINARY ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int SE_GROUP_ENABLED ; 
- int SE_GROUP_ENABLED_BY_DEFAULT ; 
- int SE_GROUP_MANDATORY ; 
- int /*<<< orphan*/  SampCreateUserSD (int /*<<< orphan*/ *,int /*<<< orphan*/ **,char**) ; 
- int /*<<< orphan*/  SampRegCloseKey (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SampRegCreateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SampRegDeleteKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SampRegOpenKey (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SampRegSetValue (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  swprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int wcslen (char*) ; 
+
+ int * AppendRidToSid (int *,char*) ;
+ void* DOMAIN_GROUP_RID_USERS ;
+ int EmptyLmHash ;
+ int EmptyNtHash ;
+ int KEY_ALL_ACCESS ;
+ int MAXLONGLONG ;
+ int NT_SUCCESS (int ) ;
+ int REG_BINARY ;
+ int REG_DWORD ;
+ int REG_SZ ;
+ int RtlFreeHeap (int ,int ,int *) ;
+ int RtlGetProcessHeap () ;
+ int SE_GROUP_ENABLED ;
+ int SE_GROUP_ENABLED_BY_DEFAULT ;
+ int SE_GROUP_MANDATORY ;
+ int SampCreateUserSD (int *,int **,char**) ;
+ int SampRegCloseKey (int **) ;
+ int SampRegCreateKey (int *,int *,int ,int **) ;
+ int SampRegDeleteKey (int *,int *) ;
+ int SampRegOpenKey (int *,char*,int ,int **) ;
+ int SampRegSetValue (int *,char*,int ,int *,...) ;
+ int memset (int *,int,int) ;
+ int swprintf (int *,char*,char*) ;
+ int wcslen (char*) ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -81,24 +81,24 @@ SampSetupCreateUserAccount(HANDLE hDomainKey,
     UCHAR LogonHours[23];
     LPWSTR lpEmptyString = L"";
     WCHAR szAccountKeyName[32];
-    HANDLE hAccountKey = NULL;
-    HANDLE hNamesKey = NULL;
-    PSECURITY_DESCRIPTOR Sd = NULL;
+    HANDLE hAccountKey = ((void*)0);
+    HANDLE hNamesKey = ((void*)0);
+    PSECURITY_DESCRIPTOR Sd = ((void*)0);
     ULONG SdSize = 0;
-    PSID UserSid = NULL;
+    PSID UserSid = ((void*)0);
     NTSTATUS Status;
 
     UserSid = AppendRidToSid(lpDomainSid,
                              ulRelativeId);
 
-    /* Create the security descriptor */
+
     Status = SampCreateUserSD(UserSid,
                               &Sd,
                               &SdSize);
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Initialize fixed user data */
+
     FixedUserData.Version = 1;
     FixedUserData.Reserved = 0;
     FixedUserData.LastLogon.QuadPart = 0;
@@ -213,7 +213,7 @@ SampSetupCreateUserAccount(HANDLE hDomainKey,
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set LogonHours attribute*/
+
     *((PUSHORT)LogonHours) = 168;
     memset(&(LogonHours[2]), 0xff, 21);
 
@@ -225,7 +225,7 @@ SampSetupCreateUserAccount(HANDLE hDomainKey,
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set Groups attribute*/
+
     GroupMembership.RelativeId = DOMAIN_GROUP_RID_USERS;
     GroupMembership.Attributes = SE_GROUP_MANDATORY |
                                  SE_GROUP_ENABLED |
@@ -239,7 +239,7 @@ SampSetupCreateUserAccount(HANDLE hDomainKey,
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set LMPwd attribute*/
+
     Status = SampRegSetValue(hAccountKey,
                              L"LMPwd",
                              REG_BINARY,
@@ -248,7 +248,7 @@ SampSetupCreateUserAccount(HANDLE hDomainKey,
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set NTPwd attribute*/
+
     Status = SampRegSetValue(hAccountKey,
                              L"NTPwd",
                              REG_BINARY,
@@ -257,25 +257,25 @@ SampSetupCreateUserAccount(HANDLE hDomainKey,
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set LMPwdHistory attribute*/
+
     Status = SampRegSetValue(hAccountKey,
                              L"LMPwdHistory",
                              REG_BINARY,
-                             NULL,
+                             ((void*)0),
                              0);
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set NTPwdHistory attribute*/
+
     Status = SampRegSetValue(hAccountKey,
                              L"NTPwdHistory",
                              REG_BINARY,
-                             NULL,
+                             ((void*)0),
                              0);
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set PrivateData attribute*/
+
     Status = SampRegSetValue(hAccountKey,
                              L"PrivateData",
                              REG_SZ,
@@ -284,7 +284,7 @@ SampSetupCreateUserAccount(HANDLE hDomainKey,
     if (!NT_SUCCESS(Status))
         goto done;
 
-    /* Set the SecDesc attribute*/
+
     Status = SampRegSetValue(hAccountKey,
                              L"SecDesc",
                              REG_BINARY,
@@ -309,13 +309,13 @@ SampSetupCreateUserAccount(HANDLE hDomainKey,
 done:
     SampRegCloseKey(&hNamesKey);
 
-    if (Sd != NULL)
+    if (Sd != ((void*)0))
         RtlFreeHeap(RtlGetProcessHeap(), 0, Sd);
 
-    if (UserSid != NULL)
+    if (UserSid != ((void*)0))
         RtlFreeHeap(RtlGetProcessHeap(), 0, UserSid);
 
-    if (hAccountKey != NULL)
+    if (hAccountKey != ((void*)0))
     {
         SampRegCloseKey(&hAccountKey);
 

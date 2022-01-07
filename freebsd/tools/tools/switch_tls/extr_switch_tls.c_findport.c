@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strrchr (char const*,char) ; 
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static char *
 findport(const char *arg)
 {
-	char *dot, *colon;
+ char *dot, *colon;
 
-	/* A strrspn() or strrpbrk() would be nice. */
-	dot = strrchr(arg, '.');
-	colon = strrchr(arg, ':');
-	if (dot == NULL)
-		return (colon);
-	if (colon == NULL)
-		return (dot);
-	if (dot < colon)
-		return (colon);
-	else
-		return (dot);
+
+ dot = strrchr(arg, '.');
+ colon = strrchr(arg, ':');
+ if (dot == ((void*)0))
+  return (colon);
+ if (colon == ((void*)0))
+  return (dot);
+ if (dot < colon)
+  return (colon);
+ else
+  return (dot);
 }

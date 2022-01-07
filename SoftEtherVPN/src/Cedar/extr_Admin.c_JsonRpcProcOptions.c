@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int JsonRpcAuthed; int /*<<< orphan*/  Listener; } ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  HTTP_HEADER ;
-typedef  TYPE_1__ CONNECTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdminWebSendBody (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RemoveDosEntry (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int JsonRpcAuthed; int Listener; } ;
+typedef int SOCK ;
+typedef int HTTP_HEADER ;
+typedef TYPE_1__ CONNECTION ;
+
+
+ int AdminWebSendBody (int *,int,char*,int *,int ,int *,int *,int *,int *) ;
+ int RemoveDosEntry (int ,int *) ;
 
 void JsonRpcProcOptions(CONNECTION *c, SOCK *s, HTTP_HEADER *h, char *url_target)
 {
-	if (c == NULL || s == NULL || h == NULL || url_target == NULL)
-	{
-		return;
-	}
+ if (c == ((void*)0) || s == ((void*)0) || h == ((void*)0) || url_target == ((void*)0))
+ {
+  return;
+ }
 
-	c->JsonRpcAuthed = true;
+ c->JsonRpcAuthed = 1;
 
-#ifndef	GC_SOFTETHER_OSS
-	RemoveDosEntry(c->Listener, s);
-#endif	// GC_SOFTETHER_OSS
 
-	AdminWebSendBody(s, 200, "OK", NULL, 0, NULL, NULL, NULL, h);
+ RemoveDosEntry(c->Listener, s);
+
+
+ AdminWebSendBody(s, 200, "OK", ((void*)0), 0, ((void*)0), ((void*)0), ((void*)0), h);
 }

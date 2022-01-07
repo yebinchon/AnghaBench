@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int member_0; int member_2; int member_4; int member_5; int member_6; int member_7; int member_8; int member_9; int member_10; int member_11; int member_17; int /*<<< orphan*/  member_16; int /*<<< orphan*/  member_15; int /*<<< orphan*/  member_14; int /*<<< orphan*/  member_13; int /*<<< orphan*/  member_12; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_1; } ;
-struct TYPE_9__ {int member_1; int member_3; int member_5; int member_10; int /*<<< orphan*/  member_11; int /*<<< orphan*/  member_9; int /*<<< orphan*/  member_8; int /*<<< orphan*/  member_7; int /*<<< orphan*/  member_6; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_0; } ;
-struct TYPE_8__ {int member_1; int member_4; int member_6; int member_7; int /*<<< orphan*/  member_10; int /*<<< orphan*/  member_9; int /*<<< orphan*/  member_8; int /*<<< orphan*/  member_5; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_0; } ;
-struct TYPE_7__ {int member_1; int member_2; int member_3; int member_5; int member_6; int member_7; int /*<<< orphan*/  member_10; int /*<<< orphan*/  member_9; int /*<<< orphan*/  member_8; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_0; } ;
-struct TYPE_6__ {int member_4; int member_5; int member_6; int member_8; int member_9; int member_10; int /*<<< orphan*/  member_13; int /*<<< orphan*/  member_12; int /*<<< orphan*/  member_11; int /*<<< orphan*/  member_7; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int member_0; int member_2; int member_4; int member_5; int member_6; int member_7; int member_8; int member_9; int member_10; int member_11; int member_17; int member_16; int member_15; int member_14; int member_13; int member_12; int member_3; int member_1; } ;
+struct TYPE_9__ {int member_1; int member_3; int member_5; int member_10; int member_11; int member_9; int member_8; int member_7; int member_6; int member_4; int member_2; int member_0; } ;
+struct TYPE_8__ {int member_1; int member_4; int member_6; int member_7; int member_10; int member_9; int member_8; int member_5; int member_3; int member_2; int member_0; } ;
+struct TYPE_7__ {int member_1; int member_2; int member_3; int member_5; int member_6; int member_7; int member_10; int member_9; int member_8; int member_4; int member_0; } ;
+struct TYPE_6__ {int member_4; int member_5; int member_6; int member_8; int member_9; int member_10; int member_13; int member_12; int member_11; int member_7; int member_3; int member_2; int member_1; int member_0; } ;
 struct SoundReg {TYPE_5__ member_4; TYPE_4__ member_3; TYPE_3__ member_2; TYPE_2__ member_1; TYPE_1__ member_0; } ;
-typedef  void* UBYTE ;
+typedef void* UBYTE ;
 
-/* Variables and functions */
- void* NR10_REG ; 
- void* NR11_REG ; 
- void* NR12_REG ; 
- void* NR13_REG ; 
- void* NR14_REG ; 
- void* NR21_REG ; 
- void* NR22_REG ; 
- void* NR23_REG ; 
- void* NR24_REG ; 
- void* NR30_REG ; 
- void* NR31_REG ; 
- void* NR32_REG ; 
- void* NR33_REG ; 
- void* NR34_REG ; 
- void* NR41_REG ; 
- void* NR42_REG ; 
- void* NR43_REG ; 
- void* NR44_REG ; 
- void* NR50_REG ; 
- void* NR51_REG ; 
- int NR52_REG ; 
- int /*<<< orphan*/  cls () ; 
- struct SoundReg* soundReg ; 
- int /*<<< orphan*/  wait_event (int) ; 
+
+ void* NR10_REG ;
+ void* NR11_REG ;
+ void* NR12_REG ;
+ void* NR13_REG ;
+ void* NR14_REG ;
+ void* NR21_REG ;
+ void* NR22_REG ;
+ void* NR23_REG ;
+ void* NR24_REG ;
+ void* NR30_REG ;
+ void* NR31_REG ;
+ void* NR32_REG ;
+ void* NR33_REG ;
+ void* NR34_REG ;
+ void* NR41_REG ;
+ void* NR42_REG ;
+ void* NR43_REG ;
+ void* NR44_REG ;
+ void* NR50_REG ;
+ void* NR51_REG ;
+ int NR52_REG ;
+ int cls () ;
+ struct SoundReg* soundReg ;
+ int wait_event (int) ;
 
 void main()
 {
@@ -77,10 +77,10 @@ void main()
       0, 0, 0, 0, 0, 1 }
   };
 
-  /*
-   * Before modifying any sound register, sound must be turned on!
-   * (it is turned off by default to save batteries)
-   */
+
+
+
+
   NR52_REG = 0x80;
 
   soundReg = &s;

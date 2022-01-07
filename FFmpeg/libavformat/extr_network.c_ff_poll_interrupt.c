@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pollfd {int dummy; } ;
-typedef  int /*<<< orphan*/  nfds_t ;
-typedef  int /*<<< orphan*/  AVIOInterruptCB ;
+typedef int nfds_t ;
+typedef int AVIOInterruptCB ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXIT ; 
- int /*<<< orphan*/  EINTR ; 
- int /*<<< orphan*/  ETIMEDOUT ; 
- int POLLING_TIME ; 
- scalar_t__ ff_check_interrupt (int /*<<< orphan*/ *) ; 
- int ff_neterrno () ; 
- int poll (struct pollfd*,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EXIT ;
+ int EINTR ;
+ int ETIMEDOUT ;
+ int POLLING_TIME ;
+ scalar_t__ ff_check_interrupt (int *) ;
+ int ff_neterrno () ;
+ int poll (struct pollfd*,int ,int) ;
 
 __attribute__((used)) static int ff_poll_interrupt(struct pollfd *p, nfds_t nfds, int timeout,
                              AVIOInterruptCB *cb)

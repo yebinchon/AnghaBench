@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct attr {int /*<<< orphan*/  val; struct attr* next; struct attr* first; } ;
-typedef  struct attr uiprivAttrList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  uiprivAttributeRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiprivFree (struct attr*) ; 
+
+
+
+struct attr {int val; struct attr* next; struct attr* first; } ;
+typedef struct attr uiprivAttrList ;
+
+
+ int uiprivAttributeRelease (int ) ;
+ int uiprivFree (struct attr*) ;
 
 void uiprivFreeAttrList(uiprivAttrList *alist)
 {
-	struct attr *a, *next;
+ struct attr *a, *next;
 
-	a = alist->first;
-	while (a != NULL) {
-		next = a->next;
-		uiprivAttributeRelease(a->val);
-		uiprivFree(a);
-		a = next;
-	}
-	uiprivFree(alist);
+ a = alist->first;
+ while (a != ((void*)0)) {
+  next = a->next;
+  uiprivAttributeRelease(a->val);
+  uiprivFree(a);
+  a = next;
+ }
+ uiprivFree(alist);
 }

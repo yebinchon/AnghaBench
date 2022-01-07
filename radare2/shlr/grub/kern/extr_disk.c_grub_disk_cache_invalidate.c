@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct grub_disk_cache {unsigned long dev_id; unsigned long disk_id; int sector; int lock; scalar_t__ data; } ;
-typedef  int grub_disk_addr_t ;
+typedef int grub_disk_addr_t ;
 
-/* Variables and functions */
- int GRUB_DISK_CACHE_SIZE ; 
- unsigned int grub_disk_cache_get_index (unsigned long,unsigned long,int) ; 
- struct grub_disk_cache* grub_disk_cache_table ; 
- int /*<<< orphan*/  grub_free (scalar_t__) ; 
+
+ int GRUB_DISK_CACHE_SIZE ;
+ unsigned int grub_disk_cache_get_index (unsigned long,unsigned long,int) ;
+ struct grub_disk_cache* grub_disk_cache_table ;
+ int grub_free (scalar_t__) ;
 
 __attribute__((used)) static void
 grub_disk_cache_invalidate (unsigned long dev_id, unsigned long disk_id,
-			    grub_disk_addr_t sector)
+       grub_disk_addr_t sector)
 {
   unsigned index;
   struct grub_disk_cache *cache;

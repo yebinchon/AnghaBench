@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int rstate; } ;
 struct TYPE_5__ {TYPE_1__ rlayer; } ;
-typedef  TYPE_2__ SSL ;
+typedef TYPE_2__ SSL ;
 
-/* Variables and functions */
-#define  SSL_ST_READ_BODY 130 
-#define  SSL_ST_READ_DONE 129 
-#define  SSL_ST_READ_HEADER 128 
+
+
+
+
 
 const char *SSL_rstate_string_long(const SSL *s)
 {
     switch (s->rlayer.rstate) {
-    case SSL_ST_READ_HEADER:
+    case 128:
         return "read header";
-    case SSL_ST_READ_BODY:
+    case 130:
         return "read body";
-    case SSL_ST_READ_DONE:
+    case 129:
         return "read done";
     default:
         return "unknown";

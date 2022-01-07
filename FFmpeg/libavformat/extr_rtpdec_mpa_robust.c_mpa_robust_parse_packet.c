@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_12__ {int /*<<< orphan*/ * data; int /*<<< orphan*/  stream_index; } ;
-struct TYPE_11__ {int /*<<< orphan*/  index; } ;
-struct TYPE_10__ {size_t split_pos; int split_buf_size; unsigned int adu_size; int cur_size; scalar_t__ timestamp; int /*<<< orphan*/  fragment; int /*<<< orphan*/ * split_buf; } ;
-typedef  TYPE_1__ PayloadContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * av_malloc (int) ; 
- scalar_t__ av_new_packet (TYPE_3__*,unsigned int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_3__*) ; 
- int avio_open_dyn_buf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- int ff_rtp_finalize_packet (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ffio_free_dyn_buf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned int) ; 
- int mpa_robust_parse_rtp_header (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,unsigned int*,unsigned int*) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+struct TYPE_12__ {int * data; int stream_index; } ;
+struct TYPE_11__ {int index; } ;
+struct TYPE_10__ {size_t split_pos; int split_buf_size; unsigned int adu_size; int cur_size; scalar_t__ timestamp; int fragment; int * split_buf; } ;
+typedef TYPE_1__ PayloadContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVPacket ;
+typedef int AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int EAGAIN ;
+ int ENOMEM ;
+ int av_freep (int **) ;
+ int av_log (int *,int ,char*) ;
+ int * av_malloc (int) ;
+ scalar_t__ av_new_packet (TYPE_3__*,unsigned int) ;
+ int av_packet_unref (TYPE_3__*) ;
+ int avio_open_dyn_buf (int *) ;
+ int avio_write (int ,int const*,int) ;
+ int ff_rtp_finalize_packet (TYPE_3__*,int *,int ) ;
+ int ffio_free_dyn_buf (int *) ;
+ int memcpy (int *,int const*,unsigned int) ;
+ int mpa_robust_parse_rtp_header (int *,int const*,int,unsigned int*,unsigned int*) ;
 
 __attribute__((used)) static int mpa_robust_parse_packet(AVFormatContext *ctx, PayloadContext *data,
                                    AVStream *st, AVPacket *pkt,
@@ -98,7 +98,7 @@ __attribute__((used)) static int mpa_robust_parse_packet(AVFormatContext *ctx, P
     len -= header_size;
 
     if (!continuation && adu_size <= len) {
-        /* One or more complete frames */
+
 
         if (av_new_packet(pkt, adu_size)) {
             av_log(ctx, AV_LOG_ERROR, "Out of memory.\n");
@@ -123,8 +123,8 @@ __attribute__((used)) static int mpa_robust_parse_packet(AVFormatContext *ctx, P
             return 1;
         }
         return 0;
-    } else if (!continuation) { /* && adu_size > len */
-        /* First fragment */
+    } else if (!continuation) {
+
         ffio_free_dyn_buf(&data->fragment);
 
         data->adu_size = adu_size;
@@ -138,9 +138,9 @@ __attribute__((used)) static int mpa_robust_parse_packet(AVFormatContext *ctx, P
         avio_write(data->fragment, buf, len);
         return AVERROR(EAGAIN);
     }
-    /* else continuation == 1 */
 
-    /* Fragment other than first */
+
+
     if (!data->fragment) {
         av_log(ctx, AV_LOG_WARNING,
             "Received packet without a start fragment; dropping.\n");

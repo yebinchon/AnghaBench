@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int* ptr; int* end; scalar_t__ nl; int /*<<< orphan*/  is_html; scalar_t__ implicit_nl_semicolon; } ;
-typedef  TYPE_1__ parser_ctx_t ;
-typedef  int /*<<< orphan*/  literal_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int EXPR_ASSIGNADD ; 
- int EXPR_ASSIGNAND ; 
- int EXPR_ASSIGNDIV ; 
- int EXPR_ASSIGNLSHIFT ; 
- int EXPR_ASSIGNMOD ; 
- int EXPR_ASSIGNMUL ; 
- int EXPR_ASSIGNOR ; 
- int EXPR_ASSIGNRRSHIFT ; 
- int EXPR_ASSIGNRSHIFT ; 
- int EXPR_ASSIGNSUB ; 
- int EXPR_ASSIGNXOR ; 
- int EXPR_EQ ; 
- int EXPR_EQEQ ; 
- int EXPR_GREATER ; 
- int EXPR_GREATEREQ ; 
- int EXPR_LESS ; 
- int EXPR_LESSEQ ; 
- int EXPR_LSHIFT ; 
- int EXPR_NOTEQ ; 
- int EXPR_NOTEQEQ ; 
- int EXPR_RRSHIFT ; 
- int EXPR_RSHIFT ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  WARN (char*,char,char) ; 
- int check_keywords (TYPE_1__*,void*) ; 
- scalar_t__ iswalpha (int) ; 
- scalar_t__ iswdigit (int) ; 
- int kDCOL ; 
- int kDIVEQ ; 
- int /*<<< orphan*/  lex_error (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * new_double_literal (TYPE_1__*,double) ; 
- int /*<<< orphan*/  parse_decimal (int**,int*,double*) ; 
- int parse_identifier (TYPE_1__*,void*) ; 
- int /*<<< orphan*/  parse_numeric_literal (TYPE_1__*,double*) ; 
- int parse_string_literal (TYPE_1__*,void*,char) ; 
- scalar_t__ skip_comment (TYPE_1__*) ; 
- scalar_t__ skip_html_comment (TYPE_1__*) ; 
- int /*<<< orphan*/  skip_spaces (TYPE_1__*) ; 
- int tANDAND ; 
- int tAssignOper ; 
- int tDEC ; 
- int tEOF ; 
- int tEqOper ; 
- int tHTMLCOMMENT ; 
- int tINC ; 
- int tNumericLiteral ; 
- int tOROR ; 
- int tRelOper ; 
- int tShiftOper ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int* ptr; int* end; scalar_t__ nl; int is_html; scalar_t__ implicit_nl_semicolon; } ;
+typedef TYPE_1__ parser_ctx_t ;
+typedef int literal_t ;
+typedef int WCHAR ;
+typedef int HRESULT ;
+
+
+ int EXPR_ASSIGNADD ;
+ int EXPR_ASSIGNAND ;
+ int EXPR_ASSIGNDIV ;
+ int EXPR_ASSIGNLSHIFT ;
+ int EXPR_ASSIGNMOD ;
+ int EXPR_ASSIGNMUL ;
+ int EXPR_ASSIGNOR ;
+ int EXPR_ASSIGNRRSHIFT ;
+ int EXPR_ASSIGNRSHIFT ;
+ int EXPR_ASSIGNSUB ;
+ int EXPR_ASSIGNXOR ;
+ int EXPR_EQ ;
+ int EXPR_EQEQ ;
+ int EXPR_GREATER ;
+ int EXPR_GREATEREQ ;
+ int EXPR_LESS ;
+ int EXPR_LESSEQ ;
+ int EXPR_LSHIFT ;
+ int EXPR_NOTEQ ;
+ int EXPR_NOTEQEQ ;
+ int EXPR_RRSHIFT ;
+ int EXPR_RSHIFT ;
+ int FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int WARN (char*,char,char) ;
+ int check_keywords (TYPE_1__*,void*) ;
+ scalar_t__ iswalpha (int) ;
+ scalar_t__ iswdigit (int) ;
+ int kDCOL ;
+ int kDIVEQ ;
+ int lex_error (TYPE_1__*,int ) ;
+ int * new_double_literal (TYPE_1__*,double) ;
+ int parse_decimal (int**,int*,double*) ;
+ int parse_identifier (TYPE_1__*,void*) ;
+ int parse_numeric_literal (TYPE_1__*,double*) ;
+ int parse_string_literal (TYPE_1__*,void*,char) ;
+ scalar_t__ skip_comment (TYPE_1__*) ;
+ scalar_t__ skip_html_comment (TYPE_1__*) ;
+ int skip_spaces (TYPE_1__*) ;
+ int tANDAND ;
+ int tAssignOper ;
+ int tDEC ;
+ int tEOF ;
+ int tEqOper ;
+ int tHTMLCOMMENT ;
+ int tINC ;
+ int tNumericLiteral ;
+ int tOROR ;
+ int tRelOper ;
+ int tShiftOper ;
 
 __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
 {
@@ -138,43 +138,43 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
         }
 
         switch(*ctx->ptr) {
-        case '=':  /* <= */
+        case '=':
             ctx->ptr++;
             *(int*)lval = EXPR_LESSEQ;
             return tRelOper;
-        case '<':  /* << */
-            if(++ctx->ptr < ctx->end && *ctx->ptr == '=') { /* <<= */
+        case '<':
+            if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
                 ctx->ptr++;
                 *(int*)lval = EXPR_ASSIGNLSHIFT;
                 return tAssignOper;
             }
             *(int*)lval = EXPR_LSHIFT;
             return tShiftOper;
-        default: /* < */
+        default:
             *(int*)lval = EXPR_LESS;
             return tRelOper;
         }
 
     case '>':
-        if(++ctx->ptr == ctx->end) { /* > */
+        if(++ctx->ptr == ctx->end) {
             *(int*)lval = EXPR_GREATER;
             return tRelOper;
         }
 
         switch(*ctx->ptr) {
-        case '=':  /* >= */
+        case '=':
             ctx->ptr++;
             *(int*)lval = EXPR_GREATEREQ;
             return tRelOper;
-        case '>':  /* >> */
+        case '>':
             if(++ctx->ptr < ctx->end) {
-                if(*ctx->ptr == '=') {  /* >>= */
+                if(*ctx->ptr == '=') {
                     ctx->ptr++;
                     *(int*)lval = EXPR_ASSIGNRSHIFT;
                     return tAssignOper;
                 }
-                if(*ctx->ptr == '>') {  /* >>> */
-                    if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {  /* >>>= */
+                if(*ctx->ptr == '>') {
+                    if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
                         ctx->ptr++;
                         *(int*)lval = EXPR_ASSIGNRRSHIFT;
                         return tAssignOper;
@@ -194,10 +194,10 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
         ctx->ptr++;
         if(ctx->ptr < ctx->end) {
             switch(*ctx->ptr) {
-            case '+':  /* ++ */
+            case '+':
                 ctx->ptr++;
                 return tINC;
-            case '=':  /* += */
+            case '=':
                 ctx->ptr++;
                 *(int*)lval = EXPR_ASSIGNADD;
                 return tAssignOper;
@@ -209,14 +209,14 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
         ctx->ptr++;
         if(ctx->ptr < ctx->end) {
             switch(*ctx->ptr) {
-            case '-':  /* -- or --> */
+            case '-':
                 ctx->ptr++;
                 if(ctx->is_html && ctx->nl && ctx->ptr < ctx->end && *ctx->ptr == '>') {
                     ctx->ptr++;
                     return tHTMLCOMMENT;
                 }
                 return tDEC;
-            case '=':  /* -= */
+            case '=':
                 ctx->ptr++;
                 *(int*)lval = EXPR_ASSIGNSUB;
                 return tAssignOper;
@@ -225,7 +225,7 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
         return '-';
 
     case '*':
-        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') { /* *= */
+        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
             ctx->ptr++;
             *(int*)lval = EXPR_ASSIGNMUL;
             return tAssignOper;
@@ -233,7 +233,7 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
         return '*';
 
     case '%':
-        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') { /* %= */
+        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
             ctx->ptr++;
             *(int*)lval = EXPR_ASSIGNMOD;
             return tAssignOper;
@@ -243,11 +243,11 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
     case '&':
         if(++ctx->ptr < ctx->end) {
             switch(*ctx->ptr) {
-            case '=':  /* &= */
+            case '=':
                 ctx->ptr++;
                 *(int*)lval = EXPR_ASSIGNAND;
                 return tAssignOper;
-            case '&':  /* && */
+            case '&':
                 ctx->ptr++;
                 return tANDAND;
             }
@@ -257,11 +257,11 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
     case '|':
         if(++ctx->ptr < ctx->end) {
             switch(*ctx->ptr) {
-            case '=':  /* |= */
+            case '=':
                 ctx->ptr++;
                 *(int*)lval = EXPR_ASSIGNOR;
                 return tAssignOper;
-            case '|':  /* || */
+            case '|':
                 ctx->ptr++;
                 return tOROR;
             }
@@ -269,7 +269,7 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
         return '|';
 
     case '^':
-        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {  /* ^= */
+        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
             ctx->ptr++;
             *(int*)lval = EXPR_ASSIGNXOR;
             return tAssignOper;
@@ -277,8 +277,8 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
         return '^';
 
     case '!':
-        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {  /* != */
-            if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {  /* !== */
+        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
+            if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
                 ctx->ptr++;
                 *(int*)lval = EXPR_NOTEQEQ;
                 return tEqOper;
@@ -289,8 +289,8 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
         return '!';
 
     case '=':
-        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {  /* == */
-            if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {  /* === */
+        if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
+            if(++ctx->ptr < ctx->end && *ctx->ptr == '=') {
                 ctx->ptr++;
                 *(int*)lval = EXPR_EQEQ;
                 return tEqOper;
@@ -302,7 +302,7 @@ __attribute__((used)) static int next_token(parser_ctx_t *ctx, void *lval)
 
     case '/':
         if(++ctx->ptr < ctx->end) {
-            if(*ctx->ptr == '=') {  /* /= */
+            if(*ctx->ptr == '=') {
                 ctx->ptr++;
                 *(int*)lval = EXPR_ASSIGNDIV;
                 return kDIVEQ;

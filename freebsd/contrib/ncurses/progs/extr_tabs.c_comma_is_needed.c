@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FALSE ; 
- size_t strlen (char const*) ; 
+ int FALSE ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static bool
 comma_is_needed(const char *source)
@@ -21,11 +13,11 @@ comma_is_needed(const char *source)
     bool result = FALSE;
 
     if (source != 0) {
-	size_t len = strlen(source);
-	if (len != 0)
-	    result = (source[len - 1] != ',');
+ size_t len = strlen(source);
+ if (len != 0)
+     result = (source[len - 1] != ',');
     } else {
-	result = FALSE;
+ result = FALSE;
     }
     return result;
 }

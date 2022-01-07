@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int iCol; int /*<<< orphan*/  nInst; int /*<<< orphan*/ * pFts; TYPE_1__ const* pApi; } ;
-struct TYPE_7__ {int (* xInstCount ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ Fts5ExtensionApi ;
-typedef  int /*<<< orphan*/  Fts5Context ;
-typedef  TYPE_2__ CInstIter ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int fts5CInstIterNext (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int iCol; int nInst; int * pFts; TYPE_1__ const* pApi; } ;
+struct TYPE_7__ {int (* xInstCount ) (int *,int *) ;} ;
+typedef TYPE_1__ Fts5ExtensionApi ;
+typedef int Fts5Context ;
+typedef TYPE_2__ CInstIter ;
+
+
+ int SQLITE_OK ;
+ int fts5CInstIterNext (TYPE_2__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int stub1 (int *,int *) ;
 
 __attribute__((used)) static int fts5CInstIterInit(
   const Fts5ExtensionApi *pApi,

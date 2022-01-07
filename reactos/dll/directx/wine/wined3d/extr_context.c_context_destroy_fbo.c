@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* glDeleteFramebuffers ) (int,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* glDeleteFramebuffers ) (int,int *) ;} ;
 struct wined3d_gl_info {TYPE_1__ fbo_ops; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+typedef int GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  context_bind_fbo (struct wined3d_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_clean_fbo_attachments (struct wined3d_gl_info const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ *) ; 
+
+ int GL_FRAMEBUFFER ;
+ int checkGLcall (char*) ;
+ int context_bind_fbo (struct wined3d_context*,int ,int ) ;
+ int context_clean_fbo_attachments (struct wined3d_gl_info const*,int ) ;
+ int stub1 (int,int *) ;
 
 __attribute__((used)) static void context_destroy_fbo(struct wined3d_context *context, GLuint fbo)
 {

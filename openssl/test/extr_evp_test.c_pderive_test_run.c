@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* err; TYPE_1__* data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  output_len; int /*<<< orphan*/  output; int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ PKEY_DATA ;
-typedef  TYPE_2__ EVP_TEST ;
+struct TYPE_5__ {int output_len; int output; int ctx; } ;
+typedef TYPE_1__ PKEY_DATA ;
+typedef TYPE_2__ EVP_TEST ;
 
-/* Variables and functions */
- scalar_t__ EVP_PKEY_derive (int /*<<< orphan*/ ,unsigned char*,size_t*) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
- int /*<<< orphan*/  memory_err_compare (TYPE_2__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,size_t) ; 
+
+ scalar_t__ EVP_PKEY_derive (int ,unsigned char*,size_t*) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
+ int TEST_ptr (unsigned char*) ;
+ int memory_err_compare (TYPE_2__*,char*,int ,int ,unsigned char*,size_t) ;
 
 __attribute__((used)) static int pderive_test_run(EVP_TEST *t)
 {
     PKEY_DATA *expected = t->data;
-    unsigned char *got = NULL;
+    unsigned char *got = ((void*)0);
     size_t got_len;
 
-    if (EVP_PKEY_derive(expected->ctx, NULL, &got_len) <= 0) {
+    if (EVP_PKEY_derive(expected->ctx, ((void*)0), &got_len) <= 0) {
         t->err = "DERIVE_ERROR";
         goto err;
     }
@@ -47,7 +47,7 @@ __attribute__((used)) static int pderive_test_run(EVP_TEST *t)
                             got, got_len))
         goto err;
 
-    t->err = NULL;
+    t->err = ((void*)0);
  err:
     OPENSSL_free(got);
     return 1;

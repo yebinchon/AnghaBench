@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  tuple; } ;
-typedef  TYPE_1__ TupleInfo ;
-typedef  int /*<<< orphan*/  Tablespaces ;
-struct TYPE_6__ {int /*<<< orphan*/  tablespace_name; } ;
-typedef  int /*<<< orphan*/  ScanTupleResult ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_2__ FormData_tablespace ;
 
-/* Variables and functions */
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NameStr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCAN_CONTINUE ; 
- int /*<<< orphan*/  get_tablespace_oid (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ts_tablespaces_add (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int tuple; } ;
+typedef TYPE_1__ TupleInfo ;
+typedef int Tablespaces ;
+struct TYPE_6__ {int tablespace_name; } ;
+typedef int ScanTupleResult ;
+typedef int Oid ;
+typedef TYPE_2__ FormData_tablespace ;
+
+
+ scalar_t__ GETSTRUCT (int ) ;
+ int NameStr (int ) ;
+ int SCAN_CONTINUE ;
+ int get_tablespace_oid (int ,int) ;
+ int ts_tablespaces_add (int *,TYPE_2__*,int ) ;
 
 __attribute__((used)) static ScanTupleResult
 tablespace_tuple_found(TupleInfo *ti, void *data)
 {
-	Tablespaces *tspcs = data;
-	FormData_tablespace *form = (FormData_tablespace *) GETSTRUCT(ti->tuple);
-	Oid tspcoid = get_tablespace_oid(NameStr(form->tablespace_name), true);
+ Tablespaces *tspcs = data;
+ FormData_tablespace *form = (FormData_tablespace *) GETSTRUCT(ti->tuple);
+ Oid tspcoid = get_tablespace_oid(NameStr(form->tablespace_name), 1);
 
-	if (NULL != tspcs)
-		ts_tablespaces_add(tspcs, form, tspcoid);
+ if (((void*)0) != tspcs)
+  ts_tablespaces_add(tspcs, form, tspcoid);
 
-	return SCAN_CONTINUE;
+ return SCAN_CONTINUE;
 }

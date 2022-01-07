@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mm_struct {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMF_DUMPABLE_MASK ; 
- unsigned int SUID_DUMP_ROOT ; 
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  set_mask_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct mm_struct {int flags; } ;
+
+
+ int MMF_DUMPABLE_MASK ;
+ unsigned int SUID_DUMP_ROOT ;
+ scalar_t__ WARN_ON (int) ;
+ int set_mask_bits (int *,int ,int) ;
 
 void set_dumpable(struct mm_struct *mm, int value)
 {
-	if (WARN_ON((unsigned)value > SUID_DUMP_ROOT))
-		return;
+ if (WARN_ON((unsigned)value > SUID_DUMP_ROOT))
+  return;
 
-	set_mask_bits(&mm->flags, MMF_DUMPABLE_MASK, value);
+ set_mask_bits(&mm->flags, MMF_DUMPABLE_MASK, value);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_storage {scalar_t__ ss_family; } ;
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_port; int /*<<< orphan*/  sin6_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_addr; } ;
+struct sockaddr_in6 {int sin6_port; int sin6_addr; } ;
+struct sockaddr_in {int sin_port; int sin_addr; } ;
 struct sockaddr {int dummy; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  sa ;
+typedef int socklen_t ;
+typedef int sa ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int getsockname (int,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  inet_ntop (scalar_t__,void*,char*,size_t) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int getsockname (int,struct sockaddr*,int*) ;
+ int inet_ntop (scalar_t__,void*,char*,size_t) ;
+ int ntohs (int ) ;
 
 int anetSockName(int fd, char *ip, size_t ip_len, int *port) {
     struct sockaddr_storage sa;

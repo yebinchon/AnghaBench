@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {TYPE_2__* avctx; } ;
 struct LATMContext {scalar_t__ audio_mux_version_A; TYPE_1__ aac_ctx; } ;
-struct TYPE_4__ {int /*<<< orphan*/  extradata; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+struct TYPE_4__ {int extradata; } ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int read_payload_length_info (struct LATMContext*,int /*<<< orphan*/ *) ; 
- int read_stream_mux_config (struct LATMContext*,int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int get_bits (int *,int) ;
+ int get_bits_left (int *) ;
+ int read_payload_length_info (struct LATMContext*,int *) ;
+ int read_stream_mux_config (struct LATMContext*,int *) ;
 
 __attribute__((used)) static int read_audio_mux_element(struct LATMContext *latmctx,
                                   GetBitContext *gb)

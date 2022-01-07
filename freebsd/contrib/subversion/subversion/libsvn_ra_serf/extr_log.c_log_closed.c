@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_estate_t ;
-struct TYPE_10__ {scalar_t__ revision; void* has_children; void* subtractive_merge; int /*<<< orphan*/ * revprops; int /*<<< orphan*/ * changed_paths2; int /*<<< orphan*/ * changed_paths; } ;
-typedef  TYPE_2__ svn_log_entry_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_11__ {scalar_t__ limit; scalar_t__ nest_level; scalar_t__ count; int /*<<< orphan*/ * collect_paths; int /*<<< orphan*/ * collect_revprops; scalar_t__ want_message; scalar_t__ want_date; scalar_t__ want_author; int /*<<< orphan*/  receiver_baton; int /*<<< orphan*/  (* receiver ) (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_3__ log_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_1__ svn_string_t ;
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_ra_serf__xml_estate_t ;
+struct TYPE_10__ {scalar_t__ revision; void* has_children; void* subtractive_merge; int * revprops; int * changed_paths2; int * changed_paths; } ;
+typedef TYPE_2__ svn_log_entry_t ;
+typedef int svn_error_t ;
+struct TYPE_11__ {scalar_t__ limit; scalar_t__ nest_level; scalar_t__ count; int * collect_paths; int * collect_revprops; scalar_t__ want_message; scalar_t__ want_date; scalar_t__ want_author; int receiver_baton; int (* receiver ) (int ,TYPE_2__*,int *) ;} ;
+typedef TYPE_3__ log_context_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int ADDED_PATH ; 
- int COMMENT ; 
- int CREATOR ; 
- int DATE ; 
- int DELETED_PATH ; 
- int /*<<< orphan*/  FALSE ; 
- int HAS_CHILDREN ; 
- int ITEM ; 
- int MODIFIED_PATH ; 
- int REPLACED_PATH ; 
- int REVPROP ; 
- int SUBTRACTIVE_MERGE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- scalar_t__ SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (scalar_t__) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_AUTHOR ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_DATE ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_LOG ; 
- int VERSION ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_pool_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  collect_path (int /*<<< orphan*/ *,char,TYPE_1__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  collect_revprop (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__ const*,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cstring_atoi64 (scalar_t__*,char const*) ; 
- void* svn_hash__get_bool (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* svn_hash_gets (int /*<<< orphan*/ *,char*) ; 
- TYPE_2__* svn_log_entry_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_serf__xml_note (int /*<<< orphan*/ *,int,char*,char*) ; 
+
+ int ADDED_PATH ;
+ int COMMENT ;
+ int CREATOR ;
+ int DATE ;
+ int DELETED_PATH ;
+ int FALSE ;
+ int HAS_CHILDREN ;
+ int ITEM ;
+ int MODIFIED_PATH ;
+ int REPLACED_PATH ;
+ int REVPROP ;
+ int SUBTRACTIVE_MERGE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ scalar_t__ SVN_INVALID_REVNUM ;
+ int SVN_IS_VALID_REVNUM (scalar_t__) ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_REVISION_AUTHOR ;
+ int SVN_PROP_REVISION_DATE ;
+ int SVN_PROP_REVISION_LOG ;
+ int VERSION ;
+ scalar_t__ apr_hash_count (int *) ;
+ int * apr_hash_pool_get (int *) ;
+ int apr_pstrdup (int *,char*) ;
+ int collect_path (int *,char,TYPE_1__ const*,int *) ;
+ int collect_revprop (int *,int ,TYPE_1__ const*,char*) ;
+ int stub1 (int ,TYPE_2__*,int *) ;
+ int svn_cstring_atoi64 (scalar_t__*,char const*) ;
+ void* svn_hash__get_bool (int *,char*,int ) ;
+ char* svn_hash_gets (int *,char*) ;
+ TYPE_2__* svn_log_entry_create (int *) ;
+ int svn_ra_serf__xml_note (int *,int,char*,char*) ;
 
 __attribute__((used)) static svn_error_t *
 log_closed(svn_ra_serf__xml_estate_t *xes,
@@ -83,16 +83,16 @@ log_closed(svn_ra_serf__xml_estate_t *xes,
 
       log_entry = svn_log_entry_create(scratch_pool);
 
-      /* Pick up the paths from the context. These have the same lifetime
-         as this state. That is long enough for us to pass the paths to
-         the receiver callback.  */
+
+
+
       if (apr_hash_count(log_ctx->collect_paths) > 0)
         {
           log_entry->changed_paths = log_ctx->collect_paths;
           log_entry->changed_paths2 = log_ctx->collect_paths;
         }
 
-      /* ... and same story for the collected revprops.  */
+
       log_entry->revprops = log_ctx->collect_revprops;
 
       log_entry->has_children = svn_hash__get_bool(attrs,
@@ -113,7 +113,7 @@ log_closed(svn_ra_serf__xml_estate_t *xes,
       else
         log_entry->revision = SVN_INVALID_REVNUM;
 
-      /* Give the info to the reporter */
+
       SVN_ERR(log_ctx->receiver(log_ctx->receiver_baton,
                                 log_entry,
                                 scratch_pool));
@@ -128,11 +128,11 @@ log_closed(svn_ra_serf__xml_estate_t *xes,
           log_ctx->nest_level--;
         }
 
-      /* These hash tables are going to be unusable once this state's
-         pool is destroyed. But let's not leave stale pointers in
-         structures that have a longer life.  */
-      log_ctx->collect_revprops = NULL;
-      log_ctx->collect_paths = NULL;
+
+
+
+      log_ctx->collect_revprops = ((void*)0);
+      log_ctx->collect_paths = ((void*)0);
     }
   else if (leaving_state == VERSION)
     {

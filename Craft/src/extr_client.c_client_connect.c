@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {int sin_port; TYPE_1__ sin_addr; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
+struct in_addr {int s_addr; } ;
 struct hostent {scalar_t__* h_addr_list; } ;
-typedef  int /*<<< orphan*/  address ;
+typedef int address ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  client_enabled ; 
- int connect (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  exit (int) ; 
- struct hostent* gethostbyname (char*) ; 
- int /*<<< orphan*/  htons (int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int sd ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int SOCK_STREAM ;
+ int client_enabled ;
+ int connect (int,struct sockaddr*,int) ;
+ int exit (int) ;
+ struct hostent* gethostbyname (char*) ;
+ int htons (int) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int perror (char*) ;
+ int sd ;
+ int socket (int ,int ,int ) ;
 
 void client_connect(char *hostname, int port) {
     if (!client_enabled) {

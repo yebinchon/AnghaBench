@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cvmx_write64_uint32 (int,int) ; 
- int /*<<< orphan*/  cvmx_write64_uint64 (int,int) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int cvmx_write64_uint32 (int,int) ;
+ int cvmx_write64_uint64 (int,int) ;
 
 __attribute__((used)) static inline void __cvmx_bootmem_desc_set(uint64_t base, int offset, int size, uint64_t value)
 {

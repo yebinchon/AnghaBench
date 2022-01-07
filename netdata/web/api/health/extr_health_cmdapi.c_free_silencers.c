@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {struct TYPE_9__* families; struct TYPE_9__* hosts; struct TYPE_9__* contexts; struct TYPE_9__* charts; struct TYPE_9__* alarms; int /*<<< orphan*/  families_pattern; int /*<<< orphan*/  hosts_pattern; int /*<<< orphan*/  contexts_pattern; int /*<<< orphan*/  charts_pattern; int /*<<< orphan*/  alarms_pattern; struct TYPE_9__* next; } ;
-typedef  TYPE_1__ SILENCER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HEALTH ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  freez (TYPE_1__*) ; 
- int /*<<< orphan*/  simple_pattern_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {struct TYPE_9__* families; struct TYPE_9__* hosts; struct TYPE_9__* contexts; struct TYPE_9__* charts; struct TYPE_9__* alarms; int families_pattern; int hosts_pattern; int contexts_pattern; int charts_pattern; int alarms_pattern; struct TYPE_9__* next; } ;
+typedef TYPE_1__ SILENCER ;
+
+
+ int D_HEALTH ;
+ int debug (int ,char*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
+ int freez (TYPE_1__*) ;
+ int simple_pattern_free (int ) ;
 
 void free_silencers(SILENCER *t) {
     if (!t) return;

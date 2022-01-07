@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  joydata_t ;
-struct TYPE_3__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  CFTypeRef ;
-typedef  scalar_t__ CFTypeID ;
-typedef  TYPE_1__ CFRange ;
-typedef  int /*<<< orphan*/  CFMutableDictionaryRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFArrayApplyFunction (int /*<<< orphan*/ ,TYPE_1__,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  CFArrayGetCount (int /*<<< orphan*/ ) ; 
- scalar_t__ CFArrayGetTypeID () ; 
- int /*<<< orphan*/  CFDictionaryGetValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CFGetTypeID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFSTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  joy_elem_array_hnd ; 
- int /*<<< orphan*/  kIOHIDElementKey ; 
 
-__attribute__((used)) static void joy_find_elements(CFMutableDictionaryRef prop, joydata_t *joy)  {
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int joydata_t ;
+struct TYPE_3__ {int member_1; int member_0; } ;
+typedef int CFTypeRef ;
+typedef scalar_t__ CFTypeID ;
+typedef TYPE_1__ CFRange ;
+typedef int CFMutableDictionaryRef ;
+
+
+ int CFArrayApplyFunction (int ,TYPE_1__,int *,void*) ;
+ int CFArrayGetCount (int ) ;
+ scalar_t__ CFArrayGetTypeID () ;
+ int CFDictionaryGetValue (int ,int ) ;
+ scalar_t__ CFGetTypeID (int ) ;
+ int CFSTR (int ) ;
+ int joy_elem_array_hnd ;
+ int kIOHIDElementKey ;
+
+__attribute__((used)) static void joy_find_elements(CFMutableDictionaryRef prop, joydata_t *joy) {
     CFTypeRef elem;
     CFTypeID type;
 
-    if((elem = CFDictionaryGetValue(prop, CFSTR(kIOHIDElementKey))))    {
+    if((elem = CFDictionaryGetValue(prop, CFSTR(kIOHIDElementKey)))) {
         type = CFGetTypeID(elem);
 
-        if(type == CFArrayGetTypeID())  {
-            /* Call our function on each element of the array. */
+        if(type == CFArrayGetTypeID()) {
+
             CFRange r = { 0, CFArrayGetCount(elem) };
             CFArrayApplyFunction(elem, r, &joy_elem_array_hnd, (void *)joy);
         }

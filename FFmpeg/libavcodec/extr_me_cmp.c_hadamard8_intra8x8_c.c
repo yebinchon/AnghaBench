@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-typedef  int /*<<< orphan*/  MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUTTERFLY1 (int,int) ; 
- int /*<<< orphan*/  BUTTERFLY2 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ BUTTERFLYA (int,int) ; 
- scalar_t__ FFABS (int) ; 
- int /*<<< orphan*/  av_assert2 (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int MpegEncContext ;
+
+
+ int BUTTERFLY1 (int,int) ;
+ int BUTTERFLY2 (int,int,int ,int ) ;
+ scalar_t__ BUTTERFLYA (int,int) ;
+ scalar_t__ FFABS (int) ;
+ int av_assert2 (int) ;
 
 __attribute__((used)) static int hadamard8_intra8x8_c(MpegEncContext *s, uint8_t *src,
                                 uint8_t *dummy, ptrdiff_t stride, int h)
@@ -29,7 +29,7 @@ __attribute__((used)) static int hadamard8_intra8x8_c(MpegEncContext *s, uint8_t
     av_assert2(h == 8);
 
     for (i = 0; i < 8; i++) {
-        // FIXME: try pointer walks
+
         BUTTERFLY2(temp[8 * i + 0], temp[8 * i + 1],
                    src[stride * i + 0], src[stride * i + 1]);
         BUTTERFLY2(temp[8 * i + 2], temp[8 * i + 3],
@@ -68,7 +68,7 @@ __attribute__((used)) static int hadamard8_intra8x8_c(MpegEncContext *s, uint8_t
             + BUTTERFLYA(temp[8 * 3 + i], temp[8 * 7 + i]);
     }
 
-    sum -= FFABS(temp[8 * 0] + temp[8 * 4]); // -mean
+    sum -= FFABS(temp[8 * 0] + temp[8 * 4]);
 
     return sum;
 }

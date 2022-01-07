@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WSADATA ;
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WSADATA ;
+typedef char WCHAR ;
 struct TYPE_3__ {char* lpName; } ;
-typedef  int /*<<< orphan*/  PSERVICEINFO ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  char* DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int PSERVICEINFO ;
+typedef int INT ;
+typedef int * HANDLE ;
+typedef char* DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  LOG_ALL ; 
- int /*<<< orphan*/  LOG_FILE ; 
- int /*<<< orphan*/  LogEvent (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEWORD (int,int) ; 
- int NUM_SERVICES ; 
- int /*<<< orphan*/  SERVICE_RUNNING ; 
- TYPE_1__* Services ; 
- int /*<<< orphan*/  StartServer ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UpdateStatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  WSACleanup () ; 
- char* WSAStartup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WaitForMultipleObjects (int,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swprintf (char*,char*,char*) ; 
+
+ int CloseHandle (int *) ;
+ int * CreateThread (int *,int ,int ,TYPE_1__*,int ,char**) ;
+ int FALSE ;
+ int GetLastError () ;
+ int INFINITE ;
+ int LOG_ALL ;
+ int LOG_FILE ;
+ int LogEvent (char*,int ,int,int ) ;
+ int MAKEWORD (int,int) ;
+ int NUM_SERVICES ;
+ int SERVICE_RUNNING ;
+ TYPE_1__* Services ;
+ int StartServer ;
+ int TRUE ;
+ int UpdateStatus (int ,int ,int) ;
+ int WSACleanup () ;
+ char* WSAStartup (int ,int *) ;
+ int WaitForMultipleObjects (int,int **,int ,int ) ;
+ int swprintf (char*,char*,char*) ;
 
 __attribute__((used)) static BOOL
 CreateServers(PSERVICEINFO pServInfo)
@@ -62,20 +62,20 @@ CreateServers(PSERVICEINFO pServInfo)
 
     LogEvent(L"\nCreating server Threads", 0, 0, LOG_FILE);
 
-    /* Create worker threads. */
+
     for (i = 0; i < NUM_SERVICES; i++)
     {
         swprintf(buf, L"Creating thread for %s server", Services[i].lpName);
         LogEvent(buf, 0, 0, LOG_FILE);
 
-        hThread[i] = CreateThread(NULL,
+        hThread[i] = CreateThread(((void*)0),
                                   0,
                                   StartServer,
                                   &Services[i],
                                   0,
                                   &dwThreadId[i]);
 
-        if (hThread[i] == NULL)
+        if (hThread[i] == ((void*)0))
         {
             swprintf(buf, L"\nError creating %s server thread\n", Services[i].lpName);
             LogEvent(buf, GetLastError(), 0, LOG_ALL);
@@ -88,12 +88,12 @@ CreateServers(PSERVICEINFO pServInfo)
     LogEvent(L"Setting service status to running", 0, 0, LOG_FILE);
     UpdateStatus(pServInfo, SERVICE_RUNNING, 0);
 
-    /* Wait until all threads have terminated. */
+
     WaitForMultipleObjects(NUM_SERVICES, hThread, TRUE, INFINITE);
 
     for (i = 0; i < NUM_SERVICES; i++)
     {
-        if (hThread[i] != NULL)
+        if (hThread[i] != ((void*)0))
             CloseHandle(hThread[i]);
     }
 

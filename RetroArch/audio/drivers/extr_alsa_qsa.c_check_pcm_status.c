@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  status ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int status ;
 struct TYPE_5__ {int channel; scalar_t__ status; } ;
-typedef  TYPE_1__ snd_pcm_channel_status_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pcm; } ;
-typedef  TYPE_2__ alsa_qsa_t ;
+typedef TYPE_1__ snd_pcm_channel_status_t ;
+struct TYPE_6__ {int pcm; } ;
+typedef TYPE_2__ alsa_qsa_t ;
 
-/* Variables and functions */
- int EBADF ; 
- int EOK ; 
- int EPROTO ; 
- int ESRCH ; 
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- scalar_t__ SND_PCM_STATUS_CHANGE ; 
- scalar_t__ SND_PCM_STATUS_OVERRUN ; 
- scalar_t__ SND_PCM_STATUS_UNDERRUN ; 
- scalar_t__ SND_PCM_STATUS_UNSECURE ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int snd_pcm_channel_prepare (int /*<<< orphan*/ ,int) ; 
- int snd_pcm_channel_status (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  snd_strerror (int) ; 
+
+ int EBADF ;
+ int EOK ;
+ int EPROTO ;
+ int ESRCH ;
+ int RARCH_ERR (char*,...) ;
+ int RARCH_LOG (char*) ;
+ scalar_t__ SND_PCM_STATUS_CHANGE ;
+ scalar_t__ SND_PCM_STATUS_OVERRUN ;
+ scalar_t__ SND_PCM_STATUS_UNDERRUN ;
+ scalar_t__ SND_PCM_STATUS_UNSECURE ;
+ int memset (TYPE_1__*,int ,int) ;
+ int snd_pcm_channel_prepare (int ,int) ;
+ int snd_pcm_channel_status (int ,TYPE_1__*) ;
+ int snd_strerror (int) ;
 
 __attribute__((used)) static int check_pcm_status(void *data, int channel_type)
 {
    snd_pcm_channel_status_t status;
    alsa_qsa_t *alsa = (alsa_qsa_t*)data;
-   int ret          = EOK;
+   int ret = EOK;
 
    memset(&status, 0, sizeof (status));
    status.channel = channel_type;

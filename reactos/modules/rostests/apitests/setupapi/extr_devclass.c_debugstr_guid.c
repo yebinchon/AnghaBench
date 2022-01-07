@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  guidSTR1 ;
-struct TYPE_3__ {int /*<<< orphan*/ * Data4; int /*<<< orphan*/  Data3; int /*<<< orphan*/  Data2; int /*<<< orphan*/  Data1; } ;
-typedef  TYPE_1__ GUID ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snprintf (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int guidSTR1 ;
+struct TYPE_3__ {int * Data4; int Data3; int Data2; int Data1; } ;
+typedef TYPE_1__ GUID ;
+typedef int BOOL ;
+
+
+ int snprintf (char*,int,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static const char *debugstr_guid(const GUID *guid)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static const char *debugstr_guid(const GUID *guid)
     char* guidSTR;
     static BOOL index;
 
-    if (!guid) return NULL;
+    if (!guid) return ((void*)0);
 
     index = !index;
     guidSTR = index ? guidSTR1 : guidSTR2;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct kiss_fft_state {int dummy; } ;
-typedef  int /*<<< orphan*/  kiss_fft_cpx ;
-typedef  TYPE_1__* kiss_fft_cfg ;
-struct TYPE_3__ {int nfft; int inverse; int /*<<< orphan*/  factors; scalar_t__ twiddles; } ;
+typedef int kiss_fft_cpx ;
+typedef TYPE_1__* kiss_fft_cfg ;
+struct TYPE_3__ {int nfft; int inverse; int factors; scalar_t__ twiddles; } ;
 
-/* Variables and functions */
- scalar_t__ KISS_FFT_MALLOC (size_t) ; 
- int /*<<< orphan*/  kf_cexp (scalar_t__,double) ; 
- int /*<<< orphan*/  kf_factor (int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ KISS_FFT_MALLOC (size_t) ;
+ int kf_cexp (scalar_t__,double) ;
+ int kf_factor (int,int ) ;
 
 kiss_fft_cfg kiss_fft_alloc(int nfft,int inverse_fft,void * mem,size_t * lenmem )
 {
-    kiss_fft_cfg st=NULL;
+    kiss_fft_cfg st=((void*)0);
     size_t memneeded = sizeof(struct kiss_fft_state)
-        + sizeof(kiss_fft_cpx)*(nfft-1); /* twiddle factors*/
+        + sizeof(kiss_fft_cpx)*(nfft-1);
 
-    if ( lenmem==NULL ) {
+    if ( lenmem==((void*)0) ) {
         st = ( kiss_fft_cfg)KISS_FFT_MALLOC( memneeded );
     }else{
-        if (mem != NULL && *lenmem >= memneeded)
+        if (mem != ((void*)0) && *lenmem >= memneeded)
             st = (kiss_fft_cfg)mem;
         *lenmem = memneeded;
     }

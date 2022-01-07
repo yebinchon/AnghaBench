@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ err; int /*<<< orphan*/  errstr; } ;
-typedef  TYPE_1__ redisContext ;
 
-/* Variables and functions */
- scalar_t__ REDIS_ERR_IO ; 
- scalar_t__ REDIS_ERR_OTHER ; 
- TYPE_1__* redisConnect (char*,int) ; 
- TYPE_1__* redisConnectUnix (char*) ; 
- int /*<<< orphan*/  redisFree (TYPE_1__*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test (char*) ; 
- int /*<<< orphan*/  test_cond (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ err; int errstr; } ;
+typedef TYPE_1__ redisContext ;
+
+
+ scalar_t__ REDIS_ERR_IO ;
+ scalar_t__ REDIS_ERR_OTHER ;
+ TYPE_1__* redisConnect (char*,int) ;
+ TYPE_1__* redisConnectUnix (char*) ;
+ int redisFree (TYPE_1__*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int test (char*) ;
+ int test_cond (int) ;
 
 __attribute__((used)) static void test_blocking_connection_errors(void) {
     redisContext *c;
@@ -47,6 +47,6 @@ __attribute__((used)) static void test_blocking_connection_errors(void) {
 
     test("Returns error when the unix_sock socket path doesn't accept connections: ");
     c = redisConnectUnix((char*)"/tmp/idontexist.sock");
-    test_cond(c->err == REDIS_ERR_IO); /* Don't care about the message... */
+    test_cond(c->err == REDIS_ERR_IO);
     redisFree(c);
 }

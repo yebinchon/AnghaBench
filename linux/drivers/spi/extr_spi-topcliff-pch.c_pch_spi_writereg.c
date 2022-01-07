@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct spi_master {int dummy; } ;
 struct pch_spi_data {scalar_t__ io_remap_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iowrite32 (int /*<<< orphan*/ ,scalar_t__) ; 
- struct pch_spi_data* spi_master_get_devdata (struct spi_master*) ; 
+
+ int iowrite32 (int ,scalar_t__) ;
+ struct pch_spi_data* spi_master_get_devdata (struct spi_master*) ;
 
 __attribute__((used)) static inline void pch_spi_writereg(struct spi_master *master, int idx, u32 val)
 {
-	struct pch_spi_data *data = spi_master_get_devdata(master);
-	iowrite32(val, (data->io_remap_addr + idx));
+ struct pch_spi_data *data = spi_master_get_devdata(master);
+ iowrite32(val, (data->io_remap_addr + idx));
 }

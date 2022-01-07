@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sltg_tail {int funcs_off; int vars_off; int impls_off; int funcs_bytes; int vars_bytes; int impls_bytes; int tdescalias_vt; int res16; int cbAlignment; int res24; int res26; int res2a; int res2c; int res2e; int res30; scalar_t__ type_bytes; scalar_t__ res32; scalar_t__ cbSizeVft; scalar_t__ cbSizeInstance; scalar_t__ res1e; scalar_t__ simple_alias; scalar_t__ res1a; scalar_t__ res18; scalar_t__ res06; scalar_t__ cImplTypes; scalar_t__ cVars; scalar_t__ cFuncs; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void init_sltg_tail(struct sltg_tail *tail)
 {

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double X; double Y; double Width; double Height; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpRegion ;
-typedef  TYPE_1__ GpRectF ;
-typedef  int /*<<< orphan*/  GpPath ;
-typedef  int /*<<< orphan*/  GpMatrix ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef int GpRegion ;
+typedef TYPE_1__ GpRectF ;
+typedef int GpPath ;
+typedef int GpMatrix ;
+typedef int GpGraphics ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CombineModeReplace ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathEllipse (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipCombineRegionPath (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipCombineRegionRect (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateMatrix (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateRegion (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteMatrix (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteRegion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipIsEqualRegion (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipResetPath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipRotateMatrix (int /*<<< orphan*/ *,double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipScaleMatrix (int /*<<< orphan*/ *,double,double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipSetEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipTransformRegion (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int InvalidParameter ; 
- int /*<<< orphan*/  MatrixOrderAppend ; 
- int Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_region_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+ int CombineModeReplace ;
+ int FALSE ;
+ int FillModeAlternate ;
+ int GdipAddPathEllipse (int *,double,double,double,double) ;
+ int GdipCombineRegionPath (int *,int *,int ) ;
+ int GdipCombineRegionRect (int *,TYPE_1__*,int ) ;
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipCreateMatrix (int **) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipCreateRegion (int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDeleteMatrix (int *) ;
+ int GdipDeletePath (int *) ;
+ int GdipDeleteRegion (int *) ;
+ int GdipIsEqualRegion (int *,int *,int *,int *) ;
+ int GdipResetPath (int *) ;
+ int GdipRotateMatrix (int *,double,int ) ;
+ int GdipScaleMatrix (int *,double,double,int ) ;
+ int GdipSetEmpty (int *) ;
+ int GdipTransformRegion (int *,int *) ;
+ int GetDC (int ) ;
+ int InvalidParameter ;
+ int MatrixOrderAppend ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int expect (int,int ) ;
+ int get_region_type (int *) ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_transform(void)
 {
@@ -80,14 +80,14 @@ __attribute__((used)) static void test_transform(void)
     status = GdipScaleMatrix(matrix, 2.0, 3.0, MatrixOrderAppend);
     expect(Ok, status);
 
-    /* NULL */
-    status = GdipTransformRegion(NULL, matrix);
+
+    status = GdipTransformRegion(((void*)0), matrix);
     expect(InvalidParameter, status);
 
-    status = GdipTransformRegion(region, NULL);
+    status = GdipTransformRegion(region, ((void*)0));
     expect(InvalidParameter, status);
 
-    /* infinite */
+
     status = GdipTransformRegion(region, matrix);
     expect(Ok, status);
 
@@ -96,9 +96,9 @@ __attribute__((used)) static void test_transform(void)
     expect(Ok, status);
     ok(res, "Expected to be equal.\n");
     type = get_region_type(region);
-    expect(0x10000003 /* RegionDataInfiniteRect */, type);
+    expect(0x10000003 , type);
 
-    /* empty */
+
     status = GdipSetEmpty(region);
     expect(Ok, status);
     status = GdipTransformRegion(region, matrix);
@@ -112,9 +112,9 @@ __attribute__((used)) static void test_transform(void)
     expect(Ok, status);
     ok(res, "Expected to be equal.\n");
     type = get_region_type(region);
-    expect(0x10000002 /* RegionDataEmptyRect */, type);
+    expect(0x10000002 , type);
 
-    /* rect */
+
     rectf.X = 10.0;
     rectf.Y = 0.0;
     rectf.Width = rectf.Height = 100.0;
@@ -133,9 +133,9 @@ __attribute__((used)) static void test_transform(void)
     expect(Ok, status);
     ok(res, "Expected to be equal.\n");
     type = get_region_type(region);
-    expect(0x10000000 /* RegionDataRect */, type);
+    expect(0x10000000 , type);
 
-    /* path */
+
     status = GdipAddPathEllipse(path, 0.0, 10.0, 100.0, 150.0);
     expect(Ok, status);
     status = GdipCombineRegionPath(region, path, CombineModeReplace);
@@ -153,9 +153,9 @@ __attribute__((used)) static void test_transform(void)
     expect(Ok, status);
     ok(res, "Expected to be equal.\n");
     type = get_region_type(region);
-    expect(0x10000001 /* RegionDataPath */, type);
+    expect(0x10000001 , type);
 
-    /* rotated rect -> path */
+
     rectf.X = 10.0;
     rectf.Y = 0.0;
     rectf.Width = rectf.Height = 100.0;
@@ -166,7 +166,7 @@ __attribute__((used)) static void test_transform(void)
     status = GdipTransformRegion(region, matrix);
     expect(Ok, status);
     type = get_region_type(region);
-    expect(0x10000001 /* RegionDataPath */, type);
+    expect(0x10000001 , type);
 
     status = GdipDeleteRegion(region);
     expect(Ok, status);

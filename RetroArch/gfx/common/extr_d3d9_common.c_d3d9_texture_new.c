@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct IDirect3DTexture9 {int dummy; } ;
-typedef  int /*<<< orphan*/  PALETTEENTRY ;
-typedef  int /*<<< orphan*/  LPDIRECT3DDEVICE9 ;
-typedef  scalar_t__ INT32 ;
-typedef  int /*<<< orphan*/  D3DPOOL ;
-typedef  int /*<<< orphan*/  D3DFORMAT ;
+typedef int PALETTEENTRY ;
+typedef int LPDIRECT3DDEVICE9 ;
+typedef scalar_t__ INT32 ;
+typedef int D3DPOOL ;
+typedef int D3DFORMAT ;
 
-/* Variables and functions */
- unsigned int D3DUSAGE_AUTOGENMIPMAP ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9_CreateTexture (int /*<<< orphan*/ ,unsigned int,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct IDirect3DTexture9**,int /*<<< orphan*/ *) ; 
- void* d3d9_texture_new_from_file (void*,char const*,unsigned int,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int,scalar_t__,void*,int /*<<< orphan*/ *) ; 
+
+ unsigned int D3DUSAGE_AUTOGENMIPMAP ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DDevice9_CreateTexture (int ,unsigned int,unsigned int,unsigned int,unsigned int,int ,int ,struct IDirect3DTexture9**,int *) ;
+ void* d3d9_texture_new_from_file (void*,char const*,unsigned int,unsigned int,unsigned int,unsigned int,int ,int ,unsigned int,unsigned int,scalar_t__,void*,int *) ;
 
 void *d3d9_texture_new(void *_dev,
       const char *path, unsigned width, unsigned height,
@@ -31,31 +31,31 @@ void *d3d9_texture_new(void *_dev,
       PALETTEENTRY *palette, bool want_mipmap)
 {
    LPDIRECT3DDEVICE9 dev = (LPDIRECT3DDEVICE9)_dev;
-   void *buf             = NULL;
+   void *buf = ((void*)0);
 
    if (path)
    {
-#ifdef HAVE_D3DX
-      return d3d9_texture_new_from_file(_dev,
-            path, width, height, miplevels,
-            usage, (D3DFORMAT)format,
-            (D3DPOOL)pool, filter, mipfilter,
-            color_key, src_info_data, palette);
-#else
-      return NULL;
-#endif
+
+
+
+
+
+
+
+      return ((void*)0);
+
    }
 
-#ifndef _XBOX
+
    if (want_mipmap)
       usage |= D3DUSAGE_AUTOGENMIPMAP;
-#endif
+
 
    if (FAILED(IDirect3DDevice9_CreateTexture(dev,
                width, height, miplevels, usage,
                (D3DFORMAT)format,
                (D3DPOOL)pool,
-               (struct IDirect3DTexture9**)&buf, NULL)))
-      return NULL;
+               (struct IDirect3DTexture9**)&buf, ((void*)0))))
+      return ((void*)0);
    return buf;
 }

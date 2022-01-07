@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vtpci_softc {int vtpci_nmsix_resources; int /*<<< orphan*/  vtpci_dev; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- scalar_t__ pci_alloc_msix (int /*<<< orphan*/ ,int*) ; 
- int pci_msix_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_release_msi (int /*<<< orphan*/ ) ; 
+
+
+
+struct vtpci_softc {int vtpci_nmsix_resources; int vtpci_dev; } ;
+typedef int device_t ;
+
+
+ scalar_t__ pci_alloc_msix (int ,int*) ;
+ int pci_msix_count (int ) ;
+ int pci_release_msi (int ) ;
 
 __attribute__((used)) static int
 vtpci_alloc_msix(struct vtpci_softc *sc, int nvectors)
 {
-	device_t dev;
-	int nmsix, cnt, required;
+ device_t dev;
+ int nmsix, cnt, required;
 
-	dev = sc->vtpci_dev;
+ dev = sc->vtpci_dev;
 
-	/* Allocate an additional vector for the config changes. */
-	required = nvectors + 1;
 
-	nmsix = pci_msix_count(dev);
-	if (nmsix < required)
-		return (1);
+ required = nvectors + 1;
 
-	cnt = required;
-	if (pci_alloc_msix(dev, &cnt) == 0 && cnt >= required) {
-		sc->vtpci_nmsix_resources = required;
-		return (0);
-	}
+ nmsix = pci_msix_count(dev);
+ if (nmsix < required)
+  return (1);
 
-	pci_release_msi(dev);
+ cnt = required;
+ if (pci_alloc_msix(dev, &cnt) == 0 && cnt >= required) {
+  sc->vtpci_nmsix_resources = required;
+  return (0);
+ }
 
-	return (1);
+ pci_release_msi(dev);
+
+ return (1);
 }

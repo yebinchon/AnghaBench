@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_15__ {int type; int size; int* symbols; int cntsum; int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/  freqs1; scalar_t__* freqs; } ;
-struct TYPE_14__ {int /*<<< orphan*/  gb; int /*<<< orphan*/  rc; } ;
-typedef  TYPE_1__ SCPRContext ;
-typedef  int /*<<< orphan*/  RangeCoder ;
-typedef  TYPE_2__ PixelModel3 ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decode3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decode_adaptive45 (TYPE_2__*,int,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  decode_adaptive6 (TYPE_2__*,int,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decode_static1 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  decode_static2 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  decode_static3 (TYPE_2__*,int) ; 
- int decode_value3 (TYPE_1__*,int,int*,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  sync_code3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  update_model4_to_5 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  update_model5_to_6 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  update_model6_to_7 (TYPE_2__*) ; 
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_15__ {int type; int size; int* symbols; int cntsum; int dectab; int cnts; int freqs1; scalar_t__* freqs; } ;
+struct TYPE_14__ {int gb; int rc; } ;
+typedef TYPE_1__ SCPRContext ;
+typedef int RangeCoder ;
+typedef TYPE_2__ PixelModel3 ;
+typedef int GetByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_get_byte (int *) ;
+ int decode3 (int *,int *,int ,int ) ;
+ int decode_adaptive45 (TYPE_2__*,int,int*,int *,int *,int*,int) ;
+ int decode_adaptive6 (TYPE_2__*,int,int*,int *,int *) ;
+ int decode_static1 (TYPE_2__*,int) ;
+ int decode_static2 (TYPE_2__*,int) ;
+ int decode_static3 (TYPE_2__*,int) ;
+ int decode_value3 (TYPE_1__*,int,int*,scalar_t__*,int ,int ,int ,int*) ;
+ int sync_code3 (int *,int *) ;
+ int update_model4_to_5 (TYPE_2__*,int) ;
+ int update_model5_to_6 (TYPE_2__*,int) ;
+ int update_model6_to_7 (TYPE_2__*) ;
 
 __attribute__((used)) static int decode_unit3(SCPRContext *s, PixelModel3 *m, uint32_t code, uint32_t *value)
 {

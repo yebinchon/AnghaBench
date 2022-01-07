@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct xdr_stream {scalar_t__ nwords; TYPE_1__* buf; } ;
-struct TYPE_2__ {int /*<<< orphan*/  len; } ;
+struct TYPE_2__ {int len; } ;
 
-/* Variables and functions */
- scalar_t__ XDR_QUADLEN (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ XDR_QUADLEN (int ) ;
 
 unsigned int xdr_stream_pos(const struct xdr_stream *xdr)
 {
-	return (unsigned int)(XDR_QUADLEN(xdr->buf->len) - xdr->nwords) << 2;
+ return (unsigned int)(XDR_QUADLEN(xdr->buf->len) - xdr->nwords) << 2;
 }

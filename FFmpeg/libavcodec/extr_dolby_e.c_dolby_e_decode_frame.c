@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int channels; int /*<<< orphan*/  sample_fmt; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  channel_layout; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int channels; int sample_fmt; int sample_rate; int channel_layout; TYPE_1__* priv_data; } ;
 struct TYPE_13__ {int size; scalar_t__ data; } ;
-struct TYPE_12__ {int word_bits; int word_bytes; int input_size; int key_present; int nb_programs; int multi_prog_warned; int nb_channels; size_t fr_code; int /*<<< orphan*/  prog_conf; scalar_t__ input; } ;
-typedef  TYPE_1__ DBEContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_12__ {int word_bits; int word_bytes; int input_size; int key_present; int nb_programs; int multi_prog_warned; int nb_channels; size_t fr_code; int prog_conf; scalar_t__ input; } ;
+typedef TYPE_1__ DBEContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_4POINT0 ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_5POINT1 ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_7POINT1 ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int AV_RB24 (scalar_t__) ; 
- int /*<<< orphan*/  AV_SAMPLE_FMT_FLTP ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int filter_frame (TYPE_1__*,void*) ; 
- int parse_audio (TYPE_1__*,int,int,int) ; 
- int parse_metadata (TYPE_1__*) ; 
- int parse_metadata_ext (TYPE_1__*) ; 
- int parse_meter (TYPE_1__*) ; 
- int /*<<< orphan*/ * sample_rate_tab ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_CH_LAYOUT_4POINT0 ;
+ int AV_CH_LAYOUT_5POINT1 ;
+ int AV_CH_LAYOUT_7POINT1 ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_RB24 (scalar_t__) ;
+ int AV_SAMPLE_FMT_FLTP ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int filter_frame (TYPE_1__*,void*) ;
+ int parse_audio (TYPE_1__*,int,int,int) ;
+ int parse_metadata (TYPE_1__*) ;
+ int parse_metadata_ext (TYPE_1__*) ;
+ int parse_meter (TYPE_1__*) ;
+ int * sample_rate_tab ;
 
 __attribute__((used)) static int dolby_e_decode_frame(AVCodecContext *avctx, void *data,
                                 int *got_frame_ptr, AVPacket *avpkt)
@@ -58,9 +58,9 @@ __attribute__((used)) static int dolby_e_decode_frame(AVCodecContext *avctx, voi
         return AVERROR_INVALIDDATA;
     }
 
-    s->word_bytes  = s->word_bits + 7 >> 3;
-    s->input       = avpkt->data + s->word_bytes;
-    s->input_size  = avpkt->size / s->word_bytes - 1;
+    s->word_bytes = s->word_bits + 7 >> 3;
+    s->input = avpkt->data + s->word_bytes;
+    s->input_size = avpkt->size / s->word_bytes - 1;
     s->key_present = hdr >> 24 - s->word_bits & 1;
 
     if ((ret = parse_metadata(s)) < 0)
@@ -84,9 +84,9 @@ __attribute__((used)) static int dolby_e_decode_frame(AVCodecContext *avctx, voi
         break;
     }
 
-    avctx->channels    = s->nb_channels;
+    avctx->channels = s->nb_channels;
     avctx->sample_rate = sample_rate_tab[s->fr_code];
-    avctx->sample_fmt  = AV_SAMPLE_FMT_FLTP;
+    avctx->sample_fmt = AV_SAMPLE_FMT_FLTP;
 
     i = s->nb_channels / 2;
     j = s->nb_channels;

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ip_tunnel_metadata_cnt ; 
- int /*<<< orphan*/  static_branch_inc (int /*<<< orphan*/ *) ; 
+ int ip_tunnel_metadata_cnt ;
+ int static_branch_inc (int *) ;
 
 void ip_tunnel_need_metadata(void)
 {
-	static_branch_inc(&ip_tunnel_metadata_cnt);
+ static_branch_inc(&ip_tunnel_metadata_cnt);
 }

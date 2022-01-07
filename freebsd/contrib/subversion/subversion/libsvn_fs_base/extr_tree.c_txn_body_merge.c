@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  pool; } ;
-typedef  TYPE_2__ trail_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_id_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct merge_args {int /*<<< orphan*/  conflict; int /*<<< orphan*/ * ancestor_node; int /*<<< orphan*/ * source_node; TYPE_1__* txn; } ;
-typedef  int /*<<< orphan*/  dag_node_t ;
-struct TYPE_11__ {char* id; int /*<<< orphan*/ * fs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  merge (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_fs_base__dag_get_id (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_base__dag_get_predecessor_count (int*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_base__dag_txn_base_root (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_base__dag_txn_root (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_fs_base__id_eq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_base__set_txn_base (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_base__set_txn_root (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_ancestry (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,char const*,char*,int,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int pool; } ;
+typedef TYPE_2__ trail_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_id_t ;
+typedef int svn_error_t ;
+struct merge_args {int conflict; int * ancestor_node; int * source_node; TYPE_1__* txn; } ;
+typedef int dag_node_t ;
+struct TYPE_11__ {char* id; int * fs; } ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int merge (int ,char*,int *,int *,int *,char const*,int *,TYPE_2__*,int ) ;
+ int * svn_fs_base__dag_get_id (int *) ;
+ int svn_fs_base__dag_get_predecessor_count (int*,int *,TYPE_2__*,int ) ;
+ int svn_fs_base__dag_txn_base_root (int **,int *,char const*,TYPE_2__*,int ) ;
+ int svn_fs_base__dag_txn_root (int **,int *,char const*,TYPE_2__*,int ) ;
+ scalar_t__ svn_fs_base__id_eq (int *,int *) ;
+ int svn_fs_base__set_txn_base (int *,char const*,int const*,TYPE_2__*,int ) ;
+ int svn_fs_base__set_txn_root (int *,char const*,int const*,TYPE_2__*,int ) ;
+ int update_ancestry (int *,int const*,int *,char const*,char*,int,TYPE_2__*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 txn_body_merge(void *baton, trail_t *trail)
@@ -50,7 +50,7 @@ txn_body_merge(void *baton, trail_t *trail)
   SVN_ERR(svn_fs_base__dag_txn_root(&txn_root_node, fs, txn_id,
                                     trail, trail->pool));
 
-  if (ancestor_node == NULL)
+  if (ancestor_node == ((void*)0))
     {
       SVN_ERR(svn_fs_base__dag_txn_base_root(&ancestor_node, fs,
                                              txn_id, trail, trail->pool));
@@ -59,15 +59,6 @@ txn_body_merge(void *baton, trail_t *trail)
   if (svn_fs_base__id_eq(svn_fs_base__dag_get_id(ancestor_node),
                          svn_fs_base__dag_get_id(txn_root_node)))
     {
-      /* If no changes have been made in TXN since its current base,
-         then it can't conflict with any changes since that base.  So
-         we just set *both* its base and root to source, making TXN
-         in effect a repeat of source. */
-
-      /* ### kff todo: this would, of course, be a mighty silly thing
-         for the caller to do, and we might want to consider whether
-         this response is really appropriate. */
-
       SVN_ERR(svn_fs_base__set_txn_base(fs, txn_id, source_id,
                                         trail, trail->pool));
       SVN_ERR(svn_fs_base__set_txn_root(fs, txn_id, source_id,
@@ -78,16 +69,16 @@ txn_body_merge(void *baton, trail_t *trail)
       int pred_count;
 
       SVN_ERR(merge(args->conflict, "/", txn_root_node, source_node,
-                    ancestor_node, txn_id, NULL, trail, trail->pool));
+                    ancestor_node, txn_id, ((void*)0), trail, trail->pool));
 
       SVN_ERR(svn_fs_base__dag_get_predecessor_count(&pred_count,
                                                      source_node, trail,
                                                      trail->pool));
 
-      /* After the merge, txn's new "ancestor" is now really the node
-         at source_id, so record that fact.  Think of this as
-         ratcheting the txn forward in time, so it can't backslide and
-         forget the merging work that's already been done. */
+
+
+
+
       SVN_ERR(update_ancestry(fs, source_id,
                               svn_fs_base__dag_get_id(txn_root_node),
                               txn_id, "/", pred_count, trail, trail->pool));

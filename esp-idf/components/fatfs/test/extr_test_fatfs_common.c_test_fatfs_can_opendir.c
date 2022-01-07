@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dirent {int /*<<< orphan*/  d_name; } ;
-typedef  int /*<<< orphan*/  name_dir_file ;
-typedef  int /*<<< orphan*/  DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ASSERT_TRUE (int) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,char const*) ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  test_fatfs_create_file_with_text (char*,char*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+
+
+struct dirent {int d_name; } ;
+typedef int name_dir_file ;
+typedef int DIR ;
+
+
+ int TEST_ASSERT_EQUAL (int ,int ) ;
+ int TEST_ASSERT_NOT_NULL (int *) ;
+ int TEST_ASSERT_TRUE (int) ;
+ int closedir (int *) ;
+ int * opendir (char const*) ;
+ struct dirent* readdir (int *) ;
+ int snprintf (char*,int,char*,char const*,char const*) ;
+ scalar_t__ strcasecmp (int ,char const*) ;
+ int test_fatfs_create_file_with_text (char*,char*) ;
+ int unlink (char*) ;
 
 void test_fatfs_can_opendir(const char* path)
 {
@@ -35,14 +35,14 @@ void test_fatfs_can_opendir(const char* path)
     test_fatfs_create_file_with_text(name_dir_file, "test_opendir\n");
     DIR* dir = opendir(path);
     TEST_ASSERT_NOT_NULL(dir);
-    bool found = false;
-    while (true) {
+    bool found = 0;
+    while (1) {
         struct dirent* de = readdir(dir);
         if (!de) {
             break;
         }
         if (strcasecmp(de->d_name, file_name) == 0) {
-            found = true;
+            found = 1;
             break;
         }
     }

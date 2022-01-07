@@ -1,52 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-struct TYPE_10__ {int b_text_waiting; TYPE_3__* p_cw; int /*<<< orphan*/  input_buffer; } ;
-typedef  TYPE_2__ cea708_t ;
-typedef  int /*<<< orphan*/  cea708_input_buffer_t ;
-struct TYPE_9__ {int /*<<< orphan*/  print_direction; } ;
-struct TYPE_11__ {int /*<<< orphan*/  b_defined; int /*<<< orphan*/  b_visible; TYPE_1__ style; int /*<<< orphan*/  row; int /*<<< orphan*/  col; } ;
 
-/* Variables and functions */
-#define  CEA708_C0_BS 135 
-#define  CEA708_C0_CR 134 
-#define  CEA708_C0_ETX 133 
-#define  CEA708_C0_EXT1 132 
-#define  CEA708_C0_FF 131 
-#define  CEA708_C0_HCR 130 
-#define  CEA708_C0_NUL 129 
-#define  CEA708_C0_P16 128 
- int CEA708_Decode_G2G3 (int,TYPE_2__*) ; 
- int CEA708_Decode_P16 (int,TYPE_2__*) ; 
- int CEA708_STATUS_OK ; 
- int CEA708_STATUS_OUTPUT ; 
- int CEA708_STATUS_STARVING ; 
- int /*<<< orphan*/  CEA708_WA_DIRECTION_RTL ; 
- int /*<<< orphan*/  CEA708_Window_Backward (TYPE_3__*) ; 
- int /*<<< orphan*/  CEA708_Window_CarriageReturn (TYPE_3__*) ; 
- int /*<<< orphan*/  CEA708_Window_ClearText (TYPE_3__*) ; 
- int /*<<< orphan*/  Debug (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POP_ARGS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POP_COMMAND () ; 
- int /*<<< orphan*/  REQUIRE_ARGS_AND_POP_COMMAND (int) ; 
- int cea708_input_buffer_get (int /*<<< orphan*/ *) ; 
- int cea708_input_buffer_peek (int /*<<< orphan*/ *,int) ; 
- int cea708_input_buffer_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_10__ {int b_text_waiting; TYPE_3__* p_cw; int input_buffer; } ;
+typedef TYPE_2__ cea708_t ;
+typedef int cea708_input_buffer_t ;
+struct TYPE_9__ {int print_direction; } ;
+struct TYPE_11__ {int b_defined; int b_visible; TYPE_1__ style; int row; int col; } ;
+ int CEA708_Decode_G2G3 (int,TYPE_2__*) ;
+ int CEA708_Decode_P16 (int,TYPE_2__*) ;
+ int CEA708_STATUS_OK ;
+ int CEA708_STATUS_OUTPUT ;
+ int CEA708_STATUS_STARVING ;
+ int CEA708_WA_DIRECTION_RTL ;
+ int CEA708_Window_Backward (TYPE_3__*) ;
+ int CEA708_Window_CarriageReturn (TYPE_3__*) ;
+ int CEA708_Window_ClearText (TYPE_3__*) ;
+ int Debug (int ) ;
+ int POP_ARGS (int ) ;
+ int POP_COMMAND () ;
+ int REQUIRE_ARGS_AND_POP_COMMAND (int) ;
+ int cea708_input_buffer_get (int *) ;
+ int cea708_input_buffer_peek (int *,int) ;
+ int cea708_input_buffer_size (int *) ;
+ int printf (char*,int) ;
 
 __attribute__((used)) static int CEA708_Decode_C0( uint8_t code, cea708_t *p_cea708 )
 {
@@ -57,34 +47,34 @@ __attribute__((used)) static int CEA708_Decode_C0( uint8_t code, cea708_t *p_cea
 
     switch( code )
     {
-        case CEA708_C0_NUL:
+        case 129:
             POP_COMMAND();
             break;
-        case CEA708_C0_ETX:
+        case 133:
             POP_COMMAND();
             if( p_cea708->b_text_waiting )
             {
                 i_ret |= CEA708_STATUS_OUTPUT;
-                p_cea708->b_text_waiting = false;
+                p_cea708->b_text_waiting = 0;
             }
             break;
-        case CEA708_C0_BS:
+        case 135:
             POP_COMMAND();
             if( !p_cea708->p_cw->b_defined )
                 break;
             CEA708_Window_Backward( p_cea708->p_cw );
-            p_cea708->b_text_waiting = true;
+            p_cea708->b_text_waiting = 1;
             break;
-        case CEA708_C0_FF:
+        case 131:
             POP_COMMAND();
             if( !p_cea708->p_cw->b_defined )
                 break;
             CEA708_Window_ClearText( p_cea708->p_cw );
             p_cea708->p_cw->col = 0;
             p_cea708->p_cw->row = 0;
-            p_cea708->b_text_waiting = true;
+            p_cea708->b_text_waiting = 1;
             break;
-        case CEA708_C0_CR:
+        case 134:
             POP_COMMAND();
             if( !p_cea708->p_cw->b_defined )
                 break;
@@ -95,7 +85,7 @@ __attribute__((used)) static int CEA708_Decode_C0( uint8_t code, cea708_t *p_cea
                     i_ret |= CEA708_STATUS_OUTPUT;
             }
             break;
-        case CEA708_C0_HCR:
+        case 130:
             POP_COMMAND();
             if( !p_cea708->p_cw->b_defined )
                 break;
@@ -106,11 +96,11 @@ __attribute__((used)) static int CEA708_Decode_C0( uint8_t code, cea708_t *p_cea
                     i_ret |= CEA708_STATUS_OUTPUT;
             }
             break;
-        case CEA708_C0_EXT1: /* Special extended table case */
+        case 132:
             if( cea708_input_buffer_size( ib ) >= 2 )
             {
                 v = cea708_input_buffer_peek( ib, 1 );
-                /* C2 extended code set */
+
                 if( v < 0x20 )
                 {
                     if( v > 0x17 )
@@ -126,7 +116,7 @@ __attribute__((used)) static int CEA708_Decode_C0( uint8_t code, cea708_t *p_cea
                     POP_COMMAND();
                     POP_ARGS(1 + i);
                 }
-                /* C3 extended code set */
+
                 else if( v > 0x7f && v < 0xa0 )
                 {
                     if( v > 0x87 )
@@ -148,7 +138,7 @@ __attribute__((used)) static int CEA708_Decode_C0( uint8_t code, cea708_t *p_cea
             }
             else return CEA708_STATUS_STARVING;
             break;
-        case CEA708_C0_P16:
+        case 128:
             REQUIRE_ARGS_AND_POP_COMMAND(2);
             u16 = cea708_input_buffer_get( ib ) << 8;
             u16 |= cea708_input_buffer_get( ib );

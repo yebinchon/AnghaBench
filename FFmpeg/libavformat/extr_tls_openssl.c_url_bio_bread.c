@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  URLContext ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXIT ; 
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_set_retry_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/ * GET_BIO_DATA (int /*<<< orphan*/ *) ; 
- int ffurl_read (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef int URLContext ;
+typedef int BIO ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EXIT ;
+ int BIO_clear_retry_flags (int *) ;
+ int BIO_set_retry_read (int *) ;
+ int EAGAIN ;
+ int * GET_BIO_DATA (int *) ;
+ int ffurl_read (int *,char*,int) ;
 
 __attribute__((used)) static int url_bio_bread(BIO *b, char *buf, int len)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int REGSAM ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int KEY_ALL_ACCESS ; 
- int KEY_WOW64_64KEY ; 
- int /*<<< orphan*/  RegCreateKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int SQUASHED_GUID_SIZE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  squash_guid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcatW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  szInstaller_UpgradeCodes ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int REGSAM ;
+typedef int * LPCWSTR ;
+typedef int HKEY ;
+typedef scalar_t__ BOOL ;
+
+
+ int ERROR_FUNCTION_FAILED ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_ALL_ACCESS ;
+ int KEY_WOW64_64KEY ;
+ int RegCreateKeyExW (int ,int *,int ,int *,int ,int,int *,int *,int *) ;
+ int RegOpenKeyExW (int ,int *,int ,int,int *) ;
+ int SQUASHED_GUID_SIZE ;
+ int TRACE (char*,int ,int ) ;
+ int debugstr_w (int *) ;
+ int squash_guid (int *,int *) ;
+ int strcatW (int *,int *) ;
+ int strcpyW (int *,int ) ;
+ int szInstaller_UpgradeCodes ;
 
 UINT MSIREG_OpenUpgradeCodesKey(LPCWSTR szUpgradeCode, HKEY *key, BOOL create)
 {
@@ -43,6 +43,6 @@ UINT MSIREG_OpenUpgradeCodesKey(LPCWSTR szUpgradeCode, HKEY *key, BOOL create)
     strcpyW(keypath, szInstaller_UpgradeCodes);
     strcatW( keypath, squashed_uc );
 
-    if (create) return RegCreateKeyExW(HKEY_LOCAL_MACHINE, keypath, 0, NULL, 0, access, NULL, key, NULL);
+    if (create) return RegCreateKeyExW(HKEY_LOCAL_MACHINE, keypath, 0, ((void*)0), 0, access, ((void*)0), key, ((void*)0));
     return RegOpenKeyExW(HKEY_LOCAL_MACHINE, keypath, 0, access, key);
 }

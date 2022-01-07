@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  window; TYPE_2__* body; } ;
-struct TYPE_4__ {int /*<<< orphan*/  ctx; } ;
-struct st_h2o_http2client_stream_t {TYPE_3__ input; int /*<<< orphan*/  stream_id; int /*<<< orphan*/  conn; TYPE_1__ super; } ;
-typedef  int /*<<< orphan*/  h2o_httpclient_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int window; TYPE_2__* body; } ;
+struct TYPE_4__ {int ctx; } ;
+struct st_h2o_http2client_stream_t {TYPE_3__ input; int stream_id; int conn; TYPE_1__ super; } ;
+typedef int h2o_httpclient_t ;
 struct TYPE_5__ {size_t size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  enqueue_window_update (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- size_t get_max_buffer_size (int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ int enqueue_window_update (int ,int ,int *,size_t) ;
+ size_t get_max_buffer_size (int ) ;
 
 __attribute__((used)) static void do_update_window(h2o_httpclient_t *_client)
 {

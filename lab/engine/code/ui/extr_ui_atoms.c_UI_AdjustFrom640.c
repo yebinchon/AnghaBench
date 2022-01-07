@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {float xscale; float bias; float yscale; } ;
 struct TYPE_4__ {TYPE_1__ uiDC; } ;
 
-/* Variables and functions */
- TYPE_2__ uiInfo ; 
+
+ TYPE_2__ uiInfo ;
 
 void UI_AdjustFrom640( float *x, float *y, float *w, float *h ) {
-	// expect valid pointers
-	*x = *x * uiInfo.uiDC.xscale + uiInfo.uiDC.bias;
-	*y *= uiInfo.uiDC.yscale;
-	*w *= uiInfo.uiDC.xscale;
-	*h *= uiInfo.uiDC.yscale;
+
+ *x = *x * uiInfo.uiDC.xscale + uiInfo.uiDC.bias;
+ *y *= uiInfo.uiDC.yscale;
+ *w *= uiInfo.uiDC.xscale;
+ *h *= uiInfo.uiDC.yscale;
 }

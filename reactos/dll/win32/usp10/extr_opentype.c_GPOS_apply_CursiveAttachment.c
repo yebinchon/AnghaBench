@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int WORD ;
 struct TYPE_16__ {scalar_t__ PosFormat; scalar_t__ Coverage; TYPE_1__* EntryExitRecord; } ;
 struct TYPE_15__ {scalar_t__ SubTableCount; } ;
 struct TYPE_14__ {scalar_t__ y; scalar_t__ x; } ;
-struct TYPE_13__ {int /*<<< orphan*/  fLogicalOrder; scalar_t__ fRTL; } ;
+struct TYPE_13__ {int fLogicalOrder; scalar_t__ fRTL; } ;
 struct TYPE_12__ {scalar_t__ ExitAnchor; scalar_t__ EntryAnchor; } ;
-typedef  TYPE_2__ SCRIPT_ANALYSIS ;
-typedef  TYPE_3__ POINT ;
-typedef  TYPE_4__ OT_LookupTable ;
-typedef  TYPE_5__ GPOS_CursivePosFormat1 ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_2__ SCRIPT_ANALYSIS ;
+typedef TYPE_3__ POINT ;
+typedef TYPE_4__ OT_LookupTable ;
+typedef TYPE_5__ GPOS_CursivePosFormat1 ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int GET_BE_WORD (scalar_t__) ; 
- int /*<<< orphan*/  GPOS_get_anchor_values (int /*<<< orphan*/  const*,TYPE_3__*,unsigned int) ; 
- scalar_t__ GPOS_get_subtable (TYPE_4__ const*,int) ; 
- int GSUB_is_glyph_covered (int /*<<< orphan*/  const*,int const) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  wine_dbgstr_point (TYPE_3__*) ; 
+
+ int FIXME (char*,int) ;
+ int GET_BE_WORD (scalar_t__) ;
+ int GPOS_get_anchor_values (int const*,TYPE_3__*,unsigned int) ;
+ scalar_t__ GPOS_get_subtable (TYPE_4__ const*,int) ;
+ int GSUB_is_glyph_covered (int const*,int const) ;
+ int TRACE (char*,...) ;
+ int wine_dbgstr_point (TYPE_3__*) ;
 
 __attribute__((used)) static void GPOS_apply_CursiveAttachment(const OT_LookupTable *look, const SCRIPT_ANALYSIS *analysis,
         const WORD *glyphs, unsigned int glyph_index, unsigned int glyph_count, unsigned int ppem, POINT *pt)

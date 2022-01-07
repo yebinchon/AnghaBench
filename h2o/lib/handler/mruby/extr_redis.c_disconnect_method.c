@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct st_h2o_mruby_redis_client_t {int /*<<< orphan*/  super; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- struct st_h2o_mruby_redis_client_t* DATA_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_redis_disconnect (int /*<<< orphan*/ *) ; 
+
+
+
+struct st_h2o_mruby_redis_client_t {int super; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ struct st_h2o_mruby_redis_client_t* DATA_PTR (int ) ;
+ int h2o_redis_disconnect (int *) ;
 
 __attribute__((used)) static mrb_value disconnect_method(mrb_state *mrb, mrb_value self)
 {

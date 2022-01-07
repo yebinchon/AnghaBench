@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  StrCpy (char*,int /*<<< orphan*/ ,char*) ; 
- char* getenv (char*) ; 
+
+
+
+typedef int UINT ;
+
+
+ int StrCpy (char*,int ,char*) ;
+ char* getenv (char*) ;
 
 bool GetEnv(char *name, char *data, UINT size)
 {
-	char *ret;
-	// Validate arguments
-	if (name == NULL || data == NULL)
-	{
-		return false;
-	}
+ char *ret;
 
-	StrCpy(data, size, "");
+ if (name == ((void*)0) || data == ((void*)0))
+ {
+  return 0;
+ }
 
-	ret = getenv(name);
-	if (ret == NULL)
-	{
-		return false;
-	}
+ StrCpy(data, size, "");
 
-	StrCpy(data, size, ret);
+ ret = getenv(name);
+ if (ret == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ StrCpy(data, size, ret);
+
+ return 1;
 }

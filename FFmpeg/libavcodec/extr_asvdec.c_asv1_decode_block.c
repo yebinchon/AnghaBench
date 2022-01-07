@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
-struct TYPE_7__ {int /*<<< orphan*/  table; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_7__ {int table; } ;
 struct TYPE_5__ {size_t* permutated; } ;
-struct TYPE_6__ {int* intra_matrix; int /*<<< orphan*/  gb; TYPE_1__ scantable; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_2__ ASV1Context ;
+struct TYPE_6__ {int* intra_matrix; int gb; TYPE_1__ scantable; int avctx; } ;
+typedef TYPE_2__ ASV1Context ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  VLC_BITS ; 
- int asv1_get_level (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- TYPE_3__ ccp_vlc ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int VLC_BITS ;
+ int asv1_get_level (int *) ;
+ int av_log (int ,int ,char*) ;
+ TYPE_3__ ccp_vlc ;
+ int get_bits (int *,int) ;
+ int get_vlc2 (int *,int ,int ,int) ;
 
 __attribute__((used)) static inline int asv1_decode_block(ASV1Context *a, int16_t block[64])
 {

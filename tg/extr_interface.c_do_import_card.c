@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct in_ev {int /*<<< orphan*/  refcnt; } ;
+
+
+
+
+struct in_ev {int refcnt; } ;
 struct command {int dummy; } ;
 struct arg {char* str; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TLS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  print_user_gw ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  tgl_do_import_card (int /*<<< orphan*/ ,int,int*,int /*<<< orphan*/ ,struct in_ev*) ; 
+
+ int TLS ;
+ int assert (int) ;
+ int print_user_gw ;
+ int strlen (char*) ;
+ int tgl_do_import_card (int ,int,int*,int ,struct in_ev*) ;
 
 void do_import_card (struct command *command, int arg_num, struct arg args[], struct in_ev *ev) {
   assert (arg_num == 1);
@@ -37,7 +37,7 @@ void do_import_card (struct command *command, int arg_num, struct arg args[], st
       } else if (s[i] >= 'a' && s[i] <= 'f') {
         cur = cur * 16 + s[i] - 'a' + 10;
       } else if (s[i] == ':') {
-        if (pp >= 9) { 
+        if (pp >= 9) {
           ok = 0;
           break;
         }

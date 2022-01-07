@@ -1,45 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum ib_qp_state { ____Placeholder_ib_qp_state } ib_qp_state ;
 
-/* Variables and functions */
-#define  IB_QPS_ERR 134 
-#define  IB_QPS_INIT 133 
-#define  IB_QPS_RESET 132 
-#define  IB_QPS_RTR 131 
-#define  IB_QPS_RTS 130 
-#define  IB_QPS_SQD 129 
-#define  IB_QPS_SQE 128 
 
+
+
+typedef enum ib_qp_state { ____Placeholder_ib_qp_state } ib_qp_state ;
 const char *usnic_ib_qp_grp_state_to_string(enum ib_qp_state state)
 {
-	switch (state) {
-	case IB_QPS_RESET:
-		return "Rst";
-	case IB_QPS_INIT:
-		return "Init";
-	case IB_QPS_RTR:
-		return "RTR";
-	case IB_QPS_RTS:
-		return "RTS";
-	case IB_QPS_SQD:
-		return "SQD";
-	case IB_QPS_SQE:
-		return "SQE";
-	case IB_QPS_ERR:
-		return "ERR";
-	default:
-		return "UNKNOWN STATE";
+ switch (state) {
+ case 132:
+  return "Rst";
+ case 133:
+  return "Init";
+ case 131:
+  return "RTR";
+ case 130:
+  return "RTS";
+ case 129:
+  return "SQD";
+ case 128:
+  return "SQE";
+ case 134:
+  return "ERR";
+ default:
+  return "UNKNOWN STATE";
 
-	}
+ }
 }

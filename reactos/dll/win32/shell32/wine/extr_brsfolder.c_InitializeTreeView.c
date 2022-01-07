@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  hwndTreeView; int /*<<< orphan*/  hWnd; TYPE_1__* lpBrowseInfo; } ;
-typedef  TYPE_2__ browse_info ;
-struct TYPE_6__ {int /*<<< orphan*/  ulFlags; int /*<<< orphan*/  pidlRoot; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  LPITEMIDLIST ;
-typedef  int /*<<< orphan*/  LPCITEMIDLIST ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  IShellFolder ;
-typedef  int /*<<< orphan*/  IEnumIDList ;
-typedef  scalar_t__ HTREEITEM ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ HIMAGELIST ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BrowseFlagsToSHCONTF (int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IShellFolder ; 
- int /*<<< orphan*/  ILClone (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILFindLastID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILRemoveLastID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IShellFolder_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IShellFolder_BindToObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IShellFolder_EnumObjects (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IShellFolder_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ InsertTreeViewItem (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  SHGetDesktopFolder (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Shell_GetImageLists (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  TVE_EXPAND ; 
- scalar_t__ TVI_ROOT ; 
- int /*<<< orphan*/  TVM_DELETEITEM ; 
- int /*<<< orphan*/  TVM_EXPAND ; 
- int /*<<< orphan*/  TVM_SETIMAGELIST ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ _ILIsDesktop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _ILIsEmpty (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int hwndTreeView; int hWnd; TYPE_1__* lpBrowseInfo; } ;
+typedef TYPE_2__ browse_info ;
+struct TYPE_6__ {int ulFlags; int pidlRoot; } ;
+typedef int LPVOID ;
+typedef int LPITEMIDLIST ;
+typedef int LPCITEMIDLIST ;
+typedef int LPARAM ;
+typedef int IShellFolder ;
+typedef int IEnumIDList ;
+typedef scalar_t__ HTREEITEM ;
+typedef int HRESULT ;
+typedef scalar_t__ HIMAGELIST ;
+typedef int DWORD ;
+
+
+ int BrowseFlagsToSHCONTF (int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IID_IShellFolder ;
+ int ILClone (int ) ;
+ int ILFindLastID (int ) ;
+ int ILFree (int ) ;
+ int ILRemoveLastID (int ) ;
+ int IShellFolder_AddRef (int *) ;
+ int IShellFolder_BindToObject (int *,int ,int ,int *,int *) ;
+ int IShellFolder_EnumObjects (int *,int ,int ,int **) ;
+ int IShellFolder_Release (int *) ;
+ scalar_t__ InsertTreeViewItem (TYPE_2__*,int *,int ,int ,int *,scalar_t__) ;
+ int SHGetDesktopFolder (int **) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int Shell_GetImageLists (int *,scalar_t__*) ;
+ int TRACE (char*,TYPE_2__*) ;
+ int TVE_EXPAND ;
+ scalar_t__ TVI_ROOT ;
+ int TVM_DELETEITEM ;
+ int TVM_EXPAND ;
+ int TVM_SETIMAGELIST ;
+ int WARN (char*,int ) ;
+ scalar_t__ _ILIsDesktop (int ) ;
+ int _ILIsEmpty (int ) ;
 
 __attribute__((used)) static void InitializeTreeView( browse_info *info )
 {
@@ -58,34 +58,21 @@ __attribute__((used)) static void InitializeTreeView( browse_info *info )
     HIMAGELIST hImageList;
     HRESULT hr;
     IShellFolder *lpsfParent, *lpsfRoot;
-    IEnumIDList * pEnumChildren = NULL;
+    IEnumIDList * pEnumChildren = ((void*)0);
     HTREEITEM item;
     DWORD flags;
     LPCITEMIDLIST root = info->lpBrowseInfo->pidlRoot;
 
     TRACE("%p\n", info );
-    
-    Shell_GetImageLists(NULL, &hImageList);
+
+    Shell_GetImageLists(((void*)0), &hImageList);
 
     if (hImageList)
         SendMessageW( info->hwndTreeView, TVM_SETIMAGELIST, 0, (LPARAM)hImageList );
-
-    /* We want to call InsertTreeViewItem down the code, in order to insert
-     * the root item of the treeview. Due to InsertTreeViewItem's signature, 
-     * we need the following to do this:
-     *
-     * + An ITEMIDLIST corresponding to _the parent_ of root. 
-     * + An ITEMIDLIST, which is a relative path from root's parent to root 
-     *   (containing a single SHITEMID).
-     * + An IShellFolder interface pointer of root's parent folder.
-     *
-     * If root is 'Desktop', then root's parent is also 'Desktop'.
-     */
-
     pidlParent = ILClone(root);
     ILRemoveLastID(pidlParent);
     pidlChild = ILClone(ILFindLastID(root));
-    
+
     if (_ILIsDesktop(pidlParent)) {
         hr = SHGetDesktopFolder(&lpsfParent);
     } else {

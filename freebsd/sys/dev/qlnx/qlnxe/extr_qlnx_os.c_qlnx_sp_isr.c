@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ecore_hwfn {scalar_t__ p_dev; } ;
-struct TYPE_3__ {int /*<<< orphan*/  sp_interrupts; } ;
-typedef  TYPE_1__ qlnx_host_t ;
+struct TYPE_3__ {int sp_interrupts; } ;
+typedef TYPE_1__ qlnx_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QL_DPRINT2 (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  ecore_int_sp_dpc (struct ecore_hwfn*) ; 
+
+ int QL_DPRINT2 (TYPE_1__*,char*) ;
+ int ecore_int_sp_dpc (struct ecore_hwfn*) ;
 
 void
 qlnx_sp_isr(void *arg)
 {
-	struct ecore_hwfn	*p_hwfn;
-	qlnx_host_t		*ha;
-	
-	p_hwfn = arg;
+ struct ecore_hwfn *p_hwfn;
+ qlnx_host_t *ha;
 
-	ha = (qlnx_host_t *)p_hwfn->p_dev;
+ p_hwfn = arg;
 
-	ha->sp_interrupts++;
+ ha = (qlnx_host_t *)p_hwfn->p_dev;
 
-	QL_DPRINT2(ha, "enter\n");
+ ha->sp_interrupts++;
 
-	ecore_int_sp_dpc(p_hwfn);
+ QL_DPRINT2(ha, "enter\n");
 
-	QL_DPRINT2(ha, "exit\n");
-	
-	return;
+ ecore_int_sp_dpc(p_hwfn);
+
+ QL_DPRINT2(ha, "exit\n");
+
+ return;
 }

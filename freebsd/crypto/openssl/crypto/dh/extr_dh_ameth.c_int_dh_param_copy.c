@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  length; scalar_t__ seedlen; int /*<<< orphan*/ * seed; int /*<<< orphan*/  j; int /*<<< orphan*/  q; int /*<<< orphan*/  g; int /*<<< orphan*/  p; } ;
-typedef  TYPE_1__ DH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OPENSSL_memdup (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  int_dh_bn_cpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int length; scalar_t__ seedlen; int * seed; int j; int q; int g; int p; } ;
+typedef TYPE_1__ DH ;
+
+
+ int OPENSSL_free (int *) ;
+ int * OPENSSL_memdup (int *,scalar_t__) ;
+ int int_dh_bn_cpy (int *,int ) ;
 
 __attribute__((used)) static int int_dh_param_copy(DH *to, const DH *from, int is_x942)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int int_dh_param_copy(DH *to, const DH *from, int i
         if (!int_dh_bn_cpy(&to->j, from->j))
             return 0;
         OPENSSL_free(to->seed);
-        to->seed = NULL;
+        to->seed = ((void*)0);
         to->seedlen = 0;
         if (from->seed) {
             to->seed = OPENSSL_memdup(from->seed, from->seedlen);

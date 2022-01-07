@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  exprval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPATCH_PROPERTYPUT ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JS_E_ILLEGAL_ASSIGN ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int const) ; 
- int /*<<< orphan*/  exprval_call (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int const,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- unsigned int get_op_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_args (int /*<<< orphan*/ *,unsigned int const) ; 
- int /*<<< orphan*/  stack_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_popn (int /*<<< orphan*/ *,unsigned int const) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_topn_exprval (int /*<<< orphan*/ *,unsigned int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_reference_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int exprval_t ;
+typedef int HRESULT ;
+
+
+ int DISPATCH_PROPERTYPUT ;
+ scalar_t__ FAILED (int ) ;
+ int JS_E_ILLEGAL_ASSIGN ;
+ int TRACE (char*,unsigned int const) ;
+ int exprval_call (int *,int *,int ,unsigned int const,int ,int *) ;
+ unsigned int get_op_uint (int *,int ) ;
+ int stack_args (int *,unsigned int const) ;
+ int stack_pop (int *) ;
+ int stack_popn (int *,unsigned int const) ;
+ int stack_push (int *,int ) ;
+ int stack_topn_exprval (int *,unsigned int const,int *) ;
+ int throw_reference_error (int *,int ,int *) ;
 
 __attribute__((used)) static HRESULT interp_assign_call(script_ctx_t *ctx)
 {
@@ -39,9 +39,9 @@ __attribute__((used)) static HRESULT interp_assign_call(script_ctx_t *ctx)
     TRACE("%u\n", argc);
 
     if(!stack_topn_exprval(ctx, argc+1, &ref))
-        return throw_reference_error(ctx, JS_E_ILLEGAL_ASSIGN, NULL);
+        return throw_reference_error(ctx, JS_E_ILLEGAL_ASSIGN, ((void*)0));
 
-    hres = exprval_call(ctx, &ref, DISPATCH_PROPERTYPUT, argc+1, stack_args(ctx, argc+1), NULL);
+    hres = exprval_call(ctx, &ref, DISPATCH_PROPERTYPUT, argc+1, stack_args(ctx, argc+1), ((void*)0));
     if(FAILED(hres))
         return hres;
 

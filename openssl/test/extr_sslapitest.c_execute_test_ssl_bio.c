@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ bio_change_t ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_CLOSE ; 
- int /*<<< orphan*/  BIO_f_ssl () ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_s_mem () ; 
- int /*<<< orphan*/  BIO_set_ssl (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ CHANGE_RBIO ; 
- scalar_t__ NO_BIO_CHANGE ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_CTX_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set0_rbio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set0_wbio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TLS_method () ; 
+
+
+
+typedef scalar_t__ bio_change_t ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+typedef int BIO ;
+
+
+ int BIO_CLOSE ;
+ int BIO_f_ssl () ;
+ int BIO_free (int *) ;
+ int * BIO_new (int ) ;
+ int BIO_pop (int *) ;
+ int BIO_push (int *,int *) ;
+ int BIO_s_mem () ;
+ int BIO_set_ssl (int *,int *,int ) ;
+ scalar_t__ CHANGE_RBIO ;
+ scalar_t__ NO_BIO_CHANGE ;
+ int SSL_CTX_free (int *) ;
+ int * SSL_CTX_new (int ) ;
+ int SSL_free (int *) ;
+ int * SSL_new (int *) ;
+ int SSL_set0_rbio (int *,int *) ;
+ int SSL_set0_wbio (int *,int *) ;
+ int TEST_ptr (int *) ;
+ int TLS_method () ;
 
 __attribute__((used)) static int execute_test_ssl_bio(int pop_ssl, bio_change_t change_bio)
 {
-    BIO *sslbio = NULL, *membio1 = NULL, *membio2 = NULL;
+    BIO *sslbio = ((void*)0), *membio1 = ((void*)0), *membio2 = ((void*)0);
     SSL_CTX *ctx;
-    SSL *ssl = NULL;
+    SSL *ssl = ((void*)0);
     int testresult = 0;
 
     if (!TEST_ptr(ctx = SSL_CTX_new(TLS_method()))
@@ -50,13 +50,13 @@ __attribute__((used)) static int execute_test_ssl_bio(int pop_ssl, bio_change_t 
 
     BIO_set_ssl(sslbio, ssl, BIO_CLOSE);
 
-    /*
-     * If anything goes wrong here then we could leak memory, so this will
-     * be caught in a crypto-mdebug build
-     */
+
+
+
+
     BIO_push(sslbio, membio1);
 
-    /* Verify changing the rbio/wbio directly does not cause leaks */
+
     if (change_bio != NO_BIO_CHANGE) {
         if (!TEST_ptr(membio2 = BIO_new(BIO_s_mem())))
             goto end;
@@ -65,7 +65,7 @@ __attribute__((used)) static int execute_test_ssl_bio(int pop_ssl, bio_change_t 
         else
             SSL_set0_wbio(ssl, membio2);
     }
-    ssl = NULL;
+    ssl = ((void*)0);
 
     if (pop_ssl)
         BIO_pop(sslbio);

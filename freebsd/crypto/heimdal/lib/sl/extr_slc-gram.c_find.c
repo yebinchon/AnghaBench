@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct assignment {int /*<<< orphan*/  name; struct assignment* next; } ;
 
-/* Variables and functions */
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct assignment {int name; struct assignment* next; } ;
+
+
+ scalar_t__ strcmp (int ,char const*) ;
 
 __attribute__((used)) static struct assignment *
 find(struct assignment *as, const char *name)
 {
-    for(; as != NULL; as = as->next) {
-	if(strcmp(as->name, name) == 0)
-	    return as;
+    for(; as != ((void*)0); as = as->next) {
+ if(strcmp(as->name, name) == 0)
+     return as;
     }
-    return NULL;
+    return ((void*)0);
 }

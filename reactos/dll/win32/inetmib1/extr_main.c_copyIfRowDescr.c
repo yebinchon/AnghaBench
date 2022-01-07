@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  bDescr; scalar_t__ dwDescrLen; } ;
-typedef  TYPE_1__* PMIB_IFROW ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  AsnAny ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN_OCTETSTRING ; 
- int FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MIB_IFROW ; 
- int /*<<< orphan*/  SNMP_ERRORSTATUS_NOERROR ; 
- int /*<<< orphan*/  SNMP_ERRORSTATUS_NOSUCHNAME ; 
- int /*<<< orphan*/  dwDescrLen ; 
- int /*<<< orphan*/  setStringValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int bDescr; scalar_t__ dwDescrLen; } ;
+typedef TYPE_1__* PMIB_IFROW ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int AsnAny ;
+
+
+ int ASN_OCTETSTRING ;
+ int FIELD_OFFSET (int ,int ) ;
+ int MIB_IFROW ;
+ int SNMP_ERRORSTATUS_NOERROR ;
+ int SNMP_ERRORSTATUS_NOSUCHNAME ;
+ int dwDescrLen ;
+ int setStringValue (int *,int ,scalar_t__,int ) ;
 
 __attribute__((used)) static DWORD copyIfRowDescr(AsnAny *value, void *src)
 {

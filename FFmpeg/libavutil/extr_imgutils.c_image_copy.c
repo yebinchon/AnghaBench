@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int const ptrdiff_t ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_5__ {int flags; int nb_components; int /*<<< orphan*/  log2_chroma_h; TYPE_1__* comp; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int const ptrdiff_t ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_5__ {int flags; int nb_components; int log2_chroma_h; TYPE_1__* comp; } ;
 struct TYPE_4__ {scalar_t__ plane; } ;
-typedef  TYPE_2__ AVPixFmtDescriptor ;
+typedef TYPE_2__ AVPixFmtDescriptor ;
 
-/* Variables and functions */
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_FLAG_HWACCEL ; 
- int AV_PIX_FMT_FLAG_PAL ; 
- int FFMAX (int,scalar_t__) ; 
- int FF_PSEUDOPAL ; 
- int av_image_get_linesize (int,int,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* av_pix_fmt_desc_get (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+ int AV_CEIL_RSHIFT (int,int ) ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_FLAG_HWACCEL ;
+ int AV_PIX_FMT_FLAG_PAL ;
+ int FFMAX (int,scalar_t__) ;
+ int FF_PSEUDOPAL ;
+ int av_image_get_linesize (int,int,int) ;
+ int av_log (int *,int ,char*) ;
+ TYPE_2__* av_pix_fmt_desc_get (int) ;
+ int memcpy (int *,int const*,int) ;
 
 __attribute__((used)) static void image_copy(uint8_t *dst_data[4], const ptrdiff_t dst_linesizes[4],
                        const uint8_t *src_data[4], const ptrdiff_t src_linesizes[4],
@@ -47,7 +47,7 @@ __attribute__((used)) static void image_copy(uint8_t *dst_data[4], const ptrdiff
         copy_plane(dst_data[0], dst_linesizes[0],
                    src_data[0], src_linesizes[0],
                    width, height);
-        /* copy the palette */
+
         if ((desc->flags & AV_PIX_FMT_FLAG_PAL) || (dst_data[1] && src_data[1]))
             memcpy(dst_data[1], src_data[1], 4*256);
     } else {
@@ -60,7 +60,7 @@ __attribute__((used)) static void image_copy(uint8_t *dst_data[4], const ptrdiff
             int h = height;
             ptrdiff_t bwidth = av_image_get_linesize(pix_fmt, width, i);
             if (bwidth < 0) {
-                av_log(NULL, AV_LOG_ERROR, "av_image_get_linesize failed\n");
+                av_log(((void*)0), AV_LOG_ERROR, "av_image_get_linesize failed\n");
                 return;
             }
             if (i == 1 || i == 2) {

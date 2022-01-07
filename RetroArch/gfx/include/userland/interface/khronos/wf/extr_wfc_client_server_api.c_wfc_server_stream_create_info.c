@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
-typedef  int /*<<< orphan*/  result ;
-typedef  int /*<<< orphan*/  msg ;
-struct TYPE_7__ {int size; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ WFC_STREAM_INFO_T ;
-struct TYPE_9__ {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
+typedef int result ;
+typedef int msg ;
+struct TYPE_7__ {int size; int flags; } ;
+typedef TYPE_1__ WFC_STREAM_INFO_T ;
+struct TYPE_9__ {int type; } ;
 struct TYPE_10__ {void* size; } ;
-struct TYPE_8__ {TYPE_4__ header; void* pid_hi; void* pid_lo; TYPE_5__ info; int /*<<< orphan*/  stream; } ;
-typedef  TYPE_2__ WFC_IPC_MSG_SS_CREATE_INFO_T ;
-typedef  int /*<<< orphan*/  WFCNativeStreamType ;
-typedef  scalar_t__ VCOS_STATUS_T ;
+struct TYPE_8__ {TYPE_4__ header; void* pid_hi; void* pid_lo; TYPE_5__ info; int stream; } ;
+typedef TYPE_2__ WFC_IPC_MSG_SS_CREATE_INFO_T ;
+typedef int WFCNativeStreamType ;
+typedef scalar_t__ VCOS_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  WFC_INVALID_HANDLE ; 
- int /*<<< orphan*/  WFC_IPC_MSG_SS_CREATE_INFO ; 
- int /*<<< orphan*/  memcpy (TYPE_5__*,TYPE_1__ const*,void*) ; 
- int /*<<< orphan*/  vcos_log_error (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,...) ; 
- void* vcos_min (int,int) ; 
- scalar_t__ wfc_client_ipc_sendwait (TYPE_4__*,int,int /*<<< orphan*/ *,size_t*) ; 
+
+ int VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int WFC_INVALID_HANDLE ;
+ int WFC_IPC_MSG_SS_CREATE_INFO ;
+ int memcpy (TYPE_5__*,TYPE_1__ const*,void*) ;
+ int vcos_log_error (char*,int ,...) ;
+ int vcos_log_trace (char*,int ,scalar_t__,int ,...) ;
+ void* vcos_min (int,int) ;
+ scalar_t__ wfc_client_ipc_sendwait (TYPE_4__*,int,int *,size_t*) ;
 
 WFCNativeStreamType wfc_server_stream_create_info(WFCNativeStreamType stream, const WFC_STREAM_INFO_T *info, uint32_t pid_lo, uint32_t pid_hi)
 {

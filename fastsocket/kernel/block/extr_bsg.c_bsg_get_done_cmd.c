@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bsg_device {int /*<<< orphan*/  name; int /*<<< orphan*/  done_cmds; int /*<<< orphan*/  wq_done; int /*<<< orphan*/  flags; } ;
+
+
+
+
+struct bsg_device {int name; int done_cmds; int wq_done; int flags; } ;
 struct bsg_command {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSG_F_BLOCK ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  ERESTARTSYS ; 
- struct bsg_command* ERR_PTR (int /*<<< orphan*/ ) ; 
- struct bsg_command* bsg_next_done_cmd (struct bsg_device*) ; 
- int /*<<< orphan*/  dprintk (char*,int /*<<< orphan*/ ,struct bsg_command*) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int wait_event_interruptible (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BSG_F_BLOCK ;
+ int EAGAIN ;
+ int ERESTARTSYS ;
+ struct bsg_command* ERR_PTR (int ) ;
+ struct bsg_command* bsg_next_done_cmd (struct bsg_device*) ;
+ int dprintk (char*,int ,struct bsg_command*) ;
+ int test_bit (int ,int *) ;
+ int wait_event_interruptible (int ,int ) ;
 
 __attribute__((used)) static struct bsg_command *bsg_get_done_cmd(struct bsg_device *bd)
 {
-	struct bsg_command *bc;
-	int ret;
+ struct bsg_command *bc;
+ int ret;
 
-	do {
-		bc = bsg_next_done_cmd(bd);
-		if (bc)
-			break;
+ do {
+  bc = bsg_next_done_cmd(bd);
+  if (bc)
+   break;
 
-		if (!test_bit(BSG_F_BLOCK, &bd->flags)) {
-			bc = ERR_PTR(-EAGAIN);
-			break;
-		}
+  if (!test_bit(BSG_F_BLOCK, &bd->flags)) {
+   bc = ERR_PTR(-EAGAIN);
+   break;
+  }
 
-		ret = wait_event_interruptible(bd->wq_done, bd->done_cmds);
-		if (ret) {
-			bc = ERR_PTR(-ERESTARTSYS);
-			break;
-		}
-	} while (1);
+  ret = wait_event_interruptible(bd->wq_done, bd->done_cmds);
+  if (ret) {
+   bc = ERR_PTR(-ERESTARTSYS);
+   break;
+  }
+ } while (1);
 
-	dprintk("%s: returning done %p\n", bd->name, bc);
+ dprintk("%s: returning done %p\n", bd->name, bc);
 
-	return bc;
+ return bc;
 }

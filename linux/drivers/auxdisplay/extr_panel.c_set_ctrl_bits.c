@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LCD_PORT_C ; 
- int /*<<< orphan*/  lcd_get_bits (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  pprt ; 
- int r_ctr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  w_ctr (int /*<<< orphan*/ ,int) ; 
+ int LCD_PORT_C ;
+ int lcd_get_bits (int ,int*) ;
+ int pprt ;
+ int r_ctr (int ) ;
+ int w_ctr (int ,int) ;
 
 __attribute__((used)) static int set_ctrl_bits(void)
 {
-	int val;
+ int val;
 
-	val = r_ctr(pprt);
-	lcd_get_bits(LCD_PORT_C, &val);
-	w_ctr(pprt, val);
-	return val;
+ val = r_ctr(pprt);
+ lcd_get_bits(LCD_PORT_C, &val);
+ w_ctr(pprt, val);
+ return val;
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int width; scalar_t__ height; } ;
-struct TYPE_8__ {int /*<<< orphan*/  surface; TYPE_1__ dims; } ;
-typedef  TYPE_3__ dialog_t ;
-typedef  int /*<<< orphan*/  color_t ;
+struct TYPE_8__ {int surface; TYPE_1__ dims; } ;
+typedef TYPE_3__ dialog_t ;
+typedef int color_t ;
 struct TYPE_7__ {scalar_t__ height; } ;
 struct TYPE_9__ {TYPE_2__ font; } ;
 
-/* Variables and functions */
- scalar_t__ backtrace_done ; 
- int border_width ; 
- TYPE_5__ config ; 
- int /*<<< orphan*/  draw_util_clear_surface (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  const draw_util_hex_to_color (char*) ; 
- int /*<<< orphan*/  draw_util_rectangle (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int,int,int,scalar_t__) ; 
- int /*<<< orphan*/  draw_util_text (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int const,int,int const) ; 
- int margin ; 
- int /*<<< orphan*/  message_intro ; 
- int /*<<< orphan*/  message_intro2 ; 
- int /*<<< orphan*/  message_option_backtrace ; 
- int /*<<< orphan*/  message_option_forget ; 
- int /*<<< orphan*/  message_option_restart ; 
+
+ scalar_t__ backtrace_done ;
+ int border_width ;
+ TYPE_5__ config ;
+ int draw_util_clear_surface (int *,int const) ;
+ int const draw_util_hex_to_color (char*) ;
+ int draw_util_rectangle (int *,int const,int,int,int,scalar_t__) ;
+ int draw_util_text (int ,int *,int const,int const,int const,int,int const) ;
+ int margin ;
+ int message_intro ;
+ int message_intro2 ;
+ int message_option_backtrace ;
+ int message_option_forget ;
+ int message_option_restart ;
 
 __attribute__((used)) static void sighandler_draw_dialog(dialog_t *dialog) {
     const color_t black = draw_util_hex_to_color("#000000");
     const color_t white = draw_util_hex_to_color("#FFFFFF");
     const color_t red = draw_util_hex_to_color("#FF0000");
 
-    /* Start with a clean slate and draw a red border. */
+
     draw_util_clear_surface(&(dialog->surface), red);
     draw_util_rectangle(&(dialog->surface), black, border_width, border_width,
                         dialog->dims.width - 2 * border_width, dialog->dims.height - 2 * border_width);

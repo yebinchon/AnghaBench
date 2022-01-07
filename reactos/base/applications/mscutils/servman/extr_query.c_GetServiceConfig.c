@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ SC_HANDLE ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/ * LPQUERY_SERVICE_CONFIGW ;
-typedef  int /*<<< orphan*/ * LPQUERY_SERVICE_CONFIG ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (scalar_t__) ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ OpenSCManagerW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ OpenServiceW (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QueryServiceConfigW (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SC_MANAGER_CONNECT ; 
- int /*<<< orphan*/  SERVICE_QUERY_CONFIG ; 
+
+
+
+typedef scalar_t__ SC_HANDLE ;
+typedef int LPWSTR ;
+typedef int * LPQUERY_SERVICE_CONFIGW ;
+typedef int * LPQUERY_SERVICE_CONFIG ;
+typedef int DWORD ;
+
+
+ int CloseServiceHandle (scalar_t__) ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ scalar_t__ HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ scalar_t__ OpenSCManagerW (int *,int *,int ) ;
+ scalar_t__ OpenServiceW (scalar_t__,int ,int ) ;
+ int QueryServiceConfigW (scalar_t__,int *,int ,int *) ;
+ int SC_MANAGER_CONNECT ;
+ int SERVICE_QUERY_CONFIG ;
 
 LPQUERY_SERVICE_CONFIG
 GetServiceConfig(LPWSTR lpServiceName)
 {
-    LPQUERY_SERVICE_CONFIGW lpServiceConfig = NULL;
+    LPQUERY_SERVICE_CONFIGW lpServiceConfig = ((void*)0);
     SC_HANDLE hSCManager;
     SC_HANDLE hService;
     DWORD dwBytesNeeded;
 
-    hSCManager = OpenSCManagerW(NULL,
-                                NULL,
+    hSCManager = OpenSCManagerW(((void*)0),
+                                ((void*)0),
                                 SC_MANAGER_CONNECT);
     if (hSCManager)
     {
@@ -48,7 +48,7 @@ GetServiceConfig(LPWSTR lpServiceName)
         if (hService)
         {
             if (!QueryServiceConfigW(hService,
-                                     NULL,
+                                     ((void*)0),
                                      0,
                                      &dwBytesNeeded))
             {
@@ -67,7 +67,7 @@ GetServiceConfig(LPWSTR lpServiceName)
                             HeapFree(GetProcessHeap(),
                                      0,
                                      lpServiceConfig);
-                            lpServiceConfig = NULL;
+                            lpServiceConfig = ((void*)0);
                         }
                     }
                 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  dwRtoAlgorithm; } ;
-struct TYPE_5__ {int /*<<< orphan*/  dwNumConns; int /*<<< orphan*/  dwOutRsts; int /*<<< orphan*/  dwInErrs; int /*<<< orphan*/  dwRetransSegs; int /*<<< orphan*/  dwOutSegs; int /*<<< orphan*/  dwInSegs; int /*<<< orphan*/  dwCurrEstab; int /*<<< orphan*/  dwEstabResets; int /*<<< orphan*/  dwAttemptFails; int /*<<< orphan*/  dwPassiveOpens; int /*<<< orphan*/  dwActiveOpens; int /*<<< orphan*/  dwMaxConn; int /*<<< orphan*/  dwRtoMax; int /*<<< orphan*/  dwRtoMin; } ;
-typedef  TYPE_1__ MIB_TCPSTATS ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_NOT_SUPPORTED ; 
- scalar_t__ NO_ERROR ; 
- TYPE_3__ U (TYPE_1__) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pGetTcpStatistics (TYPE_1__*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
- int winetest_debug ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int dwRtoAlgorithm; } ;
+struct TYPE_5__ {int dwNumConns; int dwOutRsts; int dwInErrs; int dwRetransSegs; int dwOutSegs; int dwInSegs; int dwCurrEstab; int dwEstabResets; int dwAttemptFails; int dwPassiveOpens; int dwActiveOpens; int dwMaxConn; int dwRtoMax; int dwRtoMin; } ;
+typedef TYPE_1__ MIB_TCPSTATS ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_NOT_SUPPORTED ;
+ scalar_t__ NO_ERROR ;
+ TYPE_3__ U (TYPE_1__) ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pGetTcpStatistics (TYPE_1__*) ;
+ int skip (char*) ;
+ int trace (char*,...) ;
+ int winetest_debug ;
 
 __attribute__((used)) static void testGetTcpStatistics(void)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void testGetTcpStatistics(void)
     DWORD apiReturn;
     MIB_TCPSTATS stats;
 
-    apiReturn = pGetTcpStatistics(NULL);
+    apiReturn = pGetTcpStatistics(((void*)0));
     if (apiReturn == ERROR_NOT_SUPPORTED) {
       skip("GetTcpStatistics is not supported\n");
       return;

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_16__ {char* psz_realm; char* psz_username; char* psz_password; } ;
-typedef  TYPE_1__ vlc_credential ;
+typedef TYPE_1__ vlc_credential ;
 struct TYPE_17__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ stream_t ;
-struct TYPE_18__ {char* netbios_name; int /*<<< orphan*/  p_session; int /*<<< orphan*/  url; } ;
-typedef  TYPE_3__ access_sys_t ;
+typedef TYPE_2__ stream_t ;
+struct TYPE_18__ {char* netbios_name; int p_session; int url; } ;
+typedef TYPE_3__ access_sys_t ;
 
-/* Variables and functions */
- int EACCES ; 
- int ENOENT ; 
- int /*<<< orphan*/  SMB1_LOGIN_DIALOG_TITLE ; 
- int /*<<< orphan*/  SMB_LOGIN_DIALOG_TEXT ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_2__*,char*,...) ; 
- int smb_connect (TYPE_2__*,char const*,char const*,char const*) ; 
- int smb_session_is_guest (int /*<<< orphan*/ ) ; 
- char* var_InheritString (TYPE_2__*,char*) ; 
- scalar_t__ var_Type (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  vlc_credential_clean (TYPE_1__*) ; 
- scalar_t__ vlc_credential_get (TYPE_1__*,TYPE_2__*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  vlc_credential_init (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_credential_store (TYPE_1__*,TYPE_2__*) ; 
+
+ int EACCES ;
+ int ENOENT ;
+ int SMB1_LOGIN_DIALOG_TITLE ;
+ int SMB_LOGIN_DIALOG_TEXT ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int assert (int) ;
+ int free (char*) ;
+ int msg_Err (TYPE_2__*,char*) ;
+ int msg_Warn (TYPE_2__*,char*,...) ;
+ int smb_connect (TYPE_2__*,char const*,char const*,char const*) ;
+ int smb_session_is_guest (int ) ;
+ char* var_InheritString (TYPE_2__*,char*) ;
+ scalar_t__ var_Type (TYPE_2__*,char*) ;
+ int vlc_credential_clean (TYPE_1__*) ;
+ scalar_t__ vlc_credential_get (TYPE_1__*,TYPE_2__*,char*,char*,int ,int ,...) ;
+ int vlc_credential_init (TYPE_1__*,int *) ;
+ int vlc_credential_store (TYPE_1__*,TYPE_2__*) ;
 
 __attribute__((used)) static int login( stream_t *p_access )
 {
@@ -47,20 +47,20 @@ __attribute__((used)) static int login( stream_t *p_access )
     vlc_credential credential;
     char *psz_var_domain;
     const char *psz_login, *psz_password, *psz_domain;
-    bool b_guest = false;
+    bool b_guest = 0;
 
     vlc_credential_init( &credential, &p_sys->url );
     psz_var_domain = var_InheritString( p_access, "smb-domain" );
-    credential.psz_realm = psz_var_domain ? psz_var_domain : NULL;
+    credential.psz_realm = psz_var_domain ? psz_var_domain : ((void*)0);
 
     vlc_credential_get( &credential, p_access, "smb-user", "smb-pwd",
-                        NULL, NULL );
+                        ((void*)0), ((void*)0) );
 
     if( !credential.psz_username )
     {
         psz_login = "Guest";
         psz_password = "";
-        b_guest = true;
+        b_guest = 1;
     }
     else
     {
@@ -69,7 +69,7 @@ __attribute__((used)) static int login( stream_t *p_access )
     }
     psz_domain = credential.psz_realm ? credential.psz_realm : p_sys->netbios_name;
 
-    /* Try to authenticate on the remote machine */
+
     int connect_err = smb_connect( p_access, psz_login, psz_password, psz_domain );
     if( connect_err == ENOENT )
         goto error;
@@ -78,8 +78,8 @@ __attribute__((used)) static int login( stream_t *p_access )
     {
         if (var_Type(p_access, "smb-dialog-failed") != 0)
         {
-            /* A higher priority smb module (likely smb2) already requested
-             * credentials to the users. It is useless to request it again. */
+
+
             goto error;
         }
         while( connect_err == EACCES
@@ -87,7 +87,7 @@ __attribute__((used)) static int login( stream_t *p_access )
                                    SMB1_LOGIN_DIALOG_TITLE,
                                    SMB_LOGIN_DIALOG_TEXT, p_sys->netbios_name ) )
         {
-            b_guest = false;
+            b_guest = 0;
             psz_login = credential.psz_username;
             psz_password = credential.psz_password;
             psz_domain = credential.psz_realm ? credential.psz_realm
@@ -106,7 +106,7 @@ __attribute__((used)) static int login( stream_t *p_access )
     if( smb_session_is_guest( p_sys->p_session ) == 1 )
     {
         msg_Warn( p_access, "Login failure but you were logged in as a Guest");
-        b_guest = true;
+        b_guest = 1;
     }
 
     msg_Warn( p_access, "Creds: username = '%s', domain = '%s'",

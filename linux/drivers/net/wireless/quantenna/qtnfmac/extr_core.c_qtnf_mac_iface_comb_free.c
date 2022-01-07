@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int n_if_comb; struct ieee80211_iface_combination* if_comb; } ;
 struct qtnf_wmac {TYPE_1__ macinfo; } ;
 struct ieee80211_iface_combination {struct ieee80211_iface_combination* limits; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct ieee80211_iface_combination*) ; 
+
+ int kfree (struct ieee80211_iface_combination*) ;
 
 void qtnf_mac_iface_comb_free(struct qtnf_wmac *mac)
 {
-	struct ieee80211_iface_combination *comb;
-	int i;
+ struct ieee80211_iface_combination *comb;
+ int i;
 
-	if (mac->macinfo.if_comb) {
-		for (i = 0; i < mac->macinfo.n_if_comb; i++) {
-			comb = &mac->macinfo.if_comb[i];
-			kfree(comb->limits);
-			comb->limits = NULL;
-		}
+ if (mac->macinfo.if_comb) {
+  for (i = 0; i < mac->macinfo.n_if_comb; i++) {
+   comb = &mac->macinfo.if_comb[i];
+   kfree(comb->limits);
+   comb->limits = ((void*)0);
+  }
 
-		kfree(mac->macinfo.if_comb);
-		mac->macinfo.if_comb = NULL;
-	}
+  kfree(mac->macinfo.if_comb);
+  mac->macinfo.if_comb = ((void*)0);
+ }
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_minor {int type; TYPE_1__* card_ptr; void* private_data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  card_dev; } ;
+struct TYPE_2__ {int card_dev; } ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (struct snd_minor**) ; 
- int /*<<< orphan*/  get_device (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct snd_minor** snd_oss_minors ; 
- int /*<<< orphan*/  sound_oss_mutex ; 
+
+ unsigned int ARRAY_SIZE (struct snd_minor**) ;
+ int get_device (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct snd_minor** snd_oss_minors ;
+ int sound_oss_mutex ;
 
 void *snd_lookup_oss_minor_data(unsigned int minor, int type)
 {
-	struct snd_minor *mreg;
-	void *private_data;
+ struct snd_minor *mreg;
+ void *private_data;
 
-	if (minor >= ARRAY_SIZE(snd_oss_minors))
-		return NULL;
-	mutex_lock(&sound_oss_mutex);
-	mreg = snd_oss_minors[minor];
-	if (mreg && mreg->type == type) {
-		private_data = mreg->private_data;
-		if (private_data && mreg->card_ptr)
-			get_device(&mreg->card_ptr->card_dev);
-	} else
-		private_data = NULL;
-	mutex_unlock(&sound_oss_mutex);
-	return private_data;
+ if (minor >= ARRAY_SIZE(snd_oss_minors))
+  return ((void*)0);
+ mutex_lock(&sound_oss_mutex);
+ mreg = snd_oss_minors[minor];
+ if (mreg && mreg->type == type) {
+  private_data = mreg->private_data;
+  if (private_data && mreg->card_ptr)
+   get_device(&mreg->card_ptr->card_dev);
+ } else
+  private_data = ((void*)0);
+ mutex_unlock(&sound_oss_mutex);
+ return private_data;
 }

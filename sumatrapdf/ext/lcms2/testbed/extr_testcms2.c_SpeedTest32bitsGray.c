@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
-typedef  scalar_t__ cmsFloat64Number ;
-typedef  int cmsFloat32Number ;
-typedef  scalar_t__ clock_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Die (char*) ; 
- int /*<<< orphan*/  PrintPerformance (int,int,scalar_t__) ; 
- int /*<<< orphan*/  TYPE_GRAY_FLT ; 
- int /*<<< orphan*/  TitlePerformance (char const*) ; 
- scalar_t__ clock () ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/  cmsFLAGS_NOCACHE ; 
- int /*<<< orphan*/  free (int*) ; 
- scalar_t__ malloc (int) ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int * cmsHPROFILE ;
+typedef scalar_t__ cmsFloat64Number ;
+typedef int cmsFloat32Number ;
+typedef scalar_t__ clock_t ;
+
+
+ int DbgThread () ;
+ int Die (char*) ;
+ int PrintPerformance (int,int,scalar_t__) ;
+ int TYPE_GRAY_FLT ;
+ int TitlePerformance (char const*) ;
+ scalar_t__ clock () ;
+ int cmsCloseProfile (int ,int *) ;
+ int cmsCreateTransform (int ,int *,int ,int *,int ,int,int ) ;
+ int cmsDeleteTransform (int ,int ) ;
+ int cmsDoTransform (int ,int ,int*,int*,int) ;
+ int cmsFLAGS_NOCACHE ;
+ int free (int*) ;
+ scalar_t__ malloc (int) ;
 
 __attribute__((used)) static
 void SpeedTest32bitsGray(const char * Title, cmsHPROFILE hlcmsProfileIn, cmsHPROFILE hlcmsProfileOut, cmsInt32Number Intent)
@@ -42,13 +42,13 @@ void SpeedTest32bitsGray(const char * Title, cmsHPROFILE hlcmsProfileIn, cmsHPRO
     cmsHTRANSFORM hlcmsxform;
     cmsFloat32Number *In;
     cmsUInt32Number Mb;
-    cmsUInt32Number Interval = 4; // Power of 2 number to increment r,g,b values by in the loops to keep the test duration practically short
+    cmsUInt32Number Interval = 4;
     cmsUInt32Number NumPixels;
 
-    if (hlcmsProfileIn == NULL || hlcmsProfileOut == NULL)
+    if (hlcmsProfileIn == ((void*)0) || hlcmsProfileOut == ((void*)0))
         Die("Unable to open profiles");
 
-    hlcmsxform  = cmsCreateTransform(DbgThread(), hlcmsProfileIn,
+    hlcmsxform = cmsCreateTransform(DbgThread(), hlcmsProfileIn,
         TYPE_GRAY_FLT, hlcmsProfileOut, TYPE_GRAY_FLT, Intent, cmsFLAGS_NOCACHE);
     cmsCloseProfile(DbgThread(), hlcmsProfileIn);
     cmsCloseProfile(DbgThread(), hlcmsProfileOut);

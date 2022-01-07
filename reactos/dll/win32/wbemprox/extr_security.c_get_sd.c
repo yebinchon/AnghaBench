@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sid_users_buffer ;
-typedef  int /*<<< orphan*/  sid_network_buffer ;
-typedef  int /*<<< orphan*/  sid_local_buffer ;
-typedef  int /*<<< orphan*/  sid_admin_buffer ;
-typedef  int /*<<< orphan*/  acl_buffer ;
-typedef  int /*<<< orphan*/  SID ;
-typedef  int /*<<< orphan*/  SECURITY_DESCRIPTOR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  ACL ;
-typedef  int /*<<< orphan*/  ACCESS_ALLOWED_ACE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACL_REVISION ; 
- int ADS_RIGHT_ACTRL_DS_LIST ; 
- int ADS_RIGHT_DS_CREATE_CHILD ; 
- int ADS_RIGHT_DS_DELETE_CHILD ; 
- int ADS_RIGHT_DS_READ_PROP ; 
- int ADS_RIGHT_DS_SELF ; 
- int ADS_RIGHT_DS_WRITE_PROP ; 
- int /*<<< orphan*/  AddAccessAllowedAceEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int CONTAINER_INHERIT_ACE ; 
- int /*<<< orphan*/  CreateWellKnownSid (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int GetSecurityDescriptorLength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int INHERITED_ACE ; 
- int /*<<< orphan*/  InitializeAcl (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InitializeSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MakeSelfRelativeSD (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int READ_CONTROL ; 
- int /*<<< orphan*/  SECURITY_DESCRIPTOR_REVISION ; 
- int SECURITY_MAX_SID_SIZE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SetSecurityDescriptorDacl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetSecurityDescriptorGroup (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetSecurityDescriptorOwner (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int WRITE_DAC ; 
- int /*<<< orphan*/  WinAuthenticatedUserSid ; 
- int /*<<< orphan*/  WinBuiltinAdministratorsSid ; 
- int /*<<< orphan*/  WinLocalServiceSid ; 
- int /*<<< orphan*/  WinNetworkServiceSid ; 
+
+
+
+typedef int sid_users_buffer ;
+typedef int sid_network_buffer ;
+typedef int sid_local_buffer ;
+typedef int sid_admin_buffer ;
+typedef int acl_buffer ;
+typedef int SID ;
+typedef int SECURITY_DESCRIPTOR ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int ACL ;
+typedef int ACCESS_ALLOWED_ACE ;
+
+
+ int ACL_REVISION ;
+ int ADS_RIGHT_ACTRL_DS_LIST ;
+ int ADS_RIGHT_DS_CREATE_CHILD ;
+ int ADS_RIGHT_DS_DELETE_CHILD ;
+ int ADS_RIGHT_DS_READ_PROP ;
+ int ADS_RIGHT_DS_SELF ;
+ int ADS_RIGHT_DS_WRITE_PROP ;
+ int AddAccessAllowedAceEx (int *,int ,int,int,int *) ;
+ int CONTAINER_INHERIT_ACE ;
+ int CreateWellKnownSid (int ,int *,int *,int*) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int GetSecurityDescriptorLength (int *) ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int INHERITED_ACE ;
+ int InitializeAcl (int *,int,int ) ;
+ int InitializeSecurityDescriptor (int *,int ) ;
+ int MakeSelfRelativeSD (int *,int *,int*) ;
+ int READ_CONTROL ;
+ int SECURITY_DESCRIPTOR_REVISION ;
+ int SECURITY_MAX_SID_SIZE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int SetSecurityDescriptorDacl (int *,int ,int *,int ) ;
+ int SetSecurityDescriptorGroup (int *,int *,int ) ;
+ int SetSecurityDescriptorOwner (int *,int *,int ) ;
+ int TRUE ;
+ int WRITE_DAC ;
+ int WinAuthenticatedUserSid ;
+ int WinBuiltinAdministratorsSid ;
+ int WinLocalServiceSid ;
+ int WinNetworkServiceSid ;
 
 __attribute__((used)) static HRESULT get_sd( SECURITY_DESCRIPTOR **sd, DWORD *size )
 {
@@ -76,16 +76,16 @@ __attribute__((used)) static HRESULT get_sd( SECURITY_DESCRIPTOR **sd, DWORD *si
     HRESULT hr = S_OK;
 
     sid_size = sizeof(sid_admin_buffer);
-    CreateWellKnownSid( WinBuiltinAdministratorsSid, NULL, sid_admin, &sid_size );
+    CreateWellKnownSid( WinBuiltinAdministratorsSid, ((void*)0), sid_admin, &sid_size );
 
     sid_size = sizeof(sid_network_buffer);
-    CreateWellKnownSid( WinNetworkServiceSid, NULL, sid_network, &sid_size );
+    CreateWellKnownSid( WinNetworkServiceSid, ((void*)0), sid_network, &sid_size );
 
     sid_size = sizeof(sid_local_buffer);
-    CreateWellKnownSid( WinLocalServiceSid, NULL, sid_local, &sid_size );
+    CreateWellKnownSid( WinLocalServiceSid, ((void*)0), sid_local, &sid_size );
 
     sid_size = sizeof(sid_users_buffer);
-    CreateWellKnownSid( WinAuthenticatedUserSid, NULL, sid_users, &sid_size );
+    CreateWellKnownSid( WinAuthenticatedUserSid, ((void*)0), sid_users, &sid_size );
 
     InitializeAcl( acl, sizeof(acl_buffer), ACL_REVISION );
 
@@ -122,7 +122,7 @@ __attribute__((used)) static HRESULT get_sd( SECURITY_DESCRIPTOR **sd, DWORD *si
     {
         if (!MakeSelfRelativeSD(&absolute_sd, *sd, size)) {
             HeapFree( GetProcessHeap(), 0, *sd );
-	    *sd = NULL;
+     *sd = ((void*)0);
             hr = E_FAIL;
         }
     }

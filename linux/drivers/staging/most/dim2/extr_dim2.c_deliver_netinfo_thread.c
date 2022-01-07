@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dim2_hdm {int /*<<< orphan*/  mac_addrs; int /*<<< orphan*/  link_state; int /*<<< orphan*/  most_iface; int /*<<< orphan*/  (* on_netinfo ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;scalar_t__ deliver_netinfo; int /*<<< orphan*/  netinfo_waitq; } ;
 
-/* Variables and functions */
- scalar_t__ kthread_should_stop () ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait_event_interruptible (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct dim2_hdm {int mac_addrs; int link_state; int most_iface; int (* on_netinfo ) (int *,int ,int ) ;scalar_t__ deliver_netinfo; int netinfo_waitq; } ;
+
+
+ scalar_t__ kthread_should_stop () ;
+ int stub1 (int *,int ,int ) ;
+ int wait_event_interruptible (int ,int) ;
 
 __attribute__((used)) static int deliver_netinfo_thread(void *data)
 {
-	struct dim2_hdm *dev = data;
+ struct dim2_hdm *dev = data;
 
-	while (!kthread_should_stop()) {
-		wait_event_interruptible(dev->netinfo_waitq,
-					 dev->deliver_netinfo ||
-					 kthread_should_stop());
+ while (!kthread_should_stop()) {
+  wait_event_interruptible(dev->netinfo_waitq,
+      dev->deliver_netinfo ||
+      kthread_should_stop());
 
-		if (dev->deliver_netinfo) {
-			dev->deliver_netinfo--;
-			if (dev->on_netinfo) {
-				dev->on_netinfo(&dev->most_iface,
-						dev->link_state,
-						dev->mac_addrs);
-			}
-		}
-	}
+  if (dev->deliver_netinfo) {
+   dev->deliver_netinfo--;
+   if (dev->on_netinfo) {
+    dev->on_netinfo(&dev->most_iface,
+      dev->link_state,
+      dev->mac_addrs);
+   }
+  }
+ }
 
-	return 0;
+ return 0;
 }

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct symtab_and_line {scalar_t__ pc; scalar_t__ line; scalar_t__ symtab; } ;
 struct frame_info {int dummy; } ;
 struct cleanup {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ DUMMY_FRAME ; 
- int LOCATION ; 
- int LOC_AND_ADDRESS ; 
- scalar_t__ SIGTRAMP_FRAME ; 
- int SRC_AND_LOC ; 
- int SRC_LINE ; 
- scalar_t__ addressprint ; 
- int /*<<< orphan*/  annotate_frame_address () ; 
- int /*<<< orphan*/  annotate_frame_address_end () ; 
- int /*<<< orphan*/  annotate_frame_begin (int,scalar_t__) ; 
- int /*<<< orphan*/  annotate_frame_end () ; 
- int /*<<< orphan*/  annotate_function_call () ; 
- int /*<<< orphan*/  annotate_signal_handler_caller () ; 
- scalar_t__ annotation_level ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- int /*<<< orphan*/  find_frame_sal (struct frame_info*,struct symtab_and_line*) ; 
- int /*<<< orphan*/  gdb_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gdb_stdout ; 
- struct symtab_and_line get_current_source_symtab_and_line () ; 
- scalar_t__ get_frame_pc (struct frame_info*) ; 
- scalar_t__ get_frame_type (struct frame_info*) ; 
- int get_lines_to_list () ; 
- int identify_source_line (scalar_t__,scalar_t__,int,scalar_t__) ; 
- struct cleanup* make_cleanup_ui_out_tuple_begin_end (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ max (scalar_t__,int) ; 
- int /*<<< orphan*/  print_frame (struct frame_info*,int,int,int,struct symtab_and_line) ; 
- int /*<<< orphan*/  print_frame_info_listing_hook (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_source_lines (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_current_source_symtab_and_line (struct symtab_and_line*) ; 
- int /*<<< orphan*/  set_default_breakpoint (int,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  set_default_source_symtab_and_line () ; 
- int /*<<< orphan*/  ui_left ; 
- int /*<<< orphan*/  ui_out_field_core_addr (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ui_out_field_fmt_int (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ui_out_field_string (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ ui_out_is_mi_like_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ui_out_text (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  uiout ; 
+
+ scalar_t__ DUMMY_FRAME ;
+ int LOCATION ;
+ int LOC_AND_ADDRESS ;
+ scalar_t__ SIGTRAMP_FRAME ;
+ int SRC_AND_LOC ;
+ int SRC_LINE ;
+ scalar_t__ addressprint ;
+ int annotate_frame_address () ;
+ int annotate_frame_address_end () ;
+ int annotate_frame_begin (int,scalar_t__) ;
+ int annotate_frame_end () ;
+ int annotate_function_call () ;
+ int annotate_signal_handler_caller () ;
+ scalar_t__ annotation_level ;
+ int do_cleanups (struct cleanup*) ;
+ int find_frame_sal (struct frame_info*,struct symtab_and_line*) ;
+ int gdb_flush (int ) ;
+ int gdb_stdout ;
+ struct symtab_and_line get_current_source_symtab_and_line () ;
+ scalar_t__ get_frame_pc (struct frame_info*) ;
+ scalar_t__ get_frame_type (struct frame_info*) ;
+ int get_lines_to_list () ;
+ int identify_source_line (scalar_t__,scalar_t__,int,scalar_t__) ;
+ struct cleanup* make_cleanup_ui_out_tuple_begin_end (int ,char*) ;
+ scalar_t__ max (scalar_t__,int) ;
+ int print_frame (struct frame_info*,int,int,int,struct symtab_and_line) ;
+ int print_frame_info_listing_hook (scalar_t__,scalar_t__,scalar_t__,int ) ;
+ int print_source_lines (scalar_t__,scalar_t__,scalar_t__,int ) ;
+ int set_current_source_symtab_and_line (struct symtab_and_line*) ;
+ int set_default_breakpoint (int,scalar_t__,scalar_t__,scalar_t__) ;
+ int set_default_source_symtab_and_line () ;
+ int ui_left ;
+ int ui_out_field_core_addr (int ,char*,scalar_t__) ;
+ int ui_out_field_fmt_int (int ,int,int ,char*,int) ;
+ int ui_out_field_string (int ,char*,char*) ;
+ scalar_t__ ui_out_is_mi_like_p (int ) ;
+ int ui_out_text (int ,char*) ;
+ int uiout ;
 
 void
 print_frame_info (struct frame_info *fi, int level, int source, int args)
@@ -65,12 +65,12 @@ print_frame_info (struct frame_info *fi, int level, int source, int args)
       || get_frame_type (fi) == SIGTRAMP_FRAME)
     {
       struct cleanup *uiout_cleanup
-	= make_cleanup_ui_out_tuple_begin_end (uiout, "frame");
+ = make_cleanup_ui_out_tuple_begin_end (uiout, "frame");
 
       annotate_frame_begin (level == -1 ? 0 : level, get_frame_pc (fi));
 
-      /* Do this regardless of SOURCE because we don't have any source
-         to list for this frame.  */
+
+
       if (level >= 0)
         {
           ui_out_text (uiout, "#");
@@ -87,10 +87,10 @@ print_frame_info (struct frame_info *fi, int level, int source, int args)
         {
           annotate_function_call ();
           ui_out_field_string (uiout, "func", "<function called from gdb>");
-	}
+ }
       else if (get_frame_type (fi) == SIGTRAMP_FRAME)
         {
-	  annotate_signal_handler_caller ();
+   annotate_signal_handler_caller ();
           ui_out_field_string (uiout, "func", "<signal handler called>");
         }
       ui_out_text (uiout, "\n");
@@ -100,17 +100,17 @@ print_frame_info (struct frame_info *fi, int level, int source, int args)
       return;
     }
 
-  /* If fi is not the innermost frame, that normally means that fi->pc
-     points to *after* the call instruction, and we want to get the
-     line containing the call, never the next line.  But if the next
-     frame is a SIGTRAMP_FRAME or a DUMMY_FRAME, then the next frame
-     was not entered as the result of a call, and we want to get the
-     line containing fi->pc.  */
+
+
+
+
+
+
   find_frame_sal (fi, &sal);
 
-  location_print = (source == LOCATION 
-		    || source == LOC_AND_ADDRESS
-		    || source == SRC_AND_LOC);
+  location_print = (source == LOCATION
+      || source == LOC_AND_ADDRESS
+      || source == SRC_AND_LOC);
 
   if (location_print || !sal.symtab)
     print_frame (fi, level, source, args, sal);
@@ -127,32 +127,24 @@ print_frame_info (struct frame_info *fi, int level, int source, int args)
       int mid_statement = (source == SRC_LINE) && (get_frame_pc (fi) != sal.pc);
 
       if (annotation_level)
-	done = identify_source_line (sal.symtab, sal.line, mid_statement,
-				     get_frame_pc (fi));
+ done = identify_source_line (sal.symtab, sal.line, mid_statement,
+         get_frame_pc (fi));
       if (!done)
-	{
-	  if (print_frame_info_listing_hook)
-	    print_frame_info_listing_hook (sal.symtab, sal.line, sal.line + 1, 0);
-	  else
-	    {
-	      /* We used to do this earlier, but that is clearly
-		 wrong. This function is used by many different
-		 parts of gdb, including normal_stop in infrun.c,
-		 which uses this to print out the current PC
-		 when we stepi/nexti into the middle of a source
-		 line. Only the command line really wants this
-		 behavior. Other UIs probably would like the
-		 ability to decide for themselves if it is desired. */
-	      if (addressprint && mid_statement)
-		{
-		  ui_out_field_core_addr (uiout, "addr", get_frame_pc (fi));
-		  ui_out_text (uiout, "\t");
-		}
+ {
+   if (print_frame_info_listing_hook)
+     print_frame_info_listing_hook (sal.symtab, sal.line, sal.line + 1, 0);
+   else
+     {
+       if (addressprint && mid_statement)
+  {
+    ui_out_field_core_addr (uiout, "addr", get_frame_pc (fi));
+    ui_out_text (uiout, "\t");
+  }
 
-	      print_source_lines (sal.symtab, sal.line, sal.line + 1, 0);
-	    }
-	}
-      /* Make sure we have at least a default source file */
+       print_source_lines (sal.symtab, sal.line, sal.line + 1, 0);
+     }
+ }
+
       set_default_source_symtab_and_line ();
       cursal = get_current_source_symtab_and_line ();
       cursal.line = max (sal.line - get_lines_to_list () / 2, 1);

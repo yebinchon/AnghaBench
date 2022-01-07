@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int Q_limit ; 
- int is_search ; 
- scalar_t__ sscanf (char const*,char*,int*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int targ_extra ; 
+ int Q_limit ;
+ int is_search ;
+ scalar_t__ sscanf (char const*,char*,int*) ;
+ int strncmp (char const*,char*,int) ;
+ int targ_extra ;
 
 __attribute__((used)) static int targ_prepare_search_query (const char *key, int len) {
   int i = -1, x = -1;
   targ_extra = 1;
-  if (!strncmp (key, "search(", 7)) { 
+  if (!strncmp (key, "search(", 7)) {
     is_search = 1;
     i = 7;
   } else if (sscanf(key, "target%*u_%*d%n(", &i) >= 0 && i >= 7 && key[i] == '(') {
     i++;
   } else if (sscanf(key, "prices%*u%n(", &i) >= 0 && i >= 7 && key[i] == '(') {
     i++;
-  } else if (!strncmp (key, "ad_", 3)) { 
+  } else if (!strncmp (key, "ad_", 3)) {
     switch (key[3]) {
     case 'c':
       if (key[4] == 'l') {
@@ -78,14 +70,14 @@ __attribute__((used)) static int targ_prepare_search_query (const char *key, int
       break;
     }
     if (x <= 0 || (key[x] && key[x] != '#')) {
-      return -1; 
+      return -1;
     }
     i = 3;
   } else if (!strncmp (key, "deletegroup", 11)) {
     sscanf (key, "deletegroup%*u%n", &x);
     i = 3;
-  } else { 
-    return -1; 
+  } else {
+    return -1;
   }
 
   if (x <= 0) {

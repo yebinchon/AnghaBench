@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _PATH_BT_HOSTS ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int host_stayopen ; 
- int /*<<< orphan*/ * hostf ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
+ int _PATH_BT_HOSTS ;
+ int * fopen (int ,char*) ;
+ int host_stayopen ;
+ int * hostf ;
+ int rewind (int *) ;
 
 void
 bt_sethostent(int stayopen)
 {
-	if (hostf == NULL)
-		hostf = fopen(_PATH_BT_HOSTS, "r");
-	else
-		rewind(hostf);
+ if (hostf == ((void*)0))
+  hostf = fopen(_PATH_BT_HOSTS, "r");
+ else
+  rewind(hostf);
 
-	host_stayopen = stayopen;
+ host_stayopen = stayopen;
 }

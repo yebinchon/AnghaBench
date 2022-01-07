@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ const uint32_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_WARN (char*) ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fread (scalar_t__ const*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (scalar_t__ const*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (scalar_t__ const*,int,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (size_t) ; 
+
+
+
+typedef scalar_t__ const uint32_t ;
+typedef int FILE ;
+
+
+ int RARCH_WARN (char*) ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fread (scalar_t__ const*,int,size_t,int *) ;
+ int free (scalar_t__ const*) ;
+ int fseek (int *,int ,int ) ;
+ size_t ftell (int *) ;
+ int fwrite (scalar_t__ const*,int,size_t,int *) ;
+ scalar_t__ malloc (size_t) ;
 
 __attribute__((used)) static void ctr_check_dspfirm(void)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void ctr_check_dspfirm(void)
       if (code_fp)
       {
          size_t code_size;
-         uint32_t* code_buffer     = NULL;
+         uint32_t* code_buffer = ((void*)0);
 
          fseek(code_fp, 0, SEEK_END);
          code_size = ftell(code_fp);
@@ -49,19 +49,19 @@ __attribute__((used)) static void ctr_check_dspfirm(void)
 
          if (code_buffer)
          {
-            uint32_t *ptr = NULL;
+            uint32_t *ptr = ((void*)0);
 
             fread(code_buffer, 1, code_size, code_fp);
 
             for (ptr = code_buffer + 0x40;
                  ptr < (code_buffer + (code_size >> 2)); ptr++)
             {
-               const uint32_t dsp1_magic = 0x31505344; /* "DSP1" */
+               const uint32_t dsp1_magic = 0x31505344;
                if (*ptr == dsp1_magic)
                {
                   size_t dspfirm_size = ptr[1];
                   ptr -= 0x40;
-                  if ((ptr + (dspfirm_size >> 2)) > 
+                  if ((ptr + (dspfirm_size >> 2)) >
                         (code_buffer + (code_size >> 2)))
                      break;
 

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetEnvironmentVariableW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * calloc (scalar_t__,int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- char* wchar_to_utf8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wconvert (char const*) ; 
- int /*<<< orphan*/  wfree (char const*) ; 
- int /*<<< orphan*/  wvarname ; 
+
+
+
+typedef int wchar_t ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ GetEnvironmentVariableW (int ,int *,scalar_t__) ;
+ int * calloc (scalar_t__,int) ;
+ int free (int *) ;
+ char* wchar_to_utf8 (int *) ;
+ int wconvert (char const*) ;
+ int wfree (char const*) ;
+ int wvarname ;
 
 __attribute__((used)) static __inline char* getenvU(const char* varname)
 {
-	wconvert(varname);
-	char* ret = NULL;
-	wchar_t* wbuf = NULL;
-	// _wgetenv() is *BROKEN* in MS compilers => use GetEnvironmentVariableW()
-	DWORD dwSize = GetEnvironmentVariableW(wvarname, wbuf, 0);
-	wbuf = calloc(dwSize, sizeof(wchar_t));
-	if (wbuf == NULL) {
-		wfree(varname);
-		return NULL;
-	}
-	dwSize = GetEnvironmentVariableW(wvarname, wbuf, dwSize);
-	if (dwSize != 0)
-		ret = wchar_to_utf8(wbuf);
-	free(wbuf);
-	wfree(varname);
-	return ret;
+ wconvert(varname);
+ char* ret = ((void*)0);
+ wchar_t* wbuf = ((void*)0);
+
+ DWORD dwSize = GetEnvironmentVariableW(wvarname, wbuf, 0);
+ wbuf = calloc(dwSize, sizeof(wchar_t));
+ if (wbuf == ((void*)0)) {
+  wfree(varname);
+  return ((void*)0);
+ }
+ dwSize = GetEnvironmentVariableW(wvarname, wbuf, dwSize);
+ if (dwSize != 0)
+  ret = wchar_to_utf8(wbuf);
+ free(wbuf);
+ wfree(varname);
+ return ret;
 }

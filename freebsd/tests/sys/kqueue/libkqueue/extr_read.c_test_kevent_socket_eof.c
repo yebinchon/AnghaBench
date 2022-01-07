@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kevent {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVFILT_READ ; 
- int /*<<< orphan*/  EV_ADD ; 
- int /*<<< orphan*/  EV_DELETE ; 
- int /*<<< orphan*/  EV_EOF ; 
- int /*<<< orphan*/  EV_SET (struct kevent*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  err (int,char*,...) ; 
- scalar_t__ kevent (int /*<<< orphan*/ ,struct kevent*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kevent_cmp (struct kevent*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kevent_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kqfd ; 
- int /*<<< orphan*/ * sockfd ; 
- int /*<<< orphan*/  success () ; 
- int /*<<< orphan*/  test_begin (char const*) ; 
- int /*<<< orphan*/  test_no_kevents () ; 
+
+
+
+struct kevent {int flags; } ;
+
+
+ int EVFILT_READ ;
+ int EV_ADD ;
+ int EV_DELETE ;
+ int EV_EOF ;
+ int EV_SET (struct kevent*,int ,int ,int ,int ,int ,int *) ;
+ scalar_t__ close (int ) ;
+ int err (int,char*,...) ;
+ scalar_t__ kevent (int ,struct kevent*,int,int *,int ,int *) ;
+ int kevent_cmp (struct kevent*,int ) ;
+ int kevent_get (int ) ;
+ int kqfd ;
+ int * sockfd ;
+ int success () ;
+ int test_begin (char const*) ;
+ int test_no_kevents () ;
 
 void
 test_kevent_socket_eof(void)
@@ -37,9 +37,9 @@ test_kevent_socket_eof(void)
 
     test_begin(test_id);
 
-    /* Re-add the watch and make sure no events are pending */
+
     EV_SET(&kev, sockfd[0], EVFILT_READ, EV_ADD, 0, 0, &sockfd[0]);
-    if (kevent(kqfd, &kev, 1, NULL, 0, NULL) < 0)
+    if (kevent(kqfd, &kev, 1, ((void*)0), 0, ((void*)0)) < 0)
         err(1, "%s", test_id);
     test_no_kevents();
 
@@ -49,9 +49,9 @@ test_kevent_socket_eof(void)
     kev.flags |= EV_EOF;
     kevent_cmp(&kev, kevent_get(kqfd));
 
-    /* Delete the watch */
+
     EV_SET(&kev, sockfd[0], EVFILT_READ, EV_DELETE, 0, 0, &sockfd[0]);
-    if (kevent(kqfd, &kev, 1, NULL, 0, NULL) < 0)
+    if (kevent(kqfd, &kev, 1, ((void*)0), 0, ((void*)0)) < 0)
         err(1, "%s", test_id);
 
     success();

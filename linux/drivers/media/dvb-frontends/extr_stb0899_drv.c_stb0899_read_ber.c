@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-struct stb0899_internal {int /*<<< orphan*/  err_ctrl; int /*<<< orphan*/  lock; int /*<<< orphan*/  v_status; } ;
-struct stb0899_state {int delsys; int /*<<< orphan*/  verbose; struct stb0899_internal internal; } ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct stb0899_internal {int err_ctrl; int lock; int v_status; } ;
+struct stb0899_state {int delsys; int verbose; struct stb0899_internal internal; } ;
 struct dvb_frontend {struct stb0899_state* demodulator_priv; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  FE_DEBUG ; 
- int MAKEWORD16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NOE ; 
- int /*<<< orphan*/  STB0899_ECNT1L ; 
- int /*<<< orphan*/  STB0899_ECNT1M ; 
- int STB0899_GETFIELD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  SYS_DSS 130 
-#define  SYS_DVBS 129 
-#define  SYS_DVBS2 128 
- int /*<<< orphan*/  VSTATUS_PRFVIT ; 
- int /*<<< orphan*/  dprintk (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  stb0899_read_reg (struct stb0899_state*,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int FE_DEBUG ;
+ int MAKEWORD16 (int ,int ) ;
+ int NOE ;
+ int STB0899_ECNT1L ;
+ int STB0899_ECNT1M ;
+ int STB0899_GETFIELD (int ,int ) ;
+
+
+
+ int VSTATUS_PRFVIT ;
+ int dprintk (int ,int ,int,char*) ;
+ int stb0899_read_reg (struct stb0899_state*,int ) ;
 
 __attribute__((used)) static int stb0899_read_ber(struct dvb_frontend *fe, u32 *ber)
 {
-	struct stb0899_state *state		= fe->demodulator_priv;
-	struct stb0899_internal *internal	= &state->internal;
+ struct stb0899_state *state = fe->demodulator_priv;
+ struct stb0899_internal *internal = &state->internal;
 
-	u8  lsb, msb;
+ u8 lsb, msb;
 
-	*ber = 0;
+ *ber = 0;
 
-	switch (state->delsys) {
-	case SYS_DVBS:
-	case SYS_DSS:
-		if (internal->lock) {
-			lsb = stb0899_read_reg(state, STB0899_ECNT1L);
-			msb = stb0899_read_reg(state, STB0899_ECNT1M);
-			*ber = MAKEWORD16(msb, lsb);
-			/* Viterbi Check	*/
-			if (STB0899_GETFIELD(VSTATUS_PRFVIT, internal->v_status)) {
-				/* Error Rate		*/
-				*ber *= 9766;
-				/* ber = ber * 10 ^ 7	*/
-				*ber /= (-1 + (1 << (2 * STB0899_GETFIELD(NOE, internal->err_ctrl))));
-				*ber /= 8;
-			}
-		}
-		break;
-	case SYS_DVBS2:
-		if (internal->lock) {
-			lsb = stb0899_read_reg(state, STB0899_ECNT1L);
-			msb = stb0899_read_reg(state, STB0899_ECNT1M);
-			*ber = MAKEWORD16(msb, lsb);
-			/* ber = ber * 10 ^ 7	*/
-			*ber *= 10000000;
-			*ber /= (-1 + (1 << (4 + 2 * STB0899_GETFIELD(NOE, internal->err_ctrl))));
-		}
-		break;
-	default:
-		dprintk(state->verbose, FE_DEBUG, 1, "Unsupported delivery system");
-		return -EINVAL;
-	}
+ switch (state->delsys) {
+ case 129:
+ case 130:
+  if (internal->lock) {
+   lsb = stb0899_read_reg(state, STB0899_ECNT1L);
+   msb = stb0899_read_reg(state, STB0899_ECNT1M);
+   *ber = MAKEWORD16(msb, lsb);
 
-	return 0;
+   if (STB0899_GETFIELD(VSTATUS_PRFVIT, internal->v_status)) {
+
+    *ber *= 9766;
+
+    *ber /= (-1 + (1 << (2 * STB0899_GETFIELD(NOE, internal->err_ctrl))));
+    *ber /= 8;
+   }
+  }
+  break;
+ case 128:
+  if (internal->lock) {
+   lsb = stb0899_read_reg(state, STB0899_ECNT1L);
+   msb = stb0899_read_reg(state, STB0899_ECNT1M);
+   *ber = MAKEWORD16(msb, lsb);
+
+   *ber *= 10000000;
+   *ber /= (-1 + (1 << (4 + 2 * STB0899_GETFIELD(NOE, internal->err_ctrl))));
+  }
+  break;
+ default:
+  dprintk(state->verbose, FE_DEBUG, 1, "Unsupported delivery system");
+  return -EINVAL;
+ }
+
+ return 0;
 }

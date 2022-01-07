@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,int,int,int,int,int) ; 
- int /*<<< orphan*/  BLOGI (struct bxe_softc*,char*) ; 
- int /*<<< orphan*/  BXE_ERR_GLOBAL ; 
- int /*<<< orphan*/  BXE_SET_ERROR_BIT (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int HW_PRTY_ASSERT_SET_0 ; 
- int HW_PRTY_ASSERT_SET_1 ; 
- int HW_PRTY_ASSERT_SET_2 ; 
- int HW_PRTY_ASSERT_SET_3 ; 
- int HW_PRTY_ASSERT_SET_4 ; 
- scalar_t__ TRUE ; 
- int bxe_check_blocks_with_parity0 (struct bxe_softc*,int,int,scalar_t__) ; 
- int bxe_check_blocks_with_parity1 (struct bxe_softc*,int,int,scalar_t__*,scalar_t__) ; 
- int bxe_check_blocks_with_parity2 (struct bxe_softc*,int,int,scalar_t__) ; 
- int bxe_check_blocks_with_parity3 (struct bxe_softc*,int,int,scalar_t__*,scalar_t__) ; 
- int bxe_check_blocks_with_parity4 (struct bxe_softc*,int,int,scalar_t__) ; 
+
+ int BLOGE (struct bxe_softc*,char*,int,int,int,int,int) ;
+ int BLOGI (struct bxe_softc*,char*) ;
+ int BXE_ERR_GLOBAL ;
+ int BXE_SET_ERROR_BIT (struct bxe_softc*,int ) ;
+ scalar_t__ FALSE ;
+ int HW_PRTY_ASSERT_SET_0 ;
+ int HW_PRTY_ASSERT_SET_1 ;
+ int HW_PRTY_ASSERT_SET_2 ;
+ int HW_PRTY_ASSERT_SET_3 ;
+ int HW_PRTY_ASSERT_SET_4 ;
+ scalar_t__ TRUE ;
+ int bxe_check_blocks_with_parity0 (struct bxe_softc*,int,int,scalar_t__) ;
+ int bxe_check_blocks_with_parity1 (struct bxe_softc*,int,int,scalar_t__*,scalar_t__) ;
+ int bxe_check_blocks_with_parity2 (struct bxe_softc*,int,int,scalar_t__) ;
+ int bxe_check_blocks_with_parity3 (struct bxe_softc*,int,int,scalar_t__*,scalar_t__) ;
+ int bxe_check_blocks_with_parity4 (struct bxe_softc*,int,int,scalar_t__) ;
 
 __attribute__((used)) static uint8_t
 bxe_parity_attn(struct bxe_softc *sc,
-                uint8_t          *global,
-                uint8_t          print,
-                uint32_t         *sig)
+                uint8_t *global,
+                uint8_t print,
+                uint32_t *sig)
 {
     int par_num = 0;
 
@@ -80,7 +80,7 @@ bxe_parity_attn(struct bxe_softc *sc,
         if (print)
             BLOGI(sc, "\n");
 
-	if( *global == TRUE ) {
+ if( *global == TRUE ) {
                 BXE_SET_ERROR_BIT(sc, BXE_ERR_GLOBAL);
         }
 

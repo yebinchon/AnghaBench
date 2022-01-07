@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int mxPage; int pagesize; } ;
 
-/* Variables and functions */
- unsigned int decodeInt32 (unsigned char*) ; 
- unsigned char* fileRead (int,int) ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  page_usage_cell (unsigned char,unsigned char*,int,int) ; 
- int /*<<< orphan*/  page_usage_msg (int,char*,char const*,char const*,...) ; 
- int /*<<< orphan*/  sqlite3_free (unsigned char*) ; 
+
+ unsigned int decodeInt32 (unsigned char*) ;
+ unsigned char* fileRead (int,int) ;
+ TYPE_1__ g ;
+ int page_usage_cell (unsigned char,unsigned char*,int,int) ;
+ int page_usage_msg (int,char*,char const*,char const*,...) ;
+ int sqlite3_free (unsigned char*) ;
 
 __attribute__((used)) static void page_usage_btree(
-  int pgno,             /* Page to describe */
-  int parent,           /* Parent of this page.  0 for root pages */
-  int idx,              /* Which child of the parent */
-  const char *zName     /* Name of the table */
+  int pgno,
+  int parent,
+  int idx,
+  const char *zName
 ){
   unsigned char *a;
   const char *zType = "corrupt node";
@@ -36,10 +36,10 @@ __attribute__((used)) static void page_usage_btree(
   if( pgno<=0 || pgno>g.mxPage ) return;
   a = fileRead((pgno-1)*g.pagesize, g.pagesize);
   switch( a[hdr] ){
-    case 2:  zType = "interior node of index";  break;
-    case 5:  zType = "interior node of table";  break;
-    case 10: zType = "leaf of index";           break;
-    case 13: zType = "leaf of table";           break;
+    case 2: zType = "interior node of index"; break;
+    case 5: zType = "interior node of table"; break;
+    case 10: zType = "leaf of index"; break;
+    case 13: zType = "leaf of table"; break;
   }
   if( parent ){
     page_usage_msg(pgno, "%s [%s], child %d of page %d",

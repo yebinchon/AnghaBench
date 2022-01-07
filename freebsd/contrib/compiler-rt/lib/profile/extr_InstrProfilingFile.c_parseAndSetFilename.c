@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* FilenamePat; scalar_t__ PNS; } ;
-typedef  scalar_t__ ProfileNameSpecifier ;
+typedef scalar_t__ ProfileNameSpecifier ;
 
-/* Variables and functions */
- char* DefaultProfileName ; 
- int /*<<< orphan*/  PROF_NOTE (char*,char const*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  getPNSStr (scalar_t__) ; 
- scalar_t__ getenv (char*) ; 
- TYPE_1__ lprofCurFilename ; 
- scalar_t__ parseFilenamePattern (char const*,unsigned int) ; 
- int /*<<< orphan*/  resetFilenameToDefault () ; 
- int /*<<< orphan*/  strcmp (char const*,char const*) ; 
- int /*<<< orphan*/  truncateCurrentFile () ; 
+
+ char* DefaultProfileName ;
+ int PROF_NOTE (char*,char const*,int ,...) ;
+ int getPNSStr (scalar_t__) ;
+ scalar_t__ getenv (char*) ;
+ TYPE_1__ lprofCurFilename ;
+ scalar_t__ parseFilenamePattern (char const*,unsigned int) ;
+ int resetFilenameToDefault () ;
+ int strcmp (char const*,char const*) ;
+ int truncateCurrentFile () ;
 
 __attribute__((used)) static void parseAndSetFilename(const char *FilenamePat,
                                 ProfileNameSpecifier PNS,
@@ -43,7 +43,7 @@ __attribute__((used)) static void parseAndSetFilename(const char *FilenamePat,
     return;
   }
 
-  /* When PNS >= OldPNS, the last one wins. */
+
   if (!FilenamePat || parseFilenamePattern(FilenamePat, CopyFilenamePat))
     resetFilenameToDefault();
   lprofCurFilename.PNS = PNS;

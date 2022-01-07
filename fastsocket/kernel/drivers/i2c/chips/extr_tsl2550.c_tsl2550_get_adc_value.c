@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct i2c_client {int dummy; } ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int i2c_smbus_read_byte_data (struct i2c_client*,int /*<<< orphan*/ ) ; 
+
+ int EAGAIN ;
+ int i2c_smbus_read_byte_data (struct i2c_client*,int ) ;
 
 __attribute__((used)) static int tsl2550_get_adc_value(struct i2c_client *client, u8 cmd)
 {
-	int ret;
+ int ret;
 
-	ret = i2c_smbus_read_byte_data(client, cmd);
-	if (ret < 0)
-		return ret;
-	if (!(ret & 0x80))
-		return -EAGAIN;
-	return ret & 0x7f;	/* remove the "valid" bit */
+ ret = i2c_smbus_read_byte_data(client, cmd);
+ if (ret < 0)
+  return ret;
+ if (!(ret & 0x80))
+  return -EAGAIN;
+ return ret & 0x7f;
 }

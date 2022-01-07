@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct notifier_block {int dummy; } ;
 
-/* Variables and functions */
- int atomic_notifier_chain_register (int /*<<< orphan*/ *,struct notifier_block*) ; 
- int /*<<< orphan*/  task_free_notifier ; 
+
+ int atomic_notifier_chain_register (int *,struct notifier_block*) ;
+ int task_free_notifier ;
 
 int task_handoff_register(struct notifier_block *n)
 {
-	return atomic_notifier_chain_register(&task_free_notifier, n);
+ return atomic_notifier_chain_register(&task_free_notifier, n);
 }

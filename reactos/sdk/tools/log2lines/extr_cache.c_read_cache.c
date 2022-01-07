@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * ptail; int /*<<< orphan*/  phead; } ;
-typedef  int /*<<< orphan*/  LIST_MEMBER ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int LINESIZE ; 
- TYPE_1__ cache ; 
- int /*<<< orphan*/ * cache_entry_create (char*) ; 
- char* cache_name ; 
- int /*<<< orphan*/  entry_insert (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * ptail; int phead; } ;
+typedef int LIST_MEMBER ;
+typedef int FILE ;
+
+
+ int LINESIZE ;
+ TYPE_1__ cache ;
+ int * cache_entry_create (char*) ;
+ char* cache_name ;
+ int entry_insert (TYPE_1__*,int *) ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ int l2l_dbg (int,char*,char*) ;
 
 int
 read_cache(void)
@@ -42,9 +42,9 @@ read_cache(void)
         l2l_dbg(1, "Open %s failed\n", cache_name);
         return 2;
     }
-    cache.phead = cache.ptail = NULL;
+    cache.phead = cache.ptail = ((void*)0);
 
-    while (fgets(Line, LINESIZE, fr) != NULL)
+    while (fgets(Line, LINESIZE, fr) != ((void*)0))
     {
         pentry = cache_entry_create(Line);
         if (!pentry)

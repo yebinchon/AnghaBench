@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_uint32 ;
-typedef  scalar_t__ npy_intp ;
-typedef  int /*<<< orphan*/  NpyIter_AxisData ;
-typedef  int /*<<< orphan*/  NpyIter ;
 
-/* Variables and functions */
- scalar_t__* NAD_STRIDES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NIT_ADVANCE_AXISDATA (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * NIT_AXISDATA (int /*<<< orphan*/ *) ; 
- scalar_t__ NIT_AXISDATA_SIZEOF (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  NIT_ITFLAGS (int /*<<< orphan*/ *) ; 
- int NIT_MASKOP (int /*<<< orphan*/ *) ; 
- int NIT_NDIM (int /*<<< orphan*/ *) ; 
- int NIT_NOP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
+
+
+
+typedef int npy_uint32 ;
+typedef scalar_t__ npy_intp ;
+typedef int NpyIter_AxisData ;
+typedef int NpyIter ;
+
+
+ scalar_t__* NAD_STRIDES (int *) ;
+ int NIT_ADVANCE_AXISDATA (int *,int) ;
+ int * NIT_AXISDATA (int *) ;
+ scalar_t__ NIT_AXISDATA_SIZEOF (int ,int,int) ;
+ int NIT_ITFLAGS (int *) ;
+ int NIT_MASKOP (int *) ;
+ int NIT_NDIM (int *) ;
+ int NIT_NOP (int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
 
 __attribute__((used)) static int
 check_mask_for_writemasked_reduction(NpyIter *iter, int iop)
@@ -47,10 +47,10 @@ check_mask_for_writemasked_reduction(NpyIter *iter, int iop)
         istride = NAD_STRIDES(axisdata)[iop];
         maskstride = NAD_STRIDES(axisdata)[maskop];
 
-        /*
-         * If 'iop' is being broadcast to 'maskop', we have
-         * the invalid situation described above.
-         */
+
+
+
+
         if (maskstride != 0 && istride == 0) {
             PyErr_SetString(PyExc_ValueError,
                     "Iterator reduction operand is WRITEMASKED, "

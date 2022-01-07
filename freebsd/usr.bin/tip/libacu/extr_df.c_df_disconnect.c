@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FD ; 
- int /*<<< orphan*/  TCIOFLUSH ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  tcflush (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,char*,int) ; 
+ int FD ;
+ int TCIOFLUSH ;
+ int sleep (int) ;
+ int tcflush (int ,int ) ;
+ int write (int ,char*,int) ;
 
 void
 df_disconnect(void)
 {
-	write(FD, "\001", 1);
-	sleep(1);
-	tcflush(FD, TCIOFLUSH);
+ write(FD, "\001", 1);
+ sleep(1);
+ tcflush(FD, TCIOFLUSH);
 }

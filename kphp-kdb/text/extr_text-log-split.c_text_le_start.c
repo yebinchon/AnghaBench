@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_start {scalar_t__ schema_id; int split_mod; int split_min; int split_max; int extra_bytes; int* str; } ;
 
-/* Variables and functions */
- scalar_t__ TEXT_SCHEMA_V1 ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned short extra_mask ; 
- int split_max ; 
- int split_min ; 
- int split_mod ; 
+
+ scalar_t__ TEXT_SCHEMA_V1 ;
+ int assert (int) ;
+ unsigned short extra_mask ;
+ int split_max ;
+ int split_min ;
+ int split_mod ;
 
 __attribute__((used)) static int text_le_start (struct lev_start *E) {
   assert (E->schema_id == TEXT_SCHEMA_V1);

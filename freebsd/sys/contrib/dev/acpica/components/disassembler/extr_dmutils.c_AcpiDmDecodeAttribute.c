@@ -1,90 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT8 ;
 
-/* Variables and functions */
-#define  AML_FIELD_ATTRIB_BLOCK 137 
-#define  AML_FIELD_ATTRIB_BLOCK_PROCESS_CALL 136 
-#define  AML_FIELD_ATTRIB_BYTE 135 
-#define  AML_FIELD_ATTRIB_BYTES 134 
-#define  AML_FIELD_ATTRIB_PROCESS_CALL 133 
-#define  AML_FIELD_ATTRIB_QUICK 132 
-#define  AML_FIELD_ATTRIB_RAW_BYTES 131 
-#define  AML_FIELD_ATTRIB_RAW_PROCESS_BYTES 130 
-#define  AML_FIELD_ATTRIB_SEND_RECEIVE 129 
-#define  AML_FIELD_ATTRIB_WORD 128 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
+
+
+
+typedef int UINT8 ;
+ int AcpiOsPrintf (char*,...) ;
 
 void
 AcpiDmDecodeAttribute (
-    UINT8                   Attribute)
+    UINT8 Attribute)
 {
 
     switch (Attribute)
     {
-    case AML_FIELD_ATTRIB_QUICK:
+    case 132:
 
         AcpiOsPrintf ("AttribQuick");
         break;
 
-    case AML_FIELD_ATTRIB_SEND_RECEIVE:
+    case 129:
 
         AcpiOsPrintf ("AttribSendReceive");
         break;
 
-    case AML_FIELD_ATTRIB_BYTE:
+    case 135:
 
         AcpiOsPrintf ("AttribByte");
         break;
 
-    case AML_FIELD_ATTRIB_WORD:
+    case 128:
 
         AcpiOsPrintf ("AttribWord");
         break;
 
-    case AML_FIELD_ATTRIB_BLOCK:
+    case 137:
 
         AcpiOsPrintf ("AttribBlock");
         break;
 
-    case AML_FIELD_ATTRIB_BYTES:
+    case 134:
 
         AcpiOsPrintf ("AttribBytes");
         break;
 
-    case AML_FIELD_ATTRIB_PROCESS_CALL:
+    case 133:
 
         AcpiOsPrintf ("AttribProcessCall");
         break;
 
-    case AML_FIELD_ATTRIB_BLOCK_PROCESS_CALL:
+    case 136:
 
         AcpiOsPrintf ("AttribBlockProcessCall");
         break;
 
-    case AML_FIELD_ATTRIB_RAW_BYTES:
+    case 131:
 
         AcpiOsPrintf ("AttribRawBytes");
         break;
 
-    case AML_FIELD_ATTRIB_RAW_PROCESS_BYTES:
+    case 130:
 
         AcpiOsPrintf ("AttribRawProcessBytes");
         break;
 
     default:
 
-        /* A ByteConst is allowed by the grammar */
+
 
         AcpiOsPrintf ("0x%2.2X", Attribute);
         break;

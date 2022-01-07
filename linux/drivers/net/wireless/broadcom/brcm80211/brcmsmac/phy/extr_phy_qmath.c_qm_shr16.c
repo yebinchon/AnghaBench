@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  s16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  qm_shl16 (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int s16 ;
+
+
+ int qm_shl16 (int ,int) ;
 
 s16 qm_shr16(s16 op, int shift)
 {
-	return qm_shl16(op, -shift);
+ return qm_shl16(op, -shift);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SYS_STATUS ;
-typedef  int SYS_MODULE_OBJ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRV_USART0_Status () ; 
-#define  DRV_USART_INDEX_0 128 
- int /*<<< orphan*/  SYS_STATUS_ERROR ; 
+
+
+
+typedef int SYS_STATUS ;
+typedef int SYS_MODULE_OBJ ;
+
+
+ int DRV_USART0_Status () ;
+
+ int SYS_STATUS_ERROR ;
 
 SYS_STATUS DRV_USART_Status( SYS_MODULE_OBJ object)
 {
@@ -24,7 +24,7 @@ SYS_STATUS DRV_USART_Status( SYS_MODULE_OBJ object)
 
     switch(object)
     {
-        case DRV_USART_INDEX_0:
+        case 128:
         {
             returnValue = DRV_USART0_Status();
             break;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UCHAR ;
 
-/* Variables and functions */
- scalar_t__ memcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- int strlen (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int UCHAR ;
+
+
+ scalar_t__ memcmp (int const*,int const*,int) ;
+ int strlen (int const*) ;
 
 __attribute__((used)) static UCHAR *kstrstr(const UCHAR *str1,const UCHAR *str2) {
   int str1_len=strlen(str1);
@@ -26,5 +26,5 @@ __attribute__((used)) static UCHAR *kstrstr(const UCHAR *str1,const UCHAR *str2)
          return (UCHAR *)str1;
         str1++;
   }
-  return NULL;
+  return ((void*)0);
 }

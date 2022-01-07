@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int value; struct TYPE_5__* prev; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ hlist ;
+typedef TYPE_1__ hlist ;
 
-/* Variables and functions */
- TYPE_1__* malloc (int) ; 
- int max_hlist_size ; 
+
+ TYPE_1__* malloc (int) ;
+ int max_hlist_size ;
 
 int add_to_hlist(hlist **begin, hlist **end, int size, int value) {
    int ret;
 
-   if (*begin == NULL) {
-       if ((*begin = malloc(sizeof(hlist))) == NULL)
+   if (*begin == ((void*)0)) {
+       if ((*begin = malloc(sizeof(hlist))) == ((void*)0))
            return 0;
        *end = *begin;
-       (*begin)->next = NULL;
-       (*begin)->prev = NULL;
+       (*begin)->next = ((void*)0);
+       (*begin)->prev = ((void*)0);
        ret = 1;
    }
    else if (size == max_hlist_size) {
        hlist *tmp = (*end)->prev;
-       tmp->next = NULL;
+       tmp->next = ((void*)0);
        (*end)->next = *begin;
-       (*end)->prev = NULL;
+       (*end)->prev = ((void*)0);
        *begin = *end;
        *end = tmp;
        (*begin)->next->prev = *begin;
@@ -44,7 +44,7 @@ int add_to_hlist(hlist **begin, hlist **end, int size, int value) {
        if (!new)
            return 0;
        new->next = *begin;
-       new->prev = NULL;
+       new->prev = ((void*)0);
        *begin = new;
        (*begin)->next->prev = *begin;
        ret = 1;

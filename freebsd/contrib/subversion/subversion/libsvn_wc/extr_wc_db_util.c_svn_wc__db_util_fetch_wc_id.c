@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_WCROOT_NULL ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_WC_CORRUPT ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__column_int64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__column_is_null (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_sqlite__db_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int STMT_SELECT_WCROOT_NULL ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_WC_CORRUPT ;
+ int _ (char*) ;
+ int * svn_error_createf (int ,int ,int ) ;
+ int * svn_error_trace (int ) ;
+ int svn_sqlite__column_int64 (int *,int ) ;
+ int svn_sqlite__column_is_null (int *,int ) ;
+ int svn_sqlite__get_statement (int **,int *,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (int *,int *) ;
 
 svn_error_t *
 svn_wc__db_util_fetch_wc_id(apr_int64_t *wc_id,
@@ -39,8 +39,8 @@ svn_wc__db_util_fetch_wc_id(apr_int64_t *wc_id,
   svn_sqlite__stmt_t *stmt;
   svn_boolean_t have_row;
 
-  /* ### cheat. we know there is just one WORKING_COPY row, and it has a
-     ### NULL value for local_abspath. */
+
+
   SVN_ERR(svn_sqlite__get_statement(&stmt, sdb, STMT_SELECT_WCROOT_NULL));
   SVN_ERR(svn_sqlite__step(&have_row, stmt));
   if (!have_row)

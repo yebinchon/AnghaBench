@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int H264_NAL_SEI ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int H264_NAL_SEI ;
+ int av_log (int *,int ,char*) ;
 
 __attribute__((used)) static int find_sei_end(AVCodecContext *avctx,
-                        uint8_t        *nal_data,
-                        size_t          nal_size,
-                        uint8_t       **sei_end)
+                        uint8_t *nal_data,
+                        size_t nal_size,
+                        uint8_t **sei_end)
 {
     int nal_type;
     size_t sei_payload_size = 0;
     int sei_payload_type = 0;
-    *sei_end = NULL;
+    *sei_end = ((void*)0);
     uint8_t *nal_start = nal_data;
 
     if (!nal_size)

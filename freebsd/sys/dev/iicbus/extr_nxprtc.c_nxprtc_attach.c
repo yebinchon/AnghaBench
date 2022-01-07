@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {void* ich_arg; int /*<<< orphan*/  ich_func; } ;
-struct nxprtc_softc {int chiptype; int use_timer; TYPE_1__ config_hook; int /*<<< orphan*/  tmcaddr; int /*<<< orphan*/  secaddr; int /*<<< orphan*/  busdev; void* dev; } ;
-typedef  void* device_t ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int ENXIO ; 
- int /*<<< orphan*/  PCF8523_R_SECOND ; 
- int /*<<< orphan*/  PCF8523_R_TMR_A_COUNT ; 
- int /*<<< orphan*/  PCF8563_R_SECOND ; 
- int /*<<< orphan*/  PCF8563_R_TMR_COUNT ; 
-#define  TYPE_PCA2129 133 
-#define  TYPE_PCA8565 132 
-#define  TYPE_PCF2127 131 
-#define  TYPE_PCF2129 130 
-#define  TYPE_PCF8523 129 
-#define  TYPE_PCF8563 128 
- scalar_t__ config_intrhook_establish (TYPE_1__*) ; 
- int /*<<< orphan*/  device_get_parent (void*) ; 
- struct nxprtc_softc* device_get_softc (void*) ; 
- int /*<<< orphan*/  device_printf (void*,char*) ; 
- int nxprtc_get_chiptype (void*) ; 
- int /*<<< orphan*/  nxprtc_start ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {void* ich_arg; int ich_func; } ;
+struct nxprtc_softc {int chiptype; int use_timer; TYPE_1__ config_hook; int tmcaddr; int secaddr; int busdev; void* dev; } ;
+typedef void* device_t ;
+
+
+ int ENOMEM ;
+ int ENXIO ;
+ int PCF8523_R_SECOND ;
+ int PCF8523_R_TMR_A_COUNT ;
+ int PCF8563_R_SECOND ;
+ int PCF8563_R_TMR_COUNT ;
+
+
+
+
+
+
+ scalar_t__ config_intrhook_establish (TYPE_1__*) ;
+ int device_get_parent (void*) ;
+ struct nxprtc_softc* device_get_softc (void*) ;
+ int device_printf (void*,char*) ;
+ int nxprtc_get_chiptype (void*) ;
+ int nxprtc_start ;
 
 __attribute__((used)) static int
 nxprtc_attach(device_t dev)
 {
-	struct nxprtc_softc *sc;
+ struct nxprtc_softc *sc;
 
-	sc = device_get_softc(dev);
-	sc->dev = dev;
-	sc->busdev = device_get_parent(dev);
+ sc = device_get_softc(dev);
+ sc->dev = dev;
+ sc->busdev = device_get_parent(dev);
 
-	/* We need to know what kind of chip we're driving. */
-	sc->chiptype = nxprtc_get_chiptype(dev);
 
-	/* The features and some register addresses vary by chip type. */
-	switch (sc->chiptype) {
-	case TYPE_PCA2129:
-	case TYPE_PCF2129:
-	case TYPE_PCF2127:
-	case TYPE_PCF8523:
-		sc->secaddr = PCF8523_R_SECOND;
-		sc->tmcaddr = PCF8523_R_TMR_A_COUNT;
-		sc->use_timer = true;
-		break;
-	case TYPE_PCA8565:
-	case TYPE_PCF8563:
-		sc->secaddr = PCF8563_R_SECOND;
-		sc->tmcaddr = PCF8563_R_TMR_COUNT;
-		sc->use_timer = true;
-		break;
-	default:
-		device_printf(dev, "impossible: cannot determine chip type\n");
-		return (ENXIO);
-	}
+ sc->chiptype = nxprtc_get_chiptype(dev);
 
-	/*
-	 * We have to wait until interrupts are enabled.  Sometimes I2C read
-	 * and write only works when the interrupts are available.
-	 */
-	sc->config_hook.ich_func = nxprtc_start;
-	sc->config_hook.ich_arg = dev;
-	if (config_intrhook_establish(&sc->config_hook) != 0)
-		return (ENOMEM);
 
-	return (0);
+ switch (sc->chiptype) {
+ case 133:
+ case 130:
+ case 131:
+ case 129:
+  sc->secaddr = PCF8523_R_SECOND;
+  sc->tmcaddr = PCF8523_R_TMR_A_COUNT;
+  sc->use_timer = 1;
+  break;
+ case 132:
+ case 128:
+  sc->secaddr = PCF8563_R_SECOND;
+  sc->tmcaddr = PCF8563_R_TMR_COUNT;
+  sc->use_timer = 1;
+  break;
+ default:
+  device_printf(dev, "impossible: cannot determine chip type\n");
+  return (ENXIO);
+ }
+
+
+
+
+
+ sc->config_hook.ich_func = nxprtc_start;
+ sc->config_hook.ich_arg = dev;
+ if (config_intrhook_establish(&sc->config_hook) != 0)
+  return (ENOMEM);
+
+ return (0);
 }

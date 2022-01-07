@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irq_data {int /*<<< orphan*/  irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSYSINT2REG ; 
- int SYSINT2_IRQ_TO_PIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  icu2_clear (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct irq_data {int irq; } ;
+
+
+ int MSYSINT2REG ;
+ int SYSINT2_IRQ_TO_PIN (int ) ;
+ int icu2_clear (int ,int) ;
 
 __attribute__((used)) static void disable_sysint2_irq(struct irq_data *d)
 {
-	icu2_clear(MSYSINT2REG, 1 << SYSINT2_IRQ_TO_PIN(d->irq));
+ icu2_clear(MSYSINT2REG, 1 << SYSINT2_IRQ_TO_PIN(d->irq));
 }

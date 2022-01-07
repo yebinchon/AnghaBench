@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-typedef  int /*<<< orphan*/  swreg ;
+
+
+
+
+typedef int u16 ;
+typedef int swreg ;
 struct nfp_prog {int error; } ;
-struct nfp_insn_ur_regs {int /*<<< orphan*/  src_lmextn; int /*<<< orphan*/  breg; int /*<<< orphan*/  areg; } ;
+struct nfp_insn_ur_regs {int src_lmextn; int breg; int areg; } ;
 
-/* Variables and functions */
- scalar_t__ NN_REG_IMM ; 
- int /*<<< orphan*/  __emit_lcsr (struct nfp_prog*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reg_imm (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reg_none () ; 
- int swreg_to_unrestricted (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct nfp_insn_ur_regs*) ; 
- scalar_t__ swreg_type (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ NN_REG_IMM ;
+ int __emit_lcsr (struct nfp_prog*,int ,int ,int,int ,int,int ) ;
+ int reg_imm (int ) ;
+ int reg_none () ;
+ int swreg_to_unrestricted (int ,int ,int ,struct nfp_insn_ur_regs*) ;
+ scalar_t__ swreg_type (int ) ;
 
 __attribute__((used)) static void emit_csr_wr(struct nfp_prog *nfp_prog, swreg src, u16 addr)
 {
-	struct nfp_insn_ur_regs reg;
-	int err;
+ struct nfp_insn_ur_regs reg;
+ int err;
 
-	/* This instruction takes immeds instead of reg_none() for the ignored
-	 * operand, but we can't encode 2 immeds in one instr with our normal
-	 * swreg infra so if param is an immed, we encode as reg_none() and
-	 * copy the immed to both operands.
-	 */
-	if (swreg_type(src) == NN_REG_IMM) {
-		err = swreg_to_unrestricted(reg_none(), src, reg_none(), &reg);
-		reg.breg = reg.areg;
-	} else {
-		err = swreg_to_unrestricted(reg_none(), src, reg_imm(0), &reg);
-	}
-	if (err) {
-		nfp_prog->error = err;
-		return;
-	}
 
-	__emit_lcsr(nfp_prog, reg.areg, reg.breg, true, addr,
-		    false, reg.src_lmextn);
+
+
+
+
+ if (swreg_type(src) == NN_REG_IMM) {
+  err = swreg_to_unrestricted(reg_none(), src, reg_none(), &reg);
+  reg.breg = reg.areg;
+ } else {
+  err = swreg_to_unrestricted(reg_none(), src, reg_imm(0), &reg);
+ }
+ if (err) {
+  nfp_prog->error = err;
+  return;
+ }
+
+ __emit_lcsr(nfp_prog, reg.areg, reg.breg, 1, addr,
+      0, reg.src_lmextn);
 }

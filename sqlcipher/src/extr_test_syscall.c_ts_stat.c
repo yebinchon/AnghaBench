@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int dummy; } ;
 
-/* Variables and functions */
- int orig_stat (char const*,struct stat*) ; 
- scalar_t__ tsIsFail () ; 
+
+ int orig_stat (char const*,struct stat*) ;
+ scalar_t__ tsIsFail () ;
 
 __attribute__((used)) static int ts_stat(const char *zPath, struct stat *p){
   if( tsIsFail() ){

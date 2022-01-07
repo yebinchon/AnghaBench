@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  (* constructor ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__**) ;} ;
-typedef  TYPE_2__ tag_desc_t ;
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-struct TYPE_11__ {int /*<<< orphan*/ * vtbl; } ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int (* constructor ) (int *,int *,TYPE_3__**) ;} ;
+typedef TYPE_2__ tag_desc_t ;
+typedef int nsresult ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsAString ;
+struct TYPE_11__ {int * vtbl; } ;
 struct TYPE_13__ {TYPE_1__ node; } ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  TYPE_3__ HTMLElement ;
-typedef  int /*<<< orphan*/  HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
+typedef int PRUnichar ;
+typedef TYPE_3__ HTMLElement ;
+typedef int HTMLDocumentNode ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HTMLElementImplVtbl ; 
- int /*<<< orphan*/  HTMLElement_Init (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HTMLElement_dispex ; 
- int /*<<< orphan*/  HTMLGenericElement_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__**) ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLElement ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- TYPE_2__* get_tag_desc (int /*<<< orphan*/  const*) ; 
- TYPE_3__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_GetTagName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__**) ; 
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int HTMLElementImplVtbl ;
+ int HTMLElement_Init (TYPE_3__*,int *,int *,int *) ;
+ int HTMLElement_dispex ;
+ int HTMLGenericElement_Create (int *,int *,TYPE_3__**) ;
+ int IID_nsIDOMHTMLElement ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int TRACE (char*,int ,TYPE_3__*) ;
+ int debugstr_w (int const*) ;
+ TYPE_2__* get_tag_desc (int const*) ;
+ TYPE_3__* heap_alloc_zero (int) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLElement_GetTagName (int *,int *) ;
+ int nsIDOMHTMLElement_Release (int *) ;
+ int nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ int stub1 (int *,int *,TYPE_3__**) ;
 
 HRESULT HTMLElement_Create(HTMLDocumentNode *doc, nsIDOMNode *nsnode, BOOL use_generic, HTMLElement **ret)
 {
@@ -64,7 +64,7 @@ HRESULT HTMLElement_Create(HTMLDocumentNode *doc, nsIDOMNode *nsnode, BOOL use_g
     if(NS_FAILED(nsres))
         return E_FAIL;
 
-    nsAString_Init(&class_name_str, NULL);
+    nsAString_Init(&class_name_str, ((void*)0));
     nsIDOMHTMLElement_GetTagName(nselem, &class_name_str);
 
     nsAString_GetData(&class_name_str, &class_name);

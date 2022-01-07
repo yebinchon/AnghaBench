@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- size_t fwrite (unsigned char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stb__fopen (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int fprintf (int ,char*,char*) ;
+ size_t fwrite (unsigned char*,int,size_t,int *) ;
+ int * stb__fopen (char*,char*) ;
+ int stderr ;
 
 int stb_filewrite(char *filename, void *data, size_t length)
 {
@@ -37,5 +37,5 @@ int stb_filewrite(char *filename, void *data, size_t length)
       }
       fclose(f);
    }
-   return f != NULL;
+   return f != ((void*)0);
 }

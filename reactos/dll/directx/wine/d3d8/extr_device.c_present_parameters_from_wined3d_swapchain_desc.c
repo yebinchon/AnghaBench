@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_swapchain_desc {int flags; int /*<<< orphan*/  swap_interval; int /*<<< orphan*/  refresh_rate; int /*<<< orphan*/  auto_depth_stencil_format; int /*<<< orphan*/  enable_auto_depth_stencil; int /*<<< orphan*/  windowed; int /*<<< orphan*/  device_window; int /*<<< orphan*/  swap_effect; int /*<<< orphan*/  multisample_type; int /*<<< orphan*/  backbuffer_count; int /*<<< orphan*/  backbuffer_format; int /*<<< orphan*/  backbuffer_height; int /*<<< orphan*/  backbuffer_width; } ;
-struct TYPE_3__ {int Flags; int /*<<< orphan*/  FullScreen_PresentationInterval; int /*<<< orphan*/  FullScreen_RefreshRateInHz; void* AutoDepthStencilFormat; int /*<<< orphan*/  EnableAutoDepthStencil; int /*<<< orphan*/  Windowed; int /*<<< orphan*/  hDeviceWindow; int /*<<< orphan*/  SwapEffect; int /*<<< orphan*/  MultiSampleType; int /*<<< orphan*/  BackBufferCount; void* BackBufferFormat; int /*<<< orphan*/  BackBufferHeight; int /*<<< orphan*/  BackBufferWidth; } ;
-typedef  TYPE_1__ D3DPRESENT_PARAMETERS ;
 
-/* Variables and functions */
- int D3DPRESENTFLAGS_MASK ; 
- void* d3dformat_from_wined3dformat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3dswapeffect_from_wined3dswapeffect (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct wined3d_swapchain_desc {int flags; int swap_interval; int refresh_rate; int auto_depth_stencil_format; int enable_auto_depth_stencil; int windowed; int device_window; int swap_effect; int multisample_type; int backbuffer_count; int backbuffer_format; int backbuffer_height; int backbuffer_width; } ;
+struct TYPE_3__ {int Flags; int FullScreen_PresentationInterval; int FullScreen_RefreshRateInHz; void* AutoDepthStencilFormat; int EnableAutoDepthStencil; int Windowed; int hDeviceWindow; int SwapEffect; int MultiSampleType; int BackBufferCount; void* BackBufferFormat; int BackBufferHeight; int BackBufferWidth; } ;
+typedef TYPE_1__ D3DPRESENT_PARAMETERS ;
+
+
+ int D3DPRESENTFLAGS_MASK ;
+ void* d3dformat_from_wined3dformat (int ) ;
+ int d3dswapeffect_from_wined3dswapeffect (int ) ;
 
 __attribute__((used)) static void present_parameters_from_wined3d_swapchain_desc(D3DPRESENT_PARAMETERS *present_parameters,
         const struct wined3d_swapchain_desc *swapchain_desc)

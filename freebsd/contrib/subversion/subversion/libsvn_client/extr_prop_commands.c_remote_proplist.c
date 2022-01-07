@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_proplist_receiver2_t ;
-typedef  scalar_t__ svn_prop_kind_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_proplist_receiver2_t ;
+typedef scalar_t__ svn_prop_kind_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
 struct TYPE_3__ {scalar_t__ kind; } ;
-typedef  TYPE_1__ svn_dirent_t ;
-typedef  scalar_t__ svn_depth_t ;
-typedef  int /*<<< orphan*/ * (* svn_cancel_func_t ) (void*) ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_1__ svn_dirent_t ;
+typedef scalar_t__ svn_depth_t ;
+typedef int * (* svn_cancel_func_t ) (void*) ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_DIRENT_KIND ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR_NODE_UNKNOWN_KIND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this_key_len (int /*<<< orphan*/ *) ; 
- TYPE_1__* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * call_receiver (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client__iprop_relpaths_to_urls (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_depth_empty ; 
- scalar_t__ svn_depth_files ; 
- scalar_t__ svn_depth_immediates ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- char* svn_path_url_add_component2 (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_prop_regular_kind ; 
- scalar_t__ svn_property_kind2 (char const*) ; 
- int /*<<< orphan*/ * svn_ra_get_dir2 (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_get_file (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_get_inherited_props (int /*<<< orphan*/ *,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_get_repos_root2 (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *) ; 
- char* svn_relpath_join (char const*,char const*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FALSE ;
+ int SVN_DIRENT_KIND ;
+ int SVN_ERR (int *) ;
+ int SVN_ERR_NODE_UNKNOWN_KIND ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int _ (char*) ;
+ scalar_t__ apr_hash_count (int *) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_set (int *,char const*,int ,int *) ;
+ char* apr_hash_this_key (int *) ;
+ int apr_hash_this_key_len (int *) ;
+ TYPE_1__* apr_hash_this_val (int *) ;
+ int * call_receiver (char const*,int *,int *,int ,void*,int *) ;
+ int * svn_client__iprop_relpaths_to_urls (int *,char const*,int *,int *) ;
+ scalar_t__ svn_depth_empty ;
+ scalar_t__ svn_depth_files ;
+ scalar_t__ svn_depth_immediates ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ char* svn_path_url_add_component2 (char const*,char const*,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ scalar_t__ svn_prop_regular_kind ;
+ scalar_t__ svn_property_kind2 (char const*) ;
+ int * svn_ra_get_dir2 (int *,int **,int *,int **,char const*,int ,int ,int *) ;
+ int * svn_ra_get_file (int *,char const*,int ,int *,int *,int **,int *) ;
+ int * svn_ra_get_inherited_props (int *,int **,char const*,int ,int *,int *) ;
+ int * svn_ra_get_repos_root2 (int *,char const**,int *) ;
+ char* svn_relpath_join (char const*,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 remote_proplist(const char *target_prefix,
@@ -79,30 +79,30 @@ remote_proplist(const char *target_prefix,
                 apr_pool_t *scratch_pool)
 {
   apr_hash_t *dirents;
-  apr_hash_t *prop_hash = NULL;
+  apr_hash_t *prop_hash = ((void*)0);
   apr_hash_index_t *hi;
   const char *target_full_url =
     svn_path_url_add_component2(target_prefix, target_relative, scratch_pool);
   apr_array_header_t *inherited_props;
 
-  /* Note that we pass only the SCRATCH_POOL to svn_ra_get[dir*|file*] because
-     we'll be filtering out non-regular properties from PROP_HASH before we
-     return. */
+
+
+
   if (kind == svn_node_dir)
     {
       SVN_ERR(svn_ra_get_dir2(ra_session,
-                              (depth > svn_depth_empty) ? &dirents : NULL,
-                              NULL, &prop_hash, target_relative, revnum,
+                              (depth > svn_depth_empty) ? &dirents : ((void*)0),
+                              ((void*)0), &prop_hash, target_relative, revnum,
                               SVN_DIRENT_KIND, scratch_pool));
     }
   else if (kind == svn_node_file)
     {
       SVN_ERR(svn_ra_get_file(ra_session, target_relative, revnum,
-                              NULL, NULL, &prop_hash, scratch_pool));
+                              ((void*)0), ((void*)0), &prop_hash, scratch_pool));
     }
   else
     {
-      return svn_error_createf(SVN_ERR_NODE_UNKNOWN_KIND, NULL,
+      return svn_error_createf(SVN_ERR_NODE_UNKNOWN_KIND, ((void*)0),
                                _("Unknown node kind for '%s'"),
                                target_full_url);
     }
@@ -123,17 +123,17 @@ remote_proplist(const char *target_prefix,
     }
   else
     {
-      inherited_props = NULL;
+      inherited_props = ((void*)0);
     }
 
   if (!get_explicit_props)
-    prop_hash = NULL;
+    prop_hash = ((void*)0);
   else
     {
-      /* Filter out non-regular properties, since the RA layer returns all
-         kinds.  Copy regular properties keys/vals from the prop_hash
-         allocated in SCRATCH_POOL to the "final" hash allocated in
-         RESULT_POOL. */
+
+
+
+
       for (hi = apr_hash_first(scratch_pool, prop_hash);
            hi;
            hi = apr_hash_next(hi))
@@ -146,7 +146,7 @@ remote_proplist(const char *target_prefix,
 
           if (prop_kind != svn_prop_regular_kind)
             {
-              apr_hash_set(prop_hash, name, klen, NULL);
+              apr_hash_set(prop_hash, name, klen, ((void*)0));
             }
         }
     }
@@ -189,8 +189,8 @@ remote_proplist(const char *target_prefix,
                                       this_ent->kind,
                                       revnum,
                                       ra_session,
-                                      TRUE /* get_explicit_props */,
-                                      FALSE /* get_target_inherited_props */,
+                                      TRUE ,
+                                      FALSE ,
                                       depth_below_here,
                                       receiver, receiver_baton,
                                       cancel_func, cancel_baton,

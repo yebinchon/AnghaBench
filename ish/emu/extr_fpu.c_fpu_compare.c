@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cpu_state {int c2; int c1; int c0; int c3; } ;
-typedef  int /*<<< orphan*/  float80 ;
+typedef int float80 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ST (int /*<<< orphan*/ ) ; 
- int f80_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int f80_lt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ f80_uncomparable (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ST (int ) ;
+ int f80_eq (int ,int ) ;
+ int f80_lt (int ,int ) ;
+ scalar_t__ f80_uncomparable (int ,int ) ;
 
 __attribute__((used)) static void fpu_compare(struct cpu_state *cpu, float80 x) {
     cpu->c2 = cpu->c1 = 0;

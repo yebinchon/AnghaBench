@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ top; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int /*<<< orphan*/  int32_t ;
+typedef TYPE_1__ lua_State ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copyTV (TYPE_1__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  lj_lib_checkfunc (TYPE_1__*,int) ; 
- int /*<<< orphan*/  lj_lib_checkint (TYPE_1__*,int) ; 
- char* lua_getupvalue (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushstring (TYPE_1__*,char const*) ; 
- char* lua_setupvalue (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
+
+ int copyTV (TYPE_1__*,scalar_t__,scalar_t__) ;
+ int lj_lib_checkfunc (TYPE_1__*,int) ;
+ int lj_lib_checkint (TYPE_1__*,int) ;
+ char* lua_getupvalue (TYPE_1__*,int,int ) ;
+ int lua_pushstring (TYPE_1__*,char const*) ;
+ char* lua_setupvalue (TYPE_1__*,int,int ) ;
 
 __attribute__((used)) static int debug_getupvalue(lua_State *L, int get)
 {

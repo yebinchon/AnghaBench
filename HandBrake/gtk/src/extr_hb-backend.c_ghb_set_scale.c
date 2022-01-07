@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ scale_busy; int /*<<< orphan*/  settings; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  gint ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GtkWidget ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/ * GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_SPIN_BUTTON (int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ghb_picture_settings_deps (TYPE_1__*) ; 
- int /*<<< orphan*/  ghb_set_scale_settings (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ghb_settings_combo_int (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ghb_ui_update_from_settings (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghb_update_display_aspect_label (TYPE_1__*) ; 
- int /*<<< orphan*/  ghb_update_summary_info (TYPE_1__*) ; 
- int /*<<< orphan*/  gtk_spin_button_set_increments (int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ scale_busy; int settings; int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int gint ;
+typedef scalar_t__ gboolean ;
+typedef int GtkWidget ;
+
+
+ scalar_t__ FALSE ;
+ int * GHB_WIDGET (int ,char*) ;
+ int GTK_SPIN_BUTTON (int *) ;
+ scalar_t__ TRUE ;
+ scalar_t__ ghb_dict_get_bool (int ,char*) ;
+ int ghb_picture_settings_deps (TYPE_1__*) ;
+ int ghb_set_scale_settings (int ,int ) ;
+ int ghb_settings_combo_int (int ,char*) ;
+ int ghb_ui_update_from_settings (TYPE_1__*,char*,int ) ;
+ int ghb_update_display_aspect_label (TYPE_1__*) ;
+ int ghb_update_summary_info (TYPE_1__*) ;
+ int gtk_spin_button_set_increments (int ,int,int) ;
 
 void
 ghb_set_scale(signal_user_data_t *ud, gint mode)
@@ -41,8 +41,8 @@ ghb_set_scale(signal_user_data_t *ud, gint mode)
     ghb_update_summary_info(ud);
     ghb_picture_settings_deps(ud);
 
-    // Step needs to be at least 2 because odd widths cause scaler crash
-    // subsampled chroma requires even crop values.
+
+
     GtkWidget *widget;
     int mod = ghb_settings_combo_int(ud->settings, "PictureModulus");
     widget = GHB_WIDGET (ud->builder, "scale_width");
@@ -50,8 +50,8 @@ ghb_set_scale(signal_user_data_t *ud, gint mode)
     widget = GHB_WIDGET (ud->builder, "scale_height");
     gtk_spin_button_set_increments (GTK_SPIN_BUTTON(widget), mod, 16);
 
-    // "PictureLooseCrop" is a flag that says we prefer to crop extra to
-    // satisfy alignment constraints rather than scaling to satisfy them.
+
+
     gboolean loosecrop = ghb_dict_get_bool(ud->settings, "PictureLooseCrop");
     if (loosecrop)
     {

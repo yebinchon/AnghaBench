@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  max_packet_size_tx; int /*<<< orphan*/  max_packet_size_rx; int /*<<< orphan*/  protocol; int /*<<< orphan*/  sub_class; int /*<<< orphan*/  interface_index; int /*<<< orphan*/  pid; int /*<<< orphan*/  vid; int /*<<< orphan*/  physical_device_inst; int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ HIDDevice ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_LOG (char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int max_packet_size_tx; int max_packet_size_rx; int protocol; int sub_class; int interface_index; int pid; int vid; int physical_device_inst; int handle; } ;
+typedef TYPE_1__ HIDDevice ;
+
+
+ int RARCH_LOG (char*,...) ;
 
 __attribute__((used)) static void log_device(HIDDevice *device)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int int32_t ;
 struct TYPE_4__ {int codeword_history; unsigned int* dither; int dither_parity; } ;
-typedef  TYPE_1__ Channel ;
+typedef TYPE_1__ Channel ;
 
-/* Variables and functions */
- int NB_SUBBANDS ; 
- int /*<<< orphan*/  aptx_update_codeword_history (TYPE_1__*) ; 
+
+ int NB_SUBBANDS ;
+ int aptx_update_codeword_history (TYPE_1__*) ;
 
 __attribute__((used)) static void aptx_generate_dither(Channel *channel)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_entry {struct gc_entry* next; } ;
 struct gc_arena {struct gc_entry* list; } ;
-struct buffer {int /*<<< orphan*/  data; } ;
+struct buffer {int data; } ;
 
-/* Variables and functions */
- struct buffer alloc_buf_gc (int,struct gc_arena*) ; 
- int /*<<< orphan*/  assert_non_null (struct gc_entry*) ; 
- int /*<<< orphan*/  assert_ptr_equal (struct gc_entry*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_ptr_not_equal (struct gc_entry*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_buf_gc (struct buffer*,struct gc_arena*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
+
+ struct buffer alloc_buf_gc (int,struct gc_arena*) ;
+ int assert_non_null (struct gc_entry*) ;
+ int assert_ptr_equal (struct gc_entry*,int ) ;
+ int assert_ptr_not_equal (struct gc_entry*,int ) ;
+ int free_buf_gc (struct buffer*,struct gc_arena*) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
 
 __attribute__((used)) static void
 test_buffer_free_gc_two(void **state)

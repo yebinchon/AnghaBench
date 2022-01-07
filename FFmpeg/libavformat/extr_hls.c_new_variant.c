@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct variant_info {int /*<<< orphan*/  subtitles; int /*<<< orphan*/  video; int /*<<< orphan*/  audio; int /*<<< orphan*/  bandwidth; } ;
-struct variant {int /*<<< orphan*/  n_playlists; int /*<<< orphan*/  playlists; int /*<<< orphan*/  subtitles_group; int /*<<< orphan*/  video_group; int /*<<< orphan*/  audio_group; int /*<<< orphan*/  bandwidth; } ;
-struct playlist {int /*<<< orphan*/  n_playlists; int /*<<< orphan*/  playlists; int /*<<< orphan*/  subtitles_group; int /*<<< orphan*/  video_group; int /*<<< orphan*/  audio_group; int /*<<< orphan*/  bandwidth; } ;
-struct TYPE_4__ {int /*<<< orphan*/  n_variants; int /*<<< orphan*/  variants; } ;
-typedef  TYPE_1__ HLSContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atoi (int /*<<< orphan*/ ) ; 
- struct variant* av_mallocz (int) ; 
- int /*<<< orphan*/  dynarray_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct variant*) ; 
- struct variant* new_playlist (TYPE_1__*,char const*,char const*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct variant_info {int subtitles; int video; int audio; int bandwidth; } ;
+struct variant {int n_playlists; int playlists; int subtitles_group; int video_group; int audio_group; int bandwidth; } ;
+struct playlist {int n_playlists; int playlists; int subtitles_group; int video_group; int audio_group; int bandwidth; } ;
+struct TYPE_4__ {int n_variants; int variants; } ;
+typedef TYPE_1__ HLSContext ;
+
+
+ int atoi (int ) ;
+ struct variant* av_mallocz (int) ;
+ int dynarray_add (int *,int *,struct variant*) ;
+ struct variant* new_playlist (TYPE_1__*,char const*,char const*) ;
+ int strcpy (int ,int ) ;
 
 __attribute__((used)) static struct variant *new_variant(HLSContext *c, struct variant_info *info,
                                    const char *url, const char *base)
@@ -32,11 +32,11 @@ __attribute__((used)) static struct variant *new_variant(HLSContext *c, struct v
 
     pls = new_playlist(c, url, base);
     if (!pls)
-        return NULL;
+        return ((void*)0);
 
     var = av_mallocz(sizeof(struct variant));
     if (!var)
-        return NULL;
+        return ((void*)0);
 
     if (info) {
         var->bandwidth = atoi(info->bandwidth);

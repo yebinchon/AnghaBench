@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_38__   TYPE_9__ ;
-typedef  struct TYPE_37__   TYPE_8__ ;
-typedef  struct TYPE_36__   TYPE_7__ ;
-typedef  struct TYPE_35__   TYPE_6__ ;
-typedef  struct TYPE_34__   TYPE_5__ ;
-typedef  struct TYPE_33__   TYPE_4__ ;
-typedef  struct TYPE_32__   TYPE_3__ ;
-typedef  struct TYPE_31__   TYPE_2__ ;
-typedef  struct TYPE_30__   TYPE_1__ ;
-typedef  struct TYPE_29__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  void* ULONGLONG ;
-struct TYPE_38__ {int NameLength; int /*<<< orphan*/  NameType; int /*<<< orphan*/  Name; } ;
-struct TYPE_37__ {int /*<<< orphan*/  LinkCount; } ;
-struct TYPE_29__ {int /*<<< orphan*/  FileAttributes; int /*<<< orphan*/  NameType; } ;
+
+
+typedef struct TYPE_38__ TYPE_9__ ;
+typedef struct TYPE_37__ TYPE_8__ ;
+typedef struct TYPE_36__ TYPE_7__ ;
+typedef struct TYPE_35__ TYPE_6__ ;
+typedef struct TYPE_34__ TYPE_5__ ;
+typedef struct TYPE_33__ TYPE_4__ ;
+typedef struct TYPE_32__ TYPE_3__ ;
+typedef struct TYPE_31__ TYPE_2__ ;
+typedef struct TYPE_30__ TYPE_1__ ;
+typedef struct TYPE_29__ TYPE_10__ ;
+
+
+typedef int WCHAR ;
+typedef void* ULONGLONG ;
+struct TYPE_38__ {int NameLength; int NameType; int Name; } ;
+struct TYPE_37__ {int LinkCount; } ;
+struct TYPE_29__ {int FileAttributes; int NameType; } ;
 struct TYPE_32__ {void* QuadPart; } ;
 struct TYPE_31__ {void* QuadPart; } ;
 struct TYPE_30__ {void* QuadPart; } ;
 struct TYPE_33__ {TYPE_3__ AllocationSize; TYPE_2__ ValidDataLength; TYPE_1__ FileSize; } ;
-struct TYPE_36__ {char* PathName; int RefCount; int /*<<< orphan*/  LinkCount; void* MFTIndex; TYPE_10__ Entry; TYPE_4__ RFCB; } ;
-struct TYPE_35__ {int /*<<< orphan*/  FileAttribute; } ;
+struct TYPE_36__ {char* PathName; int RefCount; int LinkCount; void* MFTIndex; TYPE_10__ Entry; TYPE_4__ RFCB; } ;
+struct TYPE_35__ {int FileAttribute; } ;
 struct TYPE_34__ {scalar_t__* Buffer; int Length; } ;
-typedef  TYPE_5__* PUNICODE_STRING ;
-typedef  TYPE_6__* PSTANDARD_INFORMATION ;
-typedef  int /*<<< orphan*/  PNTFS_VCB ;
-typedef  TYPE_7__* PNTFS_FCB ;
-typedef  TYPE_8__* PFILE_RECORD_HEADER ;
-typedef  TYPE_9__* PFILENAME_ATTRIBUTE ;
-typedef  char* PCWSTR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef TYPE_5__* PUNICODE_STRING ;
+typedef TYPE_6__* PSTANDARD_INFORMATION ;
+typedef int PNTFS_VCB ;
+typedef TYPE_7__* PNTFS_FCB ;
+typedef TYPE_8__* PFILE_RECORD_HEADER ;
+typedef TYPE_9__* PFILENAME_ATTRIBUTE ;
+typedef char* PCWSTR ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ,TYPE_7__*,TYPE_5__*,char*,TYPE_8__*,TYPE_7__**) ; 
- int /*<<< orphan*/  FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILENAME_ATTRIBUTE ; 
- TYPE_9__* GetBestFileNameFromRecord (int /*<<< orphan*/ ,TYPE_8__*) ; 
- TYPE_6__* GetStandardInformationFromRecord (int /*<<< orphan*/ ,TYPE_8__*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  NameLength ; 
- int /*<<< orphan*/  NtfsAddFCBToTable (int /*<<< orphan*/ ,TYPE_7__*) ; 
- TYPE_7__* NtfsCreateFCB (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtfsFCBInitializeCache (int /*<<< orphan*/ ,TYPE_7__*) ; 
- int /*<<< orphan*/  NtfsFCBIsRoot (TYPE_7__*) ; 
- void* NtfsGetFileSize (int /*<<< orphan*/ ,TYPE_8__*,char*,int,void**) ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_OBJECT_NAME_INVALID ; 
- int /*<<< orphan*/  STATUS_OBJECT_NAME_NOT_FOUND ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  UNICODE_NULL ; 
- int /*<<< orphan*/  memcpy (TYPE_10__*,TYPE_9__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wcscat (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,char*) ; 
- int wcslen (char*) ; 
+
+ int DPRINT (char*,int ,TYPE_7__*,TYPE_5__*,char*,TYPE_8__*,TYPE_7__**) ;
+ int FIELD_OFFSET (int ,int ) ;
+ int FILENAME_ATTRIBUTE ;
+ TYPE_9__* GetBestFileNameFromRecord (int ,TYPE_8__*) ;
+ TYPE_6__* GetStandardInformationFromRecord (int ,TYPE_8__*) ;
+ int MAX_PATH ;
+ int NameLength ;
+ int NtfsAddFCBToTable (int ,TYPE_7__*) ;
+ TYPE_7__* NtfsCreateFCB (int *,char*,int ) ;
+ int NtfsFCBInitializeCache (int ,TYPE_7__*) ;
+ int NtfsFCBIsRoot (TYPE_7__*) ;
+ void* NtfsGetFileSize (int ,TYPE_8__*,char*,int,void**) ;
+ int RtlCopyMemory (int *,int ,int) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_OBJECT_NAME_INVALID ;
+ int STATUS_OBJECT_NAME_NOT_FOUND ;
+ int STATUS_SUCCESS ;
+ int UNICODE_NULL ;
+ int memcpy (TYPE_10__*,TYPE_9__*,int ) ;
+ int wcscat (int *,char*) ;
+ int wcscpy (int *,char*) ;
+ int wcslen (char*) ;
 
 NTSTATUS
 NtfsMakeFCBFromDirEntry(PNTFS_VCB Vcb,
@@ -85,7 +85,7 @@ NtfsMakeFCBFromDirEntry(PNTFS_VCB Vcb,
     FileName = GetBestFileNameFromRecord(Vcb, Record);
     if (!FileName)
     {
-        return STATUS_OBJECT_NAME_NOT_FOUND; // Not sure that's the best here
+        return STATUS_OBJECT_NAME_NOT_FOUND;
     }
 
     if (DirectoryFCB && Name)
@@ -124,7 +124,7 @@ NtfsMakeFCBFromDirEntry(PNTFS_VCB Vcb,
     rcFCB->RFCB.AllocationSize.QuadPart = AllocatedSize;
 
     StdInfo = GetStandardInformationFromRecord(Vcb, Record);
-    if (StdInfo != NULL)
+    if (StdInfo != ((void*)0))
     {
         rcFCB->Entry.FileAttributes |= StdInfo->FileAttribute;
     }

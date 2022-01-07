@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ LUA_TNUMBER ; 
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  i2c ; 
- unsigned int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,unsigned int,size_t*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- unsigned int lua_gettop (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,unsigned int) ; 
- size_t lua_objlen (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,unsigned int,size_t) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,unsigned int) ; 
- int platform_i2c_send_byte (unsigned int,char const) ; 
+
+
+
+typedef scalar_t__ u32 ;
+typedef int lua_State ;
+
+
+ scalar_t__ LUA_TNUMBER ;
+ int MOD_CHECK_ID (int ,unsigned int) ;
+ int i2c ;
+ unsigned int luaL_checkinteger (int *,int) ;
+ char* luaL_checklstring (int *,unsigned int,size_t*) ;
+ int luaL_error (int *,char*) ;
+ unsigned int lua_gettop (int *) ;
+ scalar_t__ lua_istable (int *,unsigned int) ;
+ size_t lua_objlen (int *,unsigned int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushinteger (int *,scalar_t__) ;
+ int lua_rawgeti (int *,unsigned int,size_t) ;
+ scalar_t__ lua_type (int *,unsigned int) ;
+ int platform_i2c_send_byte (unsigned int,char const) ;
 
 __attribute__((used)) static int i2c_write( lua_State *L )
 {
@@ -43,8 +43,8 @@ __attribute__((used)) static int i2c_write( lua_State *L )
     return luaL_error( L, "wrong arg type" );
   for( argn = 2; argn <= lua_gettop( L ); argn ++ )
   {
-    // lua_isnumber() would silently convert a string of digits to an integer
-    // whereas here strings are handled separately.
+
+
     if( lua_type( L, argn ) == LUA_TNUMBER )
     {
       numdata = ( int )luaL_checkinteger( L, argn );

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
 struct TYPE_5__ {int nColumn; } ;
-typedef  TYPE_1__ fulltext_vtab ;
-typedef  int /*<<< orphan*/  DocList ;
+typedef TYPE_1__ fulltext_vtab ;
+typedef int DocList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DL_DEFAULT ; 
- int SQLITE_DONE ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  TERM_SELECT_ALL_STMT ; 
- int /*<<< orphan*/  docListAccumulate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  docListDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  docListDiscardEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  docListInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  docListRestrictColumn (int /*<<< orphan*/ *,int) ; 
- int sql_get_statement (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sql_step_statement (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sqlite3_bind_text (int /*<<< orphan*/ *,int,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int DL_DEFAULT ;
+ int SQLITE_DONE ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int TERM_SELECT_ALL_STMT ;
+ int docListAccumulate (int *,int *) ;
+ int docListDestroy (int *) ;
+ int docListDiscardEmpty (int *) ;
+ int docListInit (int *,int ,int ,int ) ;
+ int docListRestrictColumn (int *,int) ;
+ int sql_get_statement (TYPE_1__*,int ,int **) ;
+ int sql_step_statement (TYPE_1__*,int ,int **) ;
+ int sqlite3_bind_text (int *,int,char const*,int,int ) ;
+ int sqlite3_column_blob (int *,int ) ;
+ int sqlite3_column_bytes (int *,int ) ;
 
 __attribute__((used)) static int term_select_all(
-  fulltext_vtab *v,     /* The fulltext index we are querying against */
-  int iColumn,          /* If <nColumn, only look at the iColumn-th column */
-  const char *pTerm,    /* The term whose posting lists we want */
-  int nTerm,            /* Number of bytes in pTerm */
-  DocList *out          /* Write the resulting doclist here */
+  fulltext_vtab *v,
+  int iColumn,
+  const char *pTerm,
+  int nTerm,
+  DocList *out
 ){
   DocList doclist;
   sqlite3_stmt *s;
@@ -51,26 +51,26 @@ __attribute__((used)) static int term_select_all(
 
   docListInit(&doclist, DL_DEFAULT, 0, 0);
 
-  /* TODO(shess) Handle schema and busy errors. */
+
   while( (rc=sql_step_statement(v, TERM_SELECT_ALL_STMT, &s))==SQLITE_ROW ){
     DocList old;
 
-    /* TODO(shess) If we processed doclists from oldest to newest, we
-    ** could skip the malloc() involved with the following call.  For
-    ** now, I'd rather keep this logic similar to index_insert_term().
-    ** We could additionally drop elements when we see deletes, but
-    ** that would require a distinct version of docListAccumulate().
-    */
+
+
+
+
+
+
     docListInit(&old, DL_DEFAULT,
                 sqlite3_column_blob(s, 0), sqlite3_column_bytes(s, 0));
 
-    if( iColumn<v->nColumn ){   /* querying a single column */
+    if( iColumn<v->nColumn ){
       docListRestrictColumn(&old, iColumn);
     }
 
-    /* doclist contains the newer data, so write it over old.  Then
-    ** steal accumulated result for doclist.
-    */
+
+
+
     docListAccumulate(&old, &doclist);
     docListDestroy(&doclist);
     doclist = old;

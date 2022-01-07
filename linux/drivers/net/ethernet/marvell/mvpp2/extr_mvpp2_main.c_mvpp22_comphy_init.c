@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mvpp2_port {int /*<<< orphan*/  comphy; int /*<<< orphan*/  phy_interface; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PHY_MODE_ETHERNET ; 
- int phy_power_on (int /*<<< orphan*/ ) ; 
- int phy_set_mode_ext (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mvpp2_port {int comphy; int phy_interface; } ;
+
+
+ int PHY_MODE_ETHERNET ;
+ int phy_power_on (int ) ;
+ int phy_set_mode_ext (int ,int ,int ) ;
 
 __attribute__((used)) static int mvpp22_comphy_init(struct mvpp2_port *port)
 {
-	int ret;
+ int ret;
 
-	if (!port->comphy)
-		return 0;
+ if (!port->comphy)
+  return 0;
 
-	ret = phy_set_mode_ext(port->comphy, PHY_MODE_ETHERNET,
-			       port->phy_interface);
-	if (ret)
-		return ret;
+ ret = phy_set_mode_ext(port->comphy, PHY_MODE_ETHERNET,
+          port->phy_interface);
+ if (ret)
+  return ret;
 
-	return phy_power_on(port->comphy);
+ return phy_power_on(port->comphy);
 }

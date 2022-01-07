@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct aio_connection {scalar_t__ basic_type; scalar_t__ extra; } ;
-struct advert {int ad_id; TYPE_1__* mf; int /*<<< orphan*/  flags; } ;
+struct advert {int ad_id; TYPE_1__* mf; int flags; } ;
 struct TYPE_3__ {int len; long long pos; int data; struct aio_connection* aio; struct advert* ad; } ;
-typedef  TYPE_1__ core_mf_t ;
+typedef TYPE_1__ core_mf_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADF_ANCIENT ; 
- int RBuff ; 
- int RBuffEnd ; 
- int active_aio_queries ; 
- int /*<<< orphan*/  aio_read_errors ; 
- long long allocated_metafile_bytes ; 
- int /*<<< orphan*/  allocated_metafiles ; 
- int /*<<< orphan*/  ancient_ads_aio_loaded ; 
- long long ancient_ads_aio_loaded_bytes ; 
- int /*<<< orphan*/  ancient_ads_pending ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ ct_aio ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,long long,...) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- long long idx_bytes ; 
- int /*<<< orphan*/  idx_check_crc () ; 
- int /*<<< orphan*/  idx_fake_readpos (long long) ; 
- long long idx_metafile_pos ; 
- int /*<<< orphan*/  idx_read_ad (int,int,long long) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+ int ADF_ANCIENT ;
+ int RBuff ;
+ int RBuffEnd ;
+ int active_aio_queries ;
+ int aio_read_errors ;
+ long long allocated_metafile_bytes ;
+ int allocated_metafiles ;
+ int ancient_ads_aio_loaded ;
+ long long ancient_ads_aio_loaded_bytes ;
+ int ancient_ads_pending ;
+ int assert (int) ;
+ scalar_t__ ct_aio ;
+ int fprintf (int ,char*,int,long long,...) ;
+ int free (TYPE_1__*) ;
+ long long idx_bytes ;
+ int idx_check_crc () ;
+ int idx_fake_readpos (long long) ;
+ long long idx_metafile_pos ;
+ int idx_read_ad (int,int,long long) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int onload_ad_metafile (struct connection *c, int read_bytes) {
   if (verbosity > 0) {
@@ -82,7 +82,7 @@ int onload_ad_metafile (struct connection *c, int read_bytes) {
   idx_fake_readpos (M->pos);
   idx_read_ad (A->ad_id, 1, M->len);
   idx_check_crc ();
-  
+
   assert (idx_metafile_pos == M->len);
 
   idx_bytes = keep_idx_bytes;

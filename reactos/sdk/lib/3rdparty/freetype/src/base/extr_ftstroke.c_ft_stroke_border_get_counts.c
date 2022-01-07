@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ num_points; int* tags; int /*<<< orphan*/  valid; int /*<<< orphan*/ * points; } ;
-typedef  int /*<<< orphan*/  FT_Vector ;
-typedef  scalar_t__ FT_UInt ;
-typedef  TYPE_1__* FT_StrokeBorder ;
-typedef  int FT_Int ;
-typedef  int /*<<< orphan*/  FT_Error ;
-typedef  int FT_Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT_Err_Ok ; 
- int FT_STROKE_TAG_BEGIN ; 
- int FT_STROKE_TAG_END ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ num_points; int* tags; int valid; int * points; } ;
+typedef int FT_Vector ;
+typedef scalar_t__ FT_UInt ;
+typedef TYPE_1__* FT_StrokeBorder ;
+typedef int FT_Int ;
+typedef int FT_Error ;
+typedef int FT_Byte ;
+
+
+ int FT_Err_Ok ;
+ int FT_STROKE_TAG_BEGIN ;
+ int FT_STROKE_TAG_END ;
+ int TRUE ;
 
 __attribute__((used)) static FT_Error
-  ft_stroke_border_get_counts( FT_StrokeBorder  border,
-                               FT_UInt         *anum_points,
-                               FT_UInt         *anum_contours )
+  ft_stroke_border_get_counts( FT_StrokeBorder border,
+                               FT_UInt *anum_points,
+                               FT_UInt *anum_contours )
   {
-    FT_Error  error        = FT_Err_Ok;
-    FT_UInt   num_points   = 0;
-    FT_UInt   num_contours = 0;
+    FT_Error error = FT_Err_Ok;
+    FT_UInt num_points = 0;
+    FT_UInt num_contours = 0;
 
-    FT_UInt     count      = border->num_points;
-    FT_Vector*  point      = border->points;
-    FT_Byte*    tags       = border->tags;
-    FT_Int      in_contour = 0;
+    FT_UInt count = border->num_points;
+    FT_Vector* point = border->points;
+    FT_Byte* tags = border->tags;
+    FT_Int in_contour = 0;
 
 
     for ( ; count > 0; count--, num_points++, point++, tags++ )
@@ -65,12 +65,12 @@ __attribute__((used)) static FT_Error
     border->valid = TRUE;
 
   Exit:
-    *anum_points   = num_points;
+    *anum_points = num_points;
     *anum_contours = num_contours;
     return error;
 
   Fail:
-    num_points   = 0;
+    num_points = 0;
     num_contours = 0;
     goto Exit;
   }

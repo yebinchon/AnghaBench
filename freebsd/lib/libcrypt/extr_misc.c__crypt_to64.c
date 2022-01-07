@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_long ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * itoa64 ; 
+
+
+
+typedef int u_long ;
+
+
+ int * itoa64 ;
 
 void
 _crypt_to64(char *s, u_long v, int n)
 {
-	while (--n >= 0) {
-		*s++ = itoa64[v&0x3f];
-		v >>= 6;
-	}
+ while (--n >= 0) {
+  *s++ = itoa64[v&0x3f];
+  v >>= 6;
+ }
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
-typedef  int /*<<< orphan*/  kern_return_t ;
-struct TYPE_5__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ KXLDSym ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_FAILURE ; 
- int /*<<< orphan*/  KERN_SUCCESS ; 
- int /*<<< orphan*/  METACLASS_TOKEN ; 
- int /*<<< orphan*/  OSOBJ_PREFIX ; 
- int /*<<< orphan*/  check (TYPE_1__ const*) ; 
- int /*<<< orphan*/  extract_inner_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  finish ; 
- int /*<<< orphan*/  kxld_sym_is_metaclass (TYPE_1__ const*) ; 
- int /*<<< orphan*/  require_action (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  require_noerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_long ;
+typedef int kern_return_t ;
+struct TYPE_5__ {int name; } ;
+typedef TYPE_1__ KXLDSym ;
+
+
+ int KERN_FAILURE ;
+ int KERN_SUCCESS ;
+ int METACLASS_TOKEN ;
+ int OSOBJ_PREFIX ;
+ int check (TYPE_1__ const*) ;
+ int extract_inner_string (int ,int ,int ,char*,int ) ;
+ int finish ;
+ int kxld_sym_is_metaclass (TYPE_1__ const*) ;
+ int require_action (int ,int ,int ) ;
+ int require_noerr (int ,int ) ;
 
 kern_return_t
 kxld_sym_get_class_name_from_metaclass(const KXLDSym *sym,
@@ -37,7 +37,7 @@ kxld_sym_get_class_name_from_metaclass(const KXLDSym *sym,
     check(sym);
     require_action(kxld_sym_is_metaclass(sym), finish, rval=KERN_FAILURE);
 
-    rval = extract_inner_string(sym->name, OSOBJ_PREFIX, METACLASS_TOKEN, 
+    rval = extract_inner_string(sym->name, OSOBJ_PREFIX, METACLASS_TOKEN,
         class_name, class_name_len);
     require_noerr(rval, finish);
 

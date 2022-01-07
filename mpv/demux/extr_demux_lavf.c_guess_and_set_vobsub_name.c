@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct demuxer {TYPE_1__* priv; } ;
-struct TYPE_3__ {int /*<<< orphan*/  filename; } ;
-typedef  TYPE_1__ lavf_priv_t ;
-typedef  int /*<<< orphan*/  bstr ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+struct TYPE_3__ {int filename; } ;
+typedef TYPE_1__ lavf_priv_t ;
+typedef int bstr ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct demuxer*,char*,char*) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bstr0 (int /*<<< orphan*/ ) ; 
- scalar_t__ bstr_split_tok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  matches_avinputformat_name (TYPE_1__*,char*) ; 
- scalar_t__ mp_is_url (int /*<<< orphan*/ ) ; 
- char* replace_idx_ext (void*,int /*<<< orphan*/ ) ; 
- char* talloc_asprintf (void*,char*,char*,...) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
- void* talloc_new (int /*<<< orphan*/ *) ; 
+
+ int BSTR_P (int ) ;
+ int MP_VERBOSE (struct demuxer*,char*,char*) ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ int bstr0 (int ) ;
+ scalar_t__ bstr_split_tok (int ,char*,int *,int *) ;
+ int matches_avinputformat_name (TYPE_1__*,char*) ;
+ scalar_t__ mp_is_url (int ) ;
+ char* replace_idx_ext (void*,int ) ;
+ char* talloc_asprintf (void*,char*,char*,...) ;
+ int talloc_free (void*) ;
+ void* talloc_new (int *) ;
 
 __attribute__((used)) static void guess_and_set_vobsub_name(struct demuxer *demuxer, AVDictionary **d)
 {
@@ -36,12 +36,12 @@ __attribute__((used)) static void guess_and_set_vobsub_name(struct demuxer *demu
     if (!matches_avinputformat_name(priv, "vobsub"))
         return;
 
-    void *tmp = talloc_new(NULL);
+    void *tmp = talloc_new(((void*)0));
     bstr bfilename = bstr0(priv->filename);
-    char *subname = NULL;
+    char *subname = ((void*)0);
     if (mp_is_url(bfilename)) {
-        // It might be a http URL, which has additional parameters after the
-        // end of the actual file path.
+
+
         bstr start, end;
         if (bstr_split_tok(bfilename, "?", &start, &end)) {
             subname = replace_idx_ext(tmp, start);

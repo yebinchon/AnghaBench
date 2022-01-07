@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-struct TYPE_3__ {int**** level_cost_; int**** remapped_costs_; scalar_t__ dirty_; int /*<<< orphan*/ **** coeffs_; } ;
-typedef  TYPE_1__ VP8EncProba ;
 
-/* Variables and functions */
- int MAX_VARIABLE_LEVEL ; 
- int NUM_BANDS ; 
- int NUM_CTX ; 
- int NUM_TYPES ; 
- int const VP8BitCost (int,int /*<<< orphan*/  const) ; 
- size_t* VP8EncBands ; 
- int const VariableLevelCost (int,int /*<<< orphan*/  const* const) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_3__ {int**** level_cost_; int**** remapped_costs_; scalar_t__ dirty_; int **** coeffs_; } ;
+typedef TYPE_1__ VP8EncProba ;
+
+
+ int MAX_VARIABLE_LEVEL ;
+ int NUM_BANDS ;
+ int NUM_CTX ;
+ int NUM_TYPES ;
+ int const VP8BitCost (int,int const) ;
+ size_t* VP8EncBands ;
+ int const VariableLevelCost (int,int const* const) ;
 
 void VP8CalculateLevelCosts(VP8EncProba* const proba) {
   int ctype, band, ctx;
 
-  if (!proba->dirty_) return;  // nothing to do.
+  if (!proba->dirty_) return;
 
   for (ctype = 0; ctype < NUM_TYPES; ++ctype) {
     int n;
@@ -43,11 +43,11 @@ void VP8CalculateLevelCosts(VP8EncProba* const proba) {
         for (v = 1; v <= MAX_VARIABLE_LEVEL; ++v) {
           table[v] = cost_base + VariableLevelCost(v, p);
         }
-        // Starting at level 67 and up, the variable part of the cost is
-        // actually constant.
+
+
       }
     }
-    for (n = 0; n < 16; ++n) {    // replicate bands. We don't need to sentinel.
+    for (n = 0; n < 16; ++n) {
       for (ctx = 0; ctx < NUM_CTX; ++ctx) {
         proba->remapped_costs_[ctype][n][ctx] =
             proba->level_cost_[ctype][VP8EncBands[n]][ctx];

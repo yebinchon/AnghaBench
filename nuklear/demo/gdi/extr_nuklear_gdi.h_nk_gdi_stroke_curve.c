@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct nk_vec2i {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct nk_vec2i {int y; int x; } ;
 struct nk_color {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ POINT ;
-typedef  int /*<<< orphan*/ * HPEN ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  COLORREF ;
+struct TYPE_3__ {int member_1; int member_0; } ;
+typedef TYPE_1__ POINT ;
+typedef int * HPEN ;
+typedef int HDC ;
+typedef int COLORREF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreatePen (int /*<<< orphan*/ ,unsigned short,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DC_PEN ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPAQUE ; 
- int /*<<< orphan*/  PS_SOLID ; 
- int /*<<< orphan*/  PolyBezier (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetDCBrushColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetDCPenColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_color (struct nk_color) ; 
+
+ int * CreatePen (int ,unsigned short,int ) ;
+ int DC_PEN ;
+ int DeleteObject (int *) ;
+ int * GetStockObject (int ) ;
+ int OPAQUE ;
+ int PS_SOLID ;
+ int PolyBezier (int ,TYPE_1__*,int) ;
+ int SelectObject (int ,int *) ;
+ int SetDCBrushColor (int ,int ) ;
+ int SetDCPenColor (int ,int ) ;
+ int convert_color (struct nk_color) ;
 
 __attribute__((used)) static void
 nk_gdi_stroke_curve(HDC dc, struct nk_vec2i p1,
@@ -45,7 +45,7 @@ nk_gdi_stroke_curve(HDC dc, struct nk_vec2i p1,
         { p4.x, p4.y },
     };
 
-    HPEN pen = NULL;
+    HPEN pen = ((void*)0);
     if (line_thickness == 1) {
         SetDCPenColor(dc, color);
     } else {

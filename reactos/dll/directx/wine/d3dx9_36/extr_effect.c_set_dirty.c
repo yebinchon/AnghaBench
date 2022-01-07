@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_top_level_parameter {void* update_version; struct d3dx_shared_data* shared_data; int /*<<< orphan*/  version_counter; } ;
+
+
+
+
+struct d3dx_top_level_parameter {void* update_version; struct d3dx_shared_data* shared_data; int version_counter; } ;
 struct d3dx_shared_data {void* update_version; } ;
 struct d3dx_parameter {struct d3dx_top_level_parameter* top_level_param; } ;
-typedef  void* ULONG64 ;
+typedef void* ULONG64 ;
 
-/* Variables and functions */
- void* next_update_version (int /*<<< orphan*/ ) ; 
+
+ void* next_update_version (int ) ;
 
 __attribute__((used)) static void set_dirty(struct d3dx_parameter *param)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct initial_value_struct {int num_entries; TYPE_1__* entries; } ;
 struct function {struct initial_value_struct* hard_reg_initial_vals; } ;
-typedef  int /*<<< orphan*/  rtx ;
-struct TYPE_2__ {int /*<<< orphan*/  hard_reg; int /*<<< orphan*/  pseudo; } ;
+typedef int rtx ;
+struct TYPE_2__ {int hard_reg; int pseudo; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_RTX ; 
- scalar_t__ rtx_equal_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int NULL_RTX ;
+ scalar_t__ rtx_equal_p (int ,int ) ;
 
 rtx
 get_hard_reg_initial_reg (struct function *fun, rtx reg)

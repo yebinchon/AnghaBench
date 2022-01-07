@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ handle; int wxflag; } ;
-typedef  TYPE_1__ ioinfo ;
+typedef TYPE_1__ ioinfo ;
 struct TYPE_9__ {int _file; } ;
-typedef  scalar_t__ HANDLE ;
+typedef scalar_t__ HANDLE ;
 
-/* Variables and functions */
- int EBADF ; 
- int EOF ; 
- size_t MSVCRT_FD_BLOCK_SIZE ; 
- size_t STDIN_FILENO ; 
- TYPE_1__** __pioinfo ; 
- int _flsbuf (char,TYPE_2__*) ; 
- scalar_t__ _get_osfhandle (size_t) ; 
- int close (size_t) ; 
- int errno ; 
- int fclose (TYPE_2__*) ; 
- int fread (char*,int,int,TYPE_2__*) ; 
- int fwrite (char*,int,int,TYPE_2__*) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int read (size_t,char*,int) ; 
- TYPE_2__* stdin ; 
- int write (size_t,char*,int) ; 
+
+ int EBADF ;
+ int EOF ;
+ size_t MSVCRT_FD_BLOCK_SIZE ;
+ size_t STDIN_FILENO ;
+ TYPE_1__** __pioinfo ;
+ int _flsbuf (char,TYPE_2__*) ;
+ scalar_t__ _get_osfhandle (size_t) ;
+ int close (size_t) ;
+ int errno ;
+ int fclose (TYPE_2__*) ;
+ int fread (char*,int,int,TYPE_2__*) ;
+ int fwrite (char*,int,int,TYPE_2__*) ;
+ int ok (int,char*,int) ;
+ int read (size_t,char*,int) ;
+ TYPE_2__* stdin ;
+ int write (size_t,char*,int) ;
 
 __attribute__((used)) static void test_invalid_stdin_child( void )
 {

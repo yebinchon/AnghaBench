@@ -1,95 +1,95 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uInt ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t uInt ;
 struct TYPE_8__ {int bits; int* lsu; int exponent; int digits; } ;
-typedef  TYPE_1__ decNumber ;
+typedef TYPE_1__ decNumber ;
 struct TYPE_9__ {int emax; int digits; scalar_t__ clamp; } ;
-typedef  TYPE_2__ decContext ;
-typedef  size_t Unit ;
-typedef  int Int ;
-typedef  int /*<<< orphan*/  Flag ;
+typedef TYPE_2__ decContext ;
+typedef size_t Unit ;
+typedef int Int ;
+typedef int Flag ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D2U (int) ; 
- size_t DECDPUN ; 
- int DECSPECIAL ; 
- int /*<<< orphan*/  DECUNCONT ; 
- int /*<<< orphan*/  DECUNUSED ; 
- scalar_t__ ISZERO (TYPE_1__*) ; 
- size_t QUOT10 (size_t,size_t) ; 
- scalar_t__ decCheckOperands (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decShiftToLeast (size_t*,int /*<<< orphan*/ ,int) ; 
- size_t* powers ; 
+
+ int D2U (int) ;
+ size_t DECDPUN ;
+ int DECSPECIAL ;
+ int DECUNCONT ;
+ int DECUNUSED ;
+ scalar_t__ ISZERO (TYPE_1__*) ;
+ size_t QUOT10 (size_t,size_t) ;
+ scalar_t__ decCheckOperands (TYPE_1__*,int ,int ,int ) ;
+ int decShiftToLeast (size_t*,int ,int) ;
+ size_t* powers ;
 
 __attribute__((used)) static decNumber * decTrim(decNumber *dn, decContext *set, Flag all,
                            Flag noclamp, Int *dropped) {
-  Int   d, exp;                    // work
-  uInt  cut;                       // ..
-  Unit  *up;                       // -> current Unit
+  Int d, exp;
+  uInt cut;
+  Unit *up;
 
-  #if DECCHECK
-  if (decCheckOperands(dn, DECUNUSED, DECUNUSED, DECUNCONT)) return dn;
-  #endif
 
-  *dropped=0;                           // assume no zeros dropped
-  if ((dn->bits & DECSPECIAL)           // fast exit if special ..
-    || (*dn->lsu & 0x01)) return dn;    // .. or odd
-  if (ISZERO(dn)) {                     // .. or 0
-    dn->exponent=0;                     // (sign is preserved)
+
+
+
+  *dropped=0;
+  if ((dn->bits & DECSPECIAL)
+    || (*dn->lsu & 0x01)) return dn;
+  if (ISZERO(dn)) {
+    dn->exponent=0;
     return dn;
     }
 
-  // have a finite number which is even
+
   exp=dn->exponent;
-  cut=1;                           // digit (1-DECDPUN) in Unit
-  up=dn->lsu;                      // -> current Unit
-  for (d=0; d<dn->digits-1; d++) { // [don't strip the final digit]
-    // slice by powers
-    #if DECDPUN<=4
+  cut=1;
+  up=dn->lsu;
+  for (d=0; d<dn->digits-1; d++) {
+
+
       uInt quot=QUOT10(*up, cut);
-      if ((*up-quot*powers[cut])!=0) break;  // found non-0 digit
-    #else
-      if (*up%powers[cut]!=0) break;         // found non-0 digit
-    #endif
-    // have a trailing 0
-    if (!all) {                    // trimming
-      // [if exp>0 then all trailing 0s are significant for trim]
-      if (exp<=0) {                // if digit might be significant
-        if (exp==0) break;         // then quit
-        exp++;                     // next digit might be significant
+      if ((*up-quot*powers[cut])!=0) break;
+
+
+
+
+    if (!all) {
+
+      if (exp<=0) {
+        if (exp==0) break;
+        exp++;
         }
       }
-    cut++;                         // next power
-    if (cut>DECDPUN) {             // need new Unit
+    cut++;
+    if (cut>DECDPUN) {
       up++;
       cut=1;
       }
-    } // d
-  if (d==0) return dn;             // none to drop
+    }
+  if (d==0) return dn;
 
-  // may need to limit drop if clamping
+
   if (set->clamp && !noclamp) {
     Int maxd=set->emax-set->digits+1-dn->exponent;
-    if (maxd<=0) return dn;        // nothing possible
+    if (maxd<=0) return dn;
     if (d>maxd) d=maxd;
     }
 
-  // effect the drop
+
   decShiftToLeast(dn->lsu, D2U(dn->digits), d);
-  dn->exponent+=d;                 // maintain numerical value
-  dn->digits-=d;                   // new length
-  *dropped=d;                      // report the count
+  dn->exponent+=d;
+  dn->digits-=d;
+  *dropped=d;
   return dn;
   }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct archive {int dummy; } ;
-typedef  int /*<<< orphan*/  archive_skip_callback ;
-typedef  int /*<<< orphan*/  archive_read_callback ;
-typedef  int /*<<< orphan*/  archive_open_callback ;
-typedef  int /*<<< orphan*/  archive_close_callback ;
+typedef int archive_skip_callback ;
+typedef int archive_read_callback ;
+typedef int archive_open_callback ;
+typedef int archive_close_callback ;
 
-/* Variables and functions */
- int archive_read_open1 (struct archive*) ; 
- int /*<<< orphan*/  archive_read_set_callback_data (struct archive*,void*) ; 
- int /*<<< orphan*/  archive_read_set_close_callback (struct archive*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  archive_read_set_open_callback (struct archive*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  archive_read_set_read_callback (struct archive*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  archive_read_set_skip_callback (struct archive*,int /*<<< orphan*/ *) ; 
+
+ int archive_read_open1 (struct archive*) ;
+ int archive_read_set_callback_data (struct archive*,void*) ;
+ int archive_read_set_close_callback (struct archive*,int *) ;
+ int archive_read_set_open_callback (struct archive*,int *) ;
+ int archive_read_set_read_callback (struct archive*,int *) ;
+ int archive_read_set_skip_callback (struct archive*,int *) ;
 
 int
 archive_read_open2(struct archive *a, void *client_data,
@@ -31,12 +31,12 @@ archive_read_open2(struct archive *a, void *client_data,
     archive_skip_callback *client_skipper,
     archive_close_callback *client_closer)
 {
-	/* Old archive_read_open2() is just a thin shell around
-	 * archive_read_open1. */
-	archive_read_set_callback_data(a, client_data);
-	archive_read_set_open_callback(a, client_opener);
-	archive_read_set_read_callback(a, client_reader);
-	archive_read_set_skip_callback(a, client_skipper);
-	archive_read_set_close_callback(a, client_closer);
-	return archive_read_open1(a);
+
+
+ archive_read_set_callback_data(a, client_data);
+ archive_read_set_open_callback(a, client_opener);
+ archive_read_set_read_callback(a, client_reader);
+ archive_read_set_skip_callback(a, client_skipper);
+ archive_read_set_close_callback(a, client_closer);
+ return archive_read_open1(a);
 }

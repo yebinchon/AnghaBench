@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uid_t ;
-typedef  scalar_t__ pid_t ;
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ uid_t ;
+typedef scalar_t__ pid_t ;
 struct TYPE_13__ {int scrollV; } ;
-struct TYPE_12__ {scalar_t__ st_uid; scalar_t__ pid; int /*<<< orphan*/  tgid; int /*<<< orphan*/  comm; int /*<<< orphan*/  show; } ;
+struct TYPE_12__ {scalar_t__ st_uid; scalar_t__ pid; int tgid; int comm; int show; } ;
 struct TYPE_11__ {char* incFilter; int following; scalar_t__ userId; TYPE_7__* panel; scalar_t__ pidWhiteList; } ;
-typedef  TYPE_1__ ProcessList ;
-typedef  TYPE_2__ Process ;
-typedef  int /*<<< orphan*/  Object ;
+typedef TYPE_1__ ProcessList ;
+typedef TYPE_2__ Process ;
+typedef int Object ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Hashtable_get (scalar_t__,int /*<<< orphan*/ ) ; 
- int Panel_getSelectedIndex (TYPE_7__*) ; 
- int /*<<< orphan*/  Panel_prune (TYPE_7__*) ; 
- int /*<<< orphan*/  Panel_set (TYPE_7__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Panel_setSelected (TYPE_7__*,int) ; 
- TYPE_2__* ProcessList_get (TYPE_1__*,int) ; 
- int ProcessList_size (TYPE_1__*) ; 
- int /*<<< orphan*/  String_contains_i (int /*<<< orphan*/ ,char const*) ; 
+
+ int Hashtable_get (scalar_t__,int ) ;
+ int Panel_getSelectedIndex (TYPE_7__*) ;
+ int Panel_prune (TYPE_7__*) ;
+ int Panel_set (TYPE_7__*,int,int *) ;
+ int Panel_setSelected (TYPE_7__*,int) ;
+ TYPE_2__* ProcessList_get (TYPE_1__*,int) ;
+ int ProcessList_size (TYPE_1__*) ;
+ int String_contains_i (int ,char const*) ;
 
 void ProcessList_rebuildPanel(ProcessList* this) {
    const char* incFilter = this->incFilter;
@@ -43,14 +43,14 @@ void ProcessList_rebuildPanel(ProcessList* this) {
    int size = ProcessList_size(this);
    int idx = 0;
    for (int i = 0; i < size; i++) {
-      bool hidden = false;
+      bool hidden = 0;
       Process* p = ProcessList_get(this, i);
 
       if ( (!p->show)
          || (this->userId != (uid_t) -1 && (p->st_uid != this->userId))
          || (incFilter && !(String_contains_i(p->comm, incFilter)))
          || (this->pidWhiteList && !Hashtable_get(this->pidWhiteList, p->tgid)) )
-         hidden = true;
+         hidden = 1;
 
       if (!hidden) {
          Panel_set(this->panel, idx, (Object*)p);

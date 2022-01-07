@@ -1,60 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CDELAY ; 
- int /*<<< orphan*/  ECHOCHECK ; 
- int /*<<< orphan*/  ETIMEOUT ; 
- int /*<<< orphan*/  FD ; 
- int /*<<< orphan*/  LDELAY ; 
- int /*<<< orphan*/  alarm (unsigned int) ; 
- int /*<<< orphan*/  boolean (int /*<<< orphan*/ ) ; 
- char* ctrl (int) ; 
- scalar_t__ lvalue (int /*<<< orphan*/ ) ; 
- char null ; 
- scalar_t__ number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parwrite (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  read (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ timedout ; 
- int /*<<< orphan*/  usleep (scalar_t__) ; 
- int /*<<< orphan*/  value (int /*<<< orphan*/ ) ; 
+ int CDELAY ;
+ int ECHOCHECK ;
+ int ETIMEOUT ;
+ int FD ;
+ int LDELAY ;
+ int alarm (unsigned int) ;
+ int boolean (int ) ;
+ char* ctrl (int) ;
+ scalar_t__ lvalue (int ) ;
+ char null ;
+ scalar_t__ number (int ) ;
+ int parwrite (int ,char*,int) ;
+ int printf (char*,char*) ;
+ int read (int ,char*,int) ;
+ scalar_t__ timedout ;
+ int usleep (scalar_t__) ;
+ int value (int ) ;
 
 __attribute__((used)) static void
 send(int c)
 {
-	char cc;
-	int retry = 0;
+ char cc;
+ int retry = 0;
 
-	cc = c;
-	parwrite(FD, &cc, 1);
-	if (number(value(CDELAY)) > 0 && c != '\r')
-		usleep(number(value(CDELAY)));
-	if (!boolean(value(ECHOCHECK))) {
-		if (number(value(LDELAY)) > 0 && c == '\r')
-			usleep(number(value(LDELAY)));
-		return;
-	}
+ cc = c;
+ parwrite(FD, &cc, 1);
+ if (number(value(CDELAY)) > 0 && c != '\r')
+  usleep(number(value(CDELAY)));
+ if (!boolean(value(ECHOCHECK))) {
+  if (number(value(LDELAY)) > 0 && c == '\r')
+   usleep(number(value(LDELAY)));
+  return;
+ }
 tryagain:
-	timedout = 0;
-	alarm((unsigned int)lvalue(ETIMEOUT));
-	read(FD, &cc, 1);
-	alarm(0);
-	if (timedout) {
-		printf("\r\ntimeout error (%s)\r\n", ctrl(c));
-		if (retry++ > 3)
-			return;
-		parwrite(FD, &null, 1); /* poke it */
-		goto tryagain;
-	}
+ timedout = 0;
+ alarm((unsigned int)lvalue(ETIMEOUT));
+ read(FD, &cc, 1);
+ alarm(0);
+ if (timedout) {
+  printf("\r\ntimeout error (%s)\r\n", ctrl(c));
+  if (retry++ > 3)
+   return;
+  parwrite(FD, &null, 1);
+  goto tryagain;
+ }
 }

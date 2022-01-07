@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {size_t numwpipes; } ;
-struct TYPE_7__ {TYPE_5__ rlayer; int /*<<< orphan*/ * wbio; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_1__ SSL3_BUFFER ;
-typedef  TYPE_2__ SSL ;
+struct TYPE_7__ {TYPE_5__ rlayer; int * wbio; } ;
+struct TYPE_6__ {int * buf; } ;
+typedef TYPE_1__ SSL3_BUFFER ;
+typedef TYPE_2__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_get_ktls_send (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- TYPE_1__* RECORD_LAYER_get_wbuf (TYPE_5__*) ; 
+
+ int BIO_get_ktls_send (int *) ;
+ int OPENSSL_free (int *) ;
+ TYPE_1__* RECORD_LAYER_get_wbuf (TYPE_5__*) ;
 
 int ssl3_release_write_buffer(SSL *s)
 {
@@ -33,9 +33,9 @@ int ssl3_release_write_buffer(SSL *s)
     while (pipes > 0) {
         wb = &RECORD_LAYER_get_wbuf(&s->rlayer)[pipes - 1];
 
-        if (s->wbio == NULL || !BIO_get_ktls_send(s->wbio))
+        if (s->wbio == ((void*)0) || !BIO_get_ktls_send(s->wbio))
             OPENSSL_free(wb->buf);
-        wb->buf = NULL;
+        wb->buf = ((void*)0);
         pipes--;
     }
     s->rlayer.numwpipes = 0;

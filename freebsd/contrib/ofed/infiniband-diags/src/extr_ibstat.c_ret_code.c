@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int errno ; 
+ int errno ;
 
 __attribute__((used)) static int ret_code(void)
 {
-	int e = errno;
+ int e = errno;
 
-	if (e > 0)
-		return -e;
-	return e;
+ if (e > 0)
+  return -e;
+ return e;
 }

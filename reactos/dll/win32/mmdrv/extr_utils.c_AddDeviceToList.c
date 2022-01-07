@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {struct TYPE_3__* Next; int /*<<< orphan*/ * DeviceInstanceData; int /*<<< orphan*/  Name; void* CardIndex; void* DeviceType; } ;
-typedef  TYPE_1__* PDEVICE_LIST ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  void* DWORD ;
-typedef  int /*<<< orphan*/  DEVICE_LIST ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  ERROR_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  Heap ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  lstrcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int lstrlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {struct TYPE_3__* Next; int * DeviceInstanceData; int Name; void* CardIndex; void* DeviceType; } ;
+typedef TYPE_1__* PDEVICE_LIST ;
+typedef int LPWSTR ;
+typedef void* DWORD ;
+typedef int DEVICE_LIST ;
+typedef int BOOL ;
+
+
+ int DPRINT (char*) ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int FALSE ;
+ int Heap ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int SetLastError (int ) ;
+ int TRUE ;
+ int lstrcpy (int ,int ) ;
+ int lstrlen (int ) ;
 
 BOOL AddDeviceToList(PDEVICE_LIST* pList, DWORD DeviceType, DWORD CardIndex,
                      LPWSTR Name)
@@ -45,14 +45,14 @@ BOOL AddDeviceToList(PDEVICE_LIST* pList, DWORD DeviceType, DWORD CardIndex,
         SetLastError(ERROR_NOT_ENOUGH_MEMORY);
         return FALSE;
     }
-    
+
     pNewDevice->DeviceType = DeviceType;
     pNewDevice->CardIndex = CardIndex;
     lstrcpy(pNewDevice->Name, Name);
-    pNewDevice->DeviceInstanceData = NULL;
+    pNewDevice->DeviceInstanceData = ((void*)0);
     pNewDevice->Next = *pList;
     *pList = pNewDevice;
-    
+
     DPRINT("Success!\n");
 
     return TRUE;

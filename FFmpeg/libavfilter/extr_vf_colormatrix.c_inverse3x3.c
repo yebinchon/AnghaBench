@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double ima ; 
- double imb ; 
- double imc ; 
- double imd ; 
- double ime ; 
- double imf ; 
- double img ; 
- double imh ; 
- double imi ; 
- double ma ; 
- double mb ; 
- double mc ; 
- double md ; 
- double me ; 
- double mf ; 
- double mg ; 
- double mh ; 
- double mi ; 
+ double ima ;
+ double imb ;
+ double imc ;
+ double imd ;
+ double ime ;
+ double imf ;
+ double img ;
+ double imh ;
+ double imi ;
+ double ma ;
+ double mb ;
+ double mc ;
+ double md ;
+ double me ;
+ double mf ;
+ double mg ;
+ double mh ;
+ double mi ;
 
 __attribute__((used)) static void inverse3x3(double im[3][3], double m[3][3])
 {

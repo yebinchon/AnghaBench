@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int (* open ) (TYPE_2__*) ;} ;
-typedef  TYPE_1__ ui_browser_window_t ;
-struct TYPE_6__ {char* filters; char* title; char* path; int /*<<< orphan*/  startdir; int /*<<< orphan*/  window; } ;
-typedef  TYPE_2__ ui_browser_window_state_t ;
-typedef  int /*<<< orphan*/  new_title ;
-typedef  int /*<<< orphan*/  new_file ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_1__ ui_browser_window_t ;
+struct TYPE_6__ {char* filters; char* title; char* path; int startdir; int window; } ;
+typedef TYPE_2__ ui_browser_window_state_t ;
+typedef int new_title ;
+typedef int new_file ;
+typedef int HWND ;
 
-/* Variables and functions */
- int PATH_MAX ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdup (char const*) ; 
- int /*<<< orphan*/  string_is_empty (char const*) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,size_t) ; 
- int stub1 (TYPE_2__*) ; 
- TYPE_1__* ui_companion_driver_get_browser_window_ptr () ; 
+
+ int PATH_MAX ;
+ int free (int ) ;
+ int strdup (char const*) ;
+ int string_is_empty (char const*) ;
+ int strlcpy (char*,char const*,size_t) ;
+ int stub1 (TYPE_2__*) ;
+ TYPE_1__* ui_companion_driver_get_browser_window_ptr () ;
 
 __attribute__((used)) static bool win32_browser(
       HWND owner,
@@ -37,7 +37,7 @@ __attribute__((used)) static bool win32_browser(
       const char *title,
       const char *initial_dir)
 {
-   bool result = false;
+   bool result = 0;
    const ui_browser_window_t *browser =
       ui_companion_driver_get_browser_window_ptr();
 
@@ -45,10 +45,10 @@ __attribute__((used)) static bool win32_browser(
    {
       ui_browser_window_state_t browser_state;
 
-      /* These need to be big enough to hold the
-       * path/name of any file the user may select.
-       * FIXME: We should really handle the
-       * error case when this isn't big enough. */
+
+
+
+
       char new_title[PATH_MAX];
       char new_file[32768];
 
@@ -61,13 +61,13 @@ __attribute__((used)) static bool win32_browser(
       if (filename && *filename)
          strlcpy(new_file, filename, sizeof(new_file));
 
-      /* OPENFILENAME.lpstrFilters is actually const,
-       * so this cast should be safe */
-      browser_state.filters  = (char*)extensions;
-      browser_state.title    = new_title;
+
+
+      browser_state.filters = (char*)extensions;
+      browser_state.title = new_title;
       browser_state.startdir = strdup(initial_dir);
-      browser_state.path     = new_file;
-      browser_state.window   = owner;
+      browser_state.path = new_file;
+      browser_state.window = owner;
 
       result = browser->open(&browser_state);
 

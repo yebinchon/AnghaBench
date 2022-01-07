@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct proc {int /*<<< orphan*/  port; struct proc* next; } ;
-struct inf {scalar_t__ stopped; struct proc* threads; int /*<<< orphan*/  pid; } ;
-typedef  int /*<<< orphan*/  process_t ;
-typedef  scalar_t__ error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inf_debug (struct inf*,char*) ; 
- scalar_t__ proc_mark_cont (int /*<<< orphan*/ ) ; 
- scalar_t__ proc_pid2proc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  proc_server ; 
- int /*<<< orphan*/  safe_strerror (scalar_t__) ; 
- int /*<<< orphan*/  thread_resume (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warning (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct proc {int port; struct proc* next; } ;
+struct inf {scalar_t__ stopped; struct proc* threads; int pid; } ;
+typedef int process_t ;
+typedef scalar_t__ error_t ;
+
+
+ int inf_debug (struct inf*,char*) ;
+ scalar_t__ proc_mark_cont (int ) ;
+ scalar_t__ proc_pid2proc (int ,int ,int *) ;
+ int proc_server ;
+ int safe_strerror (scalar_t__) ;
+ int thread_resume (int ) ;
+ int warning (char*,int ) ;
 
 void
 inf_continue (struct inf *inf)
@@ -36,14 +36,14 @@ inf_continue (struct inf *inf)
 
       err = proc_mark_cont (proc);
       if (!err)
-	{
-	  struct proc *thread;
+ {
+   struct proc *thread;
 
-	  for (thread = inf->threads; thread; thread = thread->next)
-	    thread_resume (thread->port);
+   for (thread = inf->threads; thread; thread = thread->next)
+     thread_resume (thread->port);
 
-	  inf->stopped = 0;
-	}
+   inf->stopped = 0;
+ }
     }
 
   if (err)

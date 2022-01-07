@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OSKextVersionStage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __vers_isdigit (char const) ; 
- scalar_t__ __vers_isspace (char const) ; 
- int /*<<< orphan*/  kOSKextVersionStageAlpha ; 
- int /*<<< orphan*/  kOSKextVersionStageBeta ; 
- int /*<<< orphan*/  kOSKextVersionStageCandidate ; 
- int /*<<< orphan*/  kOSKextVersionStageDevelopment ; 
- int /*<<< orphan*/  kOSKextVersionStageInvalid ; 
- int /*<<< orphan*/  kOSKextVersionStageRelease ; 
+
+
+
+typedef int OSKextVersionStage ;
+
+
+ int __vers_isdigit (char const) ;
+ scalar_t__ __vers_isspace (char const) ;
+ int kOSKextVersionStageAlpha ;
+ int kOSKextVersionStageBeta ;
+ int kOSKextVersionStageCandidate ;
+ int kOSKextVersionStageDevelopment ;
+ int kOSKextVersionStageInvalid ;
+ int kOSKextVersionStageRelease ;
 
 __attribute__((used)) static OSKextVersionStage __OSKextVersionStageForString(const char ** string_p) {
     const char * string;

@@ -1,61 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-
-/* Variables and functions */
-#define  ADJUST 133 
-#define  CODE 132 
-#define  COLEMAK 131 
-#define  GAME 130 
-#define  NUMB 129 
-#define  QWERTY 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _CODE ; 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _GAME ; 
- int /*<<< orphan*/  _NUMB ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+typedef TYPE_2__ keyrecord_t ;
+ int _ADJUST ;
+ int _CODE ;
+ int _COLEMAK ;
+ int _GAME ;
+ int _NUMB ;
+ int _QWERTY ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 128:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 131:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
       }
-      return false;
+      return 0;
       break;
-    case GAME:
+    case 130:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_GAME);
       }
-      return false;
+      return 0;
       break;
-    case NUMB:
+    case 129:
       if (record->event.pressed) {
         layer_on(_NUMB);
         update_tri_layer(_NUMB, _CODE, _ADJUST);
@@ -63,9 +55,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_NUMB);
         update_tri_layer(_NUMB, _CODE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case CODE:
+    case 132:
       if (record->event.pressed) {
         layer_on(_CODE);
         update_tri_layer(_NUMB, _CODE, _ADJUST);
@@ -73,16 +65,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_CODE);
         update_tri_layer(_NUMB, _CODE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case ADJUST:
+    case 133:
       if (record->event.pressed) {
         layer_on(_ADJUST);
       } else {
         layer_off(_ADJUST);
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

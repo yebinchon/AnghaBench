@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  enum vlc_dts_syncword_e { ____Placeholder_vlc_dts_syncword_e } vlc_dts_syncword_e ;
 
-/* Variables and functions */
- int DTS_SYNC_CORE_14BITS_BE ; 
- int DTS_SYNC_CORE_14BITS_LE ; 
- int DTS_SYNC_CORE_BE ; 
- int DTS_SYNC_CORE_LE ; 
- int DTS_SYNC_NONE ; 
- int DTS_SYNC_SUBSTREAM ; 
- int DTS_SYNC_SUBSTREAM_LBR ; 
- scalar_t__ memcmp (int const*,char*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef enum vlc_dts_syncword_e { ____Placeholder_vlc_dts_syncword_e } vlc_dts_syncword_e ;
+
+
+ int DTS_SYNC_CORE_14BITS_BE ;
+ int DTS_SYNC_CORE_14BITS_LE ;
+ int DTS_SYNC_CORE_BE ;
+ int DTS_SYNC_CORE_LE ;
+ int DTS_SYNC_NONE ;
+ int DTS_SYNC_SUBSTREAM ;
+ int DTS_SYNC_SUBSTREAM_LBR ;
+ scalar_t__ memcmp (int const*,char*,int) ;
 
 __attribute__((used)) static enum vlc_dts_syncword_e dts_header_getSyncword( const uint8_t *p_buf )
 {

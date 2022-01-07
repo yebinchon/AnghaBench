@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int* transition_source_active; int transitioning_video; int transitioning_audio; struct TYPE_13__** transition_sources; } ;
-typedef  TYPE_1__ obs_source_t ;
+typedef TYPE_1__ obs_source_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lock_transition (TYPE_1__*) ; 
- int /*<<< orphan*/  obs_source_add_active_child (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  obs_source_addref (TYPE_1__*) ; 
- int /*<<< orphan*/  obs_source_release (TYPE_1__*) ; 
- int /*<<< orphan*/  obs_source_remove_active_child (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  transition_valid (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  unlock_transition (TYPE_1__*) ; 
+
+ int lock_transition (TYPE_1__*) ;
+ int obs_source_add_active_child (TYPE_1__*,TYPE_1__*) ;
+ int obs_source_addref (TYPE_1__*) ;
+ int obs_source_release (TYPE_1__*) ;
+ int obs_source_remove_active_child (TYPE_1__*,TYPE_1__*) ;
+ int transition_valid (TYPE_1__*,char*) ;
+ int unlock_transition (TYPE_1__*) ;
 
 void obs_transition_set(obs_source_t *transition, obs_source_t *source)
 {
-	obs_source_t *s[2];
-	bool active[2];
+ obs_source_t *s[2];
+ bool active[2];
 
-	if (!transition_valid(transition, "obs_transition_clear"))
-		return;
+ if (!transition_valid(transition, "obs_transition_clear"))
+  return;
 
-	obs_source_addref(source);
+ obs_source_addref(source);
 
-	lock_transition(transition);
-	for (size_t i = 0; i < 2; i++) {
-		s[i] = transition->transition_sources[i];
-		active[i] = transition->transition_source_active[i];
-		transition->transition_sources[i] = NULL;
-		transition->transition_source_active[i] = false;
-	}
-	transition->transition_source_active[0] = true;
-	transition->transition_sources[0] = source;
-	transition->transitioning_video = false;
-	transition->transitioning_audio = false;
-	unlock_transition(transition);
+ lock_transition(transition);
+ for (size_t i = 0; i < 2; i++) {
+  s[i] = transition->transition_sources[i];
+  active[i] = transition->transition_source_active[i];
+  transition->transition_sources[i] = ((void*)0);
+  transition->transition_source_active[i] = 0;
+ }
+ transition->transition_source_active[0] = 1;
+ transition->transition_sources[0] = source;
+ transition->transitioning_video = 0;
+ transition->transitioning_audio = 0;
+ unlock_transition(transition);
 
-	for (size_t i = 0; i < 2; i++) {
-		if (s[i] && active[i])
-			obs_source_remove_active_child(transition, s[i]);
-		obs_source_release(s[i]);
-	}
+ for (size_t i = 0; i < 2; i++) {
+  if (s[i] && active[i])
+   obs_source_remove_active_child(transition, s[i]);
+  obs_source_release(s[i]);
+ }
 
-	if (source)
-		obs_source_add_active_child(transition, source);
+ if (source)
+  obs_source_add_active_child(transition, source);
 }

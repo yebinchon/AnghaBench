@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tty_struct {struct hvc_struct* driver_data; } ;
 struct TYPE_2__ {scalar_t__ count; } ;
-struct hvc_struct {int outbuf_size; int n_outbuf; int outbuf; int /*<<< orphan*/  lock; TYPE_1__ port; } ;
+struct hvc_struct {int outbuf_size; int n_outbuf; int outbuf; int lock; TYPE_1__ port; } ;
 
-/* Variables and functions */
- int EIO ; 
- int EPIPE ; 
- int /*<<< orphan*/  cond_resched () ; 
- int /*<<< orphan*/  hvc_flush (struct hvc_struct*) ; 
- int /*<<< orphan*/  hvc_kick () ; 
- int hvc_push (struct hvc_struct*) ; 
- int /*<<< orphan*/  memcpy (int,unsigned char const*,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int EIO ;
+ int EPIPE ;
+ int cond_resched () ;
+ int hvc_flush (struct hvc_struct*) ;
+ int hvc_kick () ;
+ int hvc_push (struct hvc_struct*) ;
+ int memcpy (int,unsigned char const*,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int hvc_write(struct tty_struct *tty, const unsigned char *buf, int count)
 {
-	struct hvc_struct *hp = tty->driver_data;
-	unsigned long flags;
-	int rsize, written = 0;
+ struct hvc_struct *hp = tty->driver_data;
+ unsigned long flags;
+ int rsize, written = 0;
 
-	/* This write was probably executed during a tty close. */
-	if (!hp)
-		return -EPIPE;
 
-	/* FIXME what's this (unprotected) check for? */
-	if (hp->port.count <= 0)
-		return -EIO;
+ if (!hp)
+  return -EPIPE;
 
-	while (count > 0) {
-		int ret = 0;
 
-		spin_lock_irqsave(&hp->lock, flags);
+ if (hp->port.count <= 0)
+  return -EIO;
 
-		rsize = hp->outbuf_size - hp->n_outbuf;
+ while (count > 0) {
+  int ret = 0;
 
-		if (rsize) {
-			if (rsize > count)
-				rsize = count;
-			memcpy(hp->outbuf + hp->n_outbuf, buf, rsize);
-			count -= rsize;
-			buf += rsize;
-			hp->n_outbuf += rsize;
-			written += rsize;
-		}
+  spin_lock_irqsave(&hp->lock, flags);
 
-		if (hp->n_outbuf > 0)
-			ret = hvc_push(hp);
+  rsize = hp->outbuf_size - hp->n_outbuf;
 
-		spin_unlock_irqrestore(&hp->lock, flags);
+  if (rsize) {
+   if (rsize > count)
+    rsize = count;
+   memcpy(hp->outbuf + hp->n_outbuf, buf, rsize);
+   count -= rsize;
+   buf += rsize;
+   hp->n_outbuf += rsize;
+   written += rsize;
+  }
 
-		if (!ret)
-			break;
+  if (hp->n_outbuf > 0)
+   ret = hvc_push(hp);
 
-		if (count) {
-			if (hp->n_outbuf > 0)
-				hvc_flush(hp);
-			cond_resched();
-		}
-	}
+  spin_unlock_irqrestore(&hp->lock, flags);
 
-	/*
-	 * Racy, but harmless, kick thread if there is still pending data.
-	 */
-	if (hp->n_outbuf)
-		hvc_kick();
+  if (!ret)
+   break;
 
-	return written;
+  if (count) {
+   if (hp->n_outbuf > 0)
+    hvc_flush(hp);
+   cond_resched();
+  }
+ }
+
+
+
+
+ if (hp->n_outbuf)
+  hvc_kick();
+
+ return written;
 }

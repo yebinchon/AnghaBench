@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ SubsdelayGetWordRank (int) ; 
+ scalar_t__ SubsdelayGetWordRank (int) ;
 
 __attribute__((used)) static int SubsdelayGetTextRank( char *psz_text )
 {
@@ -26,8 +18,8 @@ __attribute__((used)) static int SubsdelayGetTextRank( char *psz_text )
     i_word_length = 0;
     i_rank = 0;
 
-    b_skip_esc = false;
-    b_skip_tag = false;
+    b_skip_esc = 0;
+    b_skip_tag = 0;
 
     while ( psz_text[i] != '\0' )
     {
@@ -36,19 +28,19 @@ __attribute__((used)) static int SubsdelayGetTextRank( char *psz_text )
 
         if( c == '\\' && !b_skip_esc )
         {
-            b_skip_esc = true;
+            b_skip_esc = 1;
             continue;
         }
 
         if( psz_text[i] == '<' )
         {
-            b_skip_tag = true;
+            b_skip_tag = 1;
             continue;
         }
 
         if( !b_skip_esc && !b_skip_tag )
         {
-            if( c == ' ' || c == ',' || c == '.' || c == '-' || c == '?' || c == '!' ) /* common delimiters */
+            if( c == ' ' || c == ',' || c == '.' || c == '-' || c == '?' || c == '!' )
             {
                 if( i_word_length > 0 )
                 {
@@ -63,11 +55,11 @@ __attribute__((used)) static int SubsdelayGetTextRank( char *psz_text )
             }
         }
 
-        b_skip_esc = false;
+        b_skip_esc = 0;
 
         if( c == '>' )
         {
-            b_skip_tag = false;
+            b_skip_tag = 0;
         }
 
     }

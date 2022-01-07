@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct kobject {int dummy; } ;
 struct file {int dummy; } ;
 struct bin_attribute {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  loff_t ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+typedef int ssize_t ;
+typedef int loff_t ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  image_type ; 
- int /*<<< orphan*/  pr_debug (char*) ; 
- TYPE_1__ rbu_data ; 
- int /*<<< orphan*/  read_packet_data (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  read_rbu_mono_data (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int image_type ;
+ int pr_debug (char*) ;
+ TYPE_1__ rbu_data ;
+ int read_packet_data (char*,int ,size_t) ;
+ int read_rbu_mono_data (char*,int ,size_t) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int strcmp (int ,char*) ;
 
 __attribute__((used)) static ssize_t read_rbu_data(struct file *filp, struct kobject *kobj,
-			     struct bin_attribute *bin_attr,
-			     char *buffer, loff_t pos, size_t count)
+        struct bin_attribute *bin_attr,
+        char *buffer, loff_t pos, size_t count)
 {
-	ssize_t ret_count = 0;
+ ssize_t ret_count = 0;
 
-	spin_lock(&rbu_data.lock);
+ spin_lock(&rbu_data.lock);
 
-	if (!strcmp(image_type, "mono"))
-		ret_count = read_rbu_mono_data(buffer, pos, count);
-	else if (!strcmp(image_type, "packet"))
-		ret_count = read_packet_data(buffer, pos, count);
-	else
-		pr_debug("read_rbu_data: invalid image type specified\n");
+ if (!strcmp(image_type, "mono"))
+  ret_count = read_rbu_mono_data(buffer, pos, count);
+ else if (!strcmp(image_type, "packet"))
+  ret_count = read_packet_data(buffer, pos, count);
+ else
+  pr_debug("read_rbu_data: invalid image type specified\n");
 
-	spin_unlock(&rbu_data.lock);
-	return ret_count;
+ spin_unlock(&rbu_data.lock);
+ return ret_count;
 }

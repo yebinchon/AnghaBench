@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct svc_rqst {int dummy; } ;
-struct nfsd_createargs {int /*<<< orphan*/  attrs; int /*<<< orphan*/  len; int /*<<< orphan*/  name; int /*<<< orphan*/  fh; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct nfsd_createargs {int attrs; int len; int name; int fh; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * decode_fh (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * decode_filename (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * decode_sattr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int xdr_argsize_check (struct svc_rqst*,int /*<<< orphan*/ *) ; 
+
+ int * decode_fh (int *,int *) ;
+ int * decode_filename (int *,int *,int *) ;
+ int * decode_sattr (int *,int *) ;
+ int xdr_argsize_check (struct svc_rqst*,int *) ;
 
 int
 nfssvc_decode_createargs(struct svc_rqst *rqstp, __be32 *p,
-					struct nfsd_createargs *args)
+     struct nfsd_createargs *args)
 {
-	if (   !(p = decode_fh(p, &args->fh))
-	    || !(p = decode_filename(p, &args->name, &args->len)))
-		return 0;
-	p = decode_sattr(p, &args->attrs);
+ if ( !(p = decode_fh(p, &args->fh))
+     || !(p = decode_filename(p, &args->name, &args->len)))
+  return 0;
+ p = decode_sattr(p, &args->attrs);
 
-	return xdr_argsize_check(rqstp, p);
+ return xdr_argsize_check(rqstp, p);
 }

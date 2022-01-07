@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COPY_ARRAY (int*,int const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int COPY_ARRAY (int*,int const*) ;
 
 __attribute__((used)) static void InitCommandPrefixCodes(uint8_t cmd_depths[128],
                                    uint16_t cmd_bits[128],
@@ -31,13 +31,13 @@ __attribute__((used)) static void InitCommandPrefixCodes(uint8_t cmd_depths[128]
     12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12,
   };
   static const uint16_t kDefaultCommandBits[128] = {
-    0,   0,   8,   9,   3,  35,   7,   71,
-    39, 103,  23,  47, 175, 111, 239,   31,
-    0,   0,   0,   4,  12,   2,  10,    6,
-    13,  29,  11,  43,  27,  59,  87,   55,
-    15,  79, 319, 831, 191, 703, 447,  959,
-    0,  14,   1,  25,   5,  21,  19,   51,
-    119, 159,  95, 223, 479, 991,  63,  575,
+    0, 0, 8, 9, 3, 35, 7, 71,
+    39, 103, 23, 47, 175, 111, 239, 31,
+    0, 0, 0, 4, 12, 2, 10, 6,
+    13, 29, 11, 43, 27, 59, 87, 55,
+    15, 79, 319, 831, 191, 703, 447, 959,
+    0, 14, 1, 25, 5, 21, 19, 51,
+    119, 159, 95, 223, 479, 991, 63, 575,
     127, 639, 383, 895, 255, 767, 511, 1023,
     14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     27, 59, 7, 39, 23, 55, 30, 1, 17, 9, 25, 5, 0, 8, 4, 12,
@@ -55,8 +55,8 @@ __attribute__((used)) static void InitCommandPrefixCodes(uint8_t cmd_depths[128]
   COPY_ARRAY(cmd_depths, kDefaultCommandDepths);
   COPY_ARRAY(cmd_bits, kDefaultCommandBits);
 
-  /* Initialize the pre-compressed form of the command and distance prefix
-     codes. */
+
+
   COPY_ARRAY(cmd_code, kDefaultCommandCode);
   *cmd_code_numbits = kDefaultCommandCodeNumBits;
 }

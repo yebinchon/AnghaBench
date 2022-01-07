@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LONGEST ;
 
-/* Variables and functions */
- int breakpoint_count ; 
- int /*<<< orphan*/  builtin_type_int ; 
- int /*<<< orphan*/  lookup_internalvar (char*) ; 
- int /*<<< orphan*/  set_internalvar (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  value_from_longest (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LONGEST ;
+
+
+ int breakpoint_count ;
+ int builtin_type_int ;
+ int lookup_internalvar (char*) ;
+ int set_internalvar (int ,int ) ;
+ int value_from_longest (int ,int ) ;
 
 void
 set_breakpoint_count (int num)
 {
   breakpoint_count = num;
   set_internalvar (lookup_internalvar ("bpnum"),
-		   value_from_longest (builtin_type_int, (LONGEST) num));
+     value_from_longest (builtin_type_int, (LONGEST) num));
 }

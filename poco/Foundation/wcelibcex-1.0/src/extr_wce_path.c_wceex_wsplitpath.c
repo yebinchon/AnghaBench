@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
 
-/* Variables and functions */
- size_t _MAX_DIR ; 
- int _MAX_EXT ; 
- int _MAX_FNAME ; 
- int /*<<< orphan*/  wcsncat (scalar_t__*,scalar_t__ const*,int) ; 
- scalar_t__* wcsrchr (scalar_t__ const*,char) ; 
 
-void wceex_wsplitpath( const wchar_t *path, 
+
+
+typedef scalar_t__ wchar_t ;
+
+
+ size_t _MAX_DIR ;
+ int _MAX_EXT ;
+ int _MAX_FNAME ;
+ int wcsncat (scalar_t__*,scalar_t__ const*,int) ;
+ scalar_t__* wcsrchr (scalar_t__ const*,char) ;
+
+void wceex_wsplitpath( const wchar_t *path,
                        wchar_t *drive, wchar_t *dir, wchar_t *name, wchar_t *ext )
 {
     wchar_t *slash, *bslash;

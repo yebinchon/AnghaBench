@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* name; scalar_t__ format; TYPE_2__* priv; } ;
 struct TYPE_8__ {TYPE_1__* core; } ;
-struct TYPE_7__ {scalar_t__ format_ptr_copy; int /*<<< orphan*/  lock; int /*<<< orphan*/  send_lock; int /*<<< orphan*/  transit_lock; int /*<<< orphan*/  transit_sema; int /*<<< orphan*/  stats_lock; int /*<<< orphan*/  connection_lock; } ;
-typedef  TYPE_3__ MMAL_PORT_T ;
+struct TYPE_7__ {scalar_t__ format_ptr_copy; int lock; int send_lock; int transit_lock; int transit_sema; int stats_lock; int connection_lock; } ;
+typedef TYPE_3__ MMAL_PORT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_TRACE (char*,char*,TYPE_3__*) ; 
- int /*<<< orphan*/  mmal_format_free (scalar_t__) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vcos_free (TYPE_3__*) ; 
- int /*<<< orphan*/  vcos_mutex_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
+
+ int LOG_TRACE (char*,char*,TYPE_3__*) ;
+ int mmal_format_free (scalar_t__) ;
+ int vcos_assert (int) ;
+ int vcos_free (TYPE_3__*) ;
+ int vcos_mutex_delete (int *) ;
+ int vcos_semaphore_delete (int *) ;
 
 void mmal_port_free(MMAL_PORT_T *port)
 {

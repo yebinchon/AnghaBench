@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSON_REJECT_DUPLICATES ; 
- int /*<<< orphan*/  check_error (char*,char*,int,int,int) ; 
- int /*<<< orphan*/  fail (char*) ; 
- scalar_t__ json_loads (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int json_error_t ;
+
+
+ int JSON_REJECT_DUPLICATES ;
+ int check_error (char*,char*,int,int,int) ;
+ int fail (char*) ;
+ scalar_t__ json_loads (char*,int ,int *) ;
 
 __attribute__((used)) static void reject_duplicates()
 {

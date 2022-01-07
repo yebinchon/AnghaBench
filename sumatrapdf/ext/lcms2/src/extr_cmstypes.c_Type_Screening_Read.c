@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct _cms_typehandler_struct {int dummy; } ;
-typedef  size_t cmsUInt32Number ;
+typedef size_t cmsUInt32Number ;
 struct TYPE_5__ {int Flag; int nChannels; TYPE_1__* Channels; } ;
-typedef  TYPE_2__ cmsScreening ;
-typedef  int /*<<< orphan*/  cmsIOHANDLER ;
-typedef  int /*<<< orphan*/  cmsContext ;
-struct TYPE_4__ {int SpotShape; int /*<<< orphan*/  ScreenAngle; int /*<<< orphan*/  Frequency; } ;
+typedef TYPE_2__ cmsScreening ;
+typedef int cmsIOHANDLER ;
+typedef int cmsContext ;
+struct TYPE_4__ {int SpotShape; int ScreenAngle; int Frequency; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _cmsFree (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ _cmsMallocZero (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  _cmsRead15Fixed16Number (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _cmsReadUInt32Number (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int cmsMAXCHANNELS ; 
- int /*<<< orphan*/  cmsUNUSED_PARAMETER (size_t) ; 
+
+ int _cmsFree (int ,TYPE_2__*) ;
+ scalar_t__ _cmsMallocZero (int ,int) ;
+ int _cmsRead15Fixed16Number (int ,int *,int *) ;
+ int _cmsReadUInt32Number (int ,int *,int*) ;
+ int cmsMAXCHANNELS ;
+ int cmsUNUSED_PARAMETER (size_t) ;
 
 __attribute__((used)) static
 void *Type_Screening_Read(cmsContext ContextID, struct _cms_typehandler_struct* self, cmsIOHANDLER* io, cmsUInt32Number* nItems, cmsUInt32Number SizeOfTag)
 {
-    cmsScreening* sc = NULL;
+    cmsScreening* sc = ((void*)0);
     cmsUInt32Number i;
 
     sc = (cmsScreening*) _cmsMallocZero(ContextID, sizeof(cmsScreening));
-    if (sc == NULL) return NULL;
+    if (sc == ((void*)0)) return ((void*)0);
 
     *nItems = 0;
 
@@ -58,10 +58,10 @@ void *Type_Screening_Read(cmsContext ContextID, struct _cms_typehandler_struct* 
     return (void*) sc;
 
 Error:
-    if (sc != NULL)
+    if (sc != ((void*)0))
         _cmsFree(ContextID, sc);
 
-    return NULL;
+    return ((void*)0);
     cmsUNUSED_PARAMETER(self);
     cmsUNUSED_PARAMETER(SizeOfTag);
 }

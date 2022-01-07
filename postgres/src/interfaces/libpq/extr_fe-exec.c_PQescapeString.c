@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t PQescapeStringInternal (int /*<<< orphan*/ *,char*,char const*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  static_client_encoding ; 
- int /*<<< orphan*/  static_std_strings ; 
+ size_t PQescapeStringInternal (int *,char*,char const*,size_t,int *,int ,int ) ;
+ int static_client_encoding ;
+ int static_std_strings ;
 
 size_t
 PQescapeString(char *to, const char *from, size_t length)
 {
-	return PQescapeStringInternal(NULL, to, from, length, NULL,
-								  static_client_encoding,
-								  static_std_strings);
+ return PQescapeStringInternal(((void*)0), to, from, length, ((void*)0),
+          static_client_encoding,
+          static_std_strings);
 }

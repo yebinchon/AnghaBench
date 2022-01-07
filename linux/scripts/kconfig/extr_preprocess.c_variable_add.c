@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct variable {int flavor; char* value; int /*<<< orphan*/  node; scalar_t__ exp_count; void* name; } ;
-typedef  enum variable_flavor { ____Placeholder_variable_flavor } variable_flavor ;
 
-/* Variables and functions */
- int VAR_APPEND ; 
- int VAR_RECURSIVE ; 
- int VAR_SIMPLE ; 
- char* expand_string (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  variable_list ; 
- struct variable* variable_lookup (char const*) ; 
- struct variable* xmalloc (int) ; 
- char* xrealloc (char*,scalar_t__) ; 
- void* xstrdup (char const*) ; 
+
+
+
+struct variable {int flavor; char* value; int node; scalar_t__ exp_count; void* name; } ;
+typedef enum variable_flavor { ____Placeholder_variable_flavor } variable_flavor ;
+
+
+ int VAR_APPEND ;
+ int VAR_RECURSIVE ;
+ int VAR_SIMPLE ;
+ char* expand_string (char const*) ;
+ int free (char*) ;
+ int list_add_tail (int *,int *) ;
+ int strcat (char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int variable_list ;
+ struct variable* variable_lookup (char const*) ;
+ struct variable* xmalloc (int) ;
+ char* xrealloc (char*,scalar_t__) ;
+ void* xstrdup (char const*) ;
 
 void variable_add(const char *name, const char *value,
-		  enum variable_flavor flavor)
+    enum variable_flavor flavor)
 {
-	struct variable *v;
-	char *new_value;
-	bool append = false;
+ struct variable *v;
+ char *new_value;
+ bool append = 0;
 
-	v = variable_lookup(name);
-	if (v) {
-		/* For defined variables, += inherits the existing flavor */
-		if (flavor == VAR_APPEND) {
-			flavor = v->flavor;
-			append = true;
-		} else {
-			free(v->value);
-		}
-	} else {
-		/* For undefined variables, += assumes the recursive flavor */
-		if (flavor == VAR_APPEND)
-			flavor = VAR_RECURSIVE;
+ v = variable_lookup(name);
+ if (v) {
 
-		v = xmalloc(sizeof(*v));
-		v->name = xstrdup(name);
-		v->exp_count = 0;
-		list_add_tail(&v->node, &variable_list);
-	}
+  if (flavor == VAR_APPEND) {
+   flavor = v->flavor;
+   append = 1;
+  } else {
+   free(v->value);
+  }
+ } else {
 
-	v->flavor = flavor;
+  if (flavor == VAR_APPEND)
+   flavor = VAR_RECURSIVE;
 
-	if (flavor == VAR_SIMPLE)
-		new_value = expand_string(value);
-	else
-		new_value = xstrdup(value);
+  v = xmalloc(sizeof(*v));
+  v->name = xstrdup(name);
+  v->exp_count = 0;
+  list_add_tail(&v->node, &variable_list);
+ }
 
-	if (append) {
-		v->value = xrealloc(v->value,
-				    strlen(v->value) + strlen(new_value) + 2);
-		strcat(v->value, " ");
-		strcat(v->value, new_value);
-		free(new_value);
-	} else {
-		v->value = new_value;
-	}
+ v->flavor = flavor;
+
+ if (flavor == VAR_SIMPLE)
+  new_value = expand_string(value);
+ else
+  new_value = xstrdup(value);
+
+ if (append) {
+  v->value = xrealloc(v->value,
+        strlen(v->value) + strlen(new_value) + 2);
+  strcat(v->value, " ");
+  strcat(v->value, new_value);
+  free(new_value);
+ } else {
+  v->value = new_value;
+ }
 }

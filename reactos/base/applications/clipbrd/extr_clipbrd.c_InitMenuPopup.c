@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  hMainWnd; } ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HMENU ;
 
-/* Variables and functions */
- scalar_t__ CMD_DELETE ; 
- scalar_t__ CMD_SAVE_AS ; 
- scalar_t__ CountClipboardFormats () ; 
- int /*<<< orphan*/  DrawMenuBar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EnableMenuItem (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ GetMenuItemID (int /*<<< orphan*/ ,int) ; 
- TYPE_1__ Globals ; 
- int /*<<< orphan*/  MF_ENABLED ; 
- int /*<<< orphan*/  MF_GRAYED ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int hMainWnd; } ;
+typedef int LPARAM ;
+typedef int HMENU ;
+
+
+ scalar_t__ CMD_DELETE ;
+ scalar_t__ CMD_SAVE_AS ;
+ scalar_t__ CountClipboardFormats () ;
+ int DrawMenuBar (int ) ;
+ int EnableMenuItem (int ,scalar_t__,int ) ;
+ scalar_t__ GetMenuItemID (int ,int) ;
+ TYPE_1__ Globals ;
+ int MF_ENABLED ;
+ int MF_GRAYED ;
 
 __attribute__((used)) static void InitMenuPopup(HMENU hMenu, LPARAM index)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * md; } ;
-typedef  TYPE_1__ PROV_DSA_CTX ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* EVP_MD_gettable_ctx_params (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * md; } ;
+typedef TYPE_1__ PROV_DSA_CTX ;
+typedef int OSSL_PARAM ;
+
+
+ int const* EVP_MD_gettable_ctx_params (int *) ;
 
 __attribute__((used)) static const OSSL_PARAM *dsa_gettable_ctx_md_params(void *vpdsactx)
 {
     PROV_DSA_CTX *pdsactx = (PROV_DSA_CTX *)vpdsactx;
 
-    if (pdsactx->md == NULL)
+    if (pdsactx->md == ((void*)0))
         return 0;
 
     return EVP_MD_gettable_ctx_params(pdsactx->md);

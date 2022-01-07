@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {unsigned long long st_mode; unsigned long long st_uid; unsigned long long st_gid; scalar_t__ st_mtime; scalar_t__ st_size; } ;
-struct passwd {int /*<<< orphan*/  pw_name; } ;
-struct group {int /*<<< orphan*/  gr_name; } ;
-typedef  int /*<<< orphan*/  gzFile ;
+struct passwd {int pw_name; } ;
+struct group {int gr_name; } ;
+typedef int gzFile ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int) ; 
- scalar_t__ S_ISLNK (int) ; 
- struct group* getgrgid (int) ; 
- struct passwd* getpwuid (int) ; 
- int /*<<< orphan*/  memcpy (char*,char const* const,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned long long) ; 
- char* strchr (char const* const,char) ; 
- int /*<<< orphan*/  strcpy (char*,char const* const) ; 
- int strlen (char const* const) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tar_fill_longlink_header (char*,int,char) ; 
- int /*<<< orphan*/  tar_fill_ustar_magic (char*) ; 
- int tar_write_long_link_header (int /*<<< orphan*/ ,char*,int,char const* const) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const* const) ; 
+
+ scalar_t__ S_ISDIR (int) ;
+ scalar_t__ S_ISLNK (int) ;
+ struct group* getgrgid (int) ;
+ struct passwd* getpwuid (int) ;
+ int memcpy (char*,char const* const,int) ;
+ int memset (char*,int ,int) ;
+ int sprintf (char*,char*,unsigned long long) ;
+ char* strchr (char const* const,char) ;
+ int strcpy (char*,char const* const) ;
+ int strlen (char const* const) ;
+ int strncpy (char*,int ,int) ;
+ int tar_fill_longlink_header (char*,int,char) ;
+ int tar_fill_ustar_magic (char*) ;
+ int tar_write_long_link_header (int ,char*,int,char const* const) ;
+ int vkprintf (int,char*,char const* const) ;
 
 __attribute__((used)) static int tar_fill_header (gzFile f, char b[512], struct stat *S, const char *const filename) {
   memset (b, 0, 512);
@@ -39,7 +39,7 @@ __attribute__((used)) static int tar_fill_header (gzFile f, char b[512], struct 
   int longname = 0;
   if (l > MAX_L) {
     char *p = strchr (filename + l - MAX_L, '/');
-    if (p == NULL) {
+    if (p == ((void*)0)) {
       longname = 1;
     } else {
       int o = p - filename;

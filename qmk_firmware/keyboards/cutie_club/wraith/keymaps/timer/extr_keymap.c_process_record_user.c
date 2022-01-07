@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LAYER_SWITCH ; 
- int /*<<< orphan*/  LAYER_TIMEOUT ; 
-#define  TIME_TOGGLE 128 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_time_remaining ; 
+
+
+
+typedef int uint16_t ;
+typedef int keyrecord_t ;
+
+
+ int LAYER_SWITCH ;
+ int LAYER_TIMEOUT ;
+
+ int layer_on (int ) ;
+ int layer_time_remaining ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case TIME_TOGGLE:
-			// get the time when time toggle pressed
-			layer_time_remaining = LAYER_TIMEOUT;
-			// set the layer
-			layer_on(LAYER_SWITCH);
+    case 128:
+
+   layer_time_remaining = LAYER_TIMEOUT;
+
+   layer_on(LAYER_SWITCH);
     break;
   }
-  return true;
+  return 1;
 }

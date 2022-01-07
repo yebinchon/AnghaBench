@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct symtab {char* fullname; scalar_t__ line_charpos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  find_source_lines (struct symtab*,int) ; 
- int open_source_file (struct symtab*) ; 
+
+ int close (int) ;
+ int find_source_lines (struct symtab*,int) ;
+ int open_source_file (struct symtab*) ;
 
 __attribute__((used)) static int
 get_filename_and_charpos (struct symtab *s, char **fullname)
@@ -26,7 +26,7 @@ get_filename_and_charpos (struct symtab *s, char **fullname)
   if (desc < 0)
     {
       if (fullname)
-	*fullname = NULL;
+ *fullname = ((void*)0);
       return 0;
     }
   if (fullname)

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_Print () ; 
- int /*<<< orphan*/  Py_FatalError (char*) ; 
+ int PyErr_Print () ;
+ int Py_FatalError (char*) ;
 
 __attribute__((used)) static void handler_call_die(const char *handler_name)
 {
-	PyErr_Print();
-	Py_FatalError("problem in Python trace event handler");
+ PyErr_Print();
+ Py_FatalError("problem in Python trace event handler");
 }

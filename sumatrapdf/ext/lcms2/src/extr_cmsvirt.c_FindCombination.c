@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ cmsUInt32Number ;
-typedef  scalar_t__ cmsTagSignature ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int cmsBool ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ cmsUInt32Number ;
+typedef scalar_t__ cmsTagSignature ;
+typedef int cmsPipeline ;
+typedef int cmsContext ;
+typedef int cmsBool ;
 struct TYPE_5__ {int IsV4; scalar_t__ RequiredTag; } ;
-typedef  TYPE_1__ cmsAllowedLUT ;
+typedef TYPE_1__ cmsAllowedLUT ;
 
-/* Variables and functions */
- TYPE_1__* AllowedLUTTypes ; 
- scalar_t__ CheckOne (int /*<<< orphan*/ ,TYPE_1__ const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ SIZE_OF_ALLOWED_LUT ; 
+
+ TYPE_1__* AllowedLUTTypes ;
+ scalar_t__ CheckOne (int ,TYPE_1__ const*,int const*) ;
+ scalar_t__ SIZE_OF_ALLOWED_LUT ;
 
 __attribute__((used)) static
 const cmsAllowedLUT* FindCombination(cmsContext ContextID, const cmsPipeline* Lut, cmsBool IsV4, cmsTagSignature DestinationTag)
@@ -39,5 +39,5 @@ const cmsAllowedLUT* FindCombination(cmsContext ContextID, const cmsPipeline* Lu
         if (CheckOne(ContextID, Tab, Lut)) return Tab;
     }
 
-    return NULL;
+    return ((void*)0);
 }

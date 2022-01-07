@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  writeb (unsigned int,void*) ; 
+ int writeb (unsigned int,void*) ;
 
 __attribute__((used)) static inline void i8254_mm_write(void *base_address,
-				  unsigned int regshift,
-				  unsigned int counter_number,
-				  unsigned int count)
+      unsigned int regshift,
+      unsigned int counter_number,
+      unsigned int count)
 {
-	unsigned int byte;
+ unsigned int byte;
 
-	if (counter_number > 2)
-		return;
+ if (counter_number > 2)
+  return;
 
-	byte = count & 0xff;	/*  lsb of counter value */
-	writeb(byte, base_address + (counter_number << regshift));
-	byte = (count >> 8) & 0xff;	/*  msb of counter value */
-	writeb(byte, base_address + (counter_number << regshift));
+ byte = count & 0xff;
+ writeb(byte, base_address + (counter_number << regshift));
+ byte = (count >> 8) & 0xff;
+ writeb(byte, base_address + (counter_number << regshift));
 }

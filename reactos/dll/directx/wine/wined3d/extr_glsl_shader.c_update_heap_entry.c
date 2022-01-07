@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct constant_heap {unsigned int* positions; scalar_t__* contained; int /*<<< orphan*/  size; struct constant_entry* entries; } ;
+
+
+
+
+struct constant_heap {unsigned int* positions; scalar_t__* contained; int size; struct constant_entry* entries; } ;
 struct constant_entry {scalar_t__ version; size_t idx; } ;
-typedef  scalar_t__ DWORD ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ TRUE ; 
+
+ scalar_t__ TRUE ;
 
 __attribute__((used)) static void update_heap_entry(struct constant_heap *heap, unsigned int idx, DWORD new_version)
 {

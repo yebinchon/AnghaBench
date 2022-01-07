@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int stb_uint ;
-typedef  int /*<<< orphan*/  stb_uchar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STB__SHA1 (int,int) ; 
- int stb__big32 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int stb_uint ;
+typedef int stb_uchar ;
+
+
+ int STB__SHA1 (int,int) ;
+ int stb__big32 (int *) ;
 
 __attribute__((used)) static void stb__sha1(stb_uchar *chunk, stb_uint h[5])
 {
@@ -36,24 +36,13 @@ __attribute__((used)) static void stb__sha1(stb_uchar *chunk, stb_uint h[5])
    c = h[2];
    d = h[3];
    e = h[4];
-
-   #define STB__SHA1(k,f)                                            \
-   {                                                                 \
-      stb_uint temp = (a << 5) + (a >> 27) + (f) + e + (k) + w[i];  \
-      e = d;                                                       \
-      d = c;                                                     \
-      c = (b << 30) + (b >> 2);                               \
-      b = a;                                              \
-      a = temp;                                    \
-   }
-
    i=0;
-   for (; i < 20; ++i) STB__SHA1(0x5a827999, d ^ (b & (c ^ d))       );
-   for (; i < 40; ++i) STB__SHA1(0x6ed9eba1, b ^ c ^ d               );
-   for (; i < 60; ++i) STB__SHA1(0x8f1bbcdc, (b & c) + (d & (b ^ c)) );
-   for (; i < 80; ++i) STB__SHA1(0xca62c1d6, b ^ c ^ d               );
+   for (; i < 20; ++i) { stb_uint temp = (a << 5) + (a >> 27) + (d ^ (b & (c ^ d))) + e + (0x5a827999) + w[i]; e = d; d = c; c = (b << 30) + (b >> 2); b = a; a = temp; };
+   for (; i < 40; ++i) { stb_uint temp = (a << 5) + (a >> 27) + (b ^ c ^ d) + e + (0x6ed9eba1) + w[i]; e = d; d = c; c = (b << 30) + (b >> 2); b = a; a = temp; };
+   for (; i < 60; ++i) { stb_uint temp = (a << 5) + (a >> 27) + ((b & c) + (d & (b ^ c))) + e + (0x8f1bbcdc) + w[i]; e = d; d = c; c = (b << 30) + (b >> 2); b = a; a = temp; };
+   for (; i < 80; ++i) { stb_uint temp = (a << 5) + (a >> 27) + (b ^ c ^ d) + e + (0xca62c1d6) + w[i]; e = d; d = c; c = (b << 30) + (b >> 2); b = a; a = temp; };
 
-   #undef STB__SHA1
+
 
    h[0] += a;
    h[1] += b;

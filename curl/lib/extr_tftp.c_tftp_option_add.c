@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ blksize; } ;
-typedef  TYPE_1__ tftp_state_data_t ;
-typedef  int /*<<< orphan*/  CURLcode ;
+typedef TYPE_1__ tftp_state_data_t ;
+typedef int CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLE_TFTP_ILLEGAL ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
+
+ int CURLE_OK ;
+ int CURLE_TFTP_ILLEGAL ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static CURLcode tftp_option_add(tftp_state_data_t *state, size_t *csize,
                                 char *buf, const char *option)

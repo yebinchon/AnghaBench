@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  fifoLock; int /*<<< orphan*/  fifo; } ;
-typedef  TYPE_1__ switch_thread_audio_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compat_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compat_mutex_unlock (int /*<<< orphan*/ *) ; 
- size_t fifo_write_avail (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int fifoLock; int fifo; } ;
+typedef TYPE_1__ switch_thread_audio_t ;
+
+
+ int compat_mutex_lock (int *) ;
+ int compat_mutex_unlock (int *) ;
+ size_t fifo_write_avail (int ) ;
 
 __attribute__((used)) static size_t switch_thread_audio_write_avail(void *data)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-typedef  int /*<<< orphan*/  gchar ;
-struct TYPE_6__ {int enc_version; int /*<<< orphan*/  repo_id; scalar_t__ server_url; scalar_t__ is_readonly; scalar_t__ repo_salt; int /*<<< orphan*/ * repo_version; scalar_t__ random_key; scalar_t__ passwd; int /*<<< orphan*/  email; int /*<<< orphan*/  peer_port; int /*<<< orphan*/  peer_addr; int /*<<< orphan*/  worktree; int /*<<< orphan*/  peer_id; int /*<<< orphan*/  token; int /*<<< orphan*/  repo_name; } ;
-struct TYPE_5__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ SeafCloneManager ;
-typedef  TYPE_2__ CloneTask ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_dumps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_integer (scalar_t__) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  json_object_set_new (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_string (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ,int,...) ; 
- scalar_t__ sqlite_query_exec (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int json_t ;
+typedef int gchar ;
+struct TYPE_6__ {int enc_version; int repo_id; scalar_t__ server_url; scalar_t__ is_readonly; scalar_t__ repo_salt; int * repo_version; scalar_t__ random_key; scalar_t__ passwd; int email; int peer_port; int peer_addr; int worktree; int peer_id; int token; int repo_name; } ;
+struct TYPE_5__ {int db; } ;
+typedef TYPE_1__ SeafCloneManager ;
+typedef TYPE_2__ CloneTask ;
+
+
+ int g_free (int *) ;
+ int json_decref (int *) ;
+ int * json_dumps (int *,int ) ;
+ int json_integer (scalar_t__) ;
+ int * json_object () ;
+ int json_object_set_new (int *,char*,int ) ;
+ int json_string (scalar_t__) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,int ,int,...) ;
+ scalar_t__ sqlite_query_exec (int ,char*) ;
 
 __attribute__((used)) static int
 save_task_to_db (SeafCloneManager *mgr, CloneTask *task)
@@ -78,15 +78,15 @@ save_task_to_db (SeafCloneManager *mgr, CloneTask *task)
     sqlite3_free (sql);
 
     if (task->is_readonly || task->server_url || task->repo_salt) {
-        /* need to store more info */
-        json_t *object = NULL;
-        gchar *info = NULL;
+
+        json_t *object = ((void*)0);
+        gchar *info = ((void*)0);
 
         object = json_object ();
         json_object_set_new (object, "is_readonly", json_integer (task->is_readonly));
         if (task->server_url)
             json_object_set_new (object, "server_url", json_string(task->server_url));
-    
+
         info = json_dumps (object, 0);
         json_decref (object);
         sql = sqlite3_mprintf ("REPLACE INTO CloneTasksMoreInfo VALUES "

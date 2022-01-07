@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* pMethods; } ;
-typedef  TYPE_2__ sqlite3_file ;
-struct TYPE_9__ {int /*<<< orphan*/  pGroup; } ;
-typedef  TYPE_3__ multiplexConn ;
+typedef TYPE_2__ sqlite3_file ;
+struct TYPE_9__ {int pGroup; } ;
+typedef TYPE_3__ multiplexConn ;
 struct TYPE_7__ {int (* xShmMap ) (TYPE_2__*,int,int,int,void volatile**) ;} ;
 
-/* Variables and functions */
- int SQLITE_IOERR ; 
- TYPE_2__* multiplexSubOpen (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_2__*,int,int,int,void volatile**) ; 
+
+ int SQLITE_IOERR ;
+ TYPE_2__* multiplexSubOpen (int ,int ,int*,int *,int ) ;
+ int stub1 (TYPE_2__*,int,int,int,void volatile**) ;
 
 __attribute__((used)) static int multiplexShmMap(
-  sqlite3_file *pConn,            /* Handle open on database file */
-  int iRegion,                    /* Region to retrieve */
-  int szRegion,                   /* Size of regions */
-  int bExtend,                    /* True to extend file if necessary */
-  void volatile **pp              /* OUT: Mapped memory */
+  sqlite3_file *pConn,
+  int iRegion,
+  int szRegion,
+  int bExtend,
+  void volatile **pp
 ){
   multiplexConn *p = (multiplexConn*)pConn;
   int rc;
-  sqlite3_file *pSubOpen = multiplexSubOpen(p->pGroup, 0, &rc, NULL, 0);
+  sqlite3_file *pSubOpen = multiplexSubOpen(p->pGroup, 0, &rc, ((void*)0), 0);
   if( pSubOpen ){
     return pSubOpen->pMethods->xShmMap(pSubOpen, iRegion, szRegion, bExtend,pp);
   }

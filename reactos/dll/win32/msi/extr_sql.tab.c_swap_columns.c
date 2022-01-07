@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* next; } ;
-typedef  TYPE_1__ column_info ;
+typedef TYPE_1__ column_info ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void swap_columns( column_info **cols, column_info *A, int idx )
 {
-    column_info *preA = NULL, *preB = NULL, *B, *ptr;
+    column_info *preA = ((void*)0), *preB = ((void*)0), *B, *ptr;
     int i = 0;
 
-    B = NULL;
+    B = ((void*)0);
     ptr = *cols;
     while( ptr )
     {

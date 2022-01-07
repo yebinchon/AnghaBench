@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT32 ;
-struct TYPE_8__ {int /*<<< orphan*/ * Handle; } ;
-struct TYPE_7__ {int Level; scalar_t__ MessageId; char* Message; struct TYPE_7__* SubError; int /*<<< orphan*/  Filename; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  TYPE_1__ ASL_ERROR_MSG ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
-#define  ASL_OPTIMIZATION 132 
-#define  ASL_REMARK 131 
-#define  ASL_WARNING 130 
-#define  ASL_WARNING2 129 
-#define  ASL_WARNING3 128 
- int /*<<< orphan*/  AeDecodeErrorMessageId (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  AePrintErrorSourceLine (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  AePrintSubError (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  AslGbl_DisplayOptimizations ; 
- int /*<<< orphan*/  AslGbl_DisplayRemarks ; 
- int /*<<< orphan*/  AslGbl_DisplayWarnings ; 
- TYPE_2__* AslGbl_Files ; 
- scalar_t__ AslGbl_NoErrors ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t UINT32 ;
+struct TYPE_8__ {int * Handle; } ;
+struct TYPE_7__ {int Level; scalar_t__ MessageId; char* Message; struct TYPE_7__* SubError; int Filename; } ;
+typedef int FILE ;
+typedef int BOOLEAN ;
+typedef TYPE_1__ ASL_ERROR_MSG ;
+typedef int ACPI_STATUS ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+
+
+
+
+
+ int AeDecodeErrorMessageId (int *,TYPE_1__*,int ,size_t) ;
+ int AePrintErrorSourceLine (int *,TYPE_1__*,int *,size_t*) ;
+ int AePrintSubError (int *,TYPE_1__*) ;
+ int AslGbl_DisplayOptimizations ;
+ int AslGbl_DisplayRemarks ;
+ int AslGbl_DisplayWarnings ;
+ TYPE_2__* AslGbl_Files ;
+ scalar_t__ AslGbl_NoErrors ;
+ int FALSE ;
+ int fprintf (int *,char*,...) ;
 
 void
 AePrintException (
-    UINT32                  FileId,
-    ASL_ERROR_MSG           *Enode,
-    char                    *Header)
+    UINT32 FileId,
+    ASL_ERROR_MSG *Enode,
+    char *Header)
 {
-    FILE                    *OutputFile;
-    BOOLEAN                 PrematureEOF = FALSE;
-    UINT32                  Total = 0;
-    ACPI_STATUS             Status;
-    ASL_ERROR_MSG           *Child = Enode->SubError;
+    FILE *OutputFile;
+    BOOLEAN PrematureEOF = FALSE;
+    UINT32 Total = 0;
+    ACPI_STATUS Status;
+    ASL_ERROR_MSG *Child = Enode->SubError;
 
 
     if (AslGbl_NoErrors)
@@ -56,19 +56,19 @@ AePrintException (
         return;
     }
 
-    /*
-     * Only listing files have a header, and remarks/optimizations
-     * are always output
-     */
+
+
+
+
     if (!Header)
     {
-        /* Ignore remarks if requested */
+
 
         switch (Enode->Level)
         {
-        case ASL_WARNING:
-        case ASL_WARNING2:
-        case ASL_WARNING3:
+        case 130:
+        case 129:
+        case 128:
 
             if (!AslGbl_DisplayWarnings)
             {
@@ -76,7 +76,7 @@ AePrintException (
             }
             break;
 
-        case ASL_REMARK:
+        case 131:
 
             if (!AslGbl_DisplayRemarks)
             {
@@ -84,7 +84,7 @@ AePrintException (
             }
             break;
 
-        case ASL_OPTIMIZATION:
+        case 132:
 
             if (!AslGbl_DisplayOptimizations)
             {
@@ -98,7 +98,7 @@ AePrintException (
         }
     }
 
-    /* Get the various required file handles */
+
 
     OutputFile = AslGbl_Files[FileId].Handle;
 
@@ -119,7 +119,7 @@ AePrintException (
         return;
     }
 
-    /* If a NULL message ID, just print the raw message */
+
 
     if (Enode->MessageId == 0)
     {

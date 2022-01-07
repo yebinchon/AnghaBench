@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
-struct TYPE_3__ {scalar_t__ exclusiveMode; int /*<<< orphan*/  pWal; int /*<<< orphan*/  tempFile; } ;
-typedef  TYPE_1__ Pager ;
 
-/* Variables and functions */
- int PAGER_LOCKINGMODE_EXCLUSIVE ; 
- int PAGER_LOCKINGMODE_NORMAL ; 
- int PAGER_LOCKINGMODE_QUERY ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ sqlite3WalHeapMemory (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
+struct TYPE_3__ {scalar_t__ exclusiveMode; int pWal; int tempFile; } ;
+typedef TYPE_1__ Pager ;
+
+
+ int PAGER_LOCKINGMODE_EXCLUSIVE ;
+ int PAGER_LOCKINGMODE_NORMAL ;
+ int PAGER_LOCKINGMODE_QUERY ;
+ int assert (int) ;
+ scalar_t__ sqlite3WalHeapMemory (int ) ;
 
 int sqlite3PagerLockingMode(Pager *pPager, int eMode){
   assert( eMode==PAGER_LOCKINGMODE_QUERY

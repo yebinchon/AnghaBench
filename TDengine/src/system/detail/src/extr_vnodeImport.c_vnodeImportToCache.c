@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_17__ {int numOfPoints; char** offset; } ;
 struct TYPE_16__ {int unCommittedBlocks; int currentSlot; int maxBlocks; TYPE_7__** cacheBlocks; } ;
 struct TYPE_15__ {int commit; int pos; int slot; scalar_t__ importedRows; TYPE_4__* pObj; } ;
-struct TYPE_14__ {size_t vnode; int pointsPerBlock; int bytesPerPoint; int freePoints; int numOfColumns; int /*<<< orphan*/  meterId; int /*<<< orphan*/  sid; TYPE_1__* schema; scalar_t__ pCache; } ;
+struct TYPE_14__ {size_t vnode; int pointsPerBlock; int bytesPerPoint; int freePoints; int numOfColumns; int meterId; int sid; TYPE_1__* schema; scalar_t__ pCache; } ;
 struct TYPE_13__ {int cacheBlockSize; } ;
-struct TYPE_12__ {scalar_t__ firstKey; int /*<<< orphan*/  vmutex; TYPE_3__ cfg; } ;
+struct TYPE_12__ {scalar_t__ firstKey; int vmutex; TYPE_3__ cfg; } ;
 struct TYPE_11__ {int bytes; } ;
-typedef  scalar_t__ TSKEY ;
-typedef  TYPE_2__ SVnodeObj ;
-typedef  TYPE_3__ SVnodeCfg ;
-typedef  TYPE_4__ SMeterObj ;
-typedef  TYPE_5__ SImportInfo ;
-typedef  TYPE_6__ SCacheInfo ;
-typedef  TYPE_7__ SCacheBlock ;
+typedef scalar_t__ TSKEY ;
+typedef TYPE_2__ SVnodeObj ;
+typedef TYPE_3__ SVnodeCfg ;
+typedef TYPE_4__ SMeterObj ;
+typedef TYPE_5__ SImportInfo ;
+typedef TYPE_6__ SCacheInfo ;
+typedef TYPE_7__ SCacheBlock ;
 
-/* Variables and functions */
- int TSDB_CODE_ACTION_IN_PROGRESS ; 
- int TSDB_MAX_COLUMNS ; 
- int /*<<< orphan*/  atomic_fetch_sub_32 (int*,int) ; 
- int /*<<< orphan*/  dError (char*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dTrace (char*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int vnodeAllocateCacheBlock (TYPE_4__*) ; 
- TYPE_2__* vnodeList ; 
+
+ int TSDB_CODE_ACTION_IN_PROGRESS ;
+ int TSDB_MAX_COLUMNS ;
+ int atomic_fetch_sub_32 (int*,int) ;
+ int dError (char*,size_t,int ,int ,int) ;
+ int dTrace (char*,size_t,int ,int ,int,...) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int memcpy (char*,char*,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int vnodeAllocateCacheBlock (TYPE_4__*) ;
+ TYPE_2__* vnodeList ;
 
 int vnodeImportToCache(SImportInfo *pImport, char *payload, int rows) {
-  SMeterObj  *pObj = pImport->pObj;
-  SVnodeObj  *pVnode = &vnodeList[pObj->vnode];
-  SVnodeCfg  *pCfg = &pVnode->cfg;
-  int         code = -1;
+  SMeterObj *pObj = pImport->pObj;
+  SVnodeObj *pVnode = &vnodeList[pObj->vnode];
+  SVnodeCfg *pCfg = &pVnode->cfg;
+  int code = -1;
   SCacheInfo *pInfo = (SCacheInfo *)pObj->pCache;
-  int         slot, pos, row, col, points, tpoints;
+  int slot, pos, row, col, points, tpoints;
 
   char *data[TSDB_MAX_COLUMNS], *current[TSDB_MAX_COLUMNS];
-  int   slots = pInfo->unCommittedBlocks + 1;
-  int   trows = slots * pObj->pointsPerBlock + rows;  // max rows in buffer
-  int   tsize = (trows / pObj->pointsPerBlock + 1) * pCfg->cacheBlockSize;
+  int slots = pInfo->unCommittedBlocks + 1;
+  int trows = slots * pObj->pointsPerBlock + rows;
+  int tsize = (trows / pObj->pointsPerBlock + 1) * pCfg->cacheBlockSize;
   TSKEY firstKey = *((TSKEY *)payload);
   TSKEY lastKey = *((TSKEY *)(payload + pObj->bytesPerPoint * (rows - 1)));
 
@@ -77,7 +77,7 @@ int vnodeImportToCache(SImportInfo *pImport, char *payload, int rows) {
   if (firstKey < pVnode->firstKey) pVnode->firstKey = firstKey;
   pthread_mutex_unlock(&(pVnode->vmutex));
 
-  char *buffer = malloc(tsize);  // buffer to hold unCommitted data plus import data
+  char *buffer = malloc(tsize);
   data[0] = buffer;
   current[0] = data[0];
   for (col = 1; col < pObj->numOfColumns; ++col) {
@@ -85,7 +85,7 @@ int vnodeImportToCache(SImportInfo *pImport, char *payload, int rows) {
     current[col] = data[col];
   }
 
-  // write import data into buffer first
+
   for (row = 0; row < rows; ++row) {
     for (col = 0; col < pObj->numOfColumns; ++col) {
       memcpy(current[col], payload, pObj->schema[col].bytes);
@@ -94,7 +94,7 @@ int vnodeImportToCache(SImportInfo *pImport, char *payload, int rows) {
     }
   }
 
-  // copy the overwritten data into buffer
+
   tpoints = rows;
   pos = pImport->pos;
   slot = pImport->slot;
@@ -115,7 +115,7 @@ int vnodeImportToCache(SImportInfo *pImport, char *payload, int rows) {
   for (col = 0; col < pObj->numOfColumns; ++col) current[col] = data[col];
   pos = pImport->pos;
 
-  // write back to existing slots first
+
   slot = pImport->slot;
   while (1) {
     points = (tpoints > pObj->pointsPerBlock - pos) ? pObj->pointsPerBlock - pos : tpoints;
@@ -133,7 +133,7 @@ int vnodeImportToCache(SImportInfo *pImport, char *payload, int rows) {
     slot = (slot + 1) % pInfo->maxBlocks;
   }
 
-  // allocate new cache block if there are still data left
+
   while (tpoints > 0) {
     pImport->commit = vnodeAllocateCacheBlock(pObj);
     if (pImport->commit < 0) goto _exit;

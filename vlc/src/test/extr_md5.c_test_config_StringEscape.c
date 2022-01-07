@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct md5_s {int dummy; } ;
 struct TYPE_2__ {char* psz_md5; scalar_t__ psz_string; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddMD5 (struct md5_s*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EndMD5 (struct md5_s*) ; 
- int /*<<< orphan*/  InitMD5 (struct md5_s*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_1__* md5_samples ; 
- int /*<<< orphan*/  printf (char*,char*,char*) ; 
- char* psz_md5_hash (struct md5_s*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (scalar_t__) ; 
+
+ int AddMD5 (struct md5_s*,scalar_t__,int ) ;
+ int EndMD5 (struct md5_s*) ;
+ int InitMD5 (struct md5_s*) ;
+ int abort () ;
+ int free (char*) ;
+ TYPE_1__* md5_samples ;
+ int printf (char*,char*,char*) ;
+ char* psz_md5_hash (struct md5_s*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (scalar_t__) ;
 
 __attribute__((used)) static void test_config_StringEscape()
 {

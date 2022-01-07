@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Dh; int /*<<< orphan*/  SharedKey; int /*<<< orphan*/  ResponderRand; int /*<<< orphan*/  InitiatorRand; int /*<<< orphan*/  SendBuffer; int /*<<< orphan*/  CryptoKey; } ;
-typedef  TYPE_1__ IPSECSA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IkeDhFreeCtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IkeFreeKey (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Dh; int SharedKey; int ResponderRand; int InitiatorRand; int SendBuffer; int CryptoKey; } ;
+typedef TYPE_1__ IPSECSA ;
+
+
+ int Free (TYPE_1__*) ;
+ int FreeBuf (int ) ;
+ int IkeDhFreeCtx (int ) ;
+ int IkeFreeKey (int ) ;
 
 void FreeIPsecSa(IPSECSA *sa)
 {
-	// Validate arguments
-	if (sa == NULL)
-	{
-		return;
-	}
 
-	IkeFreeKey(sa->CryptoKey);
+ if (sa == ((void*)0))
+ {
+  return;
+ }
 
-	FreeBuf(sa->SendBuffer);
+ IkeFreeKey(sa->CryptoKey);
 
-	FreeBuf(sa->InitiatorRand);
-	FreeBuf(sa->ResponderRand);
+ FreeBuf(sa->SendBuffer);
 
-	FreeBuf(sa->SharedKey);
+ FreeBuf(sa->InitiatorRand);
+ FreeBuf(sa->ResponderRand);
 
-	IkeDhFreeCtx(sa->Dh);
+ FreeBuf(sa->SharedKey);
 
-	Free(sa);
+ IkeDhFreeCtx(sa->Dh);
+
+ Free(sa);
 }

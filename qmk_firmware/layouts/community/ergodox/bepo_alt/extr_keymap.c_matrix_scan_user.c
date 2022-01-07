@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int mods; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FNAV ; 
- scalar_t__ IS_LAYER_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KC_LALT ; 
- int /*<<< orphan*/  KC_LSFT ; 
- int MOD_BIT (int /*<<< orphan*/ ) ; 
- int get_oneshot_mods () ; 
- int /*<<< orphan*/  has_oneshot_mods_timed_out () ; 
- int /*<<< orphan*/  indicate_using_led (int,int) ; 
- TYPE_1__* keyboard_report ; 
+
+ int FNAV ;
+ scalar_t__ IS_LAYER_ON (int ) ;
+ int KC_LALT ;
+ int KC_LSFT ;
+ int MOD_BIT (int ) ;
+ int get_oneshot_mods () ;
+ int has_oneshot_mods_timed_out () ;
+ int indicate_using_led (int,int) ;
+ TYPE_1__* keyboard_report ;
 
 void matrix_scan_user(void) {
 
-  /* red led for shift */
+
   if (keyboard_report->mods & MOD_BIT(KC_LSFT) ||
     ((get_oneshot_mods() & MOD_BIT(KC_LSFT)) && !has_oneshot_mods_timed_out())) {
-    indicate_using_led(1, true);
+    indicate_using_led(1, 1);
   } else {
-    indicate_using_led(1, false);
+    indicate_using_led(1, 0);
   }
 
-  /* green led for alt */
+
   if (keyboard_report->mods & MOD_BIT(KC_LALT) ||
     ((get_oneshot_mods() & MOD_BIT(KC_LALT)) && !has_oneshot_mods_timed_out())) {
-    indicate_using_led(2, true);
+    indicate_using_led(2, 1);
   } else {
-    indicate_using_led(2, false);
+    indicate_using_led(2, 0);
   }
 
-  /* blue led for function mode */
+
   if (IS_LAYER_ON(FNAV)) {
-    indicate_using_led(3, true);
+    indicate_using_led(3, 1);
   } else {
-    indicate_using_led(3, false);
+    indicate_using_led(3, 0);
   }
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ ISDIGIT (char const) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int bfd_boolean ;
+
+
+ int FALSE ;
+ scalar_t__ ISDIGIT (char const) ;
+ int TRUE ;
 
 __attribute__((used)) static bfd_boolean
 stab_demangle_get_count (const char **pp, unsigned int *pi)
@@ -33,17 +33,17 @@ stab_demangle_get_count (const char **pp, unsigned int *pi)
       count = *pi;
       p = *pp;
       do
-	{
-	  count *= 10;
-	  count += *p - '0';
-	  ++p;
-	}
+ {
+   count *= 10;
+   count += *p - '0';
+   ++p;
+ }
       while (ISDIGIT (*p));
       if (*p == '_')
-	{
-	  *pp = p + 1;
-	  *pi = count;
-	}
+ {
+   *pp = p + 1;
+   *pi = count;
+ }
     }
 
   return TRUE;

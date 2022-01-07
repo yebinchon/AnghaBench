@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int custom_uint; int /*<<< orphan*/ * custom_object; } ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int custom_uint; int * custom_object; } ;
 struct TYPE_13__ {TYPE_2__* connection; } ;
-typedef  TYPE_1__ TCP_con ;
-typedef  int /*<<< orphan*/  TCP_Connections ;
-typedef  TYPE_2__ TCP_Client_Connection ;
+typedef TYPE_1__ TCP_con ;
+typedef int TCP_Connections ;
+typedef TYPE_2__ TCP_Client_Connection ;
 
-/* Variables and functions */
- TYPE_1__* get_tcp_connection (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  onion_response_handler (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  oob_data_handler (TYPE_2__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  routing_data_handler (TYPE_2__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  routing_response_handler (TYPE_2__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  routing_status_handler (TYPE_2__*,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  tcp_data_callback ; 
- int /*<<< orphan*/  tcp_onion_callback ; 
- int /*<<< orphan*/  tcp_oob_callback ; 
- int /*<<< orphan*/  tcp_response_callback ; 
- int /*<<< orphan*/  tcp_status_callback ; 
+
+ TYPE_1__* get_tcp_connection (int *,int) ;
+ int onion_response_handler (TYPE_2__*,int *,int *) ;
+ int oob_data_handler (TYPE_2__*,int *,TYPE_2__*) ;
+ int routing_data_handler (TYPE_2__*,int *,TYPE_2__*) ;
+ int routing_response_handler (TYPE_2__*,int *,TYPE_2__*) ;
+ int routing_status_handler (TYPE_2__*,int *,TYPE_2__*) ;
+ int tcp_data_callback ;
+ int tcp_onion_callback ;
+ int tcp_oob_callback ;
+ int tcp_response_callback ;
+ int tcp_status_callback ;
 
 __attribute__((used)) static int tcp_relay_set_callbacks(TCP_Connections *tcp_c, int tcp_connections_number)
 {

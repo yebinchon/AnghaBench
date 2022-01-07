@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int BUG () ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
-#define  SPRN_PMCR 130 
-#define  SPRN_PMICR 129 
-#define  SPRN_PMSR 128 
- unsigned long mfspr (int const) ; 
+ unsigned long mfspr (int const) ;
 
 __attribute__((used)) static inline unsigned long get_pmspr(unsigned long sprn)
 {
-	switch (sprn) {
-	case SPRN_PMCR:
-		return mfspr(SPRN_PMCR);
+ switch (sprn) {
+ case 130:
+  return mfspr(130);
 
-	case SPRN_PMICR:
-		return mfspr(SPRN_PMICR);
+ case 129:
+  return mfspr(129);
 
-	case SPRN_PMSR:
-		return mfspr(SPRN_PMSR);
-	}
-	BUG();
+ case 128:
+  return mfspr(128);
+ }
+ BUG();
 }

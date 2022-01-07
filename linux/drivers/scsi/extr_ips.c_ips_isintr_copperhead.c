@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {scalar_t__ io_addr; } ;
-typedef  TYPE_1__ ips_ha_t ;
+typedef TYPE_1__ ips_ha_t ;
 
-/* Variables and functions */
- int IPS_BIT_GHI ; 
- int IPS_BIT_SCE ; 
- int IPS_BIT_SQO ; 
- scalar_t__ IPS_REG_HISR ; 
- int /*<<< orphan*/  METHOD_TRACE (char*,int) ; 
- int inb (scalar_t__) ; 
- int /*<<< orphan*/  outb (int,scalar_t__) ; 
+
+ int IPS_BIT_GHI ;
+ int IPS_BIT_SCE ;
+ int IPS_BIT_SQO ;
+ scalar_t__ IPS_REG_HISR ;
+ int METHOD_TRACE (char*,int) ;
+ int inb (scalar_t__) ;
+ int outb (int,scalar_t__) ;
 
 __attribute__((used)) static int
 ips_isintr_copperhead(ips_ha_t * ha)
 {
-	uint8_t Isr;
+ uint8_t Isr;
 
-	METHOD_TRACE("ips_isintr_copperhead", 2);
+ METHOD_TRACE("ips_isintr_copperhead", 2);
 
-	Isr = inb(ha->io_addr + IPS_REG_HISR);
+ Isr = inb(ha->io_addr + IPS_REG_HISR);
 
-	if (Isr == 0xFF)
-		/* ?!?! Nothing really there */
-		return (0);
+ if (Isr == 0xFF)
 
-	if (Isr & IPS_BIT_SCE)
-		return (1);
-	else if (Isr & (IPS_BIT_SQO | IPS_BIT_GHI)) {
-		/* status queue overflow or GHI */
-		/* just clear the interrupt */
-		outb(Isr, ha->io_addr + IPS_REG_HISR);
-	}
+  return (0);
 
-	return (0);
+ if (Isr & IPS_BIT_SCE)
+  return (1);
+ else if (Isr & (IPS_BIT_SQO | IPS_BIT_GHI)) {
+
+
+  outb(Isr, ha->io_addr + IPS_REG_HISR);
+ }
+
+ return (0);
 }

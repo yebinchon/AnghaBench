@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct chnl_net {int /*<<< orphan*/  chnl; } ;
+struct chnl_net {int chnl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  caif_free_client (int /*<<< orphan*/ *) ; 
- struct chnl_net* netdev_priv (struct net_device*) ; 
+
+ int caif_free_client (int *) ;
+ struct chnl_net* netdev_priv (struct net_device*) ;
 
 __attribute__((used)) static void chnl_net_destructor(struct net_device *dev)
 {
-	struct chnl_net *priv = netdev_priv(dev);
-	caif_free_client(&priv->chnl);
+ struct chnl_net *priv = netdev_priv(dev);
+ caif_free_client(&priv->chnl);
 }

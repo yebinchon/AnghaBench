@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ link_up; } ;
-struct bxe_softc {scalar_t__ recovery_state; scalar_t__ state; scalar_t__ error_status; int /*<<< orphan*/  unit; int /*<<< orphan*/  ifp; TYPE_1__ link_vars; } ;
+struct bxe_softc {scalar_t__ recovery_state; scalar_t__ state; scalar_t__ error_status; int unit; int ifp; TYPE_1__ link_vars; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGI (struct bxe_softc*,char*,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ BXE_RECOVERY_INIT ; 
- scalar_t__ BXE_RECOVERY_WAIT ; 
- scalar_t__ BXE_STATE_OPEN ; 
- int /*<<< orphan*/  LINK_STATE_DOWN ; 
- int /*<<< orphan*/  bxe_int_disable (struct bxe_softc*) ; 
- int /*<<< orphan*/  bxe_parity_recover (struct bxe_softc*) ; 
- int /*<<< orphan*/  if_link_state_change (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BLOGI (struct bxe_softc*,char*,int ,scalar_t__,scalar_t__) ;
+ scalar_t__ BXE_RECOVERY_INIT ;
+ scalar_t__ BXE_RECOVERY_WAIT ;
+ scalar_t__ BXE_STATE_OPEN ;
+ int LINK_STATE_DOWN ;
+ int bxe_int_disable (struct bxe_softc*) ;
+ int bxe_parity_recover (struct bxe_softc*) ;
+ int if_link_state_change (int ,int ) ;
 
 void
 bxe_handle_error(struct bxe_softc * sc)
@@ -32,7 +32,7 @@ bxe_handle_error(struct bxe_softc * sc)
         return;
     }
     if(sc->error_status) {
-        if (sc->state == BXE_STATE_OPEN)  {
+        if (sc->state == BXE_STATE_OPEN) {
             bxe_int_disable(sc);
         }
         if (sc->link_vars.link_up) {

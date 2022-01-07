@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  POLICY ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PackGetPolicy (int /*<<< orphan*/ *) ; 
- int PackGetStr (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int POLICY ;
+typedef int PACK ;
+
+
+ int * PackGetPolicy (int *) ;
+ int PackGetStr (int *,char*,char*,int ) ;
 
 bool ParseWelcomeFromPack(PACK *p, char *session_name, UINT session_name_size,
-						  char *connection_name, UINT connection_name_size,
-						  POLICY **policy)
+        char *connection_name, UINT connection_name_size,
+        POLICY **policy)
 {
-	// Validate arguments
-	if (p == NULL || session_name == NULL || connection_name == NULL || policy == NULL)
-	{
-		return false;
-	}
 
-	// Session name
-	if (PackGetStr(p, "session_name", session_name, session_name_size) == false)
-	{
-		return false;
-	}
+ if (p == ((void*)0) || session_name == ((void*)0) || connection_name == ((void*)0) || policy == ((void*)0))
+ {
+  return 0;
+ }
 
-	// Connection name
-	if (PackGetStr(p, "connection_name", connection_name, connection_name_size) == false)
-	{
-		return false;
-	}
 
-	// Policy
-	*policy = PackGetPolicy(p);
-	if (*policy == NULL)
-	{
-		return false;
-	}
+ if (PackGetStr(p, "session_name", session_name, session_name_size) == 0)
+ {
+  return 0;
+ }
 
-	return true;
+
+ if (PackGetStr(p, "connection_name", connection_name, connection_name_size) == 0)
+ {
+  return 0;
+ }
+
+
+ *policy = PackGetPolicy(p);
+ if (*policy == ((void*)0))
+ {
+  return 0;
+ }
+
+ return 1;
 }

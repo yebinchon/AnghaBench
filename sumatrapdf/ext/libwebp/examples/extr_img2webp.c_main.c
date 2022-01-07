@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
 struct TYPE_21__ {int use_argb; int width; int height; } ;
-typedef  TYPE_1__ WebPPicture ;
-struct TYPE_22__ {scalar_t__ size; int /*<<< orphan*/  bytes; } ;
-typedef  TYPE_2__ WebPData ;
-struct TYPE_23__ {int lossless; void* method; int /*<<< orphan*/  quality; } ;
-typedef  TYPE_3__ WebPConfig ;
+typedef TYPE_1__ WebPPicture ;
+struct TYPE_22__ {scalar_t__ size; int bytes; } ;
+typedef TYPE_2__ WebPData ;
+struct TYPE_23__ {int lossless; void* method; int quality; } ;
+typedef TYPE_3__ WebPConfig ;
 struct TYPE_24__ {int minimize_size; int allow_mixed; void* kmax; void* kmin; } ;
-typedef  TYPE_4__ WebPAnimEncoderOptions ;
-typedef  int /*<<< orphan*/  WebPAnimEncoder ;
-typedef  int /*<<< orphan*/  W_CHAR ;
+typedef TYPE_4__ WebPAnimEncoderOptions ;
+typedef int WebPAnimEncoder ;
+typedef int W_CHAR ;
 struct TYPE_25__ {int argc_; char** argv_; } ;
-typedef  TYPE_5__ CommandLineArguments ;
+typedef TYPE_5__ CommandLineArguments ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExUtilDeleteCommandLineArguments (TYPE_5__*) ; 
- int /*<<< orphan*/  ExUtilGetFloat (char const*,int*) ; 
- void* ExUtilGetInt (char const*,int /*<<< orphan*/ ,int*) ; 
- int ExUtilInitCommandLineArguments (int,char const**,TYPE_5__*) ; 
- int /*<<< orphan*/  FREE_WARGV_AND_RETURN (int) ; 
- scalar_t__ GET_WARGV_SHIFTED (char const**,int) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  INIT_WARGV (int,char const**) ; 
- int ImgIoUtilWriteFile (char const*,int /*<<< orphan*/ ,scalar_t__) ; 
- int ReadImage (char const*,TYPE_1__*) ; 
- int SetLoopCount (int,TYPE_2__*) ; 
- int /*<<< orphan*/  WFPRINTF (int /*<<< orphan*/ ,char*,int,...) ; 
- int WebPAnimEncoderAdd (int /*<<< orphan*/ *,TYPE_1__*,int,TYPE_3__*) ; 
- scalar_t__ WebPAnimEncoderAssemble (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  WebPAnimEncoderDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * WebPAnimEncoderNew (int,int,TYPE_4__*) ; 
- int /*<<< orphan*/  WebPAnimEncoderOptionsInit (TYPE_4__*) ; 
- int /*<<< orphan*/  WebPConfigInit (TYPE_3__*) ; 
- int /*<<< orphan*/  WebPDataClear (TYPE_2__*) ; 
- int /*<<< orphan*/  WebPDataInit (TYPE_2__*) ; 
- int WebPGetEncoderVersion () ; 
- int WebPGetMuxVersion () ; 
- int /*<<< orphan*/  WebPPictureFree (TYPE_1__*) ; 
- int /*<<< orphan*/  WebPPictureInit (TYPE_1__*) ; 
- int WebPValidateConfig (TYPE_3__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  printf (char*,int const,int const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int ExUtilDeleteCommandLineArguments (TYPE_5__*) ;
+ int ExUtilGetFloat (char const*,int*) ;
+ void* ExUtilGetInt (char const*,int ,int*) ;
+ int ExUtilInitCommandLineArguments (int,char const**,TYPE_5__*) ;
+ int FREE_WARGV_AND_RETURN (int) ;
+ scalar_t__ GET_WARGV_SHIFTED (char const**,int) ;
+ int Help () ;
+ int INIT_WARGV (int,char const**) ;
+ int ImgIoUtilWriteFile (char const*,int ,scalar_t__) ;
+ int ReadImage (char const*,TYPE_1__*) ;
+ int SetLoopCount (int,TYPE_2__*) ;
+ int WFPRINTF (int ,char*,int,...) ;
+ int WebPAnimEncoderAdd (int *,TYPE_1__*,int,TYPE_3__*) ;
+ scalar_t__ WebPAnimEncoderAssemble (int *,TYPE_2__*) ;
+ int WebPAnimEncoderDelete (int *) ;
+ int * WebPAnimEncoderNew (int,int,TYPE_4__*) ;
+ int WebPAnimEncoderOptionsInit (TYPE_4__*) ;
+ int WebPConfigInit (TYPE_3__*) ;
+ int WebPDataClear (TYPE_2__*) ;
+ int WebPDataInit (TYPE_2__*) ;
+ int WebPGetEncoderVersion () ;
+ int WebPGetMuxVersion () ;
+ int WebPPictureFree (TYPE_1__*) ;
+ int WebPPictureInit (TYPE_1__*) ;
+ int WebPValidateConfig (TYPE_3__*) ;
+ int fprintf (int ,char*,...) ;
+ int printf (char*,int const,int const,int const,int const,int const,int const) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
 
 int main(int argc, const char* argv[]) {
-  const char* output = NULL;
-  WebPAnimEncoder* enc = NULL;
+  const char* output = ((void*)0);
+  WebPAnimEncoder* enc = ((void*)0);
   int verbose = 0;
   int pic_num = 0;
   int duration = 100;
@@ -94,21 +94,21 @@ int main(int argc, const char* argv[]) {
     goto End;
   }
 
-  // 1st pass of option parsing
+
   for (c = 0; ok && c < argc; ++c) {
     if (argv[c][0] == '-') {
       int parse_error = 0;
       if (!strcmp(argv[c], "-o") && c + 1 < argc) {
-        argv[c] = NULL;
+        argv[c] = ((void*)0);
         output = (const char*)GET_WARGV_SHIFTED(argv, ++c);
       } else if (!strcmp(argv[c], "-kmin") && c + 1 < argc) {
-        argv[c] = NULL;
+        argv[c] = ((void*)0);
         anim_config.kmin = ExUtilGetInt(argv[++c], 0, &parse_error);
       } else if (!strcmp(argv[c], "-kmax") && c + 1 < argc) {
-        argv[c] = NULL;
+        argv[c] = ((void*)0);
         anim_config.kmax = ExUtilGetInt(argv[++c], 0, &parse_error);
       } else if (!strcmp(argv[c], "-loop") && c + 1 < argc) {
-        argv[c] = NULL;
+        argv[c] = ((void*)0);
         loop_count = ExUtilGetInt(argv[++c], 0, &parse_error);
         if (loop_count < 0) {
           fprintf(stderr, "Invalid non-positive loop-count (%d)\n", loop_count);
@@ -137,7 +137,7 @@ int main(int argc, const char* argv[]) {
       }
       ok = !parse_error;
       if (!ok) goto End;
-      argv[c] = NULL;   // mark option as 'parsed' during 1st pass
+      argv[c] = ((void*)0);
     } else {
       have_input |= 1;
     }
@@ -147,12 +147,12 @@ int main(int argc, const char* argv[]) {
     goto End;
   }
 
-  // image-reading pass
+
   pic_num = 0;
   config.lossless = 1;
   for (c = 0; ok && c < argc; ++c) {
-    if (argv[c] == NULL) continue;
-    if (argv[c][0] == '-') {    // parse local options
+    if (argv[c] == ((void*)0)) continue;
+    if (argv[c][0] == '-') {
       int parse_error = 0;
       if (!strcmp(argv[c], "-lossy")) {
         if (!anim_config.allow_mixed) config.lossless = 0;
@@ -169,7 +169,7 @@ int main(int argc, const char* argv[]) {
           parse_error = 1;
         }
       } else {
-        parse_error = 1;   // shouldn't be here.
+        parse_error = 1;
         fprintf(stderr, "Unknown option [%s]\n", argv[c]);
       }
       ok = !parse_error;
@@ -185,16 +185,16 @@ int main(int argc, const char* argv[]) {
       }
     }
 
-    // read next input image
+
     pic.use_argb = 1;
     ok = ReadImage((const char*)GET_WARGV_SHIFTED(argv, c), &pic);
     if (!ok) goto End;
 
-    if (enc == NULL) {
-      width  = pic.width;
+    if (enc == ((void*)0)) {
+      width = pic.width;
       height = pic.height;
       enc = WebPAnimEncoderNew(width, height, &anim_config);
-      ok = (enc != NULL);
+      ok = (enc != ((void*)0));
       if (!ok) {
         fprintf(stderr, "Could not create WebPAnimEncoder object.\n");
       }
@@ -226,23 +226,23 @@ int main(int argc, const char* argv[]) {
     ++pic_num;
   }
 
-  // add a last fake frame to signal the last duration
-  ok = ok && WebPAnimEncoderAdd(enc, NULL, timestamp_ms, NULL);
+
+  ok = ok && WebPAnimEncoderAdd(enc, ((void*)0), timestamp_ms, ((void*)0));
   ok = ok && WebPAnimEncoderAssemble(enc, &webp_data);
   if (!ok) {
     fprintf(stderr, "Error during final animation assembly.\n");
   }
 
  End:
-  // free resources
+
   WebPAnimEncoderDelete(enc);
 
-  if (ok && loop_count > 0) {  // Re-mux to add loop count.
+  if (ok && loop_count > 0) {
     ok = SetLoopCount(loop_count, &webp_data);
   }
 
   if (ok) {
-    if (output != NULL) {
+    if (output != ((void*)0)) {
       ok = ImgIoUtilWriteFile(output, webp_data.bytes, webp_data.size);
       if (ok) WFPRINTF(stderr, "output file: %s     ", (const W_CHAR*)output);
     } else {

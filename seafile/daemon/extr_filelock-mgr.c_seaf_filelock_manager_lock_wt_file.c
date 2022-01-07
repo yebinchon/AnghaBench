@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  repo_mgr; } ;
-struct TYPE_4__ {int /*<<< orphan*/  worktree; } ;
-typedef  TYPE_1__ SeafRepo ;
-typedef  int /*<<< orphan*/  SeafFilelockManager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SEAF_PATH_PERM_RO ; 
- char* g_build_filename (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- TYPE_3__* seaf ; 
- TYPE_1__* seaf_repo_manager_get_repo (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  seaf_set_path_permission (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ seaf_util_exists (char*) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int repo_mgr; } ;
+struct TYPE_4__ {int worktree; } ;
+typedef TYPE_1__ SeafRepo ;
+typedef int SeafFilelockManager ;
+
+
+ int FALSE ;
+ int SEAF_PATH_PERM_RO ;
+ char* g_build_filename (int ,char const*,int *) ;
+ int g_free (char*) ;
+ TYPE_3__* seaf ;
+ TYPE_1__* seaf_repo_manager_get_repo (int ,char const*) ;
+ int seaf_set_path_permission (char*,int ,int ) ;
+ scalar_t__ seaf_util_exists (char*) ;
 
 void
 seaf_filelock_manager_lock_wt_file (SeafFilelockManager *mgr,
@@ -36,7 +36,7 @@ seaf_filelock_manager_lock_wt_file (SeafFilelockManager *mgr,
     if (!repo)
         return;
 
-    char *fullpath = g_build_filename (repo->worktree, path, NULL);
+    char *fullpath = g_build_filename (repo->worktree, path, ((void*)0));
     if (seaf_util_exists (fullpath))
         seaf_set_path_permission (fullpath, SEAF_PATH_PERM_RO, FALSE);
     g_free (fullpath);

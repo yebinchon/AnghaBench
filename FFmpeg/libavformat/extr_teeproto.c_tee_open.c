@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  is_streamed; int /*<<< orphan*/  protocol_blacklist; int /*<<< orphan*/  protocol_whitelist; int /*<<< orphan*/  interrupt_callback; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int is_streamed; int protocol_blacklist; int protocol_whitelist; int interrupt_callback; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ URLContext ;
 struct TYPE_11__ {int child_count; TYPE_5__* child; } ;
-typedef  TYPE_2__ TeeContext ;
-struct TYPE_13__ {int /*<<< orphan*/  is_streamed; } ;
+typedef TYPE_2__ TeeContext ;
+struct TYPE_13__ {int is_streamed; } ;
 struct TYPE_12__ {TYPE_6__* url_context; } ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVIO_FLAG_READ ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- char* av_get_token (char const**,int /*<<< orphan*/ ) ; 
- void* av_realloc_array (TYPE_5__*,int,int) ; 
- int /*<<< orphan*/  av_strstart (char const*,char*,char const**) ; 
- int /*<<< orphan*/  child_delim ; 
- int ff_tee_parse_slave_options (TYPE_1__*,char*,int /*<<< orphan*/ **,char**) ; 
- int ffurl_open_whitelist (TYPE_6__**,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ strspn (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tee_close (TYPE_1__*) ; 
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_READ ;
+ int ENOMEM ;
+ int ENOSYS ;
+ int av_dict_free (int **) ;
+ int av_freep (char**) ;
+ char* av_get_token (char const**,int ) ;
+ void* av_realloc_array (TYPE_5__*,int,int) ;
+ int av_strstart (char const*,char*,char const**) ;
+ int child_delim ;
+ int ff_tee_parse_slave_options (TYPE_1__*,char*,int **,char**) ;
+ int ffurl_open_whitelist (TYPE_6__**,char*,int,int *,int **,int ,int ,TYPE_1__*) ;
+ int memset (TYPE_5__*,int ,int) ;
+ scalar_t__ strspn (char const*,int ) ;
+ int tee_close (TYPE_1__*) ;
 
 __attribute__((used)) static int tee_open(URLContext *h, const char *filename, int flags)
 {
@@ -51,9 +51,9 @@ __attribute__((used)) static int tee_open(URLContext *h, const char *filename, i
 
     while (*filename) {
         char *child_string = av_get_token(&filename, child_delim);
-        char *child_name = NULL;
+        char *child_name = ((void*)0);
         void *tmp;
-        AVDictionary *options = NULL;
+        AVDictionary *options = ((void*)0);
         if (!child_string) {
             ret = AVERROR(ENOMEM);
             goto fail;

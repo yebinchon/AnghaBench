@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ItemType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADJUST_MODE ; 
- int /*<<< orphan*/  EMPTY_DIRECTORY ; 
- int /*<<< orphan*/  IGNORE_DIRECTORY_PATH ; 
- int /*<<< orphan*/  IGNORE_PATH ; 
- int IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RECURSIVE_RELABEL_PATH ; 
- int /*<<< orphan*/  RECURSIVE_REMOVE_PATH ; 
- int /*<<< orphan*/  RECURSIVE_SET_ACL ; 
- int /*<<< orphan*/  RECURSIVE_SET_ATTRIBUTE ; 
- int /*<<< orphan*/  RECURSIVE_SET_XATTR ; 
- int /*<<< orphan*/  RELABEL_PATH ; 
- int /*<<< orphan*/  REMOVE_PATH ; 
- int /*<<< orphan*/  SET_ACL ; 
- int /*<<< orphan*/  SET_ATTRIBUTE ; 
- int /*<<< orphan*/  SET_XATTR ; 
- int /*<<< orphan*/  WRITE_FILE ; 
+
+
+
+typedef int ItemType ;
+
+
+ int ADJUST_MODE ;
+ int EMPTY_DIRECTORY ;
+ int IGNORE_DIRECTORY_PATH ;
+ int IGNORE_PATH ;
+ int IN_SET (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int RECURSIVE_RELABEL_PATH ;
+ int RECURSIVE_REMOVE_PATH ;
+ int RECURSIVE_SET_ACL ;
+ int RECURSIVE_SET_ATTRIBUTE ;
+ int RECURSIVE_SET_XATTR ;
+ int RELABEL_PATH ;
+ int REMOVE_PATH ;
+ int SET_ACL ;
+ int SET_ATTRIBUTE ;
+ int SET_XATTR ;
+ int WRITE_FILE ;
 
 __attribute__((used)) static bool needs_glob(ItemType t) {
         return IN_SET(t,

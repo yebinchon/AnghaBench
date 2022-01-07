@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fps_counter {int /*<<< orphan*/  mutex; int /*<<< orphan*/  state_cond; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_DestroyCond (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_DestroyMutex (int /*<<< orphan*/ ) ; 
+
+
+
+struct fps_counter {int mutex; int state_cond; } ;
+
+
+ int SDL_DestroyCond (int ) ;
+ int SDL_DestroyMutex (int ) ;
 
 void
 fps_counter_destroy(struct fps_counter *counter) {

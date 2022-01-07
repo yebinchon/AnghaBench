@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  work_item_baton_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-struct TYPE_10__ {scalar_t__ len; int /*<<< orphan*/  data; struct TYPE_10__* next; TYPE_1__* children; } ;
-typedef  TYPE_2__ svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int work_item_baton_t ;
+typedef int svn_wc__db_t ;
+struct TYPE_10__ {scalar_t__ len; int data; struct TYPE_10__* next; TYPE_1__* children; } ;
+typedef TYPE_2__ svn_skel_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
 struct TYPE_9__ {TYPE_2__* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrmemdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_add_text_conflict (TYPE_2__*,int /*<<< orphan*/ *,char const*,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc__conflict_skel_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_skel_set_op_update (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_from_relpath (char const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_op_mark_conflict (int /*<<< orphan*/ *,char const*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_conflict (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* apr_pstrmemdup (int *,int ,scalar_t__) ;
+ int svn_wc__conflict_skel_add_text_conflict (TYPE_2__*,int *,char const*,char const*,char const*,char const*,int *,int *) ;
+ TYPE_2__* svn_wc__conflict_skel_create (int *) ;
+ int svn_wc__conflict_skel_set_op_update (TYPE_2__*,int *,int *,int *,int *) ;
+ int svn_wc__db_from_relpath (char const**,int *,char const*,char const*,int *,int *) ;
+ int svn_wc__db_op_mark_conflict (int *,char const*,TYPE_2__*,int *,int *) ;
+ int svn_wc__db_read_conflict (TYPE_2__**,int *,int *,int *,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 run_set_text_conflict_markers(work_item_baton_t *wqb,
@@ -44,9 +44,9 @@ run_set_text_conflict_markers(work_item_baton_t *wqb,
   const svn_skel_t *arg = work_item->children->next;
   const char *local_relpath;
   const char *local_abspath;
-  const char *old_abspath = NULL;
-  const char *new_abspath = NULL;
-  const char *wrk_abspath = NULL;
+  const char *old_abspath = ((void*)0);
+  const char *new_abspath = ((void*)0);
+  const char *wrk_abspath = ((void*)0);
 
   local_relpath = apr_pstrmemdup(scratch_pool, arg->data, arg->len);
   SVN_ERR(svn_wc__db_from_relpath(&local_abspath, db, wri_abspath,
@@ -54,7 +54,7 @@ run_set_text_conflict_markers(work_item_baton_t *wqb,
 
   arg = arg->next;
   local_relpath = arg->len ? apr_pstrmemdup(scratch_pool, arg->data, arg->len)
-                           : NULL;
+                           : ((void*)0);
 
   if (local_relpath)
     {
@@ -65,7 +65,7 @@ run_set_text_conflict_markers(work_item_baton_t *wqb,
 
   arg = arg->next;
   local_relpath = arg->len ? apr_pstrmemdup(scratch_pool, arg->data, arg->len)
-                           : NULL;
+                           : ((void*)0);
   if (local_relpath)
     {
       SVN_ERR(svn_wc__db_from_relpath(&new_abspath, db, wri_abspath,
@@ -75,7 +75,7 @@ run_set_text_conflict_markers(work_item_baton_t *wqb,
 
   arg = arg->next;
   local_relpath = arg->len ? apr_pstrmemdup(scratch_pool, arg->data, arg->len)
-                           : NULL;
+                           : ((void*)0);
 
   if (local_relpath)
     {
@@ -83,32 +83,24 @@ run_set_text_conflict_markers(work_item_baton_t *wqb,
                                       local_relpath,
                                       scratch_pool, scratch_pool));
     }
-
-  /* Upgrade scenario: We have a workqueue item that describes how to install a
-     non skel conflict. Fetch all the information we can to create a new style
-     conflict. */
-  /* ### Before format 30 this is/was a common code path as we didn't install
-     ### the conflict directly in the db. It just calls the wc_db code
-     ### to set the right fields. */
-
   {
-    /* Check if we should combine with a property conflict... */
+
     svn_skel_t *conflicts;
 
-    SVN_ERR(svn_wc__db_read_conflict(&conflicts, NULL, NULL, db, local_abspath,
+    SVN_ERR(svn_wc__db_read_conflict(&conflicts, ((void*)0), ((void*)0), db, local_abspath,
                                      scratch_pool, scratch_pool));
 
     if (! conflicts)
       {
-        /* No conflict exists, create a basic skel */
+
         conflicts = svn_wc__conflict_skel_create(scratch_pool);
 
-        SVN_ERR(svn_wc__conflict_skel_set_op_update(conflicts, NULL, NULL,
+        SVN_ERR(svn_wc__conflict_skel_set_op_update(conflicts, ((void*)0), ((void*)0),
                                                     scratch_pool,
                                                     scratch_pool));
       }
 
-    /* Add the text conflict to the existing onflict */
+
     SVN_ERR(svn_wc__conflict_skel_add_text_conflict(conflicts, db,
                                                     local_abspath,
                                                     wrk_abspath,
@@ -118,7 +110,7 @@ run_set_text_conflict_markers(work_item_baton_t *wqb,
                                                     scratch_pool));
 
     SVN_ERR(svn_wc__db_op_mark_conflict(db, local_abspath, conflicts,
-                                        NULL, scratch_pool));
+                                        ((void*)0), scratch_pool));
   }
   return SVN_NO_ERROR;
 }

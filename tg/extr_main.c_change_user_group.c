@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct passwd {int /*<<< orphan*/  pw_shell; int /*<<< orphan*/  pw_dir; int /*<<< orphan*/  pw_name; int /*<<< orphan*/  pw_uid; scalar_t__ pw_gid; } ;
+
+
+
+
+struct passwd {int pw_shell; int pw_dir; int pw_name; int pw_uid; scalar_t__ pw_gid; } ;
 struct group {scalar_t__ gr_gid; } ;
-typedef  scalar_t__ gid_t ;
+typedef scalar_t__ gid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ geteuid () ; 
- struct group* getgrnam (char*) ; 
- struct passwd* getpwnam (char*) ; 
- struct passwd* getpwuid (scalar_t__) ; 
- scalar_t__ getuid () ; 
- char* set_group_name ; 
- char* set_user_name ; 
- int /*<<< orphan*/  setenv (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ setgid (scalar_t__) ; 
- scalar_t__ setgroups (int,scalar_t__*) ; 
- scalar_t__ setuid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int fprintf (int ,char*,...) ;
+ scalar_t__ geteuid () ;
+ struct group* getgrnam (char*) ;
+ struct passwd* getpwnam (char*) ;
+ struct passwd* getpwuid (scalar_t__) ;
+ scalar_t__ getuid () ;
+ char* set_group_name ;
+ char* set_user_name ;
+ int setenv (char*,int ,int) ;
+ scalar_t__ setgid (scalar_t__) ;
+ scalar_t__ setgroups (int,scalar_t__*) ;
+ scalar_t__ setuid (int ) ;
+ int stderr ;
 
 int change_user_group () {
   char *username = set_user_name;
   char *groupname = set_group_name;
   struct passwd *pw;
-  /* lose root privileges if we have them */
+
   if (getuid() == 0 || geteuid() == 0) {
     if (username == 0 || *username == '\0') {
       username = "telegramd";
@@ -50,7 +50,7 @@ int change_user_group () {
 
     if (groupname) {
       struct group *g = getgrnam (groupname);
-      if (g == NULL) {
+      if (g == ((void*)0)) {
         fprintf (stderr, "change_user_group: can't find the group %s to switch to\n", groupname);
         return -1;
       }

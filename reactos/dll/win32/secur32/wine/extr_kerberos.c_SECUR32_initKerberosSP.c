@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SecureProvider ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SECUR32_addPackages (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SECUR32_addProvider (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  infoA ; 
- int /*<<< orphan*/  infoW ; 
- int /*<<< orphan*/  kerberosTableA ; 
- int /*<<< orphan*/  kerberosTableW ; 
+
+
+
+typedef int SecureProvider ;
+
+
+ int SECUR32_addPackages (int *,int,int *,int *) ;
+ int * SECUR32_addProvider (int *,int *,int *) ;
+ int infoA ;
+ int infoW ;
+ int kerberosTableA ;
+ int kerberosTableW ;
 
 void SECUR32_initKerberosSP(void)
 {
-    SecureProvider *provider = SECUR32_addProvider(&kerberosTableA, &kerberosTableW, NULL);
+    SecureProvider *provider = SECUR32_addProvider(&kerberosTableA, &kerberosTableW, ((void*)0));
     SECUR32_addPackages(provider, 1, &infoA, &infoW);
 }

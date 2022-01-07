@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gpio_bank {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (unsigned int) ; 
- int /*<<< orphan*/  omap_clear_gpio_irqbank (struct gpio_bank*,int /*<<< orphan*/ ) ; 
+
+ int BIT (unsigned int) ;
+ int omap_clear_gpio_irqbank (struct gpio_bank*,int ) ;
 
 __attribute__((used)) static inline void omap_clear_gpio_irqstatus(struct gpio_bank *bank,
-					     unsigned offset)
+          unsigned offset)
 {
-	omap_clear_gpio_irqbank(bank, BIT(offset));
+ omap_clear_gpio_irqbank(bank, BIT(offset));
 }

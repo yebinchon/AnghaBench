@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct task_struct {int /*<<< orphan*/  stime; int /*<<< orphan*/  utime; } ;
-typedef  int /*<<< orphan*/  cputime_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cputime_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct task_struct {int stime; int utime; } ;
+typedef int cputime_t ;
+
+
+ int cputime_add (int ,int ) ;
 
 __attribute__((used)) static inline cputime_t prof_ticks(struct task_struct *p)
 {
-	return cputime_add(p->utime, p->stime);
+ return cputime_add(p->utime, p->stime);
 }

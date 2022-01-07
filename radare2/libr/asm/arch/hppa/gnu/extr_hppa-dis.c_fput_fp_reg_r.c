@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  stream; int /*<<< orphan*/  (* fprintf_func ) (int /*<<< orphan*/ ,char*,unsigned int) ;} ;
-typedef  TYPE_1__ disassemble_info ;
 
-/* Variables and functions */
- unsigned int* fp_reg_names ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,char*,unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int stream; int (* fprintf_func ) (int ,char*,unsigned int) ;} ;
+typedef TYPE_1__ disassemble_info ;
+
+
+ unsigned int* fp_reg_names ;
+ int stub1 (int ,char*,unsigned int) ;
+ int stub2 (int ,char*,unsigned int) ;
 
 __attribute__((used)) static void
 fput_fp_reg_r (unsigned reg, disassemble_info *info)
 {
-  /* Special case floating point exception registers.  */
+
   if (reg < 4) {
-	  (*info->fprintf_func) (info->stream, "fpe%d", reg * 2 + 1);
+   (*info->fprintf_func) (info->stream, "fpe%d", reg * 2 + 1);
   } else {
-	  (*info->fprintf_func) (info->stream, "%sR", fp_reg_names[reg]);
+   (*info->fprintf_func) (info->stream, "%sR", fp_reg_names[reg]);
   }
 }

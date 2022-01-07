@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  Segment ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  scalar_t__ LsmPgno ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int LSM_START_DELETE ; 
- int SEGMENT_BTREE_FLAG ; 
- int lsmFsDbPageNext (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int* lsmFsPageData (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  lsmFsPageRelease (int /*<<< orphan*/ *) ; 
- int* pageGetCell (int*,int,int) ; 
- int pageGetFlags (int*,int) ; 
- int pageGetNRec (int*,int) ; 
- scalar_t__ pageGetPtr (int*,int) ; 
- scalar_t__ pageGetRecordPtr (int*,int,int) ; 
+
+
+
+typedef int u8 ;
+typedef int Segment ;
+typedef int Page ;
+typedef scalar_t__ LsmPgno ;
+
+
+ int LSM_OK ;
+ int LSM_START_DELETE ;
+ int SEGMENT_BTREE_FLAG ;
+ int lsmFsDbPageNext (int *,int *,int,int **) ;
+ int* lsmFsPageData (int *,int*) ;
+ int lsmFsPageRelease (int *) ;
+ int* pageGetCell (int*,int,int) ;
+ int pageGetFlags (int*,int) ;
+ int pageGetNRec (int*,int) ;
+ scalar_t__ pageGetPtr (int*,int) ;
+ scalar_t__ pageGetRecordPtr (int*,int,int) ;
 
 __attribute__((used)) static int ptrFwdPointer(
   Page *pPage,

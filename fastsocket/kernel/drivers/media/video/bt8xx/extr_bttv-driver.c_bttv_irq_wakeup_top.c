@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  done; int /*<<< orphan*/  state; int /*<<< orphan*/  field_count; int /*<<< orphan*/  ts; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int done; int state; int field_count; int ts; } ;
 struct bttv_buffer {TYPE_1__ vb; } ;
 struct TYPE_4__ {struct bttv_buffer* top; scalar_t__ top_irq; } ;
-struct bttv {int /*<<< orphan*/  s_lock; int /*<<< orphan*/  field_count; TYPE_2__ curr; } ;
+struct bttv {int s_lock; int field_count; TYPE_2__ curr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RISC_SLOT_O_FIELD ; 
- int /*<<< orphan*/  VIDEOBUF_DONE ; 
- int /*<<< orphan*/  bttv_risc_hook (struct bttv*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_gettimeofday (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+ int RISC_SLOT_O_FIELD ;
+ int VIDEOBUF_DONE ;
+ int bttv_risc_hook (struct bttv*,int ,int *,int ) ;
+ int do_gettimeofday (int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static void
 bttv_irq_wakeup_top(struct bttv *btv)
 {
-	struct bttv_buffer *wakeup = btv->curr.top;
+ struct bttv_buffer *wakeup = btv->curr.top;
 
-	if (NULL == wakeup)
-		return;
+ if (((void*)0) == wakeup)
+  return;
 
-	spin_lock(&btv->s_lock);
-	btv->curr.top_irq = 0;
-	btv->curr.top = NULL;
-	bttv_risc_hook(btv, RISC_SLOT_O_FIELD, NULL, 0);
+ spin_lock(&btv->s_lock);
+ btv->curr.top_irq = 0;
+ btv->curr.top = ((void*)0);
+ bttv_risc_hook(btv, RISC_SLOT_O_FIELD, ((void*)0), 0);
 
-	do_gettimeofday(&wakeup->vb.ts);
-	wakeup->vb.field_count = btv->field_count;
-	wakeup->vb.state = VIDEOBUF_DONE;
-	wake_up(&wakeup->vb.done);
-	spin_unlock(&btv->s_lock);
+ do_gettimeofday(&wakeup->vb.ts);
+ wakeup->vb.field_count = btv->field_count;
+ wakeup->vb.state = VIDEOBUF_DONE;
+ wake_up(&wakeup->vb.done);
+ spin_unlock(&btv->s_lock);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct preloaded_file {int dummy; } ;
 struct keybuf {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GELI_KEYBUF_SIZE ; 
- int /*<<< orphan*/  MODINFOMD_KEYBUF ; 
- int /*<<< orphan*/  explicit_bzero (struct keybuf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  file_addmetadata (struct preloaded_file*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct keybuf*) ; 
- int /*<<< orphan*/  free (struct keybuf*) ; 
- int /*<<< orphan*/  geli_export_key_buffer (struct keybuf*) ; 
- struct keybuf* malloc (int /*<<< orphan*/ ) ; 
+
+ int GELI_KEYBUF_SIZE ;
+ int MODINFOMD_KEYBUF ;
+ int explicit_bzero (struct keybuf*,int ) ;
+ int file_addmetadata (struct preloaded_file*,int ,int ,struct keybuf*) ;
+ int free (struct keybuf*) ;
+ int geli_export_key_buffer (struct keybuf*) ;
+ struct keybuf* malloc (int ) ;
 
 void
 geli_export_key_metadata(struct preloaded_file *kfp)

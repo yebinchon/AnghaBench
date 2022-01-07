@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/ **** LPWSTR ;
 
-/* Variables and functions */
- size_t ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ****) ; 
- size_t msi_apply_patch_package (TYPE_1__*,int /*<<< orphan*/ ****) ; 
- int /*<<< orphan*/ ****** msi_dup_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ ****) ; 
- int /*<<< orphan*/ ******* msi_split_string (int /*<<< orphan*/ ****,char) ; 
- int /*<<< orphan*/  szPatch ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_4__ {int db; } ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef int **** LPWSTR ;
+
+
+ size_t ERROR_SUCCESS ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (int ****) ;
+ size_t msi_apply_patch_package (TYPE_1__*,int ****) ;
+ int ****** msi_dup_property (int ,int ) ;
+ int msi_free (int ****) ;
+ int ******* msi_split_string (int ****,char) ;
+ int szPatch ;
 
 UINT msi_apply_patches( MSIPACKAGE *package )
 {

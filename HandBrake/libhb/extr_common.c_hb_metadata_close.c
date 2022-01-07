@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ list_coverart; struct TYPE_7__* data; struct TYPE_7__* long_description; struct TYPE_7__* description; struct TYPE_7__* genre; struct TYPE_7__* album_artist; struct TYPE_7__* album; struct TYPE_7__* comment; struct TYPE_7__* release_date; struct TYPE_7__* composer; struct TYPE_7__* artist; struct TYPE_7__* name; } ;
-typedef  TYPE_1__ hb_metadata_t ;
-typedef  TYPE_1__ hb_coverart_t ;
+typedef TYPE_1__ hb_metadata_t ;
+typedef TYPE_1__ hb_coverart_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  hb_list_close (scalar_t__*) ; 
- TYPE_1__* hb_list_item (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_list_rem (scalar_t__,TYPE_1__*) ; 
+
+ int free (TYPE_1__*) ;
+ int hb_list_close (scalar_t__*) ;
+ TYPE_1__* hb_list_item (scalar_t__,int ) ;
+ int hb_list_rem (scalar_t__,TYPE_1__*) ;
 
 void hb_metadata_close( hb_metadata_t **_m )
 {
@@ -51,6 +51,6 @@ void hb_metadata_close( hb_metadata_t **_m )
         }
 
         free( m );
-        *_m = NULL;
+        *_m = ((void*)0);
     }
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int val ;
+typedef int u32 ;
+typedef int u16 ;
 struct cw1200_common {int dummy; } ;
-typedef  int /*<<< orphan*/  __le32 ;
+typedef int __le32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_to_le32 (int /*<<< orphan*/ ) ; 
- int cw1200_reg_write (struct cw1200_common*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int cpu_to_le32 (int ) ;
+ int cw1200_reg_write (struct cw1200_common*,int ,int *,int) ;
 
 __attribute__((used)) static inline int cw1200_reg_write_32(struct cw1200_common *priv,
-				      u16 addr, u32 val)
+          u16 addr, u32 val)
 {
-	__le32 tmp = cpu_to_le32(val);
-	return cw1200_reg_write(priv, addr, &tmp, sizeof(val));
+ __le32 tmp = cpu_to_le32(val);
+ return cw1200_reg_write(priv, addr, &tmp, sizeof(val));
 }

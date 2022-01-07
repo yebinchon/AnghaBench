@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_rtmp_exec_conf_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_5__ {scalar_t__ nelts; int /*<<< orphan*/ * elts; } ;
-typedef  TYPE_1__ ngx_array_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/ * ngx_array_push_n (TYPE_1__*,scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ngx_rtmp_exec_conf_t ;
+typedef int ngx_int_t ;
+struct TYPE_5__ {scalar_t__ nelts; int * elts; } ;
+typedef TYPE_1__ ngx_array_t ;
+
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ int * ngx_array_push_n (TYPE_1__*,scalar_t__) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_exec_merge_confs(ngx_array_t *conf, ngx_array_t *prev)
 {
-    size_t                 n;
-    ngx_rtmp_exec_conf_t  *ec, *pec;
+    size_t n;
+    ngx_rtmp_exec_conf_t *ec, *pec;
 
     if (prev->nelts == 0) {
         return NGX_OK;
@@ -37,7 +37,7 @@ ngx_rtmp_exec_merge_confs(ngx_array_t *conf, ngx_array_t *prev)
     }
 
     ec = ngx_array_push_n(conf, prev->nelts);
-    if (ec == NULL) {
+    if (ec == ((void*)0)) {
         return NGX_ERROR;
     }
 

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int run_thread_level1; } ;
-typedef  TYPE_1__ status_ctx_t ;
-typedef  scalar_t__ ssize_t ;
-struct TYPE_7__ {size_t pos; scalar_t__* bytes; int /*<<< orphan*/ * timer; } ;
-typedef  TYPE_2__ link_speed_t ;
-struct TYPE_8__ {int brain_link_send_active; int /*<<< orphan*/  brain_link_send_bytes; TYPE_2__ brain_link_send_speed; } ;
-typedef  TYPE_3__ hc_device_param_t ;
+typedef TYPE_1__ status_ctx_t ;
+typedef scalar_t__ ssize_t ;
+struct TYPE_7__ {size_t pos; scalar_t__* bytes; int * timer; } ;
+typedef TYPE_2__ link_speed_t ;
+struct TYPE_8__ {int brain_link_send_active; int brain_link_send_bytes; TYPE_2__ brain_link_send_speed; } ;
+typedef TYPE_3__ hc_device_param_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LINK_SPEED_COUNT ; 
- int /*<<< orphan*/  hc_timer_set (int /*<<< orphan*/ *) ; 
- scalar_t__ send (int,char*,size_t,int) ; 
+
+ int LINK_SPEED_COUNT ;
+ int hc_timer_set (int *) ;
+ scalar_t__ send (int,char*,size_t,int) ;
 
 bool brain_send_all (int sockfd, void *buf, size_t len, int flags, hc_device_param_t *device_param, const status_ctx_t *status_ctx)
 {
@@ -32,7 +32,7 @@ bool brain_send_all (int sockfd, void *buf, size_t len, int flags, hc_device_par
 
   if (device_param)
   {
-    device_param->brain_link_send_active = true;
+    device_param->brain_link_send_active = 1;
 
     hc_timer_set (&link_speed->timer[link_speed->pos]);
   }
@@ -48,9 +48,9 @@ bool brain_send_all (int sockfd, void *buf, size_t len, int flags, hc_device_par
     device_param->brain_link_send_bytes += nsend;
   }
 
-  if (nsend <= 0) return false;
+  if (nsend <= 0) return 0;
 
-  if (status_ctx && status_ctx->run_thread_level1 == false) return false;
+  if (status_ctx && status_ctx->run_thread_level1 == 0) return 0;
 
   while (nsend < (ssize_t) len)
   {
@@ -72,17 +72,17 @@ bool brain_send_all (int sockfd, void *buf, size_t len, int flags, hc_device_par
       device_param->brain_link_send_bytes += nsend_new;
     }
 
-    if (nsend_new <= 0) return false;
+    if (nsend_new <= 0) return 0;
 
-    if (status_ctx && status_ctx->run_thread_level1 == false) break;
+    if (status_ctx && status_ctx->run_thread_level1 == 0) break;
 
     nsend += nsend_new;
   }
 
   if (device_param)
   {
-    device_param->brain_link_send_active = false;
+    device_param->brain_link_send_active = 0;
   }
 
-  return true;
+  return 1;
 }

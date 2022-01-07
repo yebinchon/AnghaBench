@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* data; int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* data; int len; } ;
 struct server {TYPE_1__ pname; } ;
-struct context {int /*<<< orphan*/  evb; } ;
-struct conn {scalar_t__ err; scalar_t__ sd; int connecting; int connected; int /*<<< orphan*/  addrlen; int /*<<< orphan*/  addr; int /*<<< orphan*/  family; scalar_t__ done; int /*<<< orphan*/  proxy; int /*<<< orphan*/  client; } ;
-typedef  scalar_t__ rstatus_t ;
+struct context {int evb; } ;
+struct conn {scalar_t__ err; scalar_t__ sd; int connecting; int connected; int addrlen; int addr; int family; scalar_t__ done; int proxy; int client; } ;
+typedef scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ EINPROGRESS ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  LOG_INFO ; 
- int /*<<< orphan*/  LOG_VVERB ; 
- scalar_t__ NC_ERROR ; 
- scalar_t__ NC_OK ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- scalar_t__ connect (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- scalar_t__ event_add_conn (int /*<<< orphan*/ ,struct conn*) ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,scalar_t__,char*,...) ; 
- int /*<<< orphan*/  log_error (char*,scalar_t__,char*,char*,...) ; 
- int /*<<< orphan*/  log_warn (char*,scalar_t__,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ nc_set_nonblocking (scalar_t__) ; 
- scalar_t__ nc_set_tcpnodelay (scalar_t__) ; 
- scalar_t__ socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ EINPROGRESS ;
+ int LOG_DEBUG ;
+ int LOG_INFO ;
+ int LOG_VVERB ;
+ scalar_t__ NC_ERROR ;
+ scalar_t__ NC_OK ;
+ int SOCK_STREAM ;
+ scalar_t__ connect (scalar_t__,int ,int ) ;
+ scalar_t__ errno ;
+ scalar_t__ event_add_conn (int ,struct conn*) ;
+ int log_debug (int ,char*,scalar_t__,char*,...) ;
+ int log_error (char*,scalar_t__,char*,char*,...) ;
+ int log_warn (char*,scalar_t__,int ,char*,int ) ;
+ scalar_t__ nc_set_nonblocking (scalar_t__) ;
+ scalar_t__ nc_set_tcpnodelay (scalar_t__) ;
+ scalar_t__ socket (int ,int ,int ) ;
+ int strerror (scalar_t__) ;
 
 rstatus_t
 server_connect(struct context *ctx, struct server *server, struct conn *conn)
@@ -51,7 +51,7 @@ server_connect(struct context *ctx, struct server *server, struct conn *conn)
     }
 
     if (conn->sd > 0) {
-        /* already connected on server connection */
+
         return NC_OK;
     }
 

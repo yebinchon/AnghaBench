@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ si_signo; scalar_t__ si_errno; int si_code; int /*<<< orphan*/  si_addr; int /*<<< orphan*/  si_status; int /*<<< orphan*/  si_uid; int /*<<< orphan*/  si_pid; } ;
-struct TYPE_5__ {TYPE_1__ ti_siginfo; int /*<<< orphan*/  ti_pending; int /*<<< orphan*/  ti_sigmask; } ;
-typedef  TYPE_2__ td_thrinfo_t ;
-typedef  int /*<<< orphan*/  td_thrhandle_t ;
-typedef  scalar_t__ td_err_e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_THREAD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IS_THREAD (int /*<<< orphan*/ ) ; 
-#define  SI_ASYNCIO 134 
-#define  SI_KERNEL 133 
-#define  SI_MESGQ 132 
-#define  SI_NOINFO 131 
-#define  SI_QUEUE 130 
-#define  SI_TIMER 129 
-#define  SI_USER 128 
- scalar_t__ TD_OK ; 
- int /*<<< orphan*/  fbsd_print_sigset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fbsd_thread_active ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  printf_filtered (char*,...) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
- scalar_t__ td_ta_map_id2thr_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ td_thr_get_info_p (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  thread_agent ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ si_signo; scalar_t__ si_errno; int si_code; int si_addr; int si_status; int si_uid; int si_pid; } ;
+struct TYPE_5__ {TYPE_1__ ti_siginfo; int ti_pending; int ti_sigmask; } ;
+typedef TYPE_2__ td_thrinfo_t ;
+typedef int td_thrhandle_t ;
+typedef scalar_t__ td_err_e ;
+
+
+ int GET_THREAD (int ) ;
+ int IS_THREAD (int ) ;
+
+
+
+
+
+
+
+ scalar_t__ TD_OK ;
+ int fbsd_print_sigset (int *) ;
+ int fbsd_thread_active ;
+ int inferior_ptid ;
+ int printf_filtered (char*,...) ;
+ int strerror (scalar_t__) ;
+ scalar_t__ td_ta_map_id2thr_p (int ,int ,int *) ;
+ scalar_t__ td_thr_get_info_p (int *,TYPE_2__*) ;
+ int thread_agent ;
 
 __attribute__((used)) static void
 fbsd_thread_signal_cmd (char *exp, int from_tty)
@@ -68,30 +68,30 @@ fbsd_thread_signal_cmd (char *exp, int from_tty)
     printf_filtered(" (%s)", strerror(ti.ti_siginfo.si_errno));
    printf_filtered("\n");
    switch (ti.ti_siginfo.si_code) {
-   case SI_NOINFO:
-	code = "NOINFO";
-	break;
-    case SI_USER:
-	code = "USER";
-	break;
-    case SI_QUEUE:
-	code = "QUEUE";
-	break;
-    case SI_TIMER:
-	code = "TIMER";
-	break;
-    case SI_ASYNCIO:
-	code = "ASYNCIO";
-	break;
-    case SI_MESGQ:
-	code = "MESGQ";
-	break;
-    case SI_KERNEL:
-	code = "KERNEL";
-	break;
+   case 131:
+ code = "NOINFO";
+ break;
+    case 128:
+ code = "USER";
+ break;
+    case 130:
+ code = "QUEUE";
+ break;
+    case 129:
+ code = "TIMER";
+ break;
+    case 134:
+ code = "ASYNCIO";
+ break;
+    case 132:
+ code = "MESGQ";
+ break;
+    case 133:
+ code = "KERNEL";
+ break;
     default:
-	code = "UNKNOWN";
-	break;
+ code = "UNKNOWN";
+ break;
     }
     printf_filtered("si_code %s (%d) si_pid %d si_uid %d si_status %x "
       "si_addr %p\n",

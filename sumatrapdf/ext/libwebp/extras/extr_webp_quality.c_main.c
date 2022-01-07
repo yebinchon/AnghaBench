@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  W_CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREE_WARGV_AND_RETURN (int) ; 
- scalar_t__ GET_WARGV (char const**,int) ; 
- int /*<<< orphan*/  INIT_WARGV (int,char const**) ; 
- int ImgIoUtilReadFile (char const* const,int /*<<< orphan*/  const**,size_t*) ; 
- int VP8EstimateQuality (int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  WPRINTF (char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int W_CHAR ;
+
+
+ int FREE_WARGV_AND_RETURN (int) ;
+ scalar_t__ GET_WARGV (char const**,int) ;
+ int INIT_WARGV (int,char const**) ;
+ int ImgIoUtilReadFile (char const* const,int const**,size_t*) ;
+ int VP8EstimateQuality (int const*,size_t) ;
+ int WPRINTF (char*,int const*) ;
+ int fprintf (int ,char*) ;
+ int free (void*) ;
+ int printf (char*,...) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
 
 int main(int argc, const char* argv[]) {
   int c;
@@ -41,7 +41,7 @@ int main(int argc, const char* argv[]) {
       FREE_WARGV_AND_RETURN(0);
     } else {
       const char* const filename = (const char*)GET_WARGV(argv, c);
-      const uint8_t* data = NULL;
+      const uint8_t* data = ((void*)0);
       size_t data_size = 0;
       int q;
       ok = ImgIoUtilReadFile(filename, &data, &data_size);
@@ -55,7 +55,7 @@ int main(int argc, const char* argv[]) {
         if (!quiet) {
           printf("Estimated quality factor: %d\n", q);
         } else {
-          printf("%d\n", q);   // just print the number
+          printf("%d\n", q);
         }
       }
       free((void*)data);

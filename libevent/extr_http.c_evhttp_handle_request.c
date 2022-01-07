@@ -1,115 +1,107 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct evhttp_request {int type; TYPE_1__* evcon; int /*<<< orphan*/ * uri; int /*<<< orphan*/  response_code; scalar_t__ userdone; } ;
-struct evhttp_cb {int /*<<< orphan*/  cbarg; int /*<<< orphan*/  (* cb ) (struct evhttp_request*,int /*<<< orphan*/ ) ;} ;
-struct evhttp {int allowed_methods; int /*<<< orphan*/  gencbarg; int /*<<< orphan*/  (* gencb ) (struct evhttp_request*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  callbacks; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct evhttp_request {int type; TYPE_1__* evcon; int * uri; int response_code; scalar_t__ userdone; } ;
+struct evhttp_cb {int cbarg; int (* cb ) (struct evhttp_request*,int ) ;} ;
+struct evhttp {int allowed_methods; int gencbarg; int (* gencb ) (struct evhttp_request*,int ) ;int callbacks; } ;
 struct evbuffer {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  bufev; } ;
+struct TYPE_2__ {int bufev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_FORMAT ; 
- int /*<<< orphan*/  EV_READ ; 
- int /*<<< orphan*/  HTTP_NOTFOUND ; 
- int /*<<< orphan*/  HTTP_NOTIMPLEMENTED ; 
- int /*<<< orphan*/  bufferevent_disable (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  evbuffer_add_printf (struct evbuffer*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  evbuffer_free (struct evbuffer*) ; 
- struct evbuffer* evbuffer_new () ; 
- int /*<<< orphan*/  event_debug (char*) ; 
- int /*<<< orphan*/  evhttp_connection_free (TYPE_1__*) ; 
- struct evhttp_cb* evhttp_dispatch_callback (int /*<<< orphan*/ *,struct evhttp_request*) ; 
- int /*<<< orphan*/  evhttp_find_vhost (struct evhttp*,struct evhttp**,char const*) ; 
- char* evhttp_htmlescape (int /*<<< orphan*/ *) ; 
- char* evhttp_request_get_host (struct evhttp_request*) ; 
- int /*<<< orphan*/  evhttp_response_code_ (struct evhttp_request*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  evhttp_send_error (struct evhttp_request*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  evhttp_send_page_ (struct evhttp_request*,struct evbuffer*) ; 
- int /*<<< orphan*/  mm_free (char*) ; 
- int /*<<< orphan*/  stub1 (struct evhttp_request*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct evhttp_request*,int /*<<< orphan*/ ) ; 
+
+ int ERR_FORMAT ;
+ int EV_READ ;
+ int HTTP_NOTFOUND ;
+ int HTTP_NOTIMPLEMENTED ;
+ int bufferevent_disable (int ,int ) ;
+ int evbuffer_add_printf (struct evbuffer*,int ,char*) ;
+ int evbuffer_free (struct evbuffer*) ;
+ struct evbuffer* evbuffer_new () ;
+ int event_debug (char*) ;
+ int evhttp_connection_free (TYPE_1__*) ;
+ struct evhttp_cb* evhttp_dispatch_callback (int *,struct evhttp_request*) ;
+ int evhttp_find_vhost (struct evhttp*,struct evhttp**,char const*) ;
+ char* evhttp_htmlescape (int *) ;
+ char* evhttp_request_get_host (struct evhttp_request*) ;
+ int evhttp_response_code_ (struct evhttp_request*,int ,char*) ;
+ int evhttp_send_error (struct evhttp_request*,int ,int *) ;
+ int evhttp_send_page_ (struct evhttp_request*,struct evbuffer*) ;
+ int mm_free (char*) ;
+ int stub1 (struct evhttp_request*,int ) ;
+ int stub2 (struct evhttp_request*,int ) ;
 
 __attribute__((used)) static void
 evhttp_handle_request(struct evhttp_request *req, void *arg)
 {
-	struct evhttp *http = arg;
-	struct evhttp_cb *cb = NULL;
-	const char *hostname;
+ struct evhttp *http = arg;
+ struct evhttp_cb *cb = ((void*)0);
+ const char *hostname;
 
-	/* we have a new request on which the user needs to take action */
-	req->userdone = 0;
 
-	bufferevent_disable(req->evcon->bufev, EV_READ);
+ req->userdone = 0;
 
-	if (req->uri == NULL) {
-		evhttp_send_error(req, req->response_code, NULL);
-		return;
-	}
+ bufferevent_disable(req->evcon->bufev, EV_READ);
 
-	if ((http->allowed_methods & req->type) == 0) {
-		event_debug(("Rejecting disallowed method %x (allowed: %x)\n",
-			(unsigned)req->type, (unsigned)http->allowed_methods));
-		evhttp_send_error(req, HTTP_NOTIMPLEMENTED, NULL);
-		return;
-	}
+ if (req->uri == ((void*)0)) {
+  evhttp_send_error(req, req->response_code, ((void*)0));
+  return;
+ }
 
-	/* handle potential virtual hosts */
-	hostname = evhttp_request_get_host(req);
-	if (hostname != NULL) {
-		evhttp_find_vhost(http, &http, hostname);
-	}
+ if ((http->allowed_methods & req->type) == 0) {
+  event_debug(("Rejecting disallowed method %x (allowed: %x)\n",
+   (unsigned)req->type, (unsigned)http->allowed_methods));
+  evhttp_send_error(req, HTTP_NOTIMPLEMENTED, ((void*)0));
+  return;
+ }
 
-	if ((cb = evhttp_dispatch_callback(&http->callbacks, req)) != NULL) {
-		(*cb->cb)(req, cb->cbarg);
-		return;
-	}
 
-	/* Generic call back */
-	if (http->gencb) {
-		(*http->gencb)(req, http->gencbarg);
-		return;
-	} else {
-		/* We need to send a 404 here */
-#define ERR_FORMAT "<html><head>" \
-		    "<title>404 Not Found</title>" \
-		    "</head><body>" \
-		    "<h1>Not Found</h1>" \
-		    "<p>The requested URL %s was not found on this server.</p>"\
-		    "</body></html>\n"
+ hostname = evhttp_request_get_host(req);
+ if (hostname != ((void*)0)) {
+  evhttp_find_vhost(http, &http, hostname);
+ }
 
-		char *escaped_html;
-		struct evbuffer *buf;
+ if ((cb = evhttp_dispatch_callback(&http->callbacks, req)) != ((void*)0)) {
+  (*cb->cb)(req, cb->cbarg);
+  return;
+ }
 
-		if ((escaped_html = evhttp_htmlescape(req->uri)) == NULL) {
-			evhttp_connection_free(req->evcon);
-			return;
-		}
 
-		if ((buf = evbuffer_new()) == NULL) {
-			mm_free(escaped_html);
-			evhttp_connection_free(req->evcon);
-			return;
-		}
+ if (http->gencb) {
+  (*http->gencb)(req, http->gencbarg);
+  return;
+ } else {
+  char *escaped_html;
+  struct evbuffer *buf;
 
-		evhttp_response_code_(req, HTTP_NOTFOUND, "Not Found");
+  if ((escaped_html = evhttp_htmlescape(req->uri)) == ((void*)0)) {
+   evhttp_connection_free(req->evcon);
+   return;
+  }
 
-		evbuffer_add_printf(buf, ERR_FORMAT, escaped_html);
+  if ((buf = evbuffer_new()) == ((void*)0)) {
+   mm_free(escaped_html);
+   evhttp_connection_free(req->evcon);
+   return;
+  }
 
-		mm_free(escaped_html);
+  evhttp_response_code_(req, HTTP_NOTFOUND, "Not Found");
 
-		evhttp_send_page_(req, buf);
+  evbuffer_add_printf(buf, "<html><head>" "<title>404 Not Found</title>" "</head><body>" "<h1>Not Found</h1>" "<p>The requested URL %s was not found on this server.</p>" "</body></html>\n", escaped_html);
 
-		evbuffer_free(buf);
-#undef ERR_FORMAT
-	}
+  mm_free(escaped_html);
+
+  evhttp_send_page_(req, buf);
+
+  evbuffer_free(buf);
+
+ }
 }

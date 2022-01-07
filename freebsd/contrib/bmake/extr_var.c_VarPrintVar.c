@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* name; int /*<<< orphan*/  val; } ;
-typedef  TYPE_1__ Var ;
 
-/* Variables and functions */
- char* Buf_GetAll (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debug_file ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* name; int val; } ;
+typedef TYPE_1__ Var ;
+
+
+ char* Buf_GetAll (int *,int *) ;
+ int debug_file ;
+ int fprintf (int ,char*,char*,char*) ;
 
 __attribute__((used)) static void
 VarPrintVar(void *vp)
 {
-    Var    *v = (Var *)vp;
-    fprintf(debug_file, "%-16s = %s\n", v->name, Buf_GetAll(&v->val, NULL));
+    Var *v = (Var *)vp;
+    fprintf(debug_file, "%-16s = %s\n", v->name, Buf_GetAll(&v->val, ((void*)0)));
 }

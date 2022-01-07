@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  int /*<<< orphan*/  conv_t ;
 
-/* Variables and functions */
- int RET_ILSEQ ; 
- int RET_TOOFEW (int /*<<< orphan*/ ) ; 
- int ascii_mbtowc (int /*<<< orphan*/ ,int*,unsigned char const*,int) ; 
- int gb18030ext_mbtowc (int /*<<< orphan*/ ,int*,unsigned char const*,int) ; 
- int gb18030uni_mbtowc (int /*<<< orphan*/ ,int*,unsigned char const*,int) ; 
- int gbk_mbtowc (int /*<<< orphan*/ ,int*,unsigned char const*,int) ; 
+
+
+
+typedef int ucs4_t ;
+typedef int conv_t ;
+
+
+ int RET_ILSEQ ;
+ int RET_TOOFEW (int ) ;
+ int ascii_mbtowc (int ,int*,unsigned char const*,int) ;
+ int gb18030ext_mbtowc (int ,int*,unsigned char const*,int) ;
+ int gb18030uni_mbtowc (int ,int*,unsigned char const*,int) ;
+ int gbk_mbtowc (int ,int*,unsigned char const*,int) ;
 
 __attribute__((used)) static int
 gb18030_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   int ret;
 
-  /* Code set 0 (ASCII) */
+
   if (*s < 0x80)
     return ascii_mbtowc(conv,pwc,s,n);
 
-  /* Code set 1 (GBK extended) */
+
   ret = gbk_mbtowc(conv,pwc,s,n);
   if (ret != RET_ILSEQ)
     return ret;
@@ -39,12 +39,12 @@ gb18030_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
   if (ret != RET_ILSEQ)
     return ret;
 
-  /* Code set 2 (remainder of Unicode U+0000..U+FFFF), including
-     User-defined characters, two-byte part of range U+E766..U+E864 */
+
+
   ret = gb18030uni_mbtowc(conv,pwc,s,n);
   if (ret != RET_ILSEQ)
     return ret;
-  /* User-defined characters range U+E000..U+E765 */
+
   {
     unsigned char c1 = s[0];
     if ((c1 >= 0xaa && c1 <= 0xaf) || (c1 >= 0xf8 && c1 <= 0xfe)) {
@@ -68,7 +68,7 @@ gb18030_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
     }
   }
 
-  /* Code set 3 (Unicode U+10000..U+10FFFF) */
+
   {
     unsigned char c1 = s[0];
     if (c1 >= 0x90 && c1 <= 0xe3) {

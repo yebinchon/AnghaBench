@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* KDBG_ESC_OFF ; 
- int /*<<< orphan*/  LINESIZE ; 
- int /*<<< orphan*/  esclog (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ char* KDBG_ESC_OFF ;
+ int LINESIZE ;
+ int esclog (int *,char*,...) ;
+ int free (char*) ;
+ char* malloc (int ) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static int
 handle_switch_pstr(FILE *outFile, char **psw, char *arg, char *desc)
@@ -35,7 +35,7 @@ handle_switch_pstr(FILE *outFile, char **psw, char *arg, char *desc)
                 if (*psw)
                     changed = 1;
                 free(*psw);
-                *psw = NULL;
+                *psw = ((void*)0);
             }
             else
             {

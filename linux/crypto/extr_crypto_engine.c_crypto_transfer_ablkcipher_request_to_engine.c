@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct crypto_engine {int dummy; } ;
-struct ablkcipher_request {int /*<<< orphan*/  base; } ;
+struct ablkcipher_request {int base; } ;
 
-/* Variables and functions */
- int crypto_transfer_request_to_engine (struct crypto_engine*,int /*<<< orphan*/ *) ; 
+
+ int crypto_transfer_request_to_engine (struct crypto_engine*,int *) ;
 
 int crypto_transfer_ablkcipher_request_to_engine(struct crypto_engine *engine,
-						 struct ablkcipher_request *req)
+       struct ablkcipher_request *req)
 {
-	return crypto_transfer_request_to_engine(engine, &req->base);
+ return crypto_transfer_request_to_engine(engine, &req->base);
 }

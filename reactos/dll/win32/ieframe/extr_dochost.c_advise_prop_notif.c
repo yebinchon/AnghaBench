@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ is_prop_notif; int /*<<< orphan*/  prop_notif_cookie; int /*<<< orphan*/  IPropertyNotifySink_iface; int /*<<< orphan*/  document; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IConnectionPointContainer ;
-typedef  int /*<<< orphan*/  IConnectionPoint ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DocHost ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IConnectionPointContainer_FindConnectionPoint (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IConnectionPointContainer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IConnectionPoint_Advise (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IConnectionPoint_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IConnectionPoint_Unadvise (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IConnectionPointContainer ; 
- int /*<<< orphan*/  IID_IPropertyNotifySink ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ is_prop_notif; int prop_notif_cookie; int IPropertyNotifySink_iface; int document; } ;
+typedef int IUnknown ;
+typedef int IConnectionPointContainer ;
+typedef int IConnectionPoint ;
+typedef int HRESULT ;
+typedef TYPE_1__ DocHost ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int IConnectionPointContainer_FindConnectionPoint (int *,int *,int **) ;
+ int IConnectionPointContainer_Release (int *) ;
+ int IConnectionPoint_Advise (int *,int *,int *) ;
+ int IConnectionPoint_Release (int *) ;
+ int IConnectionPoint_Unadvise (int *,int ) ;
+ int IID_IConnectionPointContainer ;
+ int IID_IPropertyNotifySink ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ scalar_t__ SUCCEEDED (int ) ;
 
 __attribute__((used)) static void advise_prop_notif(DocHost *This, BOOL set)
 {

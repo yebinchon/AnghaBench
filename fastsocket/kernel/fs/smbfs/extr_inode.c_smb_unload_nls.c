@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct smb_sb_info {int /*<<< orphan*/  local_nls; int /*<<< orphan*/  remote_nls; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  unload_nls (int /*<<< orphan*/ ) ; 
+
+
+
+struct smb_sb_info {int local_nls; int remote_nls; } ;
+
+
+ int unload_nls (int ) ;
 
 __attribute__((used)) static void
 smb_unload_nls(struct smb_sb_info *server)
 {
-	unload_nls(server->remote_nls);
-	unload_nls(server->local_nls);
+ unload_nls(server->remote_nls);
+ unload_nls(server->local_nls);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ck_barrier_mcs_state {int /*<<< orphan*/  vpid; int /*<<< orphan*/  sense; } ;
-struct ck_barrier_mcs {int /*<<< orphan*/  tid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ck_pr_faa_uint (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct ck_barrier_mcs_state {int vpid; int sense; } ;
+struct ck_barrier_mcs {int tid; } ;
+
+
+ int ck_pr_faa_uint (int *,int) ;
 
 void
 ck_barrier_mcs_subscribe(struct ck_barrier_mcs *barrier, struct ck_barrier_mcs_state *state)
 {
 
-	state->sense = ~0;
-	state->vpid = ck_pr_faa_uint(&barrier->tid, 1);
-	return;
+ state->sense = ~0;
+ state->vpid = ck_pr_faa_uint(&barrier->tid, 1);
+ return;
 }

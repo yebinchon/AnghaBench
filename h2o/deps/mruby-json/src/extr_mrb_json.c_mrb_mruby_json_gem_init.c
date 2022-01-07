@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
 struct TYPE_5__ {struct RClass* object_class; } ;
-typedef  TYPE_1__ mrb_state ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int MRB_ARGS_NONE () ; 
- int MRB_ARGS_OPT (int) ; 
- int MRB_ARGS_REQ (int) ; 
- int /*<<< orphan*/  mrb_define_class_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int) ; 
- struct RClass* mrb_define_module (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  mrb_json_dump ; 
- int /*<<< orphan*/  mrb_json_generate ; 
- int /*<<< orphan*/  mrb_json_load ; 
- int /*<<< orphan*/  mrb_json_parse ; 
- int /*<<< orphan*/  mrb_json_pretty_generate ; 
- int /*<<< orphan*/  mrb_json_to_json ; 
+
+ int MRB_ARGS_NONE () ;
+ int MRB_ARGS_OPT (int) ;
+ int MRB_ARGS_REQ (int) ;
+ int mrb_define_class_method (TYPE_1__*,struct RClass*,char*,int ,int) ;
+ struct RClass* mrb_define_module (TYPE_1__*,char*) ;
+ int mrb_json_dump ;
+ int mrb_json_generate ;
+ int mrb_json_load ;
+ int mrb_json_parse ;
+ int mrb_json_pretty_generate ;
+ int mrb_json_to_json ;
 
 void
 mrb_mruby_json_gem_init(mrb_state* mrb) {

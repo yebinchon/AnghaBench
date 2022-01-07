@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi_uc ;
-typedef  int /*<<< orphan*/  stbi ;
 
-/* Variables and functions */
- scalar_t__ at_eof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * convert_format (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/ * epuc (char*,char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int get16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get8 (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  pic_load2 (int /*<<< orphan*/ *,int,int,int*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int stbi_uc ;
+typedef int stbi ;
+
+
+ scalar_t__ at_eof (int *) ;
+ int * convert_format (int *,int,int,int,int) ;
+ int * epuc (char*,char*) ;
+ int free (int *) ;
+ int get16 (int *) ;
+ int get32 (int *) ;
+ int get8 (int *) ;
+ scalar_t__ malloc (int) ;
+ int memset (int *,int,int) ;
+ int pic_load2 (int *,int,int,int*,int *) ;
 
 __attribute__((used)) static stbi_uc *pic_load(stbi *s,int *px,int *py,int *comp,int req_comp)
 {
@@ -35,14 +35,14 @@ __attribute__((used)) static stbi_uc *pic_load(stbi *s,int *px,int *py,int *comp
 
    x = get16(s);
    y = get16(s);
-   if (at_eof(s))  return epuc("bad file","file too short (pic header)");
+   if (at_eof(s)) return epuc("bad file","file too short (pic header)");
    if ((1 << 28) / x < y) return epuc("too large", "Image too large to decode");
 
-   get32(s); //skip `ratio'
-   get16(s); //skip `fields'
-   get16(s); //skip `pad'
+   get32(s);
+   get16(s);
+   get16(s);
 
-   // intermediate buffer is RGBA
+
    result = (stbi_uc *) malloc(x*y*4);
    memset(result, 0xff, x*y*4);
 

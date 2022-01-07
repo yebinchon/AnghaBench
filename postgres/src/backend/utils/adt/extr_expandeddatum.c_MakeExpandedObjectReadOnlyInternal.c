@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ExpandedObjectHeader ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DatumGetEOHP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DatumGetPointer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EOHPGetRODatum (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VARATT_IS_EXTERNAL_EXPANDED_RW (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ExpandedObjectHeader ;
+typedef int Datum ;
+
+
+ int * DatumGetEOHP (int ) ;
+ int DatumGetPointer (int ) ;
+ int EOHPGetRODatum (int *) ;
+ int VARATT_IS_EXTERNAL_EXPANDED_RW (int ) ;
 
 Datum
 MakeExpandedObjectReadOnlyInternal(Datum d)
 {
-	ExpandedObjectHeader *eohptr;
+ ExpandedObjectHeader *eohptr;
 
-	/* Nothing to do if not a read-write expanded-object pointer */
-	if (!VARATT_IS_EXTERNAL_EXPANDED_RW(DatumGetPointer(d)))
-		return d;
 
-	/* Now safe to extract the object pointer */
-	eohptr = DatumGetEOHP(d);
+ if (!VARATT_IS_EXTERNAL_EXPANDED_RW(DatumGetPointer(d)))
+  return d;
 
-	/* Return the built-in read-only pointer instead of given pointer */
-	return EOHPGetRODatum(eohptr);
+
+ eohptr = DatumGetEOHP(d);
+
+
+ return EOHPGetRODatum(eohptr);
 }

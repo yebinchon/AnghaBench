@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct megasas_instance {int dummy; } ;
-struct megasas_cmd_fusion {int cmd_completed; int /*<<< orphan*/  r1_alt_dev_handle; int /*<<< orphan*/  io_request; int /*<<< orphan*/ * scmd; } ;
+struct megasas_cmd_fusion {int cmd_completed; int r1_alt_dev_handle; int io_request; int * scmd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEGA_MPI2_RAID_DEFAULT_IO_FRAME_SIZE ; 
- int /*<<< orphan*/  MR_DEVHANDLE_INVALID ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MEGA_MPI2_RAID_DEFAULT_IO_FRAME_SIZE ;
+ int MR_DEVHANDLE_INVALID ;
+ int memset (int ,int ,int ) ;
 
 inline void megasas_return_cmd_fusion(struct megasas_instance *instance,
-	struct megasas_cmd_fusion *cmd)
+ struct megasas_cmd_fusion *cmd)
 {
-	cmd->scmd = NULL;
-	memset(cmd->io_request, 0, MEGA_MPI2_RAID_DEFAULT_IO_FRAME_SIZE);
-	cmd->r1_alt_dev_handle = MR_DEVHANDLE_INVALID;
-	cmd->cmd_completed = false;
+ cmd->scmd = ((void*)0);
+ memset(cmd->io_request, 0, MEGA_MPI2_RAID_DEFAULT_IO_FRAME_SIZE);
+ cmd->r1_alt_dev_handle = MR_DEVHANDLE_INVALID;
+ cmd->cmd_completed = 0;
 }

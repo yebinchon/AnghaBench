@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
 struct TYPE_4__ {TYPE_2__* fsap_data; } ;
-typedef  TYPE_1__ svn_fs_history_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_5__ {int /*<<< orphan*/  revision; int /*<<< orphan*/  path; } ;
-typedef  TYPE_2__ base_history_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_fs_history_t ;
+typedef int svn_error_t ;
+struct TYPE_5__ {int revision; int path; } ;
+typedef TYPE_2__ base_history_data_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int * SVN_NO_ERROR ;
+ char* apr_pstrdup (int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 base_history_location(const char **path,

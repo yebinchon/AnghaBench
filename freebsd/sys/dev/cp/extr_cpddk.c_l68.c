@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int f; int /*<<< orphan*/  d; int /*<<< orphan*/  l167; int /*<<< orphan*/  l53; int /*<<< orphan*/  l156; int /*<<< orphan*/  l86; int /*<<< orphan*/  l178; int /*<<< orphan*/  l169; int /*<<< orphan*/  l61; } ;
-typedef  TYPE_1__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l (int /*<<< orphan*/ ,int,unsigned char) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int f; int d; int l167; int l53; int l156; int l86; int l178; int l169; int l61; } ;
+typedef TYPE_1__ e ;
+
+
+ int l (int ,int,unsigned char) ;
 
 __attribute__((used)) static void l68(e*a){
 unsigned char l74=1;{if(!(a->f!=4&&a->f!=7&&a->f!=8))goto l432;return

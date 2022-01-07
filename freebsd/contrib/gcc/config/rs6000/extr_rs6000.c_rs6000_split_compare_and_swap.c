@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CCmode ; 
- int /*<<< orphan*/  CR0_REGNO ; 
- int GET_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_label (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_load_locked (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_move_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_store_conditional (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_unlikely_jump (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_isync () ; 
- int /*<<< orphan*/  gen_label_rtx () ; 
- int /*<<< orphan*/  gen_memory_barrier () ; 
- int /*<<< orphan*/  gen_rtx_COMPARE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_LABEL_REF (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_NE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_REG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int CCmode ;
+ int CR0_REGNO ;
+ int GET_MODE (int ) ;
+ int VOIDmode ;
+ int XEXP (int ,int ) ;
+ int const0_rtx ;
+ int emit_insn (int ) ;
+ int emit_label (int ) ;
+ int emit_load_locked (int,int ,int ) ;
+ int emit_move_insn (int ,int ) ;
+ int emit_store_conditional (int,int ,int ,int ) ;
+ int emit_unlikely_jump (int ,int ) ;
+ int gen_isync () ;
+ int gen_label_rtx () ;
+ int gen_memory_barrier () ;
+ int gen_rtx_COMPARE (int ,int ,int ) ;
+ int gen_rtx_LABEL_REF (int ,int ) ;
+ int gen_rtx_NE (int ,int ,int ) ;
+ int gen_rtx_REG (int ,int ) ;
+ int gen_rtx_SET (int ,int ,int ) ;
 
 void
 rs6000_split_compare_and_swap (rtx retval, rtx mem, rtx oldval, rtx newval,
-			       rtx scratch)
+          rtx scratch)
 {
   enum machine_mode mode = GET_MODE (mem);
   rtx label1, label2, x, cond = gen_rtx_REG (CCmode, CR0_REGNO);

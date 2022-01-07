@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int enc; size_t keylen; TYPE_1__* hw; } ;
 struct TYPE_7__ {TYPE_2__ base; } ;
 struct TYPE_5__ {int (* init ) (TYPE_2__*,unsigned char const*,size_t) ;} ;
-typedef  TYPE_2__ PROV_CIPHER_CTX ;
-typedef  TYPE_3__ PROV_AES_XTS_CTX ;
+typedef TYPE_2__ PROV_CIPHER_CTX ;
+typedef TYPE_3__ PROV_AES_XTS_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_LIB_PROV ; 
- int /*<<< orphan*/  ERR_raise (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PROV_R_INVALID_KEY_LENGTH ; 
- int /*<<< orphan*/  aes_xts_check_keys_differ (unsigned char const*,size_t,int) ; 
- int /*<<< orphan*/  cipher_generic_initiv (void*,unsigned char const*,size_t) ; 
- int stub1 (TYPE_2__*,unsigned char const*,size_t) ; 
+
+ int ERR_LIB_PROV ;
+ int ERR_raise (int ,int ) ;
+ int PROV_R_INVALID_KEY_LENGTH ;
+ int aes_xts_check_keys_differ (unsigned char const*,size_t,int) ;
+ int cipher_generic_initiv (void*,unsigned char const*,size_t) ;
+ int stub1 (TYPE_2__*,unsigned char const*,size_t) ;
 
 __attribute__((used)) static int aes_xts_init(void *vctx, const unsigned char *key, size_t keylen,
                         const unsigned char *iv, size_t ivlen, int enc)
@@ -35,11 +35,11 @@ __attribute__((used)) static int aes_xts_init(void *vctx, const unsigned char *k
 
     ctx->enc = enc;
 
-    if (iv != NULL) {
+    if (iv != ((void*)0)) {
         if (!cipher_generic_initiv(vctx, iv, ivlen))
             return 0;
     }
-    if (key != NULL) {
+    if (key != ((void*)0)) {
         if (keylen != ctx->keylen) {
             ERR_raise(ERR_LIB_PROV, PROV_R_INVALID_KEY_LENGTH);
             return 0;

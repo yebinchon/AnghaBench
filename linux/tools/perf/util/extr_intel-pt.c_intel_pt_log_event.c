@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union perf_event {int dummy; } perf_event ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_pt_enable_logging ; 
- int /*<<< orphan*/ * intel_pt_log_fp () ; 
- int /*<<< orphan*/  perf_event__fprintf (union perf_event*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef union perf_event {int dummy; } perf_event ;
+typedef int FILE ;
+
+
+ int intel_pt_enable_logging ;
+ int * intel_pt_log_fp () ;
+ int perf_event__fprintf (union perf_event*,int *) ;
 
 __attribute__((used)) static void intel_pt_log_event(union perf_event *event)
 {
-	FILE *f = intel_pt_log_fp();
+ FILE *f = intel_pt_log_fp();
 
-	if (!intel_pt_enable_logging || !f)
-		return;
+ if (!intel_pt_enable_logging || !f)
+  return;
 
-	perf_event__fprintf(event, f);
+ perf_event__fprintf(event, f);
 }

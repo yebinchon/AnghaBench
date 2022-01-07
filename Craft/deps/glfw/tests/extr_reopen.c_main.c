@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int width; int height; } ;
-typedef  float GLfloat ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  TYPE_1__ GLFWvidmode ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
+typedef float GLfloat ;
+typedef int GLFWwindow ;
+typedef TYPE_1__ GLFWvidmode ;
+typedef int GLFWmonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  close_window (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glOrtho (float,float,float,float,float,float) ; 
- int /*<<< orphan*/  glPopMatrix () ; 
- int /*<<< orphan*/  glPushMatrix () ; 
- int /*<<< orphan*/  glRectf (float,float,float,float) ; 
- int /*<<< orphan*/  glRotatef (float,float,float,float) ; 
- int /*<<< orphan*/ ** glfwGetMonitors (int*) ; 
- double glfwGetTime () ; 
- TYPE_1__* glfwGetVideoMode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetTime (double) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- scalar_t__ glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * open_window (int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int rand () ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_MODELVIEW ;
+ int GL_PROJECTION ;
+ int close_window (int *) ;
+ int error_callback ;
+ int exit (int ) ;
+ int glClear (int ) ;
+ int glMatrixMode (int ) ;
+ int glOrtho (float,float,float,float,float,float) ;
+ int glPopMatrix () ;
+ int glPushMatrix () ;
+ int glRectf (float,float,float,float) ;
+ int glRotatef (float,float,float,float) ;
+ int ** glfwGetMonitors (int*) ;
+ double glfwGetTime () ;
+ TYPE_1__* glfwGetVideoMode (int *) ;
+ int glfwInit () ;
+ int glfwPollEvents () ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetTime (double) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwTerminate () ;
+ scalar_t__ glfwWindowShouldClose (int *) ;
+ int * open_window (int,int,int *) ;
+ int printf (char*) ;
+ int rand () ;
+ int srand (unsigned int) ;
+ scalar_t__ time (int *) ;
 
 int main(int argc, char** argv)
 {
     int count = 0;
     GLFWwindow* window;
 
-    srand((unsigned int) time(NULL));
+    srand((unsigned int) time(((void*)0)));
 
     glfwSetErrorCallback(error_callback);
 
@@ -64,7 +64,7 @@ int main(int argc, char** argv)
     for (;;)
     {
         int width, height;
-        GLFWmonitor* monitor = NULL;
+        GLFWmonitor* monitor = ((void*)0);
 
         if (count % 2 == 0)
         {

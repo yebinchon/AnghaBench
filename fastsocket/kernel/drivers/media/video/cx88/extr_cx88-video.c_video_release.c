@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct file {struct cx8800_fh* private_data; } ;
 struct TYPE_6__ {struct cx8800_fh* read_buf; } ;
 struct cx8800_fh {TYPE_1__ vbiq; TYPE_1__ vidq; struct cx8800_dev* dev; } ;
 struct cx8800_dev {TYPE_4__* core; } ;
-struct TYPE_7__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  users; } ;
+struct TYPE_7__ {int lock; int users; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RESOURCE_OVERLAY ; 
- int /*<<< orphan*/  RESOURCE_VBI ; 
- int /*<<< orphan*/  RESOURCE_VIDEO ; 
- scalar_t__ atomic_dec_and_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buffer_release (TYPE_1__*,struct cx8800_fh*) ; 
- int /*<<< orphan*/  call_all (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  core ; 
- int /*<<< orphan*/  kfree (struct cx8800_fh*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ res_check (struct cx8800_fh*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  res_free (struct cx8800_dev*,struct cx8800_fh*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s_power ; 
- int /*<<< orphan*/  videobuf_mmap_free (TYPE_1__*) ; 
- int /*<<< orphan*/  videobuf_queue_cancel (TYPE_1__*) ; 
- int /*<<< orphan*/  videobuf_stop (TYPE_1__*) ; 
+
+ int RESOURCE_OVERLAY ;
+ int RESOURCE_VBI ;
+ int RESOURCE_VIDEO ;
+ scalar_t__ atomic_dec_and_test (int *) ;
+ int buffer_release (TYPE_1__*,struct cx8800_fh*) ;
+ int call_all (TYPE_4__*,int ,int ,int ) ;
+ int core ;
+ int kfree (struct cx8800_fh*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ scalar_t__ res_check (struct cx8800_fh*,int ) ;
+ int res_free (struct cx8800_dev*,struct cx8800_fh*,int ) ;
+ int s_power ;
+ int videobuf_mmap_free (TYPE_1__*) ;
+ int videobuf_queue_cancel (TYPE_1__*) ;
+ int videobuf_stop (TYPE_1__*) ;
 
 __attribute__((used)) static int video_release(struct file *file)
 {
-	struct cx8800_fh  *fh  = file->private_data;
-	struct cx8800_dev *dev = fh->dev;
+ struct cx8800_fh *fh = file->private_data;
+ struct cx8800_dev *dev = fh->dev;
 
-	/* turn off overlay */
-	if (res_check(fh, RESOURCE_OVERLAY)) {
-		/* FIXME */
-		res_free(dev,fh,RESOURCE_OVERLAY);
-	}
 
-	/* stop video capture */
-	if (res_check(fh, RESOURCE_VIDEO)) {
-		videobuf_queue_cancel(&fh->vidq);
-		res_free(dev,fh,RESOURCE_VIDEO);
-	}
-	if (fh->vidq.read_buf) {
-		buffer_release(&fh->vidq,fh->vidq.read_buf);
-		kfree(fh->vidq.read_buf);
-	}
+ if (res_check(fh, RESOURCE_OVERLAY)) {
 
-	/* stop vbi capture */
-	if (res_check(fh, RESOURCE_VBI)) {
-		videobuf_stop(&fh->vbiq);
-		res_free(dev,fh,RESOURCE_VBI);
-	}
+  res_free(dev,fh,RESOURCE_OVERLAY);
+ }
 
-	videobuf_mmap_free(&fh->vidq);
-	videobuf_mmap_free(&fh->vbiq);
 
-	mutex_lock(&dev->core->lock);
-	file->private_data = NULL;
-	kfree(fh);
+ if (res_check(fh, RESOURCE_VIDEO)) {
+  videobuf_queue_cancel(&fh->vidq);
+  res_free(dev,fh,RESOURCE_VIDEO);
+ }
+ if (fh->vidq.read_buf) {
+  buffer_release(&fh->vidq,fh->vidq.read_buf);
+  kfree(fh->vidq.read_buf);
+ }
 
-	if(atomic_dec_and_test(&dev->core->users))
-		call_all(dev->core, core, s_power, 0);
-	mutex_unlock(&dev->core->lock);
 
-	return 0;
+ if (res_check(fh, RESOURCE_VBI)) {
+  videobuf_stop(&fh->vbiq);
+  res_free(dev,fh,RESOURCE_VBI);
+ }
+
+ videobuf_mmap_free(&fh->vidq);
+ videobuf_mmap_free(&fh->vbiq);
+
+ mutex_lock(&dev->core->lock);
+ file->private_data = ((void*)0);
+ kfree(fh);
+
+ if(atomic_dec_and_test(&dev->core->users))
+  call_all(dev->core, core, s_power, 0);
+ mutex_unlock(&dev->core->lock);
+
+ return 0;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  int u32_t ;
-typedef  int u16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIRMWARE_DOWNLOAD ; 
- int /*<<< orphan*/  ZM_LV_0 ; 
- int ZM_SUCCESS ; 
- int zfwUsbSubmitControl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zm_msg0_init (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int zdev_t ;
+typedef int u8_t ;
+typedef int u32_t ;
+typedef int u16_t ;
+
+
+ int FIRMWARE_DOWNLOAD ;
+ int ZM_LV_0 ;
+ int ZM_SUCCESS ;
+ int zfwUsbSubmitControl (int *,int ,int,int ,int *,int) ;
+ int zm_msg0_init (int ,char*) ;
 
 u16_t zfFirmwareDownloadNotJump(zdev_t* dev, u32_t* fw, u32_t len, u32_t offset)
 {
@@ -49,7 +49,7 @@ u16_t zfFirmwareDownloadNotJump(zdev_t* dev, u32_t* fw, u32_t len, u32_t offset)
 
         len -= translen;
         image += translen;
-        uCodeOfst += translen; // in Word (16 bit)
+        uCodeOfst += translen;
 
         result = 0;
     }

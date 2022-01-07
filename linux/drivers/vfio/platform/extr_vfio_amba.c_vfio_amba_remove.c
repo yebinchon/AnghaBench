@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vfio_platform_device {struct vfio_platform_device* name; } ;
-struct amba_device {int /*<<< orphan*/  dev; } ;
+struct amba_device {int dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  kfree (struct vfio_platform_device*) ; 
- struct vfio_platform_device* vfio_platform_remove_common (int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ int kfree (struct vfio_platform_device*) ;
+ struct vfio_platform_device* vfio_platform_remove_common (int *) ;
 
 __attribute__((used)) static int vfio_amba_remove(struct amba_device *adev)
 {
-	struct vfio_platform_device *vdev;
+ struct vfio_platform_device *vdev;
 
-	vdev = vfio_platform_remove_common(&adev->dev);
-	if (vdev) {
-		kfree(vdev->name);
-		kfree(vdev);
-		return 0;
-	}
+ vdev = vfio_platform_remove_common(&adev->dev);
+ if (vdev) {
+  kfree(vdev->name);
+  kfree(vdev);
+  return 0;
+ }
 
-	return -EINVAL;
+ return -EINVAL;
 }

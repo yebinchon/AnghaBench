@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-struct TYPE_4__ {int iMethod; scalar_t__ Buffer; int /*<<< orphan*/  dataRepresentation; } ;
-typedef  TYPE_1__ RPCOLEMESSAGE ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITypeLibVtbl ;
-typedef  int /*<<< orphan*/  IRpcStubBuffer ;
-typedef  int /*<<< orphan*/  IRpcChannelBufferVtbl ;
-typedef  int /*<<< orphan*/  IRpcChannelBuffer ;
-typedef  int /*<<< orphan*/  IPSFactoryBuffer ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ E_FAIL ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  IID_if2 ; 
- scalar_t__ IRpcStubBuffer_Invoke (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IRpcStubBuffer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NDR_LOCAL_DATA_REPRESENTATION ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_stub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  delegating_invoke_test_obj_vtbl ; 
- int /*<<< orphan*/  delegating_invoke_test_rpc_chan_vtbl ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int msg ;
+struct TYPE_4__ {int iMethod; scalar_t__ Buffer; int dataRepresentation; } ;
+typedef TYPE_1__ RPCOLEMESSAGE ;
+typedef int IUnknown ;
+typedef int ITypeLibVtbl ;
+typedef int IRpcStubBuffer ;
+typedef int IRpcChannelBufferVtbl ;
+typedef int IRpcChannelBuffer ;
+typedef int IPSFactoryBuffer ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ scalar_t__ E_FAIL ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,scalar_t__) ;
+ int IID_if2 ;
+ scalar_t__ IRpcStubBuffer_Invoke (int *,TYPE_1__*,int *) ;
+ int IRpcStubBuffer_Release (int *) ;
+ int NDR_LOCAL_DATA_REPRESENTATION ;
+ scalar_t__ S_OK ;
+ int * create_stub (int *,int *,int *,scalar_t__) ;
+ int delegating_invoke_test_obj_vtbl ;
+ int delegating_invoke_test_rpc_chan_vtbl ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_delegating_Invoke(IPSFactoryBuffer *ppsf)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static void test_delegating_Invoke(IPSFactoryBuffer *ppsf)
         ok(*(DWORD*)msg.Buffer == 0xabcdef, "buf[0] %08x\n", *(DWORD*)msg.Buffer);
         ok(*((DWORD*)msg.Buffer + 1) == S_OK, "buf[1] %08x\n", *((DWORD*)msg.Buffer + 1));
     }
-    /* free the buffer allocated by delegating_invoke_chan_get_buffer */
+
     HeapFree(GetProcessHeap(), 0, msg.Buffer);
     IRpcStubBuffer_Release(pstub);
 }

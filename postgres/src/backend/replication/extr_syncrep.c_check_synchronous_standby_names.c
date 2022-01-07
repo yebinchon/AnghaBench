@@ -1,86 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ num_sync; int /*<<< orphan*/  config_size; } ;
-typedef  int /*<<< orphan*/  SyncRepConfigData ;
-typedef  int /*<<< orphan*/  GucSource ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_SYNTAX_ERROR ; 
- int /*<<< orphan*/  GUC_check_errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GUC_check_errdetail (char*,...) ; 
- int /*<<< orphan*/  GUC_check_errmsg (char*,scalar_t__) ; 
- scalar_t__ malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * syncrep_parse_error_msg ; 
- TYPE_1__* syncrep_parse_result ; 
- int /*<<< orphan*/  syncrep_scanner_finish () ; 
- int /*<<< orphan*/  syncrep_scanner_init (char*) ; 
- int syncrep_yyparse () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ num_sync; int config_size; } ;
+typedef int SyncRepConfigData ;
+typedef int GucSource ;
+
+
+ int ERRCODE_SYNTAX_ERROR ;
+ int GUC_check_errcode (int ) ;
+ int GUC_check_errdetail (char*,...) ;
+ int GUC_check_errmsg (char*,scalar_t__) ;
+ scalar_t__ malloc (int ) ;
+ int memcpy (int *,TYPE_1__*,int ) ;
+ int * syncrep_parse_error_msg ;
+ TYPE_1__* syncrep_parse_result ;
+ int syncrep_scanner_finish () ;
+ int syncrep_scanner_init (char*) ;
+ int syncrep_yyparse () ;
 
 bool
 check_synchronous_standby_names(char **newval, void **extra, GucSource source)
 {
-	if (*newval != NULL && (*newval)[0] != '\0')
-	{
-		int			parse_rc;
-		SyncRepConfigData *pconf;
+ if (*newval != ((void*)0) && (*newval)[0] != '\0')
+ {
+  int parse_rc;
+  SyncRepConfigData *pconf;
 
-		/* Reset communication variables to ensure a fresh start */
-		syncrep_parse_result = NULL;
-		syncrep_parse_error_msg = NULL;
 
-		/* Parse the synchronous_standby_names string */
-		syncrep_scanner_init(*newval);
-		parse_rc = syncrep_yyparse();
-		syncrep_scanner_finish();
+  syncrep_parse_result = ((void*)0);
+  syncrep_parse_error_msg = ((void*)0);
 
-		if (parse_rc != 0 || syncrep_parse_result == NULL)
-		{
-			GUC_check_errcode(ERRCODE_SYNTAX_ERROR);
-			if (syncrep_parse_error_msg)
-				GUC_check_errdetail("%s", syncrep_parse_error_msg);
-			else
-				GUC_check_errdetail("synchronous_standby_names parser failed");
-			return false;
-		}
 
-		if (syncrep_parse_result->num_sync <= 0)
-		{
-			GUC_check_errmsg("number of synchronous standbys (%d) must be greater than zero",
-							 syncrep_parse_result->num_sync);
-			return false;
-		}
+  syncrep_scanner_init(*newval);
+  parse_rc = syncrep_yyparse();
+  syncrep_scanner_finish();
 
-		/* GUC extra value must be malloc'd, not palloc'd */
-		pconf = (SyncRepConfigData *)
-			malloc(syncrep_parse_result->config_size);
-		if (pconf == NULL)
-			return false;
-		memcpy(pconf, syncrep_parse_result, syncrep_parse_result->config_size);
+  if (parse_rc != 0 || syncrep_parse_result == ((void*)0))
+  {
+   GUC_check_errcode(ERRCODE_SYNTAX_ERROR);
+   if (syncrep_parse_error_msg)
+    GUC_check_errdetail("%s", syncrep_parse_error_msg);
+   else
+    GUC_check_errdetail("synchronous_standby_names parser failed");
+   return 0;
+  }
 
-		*extra = (void *) pconf;
+  if (syncrep_parse_result->num_sync <= 0)
+  {
+   GUC_check_errmsg("number of synchronous standbys (%d) must be greater than zero",
+        syncrep_parse_result->num_sync);
+   return 0;
+  }
 
-		/*
-		 * We need not explicitly clean up syncrep_parse_result.  It, and any
-		 * other cruft generated during parsing, will be freed when the
-		 * current memory context is deleted.  (This code is generally run in
-		 * a short-lived context used for config file processing, so that will
-		 * not be very long.)
-		 */
-	}
-	else
-		*extra = NULL;
 
-	return true;
+  pconf = (SyncRepConfigData *)
+   malloc(syncrep_parse_result->config_size);
+  if (pconf == ((void*)0))
+   return 0;
+  memcpy(pconf, syncrep_parse_result, syncrep_parse_result->config_size);
+
+  *extra = (void *) pconf;
+ }
+ else
+  *extra = ((void*)0);
+
+ return 1;
 }

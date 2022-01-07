@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int is_bracket; int ellision_index; int index; int* tmp; } ;
-struct RangeParser {int state; unsigned char tmp; int digit_count; unsigned int begin; unsigned int end; int addr; scalar_t__ char_number; int /*<<< orphan*/  line_number; TYPE_1__ ipv6; } ;
+struct RangeParser {int state; unsigned char tmp; int digit_count; unsigned int begin; unsigned int end; int addr; scalar_t__ char_number; int line_number; TYPE_1__ ipv6; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ipv6_finish_number (struct RangeParser*,unsigned char) ; 
- int /*<<< orphan*/  ipv6_init (struct RangeParser*) ; 
+
+ int ipv6_finish_number (struct RangeParser*,unsigned char) ;
+ int ipv6_init (struct RangeParser*) ;
 
 __attribute__((used)) static int
 rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offset, size_t length,
@@ -34,7 +34,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
         ERROR
     } state = p->state;
     int result = 0;
-    
+
     while (i < length) {
         unsigned char c = buf[i++];
         p->char_number++;
@@ -43,7 +43,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
             case ADDR_START:
                 switch (c) {
                     case ' ': case '\t': case '\r':
-                        /* ignore leading whitespace */
+
                         continue;
                     case '\n':
                         p->line_number++;
@@ -52,7 +52,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                     case '#': case ';': case '/': case '-':
                         state = COMMENT;
                         continue;
-                        
+
                     case '0': case '1': case '2': case '3': case '4':
                     case '5': case '6': case '7': case '8': case '9':
                         p->tmp = (c - '0');
@@ -78,7 +78,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                         break;
                     default:
                         state = ERROR;
-                        length = i; /* break out of loop */
+                        length = i;
                         break;
                 }
                 break;
@@ -95,7 +95,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                     }
                     break;
                 }
-                /* drop down */
+
             case IPV6_NUM:
                 switch (c) {
                     case '0': case '1': case '2': case '3': case '4':
@@ -143,7 +143,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                     case '\n':
                     case ',':
                     case '-':
-                        /* All the things that end an IPv6 address */
+
                         p->ipv6.tmp[p->ipv6.index++] = p->tmp;
                         if (ipv6_finish_number(p, c) != 0) {
                             state = ERROR;
@@ -165,12 +165,12 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                             case '\n':
                                 p->line_number++;
                                 p->char_number = 0;
-                                /* drop down */
+
                             case ' ':
                             case '\t':
                             case '\r':
                             case ',':
-                                /* Return the address */
+
                             case '-':
                                 break;
                         }
@@ -195,7 +195,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                     case '5': case '6': case '7': case '8': case '9':
                         if (p->digit_count == 3) {
                             state = ERROR;
-                            length = i; /* break out of loop */
+                            length = i;
                         } else {
                             p->digit_count++;
                             p->tmp = p->tmp * 10 + (c - '0');
@@ -215,17 +215,17 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                         {
                             unsigned long long prefix = p->tmp;
                             unsigned long long mask = 0xFFFFFFFF00000000ULL >> prefix;
-                            
-                            /* mask off low-order bits */
+
+
                             p->begin &= (unsigned)mask;
 
-                            /* Set all suffix bits to 1, so that 192.168.1.0/24 has
-                             * an ending address of 192.168.1.255. */
+
+
                             p->end = p->begin | (unsigned)~mask;
 
 
                             state = ADDR_START;
-                            length = i; /* break out of loop */
+                            length = i;
                             if (c == '\n') {
                                 p->line_number++;
                                 p->char_number = 0;
@@ -237,7 +237,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                         break;
                     default:
                         state = ERROR;
-                        length = i; /* break out of loop */
+                        length = i;
                         break;
                 }
                 break;
@@ -247,25 +247,17 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                     state = UNIDASH2;
                 else {
                     state = ERROR;
-                    length = i; /* break out of loop */
+                    length = i;
                 }
                 break;
             case UNIDASH2:
-                /* This covers:
-                 * U+2010 HYPHEN
-                 * U+2011 NON-BREAKING HYPHEN
-                 * U+2012 FIGURE DASH
-                 * U+2013 EN DASH
-                 * U+2014 EM DASH
-                 * U+2015 HORIZONTAL BAR
-                 */
                 if (c < 0x90 || 0x95 < c) {
                     state = ERROR;
-                    length = i; /* break out of loop */
+                    length = i;
                 } else {
                     c = '-';
                     state = NUMBER3;
-                    /* drop down */
+
                 }
 
 
@@ -292,7 +284,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                     case '5': case '6': case '7': case '8': case '9':
                         if (p->digit_count == 3) {
                             state = ERROR;
-                            length = i; /* break out of loop */
+                            length = i;
                         } else {
                             p->digit_count++;
                             p->tmp = p->tmp * 10 + (c - '0');
@@ -308,11 +300,11 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                             state = UNIDASH1;
                         } else {
                             state = ERROR;
-                            length = i; /* break out of loop */
+                            length = i;
                         }
                         break;
                     case '-':
-                    case 0x96: /* long dash, comes from copy/pasting into exclude files */
+                    case 0x96:
                         if (state == NUMBER3) {
                             p->begin = (p->addr << 8) | p->tmp;
                             p->tmp = 0;
@@ -333,7 +325,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                             state = CIDR;
                         } else {
                             state = NUMBER_ERR;
-                            length = i; /* break out of loop */
+                            length = i;
                         }
                         break;
                     case ':':
@@ -349,7 +341,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                             p->digit_count = 0;
                             p->addr = 0;
                             state = ADDR_START;
-                            length = i; /* break out of loop */
+                            length = i;
                             if (c == '\n') {
                                 p->line_number++;
                                 p->char_number = 0;
@@ -363,7 +355,7 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                             p->digit_count = 0;
                             p->addr = 0;
                             state = ADDR_START;
-                            length = i; /* break out of loop */
+                            length = i;
                             if (c == '\n') {
                                 p->line_number++;
                                 p->char_number = 0;
@@ -378,21 +370,21 @@ rangeparse_next(struct RangeParser *p, const unsigned char *buf, size_t *r_offse
                         break;
                     default:
                         state = ERROR;
-                        length = i; /* break out of loop */
+                        length = i;
                         break;
                 }
                 break;
-                
+
             default:
             case ERROR:
             case NUMBER_ERR:
             case SECOND_ERR:
                 state = ERROR;
-                length = i; /* break */
+                length = i;
                 break;
         }
     }
-    
+
     *r_offset = i;
     p->state = state;
     if (state == ERROR || state == NUMBER_ERR || state == SECOND_ERR)

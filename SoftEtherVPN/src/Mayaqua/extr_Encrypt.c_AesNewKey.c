@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct aes_key_st {int dummy; } ;
-typedef  int UINT ;
-struct TYPE_3__ {int KeySize; void* DecryptKey; void* EncryptKey; int /*<<< orphan*/  KeyValue; } ;
-typedef  TYPE_1__ AES_KEY_VALUE ;
+typedef int UINT ;
+struct TYPE_3__ {int KeySize; void* DecryptKey; void* EncryptKey; int KeyValue; } ;
+typedef TYPE_1__ AES_KEY_VALUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AES_set_decrypt_key (void*,int,void*) ; 
- int /*<<< orphan*/  AES_set_encrypt_key (void*,int,void*) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ ,void*,int) ; 
- void* ZeroMalloc (int) ; 
+
+ int AES_set_decrypt_key (void*,int,void*) ;
+ int AES_set_encrypt_key (void*,int,void*) ;
+ int Copy (int ,void*,int) ;
+ void* ZeroMalloc (int) ;
 
 AES_KEY_VALUE *AesNewKey(void *data, UINT size)
 {
-	AES_KEY_VALUE *k;
-	// Validate arguments
-	if (data == NULL || (!(size == 16 || size == 24 || size == 32)))
-	{
-		return NULL;
-	}
+ AES_KEY_VALUE *k;
 
-	k = ZeroMalloc(sizeof(AES_KEY_VALUE));
+ if (data == ((void*)0) || (!(size == 16 || size == 24 || size == 32)))
+ {
+  return ((void*)0);
+ }
 
-	k->EncryptKey = ZeroMalloc(sizeof(struct aes_key_st));
-	k->DecryptKey = ZeroMalloc(sizeof(struct aes_key_st));
+ k = ZeroMalloc(sizeof(AES_KEY_VALUE));
 
-	k->KeySize = size;
-	Copy(k->KeyValue, data, size);
+ k->EncryptKey = ZeroMalloc(sizeof(struct aes_key_st));
+ k->DecryptKey = ZeroMalloc(sizeof(struct aes_key_st));
 
-	AES_set_encrypt_key(data, size * 8, k->EncryptKey);
-	AES_set_decrypt_key(data, size * 8, k->DecryptKey);
+ k->KeySize = size;
+ Copy(k->KeyValue, data, size);
 
-	return k;
+ AES_set_encrypt_key(data, size * 8, k->EncryptKey);
+ AES_set_decrypt_key(data, size * 8, k->DecryptKey);
+
+ return k;
 }

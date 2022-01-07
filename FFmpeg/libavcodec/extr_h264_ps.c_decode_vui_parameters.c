@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {void* den; void* num; } ;
 struct TYPE_11__ {void* chroma_sample_location; } ;
 struct TYPE_10__ {int video_signal_type_present_flag; int full_range; int colour_description_present_flag; int timing_info_present_flag; unsigned int num_units_in_tick; unsigned int time_scale; int fixed_frame_rate_flag; int nal_hrd_parameters_present_flag; int vcl_hrd_parameters_present_flag; int pic_struct_present_flag; int bitstream_restriction_flag; unsigned int num_reorder_frames; void* colorspace; void* color_trc; void* color_primaries; TYPE_3__ sar; } ;
-typedef  TYPE_1__ SPS ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_1__ SPS ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- void* AVCOL_PRI_UNSPECIFIED ; 
- void* AVCOL_SPC_UNSPECIFIED ; 
- void* AVCOL_TRC_UNSPECIFIED ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- unsigned int EXTENDED_SAR ; 
- unsigned int FF_ARRAY_ELEMS (TYPE_3__*) ; 
- int /*<<< orphan*/  av_color_primaries_name (void*) ; 
- int /*<<< orphan*/  av_color_space_name (void*) ; 
- int /*<<< orphan*/  av_color_transfer_name (void*) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ decode_hrd_parameters (int /*<<< orphan*/ *,TYPE_2__*,TYPE_1__*) ; 
- TYPE_3__* ff_h264_pixel_aspect ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ get_bits_left (int /*<<< orphan*/ *) ; 
- unsigned int get_bits_long (int /*<<< orphan*/ *,int) ; 
- void* get_ue_golomb (int /*<<< orphan*/ *) ; 
- scalar_t__ show_bits1 (int /*<<< orphan*/ *) ; 
+
+ void* AVCOL_PRI_UNSPECIFIED ;
+ void* AVCOL_SPC_UNSPECIFIED ;
+ void* AVCOL_TRC_UNSPECIFIED ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ unsigned int EXTENDED_SAR ;
+ unsigned int FF_ARRAY_ELEMS (TYPE_3__*) ;
+ int av_color_primaries_name (void*) ;
+ int av_color_space_name (void*) ;
+ int av_color_transfer_name (void*) ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ scalar_t__ decode_hrd_parameters (int *,TYPE_2__*,TYPE_1__*) ;
+ TYPE_3__* ff_h264_pixel_aspect ;
+ void* get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ scalar_t__ get_bits_left (int *) ;
+ unsigned int get_bits_long (int *,int) ;
+ void* get_ue_golomb (int *) ;
+ scalar_t__ show_bits1 (int *) ;
 
 __attribute__((used)) static inline int decode_vui_parameters(GetBitContext *gb, AVCodecContext *avctx,
                                         SPS *sps)
@@ -66,21 +66,21 @@ __attribute__((used)) static inline int decode_vui_parameters(GetBitContext *gb,
         sps->sar.den = 0;
     }
 
-    if (get_bits1(gb))      /* overscan_info_present_flag */
-        get_bits1(gb);      /* overscan_appropriate_flag */
+    if (get_bits1(gb))
+        get_bits1(gb);
 
     sps->video_signal_type_present_flag = get_bits1(gb);
     if (sps->video_signal_type_present_flag) {
-        get_bits(gb, 3);                 /* video_format */
-        sps->full_range = get_bits1(gb); /* video_full_range_flag */
+        get_bits(gb, 3);
+        sps->full_range = get_bits1(gb);
 
         sps->colour_description_present_flag = get_bits1(gb);
         if (sps->colour_description_present_flag) {
-            sps->color_primaries = get_bits(gb, 8); /* colour_primaries */
-            sps->color_trc       = get_bits(gb, 8); /* transfer_characteristics */
-            sps->colorspace      = get_bits(gb, 8); /* matrix_coefficients */
+            sps->color_primaries = get_bits(gb, 8);
+            sps->color_trc = get_bits(gb, 8);
+            sps->colorspace = get_bits(gb, 8);
 
-            // Set invalid values to "unspecified"
+
             if (!av_color_primaries_name(sps->color_primaries))
                 sps->color_primaries = AVCOL_PRI_UNSPECIFIED;
             if (!av_color_transfer_name(sps->color_trc))
@@ -90,11 +90,11 @@ __attribute__((used)) static inline int decode_vui_parameters(GetBitContext *gb,
         }
     }
 
-    /* chroma_location_info_present_flag */
+
     if (get_bits1(gb)) {
-        /* chroma_sample_location_type_top_field */
+
         avctx->chroma_sample_location = get_ue_golomb(gb) + 1;
-        get_ue_golomb(gb);  /* chroma_sample_location_type_bottom_field */
+        get_ue_golomb(gb);
     }
 
     if (show_bits1(gb) && get_bits_left(gb) < 10) {
@@ -105,7 +105,7 @@ __attribute__((used)) static inline int decode_vui_parameters(GetBitContext *gb,
     sps->timing_info_present_flag = get_bits1(gb);
     if (sps->timing_info_present_flag) {
         unsigned num_units_in_tick = get_bits_long(gb, 32);
-        unsigned time_scale        = get_bits_long(gb, 32);
+        unsigned time_scale = get_bits_long(gb, 32);
         if (!num_units_in_tick || !time_scale) {
             av_log(avctx, AV_LOG_ERROR,
                    "time_scale/num_units_in_tick invalid or unsupported (%u/%u)\n",
@@ -128,27 +128,27 @@ __attribute__((used)) static inline int decode_vui_parameters(GetBitContext *gb,
             return AVERROR_INVALIDDATA;
     if (sps->nal_hrd_parameters_present_flag ||
         sps->vcl_hrd_parameters_present_flag)
-        get_bits1(gb);     /* low_delay_hrd_flag */
+        get_bits1(gb);
     sps->pic_struct_present_flag = get_bits1(gb);
     if (!get_bits_left(gb))
         return 0;
     sps->bitstream_restriction_flag = get_bits1(gb);
     if (sps->bitstream_restriction_flag) {
-        get_bits1(gb);     /* motion_vectors_over_pic_boundaries_flag */
-        get_ue_golomb(gb); /* max_bytes_per_pic_denom */
-        get_ue_golomb(gb); /* max_bits_per_mb_denom */
-        get_ue_golomb(gb); /* log2_max_mv_length_horizontal */
-        get_ue_golomb(gb); /* log2_max_mv_length_vertical */
+        get_bits1(gb);
+        get_ue_golomb(gb);
+        get_ue_golomb(gb);
+        get_ue_golomb(gb);
+        get_ue_golomb(gb);
         sps->num_reorder_frames = get_ue_golomb(gb);
-        get_ue_golomb(gb); /*max_dec_frame_buffering*/
+        get_ue_golomb(gb);
 
         if (get_bits_left(gb) < 0) {
-            sps->num_reorder_frames         = 0;
+            sps->num_reorder_frames = 0;
             sps->bitstream_restriction_flag = 0;
         }
 
         if (sps->num_reorder_frames > 16U
-            /* max_dec_frame_buffering || max_dec_frame_buffering > 16 */) {
+                                                                         ) {
             av_log(avctx, AV_LOG_ERROR,
                    "Clipping illegal num_reorder_frames %d\n",
                    sps->num_reorder_frames);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
 
-/* Variables and functions */
- scalar_t__ SM_UDP ; 
- int /*<<< orphan*/  backlog ; 
- char* conv_addr (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ enable_ipv6 ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,int) ; 
- int /*<<< orphan*/  printf (char*,char*,int,int) ; 
- int server_socket (int,struct in_addr,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ verbosity ; 
+
+
+
+struct in_addr {int s_addr; } ;
+
+
+ scalar_t__ SM_UDP ;
+ int backlog ;
+ char* conv_addr (int ,char*) ;
+ scalar_t__ enable_ipv6 ;
+ int exit (int) ;
+ int kprintf (char*,int) ;
+ int printf (char*,char*,int,int) ;
+ int server_socket (int,struct in_addr,int ,scalar_t__) ;
+ scalar_t__ verbosity ;
 
 int open_udp_socket (int port) {
   static struct in_addr settings_addr;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int size; int n; int /*<<< orphan*/  filled; TYPE_1__* h; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int size; int n; int filled; TYPE_1__* h; } ;
 struct TYPE_6__ {long long key; int value; } ;
 
-/* Variables and functions */
- int MAX_RES ; 
- int /*<<< orphan*/  Q_limit ; 
- int /*<<< orphan*/ * R ; 
- int* RS ; 
- int R_cnt ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- long long extract_hash_item (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  hashmap_ll_int_free (TYPE_2__*) ; 
- int hashmap_ll_int_get (TYPE_2__*,long long const,int*) ; 
- int /*<<< orphan*/  hashmap_ll_int_init (TYPE_2__*,int) ; 
- TYPE_2__ hm ; 
- char* last_search_query ; 
- char* log_cur_pos () ; 
- int /*<<< orphan*/  rebuild_hashmap_calls ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int /*<<< orphan*/ ) ; 
+
+ int MAX_RES ;
+ int Q_limit ;
+ int * R ;
+ int* RS ;
+ int R_cnt ;
+ int assert (int) ;
+ int exit (int) ;
+ long long extract_hash_item (int ) ;
+ int fprintf (int ,char*,...) ;
+ int hashmap_ll_int_free (TYPE_2__*) ;
+ int hashmap_ll_int_get (TYPE_2__*,long long const,int*) ;
+ int hashmap_ll_int_init (TYPE_2__*,int) ;
+ TYPE_2__ hm ;
+ char* last_search_query ;
+ char* log_cur_pos () ;
+ int rebuild_hashmap_calls ;
+ int stderr ;
+ int vkprintf (int,char*,int,int ) ;
 
 void rebuild_hashmap (void) {
   rebuild_hashmap_calls++;

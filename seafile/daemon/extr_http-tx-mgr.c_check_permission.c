@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_10__ {int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__ json_error_t ;
-typedef  int /*<<< orphan*/  gint64 ;
-struct TYPE_13__ {int /*<<< orphan*/  client_id; scalar_t__ client_name; } ;
-struct TYPE_12__ {int /*<<< orphan*/  release; int /*<<< orphan*/ * curl; } ;
-struct TYPE_11__ {int /*<<< orphan*/  error; int /*<<< orphan*/  repo_name; int /*<<< orphan*/  repo_id; int /*<<< orphan*/  token; int /*<<< orphan*/  host; scalar_t__ use_fileserver_port; int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ HttpTxTask ;
-typedef  TYPE_3__ Connection ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int HTTP_FORBIDDEN ; 
- int HTTP_OK ; 
- int /*<<< orphan*/  HTTP_TASK_TYPE_DOWNLOAD ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_ACCESS_DENIED ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_NO_WRITE_PERMISSION ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_PERM_NOT_SYNCABLE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  curl_easy_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- scalar_t__ g_strcmp0 (char const*,char*) ; 
- char* g_strdup_printf (char*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char const*,...) ; 
- char* g_uri_escape_string (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  handle_curl_errors (TYPE_2__*,int) ; 
- int /*<<< orphan*/  handle_http_errors (TYPE_2__*,int) ; 
- scalar_t__ http_get (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int*,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loadb (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * json_object_get (int /*<<< orphan*/ *,char*) ; 
- char* json_string_value (int /*<<< orphan*/ *) ; 
- TYPE_4__* seaf ; 
- int /*<<< orphan*/  seaf_repo_manager_record_sync_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,...) ; 
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_10__ {int text; } ;
+typedef TYPE_1__ json_error_t ;
+typedef int gint64 ;
+struct TYPE_13__ {int client_id; scalar_t__ client_name; } ;
+struct TYPE_12__ {int release; int * curl; } ;
+struct TYPE_11__ {int error; int repo_name; int repo_id; int token; int host; scalar_t__ use_fileserver_port; int type; } ;
+typedef TYPE_2__ HttpTxTask ;
+typedef TYPE_3__ Connection ;
+typedef int CURL ;
+
+
+ int FALSE ;
+ int HTTP_FORBIDDEN ;
+ int HTTP_OK ;
+ int HTTP_TASK_TYPE_DOWNLOAD ;
+ int SYNC_ERROR_ID_ACCESS_DENIED ;
+ int SYNC_ERROR_ID_NO_WRITE_PERMISSION ;
+ int SYNC_ERROR_ID_PERM_NOT_SYNCABLE ;
+ int TRUE ;
+ int curl_easy_reset (int *) ;
+ int g_free (char*) ;
+ scalar_t__ g_strcmp0 (char const*,char*) ;
+ char* g_strdup_printf (char*,int ,char const*,int ,char const*,...) ;
+ char* g_uri_escape_string (scalar_t__,int *,int ) ;
+ int handle_curl_errors (TYPE_2__*,int) ;
+ int handle_http_errors (TYPE_2__*,int) ;
+ scalar_t__ http_get (int *,char*,int ,int*,char**,int *,int *,int *,int ,int*) ;
+ int json_decref (int *) ;
+ int * json_loadb (char*,int ,int ,TYPE_1__*) ;
+ int * json_object_get (int *,char*) ;
+ char* json_string_value (int *) ;
+ TYPE_4__* seaf ;
+ int seaf_repo_manager_record_sync_error (int ,int ,char const*,int ) ;
+ int seaf_warning (char*,char*,...) ;
 
 __attribute__((used)) static int
 check_permission (HttpTxTask *task, Connection *conn)
@@ -56,11 +56,11 @@ check_permission (HttpTxTask *task, Connection *conn)
     CURL *curl;
     char *url;
     int status;
-    char *rsp_content = NULL;
+    char *rsp_content = ((void*)0);
     gint64 rsp_size;
     int ret = 0;
-    json_t *rsp_obj = NULL, *reason = NULL, *unsyncable_path = NULL;
-    const char *reason_str = NULL, *unsyncable_path_str = NULL;
+    json_t *rsp_obj = ((void*)0), *reason = ((void*)0), *unsyncable_path = ((void*)0);
+    const char *reason_str = ((void*)0), *unsyncable_path_str = ((void*)0);
     json_error_t jerror;
 
     curl = conn->curl;
@@ -69,7 +69,7 @@ check_permission (HttpTxTask *task, Connection *conn)
     const char *url_prefix = (task->use_fileserver_port) ? "" : "seafhttp/";
     if (seaf->client_name) {
         char *client_name = g_uri_escape_string (seaf->client_name,
-                                                 NULL, FALSE);
+                                                 ((void*)0), FALSE);
         url = g_strdup_printf ("%s/%srepo/%s/permission-check/?op=%s"
                                "&client_id=%s&client_name=%s",
                                task->host, url_prefix, task->repo_id, type,
@@ -81,7 +81,7 @@ check_permission (HttpTxTask *task, Connection *conn)
     }
 
     int curl_error;
-    if (http_get (curl, url, task->token, &status, &rsp_content, &rsp_size, NULL, NULL, TRUE, &curl_error) < 0) {
+    if (http_get (curl, url, task->token, &status, &rsp_content, &rsp_size, ((void*)0), ((void*)0), TRUE, &curl_error) < 0) {
         conn->release = TRUE;
         handle_curl_errors (task, curl_error);
         ret = -1;

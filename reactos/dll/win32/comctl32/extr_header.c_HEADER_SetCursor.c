@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  hcurArrow; int /*<<< orphan*/  hcurDivopen; int /*<<< orphan*/  hcurDivider; int /*<<< orphan*/  hwndSelf; } ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  TYPE_1__ HEADER_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCursorPos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HEADER_InternalHitTest (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ HHT_ONDIVIDER ; 
- scalar_t__ HHT_ONDIVOPEN ; 
- int /*<<< orphan*/  HIWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ScreenToClient (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetCursor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_4__ {int hcurArrow; int hcurDivopen; int hcurDivider; int hwndSelf; } ;
+typedef int POINT ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int INT ;
+typedef TYPE_1__ HEADER_INFO ;
+
+
+ int GetCursorPos (int *) ;
+ int HEADER_InternalHitTest (TYPE_1__*,int *,scalar_t__*,int *) ;
+ scalar_t__ HHT_ONDIVIDER ;
+ scalar_t__ HHT_ONDIVOPEN ;
+ int HIWORD (int ) ;
+ int LOWORD (int ) ;
+ int ScreenToClient (int ,int *) ;
+ int SetCursor (int ) ;
+ int TRACE (char*,int ,int ) ;
 
 __attribute__((used)) static LRESULT
 HEADER_SetCursor (HEADER_INFO *infoPtr, LPARAM lParam)
 {
     POINT pt;
-    UINT  flags;
-    INT   nItem;
+    UINT flags;
+    INT nItem;
 
     TRACE("code=0x%X  id=0x%X\n", LOWORD(lParam), HIWORD(lParam));
 

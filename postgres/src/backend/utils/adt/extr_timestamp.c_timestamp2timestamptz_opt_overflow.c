@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pg_tm {int dummy; } ;
-typedef  int /*<<< orphan*/  fsec_t ;
-typedef  scalar_t__ TimestampTz ;
-typedef  scalar_t__ Timestamp ;
+typedef int fsec_t ;
+typedef scalar_t__ TimestampTz ;
+typedef scalar_t__ Timestamp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int DetermineTimeZoneOffset (struct pg_tm*,int /*<<< orphan*/ ) ; 
- scalar_t__ END_TIMESTAMP ; 
- int /*<<< orphan*/  ERRCODE_DATETIME_VALUE_OUT_OF_RANGE ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ IS_VALID_TIMESTAMP (scalar_t__) ; 
- scalar_t__ MIN_TIMESTAMP ; 
- scalar_t__ TIMESTAMP_NOT_FINITE (scalar_t__) ; 
- scalar_t__ dt2local (scalar_t__,int) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- int /*<<< orphan*/  session_timezone ; 
- int /*<<< orphan*/  timestamp2tm (scalar_t__,int /*<<< orphan*/ *,struct pg_tm*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int Assert (int) ;
+ int DetermineTimeZoneOffset (struct pg_tm*,int ) ;
+ scalar_t__ END_TIMESTAMP ;
+ int ERRCODE_DATETIME_VALUE_OUT_OF_RANGE ;
+ int ERROR ;
+ scalar_t__ IS_VALID_TIMESTAMP (scalar_t__) ;
+ scalar_t__ MIN_TIMESTAMP ;
+ scalar_t__ TIMESTAMP_NOT_FINITE (scalar_t__) ;
+ scalar_t__ dt2local (scalar_t__,int) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*) ;
+ int session_timezone ;
+ int timestamp2tm (scalar_t__,int *,struct pg_tm*,int *,int *,int *) ;
 
 TimestampTz
 timestamp2timestamptz_opt_overflow(Timestamp timestamp, int *overflow)
 {
-	TimestampTz result;
-	struct pg_tm tt,
-			   *tm = &tt;
-	fsec_t		fsec;
-	int			tz;
+ TimestampTz result;
+ struct pg_tm tt,
+      *tm = &tt;
+ fsec_t fsec;
+ int tz;
 
-	if (TIMESTAMP_NOT_FINITE(timestamp))
-		return timestamp;
+ if (TIMESTAMP_NOT_FINITE(timestamp))
+  return timestamp;
 
-	if (!timestamp2tm(timestamp, NULL, tm, &fsec, NULL, NULL))
-	{
-		tz = DetermineTimeZoneOffset(tm, session_timezone);
+ if (!timestamp2tm(timestamp, ((void*)0), tm, &fsec, ((void*)0), ((void*)0)))
+ {
+  tz = DetermineTimeZoneOffset(tm, session_timezone);
 
-		result = dt2local(timestamp, -tz);
+  result = dt2local(timestamp, -tz);
 
-		if (IS_VALID_TIMESTAMP(result))
-		{
-			return result;
-		}
-		else if (overflow)
-		{
-			if (result < MIN_TIMESTAMP)
-				*overflow = -1;
-			else
-			{
-				Assert(result >= END_TIMESTAMP);
-				*overflow = 1;
-			}
-			return (TimestampTz) 0;
-		}
-	}
+  if (IS_VALID_TIMESTAMP(result))
+  {
+   return result;
+  }
+  else if (overflow)
+  {
+   if (result < MIN_TIMESTAMP)
+    *overflow = -1;
+   else
+   {
+    Assert(result >= END_TIMESTAMP);
+    *overflow = 1;
+   }
+   return (TimestampTz) 0;
+  }
+ }
 
-	ereport(ERROR,
-			(errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
-			 errmsg("timestamp out of range")));
+ ereport(ERROR,
+   (errcode(ERRCODE_DATETIME_VALUE_OUT_OF_RANGE),
+    errmsg("timestamp out of range")));
 
-	return 0;
+ return 0;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct wl_output {int dummy; } ;
-struct TYPE_3__ {scalar_t__ y0; scalar_t__ x0; int /*<<< orphan*/  y1; int /*<<< orphan*/  x1; } ;
-struct vo_wayland_output {int /*<<< orphan*/  refresh_rate; int /*<<< orphan*/  scale; int /*<<< orphan*/  phys_height; TYPE_1__ geometry; int /*<<< orphan*/  phys_width; int /*<<< orphan*/  id; int /*<<< orphan*/  model; int /*<<< orphan*/  make; int /*<<< orphan*/  wl; } ;
+struct TYPE_3__ {scalar_t__ y0; scalar_t__ x0; int y1; int x1; } ;
+struct vo_wayland_output {int refresh_rate; int scale; int phys_height; TYPE_1__ geometry; int phys_width; int id; int model; int make; int wl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_VERBOSE (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_rect_h (TYPE_1__) ; 
- int /*<<< orphan*/  mp_rect_w (TYPE_1__) ; 
+
+ int MP_VERBOSE (int ,char*,int ,int ,int ,scalar_t__,scalar_t__,int ,int ,int ,int ,int ,int ) ;
+ int mp_rect_h (TYPE_1__) ;
+ int mp_rect_w (TYPE_1__) ;
 
 __attribute__((used)) static void output_handle_done(void* data, struct wl_output *wl_output)
 {

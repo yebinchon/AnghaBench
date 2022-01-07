@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
-struct mmc_omap_host {int nr_slots; int /*<<< orphan*/  mmc_omap_wq; scalar_t__ dma_rx; scalar_t__ dma_tx; int /*<<< orphan*/  iclk; int /*<<< orphan*/  fclk; int /*<<< orphan*/  irq; TYPE_1__* pdata; int /*<<< orphan*/ * slots; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* cleanup ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clk_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clk_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dma_release_channel (scalar_t__) ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct mmc_omap_host*) ; 
- int /*<<< orphan*/  mmc_omap_fclk_enable (struct mmc_omap_host*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmc_omap_remove_slot (int /*<<< orphan*/ ) ; 
- struct mmc_omap_host* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct platform_device {int dev; } ;
+struct mmc_omap_host {int nr_slots; int mmc_omap_wq; scalar_t__ dma_rx; scalar_t__ dma_tx; int iclk; int fclk; int irq; TYPE_1__* pdata; int * slots; } ;
+struct TYPE_2__ {int (* cleanup ) (int *) ;} ;
+
+
+ int BUG_ON (int ) ;
+ int clk_disable (int ) ;
+ int clk_put (int ) ;
+ int destroy_workqueue (int ) ;
+ int dma_release_channel (scalar_t__) ;
+ int free_irq (int ,struct mmc_omap_host*) ;
+ int mmc_omap_fclk_enable (struct mmc_omap_host*,int ) ;
+ int mmc_omap_remove_slot (int ) ;
+ struct mmc_omap_host* platform_get_drvdata (struct platform_device*) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static int mmc_omap_remove(struct platform_device *pdev)
 {
-	struct mmc_omap_host *host = platform_get_drvdata(pdev);
-	int i;
+ struct mmc_omap_host *host = platform_get_drvdata(pdev);
+ int i;
 
-	BUG_ON(host == NULL);
+ BUG_ON(host == ((void*)0));
 
-	for (i = 0; i < host->nr_slots; i++)
-		mmc_omap_remove_slot(host->slots[i]);
+ for (i = 0; i < host->nr_slots; i++)
+  mmc_omap_remove_slot(host->slots[i]);
 
-	if (host->pdata->cleanup)
-		host->pdata->cleanup(&pdev->dev);
+ if (host->pdata->cleanup)
+  host->pdata->cleanup(&pdev->dev);
 
-	mmc_omap_fclk_enable(host, 0);
-	free_irq(host->irq, host);
-	clk_put(host->fclk);
-	clk_disable(host->iclk);
-	clk_put(host->iclk);
+ mmc_omap_fclk_enable(host, 0);
+ free_irq(host->irq, host);
+ clk_put(host->fclk);
+ clk_disable(host->iclk);
+ clk_put(host->iclk);
 
-	if (host->dma_tx)
-		dma_release_channel(host->dma_tx);
-	if (host->dma_rx)
-		dma_release_channel(host->dma_rx);
+ if (host->dma_tx)
+  dma_release_channel(host->dma_tx);
+ if (host->dma_rx)
+  dma_release_channel(host->dma_rx);
 
-	destroy_workqueue(host->mmc_omap_wq);
+ destroy_workqueue(host->mmc_omap_wq);
 
-	return 0;
+ return 0;
 }

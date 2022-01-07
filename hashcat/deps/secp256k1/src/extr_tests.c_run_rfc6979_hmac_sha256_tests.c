@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_rfc6979_hmac_sha256 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- scalar_t__ memcmp (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  secp256k1_rfc6979_hmac_sha256_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_rfc6979_hmac_sha256_generate (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  secp256k1_rfc6979_hmac_sha256_initialize (int /*<<< orphan*/ *,unsigned char const*,int) ; 
+
+
+
+typedef int secp256k1_rfc6979_hmac_sha256 ;
+
+
+ int CHECK (int) ;
+ scalar_t__ memcmp (unsigned char*,unsigned char const*,int) ;
+ int secp256k1_rfc6979_hmac_sha256_finalize (int *) ;
+ int secp256k1_rfc6979_hmac_sha256_generate (int *,unsigned char*,int) ;
+ int secp256k1_rfc6979_hmac_sha256_initialize (int *,unsigned char const*,int) ;
 
 void run_rfc6979_hmac_sha256_tests(void) {
     static const unsigned char key1[65] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x00, 0x4b, 0xf5, 0x12, 0x2f, 0x34, 0x45, 0x54, 0xc5, 0x3b, 0xde, 0x2e, 0xbb, 0x8c, 0xd2, 0xb7, 0xe3, 0xd1, 0x60, 0x0a, 0xd6, 0x31, 0xc3, 0x85, 0xa5, 0xd7, 0xcc, 0xe2, 0x3c, 0x77, 0x85, 0x45, 0x9a, 0};

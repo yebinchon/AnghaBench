@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int limb ;
-typedef  int* felem ;
 
-/* Variables and functions */
- int bottom57bits ; 
- int bottom58bits ; 
- int /*<<< orphan*/  felem_assign (int*,int* const) ; 
- int* kPrime ; 
+
+
+
+typedef int limb ;
+typedef int* felem ;
+
+
+ int bottom57bits ;
+ int bottom58bits ;
+ int felem_assign (int*,int* const) ;
+ int* kPrime ;
 
 __attribute__((used)) static limb felem_is_zero(const felem in)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static limb felem_is_zero(const felem in)
 
     ftmp[0] += ftmp[8] >> 57;
     ftmp[8] &= bottom57bits;
-    /* ftmp[8] < 2^57 */
+
     ftmp[1] += ftmp[0] >> 58;
     ftmp[0] &= bottom58bits;
     ftmp[2] += ftmp[1] >> 58;
@@ -44,14 +44,6 @@ __attribute__((used)) static limb felem_is_zero(const felem in)
     ftmp[6] &= bottom58bits;
     ftmp[8] += ftmp[7] >> 58;
     ftmp[7] &= bottom58bits;
-    /* ftmp[8] < 2^57 + 4 */
-
-    /*
-     * The ninth limb of 2*(2^521-1) is 0x03ffffffffffffff, which is greater
-     * than our bound for ftmp[8]. Therefore we only have to check if the
-     * zero is zero or 2^521-1.
-     */
-
     is_zero = 0;
     is_zero |= ftmp[0];
     is_zero |= ftmp[1];
@@ -64,10 +56,10 @@ __attribute__((used)) static limb felem_is_zero(const felem in)
     is_zero |= ftmp[8];
 
     is_zero--;
-    /*
-     * We know that ftmp[i] < 2^63, therefore the only way that the top bit
-     * can be set is if is_zero was 0 before the decrement.
-     */
+
+
+
+
     is_zero = 0 - (is_zero >> 63);
 
     is_p = ftmp[0] ^ kPrime[0];

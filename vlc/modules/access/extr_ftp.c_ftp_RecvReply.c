@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  access_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* ftp_GetLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- unsigned int strtoul (char*,char**,int) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int access_sys_t ;
+
+
+ int free (char*) ;
+ char* ftp_GetLine (int *,int *) ;
+ int msg_Dbg (int *,char*,char*) ;
+ int msg_Err (int *,char*) ;
+ int strncmp (char*,char*,int) ;
+ unsigned int strtoul (char*,char**,int) ;
 
 __attribute__((used)) static int ftp_RecvReply( vlc_object_t *obj, access_sys_t *sys,
                           char **restrict strp,
                           void (*cb)(void *, const char *), void *opaque )
 {
     char *resp = ftp_GetLine( obj, sys );
-    if( resp == NULL )
+    if( resp == ((void*)0) )
         return -1;
 
     char *end;
@@ -38,7 +38,7 @@ __attribute__((used)) static int ftp_RecvReply( vlc_object_t *obj, access_sys_t 
     }
     msg_Dbg( obj, "received response: \"%s\"", resp );
 
-    if( *end == '-' ) /* Multi-line response */
+    if( *end == '-' )
     {
         bool done;
 
@@ -46,7 +46,7 @@ __attribute__((used)) static int ftp_RecvReply( vlc_object_t *obj, access_sys_t 
         do
         {
             char *line = ftp_GetLine( obj, sys );
-            if( line == NULL )
+            if( line == ((void*)0) )
                 goto error;
 
             done = !strncmp( resp, line, 4 );
@@ -57,7 +57,7 @@ __attribute__((used)) static int ftp_RecvReply( vlc_object_t *obj, access_sys_t 
         while( !done );
     }
 
-    if( strp != NULL )
+    if( strp != ((void*)0) )
         *strp = resp;
     else
         free( resp );

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_10__ ;
+
+
 struct TYPE_20__ {TYPE_10__* cdr; TYPE_10__* car; } ;
-typedef  TYPE_2__ node ;
-typedef  scalar_t__ mrb_sym ;
-typedef  int mrb_int ;
-struct TYPE_21__ {int /*<<< orphan*/  mrb; } ;
-typedef  TYPE_3__ codegen_scope ;
+typedef TYPE_2__ node ;
+typedef scalar_t__ mrb_sym ;
+typedef int mrb_int ;
+struct TYPE_21__ {int mrb; } ;
+typedef TYPE_3__ codegen_scope ;
 struct TYPE_19__ {TYPE_2__* car; } ;
-struct TYPE_18__ {TYPE_1__* cdr; int /*<<< orphan*/  car; } ;
+struct TYPE_18__ {TYPE_1__* cdr; int car; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_ADD ; 
- int /*<<< orphan*/  OP_ARYPUSH ; 
- int /*<<< orphan*/  OP_DIV ; 
- int /*<<< orphan*/  OP_EQ ; 
- int /*<<< orphan*/  OP_GE ; 
- int /*<<< orphan*/  OP_GT ; 
- int /*<<< orphan*/  OP_JMPNIL ; 
- int /*<<< orphan*/  OP_LE ; 
- int /*<<< orphan*/  OP_LT ; 
- int /*<<< orphan*/  OP_MUL ; 
- int /*<<< orphan*/  OP_SEND ; 
- int /*<<< orphan*/  OP_SENDB ; 
- int /*<<< orphan*/  OP_SENDV ; 
- int /*<<< orphan*/  OP_SENDVB ; 
- int /*<<< orphan*/  OP_SUB ; 
- int /*<<< orphan*/  VAL ; 
- int /*<<< orphan*/  codegen (TYPE_3__*,TYPE_10__*,int /*<<< orphan*/ ) ; 
- int cursp () ; 
- int /*<<< orphan*/  dispatch (TYPE_3__*,int) ; 
- int /*<<< orphan*/  gen_addsub (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gen_move (TYPE_3__*,int,int,int) ; 
- int gen_values (TYPE_3__*,TYPE_10__*,int /*<<< orphan*/ ,int) ; 
- int genjmp2 (TYPE_3__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  genop_1 (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  genop_2 (TYPE_3__*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  genop_3 (TYPE_3__*,int /*<<< orphan*/ ,int,int,int) ; 
- char* mrb_sym_name_len (int /*<<< orphan*/ ,scalar_t__,int*) ; 
- int new_sym (TYPE_3__*,scalar_t__) ; 
- scalar_t__ nsym (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pop () ; 
- int /*<<< orphan*/  pop_n (int) ; 
- int /*<<< orphan*/  push () ; 
+
+ int OP_ADD ;
+ int OP_ARYPUSH ;
+ int OP_DIV ;
+ int OP_EQ ;
+ int OP_GE ;
+ int OP_GT ;
+ int OP_JMPNIL ;
+ int OP_LE ;
+ int OP_LT ;
+ int OP_MUL ;
+ int OP_SEND ;
+ int OP_SENDB ;
+ int OP_SENDV ;
+ int OP_SENDVB ;
+ int OP_SUB ;
+ int VAL ;
+ int codegen (TYPE_3__*,TYPE_10__*,int ) ;
+ int cursp () ;
+ int dispatch (TYPE_3__*,int) ;
+ int gen_addsub (TYPE_3__*,int ,int) ;
+ int gen_move (TYPE_3__*,int,int,int) ;
+ int gen_values (TYPE_3__*,TYPE_10__*,int ,int) ;
+ int genjmp2 (TYPE_3__*,int ,int,int ,int) ;
+ int genop_1 (TYPE_3__*,int ,int) ;
+ int genop_2 (TYPE_3__*,int ,int,int) ;
+ int genop_3 (TYPE_3__*,int ,int,int,int) ;
+ char* mrb_sym_name_len (int ,scalar_t__,int*) ;
+ int new_sym (TYPE_3__*,scalar_t__) ;
+ scalar_t__ nsym (int ) ;
+ int pop () ;
+ int pop_n (int) ;
+ int push () ;
 
 __attribute__((used)) static void
 gen_call(codegen_scope *s, node *tree, mrb_sym name, int sp, int val, int safe)
@@ -64,7 +64,7 @@ gen_call(codegen_scope *s, node *tree, mrb_sym name, int sp, int val, int safe)
   int skip = 0;
   int n = 0, noop = 0, sendv = 0, blk = 0;
 
-  codegen(s, tree->car, VAL); /* receiver */
+  codegen(s, tree->car, VAL);
   if (safe) {
     int recv = cursp()-1;
     gen_move(s, cursp(), recv, 1);
@@ -78,7 +78,7 @@ gen_call(codegen_scope *s, node *tree, mrb_sym name, int sp, int val, int safe)
       push();
     }
   }
-  if (sp) {                     /* last argument pushed (attr=) */
+  if (sp) {
     if (sendv) {
       gen_move(s, cursp(), sp, 0);
       pop();
@@ -103,31 +103,31 @@ gen_call(codegen_scope *s, node *tree, mrb_sym name, int sp, int val, int safe)
     mrb_int symlen;
     const char *symname = mrb_sym_name_len(s->mrb, sym, &symlen);
 
-    if (!noop && symlen == 1 && symname[0] == '+' && n == 1)  {
+    if (!noop && symlen == 1 && symname[0] == '+' && n == 1) {
       gen_addsub(s, OP_ADD, cursp());
     }
-    else if (!noop && symlen == 1 && symname[0] == '-' && n == 1)  {
+    else if (!noop && symlen == 1 && symname[0] == '-' && n == 1) {
       gen_addsub(s, OP_SUB, cursp());
     }
-    else if (!noop && symlen == 1 && symname[0] == '*' && n == 1)  {
+    else if (!noop && symlen == 1 && symname[0] == '*' && n == 1) {
       genop_1(s, OP_MUL, cursp());
     }
-    else if (!noop && symlen == 1 && symname[0] == '/' && n == 1)  {
+    else if (!noop && symlen == 1 && symname[0] == '/' && n == 1) {
       genop_1(s, OP_DIV, cursp());
     }
-    else if (!noop && symlen == 1 && symname[0] == '<' && n == 1)  {
+    else if (!noop && symlen == 1 && symname[0] == '<' && n == 1) {
       genop_1(s, OP_LT, cursp());
     }
-    else if (!noop && symlen == 2 && symname[0] == '<' && symname[1] == '=' && n == 1)  {
+    else if (!noop && symlen == 2 && symname[0] == '<' && symname[1] == '=' && n == 1) {
       genop_1(s, OP_LE, cursp());
     }
-    else if (!noop && symlen == 1 && symname[0] == '>' && n == 1)  {
+    else if (!noop && symlen == 1 && symname[0] == '>' && n == 1) {
       genop_1(s, OP_GT, cursp());
     }
-    else if (!noop && symlen == 2 && symname[0] == '>' && symname[1] == '=' && n == 1)  {
+    else if (!noop && symlen == 2 && symname[0] == '>' && symname[1] == '=' && n == 1) {
       genop_1(s, OP_GE, cursp());
     }
-    else if (!noop && symlen == 2 && symname[0] == '=' && symname[1] == '=' && n == 1)  {
+    else if (!noop && symlen == 2 && symname[0] == '=' && symname[1] == '=' && n == 1) {
       genop_1(s, OP_EQ, cursp());
     }
     else {

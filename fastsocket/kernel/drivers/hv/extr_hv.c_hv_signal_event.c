@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HVCALL_SIGNAL_EVENT ; 
- int do_hypercall (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u16 ;
+
+
+ int HVCALL_SIGNAL_EVENT ;
+ int do_hypercall (int ,void*,int *) ;
 
 u16 hv_signal_event(void *con_id)
 {
-	u16 status;
+ u16 status;
 
-	status = (do_hypercall(HVCALL_SIGNAL_EVENT, con_id, NULL) & 0xFFFF);
+ status = (do_hypercall(HVCALL_SIGNAL_EVENT, con_id, ((void*)0)) & 0xFFFF);
 
-	return status;
+ return status;
 }

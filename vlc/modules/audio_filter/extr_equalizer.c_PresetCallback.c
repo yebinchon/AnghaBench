@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* psz_string; } ;
-typedef  TYPE_1__ vlc_value_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_9__ {int /*<<< orphan*/  rem; int /*<<< orphan*/  quot; } ;
-typedef  TYPE_2__ lldiv_t ;
-struct TYPE_10__ {float* f_amp; int /*<<< orphan*/  f_preamp; int /*<<< orphan*/  psz_name; } ;
-typedef  TYPE_3__ eqz_preset_t ;
+typedef TYPE_1__ vlc_value_t ;
+typedef int vlc_object_t ;
+struct TYPE_9__ {int rem; int quot; } ;
+typedef TYPE_2__ lldiv_t ;
+struct TYPE_10__ {float* f_amp; int f_preamp; int psz_name; } ;
+typedef TYPE_3__ eqz_preset_t ;
 
-/* Variables and functions */
- unsigned int EQZ_BANDS_MAX ; 
- unsigned int NB_PRESETS ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int asprintf (char**,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* eqz_preset_10b ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_2__ lldiv (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lroundf (float) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  msg_Info (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_SetFloat (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_SetString (int /*<<< orphan*/ *,char*,char*) ; 
+
+ unsigned int EQZ_BANDS_MAX ;
+ unsigned int NB_PRESETS ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int asprintf (char**,char*,char*,int ,int ) ;
+ TYPE_3__* eqz_preset_10b ;
+ int free (char*) ;
+ TYPE_2__ lldiv (int ,int) ;
+ int lroundf (float) ;
+ int msg_Err (int *,char*,char const*) ;
+ int msg_Info (int *,char*,...) ;
+ int strcasecmp (int ,char const*) ;
+ scalar_t__ unlikely (int ) ;
+ int var_SetFloat (int *,char*,int ) ;
+ int var_SetString (int *,char*,char*) ;
 
 __attribute__((used)) static int PresetCallback( vlc_object_t *p_aout, char const *psz_cmd,
                          vlc_value_t oldval, vlc_value_t newval, void *p_data )
 {
-    const eqz_preset_t *preset = NULL;
+    const eqz_preset_t *preset = ((void*)0);
     const char *psz_preset = newval.psz_string;
 
     for( unsigned i = 0; i < NB_PRESETS; i++ )
@@ -52,7 +52,7 @@ __attribute__((used)) static int PresetCallback( vlc_object_t *p_aout, char cons
             break;
         }
 
-    if( preset == NULL )
+    if( preset == ((void*)0) )
     {
         msg_Err( p_aout, "equalizer preset '%s' not found", psz_preset );
         msg_Info( p_aout, "full list:" );
@@ -61,7 +61,7 @@ __attribute__((used)) static int PresetCallback( vlc_object_t *p_aout, char cons
         return VLC_EGENERIC;
     }
 
-    char *bands = NULL;
+    char *bands = ((void*)0);
 
     for( unsigned i = 0; i < EQZ_BANDS_MAX; i++ )
     {
@@ -71,10 +71,10 @@ __attribute__((used)) static int PresetCallback( vlc_object_t *p_aout, char cons
 
         if( asprintf( &psz, "%s %lld.%07llu", i ? bands : "",
                       d.quot, d.rem ) == -1 )
-            psz = NULL;
+            psz = ((void*)0);
 
         free( bands );
-        if( unlikely(psz == NULL) )
+        if( unlikely(psz == ((void*)0)) )
             return VLC_ENOMEM;
         bands = psz;
     }

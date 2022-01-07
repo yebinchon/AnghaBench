@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ count; } ;
-struct TYPE_11__ {int /*<<< orphan*/  mmgr; TYPE_6__* list; int /*<<< orphan*/  error; } ;
+struct TYPE_11__ {int mmgr; TYPE_6__* list; int error; } ;
 struct TYPE_10__ {int obj_id; } ;
 struct TYPE_8__ {int obj_id; } ;
 struct TYPE_9__ {TYPE_1__ header; } ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  TYPE_2__* HPDF_Proxy ;
-typedef  TYPE_3__ HPDF_Obj_Header ;
-typedef  TYPE_4__* HPDF_Array ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef TYPE_2__* HPDF_Proxy ;
+typedef TYPE_3__ HPDF_Obj_Header ;
+typedef TYPE_4__* HPDF_Array ;
 
-/* Variables and functions */
- scalar_t__ HPDF_ARRAY_COUNT_ERR ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_INVALID_OBJECT ; 
- scalar_t__ HPDF_LIMIT_MAX_ARRAY ; 
- scalar_t__ HPDF_List_Add (TYPE_6__*,void*) ; 
- scalar_t__ HPDF_OK ; 
- int HPDF_OTYPE_DIRECT ; 
- int HPDF_OTYPE_INDIRECT ; 
- int /*<<< orphan*/  HPDF_Obj_Free (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- TYPE_2__* HPDF_Proxy_New (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ HPDF_SetError (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ HPDF_ARRAY_COUNT_ERR ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ scalar_t__ HPDF_INVALID_OBJECT ;
+ scalar_t__ HPDF_LIMIT_MAX_ARRAY ;
+ scalar_t__ HPDF_List_Add (TYPE_6__*,void*) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_OTYPE_DIRECT ;
+ int HPDF_OTYPE_INDIRECT ;
+ int HPDF_Obj_Free (int ,void*) ;
+ int HPDF_PTRACE (char*) ;
+ TYPE_2__* HPDF_Proxy_New (int ,void*) ;
+ scalar_t__ HPDF_SetError (int ,scalar_t__,int ) ;
 
 HPDF_STATUS
-HPDF_Array_Add  (HPDF_Array  array,
-                 void        *obj)
+HPDF_Array_Add (HPDF_Array array,
+                 void *obj)
 {
     HPDF_Obj_Header *header;
     HPDF_STATUS ret;

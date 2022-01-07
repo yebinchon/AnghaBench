@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
 
-/* Variables and functions */
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  convert_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ fabs (double) ; 
- int /*<<< orphan*/  strm_float_value (double) ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_number_p (int /*<<< orphan*/ ) ; 
- double strm_value_float (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_value ;
+typedef int strm_stream ;
+
+
+ int STRM_NG ;
+ int STRM_OK ;
+ int convert_number (int *,int ,int ) ;
+ scalar_t__ fabs (double) ;
+ int strm_float_value (double) ;
+ int strm_get_args (int *,int,int *,char*,int **,int*,int *) ;
+ int strm_number_p (int ) ;
+ double strm_value_float (int ) ;
 
 __attribute__((used)) static int
 ary_sum_avg(strm_stream* strm, int argc, strm_value* args, strm_value* ret, int avg)
@@ -46,7 +46,7 @@ ary_sum_avg(strm_stream* strm, int argc, strm_value* args, strm_value* ret, int 
         c += ((sum - t) + x);
       else
         c += ((x - t) + sum);
-      sum =  t;
+      sum = t;
     }
   }
   else {
@@ -64,7 +64,7 @@ ary_sum_avg(strm_stream* strm, int argc, strm_value* args, strm_value* ret, int 
         c += ((sum - t) + x);
       else
         c += ((x - t) + sum);
-      sum =  t;
+      sum = t;
     }
   }
   sum += c;

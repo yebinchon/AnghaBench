@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_9__ ;
-typedef  struct TYPE_27__   TYPE_8__ ;
-typedef  struct TYPE_26__   TYPE_7__ ;
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
-typedef  struct TYPE_19__   TYPE_16__ ;
-typedef  struct TYPE_18__   TYPE_15__ ;
 
-/* Type definitions */
-struct TYPE_23__ {size_t cbData; int /*<<< orphan*/  pbData; } ;
+
+
+typedef struct TYPE_28__ TYPE_9__ ;
+typedef struct TYPE_27__ TYPE_8__ ;
+typedef struct TYPE_26__ TYPE_7__ ;
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+typedef struct TYPE_19__ TYPE_16__ ;
+typedef struct TYPE_18__ TYPE_15__ ;
+
+
+struct TYPE_23__ {size_t cbData; int pbData; } ;
 struct TYPE_18__ {scalar_t__ cbData; } ;
 struct TYPE_19__ {scalar_t__ cbData; } ;
 struct TYPE_20__ {size_t cAltEntry; TYPE_7__* rgAltEntry; } ;
 struct TYPE_28__ {TYPE_4__ KeyId; TYPE_15__ CertSerialNumber; TYPE_16__ CertIssuer; TYPE_15__ AuthorityCertSerialNumber; TYPE_1__ AuthorityCertIssuer; } ;
-struct TYPE_27__ {TYPE_5__* pCertInfo; int /*<<< orphan*/  dwCertEncodingType; } ;
+struct TYPE_27__ {TYPE_5__* pCertInfo; int dwCertEncodingType; } ;
 struct TYPE_21__ {TYPE_16__ DirectoryName; } ;
 struct TYPE_26__ {scalar_t__ dwAltNameChoice; TYPE_2__ u; } ;
-struct TYPE_22__ {int /*<<< orphan*/  cbData; int /*<<< orphan*/  pbData; } ;
+struct TYPE_22__ {int cbData; int pbData; } ;
 struct TYPE_25__ {TYPE_3__ Value; } ;
-struct TYPE_24__ {int /*<<< orphan*/  Issuer; TYPE_16__ Subject; int /*<<< orphan*/  SerialNumber; int /*<<< orphan*/  rgExtension; int /*<<< orphan*/  cExtension; } ;
-typedef  TYPE_6__* PCERT_EXTENSION ;
-typedef  TYPE_7__* PCERT_ALT_NAME_ENTRY ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  size_t DWORD ;
-typedef  TYPE_8__ CERT_CONTEXT ;
-typedef  TYPE_9__ CERT_AUTHORITY_KEY_ID_INFO ;
-typedef  TYPE_9__ CERT_AUTHORITY_KEY_ID2_INFO ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_24__ {int Issuer; TYPE_16__ Subject; int SerialNumber; int rgExtension; int cExtension; } ;
+typedef TYPE_6__* PCERT_EXTENSION ;
+typedef TYPE_7__* PCERT_ALT_NAME_ENTRY ;
+typedef int * LPBYTE ;
+typedef size_t DWORD ;
+typedef TYPE_8__ CERT_CONTEXT ;
+typedef TYPE_9__ CERT_AUTHORITY_KEY_ID_INFO ;
+typedef TYPE_9__ CERT_AUTHORITY_KEY_ID2_INFO ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ CERT_ALT_NAME_DIRECTORY_NAME ; 
- int /*<<< orphan*/  CERT_KEY_IDENTIFIER_PROP_ID ; 
- size_t CERT_TRUST_HAS_KEY_MATCH_ISSUER ; 
- size_t CERT_TRUST_HAS_NAME_MATCH_ISSUER ; 
- size_t CERT_TRUST_IS_SELF_SIGNED ; 
- int CRYPT_DECODE_ALLOC_FLAG ; 
- int CRYPT_DECODE_NOCOPY_FLAG ; 
- scalar_t__ CertCompareCertificateName (int /*<<< orphan*/ ,TYPE_16__*,int /*<<< orphan*/ *) ; 
- scalar_t__ CertCompareIntegerBlob (TYPE_15__*,int /*<<< orphan*/ *) ; 
- TYPE_6__* CertFindExtension (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CertGetCertificateContextProperty (TYPE_8__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  CryptDecodeObjectEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,TYPE_9__**,size_t*) ; 
- int /*<<< orphan*/ * CryptMemAlloc (size_t) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  LocalFree (TYPE_9__*) ; 
- int /*<<< orphan*/  X509_AUTHORITY_KEY_ID ; 
- int /*<<< orphan*/  X509_AUTHORITY_KEY_ID2 ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  szOID_AUTHORITY_KEY_IDENTIFIER ; 
- int /*<<< orphan*/  szOID_AUTHORITY_KEY_IDENTIFIER2 ; 
+
+ scalar_t__ CERT_ALT_NAME_DIRECTORY_NAME ;
+ int CERT_KEY_IDENTIFIER_PROP_ID ;
+ size_t CERT_TRUST_HAS_KEY_MATCH_ISSUER ;
+ size_t CERT_TRUST_HAS_NAME_MATCH_ISSUER ;
+ size_t CERT_TRUST_IS_SELF_SIGNED ;
+ int CRYPT_DECODE_ALLOC_FLAG ;
+ int CRYPT_DECODE_NOCOPY_FLAG ;
+ scalar_t__ CertCompareCertificateName (int ,TYPE_16__*,int *) ;
+ scalar_t__ CertCompareIntegerBlob (TYPE_15__*,int *) ;
+ TYPE_6__* CertFindExtension (int ,int ,int ) ;
+ int CertGetCertificateContextProperty (TYPE_8__ const*,int ,int *,size_t*) ;
+ int CryptDecodeObjectEx (int ,int ,int ,int ,int,int *,TYPE_9__**,size_t*) ;
+ int * CryptMemAlloc (size_t) ;
+ int CryptMemFree (int *) ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int LocalFree (TYPE_9__*) ;
+ int X509_AUTHORITY_KEY_ID ;
+ int X509_AUTHORITY_KEY_ID2 ;
+ int memcmp (int *,int ,size_t) ;
+ int szOID_AUTHORITY_KEY_IDENTIFIER ;
+ int szOID_AUTHORITY_KEY_IDENTIFIER2 ;
 
 DWORD CRYPT_IsCertificateSelfSigned(const CERT_CONTEXT *cert)
 {
@@ -78,14 +78,14 @@ DWORD CRYPT_IsCertificateSelfSigned(const CERT_CONTEXT *cert)
 
         ret = CryptDecodeObjectEx(cert->dwCertEncodingType,
          X509_AUTHORITY_KEY_ID2, ext->Value.pbData, ext->Value.cbData,
-         CRYPT_DECODE_ALLOC_FLAG | CRYPT_DECODE_NOCOPY_FLAG, NULL,
+         CRYPT_DECODE_ALLOC_FLAG | CRYPT_DECODE_NOCOPY_FLAG, ((void*)0),
          &info, &size);
         if (ret)
         {
             if (info->AuthorityCertIssuer.cAltEntry &&
              info->AuthorityCertSerialNumber.cbData)
             {
-                PCERT_ALT_NAME_ENTRY directoryName = NULL;
+                PCERT_ALT_NAME_ENTRY directoryName = ((void*)0);
                 DWORD i;
 
                 for (i = 0; !directoryName &&
@@ -109,7 +109,7 @@ DWORD CRYPT_IsCertificateSelfSigned(const CERT_CONTEXT *cert)
             else if (info->KeyId.cbData)
             {
                 ret = CertGetCertificateContextProperty(cert,
-                 CERT_KEY_IDENTIFIER_PROP_ID, NULL, &size);
+                 CERT_KEY_IDENTIFIER_PROP_ID, ((void*)0), &size);
                 if (ret && size == info->KeyId.cbData)
                 {
                     LPBYTE buf = CryptMemAlloc(size);
@@ -133,7 +133,7 @@ DWORD CRYPT_IsCertificateSelfSigned(const CERT_CONTEXT *cert)
 
         ret = CryptDecodeObjectEx(cert->dwCertEncodingType,
          X509_AUTHORITY_KEY_ID, ext->Value.pbData, ext->Value.cbData,
-         CRYPT_DECODE_ALLOC_FLAG | CRYPT_DECODE_NOCOPY_FLAG, NULL,
+         CRYPT_DECODE_ALLOC_FLAG | CRYPT_DECODE_NOCOPY_FLAG, ((void*)0),
          &info, &size);
         if (ret)
         {
@@ -146,7 +146,7 @@ DWORD CRYPT_IsCertificateSelfSigned(const CERT_CONTEXT *cert)
             else if (info->KeyId.cbData)
             {
                 ret = CertGetCertificateContextProperty(cert,
-                 CERT_KEY_IDENTIFIER_PROP_ID, NULL, &size);
+                 CERT_KEY_IDENTIFIER_PROP_ID, ((void*)0), &size);
                 if (ret && size == info->KeyId.cbData)
                 {
                     LPBYTE buf = CryptMemAlloc(size);

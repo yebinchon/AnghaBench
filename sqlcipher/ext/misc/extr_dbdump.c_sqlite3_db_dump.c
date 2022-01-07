@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_5__ {int rc; int (* xCallback ) (char const*,void*) ;scalar_t__ nErr; scalar_t__ writableSchema; void* pArg; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ DState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  output_sql_from_query (TYPE_1__*,char*,char const*,...) ; 
- int /*<<< orphan*/  run_schema_dump_query (TYPE_1__*,char*,char const*,...) ; 
- int sqlite3_exec (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int x ;
+typedef int sqlite3 ;
+struct TYPE_5__ {int rc; int (* xCallback ) (char const*,void*) ;scalar_t__ nErr; scalar_t__ writableSchema; void* pArg; int * db; } ;
+typedef TYPE_1__ DState ;
+
+
+ int memset (TYPE_1__*,int ,int) ;
+ int output_sql_from_query (TYPE_1__*,char*,char const*,...) ;
+ int run_schema_dump_query (TYPE_1__*,char*,char const*,...) ;
+ int sqlite3_exec (int *,char*,int ,int ,int ) ;
 
 int sqlite3_db_dump(
-  sqlite3 *db,               /* The database connection */
-  const char *zSchema,       /* Which schema to dump.  Usually "main". */
-  const char *zTable,        /* Which table to dump.  NULL means everything. */
-  int (*xCallback)(const char*,void*),   /* Output sent to this callback */
-  void *pArg                             /* Second argument of the callback */
+  sqlite3 *db,
+  const char *zSchema,
+  const char *zTable,
+  int (*xCallback)(const char*,void*),
+  void *pArg
 ){
   DState x;
   memset(&x, 0, sizeof(x));
@@ -64,7 +64,7 @@ int sqlite3_db_dump(
       "  AND type IN ('index','trigger','view')"
       "  AND tbl_name=%Q COLLATE nocase",
       zSchema, zTable
-    ); 
+    );
   }
   if( x.writableSchema ){
     xCallback("PRAGMA writable_schema=OFF;\n", pArg);

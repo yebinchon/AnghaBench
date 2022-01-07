@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct query_state {int kevent_watermark; int /*<<< orphan*/  kevent_filter; int /*<<< orphan*/  process_func; int /*<<< orphan*/  config_entry; scalar_t__ mdata; int /*<<< orphan*/  request; int /*<<< orphan*/  response; } ;
-struct cache_mp_write_session_write_response {int /*<<< orphan*/  error_code; } ;
-struct cache_mp_write_session_write_request {int /*<<< orphan*/  data_size; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  cache_mp_write_session ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CELT_MULTIPART ; 
- int /*<<< orphan*/  CET_MP_WRITE_SESSION_WRITE_RESPONSE ; 
- int /*<<< orphan*/  EVFILT_WRITE ; 
- int /*<<< orphan*/  TRACE_IN (int (*) (struct query_state*)) ; 
- int /*<<< orphan*/  TRACE_OUT (int (*) (struct query_state*)) ; 
- int /*<<< orphan*/  cache_mp_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  configuration_lock_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  configuration_unlock_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct cache_mp_write_session_write_request* get_cache_mp_write_session_write_request (int /*<<< orphan*/ *) ; 
- struct cache_mp_write_session_write_response* get_cache_mp_write_session_write_response (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_comm_element (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  on_mp_write_session_write_response_write1 ; 
+
+
+
+struct query_state {int kevent_watermark; int kevent_filter; int process_func; int config_entry; scalar_t__ mdata; int request; int response; } ;
+struct cache_mp_write_session_write_response {int error_code; } ;
+struct cache_mp_write_session_write_request {int data_size; int data; } ;
+typedef int cache_mp_write_session ;
+
+
+ int CELT_MULTIPART ;
+ int CET_MP_WRITE_SESSION_WRITE_RESPONSE ;
+ int EVFILT_WRITE ;
+ int TRACE_IN (int (*) (struct query_state*)) ;
+ int TRACE_OUT (int (*) (struct query_state*)) ;
+ int cache_mp_write (int ,int ,int ) ;
+ int configuration_lock_entry (int ,int ) ;
+ int configuration_unlock_entry (int ,int ) ;
+ struct cache_mp_write_session_write_request* get_cache_mp_write_session_write_request (int *) ;
+ struct cache_mp_write_session_write_response* get_cache_mp_write_session_write_response (int *) ;
+ int init_comm_element (int *,int ) ;
+ int on_mp_write_session_write_response_write1 ;
 
 __attribute__((used)) static int
 on_mp_write_session_write_request_process(struct query_state *qstate)
 {
-	struct cache_mp_write_session_write_request	*write_request;
-	struct cache_mp_write_session_write_response	*write_response;
+ struct cache_mp_write_session_write_request *write_request;
+ struct cache_mp_write_session_write_response *write_response;
 
-	TRACE_IN(on_mp_write_session_write_request_process);
-	init_comm_element(&qstate->response,
-		CET_MP_WRITE_SESSION_WRITE_RESPONSE);
-	write_response = get_cache_mp_write_session_write_response(
-		&qstate->response);
-	write_request = get_cache_mp_write_session_write_request(
-		&qstate->request);
+ TRACE_IN(on_mp_write_session_write_request_process);
+ init_comm_element(&qstate->response,
+  CET_MP_WRITE_SESSION_WRITE_RESPONSE);
+ write_response = get_cache_mp_write_session_write_response(
+  &qstate->response);
+ write_request = get_cache_mp_write_session_write_request(
+  &qstate->request);
 
-	configuration_lock_entry(qstate->config_entry, CELT_MULTIPART);
-	write_response->error_code = cache_mp_write(
-		(cache_mp_write_session)qstate->mdata,
-		write_request->data,
-		write_request->data_size);
-	configuration_unlock_entry(qstate->config_entry, CELT_MULTIPART);
+ configuration_lock_entry(qstate->config_entry, CELT_MULTIPART);
+ write_response->error_code = cache_mp_write(
+  (cache_mp_write_session)qstate->mdata,
+  write_request->data,
+  write_request->data_size);
+ configuration_unlock_entry(qstate->config_entry, CELT_MULTIPART);
 
-	qstate->kevent_watermark = sizeof(int);
-	qstate->process_func = on_mp_write_session_write_response_write1;
-	qstate->kevent_filter = EVFILT_WRITE;
+ qstate->kevent_watermark = sizeof(int);
+ qstate->process_func = on_mp_write_session_write_response_write1;
+ qstate->kevent_filter = EVFILT_WRITE;
 
-	TRACE_OUT(on_mp_write_session_write_request_process);
-	return (0);
+ TRACE_OUT(on_mp_write_session_write_request_process);
+ return (0);
 }

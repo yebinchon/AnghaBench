@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_4__ ;
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_25__ TYPE_4__ ;
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
 struct TYPE_22__ {int member_0; int member_1; int member_2; int member_3; int member_4; } ;
-typedef  TYPE_1__ uint8_t ;
-struct TYPE_23__ {int i_visible_lines; int i_pitch; int /*<<< orphan*/  p_pixels; } ;
-typedef  TYPE_2__ plane_t ;
+typedef TYPE_1__ uint8_t ;
+struct TYPE_23__ {int i_visible_lines; int i_pitch; int p_pixels; } ;
+typedef TYPE_2__ plane_t ;
 struct TYPE_24__ {int i_planes; TYPE_2__* p; } ;
-typedef  TYPE_3__ picture_t ;
+typedef TYPE_3__ picture_t ;
 struct TYPE_25__ {int nbChannels; int scale; int barWidth; int* i_values; scalar_t__ alarm; TYPE_3__* p_pic; } ;
-typedef  TYPE_4__ BarGraph_t ;
+typedef TYPE_4__ BarGraph_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Draw2VLines (TYPE_2__*,int,int,TYPE_1__ const*) ; 
- int /*<<< orphan*/  DrawHLines (TYPE_2__*,int,int,TYPE_1__ const*,int,int) ; 
- int /*<<< orphan*/  DrawNumber (TYPE_2__*,int,TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  VLC_FOURCC (char,unsigned char,char,char) ; 
- TYPE_1__ const* black ; 
- TYPE_1__ const* bright_green ; 
- TYPE_1__ const* bright_red ; 
- TYPE_1__ const* bright_yellow ; 
- TYPE_1__ const* green ; 
- int iec_scale (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int,int) ; 
- TYPE_3__* picture_New (int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  picture_Release (TYPE_3__*) ; 
- TYPE_1__ const* red ; 
- TYPE_1__ const* white ; 
- TYPE_1__ const* yellow ; 
+
+ int Draw2VLines (TYPE_2__*,int,int,TYPE_1__ const*) ;
+ int DrawHLines (TYPE_2__*,int,int,TYPE_1__ const*,int,int) ;
+ int DrawNumber (TYPE_2__*,int,TYPE_1__ const*,int) ;
+ int VLC_FOURCC (char,unsigned char,char,char) ;
+ TYPE_1__ const* black ;
+ TYPE_1__ const* bright_green ;
+ TYPE_1__ const* bright_red ;
+ TYPE_1__ const* bright_yellow ;
+ TYPE_1__ const* green ;
+ int iec_scale (int) ;
+ int memset (int ,int,int) ;
+ TYPE_3__* picture_New (int ,int,int,int,int) ;
+ int picture_Release (TYPE_3__*) ;
+ TYPE_1__ const* red ;
+ TYPE_1__ const* white ;
+ TYPE_1__ const* yellow ;
 
 __attribute__((used)) static void Draw(BarGraph_t *b)
 {
     int nbChannels = b->nbChannels;
-    int scale      = b->scale;
-    int barWidth   = b->barWidth;
+    int scale = b->scale;
+    int barWidth = b->barWidth;
 
     int w = 40;
     if (nbChannels > 0)
@@ -81,13 +81,13 @@ __attribute__((used)) static void Draw(BarGraph_t *b)
 
     for (int i = 0; i < 6; i++) {
         DrawHLines(p, h - 1 - level[i] - 1, 24, white, 1, 3);
-        DrawHLines(p, h - 1 - level[i],     24, black, 2, 3);
+        DrawHLines(p, h - 1 - level[i], 24, black, 2, 3);
         DrawNumber(p, h, pixmap[i], level[i]);
     }
 
-    int minus8  = iec_scale(- 8) * scale + 20;
+    int minus8 = iec_scale(- 8) * scale + 20;
     int minus18 = iec_scale(-18) * scale + 20;
-    int *i_values  = b->i_values;
+    int *i_values = b->i_values;
     const uint8_t *indicator_color = b->alarm ? bright_red : black;
 
     for (int i = 0; i < nbChannels; i++) {

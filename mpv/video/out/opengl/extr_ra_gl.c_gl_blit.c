@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_tex_gl {int /*<<< orphan*/  fbo; } ;
-struct TYPE_4__ {int /*<<< orphan*/  blit_dst; int /*<<< orphan*/  blit_src; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct ra_tex_gl {int fbo; } ;
+struct TYPE_4__ {int blit_dst; int blit_src; } ;
 struct ra_tex {struct ra_tex_gl* priv; TYPE_1__ params; } ;
 struct ra {int dummy; } ;
-struct mp_rect {int /*<<< orphan*/  y1; int /*<<< orphan*/  x1; int /*<<< orphan*/  y0; int /*<<< orphan*/  x0; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* BindFramebuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* BlitFramebuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_2__ GL ;
+struct mp_rect {int y1; int x1; int y0; int x0; } ;
+struct TYPE_5__ {int (* BindFramebuffer ) (int ,int ) ;int (* BlitFramebuffer ) (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;} ;
+typedef TYPE_2__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_DRAW_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_NEAREST ; 
- int /*<<< orphan*/  GL_READ_FRAMEBUFFER ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_2__* ra_gl_get (struct ra*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_DRAW_FRAMEBUFFER ;
+ int GL_NEAREST ;
+ int GL_READ_FRAMEBUFFER ;
+ int assert (int ) ;
+ TYPE_2__* ra_gl_get (struct ra*) ;
+ int stub1 (int ,int ) ;
+ int stub2 (int ,int ) ;
+ int stub3 (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int stub4 (int ,int ) ;
+ int stub5 (int ,int ) ;
 
 __attribute__((used)) static void gl_blit(struct ra *ra, struct ra_tex *dst, struct ra_tex *src,
                     struct mp_rect *dst_rc, struct mp_rect *src_rc)

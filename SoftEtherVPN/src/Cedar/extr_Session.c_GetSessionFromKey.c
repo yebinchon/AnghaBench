@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_8__ {int /*<<< orphan*/  HubList; } ;
-struct TYPE_7__ {int /*<<< orphan*/  SessionList; } ;
-struct TYPE_6__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  ref; int /*<<< orphan*/  SessionKey; } ;
-typedef  TYPE_1__ SESSION ;
-typedef  TYPE_2__ HUB ;
-typedef  TYPE_3__ CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- scalar_t__ Cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SHA1_SIZE ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+typedef int UCHAR ;
+struct TYPE_8__ {int HubList; } ;
+struct TYPE_7__ {int SessionList; } ;
+struct TYPE_6__ {int lock; int ref; int SessionKey; } ;
+typedef TYPE_1__ SESSION ;
+typedef TYPE_2__ HUB ;
+typedef TYPE_3__ CEDAR ;
+
+
+ int AddRef (int ) ;
+ scalar_t__ Cmp (int ,int *,int ) ;
+ void* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int Lock (int ) ;
+ int LockList (int ) ;
+ int SHA1_SIZE ;
+ int Unlock (int ) ;
+ int UnlockList (int ) ;
 
 SESSION *GetSessionFromKey(CEDAR *cedar, UCHAR *session_key)
 {
-	HUB *h;
-	UINT i, j;
-	// Validate arguments
-	if (cedar == NULL || session_key == NULL)
-	{
-		return NULL;
-	}
+ HUB *h;
+ UINT i, j;
 
-	LockList(cedar->HubList);
-	{
-		for (i = 0;i < LIST_NUM(cedar->HubList);i++)
-		{
-			h = LIST_DATA(cedar->HubList, i);
-			LockList(h->SessionList);
-			{
-				for (j = 0;j < LIST_NUM(h->SessionList);j++)
-				{
-					SESSION *s = LIST_DATA(h->SessionList, j);
-					Lock(s->lock);
-					{
-						if (Cmp(s->SessionKey, session_key, SHA1_SIZE) == 0)
-						{
-							// Session found
-							AddRef(s->ref);
+ if (cedar == ((void*)0) || session_key == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-							// Unlock
-							Unlock(s->lock);
-							UnlockList(h->SessionList);
-							UnlockList(cedar->HubList);
-							return s;
-						}
-					}
-					Unlock(s->lock);
-				}
-			}
-			UnlockList(h->SessionList);
-		}
-	}
-	UnlockList(cedar->HubList);
+ LockList(cedar->HubList);
+ {
+  for (i = 0;i < LIST_NUM(cedar->HubList);i++)
+  {
+   h = LIST_DATA(cedar->HubList, i);
+   LockList(h->SessionList);
+   {
+    for (j = 0;j < LIST_NUM(h->SessionList);j++)
+    {
+     SESSION *s = LIST_DATA(h->SessionList, j);
+     Lock(s->lock);
+     {
+      if (Cmp(s->SessionKey, session_key, SHA1_SIZE) == 0)
+      {
 
-	return NULL;
+       AddRef(s->ref);
+
+
+       Unlock(s->lock);
+       UnlockList(h->SessionList);
+       UnlockList(cedar->HubList);
+       return s;
+      }
+     }
+     Unlock(s->lock);
+    }
+   }
+   UnlockList(h->SessionList);
+  }
+ }
+ UnlockList(cedar->HubList);
+
+ return ((void*)0);
 }

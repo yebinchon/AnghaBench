@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct TYPE_2__ {int /*<<< orphan*/  revision_id; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_2__ {int revision_id; } ;
 struct netxen_adapter {int fw_type; TYPE_1__ ahw; } ;
 
-/* Variables and functions */
- int NX_FLASH_ROMIMAGE ; 
- int /*<<< orphan*/  NX_IS_REVISION_P2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NX_IS_REVISION_P3P (int /*<<< orphan*/ ) ; 
-#define  NX_P2_MN_ROMIMAGE 132 
-#define  NX_P3_CT_ROMIMAGE 131 
-#define  NX_P3_MN_ROMIMAGE 130 
-#define  NX_UNIFIED_ROMIMAGE 129 
-#define  NX_UNKNOWN_ROMIMAGE 128 
- int /*<<< orphan*/  netxen_p3_has_mn (struct netxen_adapter*) ; 
+
+ int NX_FLASH_ROMIMAGE ;
+ int NX_IS_REVISION_P2 (int ) ;
+ int NX_IS_REVISION_P3P (int ) ;
+
+
+
+
+
+ int netxen_p3_has_mn (struct netxen_adapter*) ;
 
 __attribute__((used)) static void
 nx_get_next_fwtype(struct netxen_adapter *adapter)
 {
-	u8 fw_type;
+ u8 fw_type;
 
-	switch (adapter->fw_type) {
-	case NX_UNKNOWN_ROMIMAGE:
-		fw_type = NX_UNIFIED_ROMIMAGE;
-		break;
+ switch (adapter->fw_type) {
+ case 128:
+  fw_type = 129;
+  break;
 
-	case NX_UNIFIED_ROMIMAGE:
-		if (NX_IS_REVISION_P3P(adapter->ahw.revision_id))
-			fw_type = NX_FLASH_ROMIMAGE;
-		else if (NX_IS_REVISION_P2(adapter->ahw.revision_id))
-			fw_type = NX_P2_MN_ROMIMAGE;
-		else if (netxen_p3_has_mn(adapter))
-			fw_type = NX_P3_MN_ROMIMAGE;
-		else
-			fw_type = NX_P3_CT_ROMIMAGE;
-		break;
+ case 129:
+  if (NX_IS_REVISION_P3P(adapter->ahw.revision_id))
+   fw_type = NX_FLASH_ROMIMAGE;
+  else if (NX_IS_REVISION_P2(adapter->ahw.revision_id))
+   fw_type = 132;
+  else if (netxen_p3_has_mn(adapter))
+   fw_type = 130;
+  else
+   fw_type = 131;
+  break;
 
-	case NX_P3_MN_ROMIMAGE:
-		fw_type = NX_P3_CT_ROMIMAGE;
-		break;
+ case 130:
+  fw_type = 131;
+  break;
 
-	case NX_P2_MN_ROMIMAGE:
-	case NX_P3_CT_ROMIMAGE:
-	default:
-		fw_type = NX_FLASH_ROMIMAGE;
-		break;
-	}
+ case 132:
+ case 131:
+ default:
+  fw_type = NX_FLASH_ROMIMAGE;
+  break;
+ }
 
-	adapter->fw_type = fw_type;
+ adapter->fw_type = fw_type;
 }

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* realpath (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- char* strerror (scalar_t__) ; 
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ scalar_t__ errno ;
+ int fprintf (int ,char*,char*,...) ;
+ int free (char*) ;
+ char* realpath (char*,int *) ;
+ int stderr ;
+ int stdout ;
+ char* strerror (scalar_t__) ;
 
 int main(int argc, char* argv[]) {
   int num_errors = 0;
   errno = 0;
 
   for (int i = 1; i < argc; ++i) {
-    char* p = realpath(argv[i], NULL);
-    if (p == NULL) {
+    char* p = realpath(argv[i], ((void*)0));
+    if (p == ((void*)0)) {
       fprintf(stderr, "Error resolving path '%s', error was: '%s'\n",
               argv[i], strerror(errno));
       errno = 0;

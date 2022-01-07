@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  do_recv () ; 
- int /*<<< orphan*/  parse_opts (int,char**) ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int SIGINT ;
+ int do_recv () ;
+ int parse_opts (int,char**) ;
+ int sigint_handler ;
+ int signal (int ,int ) ;
 
 int main(int argc, char **argv)
 {
-	parse_opts(argc, argv);
+ parse_opts(argc, argv);
 
-	signal(SIGINT, sigint_handler);
+ signal(SIGINT, sigint_handler);
 
-	do_recv();
+ do_recv();
 
-	return 0;
+ return 0;
 }

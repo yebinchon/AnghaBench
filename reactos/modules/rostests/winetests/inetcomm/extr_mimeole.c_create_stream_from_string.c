@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ QuadPart; } ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ CreateStreamOnHGlobal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IStream_Seek (int /*<<< orphan*/ *,TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IStream_Write (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ scalar_t__ CreateStreamOnHGlobal (int *,int ,int **) ;
+ scalar_t__ IStream_Seek (int *,TYPE_1__,int ,int *) ;
+ scalar_t__ IStream_Write (int *,char const*,int ,int *) ;
+ int STREAM_SEEK_SET ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int ok (int,char*,scalar_t__) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static IStream *create_stream_from_string(const char *data)
 {
@@ -32,14 +32,14 @@ __attribute__((used)) static IStream *create_stream_from_string(const char *data
     IStream *stream;
     HRESULT hr;
 
-    hr = CreateStreamOnHGlobal(NULL, TRUE, &stream);
+    hr = CreateStreamOnHGlobal(((void*)0), TRUE, &stream);
     ok(hr == S_OK, "ret %08x\n", hr);
 
-    hr = IStream_Write(stream, data, strlen(data), NULL);
+    hr = IStream_Write(stream, data, strlen(data), ((void*)0));
     ok(hr == S_OK, "Write failed: %08x\n", hr);
 
     off.QuadPart = 0;
-    hr = IStream_Seek(stream, off, STREAM_SEEK_SET, NULL);
+    hr = IStream_Seek(stream, off, STREAM_SEEK_SET, ((void*)0));
     ok(hr == S_OK, "Seek failed: %08x\n", hr);
 
     return stream;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
-struct TYPE_3__ {size_t numOfCols; int /*<<< orphan*/ * pColList; } ;
-typedef  TYPE_1__ SColumnBaseInfo ;
-typedef  int /*<<< orphan*/  SColumnBase ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
+struct TYPE_3__ {size_t numOfCols; int * pColList; } ;
+typedef TYPE_1__ SColumnBaseInfo ;
+typedef int SColumnBase ;
+
+
 
 SColumnBase* tscColumnBaseInfoGet(SColumnBaseInfo* pColumnBaseInfo, int32_t index) {
-  if (pColumnBaseInfo == NULL || pColumnBaseInfo->numOfCols < index) {
-    return NULL;
+  if (pColumnBaseInfo == ((void*)0) || pColumnBaseInfo->numOfCols < index) {
+    return ((void*)0);
   }
 
   return &pColumnBaseInfo->pColList[index];

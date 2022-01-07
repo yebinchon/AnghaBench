@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  g_x11_dpy ; 
- int /*<<< orphan*/  g_x11_win ; 
- int /*<<< orphan*/  x11_show_mouse (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int g_x11_dpy ;
+ int g_x11_win ;
+ int x11_show_mouse (int ,int ,int) ;
 
 __attribute__((used)) static void gfx_ctx_x_show_mouse(void *data, bool state)
 {

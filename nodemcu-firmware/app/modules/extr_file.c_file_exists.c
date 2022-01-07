@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vfs_stat {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- size_t FS_OBJ_NAME_LEN ; 
- scalar_t__ VFS_RES_OK ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- size_t strlen (char const*) ; 
- char* vfs_basename (char const*) ; 
- scalar_t__ vfs_stat (char*,struct vfs_stat*) ; 
+
+ size_t FS_OBJ_NAME_LEN ;
+ scalar_t__ VFS_RES_OK ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int lua_pushboolean (int *,int) ;
+ size_t strlen (char const*) ;
+ char* vfs_basename (char const*) ;
+ scalar_t__ vfs_stat (char*,struct vfs_stat*) ;
 
 __attribute__((used)) static int file_exists( lua_State* L )
 {

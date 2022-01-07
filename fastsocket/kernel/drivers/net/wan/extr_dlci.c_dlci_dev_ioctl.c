@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct net_device {scalar_t__ dev_addr; } ;
-struct ifreq {int /*<<< orphan*/  ifr_data; int /*<<< orphan*/  ifr_slave; } ;
+struct ifreq {int ifr_data; int ifr_slave; } ;
 struct dlci_local {TYPE_1__* slave; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct TYPE_2__ {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_NET_ADMIN ; 
-#define  DLCI_GET_CONF 130 
-#define  DLCI_GET_SLAVE 129 
-#define  DLCI_SET_CONF 128 
- int EINVAL ; 
- int EOPNOTSUPP ; 
- int EPERM ; 
- int /*<<< orphan*/  capable (int /*<<< orphan*/ ) ; 
- int dlci_config (struct net_device*,int /*<<< orphan*/ ,int) ; 
- struct dlci_local* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int CAP_NET_ADMIN ;
+
+
+
+ int EINVAL ;
+ int EOPNOTSUPP ;
+ int EPERM ;
+ int capable (int ) ;
+ int dlci_config (struct net_device*,int ,int) ;
+ struct dlci_local* netdev_priv (struct net_device*) ;
+ int strncpy (int ,int ,int) ;
 
 __attribute__((used)) static int dlci_dev_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
 {
-	struct dlci_local *dlp;
+ struct dlci_local *dlp;
 
-	if (!capable(CAP_NET_ADMIN))
-		return(-EPERM);
+ if (!capable(CAP_NET_ADMIN))
+  return(-EPERM);
 
-	dlp = netdev_priv(dev);
+ dlp = netdev_priv(dev);
 
-	switch(cmd)
-	{
-		case DLCI_GET_SLAVE:
-			if (!*(short *)(dev->dev_addr))
-				return(-EINVAL);
+ switch(cmd)
+ {
+  case 129:
+   if (!*(short *)(dev->dev_addr))
+    return(-EINVAL);
 
-			strncpy(ifr->ifr_slave, dlp->slave->name, sizeof(ifr->ifr_slave));
-			break;
+   strncpy(ifr->ifr_slave, dlp->slave->name, sizeof(ifr->ifr_slave));
+   break;
 
-		case DLCI_GET_CONF:
-		case DLCI_SET_CONF:
-			if (!*(short *)(dev->dev_addr))
-				return(-EINVAL);
+  case 130:
+  case 128:
+   if (!*(short *)(dev->dev_addr))
+    return(-EINVAL);
 
-			return(dlci_config(dev, ifr->ifr_data, cmd == DLCI_GET_CONF));
-			break;
+   return(dlci_config(dev, ifr->ifr_data, cmd == 130));
+   break;
 
-		default: 
-			return(-EOPNOTSUPP);
-	}
-	return(0);
+  default:
+   return(-EOPNOTSUPP);
+ }
+ return(0);
 }

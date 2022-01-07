@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_NONE ; 
- int pkey_set_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int) ; 
+
+
+
+typedef int EVP_PKEY ;
+
+
+ int EVP_PKEY_NONE ;
+ int pkey_set_type (int *,int *,int ,char const*,int) ;
 
 int EVP_PKEY_set_type_str(EVP_PKEY *pkey, const char *str, int len)
 {
-    return pkey_set_type(pkey, NULL, EVP_PKEY_NONE, str, len);
+    return pkey_set_type(pkey, ((void*)0), EVP_PKEY_NONE, str, len);
 }

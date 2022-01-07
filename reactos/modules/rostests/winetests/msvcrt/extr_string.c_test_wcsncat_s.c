@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char wchar_t ;
-typedef  int /*<<< orphan*/  abcW ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ERANGE ; 
- int STRUNCATE ; 
- int _TRUNCATE ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int p_wcsncat_s (char*,int,char*,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int wine_dbgstr_w (char*) ; 
+
+
+
+typedef char wchar_t ;
+typedef int abcW ;
+
+
+ int EINVAL ;
+ int ERANGE ;
+ int STRUNCATE ;
+ int _TRUNCATE ;
+ int memcpy (char*,char*,int) ;
+ int ok (int,char*,int) ;
+ int p_wcsncat_s (char*,int,char*,int) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_wcsncat_s(void)
 {
@@ -39,13 +39,13 @@ __attribute__((used)) static void test_wcsncat_s(void)
 
     memcpy(src, abcW, sizeof(abcW));
     dst[0] = 0;
-    ret = p_wcsncat_s(NULL, 4, src, 4);
+    ret = p_wcsncat_s(((void*)0), 4, src, 4);
     ok(ret == EINVAL, "err = %d\n", ret);
     ret = p_wcsncat_s(dst, 0, src, 4);
     ok(ret == EINVAL, "err = %d\n", ret);
     ret = p_wcsncat_s(dst, 0, src, _TRUNCATE);
     ok(ret == EINVAL, "err = %d\n", ret);
-    ret = p_wcsncat_s(dst, 4, NULL, 0);
+    ret = p_wcsncat_s(dst, 4, ((void*)0), 0);
     ok(ret == 0, "err = %d\n", ret);
 
     dst[0] = 0;

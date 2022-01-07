@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  xy2d; int /*<<< orphan*/  yminusx; int /*<<< orphan*/  yplusx; } ;
-typedef  TYPE_1__ ge_precomp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fe_0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fe_1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int xy2d; int yminusx; int yplusx; } ;
+typedef TYPE_1__ ge_precomp ;
+
+
+ int fe_0 (int ) ;
+ int fe_1 (int ) ;
 
 __attribute__((used)) static void ge_precomp_0(ge_precomp *h)
 {

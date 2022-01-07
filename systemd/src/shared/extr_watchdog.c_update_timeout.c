@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int usec_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- scalar_t__ DIV_ROUND_UP (int,int) ; 
- int ENOTTY ; 
- int FORMAT_TIMESPAN_MAX ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  LOG_WARNING ; 
- int USEC_INFINITY ; 
- int USEC_PER_SEC ; 
- int /*<<< orphan*/  WDIOC_KEEPALIVE ; 
- int /*<<< orphan*/  WDIOC_SETOPTIONS ; 
- int /*<<< orphan*/  WDIOC_SETTIMEOUT ; 
- int WDIOS_DISABLECARD ; 
- int WDIOS_ENABLECARD ; 
- int errno ; 
- int /*<<< orphan*/  format_timespan (char*,int,int,int /*<<< orphan*/ ) ; 
- int ioctl (scalar_t__,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  log_full (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ) ; 
- int log_warning_errno (int,char*,...) ; 
- scalar_t__ watchdog_fd ; 
- int watchdog_timeout ; 
+
+
+
+typedef int usec_t ;
+typedef int buf ;
+
+
+ scalar_t__ DIV_ROUND_UP (int,int) ;
+ int ENOTTY ;
+ int FORMAT_TIMESPAN_MAX ;
+ int LOG_DEBUG ;
+ int LOG_WARNING ;
+ int USEC_INFINITY ;
+ int USEC_PER_SEC ;
+ int WDIOC_KEEPALIVE ;
+ int WDIOC_SETOPTIONS ;
+ int WDIOC_SETTIMEOUT ;
+ int WDIOS_DISABLECARD ;
+ int WDIOS_ENABLECARD ;
+ int errno ;
+ int format_timespan (char*,int,int,int ) ;
+ int ioctl (scalar_t__,int ,int*) ;
+ int log_full (int ,char*) ;
+ int log_info (char*,int ) ;
+ int log_warning_errno (int,char*,...) ;
+ scalar_t__ watchdog_fd ;
+ int watchdog_timeout ;
 
 __attribute__((used)) static int update_timeout(void) {
         int r;
@@ -65,7 +65,7 @@ __attribute__((used)) static int update_timeout(void) {
                 flags = WDIOS_ENABLECARD;
                 r = ioctl(watchdog_fd, WDIOC_SETOPTIONS, &flags);
                 if (r < 0) {
-                        /* ENOTTY means the watchdog is always enabled so we're fine */
+
                         log_full(errno == ENOTTY ? LOG_DEBUG : LOG_WARNING,
                                  "Failed to enable hardware watchdog: %m");
                         if (errno != ENOTTY)

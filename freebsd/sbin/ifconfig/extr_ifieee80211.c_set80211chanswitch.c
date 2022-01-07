@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ieee80211_chanswitch_req {int csa_mode; int csa_count; int /*<<< orphan*/  csa_chan; } ;
+
+
+
+
+struct ieee80211_chanswitch_req {int csa_mode; int csa_count; int csa_chan; } ;
 struct afswtch {int dummy; } ;
-typedef  int /*<<< orphan*/  csr ;
+typedef int csr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IEEE80211_IOC_CHANSWITCH ; 
- int /*<<< orphan*/  getchannel (int,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  set80211 (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct ieee80211_chanswitch_req*) ; 
+
+ int IEEE80211_IOC_CHANSWITCH ;
+ int getchannel (int,int *,char const*) ;
+ int set80211 (int,int ,int ,int,struct ieee80211_chanswitch_req*) ;
 
 __attribute__((used)) static void
 set80211chanswitch(const char *val, int d, int s, const struct afswtch *rafp)
 {
-	struct ieee80211_chanswitch_req csr;
+ struct ieee80211_chanswitch_req csr;
 
-	getchannel(s, &csr.csa_chan, val);
-	csr.csa_mode = 1;
-	csr.csa_count = 5;
-	set80211(s, IEEE80211_IOC_CHANSWITCH, 0, sizeof(csr), &csr);
+ getchannel(s, &csr.csa_chan, val);
+ csr.csa_mode = 1;
+ csr.csa_count = 5;
+ set80211(s, IEEE80211_IOC_CHANSWITCH, 0, sizeof(csr), &csr);
 }

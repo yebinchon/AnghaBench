@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  key ;
-struct TYPE_9__ {int (* io_open ) (TYPE_2__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;TYPE_1__* priv_data; } ;
-struct TYPE_8__ {char* key_info_file; char* key_uri; char* key_file; char* iv_string; int /*<<< orphan*/  key_string; } ;
-typedef  TYPE_1__ HLSContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int KEYSIZE ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_data_to_hex (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_format_io_close (TYPE_2__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_get_line (int /*<<< orphan*/ *,char*,int) ; 
- size_t strcspn (char*,char*) ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int stub2 (TYPE_2__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int key ;
+struct TYPE_9__ {int (* io_open ) (TYPE_2__*,int **,char*,int ,int *) ;TYPE_1__* priv_data; } ;
+struct TYPE_8__ {char* key_info_file; char* key_uri; char* key_file; char* iv_string; int key_string; } ;
+typedef TYPE_1__ HLSContext ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVIO_FLAG_READ ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int KEYSIZE ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ int avio_read (int *,int *,int) ;
+ int ff_data_to_hex (int ,int *,int,int ) ;
+ int ff_format_io_close (TYPE_2__*,int **) ;
+ int ff_get_line (int *,char*,int) ;
+ size_t strcspn (char*,char*) ;
+ int stub1 (TYPE_2__*,int **,char*,int ,int *) ;
+ int stub2 (TYPE_2__*,int **,char*,int ,int *) ;
 
 __attribute__((used)) static int hls_encryption_start(AVFormatContext *s)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static int hls_encryption_start(AVFormatContext *s)
     AVIOContext *pb;
     uint8_t key[KEYSIZE];
 
-    if ((ret = s->io_open(s, &pb, hls->key_info_file, AVIO_FLAG_READ, NULL)) < 0) {
+    if ((ret = s->io_open(s, &pb, hls->key_info_file, AVIO_FLAG_READ, ((void*)0))) < 0) {
         av_log(hls, AV_LOG_ERROR,
                "error opening key info file %s\n", hls->key_info_file);
         return ret;
@@ -70,7 +70,7 @@ __attribute__((used)) static int hls_encryption_start(AVFormatContext *s)
         return AVERROR(EINVAL);
     }
 
-    if ((ret = s->io_open(s, &pb, hls->key_file, AVIO_FLAG_READ, NULL)) < 0) {
+    if ((ret = s->io_open(s, &pb, hls->key_file, AVIO_FLAG_READ, ((void*)0))) < 0) {
         av_log(hls, AV_LOG_ERROR, "error opening key file %s\n", hls->key_file);
         return ret;
     }

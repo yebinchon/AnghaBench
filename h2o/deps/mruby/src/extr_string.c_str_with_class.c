@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct RString {int /*<<< orphan*/  c; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-struct TYPE_2__ {int /*<<< orphan*/  c; } ;
 
-/* Variables and functions */
- TYPE_1__* mrb_str_ptr (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct RString {int c; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+struct TYPE_2__ {int c; } ;
+
+
+ TYPE_1__* mrb_str_ptr (int ) ;
 
 __attribute__((used)) static inline void
 str_with_class(mrb_state *mrb, struct RString *s, mrb_value obj)

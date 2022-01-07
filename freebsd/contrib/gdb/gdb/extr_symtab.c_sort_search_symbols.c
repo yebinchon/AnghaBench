@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct symbol_search {struct symbol_search* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compare_search_syms ; 
- int /*<<< orphan*/  qsort (struct symbol_search**,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xfree (struct symbol_search**) ; 
- scalar_t__ xmalloc (int) ; 
+
+ int compare_search_syms ;
+ int qsort (struct symbol_search**,int,int,int ) ;
+ int xfree (struct symbol_search**) ;
+ scalar_t__ xmalloc (int) ;
 
 __attribute__((used)) static struct symbol_search *
 sort_search_symbols (struct symbol_search *prevtail, int nfound)
@@ -25,18 +25,18 @@ sort_search_symbols (struct symbol_search *prevtail, int nfound)
   int i;
 
   symbols = (struct symbol_search **) xmalloc (sizeof (struct symbol_search *)
-					       * nfound);
+            * nfound);
   symp = prevtail->next;
   for (i = 0; i < nfound; i++)
     {
       symbols[i] = symp;
       symp = symp->next;
     }
-  /* Generally NULL.  */
+
   old_next = symp;
 
   qsort (symbols, nfound, sizeof (struct symbol_search *),
-	 compare_search_syms);
+  compare_search_syms);
 
   symp = prevtail;
   for (i = 0; i < nfound; i++)

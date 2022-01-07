@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int TFF_CLASS_KEY_OR_ENUM ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ TYPENAME_TYPE ; 
- int /*<<< orphan*/  TYPENAME_TYPE_FULLNAME (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_CONTEXT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cxx_pp ; 
- int /*<<< orphan*/  dump_decl (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dump_type (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pp_cxx_colon_colon (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ int TFF_CLASS_KEY_OR_ENUM ;
+ scalar_t__ TREE_CODE (int ) ;
+ scalar_t__ TYPENAME_TYPE ;
+ int TYPENAME_TYPE_FULLNAME (int ) ;
+ int TYPE_CONTEXT (int ) ;
+ int cxx_pp ;
+ int dump_decl (int ,int) ;
+ int dump_type (int ,int) ;
+ int pp_cxx_colon_colon (int ) ;
 
 __attribute__((used)) static void
 dump_typename (tree t, int flags)

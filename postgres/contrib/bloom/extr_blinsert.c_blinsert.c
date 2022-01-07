@@ -1,233 +1,233 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t nEnd; size_t nStart; scalar_t__* notFullPage; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  size_t OffsetNumber ;
-typedef  int /*<<< orphan*/  MemoryContext ;
-typedef  int /*<<< orphan*/  ItemPointer ;
-typedef  int /*<<< orphan*/  IndexUniqueCheck ;
-typedef  int /*<<< orphan*/  IndexInfo ;
-typedef  int /*<<< orphan*/  GenericXLogState ;
-typedef  int /*<<< orphan*/  Datum ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  int /*<<< orphan*/  BloomTuple ;
-typedef  int /*<<< orphan*/  BloomState ;
-typedef  TYPE_1__ BloomMetaPageData ;
-typedef  scalar_t__ BlockNumber ;
+typedef int Relation ;
+typedef int Page ;
+typedef size_t OffsetNumber ;
+typedef int MemoryContext ;
+typedef int ItemPointer ;
+typedef int IndexUniqueCheck ;
+typedef int IndexInfo ;
+typedef int GenericXLogState ;
+typedef int Datum ;
+typedef int Buffer ;
+typedef int BloomTuple ;
+typedef int BloomState ;
+typedef TYPE_1__ BloomMetaPageData ;
+typedef scalar_t__ BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOCSET_DEFAULT_SIZES ; 
- int /*<<< orphan*/  AllocSetContextCreate (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Assert (int) ; 
- scalar_t__ BLOOM_METAPAGE_BLKNO ; 
- int /*<<< orphan*/  BUFFER_LOCK_EXCLUSIVE ; 
- int /*<<< orphan*/  BUFFER_LOCK_SHARE ; 
- int /*<<< orphan*/  BUFFER_LOCK_UNLOCK ; 
- int /*<<< orphan*/ * BloomFormTuple (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  BloomInitPage (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BloomNewBuffer (int /*<<< orphan*/ ) ; 
- scalar_t__ BloomPageAddItem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* BloomPageGetMeta (int /*<<< orphan*/ ) ; 
- scalar_t__ BloomPageIsDeleted (int /*<<< orphan*/ ) ; 
- scalar_t__ BufferGetBlockNumber (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BufferGetPage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CurrentMemoryContext ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  GENERIC_XLOG_FULL_IMAGE ; 
- int /*<<< orphan*/  GenericXLogAbort (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GenericXLogFinish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GenericXLogRegisterBuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GenericXLogStart (int /*<<< orphan*/ ) ; 
- scalar_t__ InvalidBlockNumber ; 
- int /*<<< orphan*/  LockBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemoryContextDelete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
- scalar_t__ PageIsNew (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReadBuffer (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ReleaseBuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockReleaseBuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  initBloomState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ALLOCSET_DEFAULT_SIZES ;
+ int AllocSetContextCreate (int ,char*,int ) ;
+ int Assert (int) ;
+ scalar_t__ BLOOM_METAPAGE_BLKNO ;
+ int BUFFER_LOCK_EXCLUSIVE ;
+ int BUFFER_LOCK_SHARE ;
+ int BUFFER_LOCK_UNLOCK ;
+ int * BloomFormTuple (int *,int ,int *,int*) ;
+ int BloomInitPage (int ,int ) ;
+ int BloomNewBuffer (int ) ;
+ scalar_t__ BloomPageAddItem (int *,int ,int *) ;
+ TYPE_1__* BloomPageGetMeta (int ) ;
+ scalar_t__ BloomPageIsDeleted (int ) ;
+ scalar_t__ BufferGetBlockNumber (int ) ;
+ int BufferGetPage (int ) ;
+ int CurrentMemoryContext ;
+ int ERROR ;
+ int GENERIC_XLOG_FULL_IMAGE ;
+ int GenericXLogAbort (int *) ;
+ int GenericXLogFinish (int *) ;
+ int GenericXLogRegisterBuffer (int *,int ,int ) ;
+ int * GenericXLogStart (int ) ;
+ scalar_t__ InvalidBlockNumber ;
+ int LockBuffer (int ,int ) ;
+ int MemoryContextDelete (int ) ;
+ int MemoryContextSwitchTo (int ) ;
+ scalar_t__ PageIsNew (int ) ;
+ int ReadBuffer (int ,scalar_t__) ;
+ int ReleaseBuffer (int ) ;
+ int UnlockReleaseBuffer (int ) ;
+ int elog (int ,char*) ;
+ int initBloomState (int *,int ) ;
 
 bool
 blinsert(Relation index, Datum *values, bool *isnull,
-		 ItemPointer ht_ctid, Relation heapRel,
-		 IndexUniqueCheck checkUnique,
-		 IndexInfo *indexInfo)
+   ItemPointer ht_ctid, Relation heapRel,
+   IndexUniqueCheck checkUnique,
+   IndexInfo *indexInfo)
 {
-	BloomState	blstate;
-	BloomTuple *itup;
-	MemoryContext oldCtx;
-	MemoryContext insertCtx;
-	BloomMetaPageData *metaData;
-	Buffer		buffer,
-				metaBuffer;
-	Page		page,
-				metaPage;
-	BlockNumber blkno = InvalidBlockNumber;
-	OffsetNumber nStart;
-	GenericXLogState *state;
+ BloomState blstate;
+ BloomTuple *itup;
+ MemoryContext oldCtx;
+ MemoryContext insertCtx;
+ BloomMetaPageData *metaData;
+ Buffer buffer,
+    metaBuffer;
+ Page page,
+    metaPage;
+ BlockNumber blkno = InvalidBlockNumber;
+ OffsetNumber nStart;
+ GenericXLogState *state;
 
-	insertCtx = AllocSetContextCreate(CurrentMemoryContext,
-									  "Bloom insert temporary context",
-									  ALLOCSET_DEFAULT_SIZES);
+ insertCtx = AllocSetContextCreate(CurrentMemoryContext,
+           "Bloom insert temporary context",
+           ALLOCSET_DEFAULT_SIZES);
 
-	oldCtx = MemoryContextSwitchTo(insertCtx);
+ oldCtx = MemoryContextSwitchTo(insertCtx);
 
-	initBloomState(&blstate, index);
-	itup = BloomFormTuple(&blstate, ht_ctid, values, isnull);
+ initBloomState(&blstate, index);
+ itup = BloomFormTuple(&blstate, ht_ctid, values, isnull);
 
-	/*
-	 * At first, try to insert new tuple to the first page in notFullPage
-	 * array.  If successful, we don't need to modify the meta page.
-	 */
-	metaBuffer = ReadBuffer(index, BLOOM_METAPAGE_BLKNO);
-	LockBuffer(metaBuffer, BUFFER_LOCK_SHARE);
-	metaData = BloomPageGetMeta(BufferGetPage(metaBuffer));
 
-	if (metaData->nEnd > metaData->nStart)
-	{
-		Page		page;
 
-		blkno = metaData->notFullPage[metaData->nStart];
-		Assert(blkno != InvalidBlockNumber);
 
-		/* Don't hold metabuffer lock while doing insert */
-		LockBuffer(metaBuffer, BUFFER_LOCK_UNLOCK);
 
-		buffer = ReadBuffer(index, blkno);
-		LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
+ metaBuffer = ReadBuffer(index, BLOOM_METAPAGE_BLKNO);
+ LockBuffer(metaBuffer, BUFFER_LOCK_SHARE);
+ metaData = BloomPageGetMeta(BufferGetPage(metaBuffer));
 
-		state = GenericXLogStart(index);
-		page = GenericXLogRegisterBuffer(state, buffer, 0);
+ if (metaData->nEnd > metaData->nStart)
+ {
+  Page page;
 
-		/*
-		 * We might have found a page that was recently deleted by VACUUM.  If
-		 * so, we can reuse it, but we must reinitialize it.
-		 */
-		if (PageIsNew(page) || BloomPageIsDeleted(page))
-			BloomInitPage(page, 0);
+  blkno = metaData->notFullPage[metaData->nStart];
+  Assert(blkno != InvalidBlockNumber);
 
-		if (BloomPageAddItem(&blstate, page, itup))
-		{
-			/* Success!  Apply the change, clean up, and exit */
-			GenericXLogFinish(state);
-			UnlockReleaseBuffer(buffer);
-			ReleaseBuffer(metaBuffer);
-			MemoryContextSwitchTo(oldCtx);
-			MemoryContextDelete(insertCtx);
-			return false;
-		}
 
-		/* Didn't fit, must try other pages */
-		GenericXLogAbort(state);
-		UnlockReleaseBuffer(buffer);
-	}
-	else
-	{
-		/* No entries in notFullPage */
-		LockBuffer(metaBuffer, BUFFER_LOCK_UNLOCK);
-	}
+  LockBuffer(metaBuffer, BUFFER_LOCK_UNLOCK);
 
-	/*
-	 * Try other pages in notFullPage array.  We will have to change nStart in
-	 * metapage.  Thus, grab exclusive lock on metapage.
-	 */
-	LockBuffer(metaBuffer, BUFFER_LOCK_EXCLUSIVE);
+  buffer = ReadBuffer(index, blkno);
+  LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
 
-	/* nStart might have changed while we didn't have lock */
-	nStart = metaData->nStart;
+  state = GenericXLogStart(index);
+  page = GenericXLogRegisterBuffer(state, buffer, 0);
 
-	/* Skip first page if we already tried it above */
-	if (nStart < metaData->nEnd &&
-		blkno == metaData->notFullPage[nStart])
-		nStart++;
 
-	/*
-	 * This loop iterates for each page we try from the notFullPage array, and
-	 * will also initialize a GenericXLogState for the fallback case of having
-	 * to allocate a new page.
-	 */
-	for (;;)
-	{
-		state = GenericXLogStart(index);
 
-		/* get modifiable copy of metapage */
-		metaPage = GenericXLogRegisterBuffer(state, metaBuffer, 0);
-		metaData = BloomPageGetMeta(metaPage);
 
-		if (nStart >= metaData->nEnd)
-			break;				/* no more entries in notFullPage array */
 
-		blkno = metaData->notFullPage[nStart];
-		Assert(blkno != InvalidBlockNumber);
+  if (PageIsNew(page) || BloomPageIsDeleted(page))
+   BloomInitPage(page, 0);
 
-		buffer = ReadBuffer(index, blkno);
-		LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
-		page = GenericXLogRegisterBuffer(state, buffer, 0);
+  if (BloomPageAddItem(&blstate, page, itup))
+  {
 
-		/* Basically same logic as above */
-		if (PageIsNew(page) || BloomPageIsDeleted(page))
-			BloomInitPage(page, 0);
+   GenericXLogFinish(state);
+   UnlockReleaseBuffer(buffer);
+   ReleaseBuffer(metaBuffer);
+   MemoryContextSwitchTo(oldCtx);
+   MemoryContextDelete(insertCtx);
+   return 0;
+  }
 
-		if (BloomPageAddItem(&blstate, page, itup))
-		{
-			/* Success!  Apply the changes, clean up, and exit */
-			metaData->nStart = nStart;
-			GenericXLogFinish(state);
-			UnlockReleaseBuffer(buffer);
-			UnlockReleaseBuffer(metaBuffer);
-			MemoryContextSwitchTo(oldCtx);
-			MemoryContextDelete(insertCtx);
-			return false;
-		}
 
-		/* Didn't fit, must try other pages */
-		GenericXLogAbort(state);
-		UnlockReleaseBuffer(buffer);
-		nStart++;
-	}
+  GenericXLogAbort(state);
+  UnlockReleaseBuffer(buffer);
+ }
+ else
+ {
 
-	/*
-	 * Didn't find place to insert in notFullPage array.  Allocate new page.
-	 * (XXX is it good to do this while holding ex-lock on the metapage??)
-	 */
-	buffer = BloomNewBuffer(index);
+  LockBuffer(metaBuffer, BUFFER_LOCK_UNLOCK);
+ }
 
-	page = GenericXLogRegisterBuffer(state, buffer, GENERIC_XLOG_FULL_IMAGE);
-	BloomInitPage(page, 0);
 
-	if (!BloomPageAddItem(&blstate, page, itup))
-	{
-		/* We shouldn't be here since we're inserting to an empty page */
-		elog(ERROR, "could not add new bloom tuple to empty page");
-	}
 
-	/* Reset notFullPage array to contain just this new page */
-	metaData->nStart = 0;
-	metaData->nEnd = 1;
-	metaData->notFullPage[0] = BufferGetBlockNumber(buffer);
 
-	/* Apply the changes, clean up, and exit */
-	GenericXLogFinish(state);
 
-	UnlockReleaseBuffer(buffer);
-	UnlockReleaseBuffer(metaBuffer);
+ LockBuffer(metaBuffer, BUFFER_LOCK_EXCLUSIVE);
 
-	MemoryContextSwitchTo(oldCtx);
-	MemoryContextDelete(insertCtx);
 
-	return false;
+ nStart = metaData->nStart;
+
+
+ if (nStart < metaData->nEnd &&
+  blkno == metaData->notFullPage[nStart])
+  nStart++;
+
+
+
+
+
+
+ for (;;)
+ {
+  state = GenericXLogStart(index);
+
+
+  metaPage = GenericXLogRegisterBuffer(state, metaBuffer, 0);
+  metaData = BloomPageGetMeta(metaPage);
+
+  if (nStart >= metaData->nEnd)
+   break;
+
+  blkno = metaData->notFullPage[nStart];
+  Assert(blkno != InvalidBlockNumber);
+
+  buffer = ReadBuffer(index, blkno);
+  LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
+  page = GenericXLogRegisterBuffer(state, buffer, 0);
+
+
+  if (PageIsNew(page) || BloomPageIsDeleted(page))
+   BloomInitPage(page, 0);
+
+  if (BloomPageAddItem(&blstate, page, itup))
+  {
+
+   metaData->nStart = nStart;
+   GenericXLogFinish(state);
+   UnlockReleaseBuffer(buffer);
+   UnlockReleaseBuffer(metaBuffer);
+   MemoryContextSwitchTo(oldCtx);
+   MemoryContextDelete(insertCtx);
+   return 0;
+  }
+
+
+  GenericXLogAbort(state);
+  UnlockReleaseBuffer(buffer);
+  nStart++;
+ }
+
+
+
+
+
+ buffer = BloomNewBuffer(index);
+
+ page = GenericXLogRegisterBuffer(state, buffer, GENERIC_XLOG_FULL_IMAGE);
+ BloomInitPage(page, 0);
+
+ if (!BloomPageAddItem(&blstate, page, itup))
+ {
+
+  elog(ERROR, "could not add new bloom tuple to empty page");
+ }
+
+
+ metaData->nStart = 0;
+ metaData->nEnd = 1;
+ metaData->notFullPage[0] = BufferGetBlockNumber(buffer);
+
+
+ GenericXLogFinish(state);
+
+ UnlockReleaseBuffer(buffer);
+ UnlockReleaseBuffer(metaBuffer);
+
+ MemoryContextSwitchTo(oldCtx);
+ MemoryContextDelete(insertCtx);
+
+ return 0;
 }

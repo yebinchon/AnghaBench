@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * quals; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * havingQual; TYPE_2__* jointree; } ;
-typedef  TYPE_1__ Query ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  TYPE_2__ FromExpr ;
 
-/* Variables and functions */
- int FindNodeCheck (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsNodeSubquery ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * quals; } ;
+struct TYPE_4__ {int * havingQual; TYPE_2__* jointree; } ;
+typedef TYPE_1__ Query ;
+typedef int Node ;
+typedef TYPE_2__ FromExpr ;
+
+
+ int FindNodeCheck (int *,int ) ;
+ int IsNodeSubquery ;
 
 bool
 WhereOrHavingClauseContainsSubquery(Query *query)
 {
-	FromExpr *joinTree = query->jointree;
-	Node *queryQuals = NULL;
+ FromExpr *joinTree = query->jointree;
+ Node *queryQuals = ((void*)0);
 
-	if (FindNodeCheck(query->havingQual, IsNodeSubquery))
-	{
-		return true;
-	}
+ if (FindNodeCheck(query->havingQual, IsNodeSubquery))
+ {
+  return 1;
+ }
 
-	if (!joinTree)
-	{
-		return false;
-	}
+ if (!joinTree)
+ {
+  return 0;
+ }
 
-	queryQuals = joinTree->quals;
+ queryQuals = joinTree->quals;
 
-	return FindNodeCheck(queryQuals, IsNodeSubquery);
+ return FindNodeCheck(queryQuals, IsNodeSubquery);
 }

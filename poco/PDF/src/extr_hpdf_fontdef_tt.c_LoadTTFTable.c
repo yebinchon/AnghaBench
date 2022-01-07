@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  error; int /*<<< orphan*/  mmgr; int /*<<< orphan*/  attr; } ;
-struct TYPE_9__ {scalar_t__ length; scalar_t__ offset; scalar_t__ check_sum; int /*<<< orphan*/ * tag; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int error; int mmgr; int attr; } ;
+struct TYPE_9__ {scalar_t__ length; scalar_t__ offset; scalar_t__ check_sum; int * tag; } ;
 struct TYPE_7__ {int num_tables; int search_range; int entry_selector; int range_shift; TYPE_3__* table; scalar_t__ sfnt_version; } ;
-struct TYPE_8__ {int /*<<< orphan*/  stream; TYPE_1__ offset_tbl; } ;
-typedef  int HPDF_UINT ;
-typedef  TYPE_2__* HPDF_TTFontDefAttr ;
-typedef  TYPE_3__ HPDF_TTFTable ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  int HPDF_INT ;
-typedef  TYPE_4__* HPDF_FontDef ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
+struct TYPE_8__ {int stream; TYPE_1__ offset_tbl; } ;
+typedef int HPDF_UINT ;
+typedef TYPE_2__* HPDF_TTFontDefAttr ;
+typedef TYPE_3__ HPDF_TTFTable ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef int HPDF_INT ;
+typedef TYPE_4__* HPDF_FontDef ;
+typedef int HPDF_BYTE ;
 
-/* Variables and functions */
- scalar_t__ GetUINT16 (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ GetUINT32 (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- TYPE_3__* HPDF_GetMem (int /*<<< orphan*/ ,int) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- scalar_t__ HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  HPDF_TTF_INVALID_FOMAT ; 
- int HPDF_TTF_MAX_MEM_SIZ ; 
+
+ scalar_t__ GetUINT16 (int ,int*) ;
+ scalar_t__ GetUINT32 (int ,scalar_t__*) ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ TYPE_3__* HPDF_GetMem (int ,int) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ scalar_t__ HPDF_SetError (int ,int ,int ) ;
+ scalar_t__ HPDF_Stream_Read (int ,int *,int*) ;
+ int HPDF_TTF_INVALID_FOMAT ;
+ int HPDF_TTF_MAX_MEM_SIZ ;
 
 HPDF_STATUS
-LoadTTFTable (HPDF_FontDef  fontdef)
+LoadTTFTable (HPDF_FontDef fontdef)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_STATUS ret = HPDF_OK;

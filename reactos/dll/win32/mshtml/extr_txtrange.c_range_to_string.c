@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_17__ {int len; scalar_t__* buf; scalar_t__ size; } ;
-typedef  TYPE_1__ wstrbuf_t ;
-struct TYPE_18__ {scalar_t__ type; int off; int /*<<< orphan*/  node; } ;
-typedef  TYPE_2__ rangepoint_t ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  scalar_t__ cpp_bool ;
-typedef  scalar_t__ WCHAR ;
-struct TYPE_19__ {int /*<<< orphan*/  nsrange; } ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  TYPE_3__ HTMLTxtRange ;
+typedef TYPE_1__ wstrbuf_t ;
+struct TYPE_18__ {scalar_t__ type; int off; int node; } ;
+typedef TYPE_2__ rangepoint_t ;
+typedef int nsIDOMNode ;
+typedef int nsAString ;
+typedef scalar_t__ cpp_bool ;
+typedef scalar_t__ WCHAR ;
+struct TYPE_19__ {int nsrange; } ;
+typedef int PRUnichar ;
+typedef TYPE_3__ HTMLTxtRange ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ TEXT_NODE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  free_rangepoint (TYPE_2__*) ; 
- int /*<<< orphan*/ * get_child_node (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  get_end_point (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  get_start_point (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  get_text_node_data (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- scalar_t__ isspaceW (scalar_t__) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMRange_GetCollapsed (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  rangepoint_cmp (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  rangepoint_next_node (TYPE_2__*) ; 
- scalar_t__* strchrW (scalar_t__*,char) ; 
- int strlenW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  wstrbuf_append_node (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wstrbuf_append_nodetxt (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  wstrbuf_finish (TYPE_1__*) ; 
+
+ int ERR (char*) ;
+ scalar_t__ TEXT_NODE ;
+ int TRUE ;
+ int free_rangepoint (TYPE_2__*) ;
+ int * get_child_node (int ,int) ;
+ int get_end_point (TYPE_3__*,TYPE_2__*) ;
+ int get_start_point (TYPE_3__*,TYPE_2__*) ;
+ int get_text_node_data (int ,int *,int const**) ;
+ scalar_t__ isspaceW (scalar_t__) ;
+ int nsAString_Finish (int *) ;
+ int nsIDOMNode_Release (int *) ;
+ int nsIDOMRange_GetCollapsed (int ,scalar_t__*) ;
+ int rangepoint_cmp (TYPE_2__*,TYPE_2__*) ;
+ int rangepoint_next_node (TYPE_2__*) ;
+ scalar_t__* strchrW (scalar_t__*,char) ;
+ int strlenW (int const*) ;
+ int wstrbuf_append_node (TYPE_1__*,int *,int ) ;
+ int wstrbuf_append_nodetxt (TYPE_1__*,int const*,int) ;
+ int wstrbuf_finish (TYPE_1__*) ;
 
 __attribute__((used)) static void range_to_string(HTMLTxtRange *This, wstrbuf_t *buf)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static void range_to_string(HTMLTxtRange *This, wstrbuf_t 
     nsIDOMRange_GetCollapsed(This->nsrange, &collapsed);
     if(collapsed) {
         wstrbuf_finish(buf);
-        buf->buf = NULL;
+        buf->buf = ((void*)0);
         buf->size = 0;
         return;
     }

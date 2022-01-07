@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int PEXECUTE_ONE ; 
- int PEXECUTE_SEARCH ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- scalar_t__ WIFSIGNALED (int) ; 
- int /*<<< orphan*/  WTERMSIG (int) ; 
- int /*<<< orphan*/  _ (char*) ; 
- char** alloca (int) ; 
- char* choose_temp_base () ; 
- int /*<<< orphan*/  close (int) ; 
- int dup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dup2 (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fatal (int /*<<< orphan*/ ,char const*,...) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int open (char const*,int,int) ; 
- int pexecute (char const*,char* const*,int /*<<< orphan*/ ,char*,char**,char**,int) ; 
- int /*<<< orphan*/  program_name ; 
- int pwait (int,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int PEXECUTE_ONE ;
+ int PEXECUTE_SEARCH ;
+ int STDOUT_FILENO ;
+ int WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ scalar_t__ WIFSIGNALED (int) ;
+ int WTERMSIG (int) ;
+ int _ (char*) ;
+ char** alloca (int) ;
+ char* choose_temp_base () ;
+ int close (int) ;
+ int dup (int ) ;
+ int dup2 (int,int ) ;
+ int errno ;
+ int fatal (int ,char const*,...) ;
+ int fflush (int ) ;
+ int open (char const*,int,int) ;
+ int pexecute (char const*,char* const*,int ,char*,char**,char**,int) ;
+ int program_name ;
+ int pwait (int,int*,int ) ;
+ int stderr ;
+ int stdout ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int
 run_cmd (char *cmd, const char *redir)
@@ -53,7 +45,7 @@ run_cmd (char *cmd, const char *redir)
   int redir_handle = -1;
   int stdout_save = -1;
 
-  /* Count the args.  */
+
   i = 0;
 
   for (s = cmd; *s; s++)
@@ -68,55 +60,55 @@ run_cmd (char *cmd, const char *redir)
   while (1)
     {
       while (*s == ' ' && *s != 0)
-	s++;
+ s++;
 
       if (*s == 0)
-	break;
+ break;
 
       in_quote = (*s == '\'' || *s == '"');
       sep = (in_quote) ? *s++ : ' ';
       argv[i++] = s;
 
       while (*s != sep && *s != 0)
-	s++;
+ s++;
 
       if (*s == 0)
-	break;
+ break;
 
       *s++ = 0;
 
       if (in_quote)
-	s++;
+ s++;
     }
-  argv[i++] = NULL;
+  argv[i++] = ((void*)0);
 
-  /* Setup the redirection.  We can't use the usual fork/exec and redirect
-     since we may be running on non-POSIX Windows host.  */
+
+
 
   fflush (stdout);
   fflush (stderr);
 
-  /* Open temporary output file.  */
+
   redir_handle = open (redir, O_WRONLY | O_TRUNC | O_CREAT, 0666);
   if (redir_handle == -1)
     fatal (_("can't open temporary file `%s': %s"), redir,
-	   strerror (errno));
+    strerror (errno));
 
-  /* Duplicate the stdout file handle so it can be restored later.  */
+
   stdout_save = dup (STDOUT_FILENO);
   if (stdout_save == -1)
     fatal (_("can't redirect stdout: `%s': %s"), redir, strerror (errno));
 
-  /* Redirect stdout to our output file.  */
+
   dup2 (redir_handle, STDOUT_FILENO);
 
   pid = pexecute (argv[0], (char * const *) argv, program_name, temp_base,
-		  &errmsg_fmt, &errmsg_arg, PEXECUTE_ONE | PEXECUTE_SEARCH);
+    &errmsg_fmt, &errmsg_arg, PEXECUTE_ONE | PEXECUTE_SEARCH);
 
-  /* Restore stdout to its previous setting.  */
+
   dup2 (stdout_save, STDOUT_FILENO);
 
-  /* Close response file.  */
+
   close (redir_handle);
 
   if (pid == -1)
@@ -141,11 +133,11 @@ run_cmd (char *cmd, const char *redir)
   else if (WIFEXITED (wait_status))
     {
       if (WEXITSTATUS (wait_status) != 0)
-	{
-	  fatal (_("%s exited with status %d"), cmd,
-	         WEXITSTATUS (wait_status));
-	  retcode = 1;
-	}
+ {
+   fatal (_("%s exited with status %d"), cmd,
+          WEXITSTATUS (wait_status));
+   retcode = 1;
+ }
     }
   else
     retcode = 1;

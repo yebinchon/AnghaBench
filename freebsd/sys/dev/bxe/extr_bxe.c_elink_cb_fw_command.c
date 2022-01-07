@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct bxe_softc {int fw_seq; } ;
-struct TYPE_2__ {int /*<<< orphan*/  fw_mb_header; int /*<<< orphan*/  drv_mb_header; int /*<<< orphan*/  drv_mb_param; } ;
+struct TYPE_2__ {int fw_mb_header; int drv_mb_header; int drv_mb_param; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*) ; 
- int /*<<< orphan*/  BXE_FWMB_LOCK (struct bxe_softc*) ; 
- int /*<<< orphan*/  BXE_FWMB_UNLOCK (struct bxe_softc*) ; 
- scalar_t__ CHIP_REV_IS_SLOW (struct bxe_softc*) ; 
- int /*<<< orphan*/  DBG_PHY ; 
- int /*<<< orphan*/  DELAY (int) ; 
- int FW_MSG_CODE_MASK ; 
- int FW_MSG_SEQ_NUMBER_MASK ; 
- int SC_FW_MB_IDX (struct bxe_softc*) ; 
- int SHMEM_RD (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SHMEM_WR (struct bxe_softc*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* func_mb ; 
+
+ int BLOGD (struct bxe_softc*,int ,char*,int,int,...) ;
+ int BLOGE (struct bxe_softc*,char*) ;
+ int BXE_FWMB_LOCK (struct bxe_softc*) ;
+ int BXE_FWMB_UNLOCK (struct bxe_softc*) ;
+ scalar_t__ CHIP_REV_IS_SLOW (struct bxe_softc*) ;
+ int DBG_PHY ;
+ int DELAY (int) ;
+ int FW_MSG_CODE_MASK ;
+ int FW_MSG_SEQ_NUMBER_MASK ;
+ int SC_FW_MB_IDX (struct bxe_softc*) ;
+ int SHMEM_RD (struct bxe_softc*,int ) ;
+ int SHMEM_WR (struct bxe_softc*,int ,int) ;
+ TYPE_1__* func_mb ;
 
 uint32_t
 elink_cb_fw_command(struct bxe_softc *sc,
-                    uint32_t         command,
-                    uint32_t         param)
+                    uint32_t command,
+                    uint32_t param)
 {
     int mb_idx = SC_FW_MB_IDX(sc);
     uint32_t seq;
@@ -52,7 +52,7 @@ elink_cb_fw_command(struct bxe_softc *sc,
           "wrote command 0x%08x to FW MB param 0x%08x\n",
           (command | seq), param);
 
-    /* Let the FW do it's magic. GIve it up to 5 seconds... */
+
     do {
         DELAY(delay * 1000);
         rc = SHMEM_RD(sc, func_mb[mb_idx].fw_mb_header);
@@ -62,13 +62,13 @@ elink_cb_fw_command(struct bxe_softc *sc,
           "[after %d ms] read 0x%x seq 0x%x from FW MB\n",
           cnt*delay, rc, seq);
 
-    /* is this a reply to our command? */
+
     if (seq == (rc & FW_MSG_SEQ_NUMBER_MASK)) {
         rc &= FW_MSG_CODE_MASK;
     } else {
-        /* Ruh-roh! */
+
         BLOGE(sc, "FW failed to respond!\n");
-        // XXX bxe_fw_dump(sc);
+
         rc = 0;
     }
 

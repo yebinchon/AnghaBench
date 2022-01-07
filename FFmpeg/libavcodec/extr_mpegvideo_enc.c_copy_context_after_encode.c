@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  esc3_level_length; int /*<<< orphan*/  qscale; int /*<<< orphan*/  interlaced_dct; int /*<<< orphan*/ * block_last_index; int /*<<< orphan*/  block; int /*<<< orphan*/  tex_pb; int /*<<< orphan*/  pb2; scalar_t__ data_partitioning; int /*<<< orphan*/  pb; int /*<<< orphan*/  mv_dir; int /*<<< orphan*/  mv_type; int /*<<< orphan*/  mb_skipped; int /*<<< orphan*/  mb_intra; int /*<<< orphan*/  misc_bits; int /*<<< orphan*/  skip_count; int /*<<< orphan*/  b_count; int /*<<< orphan*/  f_count; int /*<<< orphan*/  i_count; int /*<<< orphan*/  p_tex_bits; int /*<<< orphan*/  i_tex_bits; int /*<<< orphan*/  mv_bits; int /*<<< orphan*/ * last_dc; int /*<<< orphan*/  mb_skip_run; int /*<<< orphan*/  last_mv; int /*<<< orphan*/  mv; } ;
-typedef  TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int esc3_level_length; int qscale; int interlaced_dct; int * block_last_index; int block; int tex_pb; int pb2; scalar_t__ data_partitioning; int pb; int mv_dir; int mv_type; int mb_skipped; int mb_intra; int misc_bits; int skip_count; int b_count; int f_count; int i_count; int p_tex_bits; int i_tex_bits; int mv_bits; int * last_dc; int mb_skip_run; int last_mv; int mv; } ;
+typedef TYPE_1__ MpegEncContext ;
+
+
+ int memcpy (int ,int ,int) ;
 
 __attribute__((used)) static inline void copy_context_after_encode(MpegEncContext *d, MpegEncContext *s, int type){
     int i;
 
     memcpy(d->mv, s->mv, 2*4*2*sizeof(int));
-    memcpy(d->last_mv, s->last_mv, 2*2*2*sizeof(int)); //FIXME is memcpy faster than a loop?
+    memcpy(d->last_mv, s->last_mv, 2*2*2*sizeof(int));
 
-    /* MPEG-1 */
+
     d->mb_skip_run= s->mb_skip_run;
     for(i=0; i<3; i++)
         d->last_dc[i] = s->last_dc[i];
 
-    /* statistics */
+
     d->mv_bits= s->mv_bits;
     d->i_tex_bits= s->i_tex_bits;
     d->p_tex_bits= s->p_tex_bits;

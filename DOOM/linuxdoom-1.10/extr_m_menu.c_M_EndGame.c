@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ENDGAME ; 
- int /*<<< orphan*/ * M_EndGameResponse ; 
- int /*<<< orphan*/  M_StartMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  NETEND ; 
- int /*<<< orphan*/  S_StartSound (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ netgame ; 
- int /*<<< orphan*/  sfx_oof ; 
- int /*<<< orphan*/  usergame ; 
+ int ENDGAME ;
+ int * M_EndGameResponse ;
+ int M_StartMessage (int ,int *,int) ;
+ int NETEND ;
+ int S_StartSound (int *,int ) ;
+ scalar_t__ netgame ;
+ int sfx_oof ;
+ int usergame ;
 
 void M_EndGame(int choice)
 {
     choice = 0;
     if (!usergame)
     {
-	S_StartSound(NULL,sfx_oof);
-	return;
+ S_StartSound(((void*)0),sfx_oof);
+ return;
     }
-	
+
     if (netgame)
     {
-	M_StartMessage(NETEND,NULL,false);
-	return;
+ M_StartMessage(NETEND,((void*)0),0);
+ return;
     }
-	
-    M_StartMessage(ENDGAME,M_EndGameResponse,true);
+
+    M_StartMessage(ENDGAME,M_EndGameResponse,1);
 }

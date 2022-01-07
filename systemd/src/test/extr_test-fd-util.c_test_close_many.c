@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  F_GETFD ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  close_many (int*,int) ; 
- int fcntl (int,int /*<<< orphan*/ ) ; 
- int mkostemp_safe (char*) ; 
- int /*<<< orphan*/  safe_close (int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+ int F_GETFD ;
+ int assert_se (int) ;
+ int close_many (int*,int) ;
+ int fcntl (int,int ) ;
+ int mkostemp_safe (char*) ;
+ int safe_close (int) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static void test_close_many(void) {
         int fds[3];

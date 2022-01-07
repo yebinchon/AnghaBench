@@ -1,0 +1,123 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/compat/freebsd32/extr_freebsd32_misc.c_freebsd32_futimesat.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/compat/freebsd32/extr_freebsd32_misc.c_freebsd32_futimesat.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.thread = type { i32 }
+%struct.freebsd32_futimesat_args = type { i32, i32, i32* }
+%struct.timeval32 = type { i32 }
+%struct.timeval = type { i32 }
+
+@tv_sec = common dso_local global i32 0, align 4
+@tv_usec = common dso_local global i32 0, align 4
+@UIO_USERSPACE = common dso_local global i32 0, align 4
+@UIO_SYSSPACE = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @freebsd32_futimesat(%struct.thread* %0, %struct.freebsd32_futimesat_args* %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca %struct.thread*, align 8
+  %5 = alloca %struct.freebsd32_futimesat_args*, align 8
+  %6 = alloca [2 x %struct.timeval32], align 4
+  %7 = alloca [2 x %struct.timeval], align 4
+  %8 = alloca %struct.timeval*, align 8
+  %9 = alloca i32, align 4
+  store %struct.thread* %0, %struct.thread** %4, align 8
+  store %struct.freebsd32_futimesat_args* %1, %struct.freebsd32_futimesat_args** %5, align 8
+  %10 = load %struct.freebsd32_futimesat_args*, %struct.freebsd32_futimesat_args** %5, align 8
+  %11 = getelementptr inbounds %struct.freebsd32_futimesat_args, %struct.freebsd32_futimesat_args* %10, i32 0, i32 2
+  %12 = load i32*, i32** %11, align 8
+  %13 = icmp ne i32* %12, null
+  br i1 %13, label %14, label %58
+
+14:                                               ; preds = %2
+  %15 = load %struct.freebsd32_futimesat_args*, %struct.freebsd32_futimesat_args** %5, align 8
+  %16 = getelementptr inbounds %struct.freebsd32_futimesat_args, %struct.freebsd32_futimesat_args* %15, i32 0, i32 2
+  %17 = load i32*, i32** %16, align 8
+  %18 = getelementptr inbounds [2 x %struct.timeval32], [2 x %struct.timeval32]* %6, i64 0, i64 0
+  %19 = call i32 @copyin(i32* %17, %struct.timeval32* %18, i32 8)
+  store i32 %19, i32* %9, align 4
+  %20 = load i32, i32* %9, align 4
+  %21 = icmp ne i32 %20, 0
+  br i1 %21, label %22, label %24
+
+22:                                               ; preds = %14
+  %23 = load i32, i32* %9, align 4
+  store i32 %23, i32* %3, align 4
+  br label %71
+
+24:                                               ; preds = %14
+  %25 = getelementptr inbounds [2 x %struct.timeval32], [2 x %struct.timeval32]* %6, i64 0, i64 0
+  %26 = getelementptr inbounds [2 x %struct.timeval], [2 x %struct.timeval]* %7, i64 0, i64 0
+  %27 = load i32, i32* @tv_sec, align 4
+  %28 = getelementptr inbounds %struct.timeval32, %struct.timeval32* %25, i32 0, i32 0
+  %29 = load i32, i32* %28, align 4
+  %30 = getelementptr inbounds %struct.timeval, %struct.timeval* %26, i32 0, i32 0
+  %31 = load i32, i32* %30, align 4
+  %32 = call i32 @CP(i32 %29, i32 %31, i32 %27)
+  %33 = getelementptr inbounds [2 x %struct.timeval32], [2 x %struct.timeval32]* %6, i64 0, i64 0
+  %34 = getelementptr inbounds [2 x %struct.timeval], [2 x %struct.timeval]* %7, i64 0, i64 0
+  %35 = load i32, i32* @tv_usec, align 4
+  %36 = getelementptr inbounds %struct.timeval32, %struct.timeval32* %33, i32 0, i32 0
+  %37 = load i32, i32* %36, align 4
+  %38 = getelementptr inbounds %struct.timeval, %struct.timeval* %34, i32 0, i32 0
+  %39 = load i32, i32* %38, align 4
+  %40 = call i32 @CP(i32 %37, i32 %39, i32 %35)
+  %41 = getelementptr inbounds [2 x %struct.timeval32], [2 x %struct.timeval32]* %6, i64 0, i64 1
+  %42 = getelementptr inbounds [2 x %struct.timeval], [2 x %struct.timeval]* %7, i64 0, i64 1
+  %43 = load i32, i32* @tv_sec, align 4
+  %44 = getelementptr inbounds %struct.timeval32, %struct.timeval32* %41, i32 0, i32 0
+  %45 = load i32, i32* %44, align 4
+  %46 = getelementptr inbounds %struct.timeval, %struct.timeval* %42, i32 0, i32 0
+  %47 = load i32, i32* %46, align 4
+  %48 = call i32 @CP(i32 %45, i32 %47, i32 %43)
+  %49 = getelementptr inbounds [2 x %struct.timeval32], [2 x %struct.timeval32]* %6, i64 0, i64 1
+  %50 = getelementptr inbounds [2 x %struct.timeval], [2 x %struct.timeval]* %7, i64 0, i64 1
+  %51 = load i32, i32* @tv_usec, align 4
+  %52 = getelementptr inbounds %struct.timeval32, %struct.timeval32* %49, i32 0, i32 0
+  %53 = load i32, i32* %52, align 4
+  %54 = getelementptr inbounds %struct.timeval, %struct.timeval* %50, i32 0, i32 0
+  %55 = load i32, i32* %54, align 4
+  %56 = call i32 @CP(i32 %53, i32 %55, i32 %51)
+  %57 = getelementptr inbounds [2 x %struct.timeval], [2 x %struct.timeval]* %7, i64 0, i64 0
+  store %struct.timeval* %57, %struct.timeval** %8, align 8
+  br label %59
+
+58:                                               ; preds = %2
+  store %struct.timeval* null, %struct.timeval** %8, align 8
+  br label %59
+
+59:                                               ; preds = %58, %24
+  %60 = load %struct.thread*, %struct.thread** %4, align 8
+  %61 = load %struct.freebsd32_futimesat_args*, %struct.freebsd32_futimesat_args** %5, align 8
+  %62 = getelementptr inbounds %struct.freebsd32_futimesat_args, %struct.freebsd32_futimesat_args* %61, i32 0, i32 1
+  %63 = load i32, i32* %62, align 4
+  %64 = load %struct.freebsd32_futimesat_args*, %struct.freebsd32_futimesat_args** %5, align 8
+  %65 = getelementptr inbounds %struct.freebsd32_futimesat_args, %struct.freebsd32_futimesat_args* %64, i32 0, i32 0
+  %66 = load i32, i32* %65, align 8
+  %67 = load i32, i32* @UIO_USERSPACE, align 4
+  %68 = load %struct.timeval*, %struct.timeval** %8, align 8
+  %69 = load i32, i32* @UIO_SYSSPACE, align 4
+  %70 = call i32 @kern_utimesat(%struct.thread* %60, i32 %63, i32 %66, i32 %67, %struct.timeval* %68, i32 %69)
+  store i32 %70, i32* %3, align 4
+  br label %71
+
+71:                                               ; preds = %59, %22
+  %72 = load i32, i32* %3, align 4
+  ret i32 %72
+}
+
+declare dso_local i32 @copyin(i32*, %struct.timeval32*, i32) #1
+
+declare dso_local i32 @CP(i32, i32, i32) #1
+
+declare dso_local i32 @kern_utimesat(%struct.thread*, i32, i32, i32, %struct.timeval*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

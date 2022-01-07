@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {unsigned int address_mask; scalar_t__ handler; unsigned int address; int cheat_type; unsigned int value; unsigned int repeat_count; unsigned int repeat_add_to_address; scalar_t__ repeat_add_to_value; int /*<<< orphan*/  big_endian; int /*<<< orphan*/  memory_search_size; int /*<<< orphan*/  state; } ;
-struct TYPE_3__ {unsigned int size; unsigned char* curr_memory_buf; unsigned int total_memory_size; TYPE_2__* cheats; int /*<<< orphan*/  big_endian; int /*<<< orphan*/  memory_initialized; } ;
 
-/* Variables and functions */
- scalar_t__ CHEAT_HANDLER_TYPE_RETRO ; 
-#define  CHEAT_TYPE_DECREASE_VALUE 134 
-#define  CHEAT_TYPE_INCREASE_VALUE 133 
-#define  CHEAT_TYPE_RUN_NEXT_IF_EQ 132 
-#define  CHEAT_TYPE_RUN_NEXT_IF_GT 131 
-#define  CHEAT_TYPE_RUN_NEXT_IF_LT 130 
-#define  CHEAT_TYPE_RUN_NEXT_IF_NEQ 129 
-#define  CHEAT_TYPE_SET_TO_VALUE 128 
- int /*<<< orphan*/  cheat_manager_apply_rumble (TYPE_2__*,unsigned int) ; 
- int /*<<< orphan*/  cheat_manager_initialize_memory (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cheat_manager_setup_search_meta (int /*<<< orphan*/ ,unsigned int*,unsigned int*,unsigned int*) ; 
- TYPE_1__ cheat_manager_state ; 
- unsigned int translate_address (unsigned int,unsigned char**) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {unsigned int address_mask; scalar_t__ handler; unsigned int address; int cheat_type; unsigned int value; unsigned int repeat_count; unsigned int repeat_add_to_address; scalar_t__ repeat_add_to_value; int big_endian; int memory_search_size; int state; } ;
+struct TYPE_3__ {unsigned int size; unsigned char* curr_memory_buf; unsigned int total_memory_size; TYPE_2__* cheats; int big_endian; int memory_initialized; } ;
+
+
+ scalar_t__ CHEAT_HANDLER_TYPE_RETRO ;
+
+
+
+
+
+
+
+ int cheat_manager_apply_rumble (TYPE_2__*,unsigned int) ;
+ int cheat_manager_initialize_memory (int *,int) ;
+ int cheat_manager_setup_search_meta (int ,unsigned int*,unsigned int*,unsigned int*) ;
+ TYPE_1__ cheat_manager_state ;
+ unsigned int translate_address (unsigned int,unsigned char**) ;
 
 void cheat_manager_apply_retro_cheats(void)
 {
    unsigned i;
    unsigned int offset;
-   unsigned int mask           = 0;
+   unsigned int mask = 0;
    unsigned int bytes_per_item = 1;
-   unsigned int bits           = 8;
-   unsigned int curr_val       = 0;
-   bool run_cheat              = true;
+   unsigned int bits = 8;
+   unsigned int curr_val = 0;
+   bool run_cheat = 1;
 
    if ((!cheat_manager_state.cheats))
       return;
 
    for (i = 0; i < cheat_manager_state.size; i++)
    {
-      unsigned char *curr       = NULL;
-      bool set_value            = false;
-      unsigned int idx          = 0;
+      unsigned char *curr = ((void*)0);
+      bool set_value = 0;
+      unsigned int idx = 0;
       unsigned int value_to_set = 0;
-      unsigned int repeat_iter  = 0;
+      unsigned int repeat_iter = 0;
       unsigned int address_mask = cheat_manager_state.cheats[i].address_mask;
 
       if (cheat_manager_state.cheats[i].handler != CHEAT_HANDLER_TYPE_RETRO || !cheat_manager_state.cheats[i].state)
          continue;
       if (!cheat_manager_state.memory_initialized)
-         cheat_manager_initialize_memory(NULL, false);
+         cheat_manager_initialize_memory(((void*)0), 0);
 
-      /* If we're still not initialized, something
-       * must have gone wrong - just bail */
+
+
       if (!cheat_manager_state.memory_initialized)
          return;
 
       if (!run_cheat)
       {
-         run_cheat = true;
+         run_cheat = 1;
          continue;
       }
       cheat_manager_setup_search_meta(cheat_manager_state.cheats[i].memory_search_size, &bytes_per_item, &mask, &bits);
 
-      curr   = cheat_manager_state.curr_memory_buf;
-      idx    = cheat_manager_state.cheats[i].address;
+      curr = cheat_manager_state.curr_memory_buf;
+      idx = cheat_manager_state.cheats[i].address;
 
       offset = translate_address(idx, &curr);
 
@@ -96,33 +96,33 @@ void cheat_manager_apply_retro_cheats(void)
 
       switch (cheat_manager_state.cheats[i].cheat_type)
       {
-         case CHEAT_TYPE_SET_TO_VALUE:
-            set_value = true;
+         case 128:
+            set_value = 1;
             value_to_set = cheat_manager_state.cheats[i].value;
             break;
-         case CHEAT_TYPE_INCREASE_VALUE:
-            set_value = true;
+         case 133:
+            set_value = 1;
             value_to_set = curr_val + cheat_manager_state.cheats[i].value;
             break;
-         case CHEAT_TYPE_DECREASE_VALUE:
-            set_value = true;
+         case 134:
+            set_value = 1;
             value_to_set = curr_val - cheat_manager_state.cheats[i].value;
             break;
-         case CHEAT_TYPE_RUN_NEXT_IF_EQ:
+         case 132:
             if (!(curr_val == cheat_manager_state.cheats[i].value))
-               run_cheat = false;
+               run_cheat = 0;
             break;
-         case CHEAT_TYPE_RUN_NEXT_IF_NEQ:
+         case 129:
             if (!(curr_val != cheat_manager_state.cheats[i].value))
-               run_cheat = false;
+               run_cheat = 0;
             break;
-         case CHEAT_TYPE_RUN_NEXT_IF_LT:
+         case 130:
             if (!(cheat_manager_state.cheats[i].value < curr_val))
-               run_cheat = false;
+               run_cheat = 0;
             break;
-         case CHEAT_TYPE_RUN_NEXT_IF_GT:
+         case 131:
             if (!(cheat_manager_state.cheats[i].value > curr_val))
-               run_cheat = false;
+               run_cheat = 0;
             break;
       }
 
@@ -171,9 +171,9 @@ void cheat_manager_apply_retro_cheats(void)
                         if ((address_mask >> bitpos) & 0x01)
                         {
                            mask = (~(1 << bitpos) & 0xFF);
-                           /* Clear current bit value */
+
                            val = val & mask;
-                           /* Inject cheat bit value */
+
                            val = val | (((value_to_set >> bitpos) & 0x01) << bitpos);
                         }
                      }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ AVInputFormat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_TARRAY_APPEND (int /*<<< orphan*/ *,char**,int,int /*<<< orphan*/ *) ; 
- TYPE_1__* av_demuxer_iterate (void**) ; 
- int /*<<< orphan*/ * talloc_strdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int name; } ;
+typedef TYPE_1__ AVInputFormat ;
+
+
+ int MP_TARRAY_APPEND (int *,char**,int,int *) ;
+ TYPE_1__* av_demuxer_iterate (void**) ;
+ int * talloc_strdup (int *,int ) ;
 
 char **mp_get_lavf_demuxers(void)
 {
-    char **list = NULL;
-    void *iter = NULL;
+    char **list = ((void*)0);
+    void *iter = ((void*)0);
     int num = 0;
     for (;;) {
         const AVInputFormat *cur = av_demuxer_iterate(&iter);
         if (!cur)
             break;
-        MP_TARRAY_APPEND(NULL, list, num, talloc_strdup(NULL, cur->name));
+        MP_TARRAY_APPEND(((void*)0), list, num, talloc_strdup(((void*)0), cur->name));
     }
-    MP_TARRAY_APPEND(NULL, list, num, NULL);
+    MP_TARRAY_APPEND(((void*)0), list, num, ((void*)0));
     return list;
 }

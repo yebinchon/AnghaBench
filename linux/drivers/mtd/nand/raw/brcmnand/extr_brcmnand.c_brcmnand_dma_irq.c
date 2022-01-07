@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct brcmnand_controller {int /*<<< orphan*/  dma_done; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
+
+
+
+struct brcmnand_controller {int dma_done; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int complete (int *) ;
 
 __attribute__((used)) static irqreturn_t brcmnand_dma_irq(int irq, void *data)
 {
-	struct brcmnand_controller *ctrl = data;
+ struct brcmnand_controller *ctrl = data;
 
-	complete(&ctrl->dma_done);
+ complete(&ctrl->dma_done);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

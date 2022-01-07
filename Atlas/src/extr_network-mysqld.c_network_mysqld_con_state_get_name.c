@@ -1,66 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int network_mysqld_con_state_t ;
 
-/* Variables and functions */
-#define  CON_STATE_CLOSE_CLIENT 149 
-#define  CON_STATE_CLOSE_SERVER 148 
-#define  CON_STATE_CONNECT_SERVER 147 
-#define  CON_STATE_ERROR 146 
-#define  CON_STATE_INIT 145 
-#define  CON_STATE_READ_AUTH 144 
-#define  CON_STATE_READ_AUTH_OLD_PASSWORD 143 
-#define  CON_STATE_READ_AUTH_RESULT 142 
-#define  CON_STATE_READ_HANDSHAKE 141 
-#define  CON_STATE_READ_LOCAL_INFILE_DATA 140 
-#define  CON_STATE_READ_LOCAL_INFILE_RESULT 139 
-#define  CON_STATE_READ_QUERY 138 
-#define  CON_STATE_READ_QUERY_RESULT 137 
-#define  CON_STATE_SEND_AUTH 136 
-#define  CON_STATE_SEND_AUTH_OLD_PASSWORD 135 
-#define  CON_STATE_SEND_AUTH_RESULT 134 
-#define  CON_STATE_SEND_ERROR 133 
-#define  CON_STATE_SEND_HANDSHAKE 132 
-#define  CON_STATE_SEND_LOCAL_INFILE_DATA 131 
-#define  CON_STATE_SEND_LOCAL_INFILE_RESULT 130 
-#define  CON_STATE_SEND_QUERY 129 
-#define  CON_STATE_SEND_QUERY_RESULT 128 
 
+
+
+typedef int network_mysqld_con_state_t ;
 const char *network_mysqld_con_state_get_name(network_mysqld_con_state_t state) {
-	switch (state) {
-	case CON_STATE_INIT: return "CON_STATE_INIT";
-	case CON_STATE_CONNECT_SERVER: return "CON_STATE_CONNECT_SERVER";
-	case CON_STATE_READ_HANDSHAKE: return "CON_STATE_READ_HANDSHAKE";
-	case CON_STATE_SEND_HANDSHAKE: return "CON_STATE_SEND_HANDSHAKE";
-	case CON_STATE_READ_AUTH: return "CON_STATE_READ_AUTH";
-	case CON_STATE_SEND_AUTH: return "CON_STATE_SEND_AUTH";
-	case CON_STATE_READ_AUTH_OLD_PASSWORD: return "CON_STATE_READ_AUTH_OLD_PASSWORD";
-	case CON_STATE_SEND_AUTH_OLD_PASSWORD: return "CON_STATE_SEND_AUTH_OLD_PASSWORD";
-	case CON_STATE_READ_AUTH_RESULT: return "CON_STATE_READ_AUTH_RESULT";
-	case CON_STATE_SEND_AUTH_RESULT: return "CON_STATE_SEND_AUTH_RESULT";
-	case CON_STATE_READ_QUERY: return "CON_STATE_READ_QUERY";
-	case CON_STATE_SEND_QUERY: return "CON_STATE_SEND_QUERY";
-	case CON_STATE_READ_QUERY_RESULT: return "CON_STATE_READ_QUERY_RESULT";
-	case CON_STATE_SEND_QUERY_RESULT: return "CON_STATE_SEND_QUERY_RESULT";
-	case CON_STATE_READ_LOCAL_INFILE_DATA: return "CON_STATE_READ_LOCAL_INFILE_DATA";
-	case CON_STATE_SEND_LOCAL_INFILE_DATA: return "CON_STATE_SEND_LOCAL_INFILE_DATA";
-	case CON_STATE_READ_LOCAL_INFILE_RESULT: return "CON_STATE_READ_LOCAL_INFILE_RESULT";
-	case CON_STATE_SEND_LOCAL_INFILE_RESULT: return "CON_STATE_SEND_LOCAL_INFILE_RESULT";
-	case CON_STATE_CLOSE_CLIENT: return "CON_STATE_CLOSE_CLIENT";
-	case CON_STATE_CLOSE_SERVER: return "CON_STATE_CLOSE_SERVER";
-	case CON_STATE_ERROR: return "CON_STATE_ERROR";
-	case CON_STATE_SEND_ERROR: return "CON_STATE_SEND_ERROR";
-	}
+ switch (state) {
+ case 145: return "CON_STATE_INIT";
+ case 147: return "CON_STATE_CONNECT_SERVER";
+ case 141: return "CON_STATE_READ_HANDSHAKE";
+ case 132: return "CON_STATE_SEND_HANDSHAKE";
+ case 144: return "CON_STATE_READ_AUTH";
+ case 136: return "CON_STATE_SEND_AUTH";
+ case 143: return "CON_STATE_READ_AUTH_OLD_PASSWORD";
+ case 135: return "CON_STATE_SEND_AUTH_OLD_PASSWORD";
+ case 142: return "CON_STATE_READ_AUTH_RESULT";
+ case 134: return "CON_STATE_SEND_AUTH_RESULT";
+ case 138: return "CON_STATE_READ_QUERY";
+ case 129: return "CON_STATE_SEND_QUERY";
+ case 137: return "CON_STATE_READ_QUERY_RESULT";
+ case 128: return "CON_STATE_SEND_QUERY_RESULT";
+ case 140: return "CON_STATE_READ_LOCAL_INFILE_DATA";
+ case 131: return "CON_STATE_SEND_LOCAL_INFILE_DATA";
+ case 139: return "CON_STATE_READ_LOCAL_INFILE_RESULT";
+ case 130: return "CON_STATE_SEND_LOCAL_INFILE_RESULT";
+ case 149: return "CON_STATE_CLOSE_CLIENT";
+ case 148: return "CON_STATE_CLOSE_SERVER";
+ case 146: return "CON_STATE_ERROR";
+ case 133: return "CON_STATE_SEND_ERROR";
+ }
 
-	return "unknown";
+ return "unknown";
 }

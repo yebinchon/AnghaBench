@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int RRD_MEMORY_MODE ;
 
-/* Variables and functions */
-#define  RRD_MEMORY_MODE_ALLOC 133 
- char const* RRD_MEMORY_MODE_ALLOC_NAME ; 
-#define  RRD_MEMORY_MODE_DBENGINE 132 
- char const* RRD_MEMORY_MODE_DBENGINE_NAME ; 
-#define  RRD_MEMORY_MODE_MAP 131 
- char const* RRD_MEMORY_MODE_MAP_NAME ; 
-#define  RRD_MEMORY_MODE_NONE 130 
- char const* RRD_MEMORY_MODE_NONE_NAME ; 
-#define  RRD_MEMORY_MODE_RAM 129 
- char const* RRD_MEMORY_MODE_RAM_NAME ; 
-#define  RRD_MEMORY_MODE_SAVE 128 
- char const* RRD_MEMORY_MODE_SAVE_NAME ; 
+
+
+
+typedef int RRD_MEMORY_MODE ;
+
+
+
+ char const* RRD_MEMORY_MODE_ALLOC_NAME ;
+
+ char const* RRD_MEMORY_MODE_DBENGINE_NAME ;
+
+ char const* RRD_MEMORY_MODE_MAP_NAME ;
+
+ char const* RRD_MEMORY_MODE_NONE_NAME ;
+
+ char const* RRD_MEMORY_MODE_RAM_NAME ;
+
+ char const* RRD_MEMORY_MODE_SAVE_NAME ;
 
 inline const char *rrd_memory_mode_name(RRD_MEMORY_MODE id) {
     switch(id) {
-        case RRD_MEMORY_MODE_RAM:
+        case 129:
             return RRD_MEMORY_MODE_RAM_NAME;
 
-        case RRD_MEMORY_MODE_MAP:
+        case 131:
             return RRD_MEMORY_MODE_MAP_NAME;
 
-        case RRD_MEMORY_MODE_NONE:
+        case 130:
             return RRD_MEMORY_MODE_NONE_NAME;
 
-        case RRD_MEMORY_MODE_SAVE:
+        case 128:
             return RRD_MEMORY_MODE_SAVE_NAME;
 
-        case RRD_MEMORY_MODE_ALLOC:
+        case 133:
             return RRD_MEMORY_MODE_ALLOC_NAME;
 
-        case RRD_MEMORY_MODE_DBENGINE:
+        case 132:
             return RRD_MEMORY_MODE_DBENGINE_NAME;
     }
 

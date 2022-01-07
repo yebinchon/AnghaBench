@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct ev2_edit_baton {TYPE_1__* exb; int /*<<< orphan*/  base_relpath; int /*<<< orphan*/  edit_pool; } ;
-struct ev2_dir_baton {int /*<<< orphan*/  base_revision; int /*<<< orphan*/  path; struct ev2_edit_baton* eb; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_2__ {int /*<<< orphan*/  baton; int /*<<< orphan*/  (* start_edit ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- struct ev2_dir_baton* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct ev2_edit_baton {TYPE_1__* exb; int base_relpath; int edit_pool; } ;
+struct ev2_dir_baton {int base_revision; int path; struct ev2_edit_baton* eb; } ;
+typedef int apr_pool_t ;
+struct TYPE_2__ {int baton; int (* start_edit ) (int ,int ) ;} ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ struct ev2_dir_baton* apr_pcalloc (int *,int) ;
+ int apr_pstrdup (int ,int ) ;
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 ev2_open_root(void *edit_baton,

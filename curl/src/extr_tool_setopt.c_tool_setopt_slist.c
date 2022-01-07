@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct curl_slist {int dummy; } ;
 struct GlobalConfig {scalar_t__ libcurl; } ;
-typedef  int /*<<< orphan*/  CURLoption ;
-typedef  int /*<<< orphan*/  CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int CURLoption ;
+typedef int CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CODE2 (char*,char const*,int) ; 
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct curl_slist*) ; 
- int /*<<< orphan*/  libcurl_generate_slist (struct curl_slist*,int*) ; 
+
+ int CODE2 (char*,char const*,int) ;
+ int CURLE_OK ;
+ int curl_easy_setopt (int *,int ,struct curl_slist*) ;
+ int libcurl_generate_slist (struct curl_slist*,int*) ;
 
 CURLcode tool_setopt_slist(CURL *curl, struct GlobalConfig *config,
                            const char *name, CURLoption tag,

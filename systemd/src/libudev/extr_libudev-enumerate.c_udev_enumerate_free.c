@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udev_enumerate {int /*<<< orphan*/  enumerator; int /*<<< orphan*/  devices_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct udev_enumerate*) ; 
- struct udev_enumerate* mfree (struct udev_enumerate*) ; 
- int /*<<< orphan*/  sd_device_enumerator_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udev_list_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct udev_enumerate {int enumerator; int devices_list; } ;
+
+
+ int assert (struct udev_enumerate*) ;
+ struct udev_enumerate* mfree (struct udev_enumerate*) ;
+ int sd_device_enumerator_unref (int ) ;
+ int udev_list_free (int ) ;
 
 __attribute__((used)) static struct udev_enumerate *udev_enumerate_free(struct udev_enumerate *udev_enumerate) {
         assert(udev_enumerate);

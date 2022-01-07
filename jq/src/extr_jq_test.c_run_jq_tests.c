@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct err_data {char* buf; } ;
-typedef  int /*<<< orphan*/  prog ;
-typedef  int /*<<< orphan*/  jv ;
-typedef  int /*<<< orphan*/  jq_state ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int prog ;
+typedef int jv ;
+typedef int jq_state ;
+typedef int buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JQ_DEBUG_TRACE ; 
- scalar_t__ JV_KIND_NULL ; 
- int JV_PRINT_COLOR ; 
- int JV_PRINT_REFCOUNT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int checkerrormsg (char*) ; 
- scalar_t__ checkfail (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int jq_compile (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  jq_dump_disassembly (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * jq_init () ; 
- int /*<<< orphan*/  jq_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jq_set_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jq_set_error_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct err_data*) ; 
- int /*<<< orphan*/  jq_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jq_teardown (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  jv_array () ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_dump (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_dump_string (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * jv_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_is_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_parse (char*) ; 
- int /*<<< orphan*/  jv_parse_sized (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string (char*) ; 
- int /*<<< orphan*/  jv_string_length_bytes (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int rand () ; 
- scalar_t__ skipline (char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/ * test_err_cb ; 
+
+ int JQ_DEBUG_TRACE ;
+ scalar_t__ JV_KIND_NULL ;
+ int JV_PRINT_COLOR ;
+ int JV_PRINT_REFCOUNT ;
+ int assert (int *) ;
+ int checkerrormsg (char*) ;
+ scalar_t__ checkfail (char*) ;
+ int exit (int) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int jq_compile (int *,char*) ;
+ int jq_dump_disassembly (int *,int) ;
+ int * jq_init () ;
+ int jq_next (int *) ;
+ int jq_set_attr (int *,int ,int ) ;
+ int jq_set_error_cb (int *,int *,struct err_data*) ;
+ int jq_start (int *,int ,int ) ;
+ int jq_teardown (int **) ;
+ int jv_array () ;
+ int jv_copy (int ) ;
+ int jv_dump (int ,int ) ;
+ int jv_dump_string (int ,int) ;
+ int * jv_equal (int ,int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ scalar_t__ jv_is_valid (int ) ;
+ int jv_parse (char*) ;
+ int jv_parse_sized (int ,int ) ;
+ int jv_string (char*) ;
+ int jv_string_length_bytes (int ) ;
+ int jv_string_value (int ) ;
+ int printf (char*,...) ;
+ int rand () ;
+ scalar_t__ skipline (char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int * test_err_cb ;
 
 __attribute__((used)) static void run_jq_tests(jv lib_dirs, int verbose, FILE *testdata, int skip, int take) {
   char prog[4096];
@@ -63,7 +63,7 @@ __attribute__((used)) static void run_jq_tests(jv lib_dirs, int verbose, FILE *t
   unsigned int lineno = 0;
   int must_fail = 0;
   int check_msg = 0;
-  jq_state *jq = NULL;
+  jq_state *jq = ((void*)0);
 
   int tests_to_skip = skip > 0 ? skip : 0;
   int tests_to_take = take;
@@ -89,13 +89,13 @@ __attribute__((used)) static void run_jq_tests(jv lib_dirs, int verbose, FILE *t
     if (skip > 0) {
       skip--;
 
-      // skip past test data
+
       while (fgets(buf, sizeof(buf), testdata)) {
         lineno++;
         if (buf[0] == '\n' || (buf[0] == '\r' && buf[1] == '\n'))
           break;
       }
-      
+
       must_fail = 0;
       check_msg = 0;
 
@@ -119,7 +119,7 @@ __attribute__((used)) static void run_jq_tests(jv lib_dirs, int verbose, FILE *t
     int compiled = jq_compile(jq, prog);
 
     if (must_fail) {
-      jq_set_error_cb(jq, NULL, NULL);
+      jq_set_error_cb(jq, ((void*)0), ((void*)0));
       if (!fgets(buf, sizeof(buf), testdata)) { invalid++; break; }
       lineno++;
       if (buf[strlen(buf)-1] == '\n') buf[strlen(buf)-1] = 0;
@@ -144,7 +144,7 @@ __attribute__((used)) static void run_jq_tests(jv lib_dirs, int verbose, FILE *t
     if (!compiled) {
       printf("*** Test program failed to compile at line %u: %s\n", lineno, prog);
       invalid++;
-      // skip past test data
+
       while (fgets(buf, sizeof(buf), testdata)) {
         lineno++;
         if (buf[0] == '\n' || (buf[0] == '\r' && buf[1] == '\n'))
@@ -219,7 +219,7 @@ __attribute__((used)) static void run_jq_tests(jv lib_dirs, int verbose, FILE *t
     total_skipped = tests_to_skip - skip;
   }
 
-  printf("%d of %d tests passed (%d malformed, %d skipped)\n", 
+  printf("%d of %d tests passed (%d malformed, %d skipped)\n",
     passed, tests, invalid, total_skipped);
 
   if (skip > 0) {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U32 ;
-typedef  int U16 ;
-typedef  int /*<<< orphan*/  HUF_DEltX2 ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BIT_DStream_t ;
 
-/* Variables and functions */
- int BIT_DStream_unfinished ; 
- int BIT_endOfDStream (int /*<<< orphan*/ *) ; 
- size_t BIT_initDStream (int /*<<< orphan*/ *,int /*<<< orphan*/  const* const,size_t const) ; 
- int BIT_reloadDStream (int /*<<< orphan*/ *) ; 
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HUF_DECODE_SYMBOLX2_0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HUF_DECODE_SYMBOLX2_1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HUF_DECODE_SYMBOLX2_2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HUF_decodeStreamX2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ * const,int /*<<< orphan*/  const* const,int const) ; 
- scalar_t__ HUF_isError (size_t) ; 
- size_t MEM_readLE16 (int /*<<< orphan*/  const* const) ; 
- int /*<<< orphan*/  corruption_detected ; 
+
+
+
+typedef int U32 ;
+typedef int U16 ;
+typedef int HUF_DEltX2 ;
+typedef int BYTE ;
+typedef int BIT_DStream_t ;
+
+
+ int BIT_DStream_unfinished ;
+ int BIT_endOfDStream (int *) ;
+ size_t BIT_initDStream (int *,int const* const,size_t const) ;
+ int BIT_reloadDStream (int *) ;
+ size_t ERROR (int ) ;
+ int HUF_DECODE_SYMBOLX2_0 (int *,int *) ;
+ int HUF_DECODE_SYMBOLX2_1 (int *,int *) ;
+ int HUF_DECODE_SYMBOLX2_2 (int *,int *) ;
+ int HUF_decodeStreamX2 (int *,int *,int * const,int const* const,int const) ;
+ scalar_t__ HUF_isError (size_t) ;
+ size_t MEM_readLE16 (int const* const) ;
+ int corruption_detected ;
 
 __attribute__((used)) static size_t HUF_decompress4X2_usingDTable(
-          void* dst,  size_t dstSize,
+          void* dst, size_t dstSize,
     const void* cSrc, size_t cSrcSize,
     const U16* DTable)
 {
-    if (cSrcSize < 10) return ERROR(corruption_detected);   /* strict minimum : jump table + 1 byte per stream */
+    if (cSrcSize < 10) return ERROR(corruption_detected);
 
     {
         const BYTE* const istart = (const BYTE*) cSrc;
@@ -46,7 +46,7 @@ __attribute__((used)) static size_t HUF_decompress4X2_usingDTable(
         const U32 dtLog = DTable[0];
         size_t errorCode;
 
-        /* Init */
+
         BIT_DStream_t bitD1;
         BIT_DStream_t bitD2;
         BIT_DStream_t bitD3;
@@ -55,7 +55,7 @@ __attribute__((used)) static size_t HUF_decompress4X2_usingDTable(
         const size_t length2 = MEM_readLE16(istart+2);
         const size_t length3 = MEM_readLE16(istart+4);
         size_t length4;
-        const BYTE* const istart1 = istart + 6;  /* jumpTable */
+        const BYTE* const istart1 = istart + 6;
         const BYTE* const istart2 = istart1 + length1;
         const BYTE* const istart3 = istart2 + length2;
         const BYTE* const istart4 = istart3 + length3;
@@ -70,7 +70,7 @@ __attribute__((used)) static size_t HUF_decompress4X2_usingDTable(
         U32 endSignal;
 
         length4 = cSrcSize - (length1 + length2 + length3 + 6);
-        if (length4 > cSrcSize) return ERROR(corruption_detected);   /* overflow */
+        if (length4 > cSrcSize) return ERROR(corruption_detected);
         errorCode = BIT_initDStream(&bitD1, istart1, length1);
         if (HUF_isError(errorCode)) return errorCode;
         errorCode = BIT_initDStream(&bitD2, istart2, length2);
@@ -80,7 +80,7 @@ __attribute__((used)) static size_t HUF_decompress4X2_usingDTable(
         errorCode = BIT_initDStream(&bitD4, istart4, length4);
         if (HUF_isError(errorCode)) return errorCode;
 
-        /* 16-32 symbols per loop (4-8 symbols per stream) */
+
         endSignal = BIT_reloadDStream(&bitD1) | BIT_reloadDStream(&bitD2) | BIT_reloadDStream(&bitD3) | BIT_reloadDStream(&bitD4);
         for ( ; (endSignal==BIT_DStream_unfinished) && (op4<(oend-7)) ; )
         {
@@ -104,23 +104,23 @@ __attribute__((used)) static size_t HUF_decompress4X2_usingDTable(
             endSignal = BIT_reloadDStream(&bitD1) | BIT_reloadDStream(&bitD2) | BIT_reloadDStream(&bitD3) | BIT_reloadDStream(&bitD4);
         }
 
-        /* check corruption */
+
         if (op1 > opStart2) return ERROR(corruption_detected);
         if (op2 > opStart3) return ERROR(corruption_detected);
         if (op3 > opStart4) return ERROR(corruption_detected);
-        /* note : op4 supposed already verified within main loop */
 
-        /* finish bitStreams one by one */
+
+
         HUF_decodeStreamX2(op1, &bitD1, opStart2, dt, dtLog);
         HUF_decodeStreamX2(op2, &bitD2, opStart3, dt, dtLog);
         HUF_decodeStreamX2(op3, &bitD3, opStart4, dt, dtLog);
-        HUF_decodeStreamX2(op4, &bitD4, oend,     dt, dtLog);
+        HUF_decodeStreamX2(op4, &bitD4, oend, dt, dtLog);
 
-        /* check */
+
         endSignal = BIT_endOfDStream(&bitD1) & BIT_endOfDStream(&bitD2) & BIT_endOfDStream(&bitD3) & BIT_endOfDStream(&bitD4);
         if (!endSignal) return ERROR(corruption_detected);
 
-        /* decoded size */
+
         return dstSize;
     }
 }

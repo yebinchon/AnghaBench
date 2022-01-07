@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int pdx; int pdy; scalar_t__ pw; scalar_t__ ph; } ;
-typedef  TYPE_2__ opj_pi_resolution_t ;
+typedef TYPE_2__ opj_pi_resolution_t ;
 struct TYPE_7__ {size_t compno0; size_t compno1; scalar_t__ ty0; scalar_t__ tx0; scalar_t__ ty1; scalar_t__ tx1; size_t resno0; size_t resno1; size_t layno0; size_t layno1; } ;
-struct TYPE_9__ {size_t compno; size_t dx; size_t dy; scalar_t__ ty0; scalar_t__ tx0; scalar_t__ ty1; scalar_t__ tx1; size_t y; size_t x; size_t resno; size_t precno; size_t layno; size_t step_l; size_t step_r; size_t step_c; size_t step_p; size_t include_size; int* include; TYPE_1__ poc; int /*<<< orphan*/  tp_on; TYPE_4__* comps; scalar_t__ first; } ;
-typedef  TYPE_3__ opj_pi_iterator_t ;
+struct TYPE_9__ {size_t compno; size_t dx; size_t dy; scalar_t__ ty0; scalar_t__ tx0; scalar_t__ ty1; scalar_t__ tx1; size_t y; size_t x; size_t resno; size_t precno; size_t layno; size_t step_l; size_t step_r; size_t step_c; size_t step_p; size_t include_size; int* include; TYPE_1__ poc; int tp_on; TYPE_4__* comps; scalar_t__ first; } ;
+typedef TYPE_3__ opj_pi_iterator_t ;
 struct TYPE_10__ {size_t numresolutions; unsigned int dx; unsigned int dy; TYPE_2__* resolutions; } ;
-typedef  TYPE_4__ opj_pi_comp_t ;
-typedef  size_t OPJ_UINT32 ;
-typedef  size_t OPJ_INT32 ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
+typedef TYPE_4__ opj_pi_comp_t ;
+typedef size_t OPJ_UINT32 ;
+typedef size_t OPJ_INT32 ;
+typedef int OPJ_BOOL ;
 
-/* Variables and functions */
- size_t INT_MAX ; 
- int /*<<< orphan*/  OPJ_FALSE ; 
- int /*<<< orphan*/  OPJ_TRUE ; 
- unsigned int UINT_MAX ; 
- size_t opj_int_ceildiv (scalar_t__,size_t) ; 
- size_t opj_int_floordivpow2 (size_t,size_t) ; 
- int /*<<< orphan*/  opj_pi_emit_error (TYPE_3__*,char*) ; 
- size_t opj_uint_min (size_t,size_t) ; 
+
+ size_t INT_MAX ;
+ int OPJ_FALSE ;
+ int OPJ_TRUE ;
+ unsigned int UINT_MAX ;
+ size_t opj_int_ceildiv (scalar_t__,size_t) ;
+ size_t opj_int_floordivpow2 (size_t,size_t) ;
+ int opj_pi_emit_error (TYPE_3__*,char*) ;
+ size_t opj_uint_min (size_t,size_t) ;
 
 __attribute__((used)) static OPJ_BOOL opj_pi_next_cprl(opj_pi_iterator_t * pi)
 {
-    opj_pi_comp_t *comp = NULL;
-    opj_pi_resolution_t *res = NULL;
+    opj_pi_comp_t *comp = ((void*)0);
+    opj_pi_resolution_t *res = ((void*)0);
     OPJ_UINT32 index = 0;
 
     if (!pi->first) {
@@ -89,8 +89,8 @@ __attribute__((used)) static OPJ_BOOL opj_pi_next_cprl(opj_pi_iterator_t * pi)
                     OPJ_INT32 prci, prcj;
                     res = &comp->resolutions[pi->resno];
                     levelno = comp->numresolutions - 1 - pi->resno;
-                    /* Avoids division by zero on id_000004,sig_06,src_000679,op_arith8,pos_49,val_-17 */
-                    /* of  https://github.com/uclouvain/openjpeg/issues/938 */
+
+
                     if (levelno >= 32 ||
                             ((comp->dx << levelno) >> levelno) != comp->dx ||
                             ((comp->dy << levelno) >> levelno) != comp->dy) {
@@ -107,16 +107,16 @@ __attribute__((used)) static OPJ_BOOL opj_pi_next_cprl(opj_pi_iterator_t * pi)
                     rpx = res->pdx + levelno;
                     rpy = res->pdy + levelno;
 
-                    /* To avoid divisions by zero / undefined behaviour on shift */
-                    /* in below tests */
-                    /* Fixes reading id:000019,sig:08,src:001098,op:flip1,pos:49 */
-                    /* of https://github.com/uclouvain/openjpeg/issues/938 */
+
+
+
+
                     if (rpx >= 31 || ((comp->dx << rpx) >> rpx) != comp->dx ||
                             rpy >= 31 || ((comp->dy << rpy) >> rpy) != comp->dy) {
                         continue;
                     }
 
-                    /* See ISO-15441. B.12.1.5 Component-position-resolution level-layer progression */
+
                     if (!((pi->y % (OPJ_INT32)(comp->dy << rpy) == 0) || ((pi->y == pi->ty0) &&
                             ((try0 << levelno) % (1 << rpy))))) {
                         continue;

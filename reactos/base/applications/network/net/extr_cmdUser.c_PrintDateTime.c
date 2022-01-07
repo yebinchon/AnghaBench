@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_10__ {int /*<<< orphan*/  dwHighDateTime; int /*<<< orphan*/  dwLowDateTime; } ;
-struct TYPE_8__ {int /*<<< orphan*/  HighPart; int /*<<< orphan*/  LowPart; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int VOID ;
+struct TYPE_10__ {int dwHighDateTime; int dwLowDateTime; } ;
+struct TYPE_8__ {int HighPart; int LowPart; } ;
 struct TYPE_9__ {TYPE_1__ u; } ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  TYPE_3__ FILETIME ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int SYSTEMTIME ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef TYPE_3__ FILETIME ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ConPrintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DATE_SHORTDATE ; 
- int /*<<< orphan*/  FileTimeToLocalFileTime (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  FileTimeToSystemTime (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDateFormatW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTimeFormatW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOCALE_USER_DEFAULT ; 
- int /*<<< orphan*/  RtlSecondsSince1970ToTime (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  StdOut ; 
- int /*<<< orphan*/  TIME_NOSECONDS ; 
+
+ int ARRAYSIZE (int *) ;
+ int ConPrintf (int ,char*,int *,int *) ;
+ int DATE_SHORTDATE ;
+ int FileTimeToLocalFileTime (TYPE_3__*,TYPE_3__*) ;
+ int FileTimeToSystemTime (TYPE_3__*,int *) ;
+ int GetDateFormatW (int ,int ,int *,int *,int *,int ) ;
+ int GetTimeFormatW (int ,int ,int *,int *,int *,int ) ;
+ int LOCALE_USER_DEFAULT ;
+ int RtlSecondsSince1970ToTime (int ,TYPE_2__*) ;
+ int StdOut ;
+ int TIME_NOSECONDS ;
 
 __attribute__((used)) static
 VOID
@@ -55,14 +55,14 @@ PrintDateTime(DWORD dwSeconds)
     GetDateFormatW(LOCALE_USER_DEFAULT,
                    DATE_SHORTDATE,
                    &SystemTime,
-                   NULL,
+                   ((void*)0),
                    DateBuffer,
                    ARRAYSIZE(DateBuffer));
 
     GetTimeFormatW(LOCALE_USER_DEFAULT,
                    TIME_NOSECONDS,
                    &SystemTime,
-                   NULL,
+                   ((void*)0),
                    TimeBuffer,
                    ARRAYSIZE(TimeBuffer));
 

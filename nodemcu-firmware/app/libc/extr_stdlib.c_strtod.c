@@ -1,54 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- scalar_t__ isdigit (unsigned char) ; 
- scalar_t__ isspace (unsigned char) ; 
- double* powersOf10 ; 
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ isdigit (unsigned char) ;
+ scalar_t__ isspace (unsigned char) ;
+ double* powersOf10 ;
 
 double strtod(const char *string, char **endPtr)
 {
-    int maxExponent = 511;  /* Largest possible base 10 exponent.  Any
-                 * exponent larger than this will already
-                 * produce underflow or overflow, so there's
-                 * no need to worry about additional digits.
-                 */
+    int maxExponent = 511;
+
+
+
+
 
     int sign, expSign = FALSE;
     double fraction, dblExp, *d;
     register const char *p;
     register int c;
-    int exp = 0;        /* Exponent read from "EX" field. */
-    int fracExp = 0;        /* Exponent that derives from the fractional
-                 * part.  Under normal circumstatnces, it is
-                 * the negative of the number of digits in F.
-                 * However, if I is very long, the last digits
-                 * of I get dropped (otherwise a long I with a
-                 * large negative exponent could cause an
-                 * unnecessary overflow on I alone).  In this
-                 * case, fracExp is incremented one for each
-                 * dropped digit. */
-    int mantSize;       /* Number of digits in mantissa. */
-    int decPt;          /* Number of mantissa digits BEFORE decimal
-                 * point. */
-    const char *pExp;       /* Temporarily holds location of exponent
-                 * in string. */
+    int exp = 0;
+    int fracExp = 0;
+    int mantSize;
+    int decPt;
 
-    /*
-     * Strip off leading blanks and check for a sign.
-     */
+    const char *pExp;
+
+
+
+
+
 
     p = string;
     while (isspace((unsigned char)(*p)))
@@ -69,10 +53,10 @@ double strtod(const char *string, char **endPtr)
         sign = FALSE;
     }
 
-    /*
-     * Count the number of digits in the mantissa (including the decimal
-     * point), and also locate the decimal point.
-     */
+
+
+
+
 
     decPt = -1;
     for (mantSize = 0; ; mantSize += 1)
@@ -88,15 +72,7 @@ double strtod(const char *string, char **endPtr)
         }
         p += 1;
     }
-
-    /*
-     * Now suck up the digits in the mantissa.  Use two integers to
-     * collect 9 digits each (this is faster than using floating-point).
-     * If the mantissa has more than 18 digits, ignore the extras, since
-     * they can't affect the value anyway.
-     */
-
-    pExp  = p;
+    pExp = p;
     p -= mantSize;
     if (decPt < 0)
     {
@@ -104,7 +80,7 @@ double strtod(const char *string, char **endPtr)
     }
     else
     {
-        mantSize -= 1;          /* One of the digits was the point. */
+        mantSize -= 1;
     }
     if (mantSize > 18)
     {
@@ -151,9 +127,9 @@ double strtod(const char *string, char **endPtr)
         fraction = (1.0e9 * frac1) + frac2;
     }
 
-    /*
-     * Skim off the exponent.
-     */
+
+
+
 
     p = pExp;
     if ((*p == 'E') || (*p == 'e'))
@@ -191,14 +167,6 @@ double strtod(const char *string, char **endPtr)
     {
         exp = fracExp + exp;
     }
-
-    /*
-     * Generate a floating-point number that represents the exponent.
-     * Do this by processing the exponent one bit at a time to combine
-     * many powers of 2 of 10. Then combine the exponent with the
-     * fraction.
-     */
-
     if (exp < 0)
     {
         expSign = TRUE;
@@ -211,7 +179,7 @@ double strtod(const char *string, char **endPtr)
     if (exp > maxExponent)
     {
         exp = maxExponent;
-        // errno = ERANGE;
+
     }
     dblExp = 1.0;
     for (d = powersOf10; exp != 0; exp >>= 1, d += 1)
@@ -231,7 +199,7 @@ double strtod(const char *string, char **endPtr)
     }
 
 done:
-    if (endPtr != NULL)
+    if (endPtr != ((void*)0))
     {
         *endPtr = (char *) p;
     }

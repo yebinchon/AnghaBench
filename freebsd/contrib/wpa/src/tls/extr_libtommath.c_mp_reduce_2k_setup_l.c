@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_int ;
 
-/* Variables and functions */
- int MP_OKAY ; 
- int mp_2expt (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_count_bits (int /*<<< orphan*/ *) ; 
- int mp_init (int /*<<< orphan*/ *) ; 
- int s_mp_sub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mp_int ;
+
+
+ int MP_OKAY ;
+ int mp_2expt (int *,int ) ;
+ int mp_clear (int *) ;
+ int mp_count_bits (int *) ;
+ int mp_init (int *) ;
+ int s_mp_sub (int *,int *,int *) ;
 
 __attribute__((used)) static int mp_reduce_2k_setup_l(mp_int *a, mp_int *d)
 {
-   int    res;
+   int res;
    mp_int tmp;
 
    if ((res = mp_init(&tmp)) != MP_OKAY) {

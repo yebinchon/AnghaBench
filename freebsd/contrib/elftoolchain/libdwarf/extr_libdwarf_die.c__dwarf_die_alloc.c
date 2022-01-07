@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct _Dwarf_Die {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  die_attr; } ;
-typedef  int /*<<< orphan*/  Dwarf_Error ;
-typedef  TYPE_1__* Dwarf_Die ;
-typedef  int /*<<< orphan*/  Dwarf_Debug ;
+struct TYPE_4__ {int die_attr; } ;
+typedef int Dwarf_Error ;
+typedef TYPE_1__* Dwarf_Die ;
+typedef int Dwarf_Debug ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DWARF_SET_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int DW_DLE_MEMORY ; 
- int DW_DLE_NONE ; 
- int /*<<< orphan*/  STAILQ_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_1__* calloc (int,int) ; 
+
+ int DWARF_SET_ERROR (int ,int *,int) ;
+ int DW_DLE_MEMORY ;
+ int DW_DLE_NONE ;
+ int STAILQ_INIT (int *) ;
+ int assert (int ) ;
+ TYPE_1__* calloc (int,int) ;
 
 int
 _dwarf_die_alloc(Dwarf_Debug dbg, Dwarf_Die *ret_die, Dwarf_Error *error)
 {
-	Dwarf_Die die;
+ Dwarf_Die die;
 
-	assert(ret_die != NULL);
+ assert(ret_die != ((void*)0));
 
-	if ((die = calloc(1, sizeof(struct _Dwarf_Die))) == NULL) {
-		DWARF_SET_ERROR(dbg, error, DW_DLE_MEMORY);
-		return (DW_DLE_MEMORY);
-	}
+ if ((die = calloc(1, sizeof(struct _Dwarf_Die))) == ((void*)0)) {
+  DWARF_SET_ERROR(dbg, error, DW_DLE_MEMORY);
+  return (DW_DLE_MEMORY);
+ }
 
-	STAILQ_INIT(&die->die_attr);
+ STAILQ_INIT(&die->die_attr);
 
-	*ret_die = die;
+ *ret_die = die;
 
-	return (DW_DLE_NONE);
+ return (DW_DLE_NONE);
 }

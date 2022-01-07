@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_31__   TYPE_5__ ;
-typedef  struct TYPE_30__   TYPE_4__ ;
-typedef  struct TYPE_29__   TYPE_3__ ;
-typedef  struct TYPE_28__   TYPE_2__ ;
-typedef  struct TYPE_27__   TYPE_24__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_31__ TYPE_5__ ;
+typedef struct TYPE_30__ TYPE_4__ ;
+typedef struct TYPE_29__ TYPE_3__ ;
+typedef struct TYPE_28__ TYPE_2__ ;
+typedef struct TYPE_27__ TYPE_24__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+
+
 struct TYPE_31__ {scalar_t__ pix_fmt; TYPE_2__* priv_data; } ;
-struct TYPE_30__ {int key_frame; int /*<<< orphan*/  pict_type; int /*<<< orphan*/ * data; } ;
-struct TYPE_29__ {int size; int /*<<< orphan*/  data; } ;
-struct TYPE_28__ {TYPE_4__* frame; int /*<<< orphan*/  skip_cursor; TYPE_24__* frame2; TYPE_1__* frame1; int /*<<< orphan*/  gb; } ;
-struct TYPE_27__ {int /*<<< orphan*/ * data; } ;
-struct TYPE_26__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_2__ RASCContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+struct TYPE_30__ {int key_frame; int pict_type; int * data; } ;
+struct TYPE_29__ {int size; int data; } ;
+struct TYPE_28__ {TYPE_4__* frame; int skip_cursor; TYPE_24__* frame2; TYPE_1__* frame1; int gb; } ;
+struct TYPE_27__ {int * data; } ;
+struct TYPE_26__ {int * data; } ;
+typedef TYPE_2__ RASCContext ;
+typedef int GetByteContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
- scalar_t__ AV_PIX_FMT_PAL8 ; 
- unsigned int BNDL ; 
-#define  DLTA 134 
- scalar_t__ EMPT ; 
-#define  FINT 133 
-#define  INIT 132 
- unsigned int KBND ; 
-#define  KFRM 131 
-#define  MOUS 130 
-#define  MOVE 129 
-#define  MPOS 128 
- unsigned int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- unsigned int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ bytestream2_peek_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  copy_plane (TYPE_5__*,TYPE_24__*,TYPE_4__*) ; 
- int decode_dlta (TYPE_5__*,TYPE_3__*,unsigned int) ; 
- int decode_fint (TYPE_5__*,TYPE_3__*,unsigned int) ; 
- int decode_kfrm (TYPE_5__*,TYPE_3__*,unsigned int) ; 
- int decode_mous (TYPE_5__*,TYPE_3__*,unsigned int) ; 
- int decode_move (TYPE_5__*,TYPE_3__*,unsigned int) ; 
- int decode_mpos (TYPE_5__*,TYPE_3__*,unsigned int) ; 
- int /*<<< orphan*/  draw_cursor (TYPE_5__*) ; 
- int ff_get_buffer (TYPE_5__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+ scalar_t__ AV_PIX_FMT_PAL8 ;
+ unsigned int BNDL ;
+
+ scalar_t__ EMPT ;
+
+
+ unsigned int KBND ;
+
+
+
+
+ unsigned int bytestream2_get_bytes_left (int *) ;
+ unsigned int bytestream2_get_le32 (int *) ;
+ int bytestream2_init (int *,int ,int) ;
+ scalar_t__ bytestream2_peek_le32 (int *) ;
+ int bytestream2_skip (int *,unsigned int) ;
+ int copy_plane (TYPE_5__*,TYPE_24__*,TYPE_4__*) ;
+ int decode_dlta (TYPE_5__*,TYPE_3__*,unsigned int) ;
+ int decode_fint (TYPE_5__*,TYPE_3__*,unsigned int) ;
+ int decode_kfrm (TYPE_5__*,TYPE_3__*,unsigned int) ;
+ int decode_mous (TYPE_5__*,TYPE_3__*,unsigned int) ;
+ int decode_move (TYPE_5__*,TYPE_3__*,unsigned int) ;
+ int decode_mpos (TYPE_5__*,TYPE_3__*,unsigned int) ;
+ int draw_cursor (TYPE_5__*) ;
+ int ff_get_buffer (TYPE_5__*,TYPE_4__*,int ) ;
+ int memcpy (int ,int ,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
                         void *data, int *got_frame,
@@ -92,23 +92,23 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
             return AVERROR_INVALIDDATA;
 
         switch (type) {
-        case FINT:
-        case INIT:
+        case 133:
+        case 132:
             ret = decode_fint(avctx, avpkt, size);
             break;
-        case KFRM:
+        case 131:
             ret = decode_kfrm(avctx, avpkt, size);
             break;
-        case DLTA:
+        case 134:
             ret = decode_dlta(avctx, avpkt, size);
             break;
-        case MOVE:
+        case 129:
             ret = decode_move(avctx, avpkt, size);
             break;
-        case MOUS:
+        case 130:
             ret = decode_mous(avctx, avpkt, size);
             break;
-        case MPOS:
+        case 128:
             ret = decode_mpos(avctx, avpkt, size);
             break;
         default:

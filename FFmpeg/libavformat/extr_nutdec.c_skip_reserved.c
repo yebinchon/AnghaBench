@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_6__ {scalar_t__ eof_reached; } ;
-typedef  TYPE_1__ AVIOContext ;
+typedef TYPE_1__ AVIOContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  avio_r8 (TYPE_1__*) ; 
- int /*<<< orphan*/  avio_seek (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_tell (TYPE_1__*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int SEEK_CUR ;
+ int avio_r8 (TYPE_1__*) ;
+ int avio_seek (TYPE_1__*,scalar_t__,int ) ;
+ scalar_t__ avio_tell (TYPE_1__*) ;
 
 __attribute__((used)) static int skip_reserved(AVIOContext *bc, int64_t pos)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ptrace_lwpinfo {int dummy; } ;
 struct ps_prochandle {int dummy; } ;
-typedef  int /*<<< orphan*/  ps_err_e ;
-typedef  int /*<<< orphan*/  lwpid_t ;
+typedef int ps_err_e ;
+typedef int lwpid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PS_ERR ; 
- int /*<<< orphan*/  PS_OK ; 
- int /*<<< orphan*/  PT_LWPINFO ; 
- scalar_t__ fbsd_thread_core ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
- int ptrace (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
+
+ int PS_ERR ;
+ int PS_OK ;
+ int PT_LWPINFO ;
+ scalar_t__ fbsd_thread_core ;
+ int memset (void*,int ,int) ;
+ int ptrace (int ,int ,void*,int) ;
 
 ps_err_e
 ps_linfo(struct ps_prochandle *ph, lwpid_t lwpid, void *info)
 {
   if (fbsd_thread_core) {
-    /* XXX should verify lwpid and make a pseudo lwp info */
+
     memset(info, 0, sizeof(struct ptrace_lwpinfo));
     return PS_OK;
   }

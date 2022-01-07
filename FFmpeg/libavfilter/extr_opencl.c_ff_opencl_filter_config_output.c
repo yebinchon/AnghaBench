@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_16__ {scalar_t__ data; } ;
-struct TYPE_15__ {int /*<<< orphan*/  hw_device_ctx; TYPE_1__* priv; } ;
-struct TYPE_14__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_5__* hw_frames_ctx; TYPE_4__* src; } ;
-struct TYPE_13__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  sw_format; int /*<<< orphan*/  format; } ;
-struct TYPE_12__ {int /*<<< orphan*/  output_height; int /*<<< orphan*/  output_width; int /*<<< orphan*/  output_format; int /*<<< orphan*/  device_ref; } ;
-typedef  TYPE_1__ OpenCLFilterContext ;
-typedef  TYPE_2__ AVHWFramesContext ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
-typedef  TYPE_5__ AVBufferRef ;
+struct TYPE_15__ {int hw_device_ctx; TYPE_1__* priv; } ;
+struct TYPE_14__ {int h; int w; TYPE_5__* hw_frames_ctx; TYPE_4__* src; } ;
+struct TYPE_13__ {int height; int width; int sw_format; int format; } ;
+struct TYPE_12__ {int output_height; int output_width; int output_format; int device_ref; } ;
+typedef TYPE_1__ OpenCLFilterContext ;
+typedef TYPE_2__ AVHWFramesContext ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
+typedef TYPE_5__ AVBufferRef ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PIX_FMT_OPENCL ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_buffer_unref (TYPE_5__**) ; 
- TYPE_5__* av_hwframe_ctx_alloc (int /*<<< orphan*/ ) ; 
- int av_hwframe_ctx_init (TYPE_5__*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int opencl_filter_set_device (TYPE_4__*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_OPENCL ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_buffer_unref (TYPE_5__**) ;
+ TYPE_5__* av_hwframe_ctx_alloc (int ) ;
+ int av_hwframe_ctx_init (TYPE_5__*) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int opencl_filter_set_device (TYPE_4__*,int ) ;
 
 int ff_opencl_filter_config_output(AVFilterLink *outlink)
 {
-    AVFilterContext   *avctx = outlink->src;
+    AVFilterContext *avctx = outlink->src;
     OpenCLFilterContext *ctx = avctx->priv;
-    AVBufferRef       *output_frames_ref = NULL;
+    AVBufferRef *output_frames_ref = ((void*)0);
     AVHWFramesContext *output_frames;
     int err;
 
@@ -67,10 +67,10 @@ int ff_opencl_filter_config_output(AVFilterLink *outlink)
     }
     output_frames = (AVHWFramesContext*)output_frames_ref->data;
 
-    output_frames->format    = AV_PIX_FMT_OPENCL;
+    output_frames->format = AV_PIX_FMT_OPENCL;
     output_frames->sw_format = ctx->output_format;
-    output_frames->width     = ctx->output_width;
-    output_frames->height    = ctx->output_height;
+    output_frames->width = ctx->output_width;
+    output_frames->height = ctx->output_height;
 
     err = av_hwframe_ctx_init(output_frames_ref);
     if (err < 0) {

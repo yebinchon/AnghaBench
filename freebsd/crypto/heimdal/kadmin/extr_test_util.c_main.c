@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int krb5_error_code ;
 
-/* Variables and functions */
- int /*<<< orphan*/  context ; 
- int /*<<< orphan*/  errx (int,char*,int) ; 
- int /*<<< orphan*/  krb5_free_context (int /*<<< orphan*/ ) ; 
- int krb5_init_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setprogname (char*) ; 
- int test_time () ; 
+
+
+
+typedef int krb5_error_code ;
+
+
+ int context ;
+ int errx (int,char*,int) ;
+ int krb5_free_context (int ) ;
+ int krb5_init_context (int *) ;
+ int setprogname (char*) ;
+ int test_time () ;
 
 int
 main(int argc, char **argv)
@@ -29,7 +29,7 @@ main(int argc, char **argv)
 
     ret = krb5_init_context(&context);
     if (ret)
-	errx (1, "krb5_init_context failed: %d", ret);
+ errx (1, "krb5_init_context failed: %d", ret);
 
     ret = 0;
     ret += test_time();

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int WCHAR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
 
 inline BOOL IsCJKT(WCHAR wch)
 {
     if (0x0E00 <= wch && wch <= 0x0E7F)
-        return TRUE;    /* Thai */
+        return TRUE;
 
     if (0x3000 <= wch && wch <= 0x9FFF)
-        return TRUE;    /* CJK */
+        return TRUE;
 
     if (0xAC00 <= wch && wch <= 0xD7FF)
-        return TRUE;    /* Korean */
+        return TRUE;
 
     if (0xFF00 <= wch && wch <= 0xFFEF)
-        return TRUE;    /* CJK */
+        return TRUE;
 
     return FALSE;
 }

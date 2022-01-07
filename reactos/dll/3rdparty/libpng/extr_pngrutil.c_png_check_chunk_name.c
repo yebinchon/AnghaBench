@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int png_uint_32 ;
-typedef  int /*<<< orphan*/  png_const_structrp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  png_chunk_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
 
-void /* PRIVATE */
+
+
+typedef int png_uint_32 ;
+typedef int png_const_structrp ;
+
+
+ int png_chunk_error (int ,char*) ;
+ int png_debug (int,char*) ;
+
+void
 png_check_chunk_name(png_const_structrp png_ptr, png_uint_32 chunk_name)
 {
    int i;

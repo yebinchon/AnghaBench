@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_15__ {int x; } ;
-struct TYPE_11__ {int /*<<< orphan*/  uBidiLevel; } ;
+struct TYPE_11__ {int uBidiLevel; } ;
 struct TYPE_12__ {TYPE_1__ s; } ;
 struct TYPE_16__ {int nFlags; int nWidth; TYPE_5__ pt; TYPE_4__* para; TYPE_2__ script_analysis; } ;
 struct TYPE_17__ {TYPE_6__ run; } ;
 struct TYPE_18__ {scalar_t__ type; TYPE_7__ member; struct TYPE_18__* next; struct TYPE_18__* prev; } ;
 struct TYPE_13__ {int x; } ;
 struct TYPE_14__ {TYPE_3__ pt; } ;
-typedef  TYPE_8__ ME_DisplayItem ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int BOOL ;
+typedef TYPE_8__ ME_DisplayItem ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int*) ; 
- int FALSE ; 
- int MERF_ENDPARA ; 
- int MERF_WHITESPACE ; 
- int /*<<< orphan*/  ScriptLayout (int,int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- scalar_t__ diRun ; 
- int* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int*) ; 
+
+ int ARRAY_SIZE (int*) ;
+ int FALSE ;
+ int MERF_ENDPARA ;
+ int MERF_WHITESPACE ;
+ int ScriptLayout (int,int *,int*,int*) ;
+ int TRACE (char*,int,...) ;
+ scalar_t__ diRun ;
+ int* heap_alloc (int) ;
+ int heap_free (int*) ;
 
 __attribute__((used)) static void layout_row( ME_DisplayItem *start, const ME_DisplayItem *end )
 {
     ME_DisplayItem *p;
     int i, num_runs = 0;
-    int buf[16 * 5]; /* 5 arrays - 4 of int & 1 of BYTE, alloc space for 5 of ints */
+    int buf[16 * 5];
     int *vis_to_log = buf, *log_to_vis, *widths, *pos;
     BYTE *levels;
     BOOL found_black = FALSE;

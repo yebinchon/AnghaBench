@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct peer_svc {int dummy; } ;
-struct peer {int disc_prev_chr_val; void* disc_cb_arg; int /*<<< orphan*/ * disc_cb; int /*<<< orphan*/  svcs; } ;
-typedef  int /*<<< orphan*/  peer_disc_fn ;
+struct peer {int disc_prev_chr_val; void* disc_cb_arg; int * disc_cb; int svcs; } ;
+typedef int peer_disc_fn ;
 
-/* Variables and functions */
- int BLE_HS_ENOTCONN ; 
- struct peer_svc* SLIST_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SLIST_REMOVE_HEAD (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ble_gattc_disc_all_svcs (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct peer*) ; 
- int /*<<< orphan*/  next ; 
- struct peer* peer_find (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  peer_svc_delete (struct peer_svc*) ; 
- int /*<<< orphan*/  peer_svc_disced ; 
+
+ int BLE_HS_ENOTCONN ;
+ struct peer_svc* SLIST_FIRST (int *) ;
+ int SLIST_REMOVE_HEAD (int *,int ) ;
+ int ble_gattc_disc_all_svcs (int ,int ,struct peer*) ;
+ int next ;
+ struct peer* peer_find (int ) ;
+ int peer_svc_delete (struct peer_svc*) ;
+ int peer_svc_disced ;
 
 int
 peer_disc_all(uint16_t conn_handle, peer_disc_fn *disc_cb, void *disc_cb_arg)
@@ -33,12 +33,12 @@ peer_disc_all(uint16_t conn_handle, peer_disc_fn *disc_cb, void *disc_cb_arg)
     int rc;
 
     peer = peer_find(conn_handle);
-    if (peer == NULL) {
+    if (peer == ((void*)0)) {
         return BLE_HS_ENOTCONN;
     }
 
-    /* Undiscover everything first. */
-    while ((svc = SLIST_FIRST(&peer->svcs)) != NULL) {
+
+    while ((svc = SLIST_FIRST(&peer->svcs)) != ((void*)0)) {
         SLIST_REMOVE_HEAD(&peer->svcs, next);
         peer_svc_delete(svc);
     }

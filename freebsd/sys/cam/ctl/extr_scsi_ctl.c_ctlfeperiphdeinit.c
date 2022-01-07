@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  units; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  TAILQ_EMPTY (int /*<<< orphan*/ *) ; 
- TYPE_1__ ctlfe_driver ; 
- int /*<<< orphan*/  ctlfeasync ; 
- int /*<<< orphan*/  xpt_register_async (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int units; } ;
+
+
+ int EBUSY ;
+ int TAILQ_EMPTY (int *) ;
+ TYPE_1__ ctlfe_driver ;
+ int ctlfeasync ;
+ int xpt_register_async (int ,int ,int *,int *) ;
 
 __attribute__((used)) static int
 ctlfeperiphdeinit(void)
 {
 
-	/* XXX: It would be good to tear down active ports here. */
-	if (!TAILQ_EMPTY(&ctlfe_driver.units))
-		return (EBUSY);
-	xpt_register_async(0, ctlfeasync, NULL, NULL);
-	return (0);
+
+ if (!TAILQ_EMPTY(&ctlfe_driver.units))
+  return (EBUSY);
+ xpt_register_async(0, ctlfeasync, ((void*)0), ((void*)0));
+ return (0);
 }

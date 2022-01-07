@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double getnanotime () ; 
- int /*<<< orphan*/  printf (char*,double) ; 
- scalar_t__ strtod (char const*,int /*<<< orphan*/ *) ; 
+ double getnanotime () ;
+ int printf (char*,double) ;
+ scalar_t__ strtod (char const*,int *) ;
 
 __attribute__((used)) static void getnanos(const char **argv)
 {
-	double seconds = getnanotime() / 1.0e9;
+ double seconds = getnanotime() / 1.0e9;
 
-	if (*argv)
-		seconds -= strtod(*argv, NULL);
-	printf("%lf\n", seconds);
+ if (*argv)
+  seconds -= strtod(*argv, ((void*)0));
+ printf("%lf\n", seconds);
 }

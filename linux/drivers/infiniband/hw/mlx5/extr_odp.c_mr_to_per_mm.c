@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mlx5_ib_mr {int /*<<< orphan*/  umem; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mlx5_ib_mr {int umem; } ;
 struct ib_ucontext_per_mm {int dummy; } ;
 struct TYPE_2__ {struct ib_ucontext_per_mm* per_mm; } ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  is_odp_mr (struct mlx5_ib_mr*) ; 
- TYPE_1__* to_ib_umem_odp (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ WARN_ON (int) ;
+ int is_odp_mr (struct mlx5_ib_mr*) ;
+ TYPE_1__* to_ib_umem_odp (int ) ;
 
 __attribute__((used)) static struct ib_ucontext_per_mm *mr_to_per_mm(struct mlx5_ib_mr *mr)
 {
-	if (WARN_ON(!mr || !is_odp_mr(mr)))
-		return NULL;
+ if (WARN_ON(!mr || !is_odp_mr(mr)))
+  return ((void*)0);
 
-	return to_ib_umem_odp(mr->umem)->per_mm;
+ return to_ib_umem_odp(mr->umem)->per_mm;
 }

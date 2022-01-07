@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_4__ {int /*<<< orphan*/  type_code_calculator; } ;
-struct TYPE_5__ {size_t alphabet_size_; size_t num_block_types_; size_t num_blocks_; scalar_t__ bits_; scalar_t__ depths_; scalar_t__ entropy_ix_; int /*<<< orphan*/  block_len_; scalar_t__ block_ix_; TYPE_1__ block_split_code_; int /*<<< orphan*/  const* block_lengths_; int /*<<< orphan*/  const* block_types_; } ;
-typedef  TYPE_2__ BlockEncoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InitBlockTypeCodeCalculator (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_4__ {int type_code_calculator; } ;
+struct TYPE_5__ {size_t alphabet_size_; size_t num_block_types_; size_t num_blocks_; scalar_t__ bits_; scalar_t__ depths_; scalar_t__ entropy_ix_; int block_len_; scalar_t__ block_ix_; TYPE_1__ block_split_code_; int const* block_lengths_; int const* block_types_; } ;
+typedef TYPE_2__ BlockEncoder ;
+
+
+ int InitBlockTypeCodeCalculator (int *) ;
 
 __attribute__((used)) static void InitBlockEncoder(BlockEncoder* self, size_t alphabet_size,
     size_t num_block_types, const uint8_t* block_types,

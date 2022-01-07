@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT ;
 
-/* Variables and functions */
- size_t Rand32 () ; 
+
+
+
+typedef size_t UINT ;
+
+
+ size_t Rand32 () ;
 
 char *GetRandHostNameForGetMyPrivateIP()
 {
-	char *hosts[] =
-	{
-		"www.microsoft.com",
-		"www.yahoo.com",
-		"www.bing.com",
-	};
-	UINT num_hosts = 3;
+ char *hosts[] =
+ {
+  "www.microsoft.com",
+  "www.yahoo.com",
+  "www.bing.com",
+ };
+ UINT num_hosts = 3;
 
-	return hosts[Rand32() % num_hosts];
+ return hosts[Rand32() % num_hosts];
 }

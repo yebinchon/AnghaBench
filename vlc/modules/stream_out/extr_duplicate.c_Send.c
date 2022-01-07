@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ sout_stream_t ;
+typedef TYPE_1__ sout_stream_t ;
 struct TYPE_13__ {int i_nb_streams; TYPE_1__** pp_streams; } ;
-typedef  TYPE_2__ sout_stream_sys_t ;
+typedef TYPE_2__ sout_stream_sys_t ;
 struct TYPE_14__ {scalar_t__* pp_ids; } ;
-typedef  TYPE_3__ sout_stream_id_sys_t ;
+typedef TYPE_3__ sout_stream_id_sys_t ;
 struct TYPE_15__ {struct TYPE_15__* p_next; } ;
-typedef  TYPE_4__ block_t ;
+typedef TYPE_4__ block_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- TYPE_4__* block_Duplicate (TYPE_4__*) ; 
- int /*<<< orphan*/  block_Release (TYPE_4__*) ; 
- int /*<<< orphan*/  sout_StreamIdSend (TYPE_1__*,scalar_t__,TYPE_4__*) ; 
+
+ int VLC_SUCCESS ;
+ TYPE_4__* block_Duplicate (TYPE_4__*) ;
+ int block_Release (TYPE_4__*) ;
+ int sout_StreamIdSend (TYPE_1__*,scalar_t__,TYPE_4__*) ;
 
 __attribute__((used)) static int Send( sout_stream_t *p_stream, void *_id, block_t *p_buffer )
 {
     sout_stream_sys_t *p_sys = p_stream->p_sys;
     sout_stream_id_sys_t *id = (sout_stream_id_sys_t *)_id;
-    sout_stream_t     *p_dup_stream;
-    int               i_stream;
+    sout_stream_t *p_dup_stream;
+    int i_stream;
 
-    /* Loop through the linked list of buffers */
+
     while( p_buffer )
     {
         block_t *p_next = p_buffer->p_next;
 
-        p_buffer->p_next = NULL;
+        p_buffer->p_next = ((void*)0);
 
         for( i_stream = 0; i_stream < p_sys->i_nb_streams - 1; i_stream++ )
         {

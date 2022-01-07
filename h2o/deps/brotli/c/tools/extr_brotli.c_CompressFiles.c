@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_7__ {int /*<<< orphan*/  force_overwrite; int /*<<< orphan*/  current_output_path; scalar_t__ lgwin; scalar_t__ quality; } ;
-typedef  TYPE_1__ Context ;
-typedef  int /*<<< orphan*/  BrotliEncoderState ;
-typedef  scalar_t__ BROTLI_BOOL ;
 
-/* Variables and functions */
- scalar_t__ BROTLI_FALSE ; 
- int /*<<< orphan*/  BROTLI_PARAM_LGWIN ; 
- int /*<<< orphan*/  BROTLI_PARAM_QUALITY ; 
- scalar_t__ BROTLI_TRUE ; 
- int /*<<< orphan*/ * BrotliEncoderCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliEncoderDestroyInstance (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliEncoderSetParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseFiles (TYPE_1__*,scalar_t__) ; 
- scalar_t__ CompressFile (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ NextFile (TYPE_1__*) ; 
- scalar_t__ OpenFiles (TYPE_1__*) ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_7__ {int force_overwrite; int current_output_path; scalar_t__ lgwin; scalar_t__ quality; } ;
+typedef TYPE_1__ Context ;
+typedef int BrotliEncoderState ;
+typedef scalar_t__ BROTLI_BOOL ;
+
+
+ scalar_t__ BROTLI_FALSE ;
+ int BROTLI_PARAM_LGWIN ;
+ int BROTLI_PARAM_QUALITY ;
+ scalar_t__ BROTLI_TRUE ;
+ int * BrotliEncoderCreateInstance (int *,int *,int *) ;
+ int BrotliEncoderDestroyInstance (int *) ;
+ int BrotliEncoderSetParameter (int *,int ,int ) ;
+ int CloseFiles (TYPE_1__*,scalar_t__) ;
+ scalar_t__ CompressFile (TYPE_1__*,int *) ;
+ scalar_t__ NextFile (TYPE_1__*) ;
+ scalar_t__ OpenFiles (TYPE_1__*) ;
+ int STDOUT_FILENO ;
+ int fprintf (int ,char*) ;
+ scalar_t__ isatty (int ) ;
+ int stderr ;
 
 __attribute__((used)) static BROTLI_BOOL CompressFiles(Context* context) {
   while (NextFile(context)) {
     BROTLI_BOOL is_ok = BROTLI_TRUE;
-    BrotliEncoderState* s = BrotliEncoderCreateInstance(NULL, NULL, NULL);
+    BrotliEncoderState* s = BrotliEncoderCreateInstance(((void*)0), ((void*)0), ((void*)0));
     if (!s) {
       fprintf(stderr, "out of memory\n");
       return BROTLI_FALSE;

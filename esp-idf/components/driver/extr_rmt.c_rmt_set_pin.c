@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rmt_mode_t ;
-typedef  scalar_t__ rmt_channel_t ;
-typedef  size_t gpio_num_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_OK ; 
- scalar_t__ GPIO_IS_VALID_GPIO (size_t) ; 
- scalar_t__ GPIO_IS_VALID_OUTPUT_GPIO (size_t) ; 
- int /*<<< orphan*/  GPIO_MODE_INPUT ; 
- int /*<<< orphan*/  GPIO_MODE_OUTPUT ; 
- int /*<<< orphan*/ * GPIO_PIN_MUX_REG ; 
- int /*<<< orphan*/  PIN_FUNC_GPIO ; 
- int /*<<< orphan*/  PIN_FUNC_SELECT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RMT_CHANNEL_ERROR_STR ; 
- scalar_t__ RMT_CHANNEL_MAX ; 
- int /*<<< orphan*/  RMT_CHECK (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RMT_GPIO_ERROR_STR ; 
- int /*<<< orphan*/  RMT_MODE_ERROR_STR ; 
- scalar_t__ RMT_MODE_MAX ; 
- scalar_t__ RMT_MODE_RX ; 
- scalar_t__ RMT_MODE_TX ; 
- scalar_t__ RMT_SIG_IN0_IDX ; 
- scalar_t__ RMT_SIG_OUT0_IDX ; 
- int /*<<< orphan*/  gpio_matrix_in (size_t,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_matrix_out (size_t,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_set_direction (size_t,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ rmt_mode_t ;
+typedef scalar_t__ rmt_channel_t ;
+typedef size_t gpio_num_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_OK ;
+ scalar_t__ GPIO_IS_VALID_GPIO (size_t) ;
+ scalar_t__ GPIO_IS_VALID_OUTPUT_GPIO (size_t) ;
+ int GPIO_MODE_INPUT ;
+ int GPIO_MODE_OUTPUT ;
+ int * GPIO_PIN_MUX_REG ;
+ int PIN_FUNC_GPIO ;
+ int PIN_FUNC_SELECT (int ,int ) ;
+ int RMT_CHANNEL_ERROR_STR ;
+ scalar_t__ RMT_CHANNEL_MAX ;
+ int RMT_CHECK (int,int ,int ) ;
+ int RMT_GPIO_ERROR_STR ;
+ int RMT_MODE_ERROR_STR ;
+ scalar_t__ RMT_MODE_MAX ;
+ scalar_t__ RMT_MODE_RX ;
+ scalar_t__ RMT_MODE_TX ;
+ scalar_t__ RMT_SIG_IN0_IDX ;
+ scalar_t__ RMT_SIG_OUT0_IDX ;
+ int gpio_matrix_in (size_t,scalar_t__,int ) ;
+ int gpio_matrix_out (size_t,scalar_t__,int ,int ) ;
+ int gpio_set_direction (size_t,int ) ;
 
 esp_err_t rmt_set_pin(rmt_channel_t channel, rmt_mode_t mode, gpio_num_t gpio_num)
 {

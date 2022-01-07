@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* pPhrase; } ;
-struct TYPE_9__ {int /*<<< orphan*/  iCol; int /*<<< orphan*/  pCsr; TYPE_2__* aPhrase; } ;
-struct TYPE_8__ {char* pList; char* pHead; char* pTail; int iHead; int iTail; int /*<<< orphan*/  nToken; } ;
-struct TYPE_7__ {int /*<<< orphan*/  nToken; } ;
-typedef  TYPE_2__ SnippetPhrase ;
-typedef  TYPE_3__ SnippetIter ;
-typedef  TYPE_4__ Fts3Expr ;
+struct TYPE_9__ {int iCol; int pCsr; TYPE_2__* aPhrase; } ;
+struct TYPE_8__ {char* pList; char* pHead; char* pTail; int iHead; int iTail; int nToken; } ;
+struct TYPE_7__ {int nToken; } ;
+typedef TYPE_2__ SnippetPhrase ;
+typedef TYPE_3__ SnippetIter ;
+typedef TYPE_4__ Fts3Expr ;
 
-/* Variables and functions */
- int FTS_CORRUPT_VTAB ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts3GetDeltaPosition (char**,int*) ; 
- int sqlite3Fts3EvalPhrasePoslist (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ,char**) ; 
+
+ int FTS_CORRUPT_VTAB ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts3GetDeltaPosition (char**,int*) ;
+ int sqlite3Fts3EvalPhrasePoslist (int ,TYPE_4__*,int ,char**) ;
 
 __attribute__((used)) static int fts3SnippetFindPositions(Fts3Expr *pExpr, int iPhrase, void *ctx){
   SnippetIter *p = (SnippetIter *)ctx;
@@ -52,7 +52,7 @@ __attribute__((used)) static int fts3SnippetFindPositions(Fts3Expr *pExpr, int i
     }
   }else{
     assert( rc!=SQLITE_OK || (
-       pPhrase->pList==0 && pPhrase->pHead==0 && pPhrase->pTail==0 
+       pPhrase->pList==0 && pPhrase->pHead==0 && pPhrase->pTail==0
     ));
   }
 

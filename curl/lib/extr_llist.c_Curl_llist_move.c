@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct curl_llist_element {struct curl_llist_element* next; struct curl_llist_element* prev; } ;
 struct curl_llist {scalar_t__ size; struct curl_llist_element* tail; struct curl_llist_element* head; } ;
 
-/* Variables and functions */
+
 
 void Curl_llist_move(struct curl_llist *list, struct curl_llist_element *e,
                      struct curl_llist *to_list,
                      struct curl_llist_element *to_e)
 {
-  /* Remove element from list */
-  if(e == NULL || list->size == 0)
+
+  if(e == ((void*)0) || list->size == 0)
     return;
 
   if(e == list->head) {
     list->head = e->next;
 
-    if(list->head == NULL)
-      list->tail = NULL;
+    if(list->head == ((void*)0))
+      list->tail = ((void*)0);
     else
-      e->next->prev = NULL;
+      e->next->prev = ((void*)0);
   }
   else {
     e->prev->next = e->next;
@@ -41,11 +41,11 @@ void Curl_llist_move(struct curl_llist *list, struct curl_llist_element *e,
 
   --list->size;
 
-  /* Add element to to_list after to_e */
+
   if(to_list->size == 0) {
     to_list->head = e;
-    to_list->head->prev = NULL;
-    to_list->head->next = NULL;
+    to_list->head->prev = ((void*)0);
+    to_list->head->next = ((void*)0);
     to_list->tail = e;
   }
   else {

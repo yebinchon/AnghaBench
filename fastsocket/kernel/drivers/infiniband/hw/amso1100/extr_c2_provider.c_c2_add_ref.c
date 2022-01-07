@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ib_qp {int dummy; } ;
-struct c2_qp {int /*<<< orphan*/  refcount; } ;
+struct c2_qp {int refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- struct c2_qp* to_c2qp (struct ib_qp*) ; 
+
+ int BUG_ON (int) ;
+ int atomic_inc (int *) ;
+ struct c2_qp* to_c2qp (struct ib_qp*) ;
 
 __attribute__((used)) static void c2_add_ref(struct ib_qp *ibqp)
 {
-	struct c2_qp *qp;
-	BUG_ON(!ibqp);
-	qp = to_c2qp(ibqp);
-	atomic_inc(&qp->refcount);
+ struct c2_qp *qp;
+ BUG_ON(!ibqp);
+ qp = to_c2qp(ibqp);
+ atomic_inc(&qp->refcount);
 }

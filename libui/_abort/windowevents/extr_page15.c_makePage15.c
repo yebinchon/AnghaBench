@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiWindow ;
-typedef  int /*<<< orphan*/  uiBox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  INT_MIN ; 
- int /*<<< orphan*/  button ; 
- int /*<<< orphan*/  center ; 
- int /*<<< orphan*/  hbox ; 
- int /*<<< orphan*/  moveX ; 
- int /*<<< orphan*/  moveY ; 
- int /*<<< orphan*/  newHorizontalBox () ; 
- int /*<<< orphan*/  onMove ; 
- int /*<<< orphan*/  page15 ; 
- int /*<<< orphan*/  uiBoxAppend (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uiButtonOnClicked (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiControl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiNewButton (char*) ; 
- int /*<<< orphan*/  uiNewLabel (char*) ; 
- int /*<<< orphan*/  uiNewSpinbox (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiSpinboxOnChanged (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiWindowOnPositionChanged (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  updatepos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  x ; 
- int /*<<< orphan*/  y ; 
+
+
+
+typedef int uiWindow ;
+typedef int uiBox ;
+
+
+ int INT_MAX ;
+ int INT_MIN ;
+ int button ;
+ int center ;
+ int hbox ;
+ int moveX ;
+ int moveY ;
+ int newHorizontalBox () ;
+ int onMove ;
+ int page15 ;
+ int uiBoxAppend (int ,int ,int) ;
+ int uiButtonOnClicked (int ,int ,int *) ;
+ int uiControl (int ) ;
+ int uiNewButton (char*) ;
+ int uiNewLabel (char*) ;
+ int uiNewSpinbox (int ,int ) ;
+ int uiSpinboxOnChanged (int ,int ,int *) ;
+ int uiWindowOnPositionChanged (int *,int ,int *) ;
+ int updatepos (int *) ;
+ int x ;
+ int y ;
 
 uiBox *makePage15(uiWindow *w)
 {
-	hbox = newHorizontalBox();
-	// TODO if I make this 1 and not add anything else AND not call uiWindowOnPositionChanged(), on OS X the box won't be able to grow vertically
-	uiBoxAppend(page15, uiControl(hbox), 0);
+ hbox = newHorizontalBox();
 
-	uiBoxAppend(hbox, uiControl(uiNewLabel("Position")), 0);
-	x = uiNewSpinbox(INT_MIN, INT_MAX);
-	uiBoxAppend(hbox, uiControl(x), 1);
-	y = uiNewSpinbox(INT_MIN, INT_MAX);
-	uiBoxAppend(hbox, uiControl(y), 1);
-	button = uiNewButton("Center");
-	uiBoxAppend(hbox, uiControl(button), 0);
+ uiBoxAppend(page15, uiControl(hbox), 0);
 
-	uiSpinboxOnChanged(x, moveX, w);
-	uiSpinboxOnChanged(y, moveY, w);
-	uiButtonOnClicked(button, center, w);
-	uiWindowOnPositionChanged(w, onMove, NULL);
-	updatepos(w);
+ uiBoxAppend(hbox, uiControl(uiNewLabel("Position")), 0);
+ x = uiNewSpinbox(INT_MIN, INT_MAX);
+ uiBoxAppend(hbox, uiControl(x), 1);
+ y = uiNewSpinbox(INT_MIN, INT_MAX);
+ uiBoxAppend(hbox, uiControl(y), 1);
+ button = uiNewButton("Center");
+ uiBoxAppend(hbox, uiControl(button), 0);
+
+ uiSpinboxOnChanged(x, moveX, w);
+ uiSpinboxOnChanged(y, moveY, w);
+ uiButtonOnClicked(button, center, w);
+ uiWindowOnPositionChanged(w, onMove, ((void*)0));
+ updatepos(w);
 }

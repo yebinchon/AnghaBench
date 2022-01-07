@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* harness_config; } ;
-struct TYPE_3__ {int /*<<< orphan*/  pin_relay_flipped; int /*<<< orphan*/  GPIO_relay_flipped; int /*<<< orphan*/  pin_relay_normal; int /*<<< orphan*/  GPIO_relay_normal; } ;
+struct TYPE_3__ {int pin_relay_flipped; int GPIO_relay_flipped; int pin_relay_normal; int GPIO_relay_normal; } ;
 
-/* Variables and functions */
- scalar_t__ HARNESS_STATUS_NC ; 
- scalar_t__ HARNESS_STATUS_NORMAL ; 
- scalar_t__ car_harness_status ; 
- TYPE_2__* current_board ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  set_gpio_output (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ HARNESS_STATUS_NC ;
+ scalar_t__ HARNESS_STATUS_NORMAL ;
+ scalar_t__ car_harness_status ;
+ TYPE_2__* current_board ;
+ int puts (char*) ;
+ int set_gpio_output (int ,int ,int) ;
 
 void set_intercept_relay(bool intercept) {
   if (car_harness_status != HARNESS_STATUS_NC) {

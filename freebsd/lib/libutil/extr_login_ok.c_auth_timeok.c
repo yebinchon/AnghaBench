@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+
+
+typedef scalar_t__ time_t ;
 struct tm {int dummy; } ;
 struct login_time {int dummy; } ;
-typedef  int /*<<< orphan*/  login_cap_t ;
+typedef int login_cap_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct login_time*) ; 
- int in_ltms (struct login_time*,struct tm*,int /*<<< orphan*/ *) ; 
- struct tm* localtime (scalar_t__*) ; 
- struct login_time* login_timelist (int /*<<< orphan*/ *,char*,int*,struct login_time**) ; 
+
+ int free (struct login_time*) ;
+ int in_ltms (struct login_time*,struct tm*,int *) ;
+ struct tm* localtime (scalar_t__*) ;
+ struct login_time* login_timelist (int *,char*,int*,struct login_time**) ;
 
 int
 auth_timeok(login_cap_t *lc, time_t t)
 {
-    int	    rc = 1; /* Default is ok */
+    int rc = 1;
 
-    if (lc != NULL && t != (time_t)0 && t != (time_t)-1) {
-	struct tm	*tptr;
+    if (lc != ((void*)0) && t != (time_t)0 && t != (time_t)-1) {
+ struct tm *tptr;
 
-	static int 	ltimesno = 0;
-	static struct login_time *ltimes = NULL;
+ static int ltimesno = 0;
+ static struct login_time *ltimes = ((void*)0);
 
-	if ((tptr = localtime(&t)) != NULL) {
-	    struct login_time	*lt;
+ if ((tptr = localtime(&t)) != ((void*)0)) {
+     struct login_time *lt;
 
-	  lt = login_timelist(lc, "times.allow", &ltimesno, &ltimes);
-	  if (lt != NULL && in_ltms(lt, tptr, NULL) == -1)
-	      rc = 0;	  /* not in allowed times list */
-	  else {
+   lt = login_timelist(lc, "times.allow", &ltimesno, &ltimes);
+   if (lt != ((void*)0) && in_ltms(lt, tptr, ((void*)0)) == -1)
+       rc = 0;
+   else {
 
-	      lt = login_timelist(lc, "times.deny", &ltimesno, &ltimes);
-	      if (lt != NULL && in_ltms(lt, tptr, NULL) != -1)
-		  rc = 0; /* in deny times list */
-	  }
-	  if (ltimes) {
-	      free(ltimes);
-	      ltimes = NULL;
-	      ltimesno = 0;
-	  }
-	}
+       lt = login_timelist(lc, "times.deny", &ltimesno, &ltimes);
+       if (lt != ((void*)0) && in_ltms(lt, tptr, ((void*)0)) != -1)
+    rc = 0;
+   }
+   if (ltimes) {
+       free(ltimes);
+       ltimes = ((void*)0);
+       ltimesno = 0;
+   }
+ }
     }
 
     return rc;

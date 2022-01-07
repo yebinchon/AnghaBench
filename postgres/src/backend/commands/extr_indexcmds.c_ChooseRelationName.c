@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  modlabel ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConstraintNameExists (char*,int /*<<< orphan*/ ) ; 
- int NAMEDATALEN ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrNCpy (char*,char const*,int) ; 
- int /*<<< orphan*/  get_relname_relid (char*,int /*<<< orphan*/ ) ; 
- char* makeObjectName (char const*,char const*,char*) ; 
- int /*<<< orphan*/  pfree (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,int) ; 
+
+
+
+typedef int modlabel ;
+typedef int Oid ;
+
+
+ int ConstraintNameExists (char*,int ) ;
+ int NAMEDATALEN ;
+ int OidIsValid (int ) ;
+ int StrNCpy (char*,char const*,int) ;
+ int get_relname_relid (char*,int ) ;
+ char* makeObjectName (char const*,char const*,char*) ;
+ int pfree (char*) ;
+ int snprintf (char*,int,char*,char const*,int) ;
 
 char *
 ChooseRelationName(const char *name1, const char *name2,
-				   const char *label, Oid namespaceid,
-				   bool isconstraint)
+       const char *label, Oid namespaceid,
+       bool isconstraint)
 {
-	int			pass = 0;
-	char	   *relname = NULL;
-	char		modlabel[NAMEDATALEN];
+ int pass = 0;
+ char *relname = ((void*)0);
+ char modlabel[NAMEDATALEN];
 
-	/* try the unmodified label first */
-	StrNCpy(modlabel, label, sizeof(modlabel));
 
-	for (;;)
-	{
-		relname = makeObjectName(name1, name2, modlabel);
+ StrNCpy(modlabel, label, sizeof(modlabel));
 
-		if (!OidIsValid(get_relname_relid(relname, namespaceid)))
-		{
-			if (!isconstraint ||
-				!ConstraintNameExists(relname, namespaceid))
-				break;
-		}
+ for (;;)
+ {
+  relname = makeObjectName(name1, name2, modlabel);
 
-		/* found a conflict, so try a new name component */
-		pfree(relname);
-		snprintf(modlabel, sizeof(modlabel), "%s%d", label, ++pass);
-	}
+  if (!OidIsValid(get_relname_relid(relname, namespaceid)))
+  {
+   if (!isconstraint ||
+    !ConstraintNameExists(relname, namespaceid))
+    break;
+  }
 
-	return relname;
+
+  pfree(relname);
+  snprintf(modlabel, sizeof(modlabel), "%s%d", label, ++pass);
+ }
+
+ return relname;
 }

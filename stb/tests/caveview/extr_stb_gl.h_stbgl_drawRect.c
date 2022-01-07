@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GL_POLYGON ; 
- int /*<<< orphan*/  glBegin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnd () ; 
- int /*<<< orphan*/  glTexCoord2f (int,int) ; 
- int /*<<< orphan*/  glVertex2f (float,float) ; 
+ int GL_POLYGON ;
+ int glBegin (int ) ;
+ int glEnd () ;
+ int glTexCoord2f (int,int) ;
+ int glVertex2f (float,float) ;
 
 void stbgl_drawRect(float x0, float y0, float x1, float y1)
 {

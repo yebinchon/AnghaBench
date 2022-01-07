@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ event_hdr ;
-typedef  int /*<<< orphan*/  UINT32 ;
-struct TYPE_2__ {int* (* sDriverPatches ) (int /*<<< orphan*/ *) ;int* (* sFWPatches ) (int /*<<< orphan*/ *) ;int* (* sBootLoaderPatches ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  pucTxCommandBuffer; } ;
-typedef  int CHAR ;
 
-/* Variables and functions */
- scalar_t__ HCI_EVENT_HEADER_SIZE ; 
-#define  HCI_EVENT_PATCHES_BOOTLOAD_REQ 130 
-#define  HCI_EVENT_PATCHES_DRV_REQ 129 
-#define  HCI_EVENT_PATCHES_FW_REQ 128 
- int /*<<< orphan*/  hci_patch_send (int const,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int* stub1 (int /*<<< orphan*/ *) ; 
- int* stub2 (int /*<<< orphan*/ *) ; 
- int* stub3 (int /*<<< orphan*/ *) ; 
- TYPE_1__ tSLInformation ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ event_hdr ;
+typedef int UINT32 ;
+struct TYPE_2__ {int* (* sDriverPatches ) (int *) ;int* (* sFWPatches ) (int *) ;int* (* sBootLoaderPatches ) (int *) ;int pucTxCommandBuffer; } ;
+typedef int CHAR ;
+
+
+ scalar_t__ HCI_EVENT_HEADER_SIZE ;
+
+
+
+ int hci_patch_send (int const,int ,int*,int ) ;
+ int* stub1 (int *) ;
+ int* stub2 (int *) ;
+ int* stub3 (int *) ;
+ TYPE_1__ tSLInformation ;
 
 void hci_unsol_handle_patch_request(CHAR *event_hdr)
 {
-	CHAR *params = (CHAR *)(event_hdr) + HCI_EVENT_HEADER_SIZE;
-	UINT32 ucLength = 0;
-	CHAR *patch;
+ CHAR *params = (CHAR *)(event_hdr) + HCI_EVENT_HEADER_SIZE;
+ UINT32 ucLength = 0;
+ CHAR *patch;
 
-	switch (*params)
-	{
-	case HCI_EVENT_PATCHES_DRV_REQ:
+ switch (*params)
+ {
+ case 129:
 
-		if (tSLInformation.sDriverPatches)
-		{
-			patch = tSLInformation.sDriverPatches(&ucLength);
+  if (tSLInformation.sDriverPatches)
+  {
+   patch = tSLInformation.sDriverPatches(&ucLength);
 
-			if (patch)
-			{
-				hci_patch_send(HCI_EVENT_PATCHES_DRV_REQ, 
-					tSLInformation.pucTxCommandBuffer, patch, ucLength);
-				return;
-			}
-		}
+   if (patch)
+   {
+    hci_patch_send(129,
+     tSLInformation.pucTxCommandBuffer, patch, ucLength);
+    return;
+   }
+  }
 
-		// Send 0 length Patches response event
-		hci_patch_send(HCI_EVENT_PATCHES_DRV_REQ, 
-			tSLInformation.pucTxCommandBuffer, 0, 0);
-		break;
 
-	case HCI_EVENT_PATCHES_FW_REQ:
+  hci_patch_send(129,
+   tSLInformation.pucTxCommandBuffer, 0, 0);
+  break;
 
-		if (tSLInformation.sFWPatches)
-		{
-			patch = tSLInformation.sFWPatches(&ucLength);
+ case 128:
 
-			// Build and send a patch
-			if (patch)
-			{
-				hci_patch_send(HCI_EVENT_PATCHES_FW_REQ, 
-					tSLInformation.pucTxCommandBuffer, patch, ucLength);
-				return;
-			}
-		}
+  if (tSLInformation.sFWPatches)
+  {
+   patch = tSLInformation.sFWPatches(&ucLength);
 
-		// Send 0 length Patches response event
-		hci_patch_send(HCI_EVENT_PATCHES_FW_REQ, 
-			tSLInformation.pucTxCommandBuffer, 0, 0);
-		break;
 
-	case HCI_EVENT_PATCHES_BOOTLOAD_REQ:
+   if (patch)
+   {
+    hci_patch_send(128,
+     tSLInformation.pucTxCommandBuffer, patch, ucLength);
+    return;
+   }
+  }
 
-		if (tSLInformation.sBootLoaderPatches)
-		{
-			patch = tSLInformation.sBootLoaderPatches(&ucLength);
 
-			if (patch)
-			{
-				hci_patch_send(HCI_EVENT_PATCHES_BOOTLOAD_REQ,  
-					tSLInformation.pucTxCommandBuffer, patch, ucLength);
-				return;
-			}
-		}
+  hci_patch_send(128,
+   tSLInformation.pucTxCommandBuffer, 0, 0);
+  break;
 
-		// Send 0 length Patches response event
-		hci_patch_send(HCI_EVENT_PATCHES_BOOTLOAD_REQ, 
-			tSLInformation.pucTxCommandBuffer, 0, 0);
-		break;
-	}
+ case 130:
+
+  if (tSLInformation.sBootLoaderPatches)
+  {
+   patch = tSLInformation.sBootLoaderPatches(&ucLength);
+
+   if (patch)
+   {
+    hci_patch_send(130,
+     tSLInformation.pucTxCommandBuffer, patch, ucLength);
+    return;
+   }
+  }
+
+
+  hci_patch_send(130,
+   tSLInformation.pucTxCommandBuffer, 0, 0);
+  break;
+ }
 }

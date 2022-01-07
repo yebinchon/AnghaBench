@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int len; char* buf; } ;
-typedef  TYPE_1__ WSABUF ;
-typedef  int UCHAR ;
-struct TYPE_12__ {int /*<<< orphan*/  recv_success; } ;
-struct TYPE_11__ {scalar_t__ fd; scalar_t__ bytesPending; int /*<<< orphan*/  cs; } ;
+typedef TYPE_1__ WSABUF ;
+typedef int UCHAR ;
+struct TYPE_12__ {int recv_success; } ;
+struct TYPE_11__ {scalar_t__ fd; scalar_t__ bytesPending; int cs; } ;
 struct TYPE_10__ {int ncb_length; scalar_t__ ncb_buffer; } ;
-typedef  TYPE_2__* PNCB ;
-typedef  TYPE_3__ NetBTSession ;
-typedef  TYPE_4__ NetBTAdapter ;
-typedef  size_t DWORD ;
+typedef TYPE_2__* PNCB ;
+typedef TYPE_3__ NetBTSession ;
+typedef TYPE_4__ NetBTAdapter ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int NBR_GETWORD (int*) ; 
- int NBSS_EXTENSION ; 
- int NBSS_HDRSIZE ; 
- int NBSS_KEEPALIVE ; 
- int NBSS_MSG ; 
- scalar_t__ NCB_CANCELLED (TYPE_2__*) ; 
- int NRC_BADDR ; 
- int NRC_CMDCAN ; 
- int NRC_ENVNOTDEF ; 
- int NRC_GOODRET ; 
- int NRC_INCOMP ; 
- int NRC_SABORT ; 
- int NRC_SNUMOUT ; 
- int /*<<< orphan*/  NetBIOSHangupSession (TYPE_2__*) ; 
- int SOCKET_ERROR ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- scalar_t__ WSAEWOULDBLOCK ; 
- scalar_t__ WSAGetLastError () ; 
- int WSARecv (scalar_t__,TYPE_1__*,size_t,size_t*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ERR (char*,scalar_t__) ;
+ int EnterCriticalSection (int *) ;
+ int FIXME (char*,...) ;
+ scalar_t__ INVALID_SOCKET ;
+ int LeaveCriticalSection (int *) ;
+ int NBR_GETWORD (int*) ;
+ int NBSS_EXTENSION ;
+ int NBSS_HDRSIZE ;
+ int NBSS_KEEPALIVE ;
+ int NBSS_MSG ;
+ scalar_t__ NCB_CANCELLED (TYPE_2__*) ;
+ int NRC_BADDR ;
+ int NRC_CMDCAN ;
+ int NRC_ENVNOTDEF ;
+ int NRC_GOODRET ;
+ int NRC_INCOMP ;
+ int NRC_SABORT ;
+ int NRC_SNUMOUT ;
+ int NetBIOSHangupSession (TYPE_2__*) ;
+ int SOCKET_ERROR ;
+ int TRACE (char*,int,...) ;
+ scalar_t__ WSAEWOULDBLOCK ;
+ scalar_t__ WSAGetLastError () ;
+ int WSARecv (scalar_t__,TYPE_1__*,size_t,size_t*,size_t*,int *,int *) ;
 
 __attribute__((used)) static UCHAR NetBTRecv(void *adapt, void *sess, PNCB ncb)
 {
@@ -81,9 +81,9 @@ __attribute__((used)) static UCHAR NetBTRecv(void *adapt, void *sess, PNCB ncb)
     bufferCount++;
 
     flags = 0;
-    /* FIXME: should poll a bit so I can check the cancel flag */
+
     r = WSARecv(session->fd, wsaBufs, bufferCount, &bytesReceived, &flags,
-     NULL, NULL);
+     ((void*)0), ((void*)0));
     if (r == SOCKET_ERROR && WSAGetLastError() != WSAEWOULDBLOCK)
     {
         LeaveCriticalSection(&session->cs);
@@ -104,8 +104,8 @@ __attribute__((used)) static UCHAR NetBTRecv(void *adapt, void *sess, PNCB ncb)
             {
                 LeaveCriticalSection(&session->cs);
                 FIXME("Oops, received a session keepalive and lost my place\n");
-                /* need to read another session header until we get a session
-                 * message header. */
+
+
                 NetBIOSHangupSession(ncb);
                 ret = NRC_SABORT;
                 goto error;

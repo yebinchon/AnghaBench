@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* prom_nextprop (int,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+ char* prom_nextprop (int,char*,int *) ;
+ int strcmp (char*,char*) ;
 
 int prom_node_has_property(int node, char *prop)
 {
-	char *current_property = "";
+ char *current_property = "";
 
-	do {
-		current_property = prom_nextprop(node, current_property, NULL);
-		if(!strcmp(current_property, prop))
-		   return 1;
-	} while (*current_property);
-	return 0;
+ do {
+  current_property = prom_nextprop(node, current_property, ((void*)0));
+  if(!strcmp(current_property, prop))
+     return 1;
+ } while (*current_property);
+ return 0;
 }

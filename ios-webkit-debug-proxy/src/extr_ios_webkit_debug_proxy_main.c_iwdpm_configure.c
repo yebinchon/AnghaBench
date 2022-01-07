@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct option {char* member_0; int member_1; unsigned char member_3; int /*<<< orphan*/ * member_2; } ;
-struct TYPE_14__ {int /*<<< orphan*/  rm_so; } ;
-typedef  TYPE_1__ regmatch_t ;
-struct TYPE_15__ {int /*<<< orphan*/  re_nsub; } ;
-typedef  TYPE_2__ regex_t ;
-typedef  TYPE_3__* iwdpm_t ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct option {char* member_0; int member_1; unsigned char member_3; int * member_2; } ;
+struct TYPE_14__ {int rm_so; } ;
+typedef TYPE_1__ regmatch_t ;
+struct TYPE_15__ {int re_nsub; } ;
+typedef TYPE_2__ regex_t ;
+typedef TYPE_3__* iwdpm_t ;
 struct TYPE_16__ {int is_debug; TYPE_1__* frontend; TYPE_1__* sim_wi_socket_addr; TYPE_1__* config; } ;
 
-/* Variables and functions */
- char* LIBIMOBILEDEVICE_VERSION ; 
- char* LIBPLIST_VERSION ; 
- char* PACKAGE_STRING ; 
- char* PACKAGE_VERSION ; 
- int /*<<< orphan*/  REG_EXTENDED ; 
- int /*<<< orphan*/  asprintf (TYPE_1__**,char*,char const*,char*) ; 
- TYPE_1__* calloc (size_t,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int getopt_long (int,char**,char*,struct option*,int*) ; 
- TYPE_2__* malloc (int) ; 
- char const* optarg ; 
- int optind ; 
- int /*<<< orphan*/  printf (char*,char*,char*,char const*,...) ; 
- int /*<<< orphan*/  regcomp (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regexec (TYPE_2__*,char const*,size_t,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regfree (TYPE_2__*) ; 
- TYPE_1__* strdup (char const*) ; 
- char* strrchr (char*,char) ; 
+
+ char* LIBIMOBILEDEVICE_VERSION ;
+ char* LIBPLIST_VERSION ;
+ char* PACKAGE_STRING ;
+ char* PACKAGE_VERSION ;
+ int REG_EXTENDED ;
+ int asprintf (TYPE_1__**,char*,char const*,char*) ;
+ TYPE_1__* calloc (size_t,int) ;
+ int free (TYPE_1__*) ;
+ int getopt_long (int,char**,char*,struct option*,int*) ;
+ TYPE_2__* malloc (int) ;
+ char const* optarg ;
+ int optind ;
+ int printf (char*,char*,char*,char const*,...) ;
+ int regcomp (TYPE_2__*,char*,int ) ;
+ int regexec (TYPE_2__*,char const*,size_t,TYPE_1__*,int ) ;
+ int regfree (TYPE_2__*) ;
+ TYPE_1__* strdup (char const*) ;
+ char* strrchr (char*,char) ;
 
 int iwdpm_configure(iwdpm_t self, int argc, char **argv) {
 
   static struct option longopts[] = {
-    {"udid", 1, NULL, 'u'},
-    {"config", 1, NULL, 'c'},
-    {"frontend", 1, NULL, 'f'},
-    {"no-frontend", 0, NULL, 'F'},
-    {"simulator-webinspector", 1, NULL, 's'},
-    {"debug", 0, NULL, 'd'},
-    {"help", 0, NULL, 'h'},
-    {"version", 0, NULL, 'V'},
-    {NULL, 0, NULL, 0}
+    {"udid", 1, ((void*)0), 'u'},
+    {"config", 1, ((void*)0), 'c'},
+    {"frontend", 1, ((void*)0), 'f'},
+    {"no-frontend", 0, ((void*)0), 'F'},
+    {"simulator-webinspector", 1, ((void*)0), 's'},
+    {"debug", 0, ((void*)0), 'd'},
+    {"help", 0, ((void*)0), 'h'},
+    {"version", 0, ((void*)0), 'V'},
+    {((void*)0), 0, ((void*)0), 0}
   };
   const char *DEFAULT_CONFIG = "null:9221,:9222-9322";
   const char *DEFAULT_FRONTEND =
      "http://chrome-devtools-frontend.appspot.com/static/27.0.1453.93/devtools.html";
-  // The port 27753 is from `locate com.apple.webinspectord.plist`
+
   const char *DEFAULT_SIM_WI_SOCKET_ADDR = "localhost:27753";
 
   self->config = strdup(DEFAULT_CONFIG);
@@ -92,12 +92,12 @@ int iwdpm_configure(iwdpm_t self, int argc, char **argv) {
           free(groups);
           regfree(re);
           free(self->config);
-          self->config = NULL;
+          self->config = ((void*)0);
           if (!is_match) {
             ret = 2;
           } else if (!has_port) {
             if (asprintf(&self->config, "%s%s", optarg, ":9222") < 0) {
-              ret = 2;  // asprintf failed
+              ret = 2;
             }
           } else {
             self->config = strdup(optarg);
@@ -115,10 +115,10 @@ int iwdpm_configure(iwdpm_t self, int argc, char **argv) {
       case 'f':
       case 'F':
         free(self->frontend);
-        self->frontend = (c == 'f' ? strdup(optarg) : NULL);
+        self->frontend = (c == 'f' ? strdup(optarg) : ((void*)0));
         break;
       case 'd':
-        self->is_debug = true;
+        self->is_debug = 1;
         break;
       default:
         ret = 2;

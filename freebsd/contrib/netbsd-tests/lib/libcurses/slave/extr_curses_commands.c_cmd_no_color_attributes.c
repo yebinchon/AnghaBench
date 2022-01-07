@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int check_arg_count (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  no_color_attributes () ; 
- int /*<<< orphan*/  report_count (int) ; 
- int /*<<< orphan*/  report_int (int /*<<< orphan*/ ) ; 
+ int check_arg_count (int,int ) ;
+ int no_color_attributes () ;
+ int report_count (int) ;
+ int report_int (int ) ;
 
 void
 cmd_no_color_attributes(int nargs, char **args)
 {
-	if (check_arg_count(nargs, 0) == 1)
-		return;
+ if (check_arg_count(nargs, 0) == 1)
+  return;
 
-	report_count(1);
-	report_int(no_color_attributes());
+ report_count(1);
+ report_int(no_color_attributes());
 }

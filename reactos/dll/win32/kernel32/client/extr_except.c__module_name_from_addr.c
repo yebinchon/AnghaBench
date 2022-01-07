@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbi ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int mbi ;
 struct TYPE_3__ {scalar_t__ AllocationBase; } ;
-typedef  TYPE_1__ MEMORY_BASIC_INFORMATION ;
-typedef  int /*<<< orphan*/  HMODULE ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ MEMORY_BASIC_INFORMATION ;
+typedef int HMODULE ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleFileNameA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- size_t MAXDWORD ; 
- int VirtualQuery (void const*,TYPE_1__*,int) ; 
- char* strrchr (char*,char) ; 
+
+ int GetModuleFileNameA (int ,char*,int ) ;
+ size_t MAXDWORD ;
+ int VirtualQuery (void const*,TYPE_1__*,int) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static const char*
 _module_name_from_addr(const void* addr, void **module_start_addr,

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {struct TYPE_6__* target; struct TYPE_6__* tracer; int /*<<< orphan*/  z; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ mobj_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A_FaceTarget (TYPE_1__*) ; 
- int /*<<< orphan*/  A_Fire (TYPE_1__*) ; 
- int /*<<< orphan*/  MT_FIRE ; 
- TYPE_1__* P_SpawnMobj (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-void A_VileTarget (mobj_t*	actor)
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {struct TYPE_6__* target; struct TYPE_6__* tracer; int z; int x; } ;
+typedef TYPE_1__ mobj_t ;
+
+
+ int A_FaceTarget (TYPE_1__*) ;
+ int A_Fire (TYPE_1__*) ;
+ int MT_FIRE ;
+ TYPE_1__* P_SpawnMobj (int ,int ,int ,int ) ;
+
+void A_VileTarget (mobj_t* actor)
 {
-    mobj_t*	fog;
-	
+    mobj_t* fog;
+
     if (!actor->target)
-	return;
+ return;
 
     A_FaceTarget (actor);
 
     fog = P_SpawnMobj (actor->target->x,
-		       actor->target->x,
-		       actor->target->z, MT_FIRE);
-    
+         actor->target->x,
+         actor->target->z, MT_FIRE);
+
     actor->tracer = fog;
     fog->target = actor;
     fog->tracer = actor->target;

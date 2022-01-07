@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtlinfo ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int rtlinfo ;
+typedef int ULONG ;
 struct TYPE_5__ {scalar_t__ DeviceType; int Characteristics; } ;
-struct TYPE_4__ {int member_0; int dwMajorVersion; int dwMinorVersion; int /*<<< orphan*/  member_1; } ;
-typedef  scalar_t__ SOCKET ;
-typedef  TYPE_1__ RTL_OSVERSIONINFOEXW ;
-typedef  int /*<<< orphan*/  PRTL_OSVERSIONINFOW ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  TYPE_2__ FILE_FS_DEVICE_INFORMATION ;
-typedef  int /*<<< orphan*/  DeviceInfo ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_4__ {int member_0; int dwMajorVersion; int dwMinorVersion; int member_1; } ;
+typedef scalar_t__ SOCKET ;
+typedef TYPE_1__ RTL_OSVERSIONINFOEXW ;
+typedef int PRTL_OSVERSIONINFOW ;
+typedef scalar_t__ NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+typedef int HANDLE ;
+typedef TYPE_2__ FILE_FS_DEVICE_INFORMATION ;
+typedef int DeviceInfo ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ FILE_DEVICE_NAMED_PIPE ; 
- scalar_t__ FILE_TYPE_PIPE ; 
- int /*<<< orphan*/  FileFsDeviceInformation ; 
- scalar_t__ GetFileType (int /*<<< orphan*/ ) ; 
- scalar_t__ INVALID_SOCKET ; 
- scalar_t__ NtQueryVolumeInformationFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlGetVersion (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ WINVER_WIN8 ; 
- scalar_t__ WSASocketA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int _O_BINARY ; 
- int _O_RDWR ; 
- int /*<<< orphan*/  _close (int) ; 
- int* _errno () ; 
- int _open_osfhandle (scalar_t__,int) ; 
- int /*<<< orphan*/  closesocket (scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int AF_INET ;
+ scalar_t__ FILE_DEVICE_NAMED_PIPE ;
+ scalar_t__ FILE_TYPE_PIPE ;
+ int FileFsDeviceInformation ;
+ scalar_t__ GetFileType (int ) ;
+ scalar_t__ INVALID_SOCKET ;
+ scalar_t__ NtQueryVolumeInformationFile (int ,int *,TYPE_2__*,int,int ) ;
+ int RtlGetVersion (int ) ;
+ int SOCK_STREAM ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ WINVER_WIN8 ;
+ scalar_t__ WSASocketA (int ,int ,int ,int *,int ,int ) ;
+ int _O_BINARY ;
+ int _O_RDWR ;
+ int _close (int) ;
+ int* _errno () ;
+ int _open_osfhandle (scalar_t__,int) ;
+ int closesocket (scalar_t__) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void run_open_osfhandle(void)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static void run_open_osfhandle(void)
     IO_STATUS_BLOCK StatusBlock;
     NTSTATUS Status;
 
-    SOCKET fd = WSASocketA(AF_INET, SOCK_STREAM, 0, NULL, 0, 0);
+    SOCKET fd = WSASocketA(AF_INET, SOCK_STREAM, 0, ((void*)0), 0, 0);
     ok (fd != INVALID_SOCKET, "Invalid socket\n");
     if (fd == INVALID_SOCKET)
         return;
@@ -84,8 +84,8 @@ __attribute__((used)) static void run_open_osfhandle(void)
     ok(handle != -1, "Expected a valid handle (%i)\n", err);
     if (handle != -1)
     {
-        /* To close a file opened with _open_osfhandle, call _close. The underlying handle is also closed by
-           a call to _close, so it is not necessary to call the Win32 function CloseHandle on the original handle. */
+
+
         _close(handle);
     }
     else

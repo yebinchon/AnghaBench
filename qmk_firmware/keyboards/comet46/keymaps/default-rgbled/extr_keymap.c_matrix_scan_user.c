@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  _ADJUST 132 
-#define  _COLEMAK 131 
-#define  _DVORAK 130 
-#define  _LOWER 129 
-#define  _RAISE 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eeconfig_read_default_layer () ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  set_led_blue ; 
- int /*<<< orphan*/  set_led_green ; 
- int /*<<< orphan*/  set_led_magenta ; 
- int /*<<< orphan*/  set_led_red ; 
- int /*<<< orphan*/  set_led_white ; 
- int /*<<< orphan*/  set_led_yellow ; 
+
+
+
+typedef int uint8_t ;
+
+
+
+
+
+
+
+ int biton32 (int ) ;
+ int eeconfig_read_default_layer () ;
+ int layer_state ;
+ int set_led_blue ;
+ int set_led_green ;
+ int set_led_magenta ;
+ int set_led_red ;
+ int set_led_white ;
+ int set_led_yellow ;
 
 void matrix_scan_user(void) {
   uint8_t layer = biton32(layer_state);
   uint8_t default_layer = biton32(eeconfig_read_default_layer());
   switch (layer) {
-    case _LOWER:
+    case 129:
       set_led_red;
       break;
-    case _RAISE:
+    case 128:
       set_led_blue;
       break;
-    case _ADJUST:
+    case 132:
       set_led_magenta;
       break;
     default:
       switch (default_layer) {
-        case _COLEMAK:
+        case 131:
           set_led_white;
           break;
-        case _DVORAK:
+        case 130:
           set_led_yellow;
           break;
         default:

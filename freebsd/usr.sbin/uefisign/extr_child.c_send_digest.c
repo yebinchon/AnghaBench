@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct executable {int /*<<< orphan*/  x_digest_len; int /*<<< orphan*/  x_digest; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  send_chunk (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct executable {int x_digest_len; int x_digest; } ;
+
+
+ int send_chunk (int ,int ,int) ;
 
 __attribute__((used)) static void
 send_digest(const struct executable *x, int pipefd)
 {
 
-	send_chunk(x->x_digest, x->x_digest_len, pipefd);
+ send_chunk(x->x_digest, x->x_digest_len, pipefd);
 }

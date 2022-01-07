@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct i2c_client {int dummy; } ;
-struct i2c_board_info {int /*<<< orphan*/  type; } ;
+struct i2c_board_info {int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I2C_NAME_SIZE ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int I2C_NAME_SIZE ;
+ int strlcpy (int ,char*,int ) ;
 
 __attribute__((used)) static int dcon_detect(struct i2c_client *client, struct i2c_board_info *info)
 {
-	strlcpy(info->type, "olpc_dcon", I2C_NAME_SIZE);
+ strlcpy(info->type, "olpc_dcon", I2C_NAME_SIZE);
 
-	return 0;
+ return 0;
 }

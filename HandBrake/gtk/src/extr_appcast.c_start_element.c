@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {void* version; void* build; int /*<<< orphan*/  item; int /*<<< orphan*/  tag_stack; } ;
-typedef  TYPE_1__ parse_data_t ;
-typedef  scalar_t__ gpointer ;
-typedef  size_t gint ;
-typedef  int /*<<< orphan*/  gchar ;
-struct TYPE_4__ {size_t id; int /*<<< orphan*/  tag; } ;
-typedef  int /*<<< orphan*/  GMarkupParseContext ;
-typedef  int /*<<< orphan*/  GError ;
 
-/* Variables and functions */
-#define  A_ENCLOSURE 129 
-#define  A_ITEM 128 
- size_t A_NONE ; 
- size_t TAG_MAP_SZ ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  g_debug (char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  g_queue_push_head (int /*<<< orphan*/ ,scalar_t__) ; 
- void* g_strdup (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * lookup_attr_value (char*,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- scalar_t__ strcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- TYPE_2__* tag_map ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {void* version; void* build; int item; int tag_stack; } ;
+typedef TYPE_1__ parse_data_t ;
+typedef scalar_t__ gpointer ;
+typedef size_t gint ;
+typedef int gchar ;
+struct TYPE_4__ {size_t id; int tag; } ;
+typedef int GMarkupParseContext ;
+typedef int GError ;
+
+
+
+
+ size_t A_NONE ;
+ size_t TAG_MAP_SZ ;
+ int TRUE ;
+ int g_debug (char*,int const*) ;
+ int g_queue_push_head (int ,scalar_t__) ;
+ void* g_strdup (int const*) ;
+ int * lookup_attr_value (char*,int const**,int const**) ;
+ scalar_t__ strcmp (int const*,int ) ;
+ TYPE_2__* tag_map ;
 
 __attribute__((used)) static void
 start_element(
@@ -67,11 +67,11 @@ start_element(
     g_queue_push_head(pd->tag_stack, id.pid);
     switch (id.id)
     {
-        case A_ITEM:
+        case 128:
         {
             pd->item = TRUE;
         } break;
-        case A_ENCLOSURE:
+        case 129:
         {
             const gchar *build, *version;
             build = lookup_attr_value(

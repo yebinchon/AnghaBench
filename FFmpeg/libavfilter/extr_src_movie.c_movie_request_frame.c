@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * src; } ;
-typedef  TYPE_1__ AVFilterLink ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int FFMIN (int,int /*<<< orphan*/ ) ; 
- unsigned int FF_OUTLINK_IDX (TYPE_1__*) ; 
- int movie_push_frame (int /*<<< orphan*/ *,unsigned int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * src; } ;
+typedef TYPE_1__ AVFilterLink ;
+typedef int AVFilterContext ;
+
+
+ int FFMIN (int,int ) ;
+ unsigned int FF_OUTLINK_IDX (TYPE_1__*) ;
+ int movie_push_frame (int *,unsigned int) ;
 
 __attribute__((used)) static int movie_request_frame(AVFilterLink *outlink)
 {

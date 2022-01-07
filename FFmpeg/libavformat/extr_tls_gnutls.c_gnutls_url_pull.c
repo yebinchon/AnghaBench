@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  scalar_t__ gnutls_transport_ptr_t ;
-typedef  int /*<<< orphan*/  URLContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXIT ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  errno ; 
- int ffurl_read (int /*<<< orphan*/ *,void*,size_t) ; 
+
+
+
+typedef int ssize_t ;
+typedef scalar_t__ gnutls_transport_ptr_t ;
+typedef int URLContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EXIT ;
+ int EAGAIN ;
+ int EIO ;
+ int errno ;
+ int ffurl_read (int *,void*,size_t) ;
 
 __attribute__((used)) static ssize_t gnutls_url_pull(gnutls_transport_ptr_t transport,
                                void *buf, size_t len)

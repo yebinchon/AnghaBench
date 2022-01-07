@@ -1,68 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_dbuf {int /*<<< orphan*/  tmpbuf; } ;
+
+
+
+
+struct snd_dbuf {int tmpbuf; } ;
 struct pcm_feeder {int dummy; } ;
 struct pcm_channel {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- unsigned int FEEDER_FEED (struct pcm_feeder*,struct pcm_channel*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct snd_dbuf*) ; 
- int /*<<< orphan*/  KASSERT (int,char*) ; 
- int /*<<< orphan*/  SND_FXDIV_MAX ; 
- unsigned int SND_FXROUND (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  min (unsigned int,unsigned int) ; 
- unsigned int snd_feeder_maxcycle ; 
- unsigned int snd_feeder_maxfeed ; 
- int /*<<< orphan*/  sndbuf_acquire (struct snd_dbuf*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  sndbuf_getalign (struct snd_dbuf*) ; 
- unsigned int sndbuf_getfree (struct snd_dbuf*) ; 
+
+ int EINVAL ;
+ unsigned int FEEDER_FEED (struct pcm_feeder*,struct pcm_channel*,int ,int ,struct snd_dbuf*) ;
+ int KASSERT (int,char*) ;
+ int SND_FXDIV_MAX ;
+ unsigned int SND_FXROUND (int ,int ) ;
+ int min (unsigned int,unsigned int) ;
+ unsigned int snd_feeder_maxcycle ;
+ unsigned int snd_feeder_maxfeed ;
+ int sndbuf_acquire (struct snd_dbuf*,int ,unsigned int) ;
+ int sndbuf_getalign (struct snd_dbuf*) ;
+ unsigned int sndbuf_getfree (struct snd_dbuf*) ;
 
 int
 sndbuf_feed(struct snd_dbuf *from, struct snd_dbuf *to, struct pcm_channel *channel, struct pcm_feeder *feeder, unsigned int count)
 {
-	unsigned int cnt, maxfeed;
-#ifdef SND_DIAGNOSTIC
-	unsigned int cycle;
+ unsigned int cnt, maxfeed;
+ KASSERT(count > 0, ("can't feed 0 bytes"));
 
-	if (count > snd_feeder_maxfeed)
-		snd_feeder_maxfeed = count;
+ if (sndbuf_getfree(to) < count)
+  return (EINVAL);
 
-	cycle = 0;
-#endif
+ maxfeed = SND_FXROUND(SND_FXDIV_MAX, sndbuf_getalign(to));
 
-	KASSERT(count > 0, ("can't feed 0 bytes"));
+ do {
+  cnt = FEEDER_FEED(feeder, channel, to->tmpbuf,
+      min(count, maxfeed), from);
+  if (cnt == 0)
+   break;
+  sndbuf_acquire(to, to->tmpbuf, cnt);
+  count -= cnt;
 
-	if (sndbuf_getfree(to) < count)
-		return (EINVAL);
 
-	maxfeed = SND_FXROUND(SND_FXDIV_MAX, sndbuf_getalign(to));
 
-	do {
-		cnt = FEEDER_FEED(feeder, channel, to->tmpbuf,
-		    min(count, maxfeed), from);
-		if (cnt == 0)
-			break;
-		sndbuf_acquire(to, to->tmpbuf, cnt);
-		count -= cnt;
-#ifdef SND_DIAGNOSTIC
-		cycle++;
-#endif
-	} while (count != 0);
+ } while (count != 0);
 
-#ifdef SND_DIAGNOSTIC
-	if (cycle > snd_feeder_maxcycle)
-		snd_feeder_maxcycle = cycle;
-#endif
 
-	return (0);
+
+
+
+
+ return (0);
 }

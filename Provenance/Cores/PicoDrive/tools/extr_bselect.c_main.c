@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int* active ; 
- int activec ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fill_max () ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fread (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  malloc (int) ; 
- int /*<<< orphan*/ * ptr ; 
- int ptrc ; 
- int /*<<< orphan*/  search_active () ; 
- int /*<<< orphan*/  select_max () ; 
- int /*<<< orphan*/  srandom (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ int* active ;
+ int activec ;
+ int fclose (int *) ;
+ int fill_max () ;
+ int * fopen (char*,char*) ;
+ int fread (int ,int,int,int *) ;
+ int malloc (int) ;
+ int * ptr ;
+ int ptrc ;
+ int search_active () ;
+ int select_max () ;
+ int srandom (int ) ;
+ int time (int *) ;
 
 int
 main(int argc, char *argv[])
 {
-	int i, u, b, c;
-	FILE *f;
+ int i, u, b, c;
+ FILE *f;
 
 
-	srandom(time(NULL));
+ srandom(time(((void*)0)));
 
-	ptrc = argc - 1;
+ ptrc = argc - 1;
 
-	/*
-	 * read data
-	 */
 
-	for (i = 0; i < ptrc; i++)
-	{
-		ptr[i] = malloc(0x800);
-		f = fopen(argv[i + 1], "rb");
-		fread(ptr[i], 1, 0x800, f);
-		fclose(f);
-		active[i] = i;
-	}
-	activec = ptrc;
 
-	while (activec > 0)
-	{
-		fill_max();
-		select_max();
-		search_active();
-	}
 
-	return 0;
+
+ for (i = 0; i < ptrc; i++)
+ {
+  ptr[i] = malloc(0x800);
+  f = fopen(argv[i + 1], "rb");
+  fread(ptr[i], 1, 0x800, f);
+  fclose(f);
+  active[i] = i;
+ }
+ activec = ptrc;
+
+ while (activec > 0)
+ {
+  fill_max();
+  select_max();
+  search_active();
+ }
+
+ return 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*,int,...) ; 
- int FUZ_COMPRESSIBILITY_DEFAULT ; 
- int FUZ_usage (char const* const) ; 
- int /*<<< orphan*/  LZ4_VERSION_STRING ; 
- int XXH32 (int /*<<< orphan*/  const*,int,int) ; 
- int basicTests (int,double) ; 
- int displayLevel ; 
- int fuzzerTests (int,unsigned int,unsigned int,double,int) ; 
- unsigned int nbTestsDefault ; 
- int no_prompt ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int use_pause ; 
+
+
+
+typedef int time_t ;
+typedef int t ;
+typedef int U32 ;
+
+
+ int DISPLAY (char*,int,...) ;
+ int FUZ_COMPRESSIBILITY_DEFAULT ;
+ int FUZ_usage (char const* const) ;
+ int LZ4_VERSION_STRING ;
+ int XXH32 (int const*,int,int) ;
+ int basicTests (int,double) ;
+ int displayLevel ;
+ int fuzzerTests (int,unsigned int,unsigned int,double,int) ;
+ unsigned int nbTestsDefault ;
+ int no_prompt ;
+ int strcmp (char const*,char*) ;
+ int time (int *) ;
+ int use_pause ;
 
 int main(int argc, const char** argv)
 {
@@ -41,13 +41,13 @@ int main(int argc, const char** argv)
     U32 duration=0;
     const char* const programName = argv[0];
 
-    /* Check command line */
+
     for (argNb=1; argNb<argc; argNb++) {
         const char* argument = argv[argNb];
 
-        if(!argument) continue;   /* Protection if argument empty */
+        if(!argument) continue;
 
-        /* Decode command (note : aggregated short commands are allowed) */
+
         if (argument[0]=='-') {
             if (!strcmp(argument, "--no-prompt")) {
                 no_prompt=1;
@@ -70,7 +70,7 @@ int main(int argc, const char** argv)
                     argument++;
                     displayLevel--;
                     break;
-                case 'p': /* pause at the end */
+                case 'p':
                     argument++;
                     use_pause = 1;
                     break;
@@ -128,7 +128,7 @@ int main(int argc, const char** argv)
                         argument++;
                     }
                     break;
-                case 'P':   /* compressibility % */
+                case 'P':
                     argument++;
                     proba=0;
                     while ((*argument>='0') && (*argument<='9')) {
@@ -147,18 +147,18 @@ int main(int argc, const char** argv)
         }
     }
 
-    /* Get Seed */
+
     DISPLAY("Starting lz4frame tester (%i-bits, %s)\n", (int)(sizeof(size_t)*8), LZ4_VERSION_STRING);
 
     if (!seedset) {
-        time_t const t = time(NULL);
+        time_t const t = time(((void*)0));
         U32 const h = XXH32(&t, sizeof(t), 1);
         seed = h % 10000;
     }
     DISPLAY("Seed = %u\n", seed);
     if (proba!=FUZ_COMPRESSIBILITY_DEFAULT) DISPLAY("Compressibility : %i%%\n", proba);
 
-    nbTests += (nbTests==0);  /* avoid zero */
+    nbTests += (nbTests==0);
 
     if (testNb==0) result = basicTests(seed, ((double)proba) / 100);
     if (result) return 1;

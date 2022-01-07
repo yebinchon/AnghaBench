@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ id; } ;
-struct TYPE_9__ {int /*<<< orphan*/  buffers; } ;
-typedef  scalar_t__ GLuint ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  TYPE_1__ GLXX_CLIENT_STATE_T ;
-typedef  TYPE_2__ GLXX_BUFFER_INFO_T ;
+struct TYPE_9__ {int buffers; } ;
+typedef scalar_t__ GLuint ;
+typedef int GLenum ;
+typedef TYPE_1__ GLXX_CLIENT_STATE_T ;
+typedef TYPE_2__ GLXX_BUFFER_INFO_T ;
 
-/* Variables and functions */
- scalar_t__ get_bound_buffer (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* khrn_platform_malloc (int,char*) ; 
- int /*<<< orphan*/  khrn_pointer_map_insert (int /*<<< orphan*/ *,scalar_t__,TYPE_2__*) ; 
- TYPE_2__* khrn_pointer_map_lookup (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ scalar_t__ get_bound_buffer (TYPE_1__*,int ) ;
+ TYPE_2__* khrn_platform_malloc (int,char*) ;
+ int khrn_pointer_map_insert (int *,scalar_t__,TYPE_2__*) ;
+ TYPE_2__* khrn_pointer_map_lookup (int *,scalar_t__) ;
 
 void glxx_buffer_info_set(GLXX_CLIENT_STATE_T *state, GLenum target, GLXX_BUFFER_INFO_T* buffer_info)
 {
@@ -38,7 +38,7 @@ void glxx_buffer_info_set(GLXX_CLIENT_STATE_T *state, GLenum target, GLXX_BUFFER
          khrn_pointer_map_insert(&state->buffers, buffer, stored);
       }
       buffer_info->id = buffer;
-      //copy into stored
+
       *stored = *buffer_info;
    }
 }

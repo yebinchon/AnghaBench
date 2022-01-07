@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {void* kind; int /*<<< orphan*/  prop_state; int /*<<< orphan*/  content_state; } ;
-typedef  TYPE_1__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  svn_wc_notify_state_t ;
-typedef  scalar_t__ svn_wc_merge_outcome_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_16__ {int /*<<< orphan*/  notify_baton2; int /*<<< orphan*/  (* notify_func2 ) (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  wc_ctx; int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; } ;
-typedef  TYPE_2__ svn_client_ctx_t ;
-struct TYPE_17__ {int /*<<< orphan*/  resolution_tree; } ;
-typedef  TYPE_3__ svn_client_conflict_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_option_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC_TRANSLATE_TO_NF ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  filter_props (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client__open_ra_session_internal (int /*<<< orphan*/ **,char const**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client_conflict_get_incoming_new_repos_location (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_client_conflict_get_local_abspath (TYPE_3__*) ; 
- int /*<<< orphan*/ * svn_client_conflict_get_repos_info (char const**,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_option_get_id (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_del_on_pool_cleanup ; 
- int /*<<< orphan*/ * svn_io_file_flush (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_open_unique_file3 (int /*<<< orphan*/ **,char const**,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_sleep_for_timestamps (char const*,int /*<<< orphan*/ *) ; 
- void* svn_node_file ; 
- char* svn_path_url_add_component2 (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_prop_diffs (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_get_file (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_open_unique (int /*<<< orphan*/ **,char const**,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__acquire_write_lock_for_resolve (char const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__del_tree_conflict (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__get_tmpdir (char const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__release_write_lock (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__translated_stream (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc_add_repos_file4 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc_delete4 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *),int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc_merge5 (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_merge_conflict ; 
- int /*<<< orphan*/  svn_wc_notify_add ; 
- int /*<<< orphan*/  svn_wc_notify_resolved_tree ; 
- int /*<<< orphan*/  svn_wc_notify_state_conflicted ; 
- int /*<<< orphan*/  svn_wc_notify_state_merged ; 
- int /*<<< orphan*/  svn_wc_notify_update_update ; 
- int /*<<< orphan*/ * svn_wc_prop_list2 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_15__ {void* kind; int prop_state; int content_state; } ;
+typedef TYPE_1__ svn_wc_notify_t ;
+typedef int svn_wc_notify_state_t ;
+typedef scalar_t__ svn_wc_merge_outcome_t ;
+typedef int svn_stream_t ;
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_error_t ;
+struct TYPE_16__ {int notify_baton2; int (* notify_func2 ) (int ,TYPE_1__*,int *) ;int wc_ctx; int cancel_baton; int cancel_func; } ;
+typedef TYPE_2__ svn_client_ctx_t ;
+struct TYPE_17__ {int resolution_tree; } ;
+typedef TYPE_3__ svn_client_conflict_t ;
+typedef int svn_client_conflict_option_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_file_t ;
+typedef int apr_array_header_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int *) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC_TRANSLATE_TO_NF ;
+ int TRUE ;
+ int filter_props (int *,int *) ;
+ int stub1 (int ,TYPE_1__*,int *) ;
+ int stub2 (int ,TYPE_1__*,int *) ;
+ int stub3 (int ,TYPE_1__*,int *) ;
+ int * svn_client__open_ra_session_internal (int **,char const**,char const*,int *,int *,int ,int ,TYPE_2__*,int *,int *) ;
+ int * svn_client_conflict_get_incoming_new_repos_location (char const**,int *,int *,TYPE_3__*,int *,int *) ;
+ char* svn_client_conflict_get_local_abspath (TYPE_3__*) ;
+ int * svn_client_conflict_get_repos_info (char const**,int *,TYPE_3__*,int *,int *) ;
+ int svn_client_conflict_option_get_id (int *) ;
+ int * svn_error_compose_create (int *,int ) ;
+ int svn_io_file_del_on_pool_cleanup ;
+ int * svn_io_file_flush (int *,int *) ;
+ int * svn_io_open_unique_file3 (int **,char const**,char const*,int ,int *,int *) ;
+ int svn_io_sleep_for_timestamps (char const*,int *) ;
+ void* svn_node_file ;
+ char* svn_path_url_add_component2 (char const*,char const*,int *) ;
+ int * svn_prop_diffs (int **,int *,int *,int *) ;
+ int * svn_ra_get_file (int *,char*,int ,int *,int *,int **,int *) ;
+ int * svn_stream_close (int *) ;
+ int * svn_stream_copy3 (int *,int *,int ,int ,int *) ;
+ int * svn_stream_from_aprfile2 (int *,int ,int *) ;
+ int * svn_stream_open_unique (int **,char const**,char const*,int ,int *,int *) ;
+ int * svn_stream_reset (int *) ;
+ int * svn_wc__acquire_write_lock_for_resolve (char const**,int ,char const*,int *,int *) ;
+ int * svn_wc__del_tree_conflict (int ,char const*,int *) ;
+ int * svn_wc__get_tmpdir (char const**,int ,char const*,int *,int *) ;
+ int svn_wc__release_write_lock (int ,char const*,int *) ;
+ int * svn_wc__translated_stream (int **,int ,char const*,char const*,int ,int *,int *) ;
+ int * svn_wc_add_repos_file4 (int ,char const*,int *,int *,int *,int *,char const*,int ,int *,int *,int *) ;
+ TYPE_1__* svn_wc_create_notify (char const*,int ,int *) ;
+ int * svn_wc_delete4 (int ,char const*,int ,int ,int *,int *,int (*) (int ,TYPE_1__*,int *),int ,int *) ;
+ int * svn_wc_merge5 (scalar_t__*,int *,int ,char const*,char const*,char const*,int *,int *,int *,int *,int *,int ,int *,int *,int *,int *,int *,int *,int *,int *,int *) ;
+ scalar_t__ svn_wc_merge_conflict ;
+ int svn_wc_notify_add ;
+ int svn_wc_notify_resolved_tree ;
+ int svn_wc_notify_state_conflicted ;
+ int svn_wc_notify_state_merged ;
+ int svn_wc_notify_update_update ;
+ int * svn_wc_prop_list2 (int **,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 resolve_merge_incoming_added_file_replace_and_merge(
@@ -109,7 +109,7 @@ resolve_merge_incoming_added_file_replace_and_merge(
 
   local_abspath = svn_client_conflict_get_local_abspath(conflict);
 
-  /* Set up tempory storage for the working version of file. */
+
   SVN_ERR(svn_wc__get_tmpdir(&wc_tmpdir, ctx->wc_ctx, local_abspath,
                              scratch_pool, scratch_pool));
   SVN_ERR(svn_stream_open_unique(&working_file_tmp_stream,
@@ -117,7 +117,7 @@ resolve_merge_incoming_added_file_replace_and_merge(
                                  svn_io_file_del_on_pool_cleanup,
                                  scratch_pool, scratch_pool));
 
-  /* Copy the detranslated working file to temporary storage. */
+
   SVN_ERR(svn_wc__translated_stream(&working_file_stream, ctx->wc_ctx,
                                     local_abspath, local_abspath,
                                     SVN_WC_TRANSLATE_TO_NF,
@@ -126,61 +126,61 @@ resolve_merge_incoming_added_file_replace_and_merge(
                            ctx->cancel_func, ctx->cancel_baton,
                            scratch_pool));
 
-  /* Get a copy of the working file's properties. */
+
   SVN_ERR(svn_wc_prop_list2(&working_props, ctx->wc_ctx, local_abspath,
                             scratch_pool, scratch_pool));
 
-  /* Fetch the incoming added file from the repository. */
+
   SVN_ERR(svn_client_conflict_get_incoming_new_repos_location(
             &incoming_new_repos_relpath, &incoming_new_pegrev,
-            NULL, conflict, scratch_pool,
+            ((void*)0), conflict, scratch_pool,
             scratch_pool));
-  SVN_ERR(svn_client_conflict_get_repos_info(&repos_root_url, NULL,
+  SVN_ERR(svn_client_conflict_get_repos_info(&repos_root_url, ((void*)0),
                                              conflict, scratch_pool,
                                              scratch_pool));
   url = svn_path_url_add_component2(repos_root_url, incoming_new_repos_relpath,
                                     scratch_pool);
   SVN_ERR(svn_client__open_ra_session_internal(&ra_session, &corrected_url,
-                                               url, NULL, NULL, FALSE, FALSE,
+                                               url, ((void*)0), ((void*)0), FALSE, FALSE,
                                                ctx, scratch_pool,
                                                scratch_pool));
   if (corrected_url)
     url = corrected_url;
-  SVN_ERR(svn_io_open_unique_file3(&incoming_new_file, NULL, wc_tmpdir,
+  SVN_ERR(svn_io_open_unique_file3(&incoming_new_file, ((void*)0), wc_tmpdir,
                                    svn_io_file_del_on_pool_cleanup,
                                    scratch_pool, scratch_pool));
   incoming_new_stream = svn_stream_from_aprfile2(incoming_new_file, TRUE,
                                                  scratch_pool);
   SVN_ERR(svn_ra_get_file(ra_session, "", incoming_new_pegrev,
-                          incoming_new_stream, NULL, /* fetched_rev */
+                          incoming_new_stream, ((void*)0),
                           &incoming_new_props, scratch_pool));
-  /* Flush file to disk. */
+
   SVN_ERR(svn_io_file_flush(incoming_new_file, scratch_pool));
 
-  /* Reset the stream in preparation for adding its content to WC. */
+
   SVN_ERR(svn_stream_reset(incoming_new_stream));
 
   SVN_ERR(svn_wc__acquire_write_lock_for_resolve(&lock_abspath, ctx->wc_ctx,
                                                  local_abspath,
                                                  scratch_pool, scratch_pool));
 
-  /* ### The following WC modifications should be atomic. */
 
-  /* Replace the working file with the file from the repository. */
+
+
   err = svn_wc_delete4(ctx->wc_ctx, local_abspath, FALSE, FALSE,
-                       NULL, NULL, /* don't allow user to cancel here */
+                       ((void*)0), ((void*)0),
                        ctx->notify_func2, ctx->notify_baton2,
                        scratch_pool);
   if (err)
     goto unlock_wc;
   err = svn_wc_add_repos_file4(ctx->wc_ctx, local_abspath,
                                incoming_new_stream,
-                               NULL, /* ### could we merge first, then set
-                                        ### the merged content here? */
+                               ((void*)0),
+
                                incoming_new_props,
-                               NULL, /* ### merge props first, set here? */
+                               ((void*)0),
                                url, incoming_new_pegrev,
-                               NULL, NULL, /* don't allow user to cancel here */
+                               ((void*)0), ((void*)0),
                                scratch_pool);
   if (err)
     goto unlock_wc;
@@ -194,14 +194,14 @@ resolve_merge_incoming_added_file_replace_and_merge(
       ctx->notify_func2(ctx->notify_baton2, notify, scratch_pool);
     }
 
-  /* Resolve to current working copy state. svn_wc_merge5() requires this. */
+
   err = svn_wc__del_tree_conflict(ctx->wc_ctx, local_abspath, scratch_pool);
   if (err)
     goto unlock_wc;
 
-  /* Create an empty file as fake "merge-base" for the two added files.
-   * The files are not ancestrally related so this is the best we can do. */
-  err = svn_io_open_unique_file3(&empty_file, &empty_file_abspath, NULL,
+
+
+  err = svn_io_open_unique_file3(&empty_file, &empty_file_abspath, ((void*)0),
                                  svn_io_file_del_on_pool_cleanup,
                                  scratch_pool, scratch_pool);
   if (err)
@@ -209,23 +209,23 @@ resolve_merge_incoming_added_file_replace_and_merge(
 
   filter_props(incoming_new_props, scratch_pool);
 
-  /* Create a property diff for the files. */
+
   err = svn_prop_diffs(&propdiffs, incoming_new_props,
                        working_props, scratch_pool);
   if (err)
     goto unlock_wc;
 
-  /* Perform the file merge. */
+
   err = svn_wc_merge5(&merge_content_outcome, &merge_props_outcome,
                       ctx->wc_ctx, empty_file_abspath,
                       working_file_tmp_abspath, local_abspath,
-                      NULL, NULL, NULL, /* labels */
-                      NULL, NULL, /* conflict versions */
-                      FALSE, /* dry run */
-                      NULL, NULL, /* diff3_cmd, merge_options */
-                      NULL, propdiffs,
-                      NULL, NULL, /* conflict func/baton */
-                      NULL, NULL, /* don't allow user to cancel here */
+                      ((void*)0), ((void*)0), ((void*)0),
+                      ((void*)0), ((void*)0),
+                      FALSE,
+                      ((void*)0), ((void*)0),
+                      ((void*)0), propdiffs,
+                      ((void*)0), ((void*)0),
+                      ((void*)0), ((void*)0),
                       scratch_pool);
   if (err)
     goto unlock_wc;

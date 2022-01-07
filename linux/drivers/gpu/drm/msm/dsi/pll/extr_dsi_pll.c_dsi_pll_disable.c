@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msm_dsi_pll {int pll_on; int /*<<< orphan*/  (* disable_seq ) (struct msm_dsi_pll*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct msm_dsi_pll*) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+struct msm_dsi_pll {int pll_on; int (* disable_seq ) (struct msm_dsi_pll*) ;} ;
+
+
+ int stub1 (struct msm_dsi_pll*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static void dsi_pll_disable(struct msm_dsi_pll *pll)
 {
-	if (unlikely(!pll->pll_on))
-		return;
+ if (unlikely(!pll->pll_on))
+  return;
 
-	pll->disable_seq(pll);
+ pll->disable_seq(pll);
 
-	pll->pll_on = false;
+ pll->pll_on = 0;
 }

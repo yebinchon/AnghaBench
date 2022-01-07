@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct nic {TYPE_1__* phy_dev; } ;
 struct net_device {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  priv_dev; int /*<<< orphan*/  (* send_hci_func ) (int /*<<< orphan*/ ,void*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
+struct TYPE_2__ {int priv_dev; int (* send_hci_func ) (int ,void*,int,int *,int *) ;} ;
 
-/* Variables and functions */
- struct nic* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,void*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ struct nic* netdev_priv (struct net_device*) ;
+ int stub1 (int ,void*,int,int *,int *) ;
 
 __attribute__((used)) static void gdm_lte_event_rcv(struct net_device *dev, u16 type,
-			      void *msg, int len)
+         void *msg, int len)
 {
-	struct nic *nic = netdev_priv(dev);
+ struct nic *nic = netdev_priv(dev);
 
-	nic->phy_dev->send_hci_func(nic->phy_dev->priv_dev, msg, len, NULL,
-				    NULL);
+ nic->phy_dev->send_hci_func(nic->phy_dev->priv_dev, msg, len, ((void*)0),
+        ((void*)0));
 }

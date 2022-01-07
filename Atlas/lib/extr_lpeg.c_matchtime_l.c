@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  Instruction ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Cclose ; 
- int /*<<< orphan*/  Cruntime ; 
- int /*<<< orphan*/  ICloseRunTime ; 
- int /*<<< orphan*/  IOpenCapture ; 
- int /*<<< orphan*/  LUA_TFUNCTION ; 
- int /*<<< orphan*/  addpatt (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int getpattl (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_checktype (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * newpatt (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  optimizecaptures (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setinstcap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  value2fenv (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int Instruction ;
+
+
+ int Cclose ;
+ int Cruntime ;
+ int ICloseRunTime ;
+ int IOpenCapture ;
+ int LUA_TFUNCTION ;
+ int addpatt (int *,int *,int) ;
+ int getpattl (int *,int) ;
+ int luaL_checktype (int *,int,int ) ;
+ int * newpatt (int *,int) ;
+ int optimizecaptures (int *) ;
+ int setinstcap (int *,int ,int ,int ,int ) ;
+ int value2fenv (int *,int) ;
 
 __attribute__((used)) static int matchtime_l (lua_State *L) {
   int l1 = getpattl(L, 1);

@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  death ; 
- int /*<<< orphan*/ * input_ctx ; 
- int /*<<< orphan*/  input_thread ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int running ; 
+ int SetEvent (int ) ;
+ int death ;
+ int * input_ctx ;
+ int input_thread ;
+ int pthread_join (int ,int *) ;
+ int running ;
 
 void terminal_uninit(void)
 {
     if (running) {
         SetEvent(death);
-        pthread_join(input_thread, NULL);
-        input_ctx = NULL;
-        running = false;
+        pthread_join(input_thread, ((void*)0));
+        input_ctx = ((void*)0);
+        running = 0;
     }
 }

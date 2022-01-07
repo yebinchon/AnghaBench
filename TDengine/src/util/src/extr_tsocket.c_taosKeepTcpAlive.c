@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  probes ;
-typedef  int /*<<< orphan*/  nodelay ;
-typedef  int /*<<< orphan*/  interval ;
-typedef  int /*<<< orphan*/  alivetime ;
-typedef  int /*<<< orphan*/  alive ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SOL_TCP ; 
- int /*<<< orphan*/  SO_KEEPALIVE ; 
- int /*<<< orphan*/  TCP_KEEPCNT ; 
- int /*<<< orphan*/  TCP_KEEPIDLE ; 
- int /*<<< orphan*/  TCP_KEEPINTVL ; 
- int /*<<< orphan*/  TCP_NODELAY ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  pError (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- scalar_t__ taosSetSockOpt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
+
+
+
+typedef int probes ;
+typedef int nodelay ;
+typedef int interval ;
+typedef int alivetime ;
+typedef int alive ;
+
+
+ int IPPROTO_TCP ;
+ int SOL_SOCKET ;
+ int SOL_TCP ;
+ int SO_KEEPALIVE ;
+ int TCP_KEEPCNT ;
+ int TCP_KEEPIDLE ;
+ int TCP_KEEPINTVL ;
+ int TCP_NODELAY ;
+ int close (int) ;
+ int errno ;
+ int pError (char*,int,int ,int ) ;
+ int strerror (int ) ;
+ scalar_t__ taosSetSockOpt (int,int ,int ,void*,int) ;
 
 int taosKeepTcpAlive(int sockFd) {
   int alive = 1;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_short ;
+
+
+
+
+typedef scalar_t__ u_short ;
 struct port_range {unsigned int nports; scalar_t__* port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  memmove (scalar_t__*,scalar_t__*,unsigned int) ; 
+
+ int LogWARN ;
+ int log_Printf (int ,char*,scalar_t__) ;
+ int memmove (scalar_t__*,scalar_t__*,unsigned int) ;
 
 void
 ncp_RemoveUrgentPort(struct port_range *range, u_short port)

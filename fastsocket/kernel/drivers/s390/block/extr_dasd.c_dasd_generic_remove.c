@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dasd_device {struct dasd_block* block; int /*<<< orphan*/  flags; } ;
+
+
+
+
+struct dasd_device {struct dasd_block* block; int flags; } ;
 struct dasd_block {int dummy; } ;
-struct ccw_device {int /*<<< orphan*/ * handler; } ;
+struct ccw_device {int * handler; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DASD_FLAG_OFFLINE ; 
- int /*<<< orphan*/  DASD_FLAG_SAFE_OFFLINE_RUNNING ; 
- int /*<<< orphan*/  DASD_STATE_NEW ; 
- scalar_t__ IS_ERR (struct dasd_device*) ; 
- int /*<<< orphan*/  dasd_delete_device (struct dasd_device*) ; 
- struct dasd_device* dasd_device_from_cdev (struct ccw_device*) ; 
- int /*<<< orphan*/  dasd_free_block (struct dasd_block*) ; 
- int /*<<< orphan*/  dasd_put_device (struct dasd_device*) ; 
- int /*<<< orphan*/  dasd_remove_sysfs_files (struct ccw_device*) ; 
- int /*<<< orphan*/  dasd_set_target_state (struct dasd_device*,int /*<<< orphan*/ ) ; 
- scalar_t__ test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int DASD_FLAG_OFFLINE ;
+ int DASD_FLAG_SAFE_OFFLINE_RUNNING ;
+ int DASD_STATE_NEW ;
+ scalar_t__ IS_ERR (struct dasd_device*) ;
+ int dasd_delete_device (struct dasd_device*) ;
+ struct dasd_device* dasd_device_from_cdev (struct ccw_device*) ;
+ int dasd_free_block (struct dasd_block*) ;
+ int dasd_put_device (struct dasd_device*) ;
+ int dasd_remove_sysfs_files (struct ccw_device*) ;
+ int dasd_set_target_state (struct dasd_device*,int ) ;
+ scalar_t__ test_and_set_bit (int ,int *) ;
+ int test_bit (int ,int *) ;
 
 void dasd_generic_remove(struct ccw_device *cdev)
 {
-	struct dasd_device *device;
-	struct dasd_block *block;
+ struct dasd_device *device;
+ struct dasd_block *block;
 
-	cdev->handler = NULL;
+ cdev->handler = ((void*)0);
 
-	device = dasd_device_from_cdev(cdev);
-	if (IS_ERR(device))
-		return;
-	if (test_and_set_bit(DASD_FLAG_OFFLINE, &device->flags) &&
-	    !test_bit(DASD_FLAG_SAFE_OFFLINE_RUNNING, &device->flags)) {
-		/* Already doing offline processing */
-		dasd_put_device(device);
-		return;
-	}
-	/*
-	 * This device is removed unconditionally. Set offline
-	 * flag to prevent dasd_open from opening it while it is
-	 * no quite down yet.
-	 */
-	dasd_set_target_state(device, DASD_STATE_NEW);
-	/* dasd_delete_device destroys the device reference. */
-	block = device->block;
-	dasd_delete_device(device);
-	/*
-	 * life cycle of block is bound to device, so delete it after
-	 * device was safely removed
-	 */
-	if (block)
-		dasd_free_block(block);
+ device = dasd_device_from_cdev(cdev);
+ if (IS_ERR(device))
+  return;
+ if (test_and_set_bit(DASD_FLAG_OFFLINE, &device->flags) &&
+     !test_bit(DASD_FLAG_SAFE_OFFLINE_RUNNING, &device->flags)) {
 
-	dasd_remove_sysfs_files(cdev);
+  dasd_put_device(device);
+  return;
+ }
+
+
+
+
+
+ dasd_set_target_state(device, DASD_STATE_NEW);
+
+ block = device->block;
+ dasd_delete_device(device);
+
+
+
+
+ if (block)
+  dasd_free_block(block);
+
+ dasd_remove_sysfs_files(cdev);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct serio {int dummy; } ;
-struct hil_dev {int /*<<< orphan*/  dev; } ;
+struct hil_dev {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_unregister_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct hil_dev*) ; 
- int /*<<< orphan*/  serio_close (struct serio*) ; 
- struct hil_dev* serio_get_drvdata (struct serio*) ; 
- int /*<<< orphan*/  serio_set_drvdata (struct serio*,int /*<<< orphan*/ *) ; 
+
+ int BUG_ON (int ) ;
+ int input_unregister_device (int ) ;
+ int kfree (struct hil_dev*) ;
+ int serio_close (struct serio*) ;
+ struct hil_dev* serio_get_drvdata (struct serio*) ;
+ int serio_set_drvdata (struct serio*,int *) ;
 
 __attribute__((used)) static void hil_dev_disconnect(struct serio *serio)
 {
-	struct hil_dev *dev = serio_get_drvdata(serio);
+ struct hil_dev *dev = serio_get_drvdata(serio);
 
-	BUG_ON(dev == NULL);
+ BUG_ON(dev == ((void*)0));
 
-	serio_close(serio);
-	input_unregister_device(dev->dev);
-	serio_set_drvdata(serio, NULL);
-	kfree(dev);
+ serio_close(serio);
+ input_unregister_device(dev->dev);
+ serio_set_drvdata(serio, ((void*)0));
+ kfree(dev);
 }

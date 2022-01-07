@@ -1,53 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  expected_output ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ int32_t ;
+typedef int expected_output ;
 struct TYPE_6__ {int block_size; } ;
 struct TYPE_5__ {float* data; int* dims; } ;
-typedef  TYPE_1__ DnnOperand ;
-typedef  TYPE_2__ DepthToSpaceParams ;
+typedef TYPE_1__ DnnOperand ;
+typedef TYPE_2__ DepthToSpaceParams ;
 
-/* Variables and functions */
- scalar_t__ EPSON ; 
- int /*<<< orphan*/  av_freep (float**) ; 
- int /*<<< orphan*/  dnn_execute_layer_depth2space (TYPE_1__*,scalar_t__*,int,TYPE_2__*) ; 
- scalar_t__ fabs (float) ; 
- int /*<<< orphan*/  printf (char*,int,float,float) ; 
+
+ scalar_t__ EPSON ;
+ int av_freep (float**) ;
+ int dnn_execute_layer_depth2space (TYPE_1__*,scalar_t__*,int,TYPE_2__*) ;
+ scalar_t__ fabs (float) ;
+ int printf (char*,int,float,float) ;
 
 __attribute__((used)) static int test(void)
 {
-    // the input data and expected data are generated with below python code.
-    /*
-    x = tf.placeholder(tf.float32, shape=[1, None, None, 4])
-    y = tf.depth_to_space(x, 2)
-    data = np.random.rand(1, 5, 3, 4);
-
-    sess=tf.Session()
-    sess.run(tf.global_variables_initializer())
-
-    output = sess.run(y, feed_dict={x: data})
-
-    print("input:")
-    print(data.shape)
-    print(list(data.flatten()))
-
-    print("output:")
-    print(output.shape)
-    print(list(output.flatten()))
-    */
-
     DepthToSpaceParams params;
     DnnOperand operands[2];
     int32_t input_indexes[1];
@@ -77,7 +57,7 @@ __attribute__((used)) static int test(void)
     operands[0].dims[1] = 5;
     operands[0].dims[2] = 3;
     operands[0].dims[3] = 4;
-    operands[1].data = NULL;
+    operands[1].data = ((void*)0);
 
     input_indexes[0] = 0;
     params.block_size = 2;

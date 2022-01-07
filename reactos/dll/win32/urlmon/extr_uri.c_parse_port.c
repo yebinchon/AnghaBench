@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int const* port; scalar_t__ scheme_type; int port_value; int port_len; int /*<<< orphan*/  has_port; } ;
-typedef  TYPE_1__ parse_data ;
-typedef  int WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRACE (char*,int const**,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ URL_SCHEME_UNKNOWN ; 
- int USHRT_MAX ; 
- int /*<<< orphan*/  debugstr_wn (int const*,int) ; 
- int /*<<< orphan*/  is_auth_delim (int const,int) ; 
- int /*<<< orphan*/  is_num (int const) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int const* port; scalar_t__ scheme_type; int port_value; int port_len; int has_port; } ;
+typedef TYPE_1__ parse_data ;
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRACE (char*,int const**,TYPE_1__*,int ,int ,int,int) ;
+ int TRUE ;
+ scalar_t__ URL_SCHEME_UNKNOWN ;
+ int USHRT_MAX ;
+ int debugstr_wn (int const*,int) ;
+ int is_auth_delim (int const,int) ;
+ int is_num (int const) ;
 
 __attribute__((used)) static BOOL parse_port(const WCHAR **ptr, parse_data *data, DWORD flags) {
     UINT port = 0;
@@ -35,7 +35,7 @@ __attribute__((used)) static BOOL parse_port(const WCHAR **ptr, parse_data *data
     while(!is_auth_delim(**ptr, data->scheme_type != URL_SCHEME_UNKNOWN)) {
         if(!is_num(**ptr)) {
             *ptr = data->port;
-            data->port = NULL;
+            data->port = ((void*)0);
             return FALSE;
         }
 
@@ -43,7 +43,7 @@ __attribute__((used)) static BOOL parse_port(const WCHAR **ptr, parse_data *data
 
         if(port > USHRT_MAX) {
             *ptr = data->port;
-            data->port = NULL;
+            data->port = ((void*)0);
             return FALSE;
         }
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int* n; int /*<<< orphan*/  normalized; } ;
-typedef  TYPE_1__ secp256k1_fe ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VERIFY_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  secp256k1_fe_verify (TYPE_1__ const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int* n; int normalized; } ;
+typedef TYPE_1__ secp256k1_fe ;
+
+
+ int VERIFY_CHECK (int ) ;
+ int secp256k1_fe_verify (TYPE_1__ const*) ;
 
 __attribute__((used)) static void secp256k1_fe_get_b32(unsigned char *r, const secp256k1_fe *a) {
-#ifdef VERIFY
-    VERIFY_CHECK(a->normalized);
-    secp256k1_fe_verify(a);
-#endif
+
+
+
+
     r[0] = (a->n[9] >> 14) & 0xff;
     r[1] = (a->n[9] >> 6) & 0xff;
     r[2] = ((a->n[9] & 0x3F) << 2) | ((a->n[8] >> 24) & 0x3);

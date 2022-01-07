@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rule {int dummy; } ;
-struct config {int dot; struct config* next; scalar_t__ bp; scalar_t__ bplp; scalar_t__ fplp; scalar_t__ stp; int /*<<< orphan*/  fws; struct rule* rp; } ;
+struct config {int dot; struct config* next; scalar_t__ bp; scalar_t__ bplp; scalar_t__ fplp; scalar_t__ stp; int fws; struct rule* rp; } ;
 
-/* Variables and functions */
- struct config* Configtable_find (struct config*) ; 
- int /*<<< orphan*/  Configtable_insert (struct config*) ; 
- int /*<<< orphan*/  SetNew () ; 
- int /*<<< orphan*/  assert (int) ; 
- struct config** currentend ; 
- struct config* newconfig () ; 
+
+ struct config* Configtable_find (struct config*) ;
+ int Configtable_insert (struct config*) ;
+ int SetNew () ;
+ int assert (int) ;
+ struct config** currentend ;
+ struct config* newconfig () ;
 
 struct config *Configlist_add(
-  struct rule *rp,    /* The rule */
-  int dot             /* Index into the RHS of the rule where the dot goes */
+  struct rule *rp,
+  int dot
 ){
   struct config *cfp, model;
 

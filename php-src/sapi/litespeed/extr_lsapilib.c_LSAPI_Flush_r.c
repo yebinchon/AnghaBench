@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int m_pIovecCur; int m_pIovecToWrite; scalar_t__ m_pRespBufPos; scalar_t__ m_pRespBuf; int m_fd; int m_totalLen; int m_pIovec; int m_reqState; } ;
-typedef  TYPE_1__ LSAPI_Request ;
+typedef TYPE_1__ LSAPI_Request ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Flush_RespBuf_r (TYPE_1__*) ; 
- int /*<<< orphan*/  LSAPI_FinalizeRespHeaders_r (TYPE_1__*) ; 
- int LSAPI_ST_RESP_HEADER ; 
- int /*<<< orphan*/  lsapi_close_connection (TYPE_1__*) ; 
- int lsapi_writev (int,int*,int,int) ; 
+
+ int Flush_RespBuf_r (TYPE_1__*) ;
+ int LSAPI_FinalizeRespHeaders_r (TYPE_1__*) ;
+ int LSAPI_ST_RESP_HEADER ;
+ int lsapi_close_connection (TYPE_1__*) ;
+ int lsapi_writev (int,int*,int,int) ;
 
 int LSAPI_Flush_r( LSAPI_Request * pReq )
 {

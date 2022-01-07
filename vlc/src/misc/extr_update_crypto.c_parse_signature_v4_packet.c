@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {int* hashed_data_len; int* hashed_data; int* unhashed_data_len; int* unhashed_data; } ;
 struct TYPE_6__ {TYPE_1__ v4; } ;
-struct TYPE_7__ {scalar_t__ public_key_algo; int* hash_verification; int issuer_longid; TYPE_2__ specific; int /*<<< orphan*/  digest_algo; int /*<<< orphan*/  type; } ;
-typedef  TYPE_3__ signature_packet_t ;
+struct TYPE_7__ {scalar_t__ public_key_algo; int* hash_verification; int issuer_longid; TYPE_2__ specific; int digest_algo; int type; } ;
+typedef TYPE_3__ signature_packet_t ;
 
-/* Variables and functions */
- scalar_t__ GCRY_PK_DSA ; 
- scalar_t__ GCRY_PK_RSA ; 
- int ISSUER_SUBPACKET ; 
- size_t U32_AT (int*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- size_t scalar_number (int*,int) ; 
+
+ scalar_t__ GCRY_PK_DSA ;
+ scalar_t__ GCRY_PK_RSA ;
+ int ISSUER_SUBPACKET ;
+ size_t U32_AT (int*) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (int*,int const*,int) ;
+ size_t scalar_number (int*,int) ;
 
 __attribute__((used)) static size_t parse_signature_v4_packet( signature_packet_t *p_sig,
                                       const uint8_t *p_buf, size_t i_sig_len )
 {
-    size_t i_read = 1; /* we already read the version byte */
+    size_t i_read = 1;
 
-    if( i_sig_len < 10 ) /* signature is at least 10 bytes + the 2 MPIs */
+    if( i_sig_len < 10 )
         return 0;
 
     p_sig->type = *p_buf++; i_read++;

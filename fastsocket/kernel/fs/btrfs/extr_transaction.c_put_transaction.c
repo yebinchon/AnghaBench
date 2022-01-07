@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int rb_node; } ;
-struct TYPE_4__ {int /*<<< orphan*/  seq_head; TYPE_1__ root; } ;
-struct btrfs_transaction {TYPE_2__ delayed_refs; int /*<<< orphan*/  list; int /*<<< orphan*/  use_count; } ;
+struct TYPE_4__ {int seq_head; TYPE_1__ root; } ;
+struct btrfs_transaction {TYPE_2__ delayed_refs; int list; int use_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- scalar_t__ atomic_dec_and_test (int /*<<< orphan*/ *) ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  btrfs_transaction_cachep ; 
- int /*<<< orphan*/  kmem_cache_free (int /*<<< orphan*/ ,struct btrfs_transaction*) ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct btrfs_transaction*,int /*<<< orphan*/ ,int) ; 
+
+ int BUG_ON (int) ;
+ int WARN_ON (int) ;
+ scalar_t__ atomic_dec_and_test (int *) ;
+ scalar_t__ atomic_read (int *) ;
+ int btrfs_transaction_cachep ;
+ int kmem_cache_free (int ,struct btrfs_transaction*) ;
+ int list_empty (int *) ;
+ int memset (struct btrfs_transaction*,int ,int) ;
 
 void put_transaction(struct btrfs_transaction *transaction)
 {
-	WARN_ON(atomic_read(&transaction->use_count) == 0);
-	if (atomic_dec_and_test(&transaction->use_count)) {
-		BUG_ON(!list_empty(&transaction->list));
-		WARN_ON(transaction->delayed_refs.root.rb_node);
-		WARN_ON(!list_empty(&transaction->delayed_refs.seq_head));
-		memset(transaction, 0, sizeof(*transaction));
-		kmem_cache_free(btrfs_transaction_cachep, transaction);
-	}
+ WARN_ON(atomic_read(&transaction->use_count) == 0);
+ if (atomic_dec_and_test(&transaction->use_count)) {
+  BUG_ON(!list_empty(&transaction->list));
+  WARN_ON(transaction->delayed_refs.root.rb_node);
+  WARN_ON(!list_empty(&transaction->delayed_refs.seq_head));
+  memset(transaction, 0, sizeof(*transaction));
+  kmem_cache_free(btrfs_transaction_cachep, transaction);
+ }
 }

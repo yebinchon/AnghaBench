@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_stats {int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
+
+
+
+struct dm_stats {int list; } ;
+
+
+ int list_empty (int *) ;
 
 __attribute__((used)) static inline bool dm_stats_used(struct dm_stats *st)
 {
-	return !list_empty(&st->list);
+ return !list_empty(&st->list);
 }

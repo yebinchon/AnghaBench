@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sort_type ;
-struct TYPE_6__ {int /*<<< orphan*/  owner; } ;
-typedef  TYPE_1__ asection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  bfd_get_section_name (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int bfd_section_alignment (int /*<<< orphan*/ ,TYPE_1__*) ; 
-#define  by_alignment 131 
-#define  by_alignment_name 130 
-#define  by_name 129 
-#define  by_name_alignment 128 
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sort_type ;
+struct TYPE_6__ {int owner; } ;
+typedef TYPE_1__ asection ;
+
+
+ int abort () ;
+ int bfd_get_section_name (int ,TYPE_1__*) ;
+ int bfd_section_alignment (int ,TYPE_1__*) ;
+
+
+
+
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int
 compare_section (sort_type sort, asection *asec, asection *bsec)
@@ -35,28 +35,28 @@ compare_section (sort_type sort, asection *asec, asection *bsec)
     default:
       abort ();
 
-    case by_alignment_name:
+    case 130:
       ret = (bfd_section_alignment (bsec->owner, bsec)
-	     - bfd_section_alignment (asec->owner, asec));
+      - bfd_section_alignment (asec->owner, asec));
       if (ret)
-	break;
-      /* Fall through.  */
+ break;
 
-    case by_name:
+
+    case 129:
       ret = strcmp (bfd_get_section_name (asec->owner, asec),
-		    bfd_get_section_name (bsec->owner, bsec));
+      bfd_get_section_name (bsec->owner, bsec));
       break;
 
-    case by_name_alignment:
+    case 128:
       ret = strcmp (bfd_get_section_name (asec->owner, asec),
-		    bfd_get_section_name (bsec->owner, bsec));
+      bfd_get_section_name (bsec->owner, bsec));
       if (ret)
-	break;
-      /* Fall through.  */
+ break;
 
-    case by_alignment:
+
+    case 131:
       ret = (bfd_section_alignment (bsec->owner, bsec)
-	     - bfd_section_alignment (asec->owner, asec));
+      - bfd_section_alignment (asec->owner, asec));
       break;
     }
 

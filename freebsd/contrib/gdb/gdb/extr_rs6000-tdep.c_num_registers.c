@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct reg {int /*<<< orphan*/  pseudo; } ;
 
-/* Variables and functions */
+
+
+
+struct reg {int pseudo; } ;
+
+
 
 __attribute__((used)) static int
 num_registers (const struct reg *reg_list, int num_tot_regs)
@@ -23,6 +23,6 @@ num_registers (const struct reg *reg_list, int num_tot_regs)
   for (i = 0; i < num_tot_regs; i++)
     if (!reg_list[i].pseudo)
       nregs++;
-       
+
   return nregs;
 }

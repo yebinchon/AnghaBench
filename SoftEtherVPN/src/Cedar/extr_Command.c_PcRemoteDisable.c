@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int t ;
+typedef scalar_t__ UINT ;
 struct TYPE_7__ {int AllowRemoteConfig; } ;
-struct TYPE_6__ {int /*<<< orphan*/  RemoteClient; } ;
-typedef  TYPE_1__ PC ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CONSOLE ;
-typedef  TYPE_2__ CLIENT_CONFIG ;
+struct TYPE_6__ {int RemoteClient; } ;
+typedef TYPE_1__ PC ;
+typedef int LIST ;
+typedef int CONSOLE ;
+typedef TYPE_2__ CLIENT_CONFIG ;
 
-/* Variables and functions */
- scalar_t__ CcGetClientConfig (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ CcSetClientConfig (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  CmdPrintError (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ParseCommandList (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
+
+ scalar_t__ CcGetClientConfig (int ,TYPE_2__*) ;
+ scalar_t__ CcSetClientConfig (int ,TYPE_2__*) ;
+ int CmdPrintError (int *,scalar_t__) ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int FreeParamValueList (int *) ;
+ int * ParseCommandList (int *,char*,int *,int *,int ) ;
+ int Zero (TYPE_2__*,int) ;
 
 UINT PcRemoteDisable(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PC *pc = (PC *)param;
-	UINT ret = ERR_NO_ERROR;
-	CLIENT_CONFIG t;
+ LIST *o;
+ PC *pc = (PC *)param;
+ UINT ret = ERR_NO_ERROR;
+ CLIENT_CONFIG t;
 
-	// Get the parameter list
-	o = ParseCommandList(c, cmd_name, str, NULL, 0);
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
 
-	// RPC call
-	Zero(&t, sizeof(t));
+ o = ParseCommandList(c, cmd_name, str, ((void*)0), 0);
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	ret = CcGetClientConfig(pc->RemoteClient, &t);
 
-	if (ret == ERR_NO_ERROR)
-	{
-		t.AllowRemoteConfig = false;
-		ret = CcSetClientConfig(pc->RemoteClient, &t);
-	}
+ Zero(&t, sizeof(t));
 
-	if (ret == ERR_NO_ERROR)
-	{
-		// Success
-	}
+ ret = CcGetClientConfig(pc->RemoteClient, &t);
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// Error has occurred
-		CmdPrintError(c, ret);
-	}
+ if (ret == ERR_NO_ERROR)
+ {
+  t.AllowRemoteConfig = 0;
+  ret = CcSetClientConfig(pc->RemoteClient, &t);
+ }
 
-	// Release of the parameter list
-	FreeParamValueList(o);
+ if (ret == ERR_NO_ERROR)
+ {
 
-	return ret;
+ }
+
+ if (ret != ERR_NO_ERROR)
+ {
+
+  CmdPrintError(c, ret);
+ }
+
+
+ FreeParamValueList(o);
+
+ return ret;
 }

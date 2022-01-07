@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct array {unsigned int start; unsigned int num; } ;
 struct parsed_symbol {char* current; char const* result; struct array stack; struct array names; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- char* get_literal_string (struct parsed_symbol*) ; 
- char* get_number (struct parsed_symbol*) ; 
- char* get_template_name (struct parsed_symbol*) ; 
- char* str_array_get_ref (struct array*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  str_array_init (struct array*) ; 
- int /*<<< orphan*/  str_array_push (struct parsed_symbol*,char const*,int,struct array*) ; 
- char* str_printf (struct parsed_symbol*,char*,char const*) ; 
- int /*<<< orphan*/  symbol_demangle (struct parsed_symbol*) ; 
+
+ int FALSE ;
+ int TRUE ;
+ char* get_literal_string (struct parsed_symbol*) ;
+ char* get_number (struct parsed_symbol*) ;
+ char* get_template_name (struct parsed_symbol*) ;
+ char* str_array_get_ref (struct array*,int ) ;
+ int str_array_init (struct array*) ;
+ int str_array_push (struct parsed_symbol*,char const*,int,struct array*) ;
+ char* str_printf (struct parsed_symbol*,char*,char const*) ;
+ int symbol_demangle (struct parsed_symbol*) ;
 
 __attribute__((used)) static BOOL get_class(struct parsed_symbol* sym)
 {
-    const char* name = NULL;
+    const char* name = ((void*)0);
 
     while (*sym->current != '@')
     {

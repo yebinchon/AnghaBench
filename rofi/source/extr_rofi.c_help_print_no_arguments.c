@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int gboolean ;
 struct TYPE_3__ {char* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__** available_modi ; 
- char* color_bold ; 
- char* color_green ; 
- char* color_red ; 
- char* color_reset ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int isatty (int /*<<< orphan*/ ) ; 
- TYPE_1__** modi ; 
- unsigned int num_available_modi ; 
- unsigned int num_modi ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+ int FALSE ;
+ int TRUE ;
+ TYPE_1__** available_modi ;
+ char* color_bold ;
+ char* color_green ;
+ char* color_red ;
+ char* color_reset ;
+ int fileno (int ) ;
+ int fprintf (int ,char*,...) ;
+ int isatty (int ) ;
+ TYPE_1__** modi ;
+ unsigned int num_available_modi ;
+ unsigned int num_modi ;
+ int stderr ;
+ int stdout ;
 
 __attribute__((used)) static void help_print_no_arguments ( void )
 {
     int is_term = isatty ( fileno ( stdout ) );
-    // Daemon mode
+
     fprintf ( stderr, "Rofi is unsure what to show.\n" );
     fprintf ( stderr, "Please specify the mode you want to show.\n\n" );
     fprintf ( stderr, "    %srofi%s -show %s{mode}%s\n\n",
@@ -48,7 +48,7 @@ __attribute__((used)) static void help_print_no_arguments ( void )
                   is_term ? color_reset : "" );
     }
     fprintf ( stderr, "\nThe following can be enabled:\n" );
-    for  ( unsigned int i = 0; i < num_available_modi; i++ ) {
+    for ( unsigned int i = 0; i < num_available_modi; i++ ) {
         gboolean active = FALSE;
         for ( unsigned int j = 0; j < num_modi; j++ ) {
             if ( modi[j] == available_modi[i] ) {

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ DEBUG_STABS ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  as_fatal (int /*<<< orphan*/ ) ; 
- scalar_t__ debug_type ; 
+ scalar_t__ DEBUG_STABS ;
+ int _ (char*) ;
+ int as_fatal (int ) ;
+ scalar_t__ debug_type ;
 
 void
 ia64_after_parse_args ()

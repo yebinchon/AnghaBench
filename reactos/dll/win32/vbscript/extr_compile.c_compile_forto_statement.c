@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int member_0; scalar_t__ for_end_label; } ;
-typedef  TYPE_3__ statement_ctx_t ;
-struct TYPE_11__ {int /*<<< orphan*/  body; scalar_t__ step_expr; scalar_t__ to_expr; scalar_t__ from_expr; int /*<<< orphan*/  identifier; } ;
-typedef  TYPE_4__ forto_statement_t ;
-typedef  int /*<<< orphan*/  compile_ctx_t ;
+typedef TYPE_3__ statement_ctx_t ;
+struct TYPE_11__ {int body; scalar_t__ step_expr; scalar_t__ to_expr; scalar_t__ from_expr; int identifier; } ;
+typedef TYPE_4__ forto_statement_t ;
+typedef int compile_ctx_t ;
 struct TYPE_9__ {void* bstr; scalar_t__ uint; } ;
 struct TYPE_8__ {void* bstr; scalar_t__ uint; } ;
 struct TYPE_12__ {TYPE_2__ arg1; TYPE_1__ arg2; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  void* BSTR ;
+typedef int HRESULT ;
+typedef void* BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OP_assign_ident ; 
- int /*<<< orphan*/  OP_incc ; 
- int /*<<< orphan*/  OP_jmp ; 
- int /*<<< orphan*/  OP_pop ; 
- int /*<<< orphan*/  OP_short ; 
- int /*<<< orphan*/  OP_step ; 
- int /*<<< orphan*/  OP_val ; 
- int /*<<< orphan*/  S_OK ; 
- void* alloc_bstr_arg (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ alloc_label (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_expression (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  compile_statement (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_catch (int /*<<< orphan*/ *,int) ; 
- TYPE_5__* instr_ptr (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  label_set_addr (int /*<<< orphan*/ *,scalar_t__) ; 
- unsigned int push_instr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_addr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  push_instr_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  push_instr_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int OP_assign_ident ;
+ int OP_incc ;
+ int OP_jmp ;
+ int OP_pop ;
+ int OP_short ;
+ int OP_step ;
+ int OP_val ;
+ int S_OK ;
+ void* alloc_bstr_arg (int *,int ) ;
+ scalar_t__ alloc_label (int *) ;
+ int compile_expression (int *,scalar_t__) ;
+ int compile_statement (int *,TYPE_3__*,int ) ;
+ int emit_catch (int *,int) ;
+ TYPE_5__* instr_ptr (int *,unsigned int) ;
+ int label_set_addr (int *,scalar_t__) ;
+ unsigned int push_instr (int *,int ) ;
+ int push_instr_addr (int *,int ,unsigned int) ;
+ int push_instr_int (int *,int ,int) ;
+ int push_instr_uint (int *,int ,int) ;
 
 __attribute__((used)) static HRESULT compile_forto_statement(compile_ctx_t *ctx, forto_statement_t *stat)
 {
@@ -64,7 +64,7 @@ __attribute__((used)) static HRESULT compile_forto_statement(compile_ctx_t *ctx,
     if(FAILED(hres))
         return hres;
 
-    /* FIXME: Assign should happen after both expressions evaluation. */
+
     instr = push_instr(ctx, OP_assign_ident);
     if(!instr)
         return E_OUTOFMEMORY;
@@ -108,7 +108,7 @@ __attribute__((used)) static HRESULT compile_forto_statement(compile_ctx_t *ctx,
     if(FAILED(hres))
         return hres;
 
-    /* FIXME: Error handling can't be done compatible with native using OP_incc here. */
+
     instr = push_instr(ctx, OP_incc);
     if(!instr)
         return E_OUTOFMEMORY;
@@ -124,7 +124,7 @@ __attribute__((used)) static HRESULT compile_forto_statement(compile_ctx_t *ctx,
 
     label_set_addr(ctx, loop_ctx.for_end_label);
 
-    /* FIXME: reconsider after OP_incc fixup. */
+
     if(!emit_catch(ctx, 0))
         return E_OUTOFMEMORY;
 

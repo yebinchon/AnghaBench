@@ -1,145 +1,145 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  kvm_t ;
-struct TYPE_2__ {int /*<<< orphan*/  n_value; } ;
 
-/* Variables and functions */
-#define  N_HCI_RAW 132 
-#define  N_L2CAP 131 
-#define  N_L2CAP_RAW 130 
- size_t N_L2CAP_RAW_RT ; 
- size_t N_L2CAP_RT ; 
-#define  N_RFCOMM 129 
-#define  N_RFCOMM_S 128 
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/  getgid () ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  hcirawpr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * kopen (char*) ; 
- int kvm_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  l2cappr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l2caprawpr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l2caprtpr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* nl ; 
- int numeric_bdaddr ; 
- char* optarg ; 
- int /*<<< orphan*/  rfcommpr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rfcommpr_s (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ setgid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcasecmp (char*,char*) ; 
- int /*<<< orphan*/  usage () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int kvm_t ;
+struct TYPE_2__ {int n_value; } ;
+
+
+
+
+
+ size_t N_L2CAP_RAW_RT ;
+ size_t N_L2CAP_RT ;
+
+
+ int err (int,char*) ;
+ int getgid () ;
+ int getopt (int,char**,char*) ;
+ int hcirawpr (int *,int ) ;
+ int * kopen (char*) ;
+ int kvm_close (int *) ;
+ int l2cappr (int *,int ) ;
+ int l2caprawpr (int *,int ) ;
+ int l2caprtpr (int *,int ) ;
+ TYPE_1__* nl ;
+ int numeric_bdaddr ;
+ char* optarg ;
+ int rfcommpr (int *,int ) ;
+ int rfcommpr_s (int *,int ) ;
+ scalar_t__ setgid (int ) ;
+ int strcasecmp (char*,char*) ;
+ int usage () ;
 
 int
 main(int argc, char *argv[])
 {
-	int	 opt, proto = -1, route = 0;
-	kvm_t	*kvmd = NULL;
-	char	*memf = NULL;
+ int opt, proto = -1, route = 0;
+ kvm_t *kvmd = ((void*)0);
+ char *memf = ((void*)0);
 
-	while ((opt = getopt(argc, argv, "hnM:p:r")) != -1) {
-		switch (opt) {
-		case 'n':
-			numeric_bdaddr = 1;
-			break;
+ while ((opt = getopt(argc, argv, "hnM:p:r")) != -1) {
+  switch (opt) {
+  case 'n':
+   numeric_bdaddr = 1;
+   break;
 
-		case 'M':
-			memf = optarg;
-			break;
+  case 'M':
+   memf = optarg;
+   break;
 
-		case 'p':
-			if (strcasecmp(optarg, "hci_raw") == 0)
-				proto = N_HCI_RAW;
-			else if (strcasecmp(optarg, "l2cap_raw") == 0)
-				proto = N_L2CAP_RAW;
-			else if (strcasecmp(optarg, "l2cap") == 0)
-				proto = N_L2CAP;
-			else if (strcasecmp(optarg, "rfcomm") == 0)
-				proto = N_RFCOMM;
-			else if (strcasecmp(optarg, "rfcomm_s") == 0)
-				proto = N_RFCOMM_S; 
-			else
-				usage();
-				/* NOT REACHED */
-			break;
+  case 'p':
+   if (strcasecmp(optarg, "hci_raw") == 0)
+    proto = 132;
+   else if (strcasecmp(optarg, "l2cap_raw") == 0)
+    proto = 130;
+   else if (strcasecmp(optarg, "l2cap") == 0)
+    proto = 131;
+   else if (strcasecmp(optarg, "rfcomm") == 0)
+    proto = 129;
+   else if (strcasecmp(optarg, "rfcomm_s") == 0)
+    proto = 128;
+   else
+    usage();
 
-		case 'r':
-			route = 1;
-			break;
+   break;
 
-		case 'h':
-		default:
-			usage();
-			/* NOT REACHED */
-		}
-	}
+  case 'r':
+   route = 1;
+   break;
 
-	if ((proto == N_HCI_RAW || proto == N_RFCOMM || proto == N_RFCOMM_S) && route)
-		usage();
-		/* NOT REACHED */
+  case 'h':
+  default:
+   usage();
 
-	/*
-	 * Discard setgid privileges if not the running kernel so that
-	 * bad guys can't print interesting stuff from kernel memory.
-	 */
-	if (memf != NULL)
-		if (setgid(getgid()) != 0)
-			err(1, "setgid");
+  }
+ }
 
-	kvmd = kopen(memf);
-	if (kvmd == NULL)
-		return (1);
+ if ((proto == 132 || proto == 129 || proto == 128) && route)
+  usage();
 
-	switch (proto) {
-	case N_HCI_RAW:
-		hcirawpr(kvmd, nl[N_HCI_RAW].n_value);
-		break;
 
-	case N_L2CAP_RAW:
-		if (route)
-			l2caprtpr(kvmd, nl[N_L2CAP_RAW_RT].n_value);
-		else
-			l2caprawpr(kvmd, nl[N_L2CAP_RAW].n_value);
-		break;
 
-	case N_L2CAP:
-		if (route) 
-			l2caprtpr(kvmd, nl[N_L2CAP_RT].n_value);
-		else
-			l2cappr(kvmd, nl[N_L2CAP].n_value);
-		break;
 
-	case N_RFCOMM:
-		rfcommpr(kvmd, nl[N_RFCOMM].n_value);
-		break;
 
-	case N_RFCOMM_S:
-		rfcommpr_s(kvmd, nl[N_RFCOMM_S].n_value);
-		break;
 
-	default:
-		if (route) {
-			l2caprtpr(kvmd, nl[N_L2CAP_RAW_RT].n_value);
-			l2caprtpr(kvmd, nl[N_L2CAP_RT].n_value);
-		} else {
-			hcirawpr(kvmd, nl[N_HCI_RAW].n_value);
-			l2caprawpr(kvmd, nl[N_L2CAP_RAW].n_value);
-			l2cappr(kvmd, nl[N_L2CAP].n_value);
-			rfcommpr_s(kvmd, nl[N_RFCOMM_S].n_value);
-			rfcommpr(kvmd, nl[N_RFCOMM].n_value);
-		}
-		break;
-	}
+ if (memf != ((void*)0))
+  if (setgid(getgid()) != 0)
+   err(1, "setgid");
 
-	return (kvm_close(kvmd));
+ kvmd = kopen(memf);
+ if (kvmd == ((void*)0))
+  return (1);
+
+ switch (proto) {
+ case 132:
+  hcirawpr(kvmd, nl[132].n_value);
+  break;
+
+ case 130:
+  if (route)
+   l2caprtpr(kvmd, nl[N_L2CAP_RAW_RT].n_value);
+  else
+   l2caprawpr(kvmd, nl[130].n_value);
+  break;
+
+ case 131:
+  if (route)
+   l2caprtpr(kvmd, nl[N_L2CAP_RT].n_value);
+  else
+   l2cappr(kvmd, nl[131].n_value);
+  break;
+
+ case 129:
+  rfcommpr(kvmd, nl[129].n_value);
+  break;
+
+ case 128:
+  rfcommpr_s(kvmd, nl[128].n_value);
+  break;
+
+ default:
+  if (route) {
+   l2caprtpr(kvmd, nl[N_L2CAP_RAW_RT].n_value);
+   l2caprtpr(kvmd, nl[N_L2CAP_RT].n_value);
+  } else {
+   hcirawpr(kvmd, nl[132].n_value);
+   l2caprawpr(kvmd, nl[130].n_value);
+   l2cappr(kvmd, nl[131].n_value);
+   rfcommpr_s(kvmd, nl[128].n_value);
+   rfcommpr(kvmd, nl[129].n_value);
+  }
+  break;
+ }
+
+ return (kvm_close(kvmd));
 }

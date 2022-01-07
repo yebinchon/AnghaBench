@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int cat_mask; int /*<<< orphan*/  fr_tree; } ;
-typedef  TYPE_1__ user_t ;
 
-/* Variables and functions */
- int* LiA ; 
- int* LiB ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  tree_set_catlist (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cat_mask; int fr_tree; } ;
+typedef TYPE_1__ user_t ;
+
+
+ int* LiA ;
+ int* LiB ;
+ int assert (int) ;
+ int tree_set_catlist (int ,int) ;
 
 __attribute__((used)) static int set_category_friend_list (user_t *U, int cat, int *List, int len) {
   int i;

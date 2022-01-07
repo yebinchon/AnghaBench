@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * p_fmt; int /*<<< orphan*/ * p_es; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * p_fmt; int * p_es; } ;
 struct TYPE_6__ {TYPE_1__ add; } ;
-struct TYPE_7__ {TYPE_2__ u; int /*<<< orphan*/  i_date; int /*<<< orphan*/  i_type; } ;
-typedef  TYPE_3__ ts_cmd_t ;
-typedef  int /*<<< orphan*/  es_out_id_t ;
-typedef  int /*<<< orphan*/  es_format_t ;
+struct TYPE_7__ {TYPE_2__ u; int i_date; int i_type; } ;
+typedef TYPE_3__ ts_cmd_t ;
+typedef int es_out_id_t ;
+typedef int es_format_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_ADD ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  es_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int /*<<< orphan*/  vlc_tick_now () ; 
+
+ int C_ADD ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int es_format_Copy (int *,int const*) ;
+ int * malloc (int) ;
+ int vlc_tick_now () ;
 
 __attribute__((used)) static int CmdInitAdd( ts_cmd_t *p_cmd, es_out_id_t *p_es, const es_format_t *p_fmt, bool b_copy )
 {

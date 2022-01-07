@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct op_copy_baton {int /*<<< orphan*/  src_wcroot; int /*<<< orphan*/ * work_items; int /*<<< orphan*/ * dst_op_root_relpath; int /*<<< orphan*/  is_move; int /*<<< orphan*/  dst_wcroot; int /*<<< orphan*/  dst_relpath; int /*<<< orphan*/  src_relpath; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__DB_WITH_TXN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  op_copy_shadowed_layer_txn (int /*<<< orphan*/ ,struct op_copy_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct op_copy_baton {int src_wcroot; int * work_items; int * dst_op_root_relpath; int is_move; int dst_wcroot; int dst_relpath; int src_relpath; int member_0; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__DB_WITH_TXN (int ,int ) ;
+ int VERIFY_USABLE_WCROOT (int ) ;
+ int op_copy_shadowed_layer_txn (int ,struct op_copy_baton*,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_wc__db_wcroot_parse_local_abspath (int *,int *,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_op_copy_shadowed_layer(svn_wc__db_t *db,
@@ -51,12 +51,12 @@ svn_wc__db_op_copy_shadowed_layer(svn_wc__db_t *db,
   VERIFY_USABLE_WCROOT(ocb.dst_wcroot);
 
   ocb.is_move = is_move;
-  ocb.dst_op_root_relpath = NULL; /* not used by op_copy_shadowed_layer_txn */
+  ocb.dst_op_root_relpath = ((void*)0);
 
-  ocb.work_items = NULL;
+  ocb.work_items = ((void*)0);
 
-  /* Call with the sdb in src_wcroot. It might call itself again to
-     also obtain a lock in dst_wcroot */
+
+
   SVN_WC__DB_WITH_TXN(op_copy_shadowed_layer_txn(ocb.src_wcroot, &ocb,
                                                  scratch_pool),
                       ocb.src_wcroot);

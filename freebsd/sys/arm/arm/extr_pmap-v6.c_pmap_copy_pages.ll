@@ -1,0 +1,236 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/arm/arm/extr_pmap-v6.c_pmap_copy_pages.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/arm/arm/extr_pmap-v6.c_pmap_copy_pages.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.pcpu = type { i8*, i8*, i32, i32*, i32* }
+
+@.str = private unnamed_addr constant [28 x i8] c"pmap_copy_pages: CMAP1 busy\00", align 1
+@.str.1 = private unnamed_addr constant [28 x i8] c"pmap_copy_pages: CMAP2 busy\00", align 1
+@PAGE_SHIFT = common dso_local global i64 0, align 8
+@PAGE_MASK = common dso_local global i64 0, align 8
+@PAGE_SIZE = common dso_local global i64 0, align 8
+@PTE2_AP_KR = common dso_local global i32 0, align 4
+@PTE2_NM = common dso_local global i32 0, align 4
+@PTE2_AP_KRW = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @pmap_copy_pages(i32* %0, i64 %1, i32* %2, i64 %3, i32 %4) #0 {
+  %6 = alloca i32*, align 8
+  %7 = alloca i64, align 8
+  %8 = alloca i32*, align 8
+  %9 = alloca i64, align 8
+  %10 = alloca i32, align 4
+  %11 = alloca i32*, align 8
+  %12 = alloca i32*, align 8
+  %13 = alloca i32, align 4
+  %14 = alloca i32, align 4
+  %15 = alloca i8*, align 8
+  %16 = alloca i8*, align 8
+  %17 = alloca i64, align 8
+  %18 = alloca i64, align 8
+  %19 = alloca %struct.pcpu*, align 8
+  %20 = alloca i32, align 4
+  store i32* %0, i32** %6, align 8
+  store i64 %1, i64* %7, align 8
+  store i32* %2, i32** %8, align 8
+  store i64 %3, i64* %9, align 8
+  store i32 %4, i32* %10, align 4
+  %21 = call i32 (...) @sched_pin()
+  %22 = call %struct.pcpu* (...) @get_pcpu()
+  store %struct.pcpu* %22, %struct.pcpu** %19, align 8
+  %23 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %24 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %23, i32 0, i32 4
+  %25 = load i32*, i32** %24, align 8
+  store i32* %25, i32** %11, align 8
+  %26 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %27 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %26, i32 0, i32 3
+  %28 = load i32*, i32** %27, align 8
+  store i32* %28, i32** %12, align 8
+  %29 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %30 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %29, i32 0, i32 2
+  %31 = call i32 @mtx_lock(i32* %30)
+  %32 = load i32*, i32** %11, align 8
+  %33 = call i64 @pte2_load(i32* %32)
+  %34 = icmp ne i64 %33, 0
+  br i1 %34, label %35, label %37
+
+35:                                               ; preds = %5
+  %36 = call i32 @panic(i8* getelementptr inbounds ([28 x i8], [28 x i8]* @.str, i64 0, i64 0))
+  br label %37
+
+37:                                               ; preds = %35, %5
+  %38 = load i32*, i32** %12, align 8
+  %39 = call i64 @pte2_load(i32* %38)
+  %40 = icmp ne i64 %39, 0
+  br i1 %40, label %41, label %43
+
+41:                                               ; preds = %37
+  %42 = call i32 @panic(i8* getelementptr inbounds ([28 x i8], [28 x i8]* @.str.1, i64 0, i64 0))
+  br label %43
+
+43:                                               ; preds = %41, %37
+  br label %44
+
+44:                                               ; preds = %47, %43
+  %45 = load i32, i32* %10, align 4
+  %46 = icmp sgt i32 %45, 0
+  br i1 %46, label %47, label %129
+
+47:                                               ; preds = %44
+  %48 = load i32*, i32** %6, align 8
+  %49 = load i64, i64* %7, align 8
+  %50 = load i64, i64* @PAGE_SHIFT, align 8
+  %51 = lshr i64 %49, %50
+  %52 = getelementptr inbounds i32, i32* %48, i64 %51
+  %53 = load i32, i32* %52, align 4
+  store i32 %53, i32* %13, align 4
+  %54 = load i64, i64* %7, align 8
+  %55 = load i64, i64* @PAGE_MASK, align 8
+  %56 = and i64 %54, %55
+  store i64 %56, i64* %17, align 8
+  %57 = load i32, i32* %10, align 4
+  %58 = load i64, i64* @PAGE_SIZE, align 8
+  %59 = load i64, i64* %17, align 8
+  %60 = sub i64 %58, %59
+  %61 = call i32 @min(i32 %57, i64 %60)
+  store i32 %61, i32* %20, align 4
+  %62 = load i32*, i32** %8, align 8
+  %63 = load i64, i64* %9, align 8
+  %64 = load i64, i64* @PAGE_SHIFT, align 8
+  %65 = lshr i64 %63, %64
+  %66 = getelementptr inbounds i32, i32* %62, i64 %65
+  %67 = load i32, i32* %66, align 4
+  store i32 %67, i32* %14, align 4
+  %68 = load i64, i64* %9, align 8
+  %69 = load i64, i64* @PAGE_MASK, align 8
+  %70 = and i64 %68, %69
+  store i64 %70, i64* %18, align 8
+  %71 = load i32, i32* %20, align 4
+  %72 = load i64, i64* @PAGE_SIZE, align 8
+  %73 = load i64, i64* %18, align 8
+  %74 = sub i64 %72, %73
+  %75 = call i32 @min(i32 %71, i64 %74)
+  store i32 %75, i32* %20, align 4
+  %76 = load i32*, i32** %11, align 8
+  %77 = load i32, i32* %13, align 4
+  %78 = call i32 @VM_PAGE_TO_PHYS(i32 %77)
+  %79 = load i32, i32* @PTE2_AP_KR, align 4
+  %80 = load i32, i32* @PTE2_NM, align 4
+  %81 = or i32 %79, %80
+  %82 = load i32, i32* %13, align 4
+  %83 = call i32 @vm_page_pte2_attr(i32 %82)
+  %84 = call i32 @PTE2_KERN_NG(i32 %78, i32 %81, i32 %83)
+  %85 = call i32 @pte2_store(i32* %76, i32 %84)
+  %86 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %87 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %86, i32 0, i32 0
+  %88 = load i8*, i8** %87, align 8
+  %89 = ptrtoint i8* %88 to i64
+  %90 = call i32 @tlb_flush_local(i64 %89)
+  %91 = load i32*, i32** %12, align 8
+  %92 = load i32, i32* %14, align 4
+  %93 = call i32 @VM_PAGE_TO_PHYS(i32 %92)
+  %94 = load i32, i32* @PTE2_AP_KRW, align 4
+  %95 = load i32, i32* %14, align 4
+  %96 = call i32 @vm_page_pte2_attr(i32 %95)
+  %97 = call i32 @PTE2_KERN_NG(i32 %93, i32 %94, i32 %96)
+  %98 = call i32 @pte2_store(i32* %91, i32 %97)
+  %99 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %100 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %99, i32 0, i32 1
+  %101 = load i8*, i8** %100, align 8
+  %102 = ptrtoint i8* %101 to i64
+  %103 = call i32 @tlb_flush_local(i64 %102)
+  %104 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %105 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %104, i32 0, i32 0
+  %106 = load i8*, i8** %105, align 8
+  %107 = load i64, i64* %17, align 8
+  %108 = getelementptr inbounds i8, i8* %106, i64 %107
+  store i8* %108, i8** %15, align 8
+  %109 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %110 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %109, i32 0, i32 1
+  %111 = load i8*, i8** %110, align 8
+  %112 = load i64, i64* %18, align 8
+  %113 = getelementptr inbounds i8, i8* %111, i64 %112
+  store i8* %113, i8** %16, align 8
+  %114 = load i8*, i8** %15, align 8
+  %115 = load i8*, i8** %16, align 8
+  %116 = load i32, i32* %20, align 4
+  %117 = call i32 @bcopy(i8* %114, i8* %115, i32 %116)
+  %118 = load i32, i32* %20, align 4
+  %119 = sext i32 %118 to i64
+  %120 = load i64, i64* %7, align 8
+  %121 = add i64 %120, %119
+  store i64 %121, i64* %7, align 8
+  %122 = load i32, i32* %20, align 4
+  %123 = sext i32 %122 to i64
+  %124 = load i64, i64* %9, align 8
+  %125 = add i64 %124, %123
+  store i64 %125, i64* %9, align 8
+  %126 = load i32, i32* %20, align 4
+  %127 = load i32, i32* %10, align 4
+  %128 = sub nsw i32 %127, %126
+  store i32 %128, i32* %10, align 4
+  br label %44
+
+129:                                              ; preds = %44
+  %130 = load i32*, i32** %11, align 8
+  %131 = call i32 @pte2_clear(i32* %130)
+  %132 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %133 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %132, i32 0, i32 0
+  %134 = load i8*, i8** %133, align 8
+  %135 = ptrtoint i8* %134 to i64
+  %136 = call i32 @tlb_flush(i64 %135)
+  %137 = load i32*, i32** %12, align 8
+  %138 = call i32 @pte2_clear(i32* %137)
+  %139 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %140 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %139, i32 0, i32 1
+  %141 = load i8*, i8** %140, align 8
+  %142 = ptrtoint i8* %141 to i64
+  %143 = call i32 @tlb_flush(i64 %142)
+  %144 = call i32 (...) @sched_unpin()
+  %145 = load %struct.pcpu*, %struct.pcpu** %19, align 8
+  %146 = getelementptr inbounds %struct.pcpu, %struct.pcpu* %145, i32 0, i32 2
+  %147 = call i32 @mtx_unlock(i32* %146)
+  ret void
+}
+
+declare dso_local i32 @sched_pin(...) #1
+
+declare dso_local %struct.pcpu* @get_pcpu(...) #1
+
+declare dso_local i32 @mtx_lock(i32*) #1
+
+declare dso_local i64 @pte2_load(i32*) #1
+
+declare dso_local i32 @panic(i8*) #1
+
+declare dso_local i32 @min(i32, i64) #1
+
+declare dso_local i32 @pte2_store(i32*, i32) #1
+
+declare dso_local i32 @PTE2_KERN_NG(i32, i32, i32) #1
+
+declare dso_local i32 @VM_PAGE_TO_PHYS(i32) #1
+
+declare dso_local i32 @vm_page_pte2_attr(i32) #1
+
+declare dso_local i32 @tlb_flush_local(i64) #1
+
+declare dso_local i32 @bcopy(i8*, i8*, i32) #1
+
+declare dso_local i32 @pte2_clear(i32*) #1
+
+declare dso_local i32 @tlb_flush(i64) #1
+
+declare dso_local i32 @sched_unpin(...) #1
+
+declare dso_local i32 @mtx_unlock(i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

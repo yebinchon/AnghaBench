@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vc_data {int dummy; } ;
 struct tty_struct {struct vc_data* driver_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  acquire_console_sem () ; 
- scalar_t__ in_interrupt () ; 
- int /*<<< orphan*/  release_console_sem () ; 
- int /*<<< orphan*/  set_cursor (struct vc_data*) ; 
+
+ int acquire_console_sem () ;
+ scalar_t__ in_interrupt () ;
+ int release_console_sem () ;
+ int set_cursor (struct vc_data*) ;
 
 __attribute__((used)) static void con_flush_chars(struct tty_struct *tty)
 {
-	struct vc_data *vc;
+ struct vc_data *vc;
 
-	if (in_interrupt())	/* from flush_to_ldisc */
-		return;
+ if (in_interrupt())
+  return;
 
-	/* if we race with con_close(), vt may be null */
-	acquire_console_sem();
-	vc = tty->driver_data;
-	if (vc)
-		set_cursor(vc);
-	release_console_sem();
+
+ acquire_console_sem();
+ vc = tty->driver_data;
+ if (vc)
+  set_cursor(vc);
+ release_console_sem();
 }

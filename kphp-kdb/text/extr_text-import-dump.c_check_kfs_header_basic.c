@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kfs_file_header {scalar_t__ magic; scalar_t__ header_crc32; scalar_t__ kfs_version; } ;
 
-/* Variables and functions */
- scalar_t__ KFS_MAGIC ; 
- scalar_t__ KFS_V01 ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ compute_crc32 (struct kfs_file_header*,int) ; 
+
+ scalar_t__ KFS_MAGIC ;
+ scalar_t__ KFS_V01 ;
+ int assert (int) ;
+ scalar_t__ compute_crc32 (struct kfs_file_header*,int) ;
 
 int check_kfs_header_basic (struct kfs_file_header *H) {
   assert (H->magic == KFS_MAGIC);

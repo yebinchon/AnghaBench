@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * outch; int /*<<< orphan*/ ** coeff; int /*<<< orphan*/ * shift; int /*<<< orphan*/ * fbits; scalar_t__ count; } ;
-typedef  TYPE_1__ MatrixParams ;
 
-/* Variables and functions */
- unsigned int MAX_CHANNELS ; 
- unsigned int MAX_MATRICES ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * outch; int ** coeff; int * shift; int * fbits; scalar_t__ count; } ;
+typedef TYPE_1__ MatrixParams ;
+
+
+ unsigned int MAX_CHANNELS ;
+ unsigned int MAX_MATRICES ;
 
 __attribute__((used)) static void copy_matrix_params(MatrixParams *dst, MatrixParams *src)
 {

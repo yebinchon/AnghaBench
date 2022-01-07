@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
 struct TYPE_10__ {scalar_t__ kind; } ;
-typedef  TYPE_1__ svn_checksum_t ;
-struct edit_baton {int /*<<< orphan*/  local_abspath; int /*<<< orphan*/  pool; int /*<<< orphan*/  wri_abspath; int /*<<< orphan*/  db; int /*<<< orphan*/  new_md5_checksum; int /*<<< orphan*/  new_sha1_checksum; int /*<<< orphan*/  install_data; TYPE_1__* original_checksum; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_checksum_t ;
+struct edit_baton {int local_abspath; int pool; int wri_abspath; int db; int new_md5_checksum; int new_sha1_checksum; int install_data; TYPE_1__* original_checksum; } ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_checksum_match (TYPE_1__*,TYPE_1__ const*) ; 
- scalar_t__ svn_checksum_md5 ; 
- int /*<<< orphan*/  svn_checksum_mismatch_err (TYPE_1__*,TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_checksum_parse_hex (TYPE_1__**,scalar_t__,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_stream_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_txdelta_apply (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  svn_wc__db_pristine_get_md5 (TYPE_1__ const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_pristine_prepare_install (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_pristine_read (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn_checksum_match (TYPE_1__*,TYPE_1__ const*) ;
+ scalar_t__ svn_checksum_md5 ;
+ int svn_checksum_mismatch_err (TYPE_1__*,TYPE_1__ const*,int *,int ,int ) ;
+ int svn_checksum_parse_hex (TYPE_1__**,scalar_t__,char const*,int *) ;
+ int svn_dirent_local_style (int ,int *) ;
+ int * svn_error_trace (int ) ;
+ int * svn_stream_empty (int *) ;
+ int svn_txdelta_apply (int *,int *,int *,int ,int *,int *,void**) ;
+ int svn_wc__db_pristine_get_md5 (TYPE_1__ const**,int ,int ,TYPE_1__*,int *,int *) ;
+ int svn_wc__db_pristine_prepare_install (int **,int *,int *,int *,int ,int ,int ,int *) ;
+ int svn_wc__db_pristine_read (int **,int *,int ,int ,TYPE_1__*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 apply_textdelta(void *file_baton,
@@ -74,7 +74,7 @@ apply_textdelta(void *file_baton,
                                                            pool)));
         }
 
-      SVN_ERR(svn_wc__db_pristine_read(&src_stream, NULL, eb->db,
+      SVN_ERR(svn_wc__db_pristine_read(&src_stream, ((void*)0), eb->db,
                                        eb->wri_abspath, eb->original_checksum,
                                        pool, pool));
     }
@@ -88,7 +88,7 @@ apply_textdelta(void *file_baton,
                                               eb->db, eb->wri_abspath,
                                               eb->pool, pool));
 
-  svn_txdelta_apply(src_stream, dest_stream, NULL, eb->local_abspath, pool,
+  svn_txdelta_apply(src_stream, dest_stream, ((void*)0), eb->local_abspath, pool,
                     handler, handler_baton);
 
   return SVN_NO_ERROR;

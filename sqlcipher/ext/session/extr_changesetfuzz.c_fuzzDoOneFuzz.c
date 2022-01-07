@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_11__ {int iGroup; scalar_t__ eType; size_t iDelete; } ;
 struct TYPE_10__ {int nGroup; scalar_t__ bPatchset; TYPE_1__** apGroup; } ;
-struct TYPE_9__ {int* aChange; int nCol; int* aPK; int nChange; int /*<<< orphan*/  zTab; } ;
-typedef  TYPE_1__ FuzzChangesetGroup ;
-typedef  TYPE_2__ FuzzChangeset ;
-typedef  TYPE_3__ FuzzChange ;
+struct TYPE_9__ {int* aChange; int nCol; int* aPK; int nChange; int zTab; } ;
+typedef TYPE_1__ FuzzChangesetGroup ;
+typedef TYPE_2__ FuzzChangeset ;
+typedef TYPE_3__ FuzzChange ;
 
-/* Variables and functions */
- scalar_t__ FUZZ_COLUMN_ADD ; 
- scalar_t__ FUZZ_COLUMN_ADDPK ; 
- scalar_t__ FUZZ_COLUMN_DEL ; 
- scalar_t__ FUZZ_GROUP_DEL ; 
- scalar_t__ FUZZ_GROUP_DUP ; 
- int SQLITE_OK ; 
- int fuzzCopyChange (TYPE_2__*,int,TYPE_3__*,int**,int**) ; 
- int /*<<< orphan*/  fuzzPutVarint (int*,int) ; 
- int fuzzSelectChange (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  fuzzWriteFile (char const*,int*,int) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FUZZ_COLUMN_ADD ;
+ scalar_t__ FUZZ_COLUMN_ADDPK ;
+ scalar_t__ FUZZ_COLUMN_DEL ;
+ scalar_t__ FUZZ_GROUP_DEL ;
+ scalar_t__ FUZZ_GROUP_DUP ;
+ int SQLITE_OK ;
+ int fuzzCopyChange (TYPE_2__*,int,TYPE_3__*,int**,int**) ;
+ int fuzzPutVarint (int*,int) ;
+ int fuzzSelectChange (TYPE_2__*,TYPE_3__*) ;
+ int fuzzWriteFile (char const*,int*,int) ;
+ int memcpy (int*,int ,int) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static int fuzzDoOneFuzz(
-  const char *zOut,               /* Filename to write modified changeset to */
-  u8 *pBuf,                       /* Buffer to use for modified changeset */
-  FuzzChangeset *pParse           /* Parse of input changeset */
+  const char *zOut,
+  u8 *pBuf,
+  FuzzChangeset *pParse
 ){
   FuzzChange change;
   int iGrp;
@@ -53,12 +53,12 @@ __attribute__((used)) static int fuzzDoOneFuzz(
       int j;
       int nRep = 1;
 
-      /* If this is the group to delete for a FUZZ_GROUP_DEL change, jump to
-      ** the next group. Unless this is the only group in the changeset - in
-      ** that case this change cannot be applied.
-      **
-      ** Or, if this is a FUZZ_GROUP_DUP, set nRep to 2 to output two
-      ** copies of the group. */
+
+
+
+
+
+
       if( change.iGroup==iGrp ){
         if( change.eType==FUZZ_GROUP_DEL ){
           if( pParse->nGroup==1 ) rc = -1;
@@ -76,8 +76,8 @@ __attribute__((used)) static int fuzzDoOneFuzz(
         int nCol = pGrp->nCol;
         int iPKDel = 0;
         if( iGrp==change.iGroup ){
-          if( change.eType==FUZZ_COLUMN_ADD 
-           || change.eType==FUZZ_COLUMN_ADDPK 
+          if( change.eType==FUZZ_COLUMN_ADD
+           || change.eType==FUZZ_COLUMN_ADDPK
           ){
             nCol++;
           }else if( change.eType==FUZZ_COLUMN_DEL ){
@@ -86,7 +86,7 @@ __attribute__((used)) static int fuzzDoOneFuzz(
           }
         }
 
-        /* Output a table header */
+
         pOut++[0] = pParse->bPatchset ? 'P' : 'T';
         pOut += fuzzPutVarint(pOut, nCol);
 
@@ -111,7 +111,7 @@ __attribute__((used)) static int fuzzDoOneFuzz(
         memcpy(pOut, pGrp->zTab, nTab);
         pOut += nTab;
 
-        /* Output the change array. */
+
         pSaved = pOut;
         for(i=0; rc==SQLITE_OK && i<pGrp->nChange; i++){
           rc = fuzzCopyChange(pParse, iGrp, &change, &p, &pOut);

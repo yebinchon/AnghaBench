@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_3__ {int buf_size; int* buf; } ;
-typedef  TYPE_1__ AVProbeData ;
+typedef TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_EXTENSION ; 
- int EXT_STARTCODE ; 
- int SLICE_STARTCODE ; 
- int VISUAL_OBJ_STARTCODE ; 
- int VOP_STARTCODE ; 
+
+ int AVPROBE_SCORE_EXTENSION ;
+ int EXT_STARTCODE ;
+ int SLICE_STARTCODE ;
+ int VISUAL_OBJ_STARTCODE ;
+ int VOP_STARTCODE ;
 
 __attribute__((used)) static int mpeg4video_probe(const AVProbeData *probe_packet)
 {
@@ -51,9 +51,9 @@ __attribute__((used)) static int mpeg4video_probe(const AVProbeData *probe_packe
             res++;
     }
 
-    // res_main repesents the reserved codes within the "main" profile, they are
-    // added to the reserved ones if it appears that this is a "main" profile
-    // stream
+
+
+
     if (res_main && 2*res_main < VOP)
         res += res_main;
 

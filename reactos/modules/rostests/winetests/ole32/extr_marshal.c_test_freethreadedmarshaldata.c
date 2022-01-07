@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ MSHCTX ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetHGlobalFromStream (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* GlobalLock (int /*<<< orphan*/ ) ; 
- scalar_t__ GlobalSize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- scalar_t__ MSHCTX_INPROC ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_ole_success (int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,int /*<<< orphan*/ *)) ; 
- scalar_t__ round_global_size (int) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ MSHCTX ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int HGLOBAL ;
+typedef int GUID ;
+typedef scalar_t__ DWORD ;
+
+
+ int GetHGlobalFromStream (int *,int *) ;
+ char* GlobalLock (int ) ;
+ scalar_t__ GlobalSize (int ) ;
+ int GlobalUnlock (int ) ;
+ scalar_t__ MSHCTX_INPROC ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
+ int ok_ole_success (int ,int (*) (int *,int *)) ;
+ scalar_t__ round_global_size (int) ;
+ int trace (char*,int ) ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_freethreadedmarshaldata(IStream *pStream, MSHCTX mshctx, void *ptr, DWORD mshlflags)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void test_freethreadedmarshaldata(IStream *pStream,
     {
         DWORD expected_size = round_global_size(3*sizeof(DWORD) + sizeof(GUID));
         ok(size == expected_size ||
-           broken(size == (2*sizeof(DWORD))) /* Win9x & NT4 */,
+           broken(size == (2*sizeof(DWORD))) ,
            "size should have been %d instead of %d\n", expected_size, size);
 
         ok(*(DWORD *)marshal_data == mshlflags, "expected 0x%x, but got 0x%x for mshctx\n", mshlflags, *(DWORD *)marshal_data);
@@ -68,7 +68,7 @@ __attribute__((used)) static void test_freethreadedmarshaldata(IStream *pStream,
     else
     {
         ok(size > sizeof(DWORD), "size should have been > sizeof(DWORD), not %d\n", size);
-        ok(*(DWORD *)marshal_data == 0x574f454d /* MEOW */,
+        ok(*(DWORD *)marshal_data == 0x574f454d ,
             "marshal data should be filled by standard marshal and start with MEOW signature\n");
     }
 

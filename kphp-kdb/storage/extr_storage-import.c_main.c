@@ -1,54 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char** GP ; 
- int MAX_GROUP_PATHS ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ change_user (char*) ; 
- int dump_rows ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (scalar_t__) ; 
- scalar_t__ fopen (void*,char*) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  import_lev_start () ; 
- int /*<<< orphan*/  import_paths (char*,int) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- void* optarg ; 
- int optind ; 
- scalar_t__ pmemcache_dump ; 
- char* progname ; 
- void* row_prefix ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int split_modulo ; 
- int split_rem ; 
- int sscanf (void*,char*,...) ; 
- char* strrchr (char*,char) ; 
- int /*<<< orphan*/  test_paths (char*) ; 
- int /*<<< orphan*/  usage () ; 
- int use_old_secret ; 
- char* username ; 
- int /*<<< orphan*/  verbosity ; 
- scalar_t__ volume_id ; 
+ char** GP ;
+ int MAX_GROUP_PATHS ;
+ int aes_load_pwd_file (int *) ;
+ int assert (int) ;
+ scalar_t__ change_user (char*) ;
+ int dump_rows ;
+ int exit (int) ;
+ int fclose (scalar_t__) ;
+ scalar_t__ fopen (void*,char*) ;
+ int getopt (int,char**,char*) ;
+ int import_lev_start () ;
+ int import_paths (char*,int) ;
+ int init_dyn_data () ;
+ int kprintf (char*,...) ;
+ void* optarg ;
+ int optind ;
+ scalar_t__ pmemcache_dump ;
+ char* progname ;
+ void* row_prefix ;
+ int set_debug_handlers () ;
+ int split_modulo ;
+ int split_rem ;
+ int sscanf (void*,char*,...) ;
+ char* strrchr (char*,char) ;
+ int test_paths (char*) ;
+ int usage () ;
+ int use_old_secret ;
+ char* username ;
+ int verbosity ;
+ scalar_t__ volume_id ;
 
 int main (int argc, char *argv[]) {
   int i;
   int dump_lev_start = 1;
   set_debug_handlers();
   progname = strrchr (argv[0], '/');
-  progname = (progname == NULL) ? argv[0] : progname + 1;
+  progname = (progname == ((void*)0)) ? argv[0] : progname + 1;
   int group_paths = 0;
   while ((i = getopt (argc, argv, "m:vu:Ip:g:V:TP:S")) != -1) {
     switch (i) {
@@ -119,7 +111,7 @@ int main (int argc, char *argv[]) {
   }
 
   init_dyn_data ();
-  aes_load_pwd_file (NULL);
+  aes_load_pwd_file (((void*)0));
   if (dump_lev_start) {
     import_lev_start ();
   }
@@ -130,10 +122,10 @@ int main (int argc, char *argv[]) {
   for (i = 0; i < group_paths; i++) {
     import_paths (GP[i], -1);
   }
-/*
-  kprintf ("opened_base_doc = %d, opened_aux_doc = %d\n", opened_base_doc, opened_aux_doc);
-  kprintf ("successfully_read_base_doc = %d, successfully_read_aux_doc = %d\n", successfully_read_base_doc, successfully_read_aux_doc);
-*/
+
+
+
+
   if (pmemcache_dump) {
     fclose (pmemcache_dump);
   }

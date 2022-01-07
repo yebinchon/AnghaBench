@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_3__ {scalar_t__ Context; } ;
-typedef  int /*<<< orphan*/ * PULONG ;
-typedef  int /*<<< orphan*/  PLAN_ADAPTER ;
-typedef  TYPE_1__* PIP_INTERFACE ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int NDIS_OID ;
+typedef int * PULONG ;
+typedef int PLAN_ADAPTER ;
+typedef TYPE_1__* PIP_INTERFACE ;
+typedef int NTSTATUS ;
+typedef int NDIS_OID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NDISCall (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  NdisHardwareStatusReady ; 
- int /*<<< orphan*/  NdisMediaStateConnected ; 
- int /*<<< orphan*/  NdisRequestQueryInformation ; 
-#define  OID_GEN_HARDWARE_STATUS 129 
-#define  OID_GEN_MEDIA_CONNECT_STATUS 128 
- int /*<<< orphan*/  STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+ int NDISCall (int ,int ,int,int *,int) ;
+ int NdisHardwareStatusReady ;
+ int NdisMediaStateConnected ;
+ int NdisRequestQueryInformation ;
+
+
+ int STATUS_INVALID_PARAMETER ;
+ int STATUS_SUCCESS ;
 
 NTSTATUS TcpipLanGetDwordOid
 ( PIP_INTERFACE Interface,
   NDIS_OID Oid,
   PULONG Result ) {
-    /* Get maximum frame size */
+
     if( Interface->Context ) {
         return NDISCall((PLAN_ADAPTER)Interface->Context,
                         NdisRequestQueryInformation,
                         Oid,
                         Result,
                         sizeof(ULONG));
-    } else switch( Oid ) { /* Loopback Case */
-    case OID_GEN_HARDWARE_STATUS:
+    } else switch( Oid ) {
+    case 129:
         *Result = NdisHardwareStatusReady;
         return STATUS_SUCCESS;
-    case OID_GEN_MEDIA_CONNECT_STATUS:
+    case 128:
         *Result = NdisMediaStateConnected;
         return STATUS_SUCCESS;
     default:

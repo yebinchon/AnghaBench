@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-struct TYPE_4__ {scalar_t__ tex_size; int /*<<< orphan*/  tex_data; int /*<<< orphan*/  gbc; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_1__ DXVContext ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_4__ {scalar_t__ tex_size; int tex_data; int gbc; } ;
+typedef int GetByteContext ;
+typedef TYPE_1__ DXVContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  bytestream2_get_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_get_buffer (int *,int ,scalar_t__) ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
 
 __attribute__((used)) static int dxv_decompress_raw(AVCodecContext *avctx)
 {

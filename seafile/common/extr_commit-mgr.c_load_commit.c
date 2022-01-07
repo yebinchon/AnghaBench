@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_8__ {int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__ json_error_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_8__ {int text; } ;
+typedef TYPE_1__ json_error_t ;
 struct TYPE_10__ {TYPE_2__* manager; } ;
-struct TYPE_9__ {int /*<<< orphan*/  obj_store; } ;
-typedef  TYPE_2__ SeafCommitManager ;
-typedef  TYPE_3__ SeafCommit ;
+struct TYPE_9__ {int obj_store; } ;
+typedef TYPE_2__ SeafCommitManager ;
+typedef TYPE_3__ SeafCommit ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clean_utf8_data (char*,int) ; 
- TYPE_3__* commit_from_json_object (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loadb (char*,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ seaf_obj_store_read_obj (int /*<<< orphan*/ ,char const*,int,char const*,void**,int*) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
+
+ int clean_utf8_data (char*,int) ;
+ TYPE_3__* commit_from_json_object (char const*,int *) ;
+ int g_free (char*) ;
+ int json_decref (int *) ;
+ int * json_loadb (char*,int,int ,TYPE_1__*) ;
+ scalar_t__ seaf_obj_store_read_obj (int ,char const*,int,char const*,void**,int*) ;
+ int seaf_warning (char*,int ) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static SeafCommit *
 load_commit (SeafCommitManager *mgr,
@@ -37,22 +37,22 @@ load_commit (SeafCommitManager *mgr,
              int version,
              const char *commit_id)
 {
-    char *data = NULL;
+    char *data = ((void*)0);
     int len;
-    SeafCommit *commit = NULL;
-    json_t *object = NULL;
+    SeafCommit *commit = ((void*)0);
+    json_t *object = ((void*)0);
     json_error_t jerror;
 
     if (!commit_id || strlen(commit_id) != 40)
-        return NULL;
+        return ((void*)0);
 
     if (seaf_obj_store_read_obj (mgr->obj_store, repo_id, version,
                                  commit_id, (void **)&data, &len) < 0)
-        return NULL;
+        return ((void*)0);
 
     object = json_loadb (data, len, 0, &jerror);
     if (!object) {
-        /* Perhaps the commit object contains invalid UTF-8 character. */
+
         if (data[len-1] == 0)
             clean_utf8_data (data, len - 1);
         else

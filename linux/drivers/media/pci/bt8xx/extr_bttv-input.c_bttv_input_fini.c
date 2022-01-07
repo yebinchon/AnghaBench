@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct bttv {TYPE_1__* remote; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bttv_ir_stop (struct bttv*) ; 
- int /*<<< orphan*/  kfree (TYPE_1__*) ; 
- int /*<<< orphan*/  rc_unregister_device (int /*<<< orphan*/ ) ; 
+
+ int bttv_ir_stop (struct bttv*) ;
+ int kfree (TYPE_1__*) ;
+ int rc_unregister_device (int ) ;
 
 void bttv_input_fini(struct bttv *btv)
 {
-	if (btv->remote == NULL)
-		return;
+ if (btv->remote == ((void*)0))
+  return;
 
-	bttv_ir_stop(btv);
-	rc_unregister_device(btv->remote->dev);
-	kfree(btv->remote);
-	btv->remote = NULL;
+ bttv_ir_stop(btv);
+ rc_unregister_device(btv->remote->dev);
+ kfree(btv->remote);
+ btv->remote = ((void*)0);
 }

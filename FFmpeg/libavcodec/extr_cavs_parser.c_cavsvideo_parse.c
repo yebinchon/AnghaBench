@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int flags; int /*<<< orphan*/ * priv_data; } ;
-typedef  int /*<<< orphan*/  ParseContext ;
-typedef  TYPE_1__ AVCodecParserContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int PARSER_FLAG_COMPLETE_FRAMES ; 
- int cavs_find_frame_end (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ ff_combine_frame (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const**,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int flags; int * priv_data; } ;
+typedef int ParseContext ;
+typedef TYPE_1__ AVCodecParserContext ;
+typedef int AVCodecContext ;
+
+
+ int PARSER_FLAG_COMPLETE_FRAMES ;
+ int cavs_find_frame_end (int *,int const*,int) ;
+ scalar_t__ ff_combine_frame (int *,int,int const**,int*) ;
 
 __attribute__((used)) static int cavsvideo_parse(AVCodecParserContext *s,
                            AVCodecContext *avctx,
@@ -36,7 +36,7 @@ __attribute__((used)) static int cavsvideo_parse(AVCodecParserContext *s,
         next= cavs_find_frame_end(pc, buf, buf_size);
 
         if (ff_combine_frame(pc, next, &buf, &buf_size) < 0) {
-            *poutbuf = NULL;
+            *poutbuf = ((void*)0);
             *poutbuf_size = 0;
             return buf_size;
         }

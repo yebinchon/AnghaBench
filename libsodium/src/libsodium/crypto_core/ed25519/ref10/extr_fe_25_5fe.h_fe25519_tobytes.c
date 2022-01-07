@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int* fe25519 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fe25519_reduce (int*,int* const) ; 
+
+
+
+typedef int uint32_t ;
+typedef int* fe25519 ;
+
+
+ int fe25519_reduce (int*,int* const) ;
 
 void
 fe25519_tobytes(unsigned char *s, const fe25519 h)
@@ -22,16 +22,16 @@ fe25519_tobytes(unsigned char *s, const fe25519 h)
     fe25519 t;
 
     fe25519_reduce(t, h);
-    s[0]  = t[0] >> 0;
-    s[1]  = t[0] >> 8;
-    s[2]  = t[0] >> 16;
-    s[3]  = (t[0] >> 24) | (t[1] * ((uint32_t) 1 << 2));
-    s[4]  = t[1] >> 6;
-    s[5]  = t[1] >> 14;
-    s[6]  = (t[1] >> 22) | (t[2] * ((uint32_t) 1 << 3));
-    s[7]  = t[2] >> 5;
-    s[8]  = t[2] >> 13;
-    s[9]  = (t[2] >> 21) | (t[3] * ((uint32_t) 1 << 5));
+    s[0] = t[0] >> 0;
+    s[1] = t[0] >> 8;
+    s[2] = t[0] >> 16;
+    s[3] = (t[0] >> 24) | (t[1] * ((uint32_t) 1 << 2));
+    s[4] = t[1] >> 6;
+    s[5] = t[1] >> 14;
+    s[6] = (t[1] >> 22) | (t[2] * ((uint32_t) 1 << 3));
+    s[7] = t[2] >> 5;
+    s[8] = t[2] >> 13;
+    s[9] = (t[2] >> 21) | (t[3] * ((uint32_t) 1 << 5));
     s[10] = t[3] >> 3;
     s[11] = t[3] >> 11;
     s[12] = (t[3] >> 19) | (t[4] * ((uint32_t) 1 << 6));

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_3__ {scalar_t__ alignPriceCount; int /*<<< orphan*/  ProbPrices; int /*<<< orphan*/  posAlignEncoder; int /*<<< orphan*/ * alignPrices; } ;
-typedef  TYPE_1__ CLzmaEnc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RcTree_ReverseGetPrice (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- size_t kAlignTableSize ; 
- int /*<<< orphan*/  kNumAlignBits ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_3__ {scalar_t__ alignPriceCount; int ProbPrices; int posAlignEncoder; int * alignPrices; } ;
+typedef TYPE_1__ CLzmaEnc ;
+
+
+ int RcTree_ReverseGetPrice (int ,int ,size_t,int ) ;
+ size_t kAlignTableSize ;
+ int kNumAlignBits ;
 
 __attribute__((used)) static void FillAlignPrices(CLzmaEnc *p)
 {

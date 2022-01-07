@@ -1,54 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int DPS_RSTCT2_PER_EN ; 
- int /*<<< orphan*/  DSP_RSTCT2 ; 
- int DSP_RSTCT2_WD_PER_EN ; 
- int /*<<< orphan*/  IS_ERR (int /*<<< orphan*/ ) ; 
- unsigned int OMAP_MCBSP1 ; 
- unsigned int OMAP_MCBSP3 ; 
- int __raw_readw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __raw_writew (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  api_clk ; 
- int /*<<< orphan*/  clk_enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clk_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dsp_clk ; 
- int /*<<< orphan*/  dsp_use ; 
- int /*<<< orphan*/  omap_dsp_request_mem () ; 
+ int DPS_RSTCT2_PER_EN ;
+ int DSP_RSTCT2 ;
+ int DSP_RSTCT2_WD_PER_EN ;
+ int IS_ERR (int ) ;
+ unsigned int OMAP_MCBSP1 ;
+ unsigned int OMAP_MCBSP3 ;
+ int __raw_readw (int ) ;
+ int __raw_writew (int,int ) ;
+ int api_clk ;
+ int clk_enable (int ) ;
+ int clk_get (int *,char*) ;
+ int dsp_clk ;
+ int dsp_use ;
+ int omap_dsp_request_mem () ;
 
 __attribute__((used)) static void omap1_mcbsp_request(unsigned int id)
 {
-	/*
-	 * On 1510, 1610 and 1710, McBSP1 and McBSP3
-	 * are DSP public peripherals.
-	 */
-	if (id == OMAP_MCBSP1 || id == OMAP_MCBSP3) {
-		if (dsp_use++ == 0) {
-			api_clk = clk_get(NULL, "api_ck");
-			dsp_clk = clk_get(NULL, "dsp_ck");
-			if (!IS_ERR(api_clk) && !IS_ERR(dsp_clk)) {
-				clk_enable(api_clk);
-				clk_enable(dsp_clk);
 
-				omap_dsp_request_mem();
-				/*
-				 * DSP external peripheral reset
-				 * FIXME: This should be moved to dsp code
-				 */
-				__raw_writew(__raw_readw(DSP_RSTCT2) | DPS_RSTCT2_PER_EN |
-						DSP_RSTCT2_WD_PER_EN, DSP_RSTCT2);
-			}
-		}
-	}
+
+
+
+ if (id == OMAP_MCBSP1 || id == OMAP_MCBSP3) {
+  if (dsp_use++ == 0) {
+   api_clk = clk_get(((void*)0), "api_ck");
+   dsp_clk = clk_get(((void*)0), "dsp_ck");
+   if (!IS_ERR(api_clk) && !IS_ERR(dsp_clk)) {
+    clk_enable(api_clk);
+    clk_enable(dsp_clk);
+
+    omap_dsp_request_mem();
+
+
+
+
+    __raw_writew(__raw_readw(DSP_RSTCT2) | DPS_RSTCT2_PER_EN |
+      DSP_RSTCT2_WD_PER_EN, DSP_RSTCT2);
+   }
+  }
+ }
 }

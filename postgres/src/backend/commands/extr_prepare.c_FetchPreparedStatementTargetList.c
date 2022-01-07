@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  plansource; } ;
-typedef  TYPE_1__ PreparedStatement ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CachedPlanGetTargetList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * copyObject (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int plansource; } ;
+typedef TYPE_1__ PreparedStatement ;
+typedef int List ;
+
+
+ int * CachedPlanGetTargetList (int ,int *) ;
+ int * copyObject (int *) ;
 
 List *
 FetchPreparedStatementTargetList(PreparedStatement *stmt)
 {
-	List	   *tlist;
+ List *tlist;
 
-	/* Get the plan's primary targetlist */
-	tlist = CachedPlanGetTargetList(stmt->plansource, NULL);
 
-	/* Copy into caller's context in case plan gets invalidated */
-	return copyObject(tlist);
+ tlist = CachedPlanGetTargetList(stmt->plansource, ((void*)0));
+
+
+ return copyObject(tlist);
 }

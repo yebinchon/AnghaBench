@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct remote_function_call {void* info; int ret; int /*<<< orphan*/  func; int /*<<< orphan*/ * p; } ;
-typedef  int /*<<< orphan*/  remote_function_f ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  remote_function ; 
- int /*<<< orphan*/  smp_call_function_single (int,int /*<<< orphan*/ ,struct remote_function_call*,int) ; 
+
+
+
+struct remote_function_call {void* info; int ret; int func; int * p; } ;
+typedef int remote_function_f ;
+
+
+ int ENXIO ;
+ int remote_function ;
+ int smp_call_function_single (int,int ,struct remote_function_call*,int) ;
 
 __attribute__((used)) static int cpu_function_call(int cpu, remote_function_f func, void *info)
 {
-	struct remote_function_call data = {
-		.p	= NULL,
-		.func	= func,
-		.info	= info,
-		.ret	= -ENXIO, /* No such CPU */
-	};
+ struct remote_function_call data = {
+  .p = ((void*)0),
+  .func = func,
+  .info = info,
+  .ret = -ENXIO,
+ };
 
-	smp_call_function_single(cpu, remote_function, &data, 1);
+ smp_call_function_single(cpu, remote_function, &data, 1);
 
-	return data.ret;
+ return data.ret;
 }

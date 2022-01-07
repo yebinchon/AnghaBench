@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct to_kill {int dummy; } ;
-struct page {int /*<<< orphan*/  mapping; } ;
+struct page {int mapping; } ;
 struct list_head {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_NOIO ; 
- scalar_t__ PageAnon (struct page*) ; 
- int /*<<< orphan*/  collect_procs_anon (struct page*,struct list_head*,struct to_kill**) ; 
- int /*<<< orphan*/  collect_procs_file (struct page*,struct list_head*,struct to_kill**) ; 
- int /*<<< orphan*/  kfree (struct to_kill*) ; 
- struct to_kill* kmalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_NOIO ;
+ scalar_t__ PageAnon (struct page*) ;
+ int collect_procs_anon (struct page*,struct list_head*,struct to_kill**) ;
+ int collect_procs_file (struct page*,struct list_head*,struct to_kill**) ;
+ int kfree (struct to_kill*) ;
+ struct to_kill* kmalloc (int,int ) ;
 
 __attribute__((used)) static void collect_procs(struct page *page, struct list_head *tokill)
 {
-	struct to_kill *tk;
+ struct to_kill *tk;
 
-	if (!page->mapping)
-		return;
+ if (!page->mapping)
+  return;
 
-	tk = kmalloc(sizeof(struct to_kill), GFP_NOIO);
-	if (!tk)
-		return;
-	if (PageAnon(page))
-		collect_procs_anon(page, tokill, &tk);
-	else
-		collect_procs_file(page, tokill, &tk);
-	kfree(tk);
+ tk = kmalloc(sizeof(struct to_kill), GFP_NOIO);
+ if (!tk)
+  return;
+ if (PageAnon(page))
+  collect_procs_anon(page, tokill, &tk);
+ else
+  collect_procs_file(page, tokill, &tk);
+ kfree(tk);
 }

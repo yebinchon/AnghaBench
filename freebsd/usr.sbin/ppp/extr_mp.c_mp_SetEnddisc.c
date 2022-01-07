@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct sockaddr_dl {scalar_t__* sdl_data; int sdl_nlen; int sdl_alen; } ;
 struct TYPE_13__ {char* address; int len; scalar_t__ class; } ;
 struct TYPE_14__ {TYPE_5__ enddisc; } ;
 struct mp {TYPE_6__ cfg; } ;
 struct in_addr {scalar_t__ s_addr; } ;
-struct cmdargs {int argc; int argn; int /*<<< orphan*/ * argv; TYPE_7__* bundle; } ;
-struct TYPE_10__ {int /*<<< orphan*/  my_range; } ;
+struct cmdargs {int argc; int argn; int * argv; TYPE_7__* bundle; } ;
+struct TYPE_10__ {int my_range; } ;
 struct TYPE_11__ {struct in_addr my_ip; TYPE_2__ cfg; } ;
 struct TYPE_12__ {TYPE_3__ ipcp; struct mp mp; } ;
-struct TYPE_9__ {int /*<<< orphan*/  label; } ;
+struct TYPE_9__ {int label; } ;
 struct TYPE_15__ {TYPE_4__ ncp; TYPE_1__ cfg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATALINK_LCP ; 
- scalar_t__ ENDDISC_IP ; 
- scalar_t__ ENDDISC_LOCAL ; 
- scalar_t__ ENDDISC_MAC ; 
- scalar_t__ ENDDISC_MAGIC ; 
- scalar_t__ ENDDISC_PSN ; 
- scalar_t__ INADDR_ANY ; 
- int /*<<< orphan*/  LogWARN ; 
-#define  PHASE_DEAD 129 
-#define  PHASE_ESTABLISH 128 
- scalar_t__ arp_EtherAddr (struct in_addr,struct sockaddr_dl*,int) ; 
- int /*<<< orphan*/  bundle_HighestState (TYPE_7__*) ; 
- int bundle_Phase (TYPE_7__*) ; 
- int /*<<< orphan*/  inet_ntoa (struct in_addr) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memcpy (char*,scalar_t__*,int) ; 
- int /*<<< orphan*/  ncprange_getip4addr (int /*<<< orphan*/ *,struct in_addr*) ; 
- int /*<<< orphan*/  randinit () ; 
- long random () ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- void* strlen (char*) ; 
+
+ int DATALINK_LCP ;
+ scalar_t__ ENDDISC_IP ;
+ scalar_t__ ENDDISC_LOCAL ;
+ scalar_t__ ENDDISC_MAC ;
+ scalar_t__ ENDDISC_MAGIC ;
+ scalar_t__ ENDDISC_PSN ;
+ scalar_t__ INADDR_ANY ;
+ int LogWARN ;
+
+
+ scalar_t__ arp_EtherAddr (struct in_addr,struct sockaddr_dl*,int) ;
+ int bundle_HighestState (TYPE_7__*) ;
+ int bundle_Phase (TYPE_7__*) ;
+ int inet_ntoa (struct in_addr) ;
+ int log_Printf (int ,char*,...) ;
+ int memcpy (char*,scalar_t__*,int) ;
+ int ncprange_getip4addr (int *,struct in_addr*) ;
+ int randinit () ;
+ long random () ;
+ int strcasecmp (int ,char*) ;
+ int strcpy (char*,int ) ;
+ void* strlen (char*) ;
 
 int
 mp_SetEnddisc(struct cmdargs const *arg)
@@ -60,10 +60,10 @@ mp_SetEnddisc(struct cmdargs const *arg)
   struct in_addr addr;
 
   switch (bundle_Phase(arg->bundle)) {
-    case PHASE_DEAD:
+    case 129:
       break;
-    case PHASE_ESTABLISH:
-      /* Make sure none of our links are DATALINK_LCP or greater */
+    case 128:
+
       if (bundle_HighestState(arg->bundle) >= DATALINK_LCP) {
         log_Printf(LogWARN, "enddisc: Only changeable before"
                    " LCP negotiations\n");

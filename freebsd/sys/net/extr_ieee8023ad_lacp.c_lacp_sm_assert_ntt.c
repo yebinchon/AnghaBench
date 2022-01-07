@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lacp_port {int /*<<< orphan*/  lp_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LACP_PORT_NTT ; 
+
+
+
+struct lacp_port {int lp_flags; } ;
+
+
+ int LACP_PORT_NTT ;
 
 __attribute__((used)) static void
 lacp_sm_assert_ntt(struct lacp_port *lp)
 {
 
-	lp->lp_flags |= LACP_PORT_NTT;
+ lp->lp_flags |= LACP_PORT_NTT;
 }

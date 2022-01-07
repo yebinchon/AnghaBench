@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct FsmInst {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ST_L1_F5 ; 
- int /*<<< orphan*/  mISDN_FsmChangeState (struct FsmInst*,int /*<<< orphan*/ ) ; 
+
+ int ST_L1_F5 ;
+ int mISDN_FsmChangeState (struct FsmInst*,int ) ;
 
 __attribute__((used)) static void
 l1_go_F5(struct FsmInst *fi, int event, void *arg)
 {
-	mISDN_FsmChangeState(fi, ST_L1_F5);
+ mISDN_FsmChangeState(fi, ST_L1_F5);
 }

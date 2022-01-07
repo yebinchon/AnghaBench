@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* cl_mem ;
-typedef  int /*<<< orphan*/  cl_int ;
-struct TYPE_12__ {TYPE_2__* hwctx; int /*<<< orphan*/  output_format; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef void* cl_mem ;
+typedef int cl_int ;
+struct TYPE_12__ {TYPE_2__* hwctx; int output_format; } ;
 struct TYPE_14__ {int nb_planes; float luma_size_x; float luma_size_y; float luma_amount; float chroma_size_x; float chroma_size_y; float chroma_amount; TYPE_4__* plane; TYPE_3__ ocf; scalar_t__ global; } ;
-typedef  TYPE_5__ UnsharpOpenCLContext ;
+typedef TYPE_5__ UnsharpOpenCLContext ;
 struct TYPE_16__ {TYPE_5__* priv; } ;
 struct TYPE_15__ {int nb_components; int flags; TYPE_1__* comp; } ;
 struct TYPE_13__ {double* blur_x; double* blur_y; int size_x; int size_y; float amount; void* coef_y; void* coef_x; void* matrix; } ;
-struct TYPE_11__ {int /*<<< orphan*/  context; } ;
+struct TYPE_11__ {int context; } ;
 struct TYPE_10__ {scalar_t__ plane; } ;
-typedef  TYPE_6__ AVPixFmtDescriptor ;
-typedef  TYPE_7__ AVFilterContext ;
+typedef TYPE_6__ AVPixFmtDescriptor ;
+typedef TYPE_7__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_PIX_FMT_FLAG_RGB ; 
- int /*<<< orphan*/  CL_FAIL_ON_ERROR (int,char*,int /*<<< orphan*/ ) ; 
- int CL_MEM_COPY_HOST_PTR ; 
- int CL_MEM_HOST_NO_ACCESS ; 
- int CL_MEM_READ_ONLY ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,scalar_t__) ; 
- int /*<<< orphan*/  av_freep (float**) ; 
- float* av_malloc (size_t) ; 
- TYPE_6__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- scalar_t__ ceil (float) ; 
- void* clCreateBuffer (int /*<<< orphan*/ ,int,int,float*,int /*<<< orphan*/ *) ; 
- double exp (double) ; 
+
+ int AVERROR (int ) ;
+ int AV_PIX_FMT_FLAG_RGB ;
+ int CL_FAIL_ON_ERROR (int,char*,int ) ;
+ int CL_MEM_COPY_HOST_PTR ;
+ int CL_MEM_HOST_NO_ACCESS ;
+ int CL_MEM_READ_ONLY ;
+ int EIO ;
+ int ENOMEM ;
+ int FFMAX (int,scalar_t__) ;
+ int av_freep (float**) ;
+ float* av_malloc (size_t) ;
+ TYPE_6__* av_pix_fmt_desc_get (int ) ;
+ scalar_t__ ceil (float) ;
+ void* clCreateBuffer (int ,int,int,float*,int *) ;
+ double exp (double) ;
 
 __attribute__((used)) static int unsharp_opencl_make_filter_params(AVFilterContext *avctx)
 {
@@ -110,7 +110,7 @@ __attribute__((used)) static int unsharp_opencl_make_filter_params(AVFilterConte
 
         if (ctx->global) {
             buffer = clCreateBuffer(ctx->ocf.hwctx->context,
-                                    CL_MEM_READ_ONLY     |
+                                    CL_MEM_READ_ONLY |
                                     CL_MEM_COPY_HOST_PTR |
                                     CL_MEM_HOST_NO_ACCESS,
                                     matrix_bytes, matrix, &cle);
@@ -119,7 +119,7 @@ __attribute__((used)) static int unsharp_opencl_make_filter_params(AVFilterConte
             ctx->plane[p].matrix = buffer;
         } else {
             buffer = clCreateBuffer(ctx->ocf.hwctx->context,
-                                    CL_MEM_READ_ONLY     |
+                                    CL_MEM_READ_ONLY |
                                     CL_MEM_COPY_HOST_PTR |
                                     CL_MEM_HOST_NO_ACCESS,
                                     sizeof(ctx->plane[p].blur_x),
@@ -129,7 +129,7 @@ __attribute__((used)) static int unsharp_opencl_make_filter_params(AVFilterConte
             ctx->plane[p].coef_x = buffer;
 
             buffer = clCreateBuffer(ctx->ocf.hwctx->context,
-                                    CL_MEM_READ_ONLY     |
+                                    CL_MEM_READ_ONLY |
                                     CL_MEM_COPY_HOST_PTR |
                                     CL_MEM_HOST_NO_ACCESS,
                                     sizeof(ctx->plane[p].blur_y),

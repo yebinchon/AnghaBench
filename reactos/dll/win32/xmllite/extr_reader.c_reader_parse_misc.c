@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int resumestate; } ;
-typedef  TYPE_1__ xmlreader ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HRESULT ;
+typedef TYPE_1__ xmlreader ;
+typedef int WCHAR ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ S_FALSE ; 
-#define  XmlReadResumeState_Comment 131 
- int XmlReadResumeState_Initial ; 
-#define  XmlReadResumeState_PIBody 130 
-#define  XmlReadResumeState_PITarget 129 
-#define  XmlReadResumeState_Whitespace 128 
- int /*<<< orphan*/  commentW ; 
- scalar_t__ is_wchar_space (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  piW ; 
- int /*<<< orphan*/  reader_cmp (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * reader_get_ptr (TYPE_1__*) ; 
- scalar_t__ reader_more (TYPE_1__*) ; 
- scalar_t__ reader_parse_comment (TYPE_1__*) ; 
- scalar_t__ reader_parse_pi (TYPE_1__*) ; 
- scalar_t__ reader_parse_whitespace (TYPE_1__*) ; 
+
+ int ERR (char*,int) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ S_FALSE ;
+
+ int XmlReadResumeState_Initial ;
+
+
+
+ int commentW ;
+ scalar_t__ is_wchar_space (int const) ;
+ int piW ;
+ int reader_cmp (TYPE_1__*,int ) ;
+ int * reader_get_ptr (TYPE_1__*) ;
+ scalar_t__ reader_more (TYPE_1__*) ;
+ scalar_t__ reader_parse_comment (TYPE_1__*) ;
+ scalar_t__ reader_parse_pi (TYPE_1__*) ;
+ scalar_t__ reader_parse_whitespace (TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT reader_parse_misc(xmlreader *reader)
 {
@@ -44,15 +44,15 @@ __attribute__((used)) static HRESULT reader_parse_misc(xmlreader *reader)
         hr = reader_more(reader);
         if (FAILED(hr)) return hr;
 
-        /* finish current node */
+
         switch (reader->resumestate)
         {
-        case XmlReadResumeState_PITarget:
-        case XmlReadResumeState_PIBody:
+        case 129:
+        case 130:
             return reader_parse_pi(reader);
-        case XmlReadResumeState_Comment:
+        case 131:
             return reader_parse_comment(reader);
-        case XmlReadResumeState_Whitespace:
+        case 128:
             return reader_parse_whitespace(reader);
         default:
             ERR("unknown resume state %d\n", reader->resumestate);

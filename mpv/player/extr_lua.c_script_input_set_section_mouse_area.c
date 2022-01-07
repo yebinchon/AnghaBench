@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPContext {int /*<<< orphan*/  input; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- struct MPContext* get_mpctx (int /*<<< orphan*/ *) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- scalar_t__ luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mp_input_set_section_mouse_area (int /*<<< orphan*/ ,char*,int,int,int,int) ; 
+
+
+
+struct MPContext {int input; } ;
+typedef int lua_State ;
+
+
+ struct MPContext* get_mpctx (int *) ;
+ int luaL_checkinteger (int *,int) ;
+ scalar_t__ luaL_checkstring (int *,int) ;
+ int mp_input_set_section_mouse_area (int ,char*,int,int,int,int) ;
 
 __attribute__((used)) static int script_input_set_section_mouse_area(lua_State *L)
 {

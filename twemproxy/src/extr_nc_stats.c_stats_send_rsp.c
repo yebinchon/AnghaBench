@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int len; int data; } ;
 struct stats {int sd; TYPE_1__ buf; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  scalar_t__ rstatus_t ;
+typedef scalar_t__ ssize_t ;
+typedef scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_VERB ; 
- scalar_t__ NC_ERROR ; 
- scalar_t__ NC_OK ; 
- int accept (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_error (char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ nc_sendn (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ stats_make_rsp (struct stats*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int LOG_VERB ;
+ scalar_t__ NC_ERROR ;
+ scalar_t__ NC_OK ;
+ int accept (int,int *,int *) ;
+ int close (int) ;
+ int errno ;
+ int log_debug (int ,char*,int,int ) ;
+ int log_error (char*,int,int ) ;
+ scalar_t__ nc_sendn (int,int ,int ) ;
+ scalar_t__ stats_make_rsp (struct stats*) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static rstatus_t
 stats_send_rsp(struct stats *st)
@@ -41,7 +41,7 @@ stats_send_rsp(struct stats *st)
         return status;
     }
 
-    sd = accept(st->sd, NULL, NULL);
+    sd = accept(st->sd, ((void*)0), ((void*)0));
     if (sd < 0) {
         log_error("accept on m %d failed: %s", st->sd, strerror(errno));
         return NC_ERROR;

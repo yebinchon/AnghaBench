@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_7__ {TYPE_2__** streams; TYPE_1__* priv_data; } ;
-struct TYPE_6__ {int /*<<< orphan*/  cur_dts; } ;
-struct TYPE_5__ {int /*<<< orphan*/  paranoia; } ;
-typedef  TYPE_1__ CDIOContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_6__ {int cur_dts; } ;
+struct TYPE_5__ {int paranoia; } ;
+typedef TYPE_1__ CDIOContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  cdio_paranoia_seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SEEK_SET ;
+ int cdio_paranoia_seek (int ,int ,int ) ;
 
 __attribute__((used)) static int read_seek(AVFormatContext *ctx, int stream_index, int64_t timestamp,
                      int flags)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int SHELL_OPEN_APPENDVFS ; 
- int SHELL_OPEN_NORMAL ; 
- int SHELL_OPEN_UNSPEC ; 
- int SHELL_OPEN_ZIPFILE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- scalar_t__ sqlite3_strlike (char*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SHELL_OPEN_APPENDVFS ;
+ int SHELL_OPEN_NORMAL ;
+ int SHELL_OPEN_UNSPEC ;
+ int SHELL_OPEN_ZIPFILE ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ size_t fread (char*,int,int,int *) ;
+ int fseek (int *,int,int ) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ scalar_t__ sqlite3_strlike (char*,char const*,int ) ;
 
 int deduceDatabaseType(const char *zName, int dfltZip){
   FILE *f = fopen(zName, "rb");
@@ -57,5 +57,5 @@ int deduceDatabaseType(const char *zName, int dfltZip){
     }
   }
   fclose(f);
-  return rc;  
+  return rc;
 }

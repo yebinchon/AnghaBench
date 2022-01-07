@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  path; int /*<<< orphan*/  result; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeWideString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * GetWideString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PathUnquoteSpacesA (char*) ; 
- int /*<<< orphan*/  PathUnquoteSpacesW (int /*<<< orphan*/ *) ; 
- TYPE_1__* TEST_PATH_UNQUOTE_SPACES ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
- char* strdupA (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {int path; int result; } ;
+
+
+ int ARRAY_SIZE (TYPE_1__*) ;
+ int FreeWideString (int *) ;
+ int GetProcessHeap () ;
+ int * GetWideString (int ) ;
+ int HeapFree (int ,int ,char*) ;
+ int PathUnquoteSpacesA (char*) ;
+ int PathUnquoteSpacesW (int *) ;
+ TYPE_1__* TEST_PATH_UNQUOTE_SPACES ;
+ int lstrcmpW (int *,int *) ;
+ int ok (int,char*,int ,...) ;
+ int strcmp (char*,int ) ;
+ char* strdupA (int ) ;
 
 __attribute__((used)) static void test_PathUnquoteSpaces(void)
 {

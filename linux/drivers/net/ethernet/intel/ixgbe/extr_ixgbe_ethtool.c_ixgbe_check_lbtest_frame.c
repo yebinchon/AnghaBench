@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ixgbe_rx_buffer {int page_offset; int /*<<< orphan*/  page; } ;
 
-/* Variables and functions */
- unsigned char* kmap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kunmap (int /*<<< orphan*/ ) ; 
+
+
+
+struct ixgbe_rx_buffer {int page_offset; int page; } ;
+
+
+ unsigned char* kmap (int ) ;
+ int kunmap (int ) ;
 
 __attribute__((used)) static bool ixgbe_check_lbtest_frame(struct ixgbe_rx_buffer *rx_buffer,
-				     unsigned int frame_size)
+         unsigned int frame_size)
 {
-	unsigned char *data;
-	bool match = true;
+ unsigned char *data;
+ bool match = 1;
 
-	frame_size >>= 1;
+ frame_size >>= 1;
 
-	data = kmap(rx_buffer->page) + rx_buffer->page_offset;
+ data = kmap(rx_buffer->page) + rx_buffer->page_offset;
 
-	if (data[3] != 0xFF ||
-	    data[frame_size + 10] != 0xBE ||
-	    data[frame_size + 12] != 0xAF)
-		match = false;
+ if (data[3] != 0xFF ||
+     data[frame_size + 10] != 0xBE ||
+     data[frame_size + 12] != 0xAF)
+  match = 0;
 
-	kunmap(rx_buffer->page);
+ kunmap(rx_buffer->page);
 
-	return match;
+ return match;
 }

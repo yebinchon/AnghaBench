@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct _reent {int /*<<< orphan*/  _errno; } ;
-typedef  int ptrdiff_t ;
-typedef  void* caddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  MEMOP_ALLOC ; 
- int /*<<< orphan*/  MEMOP_FREE ; 
- int MEMPERM_READ ; 
- int MEMPERM_WRITE ; 
- int __heapBase ; 
- int __heap_size ; 
- int /*<<< orphan*/  ctr_request_free_pages (int) ; 
- scalar_t__ svcControlMemory (int*,int,int,int,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u32 ;
+struct _reent {int _errno; } ;
+typedef int ptrdiff_t ;
+typedef void* caddr_t ;
+
+
+ int ENOMEM ;
+ int MEMOP_ALLOC ;
+ int MEMOP_FREE ;
+ int MEMPERM_READ ;
+ int MEMPERM_WRITE ;
+ int __heapBase ;
+ int __heap_size ;
+ int ctr_request_free_pages (int) ;
+ scalar_t__ svcControlMemory (int*,int,int,int,int ,int) ;
 
 void* _sbrk_r(struct _reent *ptr, ptrdiff_t incr)
 {

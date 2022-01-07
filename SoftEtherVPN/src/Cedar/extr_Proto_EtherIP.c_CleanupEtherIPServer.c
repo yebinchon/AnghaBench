@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  Lock; int /*<<< orphan*/  Cedar; int /*<<< orphan*/  SockEvent; int /*<<< orphan*/  SendPacketList; int /*<<< orphan*/ * Ipc; int /*<<< orphan*/ * IpcConnectThread; } ;
-typedef  TYPE_1__ ETHERIP_SERVER ;
-typedef  int /*<<< orphan*/  BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EtherIPLog (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeBlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeIPC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseCedar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSockEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_5__ {int Lock; int Cedar; int SockEvent; int SendPacketList; int * Ipc; int * IpcConnectThread; } ;
+typedef TYPE_1__ ETHERIP_SERVER ;
+typedef int BLOCK ;
+
+
+ int DeleteLock (int ) ;
+ int EtherIPLog (TYPE_1__*,char*) ;
+ int Free (TYPE_1__*) ;
+ int FreeBlock (int *) ;
+ int FreeIPC (int *) ;
+ int * LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int ReleaseCedar (int ) ;
+ int ReleaseList (int ) ;
+ int ReleaseSockEvent (int ) ;
+ int ReleaseThread (int *) ;
 
 void CleanupEtherIPServer(ETHERIP_SERVER *s)
 {
-	UINT i;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	EtherIPLog(s, "LE_STOP");
+ if (s == ((void*)0))
+ {
+  return;
+ }
 
-	if (s->IpcConnectThread != NULL)
-	{
-		ReleaseThread(s->IpcConnectThread);
-	}
+ EtherIPLog(s, "LE_STOP");
 
-	if (s->Ipc != NULL)
-	{
-		FreeIPC(s->Ipc);
-	}
+ if (s->IpcConnectThread != ((void*)0))
+ {
+  ReleaseThread(s->IpcConnectThread);
+ }
 
-	for (i = 0;i < LIST_NUM(s->SendPacketList);i++)
-	{
-		BLOCK *b = LIST_DATA(s->SendPacketList, i);
+ if (s->Ipc != ((void*)0))
+ {
+  FreeIPC(s->Ipc);
+ }
 
-		FreeBlock(b);
-	}
+ for (i = 0;i < LIST_NUM(s->SendPacketList);i++)
+ {
+  BLOCK *b = LIST_DATA(s->SendPacketList, i);
 
-	ReleaseList(s->SendPacketList);
+  FreeBlock(b);
+ }
 
-	ReleaseSockEvent(s->SockEvent);
+ ReleaseList(s->SendPacketList);
 
-	ReleaseCedar(s->Cedar);
+ ReleaseSockEvent(s->SockEvent);
 
-	DeleteLock(s->Lock);
+ ReleaseCedar(s->Cedar);
 
-	Free(s);
+ DeleteLock(s->Lock);
+
+ Free(s);
 }

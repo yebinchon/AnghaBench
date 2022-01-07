@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ u_int32_t ;
-typedef  int /*<<< orphan*/  bool_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ u_int32_t ;
+typedef int bool_t ;
 struct TYPE_4__ {scalar_t__ x_op; } ;
-typedef  TYPE_1__ XDR ;
+typedef TYPE_1__ XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ XDR_DECODE ; 
- int /*<<< orphan*/  eprintf (char*,scalar_t__) ; 
- int /*<<< orphan*/  xdr_u_int32_t (TYPE_1__*,scalar_t__*) ; 
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ XDR_DECODE ;
+ int eprintf (char*,scalar_t__) ;
+ int xdr_u_int32_t (TYPE_1__*,scalar_t__*) ;
 
 __attribute__((used)) static bool_t xdr_layout_types(
     XDR *xdr,

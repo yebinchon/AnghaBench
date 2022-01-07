@@ -1,46 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mm_struct {int dummy; } ;
-struct mm_slot {int /*<<< orphan*/  mm_node; int /*<<< orphan*/  hash; struct mm_struct* mm; } ;
+struct mm_slot {int mm_node; int hash; struct mm_struct* mm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_mm_slot (struct mm_slot*) ; 
- int /*<<< orphan*/  hash_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  khugepaged_mm_lock ; 
- scalar_t__ khugepaged_test_exit (struct mm_struct*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lockdep_assert_held (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmdrop (struct mm_struct*) ; 
+
+ int free_mm_slot (struct mm_slot*) ;
+ int hash_del (int *) ;
+ int khugepaged_mm_lock ;
+ scalar_t__ khugepaged_test_exit (struct mm_struct*) ;
+ int list_del (int *) ;
+ int lockdep_assert_held (int *) ;
+ int mmdrop (struct mm_struct*) ;
 
 __attribute__((used)) static void collect_mm_slot(struct mm_slot *mm_slot)
 {
-	struct mm_struct *mm = mm_slot->mm;
+ struct mm_struct *mm = mm_slot->mm;
 
-	lockdep_assert_held(&khugepaged_mm_lock);
+ lockdep_assert_held(&khugepaged_mm_lock);
 
-	if (khugepaged_test_exit(mm)) {
-		/* free mm_slot */
-		hash_del(&mm_slot->hash);
-		list_del(&mm_slot->mm_node);
+ if (khugepaged_test_exit(mm)) {
 
-		/*
-		 * Not strictly needed because the mm exited already.
-		 *
-		 * clear_bit(MMF_VM_HUGEPAGE, &mm->flags);
-		 */
-
-		/* khugepaged_mm_lock actually not necessary for the below */
-		free_mm_slot(mm_slot);
-		mmdrop(mm);
-	}
+  hash_del(&mm_slot->hash);
+  list_del(&mm_slot->mm_node);
+  free_mm_slot(mm_slot);
+  mmdrop(mm);
+ }
 }

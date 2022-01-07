@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
-struct TYPE_4__ {int /*<<< orphan*/  buf; } ;
-typedef  int /*<<< orphan*/  FIELD_CELL ;
-typedef  TYPE_1__ FIELD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * After_End_Of_Data (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Buffer_Length (TYPE_1__*) ; 
- int /*<<< orphan*/ * Get_Start_Of_Data (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  myADDNSTR (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wmove (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WINDOW ;
+struct TYPE_4__ {int buf; } ;
+typedef int FIELD_CELL ;
+typedef TYPE_1__ FIELD ;
+
+
+ int * After_End_Of_Data (int ,int ) ;
+ int Buffer_Length (TYPE_1__*) ;
+ int * Get_Start_Of_Data (int ,int ) ;
+ int assert (int *) ;
+ int myADDNSTR (int *,int *,int) ;
+ int wmove (int *,int ,int ) ;
 
 __attribute__((used)) static void
 Undo_Justification(FIELD *field, WINDOW *win)

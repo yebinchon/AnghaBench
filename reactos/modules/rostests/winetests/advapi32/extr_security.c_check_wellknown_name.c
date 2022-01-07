@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wk_sid ;
-typedef  char const* WELL_KNOWN_SID_TYPE ;
-struct TYPE_3__ {int /*<<< orphan*/  member_0; } ;
-typedef  char const* SID_NAME_USE ;
-typedef  TYPE_1__ SID_IDENTIFIER_AUTHORITY ;
-typedef  char* PSID ;
-typedef  char* LPSTR ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AllocateAndInitializeSid (TYPE_1__*,int,int /*<<< orphan*/ ,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- scalar_t__ ERROR_NONE_MAPPED ; 
- int /*<<< orphan*/  EqualSid (char*,char*) ; 
- int /*<<< orphan*/  FreeSid (char*) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int LookupAccountNameA (int /*<<< orphan*/ *,char const*,char*,scalar_t__*,char*,scalar_t__*,char const**) ; 
- int SECURITY_MAX_SID_SIZE ; 
- int /*<<< orphan*/  SECURITY_NT_AUTHORITY ; 
- int /*<<< orphan*/  SECURITY_NT_NON_UNIQUE ; 
- char const* SidTypeWellKnownGroup ; 
- int /*<<< orphan*/  debugstr_sid (char*) ; 
- int get_sid_info (char*,char**,char**) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pCreateWellKnownSid (char const*,char*,char*,scalar_t__*) ; 
- int /*<<< orphan*/  win_skip (char*,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wk_sid ;
+typedef char const* WELL_KNOWN_SID_TYPE ;
+struct TYPE_3__ {int member_0; } ;
+typedef char const* SID_NAME_USE ;
+typedef TYPE_1__ SID_IDENTIFIER_AUTHORITY ;
+typedef char* PSID ;
+typedef char* LPSTR ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int AllocateAndInitializeSid (TYPE_1__*,int,int ,int,int,int,int,int,int ,int ,char**) ;
+ scalar_t__ ERROR_NONE_MAPPED ;
+ int EqualSid (char*,char*) ;
+ int FreeSid (char*) ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,char*) ;
+ int LookupAccountNameA (int *,char const*,char*,scalar_t__*,char*,scalar_t__*,char const**) ;
+ int SECURITY_MAX_SID_SIZE ;
+ int SECURITY_NT_AUTHORITY ;
+ int SECURITY_NT_NON_UNIQUE ;
+ char const* SidTypeWellKnownGroup ;
+ int debugstr_sid (char*) ;
+ int get_sid_info (char*,char**,char**) ;
+ int lstrcmpA (char*,char*) ;
+ int ok (int,char*,...) ;
+ int pCreateWellKnownSid (char const*,char*,char*,scalar_t__*) ;
+ int win_skip (char*,char const*) ;
 
 __attribute__((used)) static void check_wellknown_name(const char* name, WELL_KNOWN_SID_TYPE result)
 {
     SID_IDENTIFIER_AUTHORITY ident = { SECURITY_NT_AUTHORITY };
-    PSID domainsid = NULL;
+    PSID domainsid = ((void*)0);
     char wk_sid[SECURITY_MAX_SID_SIZE];
     DWORD cb;
 
@@ -57,11 +57,11 @@ __attribute__((used)) static void check_wellknown_name(const char* name, WELL_KN
 
     sid_size = 0;
     domain_size = 0;
-    ret = LookupAccountNameA(NULL, name, NULL, &sid_size, NULL, &domain_size, &sid_use);
+    ret = LookupAccountNameA(((void*)0), name, ((void*)0), &sid_size, ((void*)0), &domain_size, &sid_use);
     ok(!ret, " %s Should have failed to lookup account name\n", name);
     psid = HeapAlloc(GetProcessHeap(),0,sid_size);
     domain = HeapAlloc(GetProcessHeap(),0,domain_size);
-    ret = LookupAccountNameA(NULL, name, psid, &sid_size, domain, &domain_size, &sid_use);
+    ret = LookupAccountNameA(((void*)0), name, psid, &sid_size, domain, &domain_size, &sid_use);
 
     if (!result)
     {

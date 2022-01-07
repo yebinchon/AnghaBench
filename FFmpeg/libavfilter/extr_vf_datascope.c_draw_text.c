@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  FFDrawContext ;
-typedef  int /*<<< orphan*/  FFDrawColor ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- scalar_t__ avpriv_cga_font ; 
- int /*<<< orphan*/  ff_blend_mask (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+struct TYPE_3__ {int height; int width; int linesize; int data; } ;
+typedef int FFDrawContext ;
+typedef int FFDrawColor ;
+typedef TYPE_1__ AVFrame ;
+
+
+ scalar_t__ avpriv_cga_font ;
+ int ff_blend_mask (int *,int *,int ,int ,int ,int ,scalar_t__,int,int,int,int ,int ,int,int) ;
 
 __attribute__((used)) static void draw_text(FFDrawContext *draw, AVFrame *frame, FFDrawColor *color,
                       int x0, int y0, const uint8_t *text, int vertical)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_object {int size; int /*<<< orphan*/ * data; } ;
+
+
+
+
+struct d3dx_object {int size; int * data; } ;
 struct d3dx9_base_effect {struct d3dx_object* objects; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*,unsigned int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int debugstr_an (char const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  read_dword (char const**,int*) ; 
+
+ int D3D_OK ;
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int FIXME (char*,unsigned int) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int TRACE (char*,...) ;
+ int debugstr_an (char const*,int) ;
+ int memcpy (int *,char const*,int) ;
+ int read_dword (char const**,int*) ;
 
 __attribute__((used)) static HRESULT d3dx9_copy_data(struct d3dx9_base_effect *base, unsigned int object_id, const char **ptr)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static HRESULT d3dx9_copy_data(struct d3dx9_base_effect *b
             TRACE("Overwriting object id 0.\n");
 
         HeapFree(GetProcessHeap(), 0, object->data);
-        object->data = NULL;
+        object->data = ((void*)0);
     }
 
     read_dword(ptr, &object->size);

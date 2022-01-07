@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* uninit ) (int /*<<< orphan*/ ) ;} ;
-struct wil6210_priv {TYPE_1__ platform_ops; int /*<<< orphan*/  platform_handle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* uninit ) (int ) ;} ;
+struct wil6210_priv {TYPE_1__ platform_ops; int platform_handle; } ;
+
+
+ int memset (TYPE_1__*,int ,int) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void wil_platform_ops_uninit(struct wil6210_priv *wil)
 {
-	if (wil->platform_ops.uninit)
-		wil->platform_ops.uninit(wil->platform_handle);
-	memset(&wil->platform_ops, 0, sizeof(wil->platform_ops));
+ if (wil->platform_ops.uninit)
+  wil->platform_ops.uninit(wil->platform_handle);
+ memset(&wil->platform_ops, 0, sizeof(wil->platform_ops));
 }

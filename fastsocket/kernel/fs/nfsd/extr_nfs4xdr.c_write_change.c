@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  tv_nsec; int /*<<< orphan*/  tv_sec; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int tv_nsec; int tv_sec; } ;
 struct kstat {TYPE_1__ ctime; } ;
-struct inode {int /*<<< orphan*/  i_version; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct inode {int i_version; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- scalar_t__ IS_I_VERSION (struct inode*) ; 
- int /*<<< orphan*/  write32 (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write64 (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ IS_I_VERSION (struct inode*) ;
+ int write32 (int **,int ) ;
+ int write64 (int **,int ) ;
 
 __attribute__((used)) static void write_change(__be32 **p, struct kstat *stat, struct inode *inode)
 {
-	if (IS_I_VERSION(inode)) {
-		write64(p, inode->i_version);
-	} else {
-		write32(p, stat->ctime.tv_sec);
-		write32(p, stat->ctime.tv_nsec);
-	}
+ if (IS_I_VERSION(inode)) {
+  write64(p, inode->i_version);
+ } else {
+  write32(p, stat->ctime.tv_sec);
+  write32(p, stat->ctime.tv_nsec);
+ }
 }

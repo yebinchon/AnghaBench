@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hash_entry {char const* string; unsigned long hash; struct hash_entry* next; void* data; } ;
-struct hash_control {int /*<<< orphan*/  memory; int /*<<< orphan*/  insertions; int /*<<< orphan*/  replacements; } ;
-typedef  void* PTR ;
+struct hash_control {int memory; int insertions; int replacements; } ;
+typedef void* PTR ;
 
-/* Variables and functions */
- struct hash_entry* hash_lookup (struct hash_control*,char const*,int /*<<< orphan*/ ,struct hash_entry***,unsigned long*) ; 
- scalar_t__ obstack_alloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ struct hash_entry* hash_lookup (struct hash_control*,char const*,int ,struct hash_entry***,unsigned long*) ;
+ scalar_t__ obstack_alloc (int *,int) ;
+ int strlen (char const*) ;
 
 const char *
 hash_jam (struct hash_control *table, const char *key, PTR value)
@@ -27,19 +27,19 @@ hash_jam (struct hash_control *table, const char *key, PTR value)
   unsigned long hash;
 
   p = hash_lookup (table, key, strlen (key), &list, &hash);
-  if (p != NULL)
+  if (p != ((void*)0))
     {
-#ifdef HASH_STATISTICS
-      ++table->replacements;
-#endif
+
+
+
 
       p->data = value;
     }
   else
     {
-#ifdef HASH_STATISTICS
-      ++table->insertions;
-#endif
+
+
+
 
       p = (struct hash_entry *) obstack_alloc (&table->memory, sizeof (*p));
       p->string = key;
@@ -50,5 +50,5 @@ hash_jam (struct hash_control *table, const char *key, PTR value)
       *list = p;
     }
 
-  return NULL;
+  return ((void*)0);
 }

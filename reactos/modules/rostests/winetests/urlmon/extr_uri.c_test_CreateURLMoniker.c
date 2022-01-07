@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  uri_url; int /*<<< orphan*/  no_canon_url; int /*<<< orphan*/  uniform_url; int /*<<< orphan*/  legacy_url; int /*<<< orphan*/  uri_flags; int /*<<< orphan*/  base_uri_flags; int /*<<< orphan*/  base_url; int /*<<< orphan*/  url; } ;
-typedef  TYPE_1__ create_urlmon_test_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_1__ const*) ; 
- int /*<<< orphan*/  CreateURLMoniker (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  URL_MK_LEGACY ; 
- int /*<<< orphan*/  URL_MK_NO_CANONICALIZE ; 
- int /*<<< orphan*/  URL_MK_UNIFORM ; 
- int /*<<< orphan*/ * a2w (int /*<<< orphan*/ ) ; 
- TYPE_1__ const* create_urlmon_tests ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pCreateURLMonikerEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pCreateURLMonikerEx2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pCreateUri (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  test_display_uri (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_urlmon_display_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int uri_url; int no_canon_url; int uniform_url; int legacy_url; int uri_flags; int base_uri_flags; int base_url; int url; } ;
+typedef TYPE_1__ create_urlmon_test_t ;
+typedef int WCHAR ;
+typedef int IUri ;
+typedef int IMoniker ;
+typedef int HRESULT ;
+
+
+ int ARRAY_SIZE (TYPE_1__ const*) ;
+ int CreateURLMoniker (int *,int *,int **) ;
+ int IMoniker_Release (int *) ;
+ int IUri_Release (int *) ;
+ int S_OK ;
+ int URL_MK_LEGACY ;
+ int URL_MK_NO_CANONICALIZE ;
+ int URL_MK_UNIFORM ;
+ int * a2w (int ) ;
+ TYPE_1__ const* create_urlmon_tests ;
+ int heap_free (int *) ;
+ int ok (int,char*,int ) ;
+ int pCreateURLMonikerEx (int *,int *,int **,int ) ;
+ int pCreateURLMonikerEx2 (int *,int *,int **,int ) ;
+ int pCreateUri (int *,int ,int ,int **) ;
+ int test_display_uri (int *,int ) ;
+ int test_urlmon_display_name (int *,int ) ;
 
 __attribute__((used)) static void test_CreateURLMoniker(void)
 {
@@ -53,11 +53,11 @@ __attribute__((used)) static void test_CreateURLMoniker(void)
             hres = pCreateUri(base_url, test->base_uri_flags, 0, &base_uri);
             ok(hres == S_OK, "CreateUri failed: %08x\n", hres);
 
-            hres = pCreateURLMonikerEx2(NULL, base_uri, &base_mon, URL_MK_NO_CANONICALIZE);
+            hres = pCreateURLMonikerEx2(((void*)0), base_uri, &base_mon, URL_MK_NO_CANONICALIZE);
             ok(hres == S_OK, "CreateURLMonikerEx2 failed: %08x\n", hres);
         }else {
-            base_uri = NULL;
-            base_mon = NULL;
+            base_uri = ((void*)0);
+            base_mon = ((void*)0);
         }
 
         hres = CreateURLMoniker(base_mon, url, &mon);

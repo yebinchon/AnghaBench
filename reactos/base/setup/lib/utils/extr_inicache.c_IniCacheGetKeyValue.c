@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  scalar_t__* PULONG ;
-typedef  char* PCHAR ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ isspace (char) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef scalar_t__* PULONG ;
+typedef char* PCHAR ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ scalar_t__ isspace (char) ;
 
 __attribute__((used)) static
 PCHAR
@@ -28,23 +28,23 @@ IniCacheGetKeyValue(
 {
     ULONG Size = 0;
 
-    *DataPtr = NULL;
+    *DataPtr = ((void*)0);
     *DataSize = 0;
 
-    /* Skip whitespace */
+
     while (*Ptr != 0 && isspace(*Ptr))
     {
         Ptr++;
     }
 
-    /* Check and skip '=' */
+
     if (*Ptr != '=')
     {
-        return NULL;
+        return ((void*)0);
     }
     Ptr++;
 
-    /* Skip whitespace */
+
     while (*Ptr != 0 && isspace(*Ptr))
     {
         Ptr++;
@@ -54,7 +54,7 @@ IniCacheGetKeyValue(
     {
         Ptr++;
 
-        /* Get data */
+
         *DataPtr = Ptr;
         while (*Ptr != '"')
         {
@@ -70,7 +70,7 @@ IniCacheGetKeyValue(
     }
     else
     {
-        /* Get data */
+
         *DataPtr = Ptr;
         while (*Ptr != 0 && *Ptr != '\r' && *Ptr != ';')
         {
@@ -79,7 +79,7 @@ IniCacheGetKeyValue(
         }
     }
 
-    /* Skip to next line */
+
     if (*Ptr == '\r')
         Ptr++;
     if (*Ptr == '\n')

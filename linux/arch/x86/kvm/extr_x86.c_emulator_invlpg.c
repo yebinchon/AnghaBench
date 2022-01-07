@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulong ;
+
+
+
+
+typedef int ulong ;
 struct x86_emulate_ctxt {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  emul_to_vcpu (struct x86_emulate_ctxt*) ; 
- int /*<<< orphan*/  kvm_mmu_invlpg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int emul_to_vcpu (struct x86_emulate_ctxt*) ;
+ int kvm_mmu_invlpg (int ,int ) ;
 
 __attribute__((used)) static void emulator_invlpg(struct x86_emulate_ctxt *ctxt, ulong address)
 {
-	kvm_mmu_invlpg(emul_to_vcpu(ctxt), address);
+ kvm_mmu_invlpg(emul_to_vcpu(ctxt), address);
 }

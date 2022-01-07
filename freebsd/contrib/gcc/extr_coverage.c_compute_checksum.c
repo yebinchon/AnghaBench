@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int line; int /*<<< orphan*/  file; } ;
-typedef  TYPE_1__ expanded_location ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_ASSEMBLER_NAME (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_SOURCE_LOCATION (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDENTIFIER_POINTER (int /*<<< orphan*/ ) ; 
- unsigned int coverage_checksum_string (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_function_decl ; 
- TYPE_1__ expand_location (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int line; int file; } ;
+typedef TYPE_1__ expanded_location ;
+
+
+ int DECL_ASSEMBLER_NAME (int ) ;
+ int DECL_SOURCE_LOCATION (int ) ;
+ int IDENTIFIER_POINTER (int ) ;
+ unsigned int coverage_checksum_string (unsigned int,int ) ;
+ int current_function_decl ;
+ TYPE_1__ expand_location (int ) ;
 
 __attribute__((used)) static unsigned
 compute_checksum (void)

@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  current_gdbarch ; 
- int /*<<< orphan*/  regcache_xmalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stop_registers ; 
+ int current_gdbarch ;
+ int regcache_xmalloc (int ) ;
+ int stop_registers ;
 
 __attribute__((used)) static void
 build_infrun (void)

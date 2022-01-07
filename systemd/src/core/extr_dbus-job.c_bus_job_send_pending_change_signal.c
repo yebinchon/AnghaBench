@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {TYPE_1__* unit; int /*<<< orphan*/  sent_dbus_new_signal; int /*<<< orphan*/  in_dbus_queue; } ;
-struct TYPE_6__ {int /*<<< orphan*/  manager; } ;
-typedef  TYPE_2__ Job ;
 
-/* Variables and functions */
- scalar_t__ MANAGER_IS_RELOADING (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  bus_job_send_change_signal (TYPE_2__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {TYPE_1__* unit; int sent_dbus_new_signal; int in_dbus_queue; } ;
+struct TYPE_6__ {int manager; } ;
+typedef TYPE_2__ Job ;
+
+
+ scalar_t__ MANAGER_IS_RELOADING (int ) ;
+ int assert (TYPE_2__*) ;
+ int bus_job_send_change_signal (TYPE_2__*) ;
 
 void bus_job_send_pending_change_signal(Job *j, bool including_new) {
         assert(j);

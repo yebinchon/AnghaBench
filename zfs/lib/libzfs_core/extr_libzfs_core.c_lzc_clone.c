@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvlist_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZFS_IOC_CLONE ; 
- int /*<<< orphan*/  fnvlist_add_nvlist (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fnvlist_add_string (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/ * fnvlist_alloc () ; 
- int lzc_ioctl (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvlist_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nvlist_t ;
+
+
+ int ZFS_IOC_CLONE ;
+ int fnvlist_add_nvlist (int *,char*,int *) ;
+ int fnvlist_add_string (int *,char*,char const*) ;
+ int * fnvlist_alloc () ;
+ int lzc_ioctl (int ,char const*,int *,int *) ;
+ int nvlist_free (int *) ;
 
 int
 lzc_clone(const char *fsname, const char *origin, nvlist_t *props)
 {
-	int error;
-	nvlist_t *hidden_args = NULL;
-	nvlist_t *args = fnvlist_alloc();
+ int error;
+ nvlist_t *hidden_args = ((void*)0);
+ nvlist_t *args = fnvlist_alloc();
 
-	fnvlist_add_string(args, "origin", origin);
-	if (props != NULL)
-		fnvlist_add_nvlist(args, "props", props);
-	error = lzc_ioctl(ZFS_IOC_CLONE, fsname, args, NULL);
-	nvlist_free(hidden_args);
-	nvlist_free(args);
-	return (error);
+ fnvlist_add_string(args, "origin", origin);
+ if (props != ((void*)0))
+  fnvlist_add_nvlist(args, "props", props);
+ error = lzc_ioctl(ZFS_IOC_CLONE, fsname, args, ((void*)0));
+ nvlist_free(hidden_args);
+ nvlist_free(args);
+ return (error);
 }

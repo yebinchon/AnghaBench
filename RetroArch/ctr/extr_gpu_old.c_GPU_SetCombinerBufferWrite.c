@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPUCMD_AddMaskedWrite (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  GPUREG_TEXENV_UPDATE_BUFFER ; 
+
+
+
+typedef int u8 ;
+
+
+ int GPUCMD_AddMaskedWrite (int ,int,int) ;
+ int GPUREG_TEXENV_UPDATE_BUFFER ;
 
 void GPU_SetCombinerBufferWrite(u8 rgb_config, u8 alpha_config)
 {

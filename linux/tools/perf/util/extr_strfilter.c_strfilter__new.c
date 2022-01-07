@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct strfilter {int /*<<< orphan*/  root; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strfilter__delete (struct strfilter*) ; 
- int /*<<< orphan*/  strfilter_node__new (char const*,char const**) ; 
- struct strfilter* zalloc (int) ; 
+
+
+
+struct strfilter {int root; } ;
+
+
+ int strfilter__delete (struct strfilter*) ;
+ int strfilter_node__new (char const*,char const**) ;
+ struct strfilter* zalloc (int) ;
 
 struct strfilter *strfilter__new(const char *rules, const char **err)
 {
-	struct strfilter *filter = zalloc(sizeof(*filter));
-	const char *ep = NULL;
+ struct strfilter *filter = zalloc(sizeof(*filter));
+ const char *ep = ((void*)0);
 
-	if (filter)
-		filter->root = strfilter_node__new(rules, &ep);
+ if (filter)
+  filter->root = strfilter_node__new(rules, &ep);
 
-	if (!filter || !filter->root || *ep != '\0') {
-		if (err)
-			*err = ep;
-		strfilter__delete(filter);
-		filter = NULL;
-	}
+ if (!filter || !filter->root || *ep != '\0') {
+  if (err)
+   *err = ep;
+  strfilter__delete(filter);
+  filter = ((void*)0);
+ }
 
-	return filter;
+ return filter;
 }

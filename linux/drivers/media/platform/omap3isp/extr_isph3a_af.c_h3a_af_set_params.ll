@@ -1,0 +1,326 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/media/platform/omap3isp/extr_isph3a_af.c_h3a_af_set_params.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/media/platform/omap3isp/extr_isph3a_af.c_h3a_af_set_params.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.ispstat = type { i32, i32, i32, %struct.omap3isp_h3a_af_config* }
+%struct.omap3isp_h3a_af_config = type { i64, i64, i64, i32, %struct.TYPE_6__, %struct.TYPE_5__, %struct.TYPE_4__ }
+%struct.TYPE_6__ = type { i64, i64, i64, i64, i64, i64, i64 }
+%struct.TYPE_5__ = type { i64, i64*, i64* }
+%struct.TYPE_4__ = type { i64, i64 }
+
+@OMAP3ISP_AF_NUM_COEF = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.ispstat*, i8*)* @h3a_af_set_params to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @h3a_af_set_params(%struct.ispstat* %0, i8* %1) #0 {
+  %3 = alloca %struct.ispstat*, align 8
+  %4 = alloca i8*, align 8
+  %5 = alloca %struct.omap3isp_h3a_af_config*, align 8
+  %6 = alloca %struct.omap3isp_h3a_af_config*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  store %struct.ispstat* %0, %struct.ispstat** %3, align 8
+  store i8* %1, i8** %4, align 8
+  %9 = load i8*, i8** %4, align 8
+  %10 = bitcast i8* %9 to %struct.omap3isp_h3a_af_config*
+  store %struct.omap3isp_h3a_af_config* %10, %struct.omap3isp_h3a_af_config** %5, align 8
+  %11 = load %struct.ispstat*, %struct.ispstat** %3, align 8
+  %12 = getelementptr inbounds %struct.ispstat, %struct.ispstat* %11, i32 0, i32 3
+  %13 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %12, align 8
+  store %struct.omap3isp_h3a_af_config* %13, %struct.omap3isp_h3a_af_config** %6, align 8
+  store i32 0, i32* %7, align 4
+  %14 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %15 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %14, i32 0, i32 0
+  %16 = load i64, i64* %15, align 8
+  %17 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %18 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %17, i32 0, i32 0
+  %19 = load i64, i64* %18, align 8
+  %20 = icmp ne i64 %16, %19
+  br i1 %20, label %21, label %22
+
+21:                                               ; preds = %2
+  store i32 1, i32* %7, align 4
+  br label %192
+
+22:                                               ; preds = %2
+  %23 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %24 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %23, i32 0, i32 6
+  %25 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %24, i32 0, i32 0
+  %26 = load i64, i64* %25, align 8
+  %27 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %28 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %27, i32 0, i32 6
+  %29 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %28, i32 0, i32 0
+  %30 = load i64, i64* %29, align 8
+  %31 = icmp ne i64 %26, %30
+  br i1 %31, label %32, label %33
+
+32:                                               ; preds = %22
+  store i32 1, i32* %7, align 4
+  br label %192
+
+33:                                               ; preds = %22
+  %34 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %35 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %34, i32 0, i32 6
+  %36 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %35, i32 0, i32 1
+  %37 = load i64, i64* %36, align 8
+  %38 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %39 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %38, i32 0, i32 6
+  %40 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %39, i32 0, i32 1
+  %41 = load i64, i64* %40, align 8
+  %42 = icmp ne i64 %37, %41
+  br i1 %42, label %43, label %44
+
+43:                                               ; preds = %33
+  store i32 1, i32* %7, align 4
+  br label %192
+
+44:                                               ; preds = %33
+  %45 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %46 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %45, i32 0, i32 1
+  %47 = load i64, i64* %46, align 8
+  %48 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %49 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %48, i32 0, i32 1
+  %50 = load i64, i64* %49, align 8
+  %51 = icmp ne i64 %47, %50
+  br i1 %51, label %52, label %53
+
+52:                                               ; preds = %44
+  store i32 1, i32* %7, align 4
+  br label %192
+
+53:                                               ; preds = %44
+  %54 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %55 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %54, i32 0, i32 5
+  %56 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %55, i32 0, i32 0
+  %57 = load i64, i64* %56, align 8
+  %58 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %59 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %58, i32 0, i32 5
+  %60 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %59, i32 0, i32 0
+  %61 = load i64, i64* %60, align 8
+  %62 = icmp ne i64 %57, %61
+  br i1 %62, label %63, label %64
+
+63:                                               ; preds = %53
+  store i32 1, i32* %7, align 4
+  br label %192
+
+64:                                               ; preds = %53
+  store i32 0, i32* %8, align 4
+  br label %65
+
+65:                                               ; preds = %108, %64
+  %66 = load i32, i32* %8, align 4
+  %67 = load i32, i32* @OMAP3ISP_AF_NUM_COEF, align 4
+  %68 = icmp slt i32 %66, %67
+  br i1 %68, label %69, label %111
+
+69:                                               ; preds = %65
+  %70 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %71 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %70, i32 0, i32 5
+  %72 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %71, i32 0, i32 1
+  %73 = load i64*, i64** %72, align 8
+  %74 = load i32, i32* %8, align 4
+  %75 = sext i32 %74 to i64
+  %76 = getelementptr inbounds i64, i64* %73, i64 %75
+  %77 = load i64, i64* %76, align 8
+  %78 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %79 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %78, i32 0, i32 5
+  %80 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %79, i32 0, i32 1
+  %81 = load i64*, i64** %80, align 8
+  %82 = load i32, i32* %8, align 4
+  %83 = sext i32 %82 to i64
+  %84 = getelementptr inbounds i64, i64* %81, i64 %83
+  %85 = load i64, i64* %84, align 8
+  %86 = icmp ne i64 %77, %85
+  br i1 %86, label %87, label %88
+
+87:                                               ; preds = %69
+  store i32 1, i32* %7, align 4
+  br label %192
+
+88:                                               ; preds = %69
+  %89 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %90 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %89, i32 0, i32 5
+  %91 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %90, i32 0, i32 2
+  %92 = load i64*, i64** %91, align 8
+  %93 = load i32, i32* %8, align 4
+  %94 = sext i32 %93 to i64
+  %95 = getelementptr inbounds i64, i64* %92, i64 %94
+  %96 = load i64, i64* %95, align 8
+  %97 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %98 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %97, i32 0, i32 5
+  %99 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %98, i32 0, i32 2
+  %100 = load i64*, i64** %99, align 8
+  %101 = load i32, i32* %8, align 4
+  %102 = sext i32 %101 to i64
+  %103 = getelementptr inbounds i64, i64* %100, i64 %102
+  %104 = load i64, i64* %103, align 8
+  %105 = icmp ne i64 %96, %104
+  br i1 %105, label %106, label %107
+
+106:                                              ; preds = %88
+  store i32 1, i32* %7, align 4
+  br label %192
+
+107:                                              ; preds = %88
+  br label %108
+
+108:                                              ; preds = %107
+  %109 = load i32, i32* %8, align 4
+  %110 = add nsw i32 %109, 1
+  store i32 %110, i32* %8, align 4
+  br label %65
+
+111:                                              ; preds = %65
+  %112 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %113 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %112, i32 0, i32 4
+  %114 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %113, i32 0, i32 0
+  %115 = load i64, i64* %114, align 8
+  %116 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %117 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %116, i32 0, i32 4
+  %118 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %117, i32 0, i32 0
+  %119 = load i64, i64* %118, align 8
+  %120 = icmp ne i64 %115, %119
+  br i1 %120, label %181, label %121
+
+121:                                              ; preds = %111
+  %122 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %123 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %122, i32 0, i32 4
+  %124 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %123, i32 0, i32 1
+  %125 = load i64, i64* %124, align 8
+  %126 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %127 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %126, i32 0, i32 4
+  %128 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %127, i32 0, i32 1
+  %129 = load i64, i64* %128, align 8
+  %130 = icmp ne i64 %125, %129
+  br i1 %130, label %181, label %131
+
+131:                                              ; preds = %121
+  %132 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %133 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %132, i32 0, i32 4
+  %134 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %133, i32 0, i32 2
+  %135 = load i64, i64* %134, align 8
+  %136 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %137 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %136, i32 0, i32 4
+  %138 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %137, i32 0, i32 2
+  %139 = load i64, i64* %138, align 8
+  %140 = icmp ne i64 %135, %139
+  br i1 %140, label %181, label %141
+
+141:                                              ; preds = %131
+  %142 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %143 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %142, i32 0, i32 4
+  %144 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %143, i32 0, i32 3
+  %145 = load i64, i64* %144, align 8
+  %146 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %147 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %146, i32 0, i32 4
+  %148 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %147, i32 0, i32 3
+  %149 = load i64, i64* %148, align 8
+  %150 = icmp ne i64 %145, %149
+  br i1 %150, label %181, label %151
+
+151:                                              ; preds = %141
+  %152 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %153 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %152, i32 0, i32 4
+  %154 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %153, i32 0, i32 4
+  %155 = load i64, i64* %154, align 8
+  %156 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %157 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %156, i32 0, i32 4
+  %158 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %157, i32 0, i32 4
+  %159 = load i64, i64* %158, align 8
+  %160 = icmp ne i64 %155, %159
+  br i1 %160, label %181, label %161
+
+161:                                              ; preds = %151
+  %162 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %163 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %162, i32 0, i32 4
+  %164 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %163, i32 0, i32 5
+  %165 = load i64, i64* %164, align 8
+  %166 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %167 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %166, i32 0, i32 4
+  %168 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %167, i32 0, i32 5
+  %169 = load i64, i64* %168, align 8
+  %170 = icmp ne i64 %165, %169
+  br i1 %170, label %181, label %171
+
+171:                                              ; preds = %161
+  %172 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %173 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %172, i32 0, i32 4
+  %174 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %173, i32 0, i32 6
+  %175 = load i64, i64* %174, align 8
+  %176 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %177 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %176, i32 0, i32 4
+  %178 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %177, i32 0, i32 6
+  %179 = load i64, i64* %178, align 8
+  %180 = icmp ne i64 %175, %179
+  br i1 %180, label %181, label %182
+
+181:                                              ; preds = %171, %161, %151, %141, %131, %121, %111
+  store i32 1, i32* %7, align 4
+  br label %192
+
+182:                                              ; preds = %171
+  %183 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %184 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %183, i32 0, i32 2
+  %185 = load i64, i64* %184, align 8
+  %186 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %187 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %186, i32 0, i32 2
+  %188 = load i64, i64* %187, align 8
+  %189 = icmp ne i64 %185, %188
+  br i1 %189, label %190, label %191
+
+190:                                              ; preds = %182
+  store i32 1, i32* %7, align 4
+  br label %191
+
+191:                                              ; preds = %190, %182
+  br label %192
+
+192:                                              ; preds = %191, %181, %106, %87, %63, %52, %43, %32, %21
+  %193 = load i32, i32* %7, align 4
+  %194 = icmp ne i32 %193, 0
+  br i1 %194, label %200, label %195
+
+195:                                              ; preds = %192
+  %196 = load %struct.ispstat*, %struct.ispstat** %3, align 8
+  %197 = getelementptr inbounds %struct.ispstat, %struct.ispstat* %196, i32 0, i32 2
+  %198 = load i32, i32* %197, align 8
+  %199 = icmp ne i32 %198, 0
+  br i1 %199, label %214, label %200
+
+200:                                              ; preds = %195, %192
+  %201 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %202 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %5, align 8
+  %203 = call i32 @memcpy(%struct.omap3isp_h3a_af_config* %201, %struct.omap3isp_h3a_af_config* %202, i32 128)
+  %204 = load %struct.ispstat*, %struct.ispstat** %3, align 8
+  %205 = getelementptr inbounds %struct.ispstat, %struct.ispstat* %204, i32 0, i32 1
+  %206 = load i32, i32* %205, align 4
+  %207 = add nsw i32 %206, 1
+  store i32 %207, i32* %205, align 4
+  %208 = load %struct.ispstat*, %struct.ispstat** %3, align 8
+  %209 = getelementptr inbounds %struct.ispstat, %struct.ispstat* %208, i32 0, i32 0
+  store i32 1, i32* %209, align 8
+  %210 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %211 = call i32 @h3a_af_get_buf_size(%struct.omap3isp_h3a_af_config* %210)
+  %212 = load %struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config** %6, align 8
+  %213 = getelementptr inbounds %struct.omap3isp_h3a_af_config, %struct.omap3isp_h3a_af_config* %212, i32 0, i32 3
+  store i32 %211, i32* %213, align 8
+  br label %214
+
+214:                                              ; preds = %200, %195
+  ret void
+}
+
+declare dso_local i32 @memcpy(%struct.omap3isp_h3a_af_config*, %struct.omap3isp_h3a_af_config*, i32) #1
+
+declare dso_local i32 @h3a_af_get_buf_size(%struct.omap3isp_h3a_af_config*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

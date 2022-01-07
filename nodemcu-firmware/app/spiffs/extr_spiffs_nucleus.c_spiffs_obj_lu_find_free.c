@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spiffs_block_ix ;
-struct TYPE_5__ {int free_blocks; int free_cursor_obj_lu_entry; int /*<<< orphan*/  free_cursor_block_ix; int /*<<< orphan*/  cleaning; } ;
-typedef  TYPE_1__ spiffs ;
-typedef  scalar_t__ s32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPIFFS_CHECK_RES (scalar_t__) ; 
- int /*<<< orphan*/  SPIFFS_DBG (char*) ; 
- scalar_t__ SPIFFS_ERR_FULL ; 
- scalar_t__ SPIFFS_ERR_NO_DELETED_BLOCKS ; 
- int /*<<< orphan*/  SPIFFS_OBJ_ID_FREE ; 
- scalar_t__ SPIFFS_OK ; 
- scalar_t__ spiffs_gc_quick (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ spiffs_obj_lu_find_id (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int spiffs_block_ix ;
+struct TYPE_5__ {int free_blocks; int free_cursor_obj_lu_entry; int free_cursor_block_ix; int cleaning; } ;
+typedef TYPE_1__ spiffs ;
+typedef scalar_t__ s32_t ;
+
+
+ int SPIFFS_CHECK_RES (scalar_t__) ;
+ int SPIFFS_DBG (char*) ;
+ scalar_t__ SPIFFS_ERR_FULL ;
+ scalar_t__ SPIFFS_ERR_NO_DELETED_BLOCKS ;
+ int SPIFFS_OBJ_ID_FREE ;
+ scalar_t__ SPIFFS_OK ;
+ scalar_t__ spiffs_gc_quick (TYPE_1__*,int ) ;
+ scalar_t__ spiffs_obj_lu_find_id (TYPE_1__*,int ,int,int ,int *,int*) ;
 
 s32_t spiffs_obj_lu_find_free(
     spiffs *fs,

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * device_t ;
-typedef  int /*<<< orphan*/  bhnd_nvram_type ;
 
-/* Variables and functions */
- int BHND_BUS_GET_NVRAM_VAR (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,void*,size_t*,int /*<<< orphan*/ ) ; 
- int BHND_NVRAM_GETVAR (int /*<<< orphan*/ *,char const*,void*,size_t*,int /*<<< orphan*/ ) ; 
- int ENODEV ; 
- int /*<<< orphan*/  GIANT_REQUIRED ; 
- int /*<<< orphan*/ * device_find_child (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * device_get_parent (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * device_t ;
+typedef int bhnd_nvram_type ;
+
+
+ int BHND_BUS_GET_NVRAM_VAR (int *,int *,char const*,void*,size_t*,int ) ;
+ int BHND_NVRAM_GETVAR (int *,char const*,void*,size_t*,int ) ;
+ int ENODEV ;
+ int GIANT_REQUIRED ;
+ int * device_find_child (int *,char*,int) ;
+ int * device_get_parent (int *) ;
 
 int
 bhnd_bus_generic_get_nvram_var(device_t dev, device_t child, const char *name,
     void *buf, size_t *size, bhnd_nvram_type type)
 {
-	device_t	nvram;
-	device_t	parent;
+ device_t nvram;
+ device_t parent;
 
-        /* Make sure we're holding Giant for newbus */
-	GIANT_REQUIRED;
 
-	/* Look for a directly-attached NVRAM child */
-	if ((nvram = device_find_child(dev, "bhnd_nvram", -1)) != NULL)
-		return BHND_NVRAM_GETVAR(nvram, name, buf, size, type);
+ GIANT_REQUIRED;
 
-	/* Try to delegate to parent */
-	if ((parent = device_get_parent(dev)) == NULL)
-		return (ENODEV);
 
-	return (BHND_BUS_GET_NVRAM_VAR(device_get_parent(dev), child,
-	    name, buf, size, type));
+ if ((nvram = device_find_child(dev, "bhnd_nvram", -1)) != ((void*)0))
+  return BHND_NVRAM_GETVAR(nvram, name, buf, size, type);
+
+
+ if ((parent = device_get_parent(dev)) == ((void*)0))
+  return (ENODEV);
+
+ return (BHND_BUS_GET_NVRAM_VAR(device_get_parent(dev), child,
+     name, buf, size, type));
 }

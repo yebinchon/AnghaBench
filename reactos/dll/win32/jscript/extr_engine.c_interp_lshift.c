@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_number (int) ; 
- int /*<<< orphan*/  stack_pop_int (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  stack_pop_uint (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int jsval_number (int) ;
+ int stack_pop_int (int *,int*) ;
+ int stack_pop_uint (int *,int*) ;
+ int stack_push (int *,int ) ;
 
 __attribute__((used)) static HRESULT interp_lshift(script_ctx_t *ctx)
 {

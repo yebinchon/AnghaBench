@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  M_TTYCONS ; 
- int /*<<< orphan*/  M_WAITOK ; 
- int /*<<< orphan*/  callout_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * consbuf ; 
- int /*<<< orphan*/  conscallout ; 
- int /*<<< orphan*/  consmsgbuf ; 
- int consmsgbuf_size ; 
- struct tty* constty ; 
- int /*<<< orphan*/  constty_timeout (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msgbuf_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int KASSERT (int ,char*) ;
+ int M_TTYCONS ;
+ int M_WAITOK ;
+ int callout_init (int *,int ) ;
+ int * consbuf ;
+ int conscallout ;
+ int consmsgbuf ;
+ int consmsgbuf_size ;
+ struct tty* constty ;
+ int constty_timeout (int *) ;
+ int * malloc (int,int ,int ) ;
+ int msgbuf_init (int *,int *,int) ;
 
 void
 constty_set(struct tty *tp)
 {
-	int size;
+ int size;
 
-	KASSERT(tp != NULL, ("constty_set: NULL tp"));
-	if (consbuf == NULL) {
-		size = consmsgbuf_size;
-		consbuf = malloc(size, M_TTYCONS, M_WAITOK);
-		msgbuf_init(&consmsgbuf, consbuf, size);
-		callout_init(&conscallout, 0);
-	}
-	constty = tp;
-	constty_timeout(NULL);
+ KASSERT(tp != ((void*)0), ("constty_set: NULL tp"));
+ if (consbuf == ((void*)0)) {
+  size = consmsgbuf_size;
+  consbuf = malloc(size, M_TTYCONS, M_WAITOK);
+  msgbuf_init(&consmsgbuf, consbuf, size);
+  callout_init(&conscallout, 0);
+ }
+ constty = tp;
+ constty_timeout(((void*)0));
 }

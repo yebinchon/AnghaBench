@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  users; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Dc ; 
- int /*<<< orphan*/  MAX_PAIRS ; 
- int /*<<< orphan*/  MAX_USERS ; 
- int Pc ; 
- TYPE_1__ U ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int users; } ;
+
+
+ int Dc ;
+ int MAX_PAIRS ;
+ int MAX_USERS ;
+ int Pc ;
+ TYPE_1__ U ;
+ int fprintf (int ,char*,int,int ,int ,int ,int ) ;
+ int stderr ;
 
 void output_stats (void) {
-  fprintf (stderr, "%d hashes read (max %ld), %d hashes written, describing users up to %d (max %ld)\n", 
-	   Pc, MAX_PAIRS, Dc, U.users, MAX_USERS);
+  fprintf (stderr, "%d hashes read (max %ld), %d hashes written, describing users up to %d (max %ld)\n",
+    Pc, MAX_PAIRS, Dc, U.users, MAX_USERS);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegLoadKeyA (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ RegOpenKeyA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SE_BACKUP_NAME ; 
- int /*<<< orphan*/  SE_RESTORE_NAME ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  set_privileges (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int HKEY_LOCAL_MACHINE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegLoadKeyA (int ,char*,char*) ;
+ scalar_t__ RegOpenKeyA (int ,char*,int *) ;
+ int SE_BACKUP_NAME ;
+ int SE_RESTORE_NAME ;
+ int TRUE ;
+ int ok (int,char*,scalar_t__) ;
+ int set_privileges (int ,int ) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_reg_load_key(void)
 {

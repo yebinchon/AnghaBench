@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int fd; } ;
-typedef  TYPE_1__ redisContext ;
+typedef TYPE_1__ redisContext ;
 
-/* Variables and functions */
- int AF_INET ; 
- int REDIS_ERR ; 
- int /*<<< orphan*/  REDIS_ERR_IO ; 
- int REDIS_OK ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  __redisSetErrorFromErrno (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int redisSetReuseAddr (TYPE_1__*) ; 
- int socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int REDIS_ERR ;
+ int REDIS_ERR_IO ;
+ int REDIS_OK ;
+ int SOCK_STREAM ;
+ int __redisSetErrorFromErrno (TYPE_1__*,int ,int *) ;
+ int redisSetReuseAddr (TYPE_1__*) ;
+ int socket (int,int ,int ) ;
 
 __attribute__((used)) static int redisCreateSocket(redisContext *c, int type) {
     int s;
     if ((s = socket(type, SOCK_STREAM, 0)) == -1) {
-        __redisSetErrorFromErrno(c,REDIS_ERR_IO,NULL);
+        __redisSetErrorFromErrno(c,REDIS_ERR_IO,((void*)0));
         return REDIS_ERR;
     }
     c->fd = s;

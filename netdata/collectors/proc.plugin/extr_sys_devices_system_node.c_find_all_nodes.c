@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int dummy; } ;
 struct node {struct node* next; void* numastat_filename; struct node* name; } ;
 struct dirent {scalar_t__ d_type; char* d_name; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ DT_DIR ; 
- int /*<<< orphan*/  FILENAME_MAX ; 
- struct node* callocz (int,int) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- char* config_get (char*,char*,char*) ; 
- int /*<<< orphan*/  error (char*,char*) ; 
- int /*<<< orphan*/  freez (struct node*) ; 
- int /*<<< orphan*/  isdigit (char) ; 
- char* netdata_configured_host_prefix ; 
- struct node* numa_root ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,char*,char*) ; 
- int stat (char*,struct stat*) ; 
- void* strdupz (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+ scalar_t__ DT_DIR ;
+ int FILENAME_MAX ;
+ struct node* callocz (int,int) ;
+ int closedir (int *) ;
+ char* config_get (char*,char*,char*) ;
+ int error (char*,char*) ;
+ int freez (struct node*) ;
+ int isdigit (char) ;
+ char* netdata_configured_host_prefix ;
+ struct node* numa_root ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ int snprintfz (char*,int ,char*,char*,char*) ;
+ int stat (char*,struct stat*) ;
+ void* strdupz (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int find_all_nodes() {
     int numa_node_count = 0;
@@ -45,7 +45,7 @@ __attribute__((used)) static int find_all_nodes() {
         return 0;
     }
 
-    struct dirent *de = NULL;
+    struct dirent *de = ((void*)0);
     while((de = readdir(dir))) {
         if(de->d_type != DT_DIR)
             continue;

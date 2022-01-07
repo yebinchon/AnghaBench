@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  sysinit_data ; 
- int /*<<< orphan*/  sysinit_run (int /*<<< orphan*/ ) ; 
+ int sysinit_data ;
+ int sysinit_run (int ) ;
 
 void
 usb_init(void)
 {
-	sysinit_run(sysinit_data);
+ sysinit_run(sysinit_data);
 }

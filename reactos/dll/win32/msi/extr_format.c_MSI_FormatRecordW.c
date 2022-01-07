@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_13__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  scalar_t__* LPWSTR ;
-typedef  int* LPDWORD ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- TYPE_1__* MSI_CloneRecord (TYPE_1__*) ; 
- int MSI_RecordGetFieldCount (TYPE_1__*) ; 
- int /*<<< orphan*/ * MSI_RecordGetString (TYPE_1__*,int) ; 
- int /*<<< orphan*/  MSI_RecordSetStringW (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,TYPE_1__*,scalar_t__*,int*) ; 
- int /*<<< orphan*/ * build_default_format (TYPE_1__*) ; 
- int /*<<< orphan*/  deformat_string_internal (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int*,TYPE_1__*) ; 
- int /*<<< orphan*/  dump_record (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * msi_dup_record_field (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_13__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIPACKAGE ;
+typedef scalar_t__* LPWSTR ;
+typedef int* LPDWORD ;
+typedef int DWORD ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_MORE_DATA ;
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+ TYPE_1__* MSI_CloneRecord (TYPE_1__*) ;
+ int MSI_RecordGetFieldCount (TYPE_1__*) ;
+ int * MSI_RecordGetString (TYPE_1__*,int) ;
+ int MSI_RecordSetStringW (TYPE_1__*,int,int *) ;
+ int TRACE (char*,int *,TYPE_1__*,scalar_t__*,int*) ;
+ int * build_default_format (TYPE_1__*) ;
+ int deformat_string_internal (int *,int *,int **,int*,TYPE_1__*) ;
+ int dump_record (TYPE_1__*) ;
+ int memcpy (scalar_t__*,int *,int) ;
+ int * msi_dup_record_field (TYPE_1__*,int ) ;
+ int msi_free (int *) ;
+ int msiobj_release (int *) ;
 
 UINT MSI_FormatRecordW( MSIPACKAGE* package, MSIRECORD* record, LPWSTR buffer,
                         LPDWORD size )
 {
-    WCHAR *format, *deformated = NULL;
+    WCHAR *format, *deformated = ((void*)0);
     UINT rc = ERROR_INVALID_PARAMETER;
     DWORD len;
     MSIRECORD *record_deformated;
@@ -65,7 +65,7 @@ UINT MSI_FormatRecordW( MSIPACKAGE* package, MSIRECORD* record, LPWSTR buffer,
     {
         if (MSI_RecordGetString(record, i))
         {
-            deformat_string_internal(package, MSI_RecordGetString(record, i), &deformated, &len, NULL);
+            deformat_string_internal(package, MSI_RecordGetString(record, i), &deformated, &len, ((void*)0));
             MSI_RecordSetStringW(record_deformated, i, deformated);
             msi_free(deformated);
         }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  value; int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ AVDictionaryEntry ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- int /*<<< orphan*/  AV_ESCAPE_MODE_BACKSLASH ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_bprint_append_data (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  av_bprint_escape (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int av_bprint_finalize (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_dict_count (int /*<<< orphan*/  const*) ; 
- TYPE_1__* av_dict_get (int /*<<< orphan*/  const*,char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- char* av_strdup (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int value; int key; } ;
+typedef TYPE_1__ AVDictionaryEntry ;
+typedef int AVDictionary ;
+typedef int AVBPrint ;
+
+
+ int AVERROR (int ) ;
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int AV_DICT_IGNORE_SUFFIX ;
+ int AV_ESCAPE_MODE_BACKSLASH ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_bprint_append_data (int *,char const*,int) ;
+ int av_bprint_escape (int *,int ,char*,int ,int ) ;
+ int av_bprint_finalize (int *,char**) ;
+ int av_bprint_init (int *,int,int ) ;
+ int av_dict_count (int const*) ;
+ TYPE_1__* av_dict_get (int const*,char*,TYPE_1__*,int ) ;
+ char* av_strdup (char*) ;
 
 int av_dict_get_string(const AVDictionary *m, char **buffer,
                        const char key_val_sep, const char pairs_sep)
 {
-    AVDictionaryEntry *t = NULL;
+    AVDictionaryEntry *t = ((void*)0);
     AVBPrint bprint;
     int cnt = 0;
     char special_chars[] = {pairs_sep, key_val_sep, '\0'};

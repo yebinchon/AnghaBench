@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_21__ {int /*<<< orphan*/  search_domains; TYPE_10__* manager; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
+
+
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_10__ ;
+
+
+struct TYPE_21__ {int search_domains; TYPE_10__* manager; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
 struct TYPE_22__ {int route_only; } ;
-struct TYPE_20__ {int /*<<< orphan*/  polkit_registry; } ;
-typedef  TYPE_1__ Link ;
-typedef  TYPE_3__ DnsSearchDomain ;
+struct TYPE_20__ {int polkit_registry; } ;
+typedef TYPE_1__ Link ;
+typedef TYPE_3__ DnsSearchDomain ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_NET_ADMIN ; 
- int /*<<< orphan*/  DNS_SEARCH_DOMAIN_LINK ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  UID_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int bus_verify_polkit_async (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ dns_name_is_root (char const*) ; 
- int dns_name_is_valid (char const*) ; 
- int dns_search_domain_find (int /*<<< orphan*/ ,char const*,TYPE_3__**) ; 
- int /*<<< orphan*/  dns_search_domain_mark_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dns_search_domain_move_back_and_unmark (TYPE_3__*) ; 
- int dns_search_domain_new (TYPE_10__*,TYPE_3__**,int /*<<< orphan*/ ,TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  dns_search_domain_unlink_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dns_search_domain_unlink_marked (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  link_save_user (TYPE_1__*) ; 
- int /*<<< orphan*/  manager_write_resolv_conf (TYPE_10__*) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int sd_bus_message_enter_container (TYPE_1__*,char,char*) ; 
- int sd_bus_message_exit_container (TYPE_1__*) ; 
- int sd_bus_message_read (TYPE_1__*,char*,char const**,int*) ; 
- int sd_bus_message_rewind (TYPE_1__*,int) ; 
- int sd_bus_reply_method_return (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int verify_unmanaged_link (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int CAP_NET_ADMIN ;
+ int DNS_SEARCH_DOMAIN_LINK ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int UID_INVALID ;
+ int assert (TYPE_1__*) ;
+ int bus_verify_polkit_async (TYPE_1__*,int ,char*,int *,int,int ,int *,int *) ;
+ scalar_t__ dns_name_is_root (char const*) ;
+ int dns_name_is_valid (char const*) ;
+ int dns_search_domain_find (int ,char const*,TYPE_3__**) ;
+ int dns_search_domain_mark_all (int ) ;
+ int dns_search_domain_move_back_and_unmark (TYPE_3__*) ;
+ int dns_search_domain_new (TYPE_10__*,TYPE_3__**,int ,TYPE_1__*,char const*) ;
+ int dns_search_domain_unlink_all (int ) ;
+ int dns_search_domain_unlink_marked (int ) ;
+ int link_save_user (TYPE_1__*) ;
+ int manager_write_resolv_conf (TYPE_10__*) ;
+ int sd_bus_error_setf (int *,int ,char*,...) ;
+ int sd_bus_message_enter_container (TYPE_1__*,char,char*) ;
+ int sd_bus_message_exit_container (TYPE_1__*) ;
+ int sd_bus_message_read (TYPE_1__*,char*,char const**,int*) ;
+ int sd_bus_message_rewind (TYPE_1__*,int) ;
+ int sd_bus_reply_method_return (TYPE_1__*,int *) ;
+ int verify_unmanaged_link (TYPE_1__*,int *) ;
 
 int bus_link_method_set_domains(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Link *l = userdata;
@@ -80,18 +80,18 @@ int bus_link_method_set_domains(sd_bus_message *message, void *userdata, sd_bus_
                         return sd_bus_error_setf(error, SD_BUS_ERROR_INVALID_ARGS, "Root domain is not suitable as search domain");
         }
 
-        r = sd_bus_message_rewind(message, false);
+        r = sd_bus_message_rewind(message, 0);
         if (r < 0)
                 return r;
 
         r = bus_verify_polkit_async(message, CAP_NET_ADMIN,
                                     "org.freedesktop.resolve1.set-domains",
-                                    NULL, true, UID_INVALID,
+                                    ((void*)0), 1, UID_INVALID,
                                     &l->manager->polkit_registry, error);
         if (r < 0)
                 return r;
         if (r == 0)
-                return 1; /* Polkit will call us back */
+                return 1;
 
         dns_search_domain_mark_all(l->search_domains);
 
@@ -130,7 +130,7 @@ int bus_link_method_set_domains(sd_bus_message *message, void *userdata, sd_bus_
         (void) link_save_user(l);
         (void) manager_write_resolv_conf(l->manager);
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 
 clear:
         dns_search_domain_unlink_all(l->search_domains);

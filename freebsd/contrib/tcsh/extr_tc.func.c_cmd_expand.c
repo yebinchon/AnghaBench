@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wordent {int /*<<< orphan*/ * word; struct wordent* prev; struct wordent* next; } ;
-struct varent {int /*<<< orphan*/ * vec; } ;
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGETS (int,int,char*) ; 
- int /*<<< orphan*/ * STRNULL ; 
- int /*<<< orphan*/ * STRret ; 
- int TRUE ; 
- struct varent* adrof1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aliases ; 
- int /*<<< orphan*/ * blkexpand (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  blkpr (int /*<<< orphan*/ *) ; 
- int tellmewhat (struct wordent*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  xprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xputchar (char) ; 
+
+
+
+struct wordent {int * word; struct wordent* prev; struct wordent* next; } ;
+struct varent {int * vec; } ;
+typedef int Char ;
+
+
+ int CGETS (int,int,char*) ;
+ int * STRNULL ;
+ int * STRret ;
+ int TRUE ;
+ struct varent* adrof1 (int *,int *) ;
+ int aliases ;
+ int * blkexpand (int *) ;
+ int blkpr (int *) ;
+ int tellmewhat (struct wordent*,int **) ;
+ int xprintf (int ,int *) ;
+ int xputchar (char) ;
 
 int
 cmd_expand(Char *cmd, Char **str)
@@ -45,18 +45,18 @@ cmd_expand(Char *cmd, Char **str)
     lexp[0].word = STRNULL;
     lexp[2].word = STRret;
 
-    if ((vp = adrof1(cmd, &aliases)) != NULL && vp->vec != NULL) {
-	if (str == NULL) {
-	    xprintf(CGETS(22, 1, "%S: \t aliased to "), cmd);
-	    blkpr(vp->vec);
-	    xputchar('\n');
-	}
-	else
-	    *str = blkexpand(vp->vec);
+    if ((vp = adrof1(cmd, &aliases)) != ((void*)0) && vp->vec != ((void*)0)) {
+ if (str == ((void*)0)) {
+     xprintf(CGETS(22, 1, "%S: \t aliased to "), cmd);
+     blkpr(vp->vec);
+     xputchar('\n');
+ }
+ else
+     *str = blkexpand(vp->vec);
     }
     else {
-	lexp[1].word = cmd;
-	rv = tellmewhat(lexp, str);
+ lexp[1].word = cmd;
+ rv = tellmewhat(lexp, str);
     }
     return rv;
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/ * GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetServiceKeyName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReportLastError () ; 
- int /*<<< orphan*/  SC_MANAGER_CONNECT ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TCHAR ;
+typedef int * SC_HANDLE ;
+typedef int * LPTSTR ;
+typedef int LPCTSTR ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CloseServiceHandle (int *) ;
+ int ERROR_OUTOFMEMORY ;
+ scalar_t__ FALSE ;
+ int * GetLastError () ;
+ int GetProcessHeap () ;
+ int GetServiceKeyName (int *,int ,int *,int*) ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int * OpenSCManager (int *,int *,int ) ;
+ int ReportLastError () ;
+ int SC_MANAGER_CONNECT ;
+ int SetLastError (int ) ;
+ scalar_t__ TRUE ;
+ int _T (char*) ;
+ int _tprintf (int ,int *) ;
 
 BOOL GetKeyName(LPCTSTR ServiceName)
 {
-    SC_HANDLE hManager = NULL;
+    SC_HANDLE hManager = ((void*)0);
     BOOL bResult = TRUE;
     DWORD BufferSize = 0;
-    LPTSTR pBuffer = NULL;
+    LPTSTR pBuffer = ((void*)0);
 
-    hManager = OpenSCManager(NULL,
-                             NULL,
+    hManager = OpenSCManager(((void*)0),
+                             ((void*)0),
                              SC_MANAGER_CONNECT);
-    if (hManager == NULL)
+    if (hManager == ((void*)0))
     {
         _tprintf(_T("[SC] OpenSCManager FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -53,7 +53,7 @@ BOOL GetKeyName(LPCTSTR ServiceName)
 
     if (!GetServiceKeyName(hManager,
                            ServiceName,
-                           NULL,
+                           ((void*)0),
                            &BufferSize))
     {
         if (BufferSize == 0)
@@ -65,7 +65,7 @@ BOOL GetKeyName(LPCTSTR ServiceName)
     }
 
     pBuffer = HeapAlloc(GetProcessHeap(), 0, (BufferSize + 1) * sizeof(TCHAR));
-    if (pBuffer == NULL)
+    if (pBuffer == ((void*)0))
     {
         SetLastError(ERROR_OUTOFMEMORY);
         _tprintf(_T("[SC] HeapAlloc FAILED %lu:\n\n"), GetLastError());
@@ -90,7 +90,7 @@ done:
     if (bResult == FALSE)
         ReportLastError();
 
-    if (pBuffer != NULL)
+    if (pBuffer != ((void*)0))
         HeapFree(GetProcessHeap(), 0, pBuffer);
 
     if (hManager)

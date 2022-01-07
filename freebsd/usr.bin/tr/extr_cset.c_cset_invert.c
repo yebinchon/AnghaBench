@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cset {int cs_invert; int cs_havecache; } ;
 
-/* Variables and functions */
+
 
 void
 cset_invert(struct cset *cs)
 {
 
-	cs->cs_invert ^= true;
-	cs->cs_havecache = false;
+ cs->cs_invert ^= 1;
+ cs->cs_havecache = 0;
 }

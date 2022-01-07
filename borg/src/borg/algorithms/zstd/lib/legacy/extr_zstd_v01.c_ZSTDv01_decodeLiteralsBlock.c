@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int blockType; size_t origSize; } ;
-typedef  TYPE_1__ blockProperties_t ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_1__ blockProperties_t ;
+typedef int BYTE ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERIC ; 
- size_t ZSTD_blockHeaderSize ; 
- size_t ZSTD_decompressLiterals (void*,void*,size_t,int /*<<< orphan*/  const*,size_t) ; 
- size_t ZSTDv01_getcBlockSize (void const*,size_t,TYPE_1__*) ; 
- scalar_t__ ZSTDv01_isError (size_t) ; 
-#define  bt_compressed 131 
-#define  bt_end 130 
-#define  bt_raw 129 
-#define  bt_rle 128 
- int /*<<< orphan*/  dstSize_tooSmall ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ * const,int /*<<< orphan*/  const,size_t) ; 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+ size_t ERROR (int ) ;
+ int GENERIC ;
+ size_t ZSTD_blockHeaderSize ;
+ size_t ZSTD_decompressLiterals (void*,void*,size_t,int const*,size_t) ;
+ size_t ZSTDv01_getcBlockSize (void const*,size_t,TYPE_1__*) ;
+ scalar_t__ ZSTDv01_isError (size_t) ;
+
+
+
+
+ int dstSize_tooSmall ;
+ int memset (int * const,int const,size_t) ;
+ int srcSize_wrong ;
 
 __attribute__((used)) static size_t ZSTDv01_decodeLiteralsBlock(void* ctx,
                                 void* dst, size_t maxDstSize,
@@ -48,12 +48,12 @@ __attribute__((used)) static size_t ZSTDv01_decodeLiteralsBlock(void* ctx,
 
     switch(litbp.blockType)
     {
-    case bt_raw:
+    case 129:
         *litStart = ip;
         ip += litcSize;
         *litSize = litcSize;
         break;
-    case bt_rle:
+    case 128:
         {
             size_t rleSize = litbp.origSize;
             if (rleSize>maxDstSize) return ERROR(dstSize_tooSmall);
@@ -64,7 +64,7 @@ __attribute__((used)) static size_t ZSTDv01_decodeLiteralsBlock(void* ctx,
             ip++;
             break;
         }
-    case bt_compressed:
+    case 131:
         {
             size_t decodedLitSize = ZSTD_decompressLiterals(ctx, dst, maxDstSize, ip, litcSize);
             if (ZSTDv01_isError(decodedLitSize)) return decodedLitSize;
@@ -73,7 +73,7 @@ __attribute__((used)) static size_t ZSTDv01_decodeLiteralsBlock(void* ctx,
             ip += litcSize;
             break;
         }
-    case bt_end:
+    case 130:
     default:
         return ERROR(GENERIC);
     }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _TCHAR ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERANGE ; 
- scalar_t__ GetCurrentDirectory (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  _dosmaperr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _set_errno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _tcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _tcsdup (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int _TCHAR ;
+typedef scalar_t__ DWORD ;
+
+
+ int ERANGE ;
+ scalar_t__ GetCurrentDirectory (int,int *) ;
+ int GetLastError () ;
+ int MAX_PATH ;
+ int _dosmaperr (int ) ;
+ int _set_errno (int ) ;
+ int _tcscpy (int *,int *) ;
+ int * _tcsdup (int *) ;
 
 _TCHAR* _tgetcwd(_TCHAR* buf, int size)
 {
@@ -31,7 +31,7 @@ _TCHAR* _tgetcwd(_TCHAR* buf, int size)
   if (dir_len == 0)
   {
     _dosmaperr(GetLastError());
-    return NULL; /* FIXME: Real return value untested */
+    return ((void*)0);
   }
 
   if (!buf)
@@ -42,7 +42,7 @@ _TCHAR* _tgetcwd(_TCHAR* buf, int size)
   if (dir_len >= (DWORD)size)
   {
     _set_errno(ERANGE);
-    return NULL; /* buf too small */
+    return ((void*)0);
   }
 
   _tcscpy(buf,dir);

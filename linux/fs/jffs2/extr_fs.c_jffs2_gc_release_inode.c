@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct jffs2_sb_info {int dummy; } ;
 struct jffs2_inode_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OFNI_EDONI_2SFFJ (struct jffs2_inode_info*) ; 
- int /*<<< orphan*/  iput (int /*<<< orphan*/ ) ; 
+
+ int OFNI_EDONI_2SFFJ (struct jffs2_inode_info*) ;
+ int iput (int ) ;
 
 void jffs2_gc_release_inode(struct jffs2_sb_info *c,
-				   struct jffs2_inode_info *f)
+       struct jffs2_inode_info *f)
 {
-	iput(OFNI_EDONI_2SFFJ(f));
+ iput(OFNI_EDONI_2SFFJ(f));
 }

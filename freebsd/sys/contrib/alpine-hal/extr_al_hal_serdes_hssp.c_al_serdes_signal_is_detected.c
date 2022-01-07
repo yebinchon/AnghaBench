@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct al_serdes_grp_obj {int dummy; } ;
-typedef  enum al_serdes_reg_page { ____Placeholder_al_serdes_reg_page } al_serdes_reg_page ;
-typedef  enum al_serdes_lane { ____Placeholder_al_serdes_lane } al_serdes_lane ;
-typedef  int /*<<< orphan*/  al_bool ;
+typedef enum al_serdes_reg_page { ____Placeholder_al_serdes_reg_page } al_serdes_reg_page ;
+typedef enum al_serdes_lane { ____Placeholder_al_serdes_lane } al_serdes_lane ;
+typedef int al_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AL_FALSE ; 
- int /*<<< orphan*/  AL_SRDS_REG_TYPE_PMA ; 
- int /*<<< orphan*/  AL_TRUE ; 
- int /*<<< orphan*/  SERDES_IREG_FLD_RXRANDET_REG_NUM ; 
- int SERDES_IREG_FLD_RXRANDET_STAT ; 
- int al_serdes_grp_reg_read (struct al_serdes_grp_obj*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AL_FALSE ;
+ int AL_SRDS_REG_TYPE_PMA ;
+ int AL_TRUE ;
+ int SERDES_IREG_FLD_RXRANDET_REG_NUM ;
+ int SERDES_IREG_FLD_RXRANDET_STAT ;
+ int al_serdes_grp_reg_read (struct al_serdes_grp_obj*,int,int ,int ) ;
 
 __attribute__((used)) static al_bool al_serdes_signal_is_detected(
-		struct al_serdes_grp_obj	*obj,
-		enum al_serdes_lane		lane)
+  struct al_serdes_grp_obj *obj,
+  enum al_serdes_lane lane)
 {
-	uint32_t reg = 0;
+ uint32_t reg = 0;
 
-	reg = al_serdes_grp_reg_read(
-			obj,
-			(enum al_serdes_reg_page)lane,
-			AL_SRDS_REG_TYPE_PMA,
-			SERDES_IREG_FLD_RXRANDET_REG_NUM);
+ reg = al_serdes_grp_reg_read(
+   obj,
+   (enum al_serdes_reg_page)lane,
+   AL_SRDS_REG_TYPE_PMA,
+   SERDES_IREG_FLD_RXRANDET_REG_NUM);
 
-	return ((reg & SERDES_IREG_FLD_RXRANDET_STAT) ? AL_TRUE : AL_FALSE);
+ return ((reg & SERDES_IREG_FLD_RXRANDET_STAT) ? AL_TRUE : AL_FALSE);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_int_32 ;
-typedef  int /*<<< orphan*/  png_fixed_point ;
-typedef  int /*<<< orphan*/  png_const_structrp ;
 
-/* Variables and functions */
- scalar_t__ png_muldiv (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  png_warning (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int png_int_32 ;
+typedef int png_fixed_point ;
+typedef int png_const_structrp ;
+
+
+ scalar_t__ png_muldiv (int *,int ,int ,int ) ;
+ int png_warning (int ,char*) ;
 
 png_fixed_point
 png_muldiv_warn(png_const_structrp png_ptr, png_fixed_point a, png_int_32 times,

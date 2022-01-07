@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
 struct TYPE_5__ {scalar_t__ Id; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ AC ;
+typedef int LIST ;
+typedef TYPE_1__ AC ;
 
-/* Variables and functions */
- scalar_t__ Delete (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NormalizeAcList (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ Delete (int *,TYPE_1__*) ;
+ int Free (TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int NormalizeAcList (int *) ;
 
 bool DelAc(LIST *o, UINT id)
 {
-	UINT i;
-	// Validate arguments
-	if (o == NULL || id == 0)
-	{
-		return false;
-	}
+ UINT i;
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		AC *ac = LIST_DATA(o, i);
+ if (o == ((void*)0) || id == 0)
+ {
+  return 0;
+ }
 
-		if (ac->Id == id)
-		{
-			if (Delete(o, ac))
-			{
-				Free(ac);
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  AC *ac = LIST_DATA(o, i);
 
-				NormalizeAcList(o);
+  if (ac->Id == id)
+  {
+   if (Delete(o, ac))
+   {
+    Free(ac);
 
-				return true;
-			}
-		}
-	}
+    NormalizeAcList(o);
 
-	return false;
+    return 1;
+   }
+  }
+ }
+
+ return 0;
 }

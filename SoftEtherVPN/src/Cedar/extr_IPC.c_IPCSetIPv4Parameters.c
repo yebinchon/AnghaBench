@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_15__ {int NumExistingRoutes; } ;
-struct TYPE_14__ {int /*<<< orphan*/  ClasslessRoute; int /*<<< orphan*/  BroadcastAddress; int /*<<< orphan*/  DefaultGateway; int /*<<< orphan*/  SubnetMask; int /*<<< orphan*/  ClientIPAddress; } ;
-typedef  TYPE_1__ IPC ;
-typedef  TYPE_2__ IP ;
-typedef  TYPE_2__ DHCP_CLASSLESS_ROUTE_TABLE ;
+struct TYPE_14__ {int ClasslessRoute; int BroadcastAddress; int DefaultGateway; int SubnetMask; int ClientIPAddress; } ;
+typedef TYPE_1__ IPC ;
+typedef TYPE_2__ IP ;
+typedef TYPE_2__ DHCP_CLASSLESS_ROUTE_TABLE ;
 
-/* Variables and functions */
- scalar_t__ Cmp (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- scalar_t__ CmpIpAddr (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int /*<<< orphan*/  GetBroadcastAddress4 (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- int IsZeroIP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ Cmp (int *,TYPE_2__*,int) ;
+ scalar_t__ CmpIpAddr (int *,TYPE_2__*) ;
+ int Copy (int *,TYPE_2__*,int) ;
+ int GetBroadcastAddress4 (int *,TYPE_2__*,TYPE_2__*) ;
+ int IsZeroIP (int *) ;
+ int Zero (int *,int) ;
 
 bool IPCSetIPv4Parameters(IPC *ipc, IP *ip, IP *subnet, IP *gw, DHCP_CLASSLESS_ROUTE_TABLE *rt)
 {
-	bool changed = false;
-	// Validate arguments
-	if (ipc == NULL || ip == NULL || subnet == NULL)
-	{
-		return false;
-	}
+ bool changed = 0;
 
-	if (CmpIpAddr(&ipc->ClientIPAddress, ip) != 0)
-	{
-		changed = true;
-	}
-	Copy(&ipc->ClientIPAddress, ip, sizeof(IP));
+ if (ipc == ((void*)0) || ip == ((void*)0) || subnet == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (CmpIpAddr(&ipc->SubnetMask, subnet) != 0)
-	{
-		changed = true;
-	}
-	Copy(&ipc->SubnetMask, subnet, sizeof(IP));
+ if (CmpIpAddr(&ipc->ClientIPAddress, ip) != 0)
+ {
+  changed = 1;
+ }
+ Copy(&ipc->ClientIPAddress, ip, sizeof(IP));
 
-	if (gw != NULL)
-	{
-		if (CmpIpAddr(&ipc->DefaultGateway, gw) != 0)
-		{
-			changed = true;
-		}
+ if (CmpIpAddr(&ipc->SubnetMask, subnet) != 0)
+ {
+  changed = 1;
+ }
+ Copy(&ipc->SubnetMask, subnet, sizeof(IP));
 
-		Copy(&ipc->DefaultGateway, gw, sizeof(IP));
-	}
-	else
-	{
-		if (IsZeroIP(&ipc->DefaultGateway) == false)
-		{
-			changed = true;
-		}
+ if (gw != ((void*)0))
+ {
+  if (CmpIpAddr(&ipc->DefaultGateway, gw) != 0)
+  {
+   changed = 1;
+  }
 
-		Zero(&ipc->DefaultGateway, sizeof(IP));
-	}
+  Copy(&ipc->DefaultGateway, gw, sizeof(IP));
+ }
+ else
+ {
+  if (IsZeroIP(&ipc->DefaultGateway) == 0)
+  {
+   changed = 1;
+  }
 
-	GetBroadcastAddress4(&ipc->BroadcastAddress, ip, subnet);
+  Zero(&ipc->DefaultGateway, sizeof(IP));
+ }
 
-	if (rt != NULL && rt->NumExistingRoutes >= 1)
-	{
-		if (Cmp(&ipc->ClasslessRoute, rt, sizeof(DHCP_CLASSLESS_ROUTE_TABLE)) != 0)
-		{
-			changed = true;
+ GetBroadcastAddress4(&ipc->BroadcastAddress, ip, subnet);
 
-			Copy(&ipc->ClasslessRoute, rt, sizeof(DHCP_CLASSLESS_ROUTE_TABLE));
-		}
-	}
+ if (rt != ((void*)0) && rt->NumExistingRoutes >= 1)
+ {
+  if (Cmp(&ipc->ClasslessRoute, rt, sizeof(DHCP_CLASSLESS_ROUTE_TABLE)) != 0)
+  {
+   changed = 1;
 
-	return changed;
+   Copy(&ipc->ClasslessRoute, rt, sizeof(DHCP_CLASSLESS_ROUTE_TABLE));
+  }
+ }
+
+ return changed;
 }

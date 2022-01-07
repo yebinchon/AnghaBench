@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct crypto_report_cipher {int /*<<< orphan*/  max_keysize; int /*<<< orphan*/  min_keysize; int /*<<< orphan*/  blocksize; int /*<<< orphan*/  type; } ;
-struct TYPE_2__ {int /*<<< orphan*/  cia_max_keysize; int /*<<< orphan*/  cia_min_keysize; } ;
-struct crypto_alg {TYPE_1__ cra_cipher; int /*<<< orphan*/  cra_blocksize; } ;
-typedef  int /*<<< orphan*/  rcipher ;
+struct crypto_report_cipher {int max_keysize; int min_keysize; int blocksize; int type; } ;
+struct TYPE_2__ {int cia_max_keysize; int cia_min_keysize; } ;
+struct crypto_alg {TYPE_1__ cra_cipher; int cra_blocksize; } ;
+typedef int rcipher ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTOCFGA_REPORT_CIPHER ; 
- int /*<<< orphan*/  memset (struct crypto_report_cipher*,int /*<<< orphan*/ ,int) ; 
- int nla_put (struct sk_buff*,int /*<<< orphan*/ ,int,struct crypto_report_cipher*) ; 
- int /*<<< orphan*/  strscpy (int /*<<< orphan*/ ,char*,int) ; 
+
+ int CRYPTOCFGA_REPORT_CIPHER ;
+ int memset (struct crypto_report_cipher*,int ,int) ;
+ int nla_put (struct sk_buff*,int ,int,struct crypto_report_cipher*) ;
+ int strscpy (int ,char*,int) ;
 
 __attribute__((used)) static int crypto_report_cipher(struct sk_buff *skb, struct crypto_alg *alg)
 {
-	struct crypto_report_cipher rcipher;
+ struct crypto_report_cipher rcipher;
 
-	memset(&rcipher, 0, sizeof(rcipher));
+ memset(&rcipher, 0, sizeof(rcipher));
 
-	strscpy(rcipher.type, "cipher", sizeof(rcipher.type));
+ strscpy(rcipher.type, "cipher", sizeof(rcipher.type));
 
-	rcipher.blocksize = alg->cra_blocksize;
-	rcipher.min_keysize = alg->cra_cipher.cia_min_keysize;
-	rcipher.max_keysize = alg->cra_cipher.cia_max_keysize;
+ rcipher.blocksize = alg->cra_blocksize;
+ rcipher.min_keysize = alg->cra_cipher.cia_min_keysize;
+ rcipher.max_keysize = alg->cra_cipher.cia_max_keysize;
 
-	return nla_put(skb, CRYPTOCFGA_REPORT_CIPHER,
-		       sizeof(rcipher), &rcipher);
+ return nla_put(skb, CRYPTOCFGA_REPORT_CIPHER,
+         sizeof(rcipher), &rcipher);
 }

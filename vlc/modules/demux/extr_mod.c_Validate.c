@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ demux_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- char* memchr (char const*,char,int) ; 
- int /*<<< orphan*/  memcmp (char const*,char const*,int const) ; 
- int /*<<< orphan*/  strcasecmp (char const*,char const*) ; 
- int strlen (char const*) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,char const**,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+struct TYPE_3__ {int s; } ;
+typedef TYPE_1__ demux_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ char* memchr (char const*,char,int) ;
+ int memcmp (char const*,char const*,int const) ;
+ int strcasecmp (char const*,char const*) ;
+ int strlen (char const*) ;
+ int vlc_stream_Peek (int ,char const**,int) ;
 
 __attribute__((used)) static int Validate( demux_t *p_demux, const char *psz_ext )
 {
@@ -31,38 +31,38 @@ __attribute__((used)) static int Validate( demux_t *p_demux, const char *psz_ext
         int i_offset;
         const char *psz_marker;
     } p_marker[] = {
-        {  0, "ziRCONia" },             /* MMCMP files */
-        {  0, "Extended Module" },      /* XM */
-        { 44, "SCRM" },                 /* S3M */
-        {  0, "IMPM" },                 /* IT */
-        {  0, "GF1PATCH110" },          /* PAT */
-        { 20, "!SCREAM!" },             /* STM */
-        { 20, "!Scream!" },             /* STM */
-        { 20, "BMOD2STM" },             /* STM */
-        {  0, "MMD0" },                 /* MED v0 */
-        {  0, "MMD1" },                 /* MED v1 */
-        {  0, "MMD2" },                 /* MED v2 */
-        {  0, "MMD3" },                 /* MED v3 */
-        {  0, "MTM" },                  /* MTM */
-        {  0, "DMDL" },                 /* MDL */
-        {  0, "DBM0" },                 /* DBM */
-        {  0, "if" },                   /* 669 */
-        {  0, "JN" },                   /* 669 */
-        {  0, "FAR\xfe" },              /* FAR */
-        {  0, "Extreme" },              /* AMS */
-        {  0, "OKTASONGCMOD" },         /* OKT */
-        { 44, "PTMF" },                 /* PTM */
-        {  0, "MAS_UTrack_V00" },       /* Ult */
-        {  0, "DDMF" },                 /* DMF */
-        {  8, "DSMFSONG" },             /* DSM */
-        {  0, "\xc1\x83\x2a\x9e" },     /* UMX */
-        {  0, "ASYLUM Music Format V1.0" }, /* AMF Type 0 */
-        {  0, "AMF" },                  /* AMF */
-        {  0, "PSM\xfe" },              /* PSM */
-        {  0, "PSM " },                 /* PSM */
-        {  0, "MT20" },                 /* MT2 */
+        { 0, "ziRCONia" },
+        { 0, "Extended Module" },
+        { 44, "SCRM" },
+        { 0, "IMPM" },
+        { 0, "GF1PATCH110" },
+        { 20, "!SCREAM!" },
+        { 20, "!Scream!" },
+        { 20, "BMOD2STM" },
+        { 0, "MMD0" },
+        { 0, "MMD1" },
+        { 0, "MMD2" },
+        { 0, "MMD3" },
+        { 0, "MTM" },
+        { 0, "DMDL" },
+        { 0, "DBM0" },
+        { 0, "if" },
+        { 0, "JN" },
+        { 0, "FAR\xfe" },
+        { 0, "Extreme" },
+        { 0, "OKTASONGCMOD" },
+        { 44, "PTMF" },
+        { 0, "MAS_UTrack_V00" },
+        { 0, "DDMF" },
+        { 8, "DSMFSONG" },
+        { 0, "\xc1\x83\x2a\x9e" },
+        { 0, "ASYLUM Music Format V1.0" },
+        { 0, "AMF" },
+        { 0, "PSM\xfe" },
+        { 0, "PSM " },
+        { 0, "MT20" },
 
-        { 1080, "M.K." },               /* MOD */
+        { 1080, "M.K." },
         { 1080, "M!K!" },
         { 1080, "M&K!" },
         { 1080, "N.T." },
@@ -79,18 +79,18 @@ __attribute__((used)) static int Validate( demux_t *p_demux, const char *psz_ext
         { 1081, "CHN" },
         { 1082, "CH" },
 
-        {  -1, NULL }
+        { -1, ((void*)0) }
     };
     static const char *ppsz_mod_ext[] =
     {
-        "mod", "s3m", "xm",  "it",  "669", "amf", "ams", "dbm", "dmf", "dsm",
+        "mod", "s3m", "xm", "it", "669", "amf", "ams", "dbm", "dmf", "dsm",
         "far", "mdl", "med", "mtm", "okt", "ptm", "stm", "ult", "umx", "mt2",
-        "psm", "abc", NULL
+        "psm", "abc", ((void*)0)
     };
-    bool has_valid_extension = false;
+    bool has_valid_extension = 0;
     if( psz_ext )
     {
-        for( int i = 0; ppsz_mod_ext[i] != NULL; i++ )
+        for( int i = 0; ppsz_mod_ext[i] != ((void*)0); i++ )
         {
             has_valid_extension |= !strcasecmp( psz_ext, ppsz_mod_ext[i] );
             if( has_valid_extension )
@@ -119,15 +119,15 @@ __attribute__((used)) static int Validate( demux_t *p_demux, const char *psz_ext
         }
     }
 
-    /* The only two format left untested are ABC and MOD(old version)
-     * ant they are difficult to test :( */
 
-    /* Check for ABC
-     * TODO i_peek = 2048 is too big for such files */
+
+
+
+
     if( psz_ext && !strcasecmp( psz_ext, "abc" ) )
     {
-        bool b_k = false;
-        bool b_tx = false;
+        bool b_k = 0;
+        bool b_tx = 0;
 
         for( int i = 0; i < i_peek-1; i++ )
         {
@@ -139,10 +139,10 @@ __attribute__((used)) static int Validate( demux_t *p_demux, const char *psz_ext
         return VLC_SUCCESS;
     }
 
-    /* Check for MOD */
+
     if( psz_ext && !strcasecmp( psz_ext, "mod" ) && i_peek >= 20 + 15 * 30 )
     {
-        /* Check that the name is correctly null padded */
+
         const uint8_t *p = memchr( p_peek, '\0', 20 );
         if( p )
         {
@@ -157,7 +157,7 @@ __attribute__((used)) static int Validate( demux_t *p_demux, const char *psz_ext
         {
             const uint8_t *p_sample = &p_peek[20 + i*30];
 
-            /* Check correct null padding */
+
             p = memchr( &p_sample[0], '\0', 22 );
             if( p )
             {
@@ -168,7 +168,7 @@ __attribute__((used)) static int Validate( demux_t *p_demux, const char *psz_ext
                 }
             }
 
-            if( p_sample[25] > 64 ) /* Volume value */
+            if( p_sample[25] > 64 )
                 return VLC_EGENERIC;
         }
         return VLC_SUCCESS;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct request_sock {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  dreq_featneg; } ;
-struct TYPE_3__ {int /*<<< orphan*/  ireq_opt; } ;
+struct TYPE_4__ {int dreq_featneg; } ;
+struct TYPE_3__ {int ireq_opt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dccp_feat_list_purge (int /*<<< orphan*/ *) ; 
- TYPE_2__* dccp_rsk (struct request_sock*) ; 
- TYPE_1__* inet_rsk (struct request_sock*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu_dereference_protected (int /*<<< orphan*/ ,int) ; 
+
+ int dccp_feat_list_purge (int *) ;
+ TYPE_2__* dccp_rsk (struct request_sock*) ;
+ TYPE_1__* inet_rsk (struct request_sock*) ;
+ int kfree (int ) ;
+ int rcu_dereference_protected (int ,int) ;
 
 __attribute__((used)) static void dccp_v4_reqsk_destructor(struct request_sock *req)
 {
-	dccp_feat_list_purge(&dccp_rsk(req)->dreq_featneg);
-	kfree(rcu_dereference_protected(inet_rsk(req)->ireq_opt, 1));
+ dccp_feat_list_purge(&dccp_rsk(req)->dreq_featneg);
+ kfree(rcu_dereference_protected(inet_rsk(req)->ireq_opt, 1));
 }

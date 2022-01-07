@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  keyboard_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KBD_ACTIVATE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KMI_LOCK () ; 
- int /*<<< orphan*/  KMI_UNLOCK () ; 
+
+
+
+typedef int keyboard_t ;
+
+
+ int KBD_ACTIVATE (int *) ;
+ int KMI_LOCK () ;
+ int KMI_UNLOCK () ;
 
 __attribute__((used)) static int
 kmi_enable(keyboard_t *kbd)
 {
 
-	KMI_LOCK();
-	KBD_ACTIVATE(kbd);
-	KMI_UNLOCK();
+ KMI_LOCK();
+ KBD_ACTIVATE(kbd);
+ KMI_UNLOCK();
 
-	return (0);
+ return (0);
 }

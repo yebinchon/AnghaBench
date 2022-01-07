@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_NO_MEMORY ; 
- int /*<<< orphan*/  AE_OK ; 
- char* FlStrdup (char*) ; 
- int /*<<< orphan*/  UtConvertBackslashes (char*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ int AE_NO_MEMORY ;
+ int AE_OK ;
+ char* FlStrdup (char*) ;
+ int UtConvertBackslashes (char*) ;
+ char* strrchr (char*,char) ;
 
 ACPI_STATUS
 FlSplitInputPathname (
-    char                    *InputPath,
-    char                    **OutDirectoryPath,
-    char                    **OutFilename)
+    char *InputPath,
+    char **OutDirectoryPath,
+    char **OutFilename)
 {
-    char                    *Substring;
-    char                    *DirectoryPath;
-    char                    *Filename;
+    char *Substring;
+    char *DirectoryPath;
+    char *Filename;
 
 
     if (OutDirectoryPath)
     {
-        *OutDirectoryPath = NULL;
+        *OutDirectoryPath = ((void*)0);
     }
 
     if (!InputPath)
@@ -40,7 +40,7 @@ FlSplitInputPathname (
         return (AE_OK);
     }
 
-    /* Get the path to the input filename's directory */
+
 
     DirectoryPath = FlStrdup (InputPath);
     if (!DirectoryPath)
@@ -48,11 +48,11 @@ FlSplitInputPathname (
         return (AE_NO_MEMORY);
     }
 
-    /* Convert backslashes to slashes in the entire path */
+
 
     UtConvertBackslashes (DirectoryPath);
 
-    /* Backup to last slash or colon */
+
 
     Substring = strrchr (DirectoryPath, '/');
     if (!Substring)
@@ -60,7 +60,7 @@ FlSplitInputPathname (
         Substring = strrchr (DirectoryPath, ':');
     }
 
-    /* Extract the simple filename */
+
 
     if (!Substring)
     {

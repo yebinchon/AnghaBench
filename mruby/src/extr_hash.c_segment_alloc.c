@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct segkv {int dummy; } ;
-struct TYPE_4__ {int size; int /*<<< orphan*/ * next; } ;
-typedef  TYPE_1__ segment ;
-typedef  int /*<<< orphan*/  mrb_state ;
+struct TYPE_4__ {int size; int * next; } ;
+typedef TYPE_1__ segment ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int HT_SEG_INCREASE_RATIO ; 
- int MRB_HT_INIT_SIZE ; 
- int UINT16_MAX ; 
- scalar_t__ mrb_malloc (int /*<<< orphan*/ *,int) ; 
+
+ int HT_SEG_INCREASE_RATIO ;
+ int MRB_HT_INIT_SIZE ;
+ int UINT16_MAX ;
+ scalar_t__ mrb_malloc (int *,int) ;
 
 __attribute__((used)) static segment*
 segment_alloc(mrb_state *mrb, segment *seg)
@@ -36,7 +36,7 @@ segment_alloc(mrb_state *mrb, segment *seg)
 
   seg = (segment*)mrb_malloc(mrb, sizeof(segment)+sizeof(struct segkv)*size);
   seg->size = size;
-  seg->next = NULL;
+  seg->next = ((void*)0);
 
   return seg;
 }

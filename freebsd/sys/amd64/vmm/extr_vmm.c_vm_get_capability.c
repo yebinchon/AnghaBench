@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vm {int maxcpus; int /*<<< orphan*/  cookie; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int VMGETCAP (int /*<<< orphan*/ ,int,int,int*) ; 
- int VM_CAP_MAX ; 
+
+
+
+struct vm {int maxcpus; int cookie; } ;
+
+
+ int EINVAL ;
+ int VMGETCAP (int ,int,int,int*) ;
+ int VM_CAP_MAX ;
 
 int
 vm_get_capability(struct vm *vm, int vcpu, int type, int *retval)
 {
-	if (vcpu < 0 || vcpu >= vm->maxcpus)
-		return (EINVAL);
+ if (vcpu < 0 || vcpu >= vm->maxcpus)
+  return (EINVAL);
 
-	if (type < 0 || type >= VM_CAP_MAX)
-		return (EINVAL);
+ if (type < 0 || type >= VM_CAP_MAX)
+  return (EINVAL);
 
-	return (VMGETCAP(vm->cookie, vcpu, type, retval));
+ return (VMGETCAP(vm->cookie, vcpu, type, retval));
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; int /*<<< orphan*/  status; } ;
-typedef  int /*<<< orphan*/  nbw_iterator_t ;
-struct TYPE_4__ {int /*<<< orphan*/  auth_state; scalar_t__ packet_state; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* sql_flush_packet ) (struct connection*,int) ;int /*<<< orphan*/  (* sql_becomes_ready ) (struct connection*) ;} ;
 
-/* Variables and functions */
- TYPE_2__* SQLC_DATA (struct connection*) ; 
- TYPE_1__* SQLC_FUNC (struct connection*) ; 
- int /*<<< orphan*/  conn_ready ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  nbit_setw (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nbit_write_out (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  sql_auth_initdb ; 
- int /*<<< orphan*/  sql_auth_ok ; 
- char* sql_database ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  stub1 (struct connection*) ; 
- int /*<<< orphan*/  stub2 (struct connection*,int) ; 
- int verbosity ; 
- scalar_t__ write_out (int /*<<< orphan*/ *,...) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct connection {int Out; int status; } ;
+typedef int nbw_iterator_t ;
+struct TYPE_4__ {int auth_state; scalar_t__ packet_state; } ;
+struct TYPE_3__ {int (* sql_flush_packet ) (struct connection*,int) ;int (* sql_becomes_ready ) (struct connection*) ;} ;
+
+
+ TYPE_2__* SQLC_DATA (struct connection*) ;
+ TYPE_1__* SQLC_FUNC (struct connection*) ;
+ int conn_ready ;
+ int fprintf (int ,char*) ;
+ int nbit_setw (int *,int *) ;
+ int nbit_write_out (int *,int*,int) ;
+ int sql_auth_initdb ;
+ int sql_auth_ok ;
+ char* sql_database ;
+ int stderr ;
+ int strlen (char*) ;
+ int stub1 (struct connection*) ;
+ int stub2 (struct connection*,int) ;
+ int verbosity ;
+ scalar_t__ write_out (int *,...) ;
 
 int sqlp_authorized (struct connection *c) {
   nbw_iterator_t it;

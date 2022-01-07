@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CORGI_GPIO_LED_GREEN ; 
- int /*<<< orphan*/  REBOOT_HARD ; 
- int /*<<< orphan*/  gpio_set_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  machine_is_corgi () ; 
- int /*<<< orphan*/  pxa_restart (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int CORGI_GPIO_LED_GREEN ;
+ int REBOOT_HARD ;
+ int gpio_set_value (int ,int ) ;
+ int machine_is_corgi () ;
+ int pxa_restart (int ,int *) ;
 
 __attribute__((used)) static void corgi_poweroff(void)
 {
-	if (!machine_is_corgi())
-		/* Green LED off tells the bootloader to halt */
-		gpio_set_value(CORGI_GPIO_LED_GREEN, 0);
+ if (!machine_is_corgi())
 
-	pxa_restart(REBOOT_HARD, NULL);
+  gpio_set_value(CORGI_GPIO_LED_GREEN, 0);
+
+ pxa_restart(REBOOT_HARD, ((void*)0));
 }

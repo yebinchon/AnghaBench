@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IXmlWriter ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_OUTPUT (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ CreateXmlWriter (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *) ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ E_UNEXPECTED ; 
- int /*<<< orphan*/  IID_IXmlWriter ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_Flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXmlWriter_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlWriter_WriteElementString (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ IXmlWriter_WriteProcessingInstruction (int /*<<< orphan*/ *,char const*,char const*) ; 
- scalar_t__ IXmlWriter_WriteStartDocument (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IXmlWriter_WriteStartElement (int /*<<< orphan*/ *,char const*,char const*,char const*) ; 
- scalar_t__ S_OK ; 
- scalar_t__ WR_E_INVALIDACTION ; 
- int /*<<< orphan*/  XmlStandalone_Yes ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/ * writer_set_output (int /*<<< orphan*/ *) ; 
+
+
+
+typedef char WCHAR ;
+typedef int IXmlWriter ;
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CHECK_OUTPUT (int *,char*) ;
+ scalar_t__ CreateXmlWriter (int *,void**,int *) ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ E_UNEXPECTED ;
+ int IID_IXmlWriter ;
+ int IStream_Release (int *) ;
+ scalar_t__ IXmlWriter_Flush (int *) ;
+ int IXmlWriter_Release (int *) ;
+ scalar_t__ IXmlWriter_WriteElementString (int *,int *,char const*,int *,char const*) ;
+ scalar_t__ IXmlWriter_WriteProcessingInstruction (int *,char const*,char const*) ;
+ scalar_t__ IXmlWriter_WriteStartDocument (int *,int ) ;
+ scalar_t__ IXmlWriter_WriteStartElement (int *,char const*,char const*,char const*) ;
+ scalar_t__ S_OK ;
+ scalar_t__ WR_E_INVALIDACTION ;
+ int XmlStandalone_Yes ;
+ int ok (int,char*,scalar_t__) ;
+ int * writer_set_output (int *) ;
 
 __attribute__((used)) static void test_writestartelement(void)
 {
@@ -43,24 +43,24 @@ __attribute__((used)) static void test_writestartelement(void)
     IStream *stream;
     HRESULT hr;
 
-    hr = CreateXmlWriter(&IID_IXmlWriter, (void**)&writer, NULL);
+    hr = CreateXmlWriter(&IID_IXmlWriter, (void**)&writer, ((void*)0));
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
 
-    hr = IXmlWriter_WriteStartElement(writer, NULL, aW, NULL);
+    hr = IXmlWriter_WriteStartElement(writer, ((void*)0), aW, ((void*)0));
     ok(hr == E_UNEXPECTED, "got 0x%08x\n", hr);
 
     stream = writer_set_output(writer);
 
-    hr = IXmlWriter_WriteStartElement(writer, aW, NULL, NULL);
+    hr = IXmlWriter_WriteStartElement(writer, aW, ((void*)0), ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = IXmlWriter_WriteStartElement(writer, NULL, NULL, NULL);
+    hr = IXmlWriter_WriteStartElement(writer, ((void*)0), ((void*)0), ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = IXmlWriter_WriteStartElement(writer, NULL, NULL, aW);
+    hr = IXmlWriter_WriteStartElement(writer, ((void*)0), ((void*)0), aW);
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
-    hr = IXmlWriter_WriteStartElement(writer, NULL, aW, NULL);
+    hr = IXmlWriter_WriteStartElement(writer, ((void*)0), aW, ((void*)0));
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
     hr = IXmlWriter_WriteStartDocument(writer, XmlStandalone_Yes);
@@ -74,7 +74,7 @@ __attribute__((used)) static void test_writestartelement(void)
     hr = IXmlWriter_WriteStartDocument(writer, XmlStandalone_Yes);
     ok(hr == WR_E_INVALIDACTION, "got 0x%08x\n", hr);
 
-    hr = IXmlWriter_WriteStartElement(writer, NULL, NULL, NULL);
+    hr = IXmlWriter_WriteStartElement(writer, ((void*)0), ((void*)0), ((void*)0));
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
     hr = IXmlWriter_WriteProcessingInstruction(writer, aW, aW);
@@ -83,22 +83,22 @@ __attribute__((used)) static void test_writestartelement(void)
     IStream_Release(stream);
     IXmlWriter_Release(writer);
 
-    /* WriteElementString */
-    hr = CreateXmlWriter(&IID_IXmlWriter, (void**)&writer, NULL);
+
+    hr = CreateXmlWriter(&IID_IXmlWriter, (void**)&writer, ((void*)0));
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
 
-    hr = IXmlWriter_WriteElementString(writer, NULL, bW, NULL, valueW);
+    hr = IXmlWriter_WriteElementString(writer, ((void*)0), bW, ((void*)0), valueW);
     ok(hr == E_UNEXPECTED, "got 0x%08x\n", hr);
 
     stream = writer_set_output(writer);
 
-    hr = IXmlWriter_WriteStartElement(writer, NULL, aW, NULL);
+    hr = IXmlWriter_WriteStartElement(writer, ((void*)0), aW, ((void*)0));
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
-    hr = IXmlWriter_WriteElementString(writer, NULL, bW, NULL, valueW);
+    hr = IXmlWriter_WriteElementString(writer, ((void*)0), bW, ((void*)0), valueW);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
-    hr = IXmlWriter_WriteElementString(writer, NULL, bW, NULL, NULL);
+    hr = IXmlWriter_WriteElementString(writer, ((void*)0), bW, ((void*)0), ((void*)0));
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
     hr = IXmlWriter_Flush(writer);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
-typedef  int /*<<< orphan*/  sd_journal ;
-typedef  int /*<<< orphan*/  sd_id128_t ;
-typedef  int /*<<< orphan*/  OutputMode ;
-typedef  int OutputFlags ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int ESTALE ; 
- int OUTPUT_FOLLOW ; 
- int OUTPUT_WARN_CUTOFF ; 
- int /*<<< orphan*/  USEC_INFINITY ; 
- int /*<<< orphan*/  _OUTPUT_MODE_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  maybe_print_begin_newline (int /*<<< orphan*/ *,int*) ; 
- int sd_id128_get_boot (int /*<<< orphan*/ *) ; 
- int sd_journal_get_cutoff_monotonic_usec (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int sd_journal_get_monotonic_usec (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *) ; 
- int sd_journal_next (int /*<<< orphan*/ *) ; 
- int sd_journal_previous_skip (int /*<<< orphan*/ *,unsigned int) ; 
- int sd_journal_seek_tail (int /*<<< orphan*/ *) ; 
- int sd_journal_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int show_journal_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef scalar_t__ usec_t ;
+typedef int sd_journal ;
+typedef int sd_id128_t ;
+typedef int OutputMode ;
+typedef int OutputFlags ;
+typedef int FILE ;
+
+
+ int ESTALE ;
+ int OUTPUT_FOLLOW ;
+ int OUTPUT_WARN_CUTOFF ;
+ int USEC_INFINITY ;
+ int _OUTPUT_MODE_MAX ;
+ int assert (int) ;
+ int fprintf (int *,char*) ;
+ int log_error_errno (int,char*) ;
+ int maybe_print_begin_newline (int *,int*) ;
+ int sd_id128_get_boot (int *) ;
+ int sd_journal_get_cutoff_monotonic_usec (int *,int ,scalar_t__*,int *) ;
+ int sd_journal_get_monotonic_usec (int *,scalar_t__*,int *) ;
+ int sd_journal_next (int *) ;
+ int sd_journal_previous_skip (int *,unsigned int) ;
+ int sd_journal_seek_tail (int *) ;
+ int sd_journal_wait (int *,int ) ;
+ int show_journal_entry (int *,int *,int ,unsigned int,int,int *,int *,int*) ;
 
 int show_journal(
                 FILE *f,
@@ -48,7 +48,7 @@ int show_journal(
 
         int r;
         unsigned line = 0;
-        bool need_seek = false;
+        bool need_seek = 0;
         int warn_cutoff = flags & OUTPUT_WARN_CUTOFF;
 
         assert(j);
@@ -56,9 +56,9 @@ int show_journal(
         assert(mode < _OUTPUT_MODE_MAX);
 
         if (how_many == (unsigned) -1)
-                need_seek = true;
+                need_seek = 1;
         else {
-                /* Seek to end */
+
                 r = sd_journal_seek_tail(j);
                 if (r < 0)
                         return log_error_errno(r, "Failed to seek to tail: %m");
@@ -81,13 +81,13 @@ int show_journal(
                         if (r == 0)
                                 break;
 
-                        need_seek = true;
+                        need_seek = 1;
 
                         if (not_before > 0) {
-                                r = sd_journal_get_monotonic_usec(j, &usec, NULL);
+                                r = sd_journal_get_monotonic_usec(j, &usec, ((void*)0));
 
-                                /* -ESTALE is returned if the
-                                   timestamp is not from this boot */
+
+
                                 if (r == -ESTALE)
                                         continue;
                                 else if (r < 0)
@@ -100,7 +100,7 @@ int show_journal(
                         line++;
                         maybe_print_begin_newline(f, &flags);
 
-                        r = show_journal_entry(f, j, mode, n_columns, flags, NULL, NULL, ellipsized);
+                        r = show_journal_entry(f, j, mode, n_columns, flags, ((void*)0), ((void*)0), ellipsized);
                         if (r < 0)
                                 return r;
                 }
@@ -109,13 +109,13 @@ int show_journal(
                         sd_id128_t boot_id;
                         usec_t cutoff = 0;
 
-                        /* Check whether the cutoff line is too early */
+
 
                         r = sd_id128_get_boot(&boot_id);
                         if (r < 0)
                                 return log_error_errno(r, "Failed to get boot id: %m");
 
-                        r = sd_journal_get_cutoff_monotonic_usec(j, boot_id, &cutoff, NULL);
+                        r = sd_journal_get_cutoff_monotonic_usec(j, boot_id, &cutoff, ((void*)0));
                         if (r < 0)
                                 return log_error_errno(r, "Failed to get journal cutoff time: %m");
 
@@ -124,7 +124,7 @@ int show_journal(
                                 fprintf(f, "Warning: Journal has been rotated since unit was started. Log output is incomplete or unavailable.\n");
                         }
 
-                        warn_cutoff = false;
+                        warn_cutoff = 0;
                 }
 
                 if (!(flags & OUTPUT_FOLLOW))

@@ -1,0 +1,138 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/net/ipv4/extr_inet_lro.c_lro_get_desc.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/net/ipv4/extr_inet_lro.c_lro_get_desc.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.net_lro_mgr = type { i32 }
+%struct.net_lro_desc = type { i64 }
+%struct.iphdr = type { i32 }
+%struct.tcphdr = type { i32 }
+
+@no_desc = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (%struct.net_lro_desc* (%struct.net_lro_mgr*, %struct.net_lro_desc*, %struct.iphdr*, %struct.tcphdr*)* @lro_get_desc to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal %struct.net_lro_desc* @lro_get_desc(%struct.net_lro_mgr* %0, %struct.net_lro_desc* %1, %struct.iphdr* %2, %struct.tcphdr* %3) #0 {
+  %5 = alloca %struct.net_lro_mgr*, align 8
+  %6 = alloca %struct.net_lro_desc*, align 8
+  %7 = alloca %struct.iphdr*, align 8
+  %8 = alloca %struct.tcphdr*, align 8
+  %9 = alloca %struct.net_lro_desc*, align 8
+  %10 = alloca %struct.net_lro_desc*, align 8
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  store %struct.net_lro_mgr* %0, %struct.net_lro_mgr** %5, align 8
+  store %struct.net_lro_desc* %1, %struct.net_lro_desc** %6, align 8
+  store %struct.iphdr* %2, %struct.iphdr** %7, align 8
+  store %struct.tcphdr* %3, %struct.tcphdr** %8, align 8
+  store %struct.net_lro_desc* null, %struct.net_lro_desc** %9, align 8
+  %13 = load %struct.net_lro_mgr*, %struct.net_lro_mgr** %5, align 8
+  %14 = getelementptr inbounds %struct.net_lro_mgr, %struct.net_lro_mgr* %13, i32 0, i32 0
+  %15 = load i32, i32* %14, align 4
+  store i32 %15, i32* %11, align 4
+  store i32 0, i32* %12, align 4
+  br label %16
+
+16:                                               ; preds = %39, %4
+  %17 = load i32, i32* %12, align 4
+  %18 = load i32, i32* %11, align 4
+  %19 = icmp slt i32 %17, %18
+  br i1 %19, label %20, label %42
+
+20:                                               ; preds = %16
+  %21 = load %struct.net_lro_desc*, %struct.net_lro_desc** %6, align 8
+  %22 = load i32, i32* %12, align 4
+  %23 = sext i32 %22 to i64
+  %24 = getelementptr inbounds %struct.net_lro_desc, %struct.net_lro_desc* %21, i64 %23
+  store %struct.net_lro_desc* %24, %struct.net_lro_desc** %10, align 8
+  %25 = load %struct.net_lro_desc*, %struct.net_lro_desc** %10, align 8
+  %26 = getelementptr inbounds %struct.net_lro_desc, %struct.net_lro_desc* %25, i32 0, i32 0
+  %27 = load i64, i64* %26, align 8
+  %28 = icmp ne i64 %27, 0
+  br i1 %28, label %29, label %38
+
+29:                                               ; preds = %20
+  %30 = load %struct.net_lro_desc*, %struct.net_lro_desc** %10, align 8
+  %31 = load %struct.iphdr*, %struct.iphdr** %7, align 8
+  %32 = load %struct.tcphdr*, %struct.tcphdr** %8, align 8
+  %33 = call i32 @lro_check_tcp_conn(%struct.net_lro_desc* %30, %struct.iphdr* %31, %struct.tcphdr* %32)
+  %34 = icmp ne i32 %33, 0
+  br i1 %34, label %37, label %35
+
+35:                                               ; preds = %29
+  %36 = load %struct.net_lro_desc*, %struct.net_lro_desc** %10, align 8
+  store %struct.net_lro_desc* %36, %struct.net_lro_desc** %9, align 8
+  br label %68
+
+37:                                               ; preds = %29
+  br label %38
+
+38:                                               ; preds = %37, %20
+  br label %39
+
+39:                                               ; preds = %38
+  %40 = load i32, i32* %12, align 4
+  %41 = add nsw i32 %40, 1
+  store i32 %41, i32* %12, align 4
+  br label %16
+
+42:                                               ; preds = %16
+  store i32 0, i32* %12, align 4
+  br label %43
+
+43:                                               ; preds = %61, %42
+  %44 = load i32, i32* %12, align 4
+  %45 = load i32, i32* %11, align 4
+  %46 = icmp slt i32 %44, %45
+  br i1 %46, label %47, label %64
+
+47:                                               ; preds = %43
+  %48 = load %struct.net_lro_desc*, %struct.net_lro_desc** %6, align 8
+  %49 = load i32, i32* %12, align 4
+  %50 = sext i32 %49 to i64
+  %51 = getelementptr inbounds %struct.net_lro_desc, %struct.net_lro_desc* %48, i64 %50
+  %52 = getelementptr inbounds %struct.net_lro_desc, %struct.net_lro_desc* %51, i32 0, i32 0
+  %53 = load i64, i64* %52, align 8
+  %54 = icmp ne i64 %53, 0
+  br i1 %54, label %60, label %55
+
+55:                                               ; preds = %47
+  %56 = load %struct.net_lro_desc*, %struct.net_lro_desc** %6, align 8
+  %57 = load i32, i32* %12, align 4
+  %58 = sext i32 %57 to i64
+  %59 = getelementptr inbounds %struct.net_lro_desc, %struct.net_lro_desc* %56, i64 %58
+  store %struct.net_lro_desc* %59, %struct.net_lro_desc** %9, align 8
+  br label %68
+
+60:                                               ; preds = %47
+  br label %61
+
+61:                                               ; preds = %60
+  %62 = load i32, i32* %12, align 4
+  %63 = add nsw i32 %62, 1
+  store i32 %63, i32* %12, align 4
+  br label %43
+
+64:                                               ; preds = %43
+  %65 = load %struct.net_lro_mgr*, %struct.net_lro_mgr** %5, align 8
+  %66 = load i32, i32* @no_desc, align 4
+  %67 = call i32 @LRO_INC_STATS(%struct.net_lro_mgr* %65, i32 %66)
+  br label %68
+
+68:                                               ; preds = %64, %55, %35
+  %69 = load %struct.net_lro_desc*, %struct.net_lro_desc** %9, align 8
+  ret %struct.net_lro_desc* %69
+}
+
+declare dso_local i32 @lro_check_tcp_conn(%struct.net_lro_desc*, %struct.iphdr*, %struct.tcphdr*) #1
+
+declare dso_local i32 @LRO_INC_STATS(%struct.net_lro_mgr*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

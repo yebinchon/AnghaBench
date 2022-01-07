@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_13__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_13__ ;
+
+
 struct TYPE_15__ {int subclass; size_t masterbook; int dim; int* books; } ;
-typedef  TYPE_1__ vorbis_enc_floor_class ;
+typedef TYPE_1__ vorbis_enc_floor_class ;
 struct TYPE_16__ {int multiplier; int values; int partitions; size_t* partition_to_class; TYPE_13__* list; TYPE_1__* classes; } ;
-typedef  TYPE_2__ vorbis_enc_floor ;
+typedef TYPE_2__ vorbis_enc_floor ;
 struct TYPE_17__ {TYPE_4__* codebooks; } ;
-typedef  TYPE_3__ vorbis_enc_context ;
+typedef TYPE_3__ vorbis_enc_context ;
 struct TYPE_18__ {int nentries; } ;
-typedef  TYPE_4__ vorbis_enc_codebook ;
-typedef  int uint16_t ;
+typedef TYPE_4__ vorbis_enc_codebook ;
+typedef int uint16_t ;
 struct TYPE_19__ {int size_in_bits; } ;
-struct TYPE_14__ {size_t low; size_t high; int /*<<< orphan*/  x; } ;
-typedef  TYPE_5__ PutBitContext ;
+struct TYPE_14__ {size_t low; size_t high; int x; } ;
+typedef TYPE_5__ PutBitContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int FFMIN (int,int) ; 
- int MAX_FLOOR_VALUES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  ff_vorbis_floor1_render_list (TYPE_13__*,int,int*,int*,int,float*,int) ; 
- int ilog (int) ; 
- int /*<<< orphan*/  put_bits (TYPE_5__*,int,int) ; 
- int put_bits_count (TYPE_5__*) ; 
- scalar_t__ put_codeword (TYPE_5__*,TYPE_4__*,int) ; 
- int render_point (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int FFMIN (int,int) ;
+ int MAX_FLOOR_VALUES ;
+ int assert (int) ;
+ int ff_vorbis_floor1_render_list (TYPE_13__*,int,int*,int*,int,float*,int) ;
+ int ilog (int) ;
+ int put_bits (TYPE_5__*,int,int) ;
+ int put_bits_count (TYPE_5__*) ;
+ scalar_t__ put_codeword (TYPE_5__*,TYPE_4__*,int) ;
+ int render_point (int ,int,int ,int,int ) ;
 
 __attribute__((used)) static int floor_encode(vorbis_enc_context *venc, vorbis_enc_floor *fc,
                         PutBitContext *pb, uint16_t *posts,
                         float *floor, int samples)
 {
     int range = 255 / fc->multiplier + 1;
-    int coded[MAX_FLOOR_VALUES]; // first 2 values are unused
+    int coded[MAX_FLOOR_VALUES];
     int i, counter;
 
     if (pb->size_in_bits - put_bits_count(pb) < 1 + 2 * ilog(range - 1))
         return AVERROR(EINVAL);
-    put_bits(pb, 1, 1); // non zero
+    put_bits(pb, 1, 1);
     put_bits(pb, ilog(range - 1), posts[0]);
     put_bits(pb, ilog(range - 1), posts[1]);
     coded[0] = coded[1] = 1;
@@ -67,7 +67,7 @@ __attribute__((used)) static int floor_encode(vorbis_enc_context *venc, vorbis_e
         int lowroom = predicted;
         int room = FFMIN(highroom, lowroom);
         if (predicted == posts[i]) {
-            coded[i] = 0; // must be used later as flag!
+            coded[i] = 0;
             continue;
         } else {
             if (!coded[fc->list[i].low ])
@@ -101,19 +101,19 @@ __attribute__((used)) static int floor_encode(vorbis_enc_context *venc, vorbis_e
                     int maxval = 1;
                     if (c->books[l] != -1)
                         maxval = venc->codebooks[c->books[l]].nentries;
-                    // coded could be -1, but this still works, cause that is 0
+
                     if (coded[counter + k] < maxval)
                         break;
                 }
                 assert(l != csub);
-                cval   |= l << cshift;
+                cval |= l << cshift;
                 cshift += c->subclass;
             }
             if (put_codeword(pb, book, cval))
                 return AVERROR(EINVAL);
         }
         for (k = 0; k < c->dim; k++) {
-            int book  = c->books[cval & (csub-1)];
+            int book = c->books[cval & (csub-1)];
             int entry = coded[counter++];
             cval >>= c->subclass;
             if (book == -1)

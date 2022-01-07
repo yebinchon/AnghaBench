@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_20__ {double level_in; double level_out; double mix; double sdiff; int /*<<< orphan*/  lfo; scalar_t__ is_lfo; int /*<<< orphan*/ * sr; scalar_t__ samples; int /*<<< orphan*/  round; scalar_t__ smin; } ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_20__ {double level_in; double level_out; double mix; double sdiff; int lfo; scalar_t__ is_lfo; int * sr; scalar_t__ samples; int round; scalar_t__ smin; } ;
 struct TYPE_19__ {TYPE_2__** outputs; TYPE_4__* priv; } ;
 struct TYPE_18__ {int channels; TYPE_3__* dst; } ;
 struct TYPE_17__ {int nb_samples; scalar_t__* data; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
-typedef  TYPE_4__ ACrusherContext ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
+typedef TYPE_4__ ACrusherContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_1__**) ; 
- scalar_t__ av_frame_is_writable (TYPE_1__*) ; 
- double const bitreduction (TYPE_4__*,double) ; 
- int ff_filter_frame (TYPE_2__*,TYPE_1__*) ; 
- TYPE_1__* ff_get_audio_buffer (TYPE_2__*,int) ; 
- int /*<<< orphan*/  lfo_advance (int /*<<< orphan*/ *,int) ; 
- double lfo_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  round (scalar_t__) ; 
- double const samplereduction (TYPE_4__*,int /*<<< orphan*/ *,double) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_frame_copy_props (TYPE_1__*,TYPE_1__*) ;
+ int av_frame_free (TYPE_1__**) ;
+ scalar_t__ av_frame_is_writable (TYPE_1__*) ;
+ double const bitreduction (TYPE_4__*,double) ;
+ int ff_filter_frame (TYPE_2__*,TYPE_1__*) ;
+ TYPE_1__* ff_get_audio_buffer (TYPE_2__*,int) ;
+ int lfo_advance (int *,int) ;
+ double lfo_get (int *) ;
+ int round (scalar_t__) ;
+ double const samplereduction (TYPE_4__*,int *,double) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {

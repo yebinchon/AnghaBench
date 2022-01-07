@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CLEANUP_EXPENSIVE ; 
- scalar_t__ NUM_FIXED_BLOCKS ; 
- int /*<<< orphan*/  cfg_layout_finalize () ; 
- int /*<<< orphan*/  cfg_layout_initialize (unsigned int) ; 
- int /*<<< orphan*/  cleanup_cfg (int /*<<< orphan*/ ) ; 
- scalar_t__ dump_file ; 
- int /*<<< orphan*/  dump_flags ; 
- int /*<<< orphan*/  dump_flow_info (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layout_superblocks () ; 
- int /*<<< orphan*/  mark_dfs_back_edges () ; 
- scalar_t__ n_basic_blocks ; 
- int /*<<< orphan*/  tail_duplicate () ; 
+ int CLEANUP_EXPENSIVE ;
+ scalar_t__ NUM_FIXED_BLOCKS ;
+ int cfg_layout_finalize () ;
+ int cfg_layout_initialize (unsigned int) ;
+ int cleanup_cfg (int ) ;
+ scalar_t__ dump_file ;
+ int dump_flags ;
+ int dump_flow_info (scalar_t__,int ) ;
+ int layout_superblocks () ;
+ int mark_dfs_back_edges () ;
+ scalar_t__ n_basic_blocks ;
+ int tail_duplicate () ;
 
 void
 tracer (unsigned int flags)
@@ -41,6 +33,6 @@ tracer (unsigned int flags)
     dump_flow_info (dump_file, dump_flags);
   cfg_layout_finalize ();
 
-  /* Merge basic blocks in duplicated traces.  */
+
   cleanup_cfg (CLEANUP_EXPENSIVE);
 }

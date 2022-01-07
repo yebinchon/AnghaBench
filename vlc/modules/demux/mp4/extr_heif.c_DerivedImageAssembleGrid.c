@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_33__   TYPE_9__ ;
-typedef  struct TYPE_32__   TYPE_8__ ;
-typedef  struct TYPE_31__   TYPE_7__ ;
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_22__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_33__ TYPE_9__ ;
+typedef struct TYPE_32__ TYPE_8__ ;
+typedef struct TYPE_31__ TYPE_7__ ;
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_22__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
 struct TYPE_28__ {int output_width; int output_height; int columns_minus_one; int rows_minus_one; } ;
 union heif_derivation_data {TYPE_4__ ImageGrid; } ;
-typedef  scalar_t__ uint32_t ;
-typedef  size_t uint16_t ;
-struct TYPE_24__ {TYPE_9__* (* BOXDATA ) (int /*<<< orphan*/ ) ;} ;
-struct heif_private_t {TYPE_1__ current; int /*<<< orphan*/  p_root; } ;
-typedef  int /*<<< orphan*/  image_handler_t ;
+typedef scalar_t__ uint32_t ;
+typedef size_t uint16_t ;
+struct TYPE_24__ {TYPE_9__* (* BOXDATA ) (int ) ;} ;
+struct heif_private_t {TYPE_1__ current; int p_root; } ;
+typedef int image_handler_t ;
 struct TYPE_26__ {int i_sar_num; int i_width; int i_visible_width; int i_sar_den; int i_height; int i_visible_height; } ;
 struct TYPE_29__ {TYPE_2__ video; } ;
-typedef  TYPE_5__ es_format_t ;
+typedef TYPE_5__ es_format_t ;
 struct TYPE_30__ {scalar_t__ p_sys; } ;
-typedef  TYPE_6__ demux_t ;
-struct TYPE_31__ {int /*<<< orphan*/  p_buffer; } ;
-typedef  TYPE_7__ block_t ;
-struct TYPE_33__ {int /*<<< orphan*/  item_type; } ;
+typedef TYPE_6__ demux_t ;
+struct TYPE_31__ {int p_buffer; } ;
+typedef TYPE_7__ block_t ;
+struct TYPE_33__ {int item_type; } ;
 struct TYPE_32__ {scalar_t__ i_type; struct TYPE_32__* p_next; struct TYPE_32__* p_first; } ;
-struct TYPE_27__ {int /*<<< orphan*/  i_to_item_id; } ;
+struct TYPE_27__ {int i_to_item_id; } ;
 struct TYPE_25__ {scalar_t__ i_from_item_id; size_t i_reference_count; TYPE_3__* p_references; } ;
-typedef  TYPE_8__ MP4_Box_t ;
+typedef TYPE_8__ MP4_Box_t ;
 
-/* Variables and functions */
- TYPE_22__* BOXDATA (TYPE_8__ const*) ; 
- int /*<<< orphan*/  LoadGridImage (TYPE_6__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int,int,int) ; 
- TYPE_8__* MP4_BoxGet (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ReadDerivationData (TYPE_6__*,int /*<<< orphan*/ ,scalar_t__,union heif_derivation_data*) ; 
- int /*<<< orphan*/  SetPictureProperties (TYPE_6__*,scalar_t__,TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VIDEO_ES ; 
- int /*<<< orphan*/  VLC_CODEC_RGBA ; 
- int VLC_EGENERIC ; 
- scalar_t__ VLC_FOURCC (char,char,char,char) ; 
- scalar_t__ VLC_SUCCESS ; 
- TYPE_7__* block_Alloc (int) ; 
- int /*<<< orphan*/  es_format_Init (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * image_HandlerCreate (TYPE_6__*) ; 
- int /*<<< orphan*/  image_HandlerDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_6__*,char*,size_t,int,...) ; 
- int /*<<< orphan*/  p_infe ; 
- TYPE_9__* stub1 (int /*<<< orphan*/ ) ; 
+
+ TYPE_22__* BOXDATA (TYPE_8__ const*) ;
+ int LoadGridImage (TYPE_6__*,int *,int ,int ,size_t,int,int,int) ;
+ TYPE_8__* MP4_BoxGet (int ,char*) ;
+ scalar_t__ ReadDerivationData (TYPE_6__*,int ,scalar_t__,union heif_derivation_data*) ;
+ int SetPictureProperties (TYPE_6__*,scalar_t__,TYPE_5__*,int *) ;
+ int VIDEO_ES ;
+ int VLC_CODEC_RGBA ;
+ int VLC_EGENERIC ;
+ scalar_t__ VLC_FOURCC (char,char,char,char) ;
+ scalar_t__ VLC_SUCCESS ;
+ TYPE_7__* block_Alloc (int) ;
+ int es_format_Init (TYPE_5__*,int ,int ) ;
+ int * image_HandlerCreate (TYPE_6__*) ;
+ int image_HandlerDelete (int *) ;
+ int msg_Dbg (TYPE_6__*,char*,size_t,int,...) ;
+ int p_infe ;
+ TYPE_9__* stub1 (int ) ;
 
 __attribute__((used)) static int DerivedImageAssembleGrid( demux_t *p_demux, uint32_t i_grid_item_id,
                                      es_format_t *fmt, block_t **pp_block )
@@ -122,7 +122,7 @@ __attribute__((used)) static int DerivedImageAssembleGrid( demux_t *p_demux, uin
                        derivation_data.ImageGrid.output_height );
     }
 
-    SetPictureProperties( p_demux, i_grid_item_id, fmt, NULL );
+    SetPictureProperties( p_demux, i_grid_item_id, fmt, ((void*)0) );
 
     image_HandlerDelete( handler );
 

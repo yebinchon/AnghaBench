@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct server {int fd; } ;
-struct prompt {int /*<<< orphan*/  desc; struct prompt* next; } ;
+struct prompt {int desc; struct prompt* next; } ;
 struct fdescriptor {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LogTIMER ; 
- struct server* descriptor2server (struct fdescriptor*) ; 
- scalar_t__ descriptor_UpdateSet (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int) ; 
- struct prompt* log_PromptList () ; 
+
+ int FD_SET (int,int *) ;
+ int LogTIMER ;
+ struct server* descriptor2server (struct fdescriptor*) ;
+ scalar_t__ descriptor_UpdateSet (int *,int *,int *,int *,int*) ;
+ int log_Printf (int ,char*,int) ;
+ struct prompt* log_PromptList () ;
 
 __attribute__((used)) static int
 server_UpdateSet(struct fdescriptor *d, fd_set *r, fd_set *w, fd_set *e, int *n)

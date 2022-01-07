@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct IsdnCardState {int dummy; } ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int WORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HIBYTE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOBYTE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wByteAMD (struct IsdnCardState*,int,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static void /* macro wWordAMD */
+ int HIBYTE (int ) ;
+ int LOBYTE (int ) ;
+ int wByteAMD (struct IsdnCardState*,int,int ) ;
+
+__attribute__((used)) static void
 WriteWordAmd7930(struct IsdnCardState *cs, BYTE reg, WORD val)
 {
         wByteAMD(cs, 0x00, reg);

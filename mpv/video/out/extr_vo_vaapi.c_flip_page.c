@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
-struct priv {size_t visible_surface; size_t output_surface; int /*<<< orphan*/ * output_surfaces; } ;
+struct priv {size_t visible_surface; size_t output_surface; int * output_surfaces; } ;
 
-/* Variables and functions */
- int MAX_OUTPUT_SURFACES ; 
- int /*<<< orphan*/  render_to_screen (struct priv*,int /*<<< orphan*/ ) ; 
+
+ int MAX_OUTPUT_SURFACES ;
+ int render_to_screen (struct priv*,int ) ;
 
 __attribute__((used)) static void flip_page(struct vo *vo)
 {

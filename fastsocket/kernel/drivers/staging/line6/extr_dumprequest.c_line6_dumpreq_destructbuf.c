@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct line6_dump_request {TYPE_1__* reqbufs; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * buffer; } ;
+struct TYPE_2__ {int * buffer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+ int kfree (int *) ;
 
 void line6_dumpreq_destructbuf(struct line6_dump_request *l6dr, int num)
 {
-	if (l6dr == NULL)
-		return;
-	if (l6dr->reqbufs[num].buffer == NULL)
-		return;
-	kfree(l6dr->reqbufs[num].buffer);
-	l6dr->reqbufs[num].buffer = NULL;
+ if (l6dr == ((void*)0))
+  return;
+ if (l6dr->reqbufs[num].buffer == ((void*)0))
+  return;
+ kfree(l6dr->reqbufs[num].buffer);
+ l6dr->reqbufs[num].buffer = ((void*)0);
 }

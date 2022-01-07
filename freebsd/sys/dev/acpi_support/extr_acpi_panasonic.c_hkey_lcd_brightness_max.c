@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_SERIAL_ASSERT (int /*<<< orphan*/ ) ; 
- int EPERM ; 
-#define  HKEY_GET 129 
- int HKEY_REG_LCD_BRIGHTNESS_MAX_AC ; 
- int HKEY_REG_LCD_BRIGHTNESS_MAX_DC ; 
-#define  HKEY_SET 128 
- scalar_t__ POWER_PROFILE_PERFORMANCE ; 
- int /*<<< orphan*/  acpi_panasonic_sinf (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  panasonic ; 
- scalar_t__ power_profile_get_state () ; 
+
+
+
+typedef int UINT32 ;
+typedef int ACPI_HANDLE ;
+
+
+ int ACPI_SERIAL_ASSERT (int ) ;
+ int EPERM ;
+
+ int HKEY_REG_LCD_BRIGHTNESS_MAX_AC ;
+ int HKEY_REG_LCD_BRIGHTNESS_MAX_DC ;
+
+ scalar_t__ POWER_PROFILE_PERFORMANCE ;
+ int acpi_panasonic_sinf (int ,int) ;
+ int panasonic ;
+ scalar_t__ power_profile_get_state () ;
 
 __attribute__((used)) static int
 hkey_lcd_brightness_max(ACPI_HANDLE h, int op, UINT32 *val)
 {
-	int reg;
+ int reg;
 
-	ACPI_SERIAL_ASSERT(panasonic);
-	reg = (power_profile_get_state() == POWER_PROFILE_PERFORMANCE) ?
-	    HKEY_REG_LCD_BRIGHTNESS_MAX_AC : HKEY_REG_LCD_BRIGHTNESS_MAX_DC;
+ ACPI_SERIAL_ASSERT(panasonic);
+ reg = (power_profile_get_state() == POWER_PROFILE_PERFORMANCE) ?
+     HKEY_REG_LCD_BRIGHTNESS_MAX_AC : HKEY_REG_LCD_BRIGHTNESS_MAX_DC;
 
-	switch (op) {
-	case HKEY_SET:
-		return (EPERM);
-		break;
-	case HKEY_GET:
-		*val = acpi_panasonic_sinf(h, reg);
-		break;
-	}
+ switch (op) {
+ case 128:
+  return (EPERM);
+  break;
+ case 129:
+  *val = acpi_panasonic_sinf(h, reg);
+  break;
+ }
 
-	return (0);
+ return (0);
 }

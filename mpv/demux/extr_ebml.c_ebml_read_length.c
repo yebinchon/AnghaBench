@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  stream_t ;
 
-/* Variables and functions */
- int EBML_UINT_INVALID ; 
- int stream_read_char (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+typedef int stream_t ;
+
+
+ int EBML_UINT_INVALID ;
+ int stream_read_char (int *) ;
 
 uint64_t ebml_read_length(stream_t *s)
 {
@@ -36,7 +36,7 @@ uint64_t ebml_read_length(stream_t *s)
     }
     if (j == num_ffs)
         return EBML_UINT_INVALID;
-    if (len >= 1ULL<<63)   // Can happen if stream_read_char returns EOF
+    if (len >= 1ULL<<63)
         return EBML_UINT_INVALID;
     return len;
 }

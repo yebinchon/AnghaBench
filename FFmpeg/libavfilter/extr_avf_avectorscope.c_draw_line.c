@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AudioVectorScopeContext ;
 
-/* Variables and functions */
- int FFABS (int) ; 
- int /*<<< orphan*/  draw_dot (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int AudioVectorScopeContext ;
+
+
+ int FFABS (int) ;
+ int draw_dot (int *,int,int) ;
 
 __attribute__((used)) static void draw_line(AudioVectorScopeContext *s, int x0, int y0, int x1, int y1)
 {

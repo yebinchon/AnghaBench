@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG_PTR ;
-typedef  int ULONG ;
-typedef  int* PVOID ;
-typedef  int POINT ;
-typedef  int /*<<< orphan*/ * HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateCompatibleDC (int /*<<< orphan*/ *) ; 
- int ERROR_INVALID_HANDLE ; 
- int ERROR_INVALID_PARAMETER ; 
- int GDI_HANDLE_BASETYPE_MASK ; 
- int GDI_OBJECT_TYPE_REGION ; 
- int GetLastError () ; 
- int NtGdiPolyPolyDraw (int /*<<< orphan*/ *,int*,int*,int,int) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST (int) ; 
+
+
+
+typedef int ULONG_PTR ;
+typedef int ULONG ;
+typedef int* PVOID ;
+typedef int POINT ;
+typedef int * HDC ;
+
+
+ int ASSERT (int *) ;
+ int * CreateCompatibleDC (int *) ;
+ int ERROR_INVALID_HANDLE ;
+ int ERROR_INVALID_PARAMETER ;
+ int GDI_HANDLE_BASETYPE_MASK ;
+ int GDI_OBJECT_TYPE_REGION ;
+ int GetLastError () ;
+ int NtGdiPolyPolyDraw (int *,int*,int*,int,int) ;
+ int SetLastError (int ) ;
+ int TEST (int) ;
 
 __attribute__((used)) static
 void
@@ -42,43 +42,43 @@ Test_Params(void)
     HDC hDC;
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(NULL, NULL, NULL, 0, 0);
+    ret = NtGdiPolyPolyDraw(((void*)0), ((void*)0), ((void*)0), 0, 0);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(NULL, NULL, NULL, 0, 1);
+    ret = NtGdiPolyPolyDraw(((void*)0), ((void*)0), ((void*)0), 0, 1);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(NULL, NULL, NULL, 0, 2);
+    ret = NtGdiPolyPolyDraw(((void*)0), ((void*)0), ((void*)0), 0, 2);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(NULL, NULL, NULL, 0, 3);
+    ret = NtGdiPolyPolyDraw(((void*)0), ((void*)0), ((void*)0), 0, 3);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(NULL, NULL, NULL, 0, 4);
+    ret = NtGdiPolyPolyDraw(((void*)0), ((void*)0), ((void*)0), 0, 4);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(NULL, NULL, NULL, 0, 5);
+    ret = NtGdiPolyPolyDraw(((void*)0), ((void*)0), ((void*)0), 0, 5);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(NULL, NULL, NULL, 0, 6);
+    ret = NtGdiPolyPolyDraw(((void*)0), ((void*)0), ((void*)0), 0, 6);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
-////////////////////////////////////////////////////////////////////////////////
 
-    /* Test with an invalid DC */
+
+
 
     SetLastError(0);
     ret = NtGdiPolyPolyDraw(0, Points, Count1, 2, 1);
@@ -143,7 +143,7 @@ Test_Params(void)
     TEST(GetLastError() == ERROR_INVALID_HANDLE);
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(hDC, Points, NULL, 2, 1);
+    ret = NtGdiPolyPolyDraw(hDC, Points, ((void*)0), 2, 1);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
@@ -153,7 +153,7 @@ Test_Params(void)
     TEST(GetLastError() == 0);
 
     SetLastError(0);
-    ret = NtGdiPolyPolyDraw(hDC, NULL, Count1, 2, 1);
+    ret = NtGdiPolyPolyDraw(hDC, ((void*)0), Count1, 2, 1);
     TEST(ret == 0);
     TEST(GetLastError() == 0);
 
@@ -163,11 +163,11 @@ Test_Params(void)
     TEST(GetLastError() == 0);
 
 
-////////////////////////////////////////////////////////////////////////////////
 
-    /* Test with a valid DC */
 
-    hDC = CreateCompatibleDC(NULL);
+
+
+    hDC = CreateCompatibleDC(((void*)0));
     ASSERT(hDC);
 
     SetLastError(0);
@@ -184,22 +184,6 @@ Test_Params(void)
     ret = NtGdiPolyPolyDraw(hDC, Points, Count1, 2, 2);
     TEST(ret == 1);
     TEST(GetLastError() == 0);
-
-#if 0
-    SetLastError(0);
-    // better don't do this on win xp!!! (random crashes)
-//    ret = NtGdiPolyPolyDraw(hDC, Points, Count1, 2, 3);
-    TEST(ret == 0);
-    TEST(GetLastError() == ERROR_INVALID_PARAMETER);
-
-    SetLastError(0);
-    // better don't do this on win xp!!! (random crashes)
-//    ret = NtGdiPolyPolyDraw(hDC, Points, Count1, 2, 4);
-    TEST(ret == 0);
-    TEST(GetLastError() == ERROR_INVALID_PARAMETER);
-
-#endif
-
     SetLastError(0);
     ret = NtGdiPolyPolyDraw(hDC, Points, Count2, 2, 1);
     TEST(ret == 0);

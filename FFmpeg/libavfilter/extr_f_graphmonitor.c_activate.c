@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_21__ {TYPE_3__** outputs; TYPE_3__** inputs; TYPE_1__* priv; } ;
-struct TYPE_20__ {int /*<<< orphan*/  time_base; } ;
+struct TYPE_20__ {int time_base; } ;
 struct TYPE_19__ {scalar_t__ pts; } ;
 struct TYPE_18__ {scalar_t__ pts; } ;
-typedef  TYPE_1__ GraphMonitorContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ GraphMonitorContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- scalar_t__ av_rescale_q (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int create_frame (TYPE_4__*,scalar_t__) ; 
- int ff_inlink_consume_frame (TYPE_3__*,TYPE_2__**) ; 
- scalar_t__ ff_inlink_queued_frames (TYPE_3__*) ; 
- scalar_t__ ff_outlink_frame_wanted (TYPE_3__*) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS (TYPE_3__*,TYPE_3__*) ;
+ int FF_FILTER_FORWARD_STATUS_BACK (TYPE_3__*,TYPE_3__*) ;
+ int FF_FILTER_FORWARD_WANTED (TYPE_3__*,TYPE_3__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ scalar_t__ av_rescale_q (scalar_t__,int ,int ) ;
+ int create_frame (TYPE_4__*,scalar_t__) ;
+ int ff_inlink_consume_frame (TYPE_3__*,TYPE_2__**) ;
+ scalar_t__ ff_inlink_queued_frames (TYPE_3__*) ;
+ scalar_t__ ff_outlink_frame_wanted (TYPE_3__*) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int activate(AVFilterContext *ctx)
     FF_FILTER_FORWARD_STATUS_BACK(outlink, inlink);
 
     if (ff_inlink_queued_frames(inlink)) {
-        AVFrame *frame = NULL;
+        AVFrame *frame = ((void*)0);
         int ret;
 
         ret = ff_inlink_consume_frame(inlink, &frame);

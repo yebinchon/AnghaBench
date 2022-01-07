@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uchar ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uchar ;
 struct TYPE_3__ {scalar_t__ p; scalar_t__ ep; } ;
-typedef  TYPE_1__ DwarfBuf ;
+typedef TYPE_1__ DwarfBuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ nil ; 
+
+ int memmove (int *,scalar_t__,int) ;
+ int memset (int *,int ,int) ;
+ scalar_t__ nil ;
 
 int
 dwarfgetn(DwarfBuf *b, uchar *a, int n)
 {
-	if(b->p==nil || b->p+n > b->ep){
-		b->p = nil;
-		memset(a, 0, n);
-		return -1;
-	}
-	memmove(a, b->p, n);
-	b->p += n;
-	return 0;
+ if(b->p==nil || b->p+n > b->ep){
+  b->p = nil;
+  memset(a, 0, n);
+  return -1;
+ }
+ memmove(a, b->p, n);
+ b->p += n;
+ return 0;
 }

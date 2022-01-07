@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int i64 ;
-struct TYPE_12__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_11__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ Sqlite ;
-typedef  TYPE_2__ Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  closedb (TYPE_2__*,TYPE_1__*) ; 
- int execsql_i64 (TYPE_2__*,TYPE_1__*,char*) ; 
- int /*<<< orphan*/  opendb (TYPE_2__*,TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_and_free_err (TYPE_2__*) ; 
- int /*<<< orphan*/  test_error (TYPE_2__*,char*,int) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int i64 ;
+struct TYPE_12__ {int member_0; } ;
+struct TYPE_11__ {int member_0; } ;
+typedef TYPE_1__ Sqlite ;
+typedef TYPE_2__ Error ;
+
+
+ int closedb (TYPE_2__*,TYPE_1__*) ;
+ int execsql_i64 (TYPE_2__*,TYPE_1__*,char*) ;
+ int opendb (TYPE_2__*,TYPE_1__*,char*,int ) ;
+ int print_and_free_err (TYPE_2__*) ;
+ int test_error (TYPE_2__*,char*,int) ;
 
 __attribute__((used)) static char *walthread5_thread(int iTid, void *pArg){
-  Error err = {0};                /* Error code and message */
-  Sqlite db = {0};                /* SQLite database connection */
+  Error err = {0};
+  Sqlite db = {0};
   i64 nRow;
 
   opendb(&err, &db, "test.db", 0);

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_2__ {int type; int id; } ;
-struct csr1212_keyval {scalar_t__ valid; scalar_t__ offset; int /*<<< orphan*/ * prev; int /*<<< orphan*/ * next; int /*<<< orphan*/ * associate; TYPE_1__ key; int /*<<< orphan*/  refcnt; } ;
+struct csr1212_keyval {scalar_t__ valid; scalar_t__ offset; int * prev; int * next; int * associate; TYPE_1__ key; int refcnt; } ;
 
-/* Variables and functions */
- struct csr1212_keyval* CSR1212_MALLOC (int) ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int) ; 
- int* csr1212_key_id_type_map ; 
+
+ struct csr1212_keyval* CSR1212_MALLOC (int) ;
+ int atomic_set (int *,int) ;
+ int* csr1212_key_id_type_map ;
 
 __attribute__((used)) static struct csr1212_keyval *csr1212_new_keyval(u8 type, u8 key)
 {
-	struct csr1212_keyval *kv;
+ struct csr1212_keyval *kv;
 
-	if (key < 0x30 && ((csr1212_key_id_type_map[key] & (1 << type)) == 0))
-		return NULL;
+ if (key < 0x30 && ((csr1212_key_id_type_map[key] & (1 << type)) == 0))
+  return ((void*)0);
 
-	kv = CSR1212_MALLOC(sizeof(*kv));
-	if (!kv)
-		return NULL;
+ kv = CSR1212_MALLOC(sizeof(*kv));
+ if (!kv)
+  return ((void*)0);
 
-	atomic_set(&kv->refcnt, 1);
-	kv->key.type = type;
-	kv->key.id = key;
-	kv->associate = NULL;
-	kv->next = NULL;
-	kv->prev = NULL;
-	kv->offset = 0;
-	kv->valid = 0;
-	return kv;
+ atomic_set(&kv->refcnt, 1);
+ kv->key.type = type;
+ kv->key.id = key;
+ kv->associate = ((void*)0);
+ kv->next = ((void*)0);
+ kv->prev = ((void*)0);
+ kv->offset = 0;
+ kv->valid = 0;
+ return kv;
 }

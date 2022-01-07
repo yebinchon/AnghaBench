@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ccu_data {int /*<<< orphan*/ * base; int /*<<< orphan*/ * node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ccu_clks_teardown (struct ccu_data*) ; 
- int /*<<< orphan*/  iounmap (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  of_clk_del_provider (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  of_node_put (int /*<<< orphan*/ *) ; 
+
+
+
+struct ccu_data {int * base; int * node; } ;
+
+
+ int ccu_clks_teardown (struct ccu_data*) ;
+ int iounmap (int *) ;
+ int of_clk_del_provider (int *) ;
+ int of_node_put (int *) ;
 
 __attribute__((used)) static void kona_ccu_teardown(struct ccu_data *ccu)
 {
-	if (!ccu->base)
-		return;
+ if (!ccu->base)
+  return;
 
-	of_clk_del_provider(ccu->node);	/* safe if never added */
-	ccu_clks_teardown(ccu);
-	of_node_put(ccu->node);
-	ccu->node = NULL;
-	iounmap(ccu->base);
-	ccu->base = NULL;
+ of_clk_del_provider(ccu->node);
+ ccu_clks_teardown(ccu);
+ of_node_put(ccu->node);
+ ccu->node = ((void*)0);
+ iounmap(ccu->base);
+ ccu->base = ((void*)0);
 }

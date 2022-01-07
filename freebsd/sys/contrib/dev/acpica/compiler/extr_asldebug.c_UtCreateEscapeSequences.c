@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT32 ;
 
-/* Variables and functions */
- char AcpiUtHexToAsciiChar (char,int) ; 
- char* UtLocalCacheCalloc (int) ; 
+
+
+
+typedef int UINT32 ;
+
+
+ char AcpiUtHexToAsciiChar (char,int) ;
+ char* UtLocalCacheCalloc (int) ;
 
 __attribute__((used)) static char *
 UtCreateEscapeSequences (
-    char                    *InString)
+    char *InString)
 {
-    char                    *String = InString;
-    char                    *OutString;
-    char                    *OutStringPtr;
-    UINT32                  InStringLength = 0;
-    UINT32                  EscapeCount = 0;
+    char *String = InString;
+    char *OutString;
+    char *OutStringPtr;
+    UINT32 InStringLength = 0;
+    UINT32 EscapeCount = 0;
 
 
-    /*
-     * Determine up front how many escapes are within the string.
-     * Obtain the input string length while doing so.
-     */
+
+
+
+
     while (*String)
     {
         if ((*String <= 0x1F) || (*String >= 0x7F))
@@ -44,21 +44,21 @@ UtCreateEscapeSequences (
 
     if (!EscapeCount)
     {
-        return (InString); /* No escapes, nothing to do */
+        return (InString);
     }
 
-    /* New string buffer, 3 extra chars per escape (4 total) */
+
 
     OutString = UtLocalCacheCalloc (InStringLength + (EscapeCount * 3));
     OutStringPtr = OutString;
 
-    /* Convert non-ascii or non-printable chars to escape sequences */
+
 
     while (*InString)
     {
         if ((*InString <= 0x1F) || (*InString >= 0x7F))
         {
-            /* Insert a \x hex escape sequence */
+
 
             OutStringPtr[0] = '\\';
             OutStringPtr[1] = 'x';
@@ -66,7 +66,7 @@ UtCreateEscapeSequences (
             OutStringPtr[3] = AcpiUtHexToAsciiChar (*InString, 0);
             OutStringPtr += 4;
         }
-        else /* Normal ASCII character */
+        else
         {
             *OutStringPtr = *InString;
             OutStringPtr++;

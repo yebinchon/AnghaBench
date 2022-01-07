@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ OR ; 
- scalar_t__ ORTOP ; 
- int /*<<< orphan*/  addtok (scalar_t__) ; 
- int /*<<< orphan*/  branch () ; 
- scalar_t__ lex () ; 
- scalar_t__ tok ; 
+ scalar_t__ OR ;
+ scalar_t__ ORTOP ;
+ int addtok (scalar_t__) ;
+ int branch () ;
+ scalar_t__ lex () ;
+ scalar_t__ tok ;
 
 __attribute__((used)) static void
 regexp (int toplevel)
@@ -28,8 +20,8 @@ regexp (int toplevel)
       tok = lex();
       branch();
       if (toplevel)
-	addtok(ORTOP);
+ addtok(ORTOP);
       else
-	addtok(OR);
+ addtok(OR);
     }
 }

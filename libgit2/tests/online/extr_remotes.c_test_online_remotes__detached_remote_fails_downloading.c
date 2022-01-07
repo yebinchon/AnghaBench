@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_remote ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_DIRECTION_FETCH ; 
- int /*<<< orphan*/  URL ; 
- int /*<<< orphan*/  cl_git_fail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_remote_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_remote_create_detached (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_remote_download (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_remote_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_remote ;
+
+
+ int GIT_DIRECTION_FETCH ;
+ int URL ;
+ int cl_git_fail (int ) ;
+ int cl_git_pass (int ) ;
+ int git_remote_connect (int *,int ,int *,int *,int *) ;
+ int git_remote_create_detached (int **,int ) ;
+ int git_remote_download (int *,int *,int *) ;
+ int git_remote_free (int *) ;
 
 void test_online_remotes__detached_remote_fails_downloading(void)
 {
-	git_remote *remote;
+ git_remote *remote;
 
-	cl_git_pass(git_remote_create_detached(&remote, URL));
-	cl_git_pass(git_remote_connect(remote, GIT_DIRECTION_FETCH, NULL, NULL, NULL));
-	cl_git_fail(git_remote_download(remote, NULL, NULL));
+ cl_git_pass(git_remote_create_detached(&remote, URL));
+ cl_git_pass(git_remote_connect(remote, GIT_DIRECTION_FETCH, ((void*)0), ((void*)0), ((void*)0)));
+ cl_git_fail(git_remote_download(remote, ((void*)0), ((void*)0)));
 
-	git_remote_free(remote);
+ git_remote_free(remote);
 }

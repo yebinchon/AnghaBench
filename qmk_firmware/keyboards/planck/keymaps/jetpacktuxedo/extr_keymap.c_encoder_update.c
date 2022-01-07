@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ IS_LAYER_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KC_DOWN ; 
- int /*<<< orphan*/  KC_LEFT ; 
- int /*<<< orphan*/  KC_RGHT ; 
- int /*<<< orphan*/  KC_UP ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  clicky_freq_down () ; 
- int /*<<< orphan*/  clicky_freq_up () ; 
- float clicky_rand ; 
- scalar_t__ is_clicky_on () ; 
- scalar_t__ muse_mode ; 
- int /*<<< orphan*/  muse_offset ; 
- int muse_tempo ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+ scalar_t__ IS_LAYER_ON (int ) ;
+ int KC_DOWN ;
+ int KC_LEFT ;
+ int KC_RGHT ;
+ int KC_UP ;
+ int _RAISE ;
+ int clicky_freq_down () ;
+ int clicky_freq_up () ;
+ float clicky_rand ;
+ scalar_t__ is_clicky_on () ;
+ scalar_t__ muse_mode ;
+ int muse_offset ;
+ int muse_tempo ;
+ int register_code (int ) ;
+ int unregister_code (int ) ;
 
 void encoder_update(bool clockwise) {
   if (is_clicky_on()) {

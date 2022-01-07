@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct tg3 {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MII_TG3_MISC_SHDW ; 
- int MII_TG3_MISC_SHDW_WREN ; 
- int tg3_writephy (struct tg3*,int /*<<< orphan*/ ,int) ; 
+
+ int MII_TG3_MISC_SHDW ;
+ int MII_TG3_MISC_SHDW_WREN ;
+ int tg3_writephy (struct tg3*,int ,int) ;
 
 __attribute__((used)) static int tg3_phy_shdw_write(struct tg3 *tp, int reg, u32 val)
 {
-	return tg3_writephy(tp, MII_TG3_MISC_SHDW,
-			    reg | val | MII_TG3_MISC_SHDW_WREN);
+ return tg3_writephy(tp, MII_TG3_MISC_SHDW,
+       reg | val | MII_TG3_MISC_SHDW_WREN);
 }

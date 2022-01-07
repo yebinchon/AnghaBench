@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef scalar_t__ off_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_22__ {scalar_t__ content_length_n; } ;
-struct TYPE_23__ {int lingering_close; int /*<<< orphan*/  pool; TYPE_1__* connection; TYPE_2__ headers_in; int /*<<< orphan*/  request_body_no_buffering; TYPE_4__* request_body; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
-struct TYPE_24__ {int rest; int /*<<< orphan*/  busy; int /*<<< orphan*/  free; TYPE_8__* chunked; } ;
-typedef  TYPE_4__ ngx_http_request_body_t ;
+struct TYPE_23__ {int lingering_close; int pool; TYPE_1__* connection; TYPE_2__ headers_in; int request_body_no_buffering; TYPE_4__* request_body; } ;
+typedef TYPE_3__ ngx_http_request_t ;
+struct TYPE_24__ {int rest; int busy; int free; TYPE_8__* chunked; } ;
+typedef TYPE_4__ ngx_http_request_body_t ;
 struct TYPE_25__ {scalar_t__ client_max_body_size; } ;
-typedef  TYPE_5__ ngx_http_core_loc_conf_t ;
-typedef  int /*<<< orphan*/  ngx_http_chunked_t ;
+typedef TYPE_5__ ngx_http_core_loc_conf_t ;
+typedef int ngx_http_chunked_t ;
 struct TYPE_26__ {struct TYPE_26__* next; TYPE_7__* buf; } ;
-typedef  TYPE_6__ ngx_chain_t ;
-typedef  scalar_t__ ngx_buf_tag_t ;
-struct TYPE_27__ {int temporary; size_t start; size_t pos; size_t last; int last_buf; int /*<<< orphan*/  flush; int /*<<< orphan*/  end; scalar_t__ tag; scalar_t__ file_pos; scalar_t__ file_last; int /*<<< orphan*/  in_file; } ;
-typedef  TYPE_7__ ngx_buf_t ;
+typedef TYPE_6__ ngx_chain_t ;
+typedef scalar_t__ ngx_buf_tag_t ;
+struct TYPE_27__ {int temporary; size_t start; size_t pos; size_t last; int last_buf; int flush; int end; scalar_t__ tag; scalar_t__ file_pos; scalar_t__ file_last; int in_file; } ;
+typedef TYPE_7__ ngx_buf_t ;
 struct TYPE_28__ {scalar_t__ size; int length; } ;
-struct TYPE_21__ {int /*<<< orphan*/  log; } ;
+struct TYPE_21__ {int log; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_HTTP_BAD_REQUEST ; 
- scalar_t__ NGX_HTTP_INTERNAL_SERVER_ERROR ; 
- scalar_t__ NGX_HTTP_REQUEST_ENTITY_TOO_LARGE ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_EVENT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- TYPE_6__* ngx_chain_get_free_buf (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_chain_update_chains (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_6__**,scalar_t__) ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- TYPE_5__* ngx_http_get_module_loc_conf (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_parse_chunked (TYPE_3__*,TYPE_7__*,TYPE_8__*) ; 
- int /*<<< orphan*/  ngx_http_read_client_request_body ; 
- scalar_t__ ngx_http_top_request_body_filter (TYPE_3__*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,size_t,size_t,size_t,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_7__*,int) ; 
- TYPE_8__* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_HTTP_BAD_REQUEST ;
+ scalar_t__ NGX_HTTP_INTERNAL_SERVER_ERROR ;
+ scalar_t__ NGX_HTTP_REQUEST_ENTITY_TOO_LARGE ;
+ int NGX_LOG_DEBUG_EVENT ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ TYPE_6__* ngx_chain_get_free_buf (int ,int *) ;
+ int ngx_chain_update_chains (int ,int *,int *,TYPE_6__**,scalar_t__) ;
+ int ngx_http_core_module ;
+ TYPE_5__* ngx_http_get_module_loc_conf (TYPE_3__*,int ) ;
+ scalar_t__ ngx_http_parse_chunked (TYPE_3__*,TYPE_7__*,TYPE_8__*) ;
+ int ngx_http_read_client_request_body ;
+ scalar_t__ ngx_http_top_request_body_filter (TYPE_3__*,TYPE_6__*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug7 (int ,int ,int ,char*,int,int ,size_t,size_t,size_t,scalar_t__,scalar_t__) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
+ int ngx_memzero (TYPE_7__*,int) ;
+ TYPE_8__* ngx_pcalloc (int ,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_request_body_chunked_filter(ngx_http_request_t *r, ngx_chain_t *in)
 {
-    size_t                     size;
-    ngx_int_t                  rc;
-    ngx_buf_t                 *b;
-    ngx_chain_t               *cl, *out, *tl, **ll;
-    ngx_http_request_body_t   *rb;
-    ngx_http_core_loc_conf_t  *clcf;
+    size_t size;
+    ngx_int_t rc;
+    ngx_buf_t *b;
+    ngx_chain_t *cl, *out, *tl, **ll;
+    ngx_http_request_body_t *rb;
+    ngx_http_core_loc_conf_t *clcf;
 
     rb = r->request_body;
 
@@ -77,7 +77,7 @@ ngx_http_request_body_chunked_filter(ngx_http_request_t *r, ngx_chain_t *in)
                        "http request body chunked filter");
 
         rb->chunked = ngx_pcalloc(r->pool, sizeof(ngx_http_chunked_t));
-        if (rb->chunked == NULL) {
+        if (rb->chunked == ((void*)0)) {
             return NGX_HTTP_INTERNAL_SERVER_ERROR;
         }
 
@@ -85,7 +85,7 @@ ngx_http_request_body_chunked_filter(ngx_http_request_t *r, ngx_chain_t *in)
         rb->rest = 3;
     }
 
-    out = NULL;
+    out = ((void*)0);
     ll = &out;
 
     for (cl = in; cl; cl = cl->next) {
@@ -105,7 +105,7 @@ ngx_http_request_body_chunked_filter(ngx_http_request_t *r, ngx_chain_t *in)
 
             if (rc == NGX_OK) {
 
-                /* a chunk has been parsed successfully */
+
 
                 clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);
 
@@ -125,7 +125,7 @@ ngx_http_request_body_chunked_filter(ngx_http_request_t *r, ngx_chain_t *in)
                 }
 
                 tl = ngx_chain_get_free_buf(r->pool, &rb->free);
-                if (tl == NULL) {
+                if (tl == ((void*)0)) {
                     return NGX_HTTP_INTERNAL_SERVER_ERROR;
                 }
 
@@ -164,12 +164,12 @@ ngx_http_request_body_chunked_filter(ngx_http_request_t *r, ngx_chain_t *in)
 
             if (rc == NGX_DONE) {
 
-                /* a whole response has been parsed successfully */
+
 
                 rb->rest = 0;
 
                 tl = ngx_chain_get_free_buf(r->pool, &rb->free);
-                if (tl == NULL) {
+                if (tl == ((void*)0)) {
                     return NGX_HTTP_INTERNAL_SERVER_ERROR;
                 }
 
@@ -187,14 +187,14 @@ ngx_http_request_body_chunked_filter(ngx_http_request_t *r, ngx_chain_t *in)
 
             if (rc == NGX_AGAIN) {
 
-                /* set rb->rest, amount of data we want to see next time */
+
 
                 rb->rest = rb->chunked->length;
 
                 break;
             }
 
-            /* invalid */
+
 
             ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
                           "client sent invalid chunked body");

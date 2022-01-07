@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int rbsp_buffer_alloc_size; int /*<<< orphan*/ * rbsp_buffer; scalar_t__ rbsp_buffer_ref; } ;
-typedef  TYPE_1__ H2645RBSP ;
 
-/* Variables and functions */
- unsigned int AV_INPUT_BUFFER_PADDING_SIZE ; 
- unsigned int FFMIN (unsigned int,unsigned int) ; 
- unsigned int INT_MAX ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ *) ; 
- scalar_t__ av_buffer_create (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ av_buffer_is_writable (scalar_t__) ; 
- int /*<<< orphan*/  av_buffer_unref (scalar_t__*) ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * av_mallocz (unsigned int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int rbsp_buffer_alloc_size; int * rbsp_buffer; scalar_t__ rbsp_buffer_ref; } ;
+typedef TYPE_1__ H2645RBSP ;
+
+
+ unsigned int AV_INPUT_BUFFER_PADDING_SIZE ;
+ unsigned int FFMIN (unsigned int,unsigned int) ;
+ unsigned int INT_MAX ;
+ int av_assert0 (int *) ;
+ scalar_t__ av_buffer_create (int *,unsigned int,int *,int *,int ) ;
+ scalar_t__ av_buffer_is_writable (scalar_t__) ;
+ int av_buffer_unref (scalar_t__*) ;
+ int av_free (int *) ;
+ int av_freep (int **) ;
+ int * av_mallocz (unsigned int) ;
+ int memset (int *,int ,unsigned int) ;
 
 __attribute__((used)) static void alloc_rbsp_buffer(H2645RBSP *rbsp, unsigned int size, int use_ref)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static void alloc_rbsp_buffer(H2645RBSP *rbsp, unsigned in
 
     if (use_ref) {
         rbsp->rbsp_buffer_ref = av_buffer_create(rbsp->rbsp_buffer, size,
-                                                 NULL, NULL, 0);
+                                                 ((void*)0), ((void*)0), 0);
         if (!rbsp->rbsp_buffer_ref)
             goto fail;
     }
@@ -67,7 +67,7 @@ fail:
     rbsp->rbsp_buffer_alloc_size = 0;
     if (rbsp->rbsp_buffer_ref) {
         av_buffer_unref(&rbsp->rbsp_buffer_ref);
-        rbsp->rbsp_buffer = NULL;
+        rbsp->rbsp_buffer = ((void*)0);
     } else
         av_freep(&rbsp->rbsp_buffer);
 

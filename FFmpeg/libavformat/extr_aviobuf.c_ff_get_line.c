@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_feof (int /*<<< orphan*/ *) ; 
- char avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int AVIOContext ;
+
+
+ int avio_feof (int *) ;
+ char avio_r8 (int *) ;
+ int avio_skip (int *,int) ;
 
 int ff_get_line(AVIOContext *s, char *buf, int maxlen)
 {

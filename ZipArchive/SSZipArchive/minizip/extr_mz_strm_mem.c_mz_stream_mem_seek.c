@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ position; scalar_t__ limit; scalar_t__ size; int mode; } ;
-typedef  TYPE_1__ mz_stream_mem ;
-typedef  scalar_t__ int64_t ;
-typedef  int int32_t ;
+typedef TYPE_1__ mz_stream_mem ;
+typedef scalar_t__ int64_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int MZ_OK ; 
- int MZ_OPEN_MODE_CREATE ; 
-#define  MZ_SEEK_CUR 130 
-#define  MZ_SEEK_END 129 
- int MZ_SEEK_ERROR ; 
-#define  MZ_SEEK_SET 128 
- int mz_stream_mem_set_size (void*,int) ; 
+
+ int MZ_OK ;
+ int MZ_OPEN_MODE_CREATE ;
+
+
+ int MZ_SEEK_ERROR ;
+
+ int mz_stream_mem_set_size (void*,int) ;
 
 int32_t mz_stream_mem_seek(void *stream, int64_t offset, int32_t origin)
 {
@@ -33,13 +33,13 @@ int32_t mz_stream_mem_seek(void *stream, int64_t offset, int32_t origin)
 
     switch (origin)
     {
-        case MZ_SEEK_CUR:
+        case 130:
             new_pos = mem->position + offset;
             break;
-        case MZ_SEEK_END:
+        case 129:
             new_pos = mem->limit + offset;
             break;
-        case MZ_SEEK_SET:
+        case 128:
             new_pos = offset;
             break;
         default:

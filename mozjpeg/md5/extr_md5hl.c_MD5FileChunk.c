@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {scalar_t__ st_size; } ;
-typedef  scalar_t__ off_t ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  MD5_CTX ;
+typedef scalar_t__ off_t ;
+typedef int buffer ;
+typedef int MD5_CTX ;
 
-/* Variables and functions */
- int BUFSIZ ; 
- char* MD5End (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  MD5Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MD5Update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int O_BINARY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int _open (char const*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int errno ; 
- scalar_t__ fstat (int,struct stat*) ; 
- scalar_t__ lseek (int,scalar_t__,int /*<<< orphan*/ ) ; 
- int open (char const*,int) ; 
- int read (int,unsigned char*,scalar_t__) ; 
+
+ int BUFSIZ ;
+ char* MD5End (int *,char*) ;
+ int MD5Init (int *) ;
+ int MD5Update (int *,unsigned char*,int) ;
+ int O_BINARY ;
+ int O_RDONLY ;
+ int SEEK_SET ;
+ int _open (char const*,int) ;
+ int close (int) ;
+ int errno ;
+ scalar_t__ fstat (int,struct stat*) ;
+ scalar_t__ lseek (int,scalar_t__,int ) ;
+ int open (char const*,int) ;
+ int read (int,unsigned char*,scalar_t__) ;
 
 char *MD5FileChunk(const char *filename, char *buf, off_t ofs, off_t len)
 {
@@ -40,11 +40,11 @@ char *MD5FileChunk(const char *filename, char *buf, off_t ofs, off_t len)
   off_t n;
 
   MD5Init(&ctx);
-#if _WIN32
-  f = _open(filename, O_RDONLY | O_BINARY);
-#else
+
+
+
   f = open(filename, O_RDONLY);
-#endif
+
   if (f < 0)
     return 0;
   if (fstat(f, &stbuf) < 0)

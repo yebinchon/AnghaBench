@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ushort ;
-typedef  int uint ;
-typedef  int uchar ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ushort ;
+typedef int uint ;
+typedef int uchar ;
 struct TYPE_3__ {int codepage; int mode; int flags; } ;
-typedef  TYPE_1__ csconv_t ;
+typedef TYPE_1__ csconv_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EILSEQ ; 
- int /*<<< orphan*/  EINVAL ; 
- int FLAG_USE_BOM ; 
- int UNICODE_MODE_BOM_DONE ; 
- int UNICODE_MODE_SWAPPED ; 
- int seterror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ucs4_to_utf16 (int,int /*<<< orphan*/ *,int*) ; 
+
+ int EILSEQ ;
+ int EINVAL ;
+ int FLAG_USE_BOM ;
+ int UNICODE_MODE_BOM_DONE ;
+ int UNICODE_MODE_SWAPPED ;
+ int seterror (int ) ;
+ int ucs4_to_utf16 (int,int *,int*) ;
 
 __attribute__((used)) static int
 utf32_mbtowc(csconv_t *cv, const uchar *buf, int bufsize, ushort *wbuf, int *wbufsize)
@@ -32,15 +32,15 @@ utf32_mbtowc(csconv_t *cv, const uchar *buf, int bufsize, ushort *wbuf, int *wbu
     int codepage = cv->codepage;
     uint wc;
 
-    /* swap endian: 12000 <-> 12001 */
+
     if (cv->mode & UNICODE_MODE_SWAPPED)
         codepage ^= 1;
 
     if (bufsize < 4)
         return seterror(EINVAL);
-    if (codepage == 12000) /* little endian */
+    if (codepage == 12000)
         wc = (buf[3] << 24) | (buf[2] << 16) | (buf[1] << 8) | buf[0];
-    else if (codepage == 12001) /* big endian */
+    else if (codepage == 12001)
         wc = (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3];
 
     if ((cv->flags & FLAG_USE_BOM) && !(cv->mode & UNICODE_MODE_BOM_DONE))

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  didev ;
-typedef  char WCHAR ;
-struct TYPE_8__ {int dwSize; int /*<<< orphan*/  guidInstance; int /*<<< orphan*/  tszInstanceName; } ;
-struct TYPE_7__ {int dwNumActions; TYPE_1__* rgoAction; int /*<<< orphan*/  guidActionMap; } ;
-struct TYPE_6__ {scalar_t__ dwHow; int /*<<< orphan*/  dwObjID; int /*<<< orphan*/  dwSemantic; int /*<<< orphan*/  guidInstance; } ;
-typedef  TYPE_2__* LPDIACTIONFORMATW ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IDirectInputDevice8W ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_3__ DIDEVICEINSTANCEW ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (char*) ; 
- scalar_t__ DIAH_UNMAPPED ; 
- int /*<<< orphan*/  DI_OK ; 
- int /*<<< orphan*/  DI_SETTINGSNOTSAVED ; 
- int /*<<< orphan*/  IDirectInputDevice8_GetDeviceInfo (int /*<<< orphan*/ *,TYPE_3__*) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegSetValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ S_OK ; 
- scalar_t__ StringFromCLSID (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  del_mapping_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  get_mapping_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int didev ;
+typedef char WCHAR ;
+struct TYPE_8__ {int dwSize; int guidInstance; int tszInstanceName; } ;
+struct TYPE_7__ {int dwNumActions; TYPE_1__* rgoAction; int guidActionMap; } ;
+struct TYPE_6__ {scalar_t__ dwHow; int dwObjID; int dwSemantic; int guidInstance; } ;
+typedef TYPE_2__* LPDIACTIONFORMATW ;
+typedef int LPCWSTR ;
+typedef int IDirectInputDevice8W ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef TYPE_3__ DIDEVICEINSTANCEW ;
+typedef int BYTE ;
+
+
+ int CoTaskMemFree (char*) ;
+ scalar_t__ DIAH_UNMAPPED ;
+ int DI_OK ;
+ int DI_SETTINGSNOTSAVED ;
+ int IDirectInputDevice8_GetDeviceInfo (int *,TYPE_3__*) ;
+ scalar_t__ IsEqualGUID (int *,int *) ;
+ int REG_DWORD ;
+ int RegCloseKey (int ) ;
+ int RegSetValueExW (int ,char*,int ,int ,int const*,int) ;
+ scalar_t__ S_OK ;
+ scalar_t__ StringFromCLSID (int *,char**) ;
+ int TRUE ;
+ int del_mapping_key (int ,int ,char*) ;
+ int get_mapping_key (int ,int ,char*,int ) ;
+ int sprintfW (char*,char const*,int ) ;
 
 HRESULT save_mapping_settings(IDirectInputDevice8W *iface, LPDIACTIONFORMATW lpdiaf, LPCWSTR lpszUsername)
 {
-    WCHAR *guid_str = NULL;
+    WCHAR *guid_str = ((void*)0);
     DIDEVICEINSTANCEW didev;
     HKEY hkey;
     int i;
@@ -67,9 +67,9 @@ HRESULT save_mapping_settings(IDirectInputDevice8W *iface, LPDIACTIONFORMATW lpd
         return DI_SETTINGSNOTSAVED;
     }
 
-    /* Write each of the actions mapped for this device.
-       Format is "dwSemantic"="dwObjID" and key is of type REG_DWORD
-    */
+
+
+
     for (i = 0; i < lpdiaf->dwNumActions; i++)
     {
         static const WCHAR format[] = {'%','x','\0'};

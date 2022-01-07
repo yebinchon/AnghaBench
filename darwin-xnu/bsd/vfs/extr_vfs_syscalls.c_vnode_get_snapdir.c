@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vnode_t ;
-typedef  int /*<<< orphan*/  vfs_context_t ;
 
-/* Variables and functions */
- int VFS_VGET_SNAPDIR (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vnode_mount (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vnode_t ;
+typedef int vfs_context_t ;
+
+
+ int VFS_VGET_SNAPDIR (int ,int *,int ) ;
+ int vnode_mount (int ) ;
 
 int
 vnode_get_snapdir(vnode_t rvp, vnode_t *sdvpp, vfs_context_t ctx)
 {
-	return (VFS_VGET_SNAPDIR(vnode_mount(rvp), sdvpp, ctx));
+ return (VFS_VGET_SNAPDIR(vnode_mount(rvp), sdvpp, ctx));
 }

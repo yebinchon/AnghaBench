@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct selector {int /*<<< orphan*/  lock; int /*<<< orphan*/  valid_paths; } ;
+
+
+
+
+struct selector {int lock; int valid_paths; } ;
 struct path_selector {struct selector* context; } ;
-struct path_info {int /*<<< orphan*/  list; } ;
+struct path_info {int list; } ;
 struct dm_path {struct path_info* pscontext; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_move (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int list_move (int *,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int rr_reinstate_path(struct path_selector *ps, struct dm_path *p)
 {
-	unsigned long flags;
-	struct selector *s = ps->context;
-	struct path_info *pi = p->pscontext;
+ unsigned long flags;
+ struct selector *s = ps->context;
+ struct path_info *pi = p->pscontext;
 
-	spin_lock_irqsave(&s->lock, flags);
-	list_move(&pi->list, &s->valid_paths);
-	spin_unlock_irqrestore(&s->lock, flags);
+ spin_lock_irqsave(&s->lock, flags);
+ list_move(&pi->list, &s->valid_paths);
+ spin_unlock_irqrestore(&s->lock, flags);
 
-	return 0;
+ return 0;
 }

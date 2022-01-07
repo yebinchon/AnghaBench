@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {char const* name; int /*<<< orphan*/  stmts; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_1__ typelib_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {char const* name; int stmts; int attrs; } ;
+typedef TYPE_1__ typelib_t ;
 struct TYPE_7__ {int cval; } ;
-typedef  TYPE_2__ expr_t ;
-typedef  int /*<<< orphan*/  UUID ;
+typedef TYPE_2__ expr_t ;
+typedef int UUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_CONTROL ; 
- int /*<<< orphan*/  ATTR_HELPSTRING ; 
- int /*<<< orphan*/  ATTR_HIDDEN ; 
- int /*<<< orphan*/  ATTR_ID ; 
- int /*<<< orphan*/  ATTR_LIBLCID ; 
- int /*<<< orphan*/  ATTR_RESTRICTED ; 
- int /*<<< orphan*/  ATTR_UUID ; 
- int /*<<< orphan*/  ATTR_VERSION ; 
- int /*<<< orphan*/  MAJORVERSION (unsigned int) ; 
- int /*<<< orphan*/  MINORVERSION (unsigned int) ; 
- int /*<<< orphan*/  add_output_to_resources (char*,char*) ; 
- int /*<<< orphan*/  format_uuid (int /*<<< orphan*/  const*) ; 
- void* get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int get_attrv (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  indent ; 
- scalar_t__ is_attr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int pointer_size ; 
- int /*<<< orphan*/  put_str (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- scalar_t__ strlen (char*) ; 
- char* typelib_name ; 
- int /*<<< orphan*/  write_coclasses (int /*<<< orphan*/ ,TYPE_1__ const*) ; 
- int /*<<< orphan*/  write_progids (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_typelib_interfaces (TYPE_1__ const*) ; 
- char* xmalloc (scalar_t__) ; 
+
+ int ATTR_CONTROL ;
+ int ATTR_HELPSTRING ;
+ int ATTR_HIDDEN ;
+ int ATTR_ID ;
+ int ATTR_LIBLCID ;
+ int ATTR_RESTRICTED ;
+ int ATTR_UUID ;
+ int ATTR_VERSION ;
+ int MAJORVERSION (unsigned int) ;
+ int MINORVERSION (unsigned int) ;
+ int add_output_to_resources (char*,char*) ;
+ int format_uuid (int const*) ;
+ void* get_attrp (int ,int ) ;
+ unsigned int get_attrv (int ,int ) ;
+ int indent ;
+ scalar_t__ is_attr (int ,int ) ;
+ int pointer_size ;
+ int put_str (int ,char*,...) ;
+ int sprintf (char*,char*,...) ;
+ scalar_t__ strlen (char*) ;
+ char* typelib_name ;
+ int write_coclasses (int ,TYPE_1__ const*) ;
+ int write_progids (int ) ;
+ int write_typelib_interfaces (TYPE_1__ const*) ;
+ char* xmalloc (scalar_t__) ;
 
 void output_typelib_regscript( const typelib_t *typelib )
 {
@@ -53,14 +53,14 @@ void output_typelib_regscript( const typelib_t *typelib )
     unsigned int version = get_attrv( typelib->attrs, ATTR_VERSION );
     unsigned int flags = 0;
     char id_part[12] = "";
-#ifndef __REACTOS__
+
     char *resname = typelib_name;
-#endif
+
     expr_t *expr;
 
-    if (is_attr( typelib->attrs, ATTR_RESTRICTED )) flags |= 1; /* LIBFLAG_FRESTRICTED */
-    if (is_attr( typelib->attrs, ATTR_CONTROL )) flags |= 2; /* LIBFLAG_FCONTROL */
-    if (is_attr( typelib->attrs, ATTR_HIDDEN )) flags |= 4; /* LIBFLAG_FHIDDEN */
+    if (is_attr( typelib->attrs, ATTR_RESTRICTED )) flags |= 1;
+    if (is_attr( typelib->attrs, ATTR_CONTROL )) flags |= 2;
+    if (is_attr( typelib->attrs, ATTR_HIDDEN )) flags |= 4;
 
     put_str( indent, "HKCR\n" );
     put_str( indent++, "{\n" );
@@ -73,17 +73,17 @@ void output_typelib_regscript( const typelib_t *typelib )
              MAJORVERSION(version), MINORVERSION(version), descr ? descr : typelib->name );
     put_str( indent++, "{\n" );
     expr = get_attrp( typelib->attrs, ATTR_ID );
-#ifdef __REACTOS__
-    if (expr)
-        sprintf(id_part, "\\%d", expr->cval);
-#else
+
+
+
+
     if (expr)
     {
         sprintf(id_part, "\\%d", expr->cval);
         resname = xmalloc( strlen(typelib_name) + 20 );
         sprintf(resname, "%s\\%d", typelib_name, expr->cval);
     }
-#endif
+
     put_str( indent, "'%x' { %s = s '%%MODULE%%%s' }\n",
              lcid_expr ? lcid_expr->cval : 0, pointer_size == 8 ? "win64" : "win32", id_part );
     put_str( indent, "FLAGS = s '%u'\n", flags );
@@ -103,9 +103,9 @@ void output_typelib_regscript( const typelib_t *typelib )
 
     write_progids( typelib->stmts );
     put_str( --indent, "}\n" );
-#ifdef __REACTOS__
-    add_output_to_resources( "WINE_REGISTRY", typelib_name );
-#else
+
+
+
     add_output_to_resources( "WINE_REGISTRY", resname );
-#endif
+
 }

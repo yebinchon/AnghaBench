@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long long u64 ;
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSR_IA32_MC0_STATUS ; 
- int /*<<< orphan*/  MSR_IA32_MCG_STATUS ; 
- int /*<<< orphan*/  MSR_IA32_MCx_STATUS (int) ; 
- int /*<<< orphan*/  __flush_tlb_all () ; 
- int /*<<< orphan*/  erratum_383_found ; 
- int /*<<< orphan*/  lower_32_bits (unsigned long long) ; 
- unsigned long long native_read_msr_safe (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  native_write_msr_safe (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  upper_32_bits (unsigned long long) ; 
+
+
+
+typedef unsigned long long u64 ;
+typedef int u32 ;
+
+
+ int MSR_IA32_MC0_STATUS ;
+ int MSR_IA32_MCG_STATUS ;
+ int MSR_IA32_MCx_STATUS (int) ;
+ int __flush_tlb_all () ;
+ int erratum_383_found ;
+ int lower_32_bits (unsigned long long) ;
+ unsigned long long native_read_msr_safe (int ,int*) ;
+ int native_write_msr_safe (int ,int ,int ) ;
+ int upper_32_bits (unsigned long long) ;
 
 __attribute__((used)) static bool is_erratum_383(void)
 {
-	int err, i;
-	u64 value;
+ int err, i;
+ u64 value;
 
-	if (!erratum_383_found)
-		return false;
+ if (!erratum_383_found)
+  return 0;
 
-	value = native_read_msr_safe(MSR_IA32_MC0_STATUS, &err);
-	if (err)
-		return false;
+ value = native_read_msr_safe(MSR_IA32_MC0_STATUS, &err);
+ if (err)
+  return 0;
 
-	/* Bit 62 may or may not be set for this mce */
-	value &= ~(1ULL << 62);
 
-	if (value != 0xb600000000010015)
-		return false;
+ value &= ~(1ULL << 62);
 
-	/* Clear MCi_STATUS registers */
-	for (i = 0; i < 6; ++i)
-		native_write_msr_safe(MSR_IA32_MCx_STATUS(i), 0, 0);
+ if (value != 0xb600000000010015)
+  return 0;
 
-	value = native_read_msr_safe(MSR_IA32_MCG_STATUS, &err);
-	if (!err) {
-		u32 low, high;
 
-		value &= ~(1ULL << 2);
-		low    = lower_32_bits(value);
-		high   = upper_32_bits(value);
+ for (i = 0; i < 6; ++i)
+  native_write_msr_safe(MSR_IA32_MCx_STATUS(i), 0, 0);
 
-		native_write_msr_safe(MSR_IA32_MCG_STATUS, low, high);
-	}
+ value = native_read_msr_safe(MSR_IA32_MCG_STATUS, &err);
+ if (!err) {
+  u32 low, high;
 
-	/* Flush tlb to evict multi-match entries */
-	__flush_tlb_all();
+  value &= ~(1ULL << 2);
+  low = lower_32_bits(value);
+  high = upper_32_bits(value);
 
-	return true;
+  native_write_msr_safe(MSR_IA32_MCG_STATUS, low, high);
+ }
+
+
+ __flush_tlb_all();
+
+ return 1;
 }

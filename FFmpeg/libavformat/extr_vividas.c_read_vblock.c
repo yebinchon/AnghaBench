@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  unsigned int uint32_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * av_malloc (unsigned int) ; 
- unsigned int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  decode_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int,unsigned int,unsigned int*,int) ; 
- unsigned int get_v (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef unsigned int uint32_t ;
+typedef int AVIOContext ;
+
+
+ int av_free (int *) ;
+ int * av_malloc (unsigned int) ;
+ unsigned int avio_read (int *,int *,unsigned int) ;
+ int decode_block (int *,int *,unsigned int,unsigned int,unsigned int*,int) ;
+ unsigned int get_v (int *,int) ;
+ int memcpy (int *,int *,int) ;
 
 __attribute__((used)) static uint8_t *read_vblock(AVIOContext *src, uint32_t *size,
                             uint32_t key, uint32_t *k2, int align)
@@ -30,17 +30,17 @@ __attribute__((used)) static uint8_t *read_vblock(AVIOContext *src, uint32_t *si
     unsigned n;
 
     if (avio_read(src, tmp, 4) != 4)
-        return NULL;
+        return ((void*)0);
 
     decode_block(tmp, tmp, 4, key, k2, align);
 
     n = get_v(tmp, 4);
     if (n < 4)
-        return NULL;
+        return ((void*)0);
 
     buf = av_malloc(n);
     if (!buf)
-        return NULL;
+        return ((void*)0);
 
     *size = n;
     n -= 4;
@@ -51,7 +51,7 @@ __attribute__((used)) static uint8_t *read_vblock(AVIOContext *src, uint32_t *si
         decode_block(buf + 4, buf + 4, n, key, k2, align);
     } else {
         av_free(buf);
-        buf = NULL;
+        buf = ((void*)0);
     }
 
     return buf;

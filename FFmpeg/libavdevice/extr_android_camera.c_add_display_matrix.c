@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  display_matrix ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int32_t ;
+typedef int display_matrix ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-struct TYPE_4__ {scalar_t__ lens_facing; int /*<<< orphan*/  sensor_orientation; } ;
-typedef  TYPE_1__ AndroidCameraCtx ;
-typedef  int /*<<< orphan*/  AVStream ;
-typedef  TYPE_2__ AVFormatContext ;
+struct TYPE_4__ {scalar_t__ lens_facing; int sensor_orientation; } ;
+typedef TYPE_1__ AndroidCameraCtx ;
+typedef int AVStream ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ ACAMERA_LENS_FACING_FRONT ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_PKT_DATA_DISPLAYMATRIX ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_display_matrix_flip (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_display_rotation_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * av_stream_new_side_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ ACAMERA_LENS_FACING_FRONT ;
+ int AVERROR (int ) ;
+ int AV_PKT_DATA_DISPLAYMATRIX ;
+ int ENOMEM ;
+ int av_display_matrix_flip (int *,int,int ) ;
+ int av_display_rotation_set (int *,int ) ;
+ int * av_stream_new_side_data (int *,int ,int) ;
+ int memcpy (int *,int *,int) ;
 
 __attribute__((used)) static int add_display_matrix(AVFormatContext *avctx, AVStream *st)
 {

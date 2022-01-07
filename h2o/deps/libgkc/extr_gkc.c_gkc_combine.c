@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct list {struct list* next; } ;
-struct gkc_tuple {scalar_t__ value; scalar_t__ g; int /*<<< orphan*/  node; int /*<<< orphan*/  delta; } ;
-struct gkc_summary {scalar_t__ epsilon; int /*<<< orphan*/  alloced; int /*<<< orphan*/  max_alloced; int /*<<< orphan*/  nr_elems; struct list head; } ;
+struct gkc_tuple {scalar_t__ value; scalar_t__ g; int node; int delta; } ;
+struct gkc_summary {scalar_t__ epsilon; int alloced; int max_alloced; int nr_elems; struct list head; } ;
 
-/* Variables and functions */
- struct gkc_tuple* gkc_alloc (struct gkc_summary*) ; 
- int /*<<< orphan*/  gkc_compress (struct gkc_summary*) ; 
- struct gkc_summary* gkc_summary_alloc (scalar_t__) ; 
- int /*<<< orphan*/  list_add_tail (struct list*,int /*<<< orphan*/ *) ; 
- struct gkc_tuple* list_to_tuple (struct list*) ; 
+
+ struct gkc_tuple* gkc_alloc (struct gkc_summary*) ;
+ int gkc_compress (struct gkc_summary*) ;
+ struct gkc_summary* gkc_summary_alloc (scalar_t__) ;
+ int list_add_tail (struct list*,int *) ;
+ struct gkc_tuple* list_to_tuple (struct list*) ;
 
 struct gkc_summary *gkc_combine(struct gkc_summary *s1, struct gkc_summary *s2)
 {
@@ -28,7 +28,7 @@ struct gkc_summary *gkc_combine(struct gkc_summary *s1, struct gkc_summary *s2)
     struct gkc_tuple *tcur1, *tcur2, *tnew;
 
     if (s1->epsilon != s2->epsilon) {
-        return NULL;
+        return ((void*)0);
     }
     snew = gkc_summary_alloc(s1->epsilon);
 

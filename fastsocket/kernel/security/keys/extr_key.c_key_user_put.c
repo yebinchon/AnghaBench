@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct key_user {int /*<<< orphan*/  user_ns; int /*<<< orphan*/  node; int /*<<< orphan*/  usage; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_dec_and_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_user_lock ; 
- int /*<<< orphan*/  key_user_tree ; 
- int /*<<< orphan*/  kfree (struct key_user*) ; 
- int /*<<< orphan*/  put_user_ns (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rb_erase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct key_user {int user_ns; int node; int usage; } ;
+
+
+ scalar_t__ atomic_dec_and_lock (int *,int *) ;
+ int key_user_lock ;
+ int key_user_tree ;
+ int kfree (struct key_user*) ;
+ int put_user_ns (int ) ;
+ int rb_erase (int *,int *) ;
+ int spin_unlock (int *) ;
 
 void key_user_put(struct key_user *user)
 {
-	if (atomic_dec_and_lock(&user->usage, &key_user_lock)) {
-		rb_erase(&user->node, &key_user_tree);
-		spin_unlock(&key_user_lock);
-		put_user_ns(user->user_ns);
+ if (atomic_dec_and_lock(&user->usage, &key_user_lock)) {
+  rb_erase(&user->node, &key_user_tree);
+  spin_unlock(&key_user_lock);
+  put_user_ns(user->user_ns);
 
-		kfree(user);
-	}
+  kfree(user);
+ }
 }

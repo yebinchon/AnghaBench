@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hwspinlock {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HWSPINLOCK_UNUSED ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int __hwspin_lock_request (struct hwspinlock*) ; 
- int /*<<< orphan*/  hwspinlock_tree ; 
- int /*<<< orphan*/  hwspinlock_tree_lock ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_warn (char*) ; 
- int radix_tree_gang_lookup_tag (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int HWSPINLOCK_UNUSED ;
+ int WARN_ON (int) ;
+ int __hwspin_lock_request (struct hwspinlock*) ;
+ int hwspinlock_tree ;
+ int hwspinlock_tree_lock ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pr_warn (char*) ;
+ int radix_tree_gang_lookup_tag (int *,void**,int ,int,int ) ;
 
 struct hwspinlock *hwspin_lock_request(void)
 {
-	struct hwspinlock *hwlock;
-	int ret;
+ struct hwspinlock *hwlock;
+ int ret;
 
-	mutex_lock(&hwspinlock_tree_lock);
+ mutex_lock(&hwspinlock_tree_lock);
 
-	/* look for an unused lock */
-	ret = radix_tree_gang_lookup_tag(&hwspinlock_tree, (void **)&hwlock,
-						0, 1, HWSPINLOCK_UNUSED);
-	if (ret == 0) {
-		pr_warn("a free hwspinlock is not available\n");
-		hwlock = NULL;
-		goto out;
-	}
 
-	/* sanity check that should never fail */
-	WARN_ON(ret > 1);
+ ret = radix_tree_gang_lookup_tag(&hwspinlock_tree, (void **)&hwlock,
+      0, 1, HWSPINLOCK_UNUSED);
+ if (ret == 0) {
+  pr_warn("a free hwspinlock is not available\n");
+  hwlock = ((void*)0);
+  goto out;
+ }
 
-	/* mark as used and power up */
-	ret = __hwspin_lock_request(hwlock);
-	if (ret < 0)
-		hwlock = NULL;
+
+ WARN_ON(ret > 1);
+
+
+ ret = __hwspin_lock_request(hwlock);
+ if (ret < 0)
+  hwlock = ((void*)0);
 
 out:
-	mutex_unlock(&hwspinlock_tree_lock);
-	return hwlock;
+ mutex_unlock(&hwspinlock_tree_lock);
+ return hwlock;
 }

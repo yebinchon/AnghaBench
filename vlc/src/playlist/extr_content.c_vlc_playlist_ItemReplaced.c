@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_6__** data; } ;
-struct TYPE_12__ {TYPE_1__ items; int /*<<< orphan*/  has_next; int /*<<< orphan*/  has_prev; } ;
-typedef  TYPE_2__ vlc_playlist_t ;
+struct TYPE_12__ {TYPE_1__ items; int has_next; int has_prev; } ;
+typedef TYPE_2__ vlc_playlist_t ;
 struct vlc_playlist_state {int dummy; } ;
-struct TYPE_13__ {int /*<<< orphan*/  media; } ;
+struct TYPE_13__ {int media; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  on_items_updated ; 
- int /*<<< orphan*/  vlc_playlist_AutoPreparse (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_playlist_ComputeHasNext (TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_playlist_ComputeHasPrev (TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_playlist_Notify (TYPE_2__*,int /*<<< orphan*/ ,size_t,TYPE_6__**,int) ; 
- int /*<<< orphan*/  vlc_playlist_state_NotifyChanges (TYPE_2__*,struct vlc_playlist_state*) ; 
- int /*<<< orphan*/  vlc_playlist_state_Save (TYPE_2__*,struct vlc_playlist_state*) ; 
+
+ int on_items_updated ;
+ int vlc_playlist_AutoPreparse (TYPE_2__*,int ) ;
+ int vlc_playlist_ComputeHasNext (TYPE_2__*) ;
+ int vlc_playlist_ComputeHasPrev (TYPE_2__*) ;
+ int vlc_playlist_Notify (TYPE_2__*,int ,size_t,TYPE_6__**,int) ;
+ int vlc_playlist_state_NotifyChanges (TYPE_2__*,struct vlc_playlist_state*) ;
+ int vlc_playlist_state_Save (TYPE_2__*,struct vlc_playlist_state*) ;
 
 __attribute__((used)) static void
 vlc_playlist_ItemReplaced(vlc_playlist_t *playlist, size_t index)

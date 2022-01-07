@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  id ;
-typedef  int UInt64 ;
-typedef  scalar_t__ UInt32 ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int id ;
+typedef int UInt64 ;
+typedef scalar_t__ UInt32 ;
 struct TYPE_11__ {scalar_t__ InIndex; scalar_t__ OutIndex; } ;
 struct TYPE_10__ {int NumStreams; int PropsOffset; int PropsSize; scalar_t__ MethodID; } ;
 struct TYPE_9__ {int* Data; unsigned int Size; } ;
 struct TYPE_8__ {scalar_t__ NumCoders; scalar_t__* PackStreams; scalar_t__ UnpackStream; TYPE_4__* Bonds; scalar_t__ NumPackStreams; scalar_t__ NumBonds; TYPE_3__* Coders; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  TYPE_1__ CSzFolder ;
-typedef  TYPE_2__ CSzData ;
-typedef  TYPE_3__ CSzCoderInfo ;
-typedef  TYPE_4__ CSzBond ;
-typedef  int Byte ;
+typedef int SRes ;
+typedef TYPE_1__ CSzFolder ;
+typedef TYPE_2__ CSzData ;
+typedef TYPE_3__ CSzCoderInfo ;
+typedef TYPE_4__ CSzBond ;
+typedef int Byte ;
 
-/* Variables and functions */
- int False ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_ARCHIVE ; 
- int /*<<< orphan*/  SZ_ERROR_UNSUPPORTED ; 
- scalar_t__ SZ_NUM_BONDS_IN_FOLDER_MAX ; 
- scalar_t__ SZ_NUM_CODERS_IN_FOLDER_MAX ; 
- scalar_t__ SZ_NUM_PACK_STREAMS_IN_FOLDER_MAX ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  SZ_READ_BYTE (int) ; 
- int /*<<< orphan*/  SzReadNumber32 (TYPE_2__*,scalar_t__*) ; 
- int True ; 
- scalar_t__ k_NumCodersStreams_in_Folder_MAX ; 
+
+ int False ;
+ int RINOK (int ) ;
+ int SZ_ERROR_ARCHIVE ;
+ int SZ_ERROR_UNSUPPORTED ;
+ scalar_t__ SZ_NUM_BONDS_IN_FOLDER_MAX ;
+ scalar_t__ SZ_NUM_CODERS_IN_FOLDER_MAX ;
+ scalar_t__ SZ_NUM_PACK_STREAMS_IN_FOLDER_MAX ;
+ int SZ_OK ;
+ int SZ_READ_BYTE (int) ;
+ int SzReadNumber32 (TYPE_2__*,scalar_t__*) ;
+ int True ;
+ scalar_t__ k_NumCodersStreams_in_Folder_MAX ;
 
 SRes SzGetNextFolderItem(CSzFolder *f, CSzData *sd)
 {
@@ -52,22 +52,22 @@ SRes SzGetNextFolderItem(CSzFolder *f, CSzData *sd)
   f->NumBonds = 0;
   f->NumPackStreams = 0;
   f->UnpackStream = 0;
-  
+
   RINOK(SzReadNumber32(sd, &numCoders));
   if (numCoders == 0 || numCoders > SZ_NUM_CODERS_IN_FOLDER_MAX)
     return SZ_ERROR_UNSUPPORTED;
-  
+
   for (i = 0; i < numCoders; i++)
   {
     Byte mainByte;
     CSzCoderInfo *coder = f->Coders + i;
     unsigned idSize, j;
     UInt64 id;
-    
+
     SZ_READ_BYTE(mainByte);
     if ((mainByte & 0xC0) != 0)
       return SZ_ERROR_UNSUPPORTED;
-    
+
     idSize = (unsigned)(mainByte & 0xF);
     if (idSize > sizeof(id))
       return SZ_ERROR_UNSUPPORTED;
@@ -83,15 +83,15 @@ SRes SzGetNextFolderItem(CSzFolder *f, CSzData *sd)
     if (id > (UInt32)0xFFFFFFFF)
       return SZ_ERROR_UNSUPPORTED;
     coder->MethodID = (UInt32)id;
-    
+
     coder->NumStreams = 1;
     coder->PropsOffset = 0;
     coder->PropsSize = 0;
-    
+
     if ((mainByte & 0x10) != 0)
     {
       UInt32 numStreams;
-      
+
       RINOK(SzReadNumber32(sd, &numStreams));
       if (numStreams > k_NumCodersStreams_in_Folder_MAX)
         return SZ_ERROR_UNSUPPORTED;
@@ -121,67 +121,58 @@ SRes SzGetNextFolderItem(CSzFolder *f, CSzData *sd)
       sd->Size -= (size_t)propsSize;
     }
   }
-
-  /*
-  if (numInStreams == 1 && numCoders == 1)
-  {
-    f->NumPackStreams = 1;
-    f->PackStreams[0] = 0;
-  }
-  else
-  */
   {
     Byte streamUsed[k_NumCodersStreams_in_Folder_MAX];
     UInt32 numBonds, numPackStreams;
-    
+
     numBonds = numCoders - 1;
     if (numInStreams < numBonds)
       return SZ_ERROR_ARCHIVE;
     if (numBonds > SZ_NUM_BONDS_IN_FOLDER_MAX)
       return SZ_ERROR_UNSUPPORTED;
     f->NumBonds = numBonds;
-    
+
     numPackStreams = numInStreams - numBonds;
     if (numPackStreams > SZ_NUM_PACK_STREAMS_IN_FOLDER_MAX)
       return SZ_ERROR_UNSUPPORTED;
     f->NumPackStreams = numPackStreams;
-  
+
     for (i = 0; i < numInStreams; i++)
       streamUsed[i] = False;
-    
+
     if (numBonds != 0)
     {
       Byte coderUsed[SZ_NUM_CODERS_IN_FOLDER_MAX];
 
       for (i = 0; i < numCoders; i++)
         coderUsed[i] = False;
-      
+
       for (i = 0; i < numBonds; i++)
       {
         CSzBond *bp = f->Bonds + i;
-        
+
         RINOK(SzReadNumber32(sd, &bp->InIndex));
         if (bp->InIndex >= numInStreams || streamUsed[bp->InIndex])
           return SZ_ERROR_ARCHIVE;
         streamUsed[bp->InIndex] = True;
-        
+
         RINOK(SzReadNumber32(sd, &bp->OutIndex));
         if (bp->OutIndex >= numCoders || coderUsed[bp->OutIndex])
           return SZ_ERROR_ARCHIVE;
         coderUsed[bp->OutIndex] = True;
       }
-      
+
       for (i = 0; i < numCoders; i++)
         if (!coderUsed[i])
         {
           f->UnpackStream = i;
           break;
         }
-      
+
       if (i == numCoders)
         return SZ_ERROR_ARCHIVE;
     }
-    
+
     if (numPackStreams == 1)
     {
       for (i = 0; i < numInStreams; i++)

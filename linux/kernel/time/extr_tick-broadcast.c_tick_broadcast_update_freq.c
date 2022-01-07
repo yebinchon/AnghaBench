@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct clock_event_device {int dummy; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int __clockevents_update_freq (struct clock_event_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  raw_spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  raw_spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tick_broadcast_lock ; 
- scalar_t__ tick_is_broadcast_device (struct clock_event_device*) ; 
+
+ int ENODEV ;
+ int __clockevents_update_freq (struct clock_event_device*,int ) ;
+ int raw_spin_lock (int *) ;
+ int raw_spin_unlock (int *) ;
+ int tick_broadcast_lock ;
+ scalar_t__ tick_is_broadcast_device (struct clock_event_device*) ;
 
 int tick_broadcast_update_freq(struct clock_event_device *dev, u32 freq)
 {
-	int ret = -ENODEV;
+ int ret = -ENODEV;
 
-	if (tick_is_broadcast_device(dev)) {
-		raw_spin_lock(&tick_broadcast_lock);
-		ret = __clockevents_update_freq(dev, freq);
-		raw_spin_unlock(&tick_broadcast_lock);
-	}
-	return ret;
+ if (tick_is_broadcast_device(dev)) {
+  raw_spin_lock(&tick_broadcast_lock);
+  ret = __clockevents_update_freq(dev, freq);
+  raw_spin_unlock(&tick_broadcast_lock);
+ }
+ return ret;
 }

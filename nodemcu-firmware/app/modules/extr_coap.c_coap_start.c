@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* udp; } ;
 struct espconn {TYPE_2__ proto; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 struct TYPE_8__ {scalar_t__ self_ref; struct espconn* pesp_conn; } ;
-typedef  TYPE_3__ lcoap_userdata ;
-struct TYPE_9__ {int /*<<< orphan*/  addr; } ;
-typedef  TYPE_4__ ip_addr_t ;
-struct TYPE_6__ {unsigned int local_port; int /*<<< orphan*/  local_ip; } ;
+typedef TYPE_3__ lcoap_userdata ;
+struct TYPE_9__ {int addr; } ;
+typedef TYPE_4__ ip_addr_t ;
+struct TYPE_6__ {unsigned int local_port; int local_ip; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IP2STR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPSTR ; 
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  NODE_DBG (char*,...) ; 
- int /*<<< orphan*/  coap_received ; 
- int /*<<< orphan*/  coap_sent ; 
- int /*<<< orphan*/  espconn_create (struct espconn*) ; 
- int /*<<< orphan*/  espconn_regist_recvcb (struct espconn*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  espconn_regist_sentcb (struct espconn*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipaddr_addr (char const*) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,TYPE_3__*,int,char*) ; 
- unsigned int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char const*) ; 
- scalar_t__ luaL_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_isstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int IP2STR (int *) ;
+ int IPSTR ;
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int NODE_DBG (char*,...) ;
+ int coap_received ;
+ int coap_sent ;
+ int espconn_create (struct espconn*) ;
+ int espconn_regist_recvcb (struct espconn*,int ) ;
+ int espconn_regist_sentcb (struct espconn*,int ) ;
+ int ipaddr_addr (char const*) ;
+ int luaL_argcheck (int *,TYPE_3__*,int,char*) ;
+ unsigned int luaL_checkinteger (int *,int) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ scalar_t__ luaL_checkudata (int *,int,char const*) ;
+ scalar_t__ luaL_ref (int *,int ) ;
+ scalar_t__ lua_isstring (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int memcpy (int ,int *,int) ;
 
 __attribute__((used)) static int coap_start( lua_State* L, const char* mt )
 {
-  struct espconn *pesp_conn = NULL;
+  struct espconn *pesp_conn = ((void*)0);
   lcoap_userdata *cud;
   unsigned port;
   size_t il;
@@ -54,7 +54,7 @@ __attribute__((used)) static int coap_start( lua_State* L, const char* mt )
 
   cud = (lcoap_userdata *)luaL_checkudata(L, 1, mt);
   luaL_argcheck(L, cud, 1, "Server/Client expected");
-  if(cud==NULL){
+  if(cud==((void*)0)){
     NODE_DBG("userdata is nil.\n");
     return 0;
   }
@@ -64,10 +64,10 @@ __attribute__((used)) static int coap_start( lua_State* L, const char* mt )
   pesp_conn->proto.udp->local_port = port;
   NODE_DBG("UDP port is set: %d.\n", port);
 
-  if( lua_isstring(L,3) )   // deal with the ip string
+  if( lua_isstring(L,3) )
   {
     const char *ip = luaL_checklstring( L, 3, &il );
-    if (ip == NULL)
+    if (ip == ((void*)0))
     {
       ip = "0.0.0.0";
     }
@@ -79,7 +79,7 @@ __attribute__((used)) static int coap_start( lua_State* L, const char* mt )
   }
 
   if(LUA_NOREF==cud->self_ref){
-    lua_pushvalue(L, 1);  // copy to the top of stack
+    lua_pushvalue(L, 1);
     cud->self_ref = luaL_ref(L, LUA_REGISTRYINDEX);
   }
 
