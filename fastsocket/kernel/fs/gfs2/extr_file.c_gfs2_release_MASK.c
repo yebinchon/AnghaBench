@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct inode {int dummy; } ;
+struct gfs2_inode {int dummy; } ;
+struct file {int f_mode; int /*<<< orphan*/ * private_data; } ;
+
+/* Variables and functions */
+ int FMODE_WRITE ; 
+ struct gfs2_inode* FUNC0 (struct inode*) ; 
+ int /*<<< orphan*/  FUNC1 (struct gfs2_inode*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC3(struct inode *inode, struct file *file)
+{
+	struct gfs2_inode *ip = FUNC0(inode);
+
+	FUNC2(file->private_data);
+	file->private_data = NULL;
+
+	if (!(file->f_mode & FMODE_WRITE))
+		return 0;
+
+	FUNC1(ip);
+	return 0;
+}

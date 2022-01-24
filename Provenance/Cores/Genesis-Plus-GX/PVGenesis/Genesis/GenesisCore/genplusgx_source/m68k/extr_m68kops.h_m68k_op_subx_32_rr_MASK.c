@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ uint ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (scalar_t__,scalar_t__,scalar_t__) ; 
+ scalar_t__ DX ; 
+ scalar_t__ DY ; 
+ int /*<<< orphan*/  FLAG_C ; 
+ int /*<<< orphan*/  FLAG_N ; 
+ int /*<<< orphan*/  FLAG_V ; 
+ int /*<<< orphan*/  FLAG_X ; 
+ scalar_t__ FLAG_Z ; 
+ scalar_t__ FUNC1 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC2 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC3 (scalar_t__,scalar_t__,scalar_t__) ; 
+ scalar_t__ FUNC4 () ; 
+
+__attribute__((used)) static void FUNC5(void)
+{
+  uint* r_dst = &DX;
+  uint src = DY;
+  uint dst = *r_dst;
+  uint res = dst - src - FUNC4();
+
+  FLAG_N = FUNC2(res);
+  FLAG_X = FLAG_C = FUNC0(src, dst, res);
+  FLAG_V = FUNC3(src, dst, res);
+
+  res = FUNC1(res);
+  FLAG_Z |= res;
+
+  *r_dst = res;
+}

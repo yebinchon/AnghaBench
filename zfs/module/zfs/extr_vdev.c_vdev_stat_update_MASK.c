@@ -1,0 +1,235 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_25__   TYPE_9__ ;
+typedef  struct TYPE_24__   TYPE_8__ ;
+typedef  struct TYPE_23__   TYPE_7__ ;
+typedef  struct TYPE_22__   TYPE_6__ ;
+typedef  struct TYPE_21__   TYPE_5__ ;
+typedef  struct TYPE_20__   TYPE_4__ ;
+typedef  struct TYPE_19__   TYPE_3__ ;
+typedef  struct TYPE_18__   TYPE_2__ ;
+typedef  struct TYPE_17__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  size_t zio_type_t ;
+struct TYPE_20__ {scalar_t__ io_txg; size_t io_type; int io_flags; scalar_t__ io_error; size_t io_priority; TYPE_5__* io_vd; scalar_t__ io_delta; scalar_t__ io_delay; int /*<<< orphan*/  io_size; scalar_t__ io_gang_tree; TYPE_8__* io_spa; } ;
+typedef  TYPE_4__ zio_t ;
+struct TYPE_23__ {int /*<<< orphan*/ ** vsx_total_histo; int /*<<< orphan*/ ** vsx_disk_histo; int /*<<< orphan*/ ** vsx_queue_histo; int /*<<< orphan*/ ** vsx_ind_histo; int /*<<< orphan*/ ** vsx_agg_histo; } ;
+struct TYPE_22__ {scalar_t__ vs_scan_processed; int /*<<< orphan*/ * vs_bytes; int /*<<< orphan*/ * vs_ops; int /*<<< orphan*/  vs_self_healed; } ;
+struct TYPE_21__ {int /*<<< orphan*/  vdev_top; struct TYPE_21__* vdev_parent; TYPE_3__* vdev_ops; int /*<<< orphan*/  vdev_stat_lock; TYPE_7__ vdev_stat_ex; TYPE_6__ vdev_stat; } ;
+typedef  TYPE_5__ vdev_t ;
+typedef  TYPE_6__ vdev_stat_t ;
+typedef  TYPE_7__ vdev_stat_ex_t ;
+typedef  scalar_t__ uint64_t ;
+struct TYPE_24__ {scalar_t__ spa_load_state; scalar_t__ spa_claiming; TYPE_2__* spa_dsl_pool; TYPE_5__* spa_root_vdev; } ;
+typedef  TYPE_8__ spa_t ;
+struct TYPE_25__ {scalar_t__ scn_processed; } ;
+typedef  TYPE_9__ dsl_scan_phys_t ;
+struct TYPE_19__ {scalar_t__ vdev_op_leaf; } ;
+struct TYPE_18__ {TYPE_1__* dp_scan; } ;
+struct TYPE_17__ {TYPE_9__ scn_phys; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  DTL_MISSING ; 
+ int /*<<< orphan*/  DTL_PARTIAL ; 
+ int /*<<< orphan*/  DTL_SCRUB ; 
+ scalar_t__ EIO ; 
+ size_t FUNC1 (scalar_t__) ; 
+ size_t FUNC2 (int /*<<< orphan*/ ) ; 
+ scalar_t__ SPA_LOAD_NONE ; 
+ int /*<<< orphan*/  VDD_DTL ; 
+ int ZIO_FLAG_DELEGATED ; 
+ int ZIO_FLAG_DONT_PROPAGATE ; 
+ int ZIO_FLAG_IO_BYPASS ; 
+ int ZIO_FLAG_IO_REPAIR ; 
+ int ZIO_FLAG_IO_RETRY ; 
+ int ZIO_FLAG_SCAN_THREAD ; 
+ int ZIO_FLAG_SELF_HEAL ; 
+ int ZIO_FLAG_SPECULATIVE ; 
+ size_t ZIO_PRIORITY_NUM_QUEUEABLE ; 
+ size_t ZIO_TYPE_IOCTL ; 
+ size_t ZIO_TYPE_TRIM ; 
+ size_t ZIO_TYPE_WRITE ; 
+ int /*<<< orphan*/  FUNC3 (scalar_t__*,scalar_t__) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC6 (TYPE_8__*) ; 
+ int FUNC7 (TYPE_8__*) ; 
+ scalar_t__ FUNC8 (TYPE_8__*) ; 
+ int /*<<< orphan*/  FUNC9 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__*,scalar_t__) ; 
+ scalar_t__ FUNC10 (TYPE_5__*,int /*<<< orphan*/ ,scalar_t__,int) ; 
+ int /*<<< orphan*/  FUNC11 (TYPE_5__*,int /*<<< orphan*/ ,scalar_t__,int) ; 
+
+void
+FUNC12(zio_t *zio, uint64_t psize)
+{
+	spa_t *spa = zio->io_spa;
+	vdev_t *rvd = spa->spa_root_vdev;
+	vdev_t *vd = zio->io_vd ? zio->io_vd : rvd;
+	vdev_t *pvd;
+	uint64_t txg = zio->io_txg;
+	vdev_stat_t *vs = &vd->vdev_stat;
+	vdev_stat_ex_t *vsx = &vd->vdev_stat_ex;
+	zio_type_t type = zio->io_type;
+	int flags = zio->io_flags;
+
+	/*
+	 * If this i/o is a gang leader, it didn't do any actual work.
+	 */
+	if (zio->io_gang_tree)
+		return;
+
+	if (zio->io_error == 0) {
+		/*
+		 * If this is a root i/o, don't count it -- we've already
+		 * counted the top-level vdevs, and vdev_get_stats() will
+		 * aggregate them when asked.  This reduces contention on
+		 * the root vdev_stat_lock and implicitly handles blocks
+		 * that compress away to holes, for which there is no i/o.
+		 * (Holes never create vdev children, so all the counters
+		 * remain zero, which is what we want.)
+		 *
+		 * Note: this only applies to successful i/o (io_error == 0)
+		 * because unlike i/o counts, errors are not additive.
+		 * When reading a ditto block, for example, failure of
+		 * one top-level vdev does not imply a root-level error.
+		 */
+		if (vd == rvd)
+			return;
+
+		FUNC0(vd == zio->io_vd);
+
+		if (flags & ZIO_FLAG_IO_BYPASS)
+			return;
+
+		FUNC4(&vd->vdev_stat_lock);
+
+		if (flags & ZIO_FLAG_IO_REPAIR) {
+			if (flags & ZIO_FLAG_SCAN_THREAD) {
+				dsl_scan_phys_t *scn_phys =
+				    &spa->spa_dsl_pool->dp_scan->scn_phys;
+				uint64_t *processed = &scn_phys->scn_processed;
+
+				/* XXX cleanup? */
+				if (vd->vdev_ops->vdev_op_leaf)
+					FUNC3(processed, psize);
+				vs->vs_scan_processed += psize;
+			}
+
+			if (flags & ZIO_FLAG_SELF_HEAL)
+				vs->vs_self_healed += psize;
+		}
+
+		/*
+		 * The bytes/ops/histograms are recorded at the leaf level and
+		 * aggregated into the higher level vdevs in vdev_get_stats().
+		 */
+		if (vd->vdev_ops->vdev_op_leaf &&
+		    (zio->io_priority < ZIO_PRIORITY_NUM_QUEUEABLE)) {
+			zio_type_t vs_type = type;
+
+			/*
+			 * TRIM ops and bytes are reported to user space as
+			 * ZIO_TYPE_IOCTL.  This is done to preserve the
+			 * vdev_stat_t structure layout for user space.
+			 */
+			if (type == ZIO_TYPE_TRIM)
+				vs_type = ZIO_TYPE_IOCTL;
+
+			vs->vs_ops[vs_type]++;
+			vs->vs_bytes[vs_type] += psize;
+
+			if (flags & ZIO_FLAG_DELEGATED) {
+				vsx->vsx_agg_histo[zio->io_priority]
+				    [FUNC2(zio->io_size)]++;
+			} else {
+				vsx->vsx_ind_histo[zio->io_priority]
+				    [FUNC2(zio->io_size)]++;
+			}
+
+			if (zio->io_delta && zio->io_delay) {
+				vsx->vsx_queue_histo[zio->io_priority]
+				    [FUNC1(zio->io_delta - zio->io_delay)]++;
+				vsx->vsx_disk_histo[type]
+				    [FUNC1(zio->io_delay)]++;
+				vsx->vsx_total_histo[type]
+				    [FUNC1(zio->io_delta)]++;
+			}
+		}
+
+		FUNC5(&vd->vdev_stat_lock);
+		return;
+	}
+
+	if (flags & ZIO_FLAG_SPECULATIVE)
+		return;
+
+	/*
+	 * If this is an I/O error that is going to be retried, then ignore the
+	 * error.  Otherwise, the user may interpret B_FAILFAST I/O errors as
+	 * hard errors, when in reality they can happen for any number of
+	 * innocuous reasons (bus resets, MPxIO link failure, etc).
+	 */
+	if (zio->io_error == EIO &&
+	    !(zio->io_flags & ZIO_FLAG_IO_RETRY))
+		return;
+
+	/*
+	 * Intent logs writes won't propagate their error to the root
+	 * I/O so don't mark these types of failures as pool-level
+	 * errors.
+	 */
+	if (zio->io_vd == NULL && (zio->io_flags & ZIO_FLAG_DONT_PROPAGATE))
+		return;
+
+	if (spa->spa_load_state == SPA_LOAD_NONE &&
+	    type == ZIO_TYPE_WRITE && txg != 0 &&
+	    (!(flags & ZIO_FLAG_IO_REPAIR) ||
+	    (flags & ZIO_FLAG_SCAN_THREAD) ||
+	    spa->spa_claiming)) {
+		/*
+		 * This is either a normal write (not a repair), or it's
+		 * a repair induced by the scrub thread, or it's a repair
+		 * made by zil_claim() during spa_load() in the first txg.
+		 * In the normal case, we commit the DTL change in the same
+		 * txg as the block was born.  In the scrub-induced repair
+		 * case, we know that scrubs run in first-pass syncing context,
+		 * so we commit the DTL change in spa_syncing_txg(spa).
+		 * In the zil_claim() case, we commit in spa_first_txg(spa).
+		 *
+		 * We currently do not make DTL entries for failed spontaneous
+		 * self-healing writes triggered by normal (non-scrubbing)
+		 * reads, because we have no transactional context in which to
+		 * do so -- and it's not clear that it'd be desirable anyway.
+		 */
+		if (vd->vdev_ops->vdev_op_leaf) {
+			uint64_t commit_txg = txg;
+			if (flags & ZIO_FLAG_SCAN_THREAD) {
+				FUNC0(flags & ZIO_FLAG_IO_REPAIR);
+				FUNC0(FUNC7(spa) == 1);
+				FUNC11(vd, DTL_SCRUB, txg, 1);
+				commit_txg = FUNC8(spa);
+			} else if (spa->spa_claiming) {
+				FUNC0(flags & ZIO_FLAG_IO_REPAIR);
+				commit_txg = FUNC6(spa);
+			}
+			FUNC0(commit_txg >= FUNC8(spa));
+			if (FUNC10(vd, DTL_MISSING, txg, 1))
+				return;
+			for (pvd = vd; pvd != rvd; pvd = pvd->vdev_parent)
+				FUNC11(pvd, DTL_PARTIAL, txg, 1);
+			FUNC9(vd->vdev_top, VDD_DTL, vd, commit_txg);
+		}
+		if (vd != rvd)
+			FUNC11(vd, DTL_MISSING, txg, 1);
+	}
+}

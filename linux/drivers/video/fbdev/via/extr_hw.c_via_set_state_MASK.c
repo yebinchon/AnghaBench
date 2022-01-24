@@ -1,0 +1,45 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+typedef  int u32 ;
+
+/* Variables and functions */
+ int VIA_CRT ; 
+ int VIA_DVP0 ; 
+ int VIA_DVP1 ; 
+ int VIA_LVDS1 ; 
+ int VIA_LVDS2 ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ) ; 
+
+void FUNC5(u32 devices, u8 state)
+{
+	/*
+	TODO: Can we enable/disable these devices? How?
+	if (devices & VIA_LDVP0)
+	if (devices & VIA_LDVP1)
+	*/
+	if (devices & VIA_DVP0)
+		FUNC1(state);
+	if (devices & VIA_CRT)
+		FUNC0(state);
+	if (devices & VIA_DVP1)
+		FUNC2(state);
+	if (devices & VIA_LVDS1)
+		FUNC3(state);
+	if (devices & VIA_LVDS2)
+		FUNC4(state);
+}

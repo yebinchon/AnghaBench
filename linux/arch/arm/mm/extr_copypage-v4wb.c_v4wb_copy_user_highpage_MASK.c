@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct vm_area_struct {int dummy; } ;
+struct page {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct vm_area_struct*,unsigned long,int /*<<< orphan*/ ) ; 
+ void* FUNC1 (struct page*) ; 
+ int /*<<< orphan*/  FUNC2 (void*) ; 
+ int /*<<< orphan*/  FUNC3 (struct page*) ; 
+ int /*<<< orphan*/  FUNC4 (void*,void*) ; 
+
+void FUNC5(struct page *to, struct page *from,
+	unsigned long vaddr, struct vm_area_struct *vma)
+{
+	void *kto, *kfrom;
+
+	kto = FUNC1(to);
+	kfrom = FUNC1(from);
+	FUNC0(vma, vaddr, FUNC3(from));
+	FUNC4(kto, kfrom);
+	FUNC2(kfrom);
+	FUNC2(kto);
+}

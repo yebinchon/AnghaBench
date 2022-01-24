@@ -1,0 +1,125 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct iw_point {int flags; } ;
+union iwreq_data {struct iw_point encoding; } ;
+typedef  int u8 ;
+typedef  int /*<<< orphan*/  u32 ;
+struct r8192_priv {int /*<<< orphan*/  wx_sem; struct ieee80211_device* ieee80211; } ;
+struct net_device {int dummy; } ;
+struct iw_request_info {int dummy; } ;
+struct iw_encode_ext {scalar_t__ alg; int ext_flags; int key_len; int /*<<< orphan*/  key; } ;
+struct ieee80211_device {int pairwise_key_type; int group_key_type; scalar_t__ iw_mode; int auth_mode; scalar_t__ ap_mac_addr; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct net_device*) ; 
+ int /*<<< orphan*/  FUNC1 (struct net_device*) ; 
+ scalar_t__ IW_ENCODE_ALG_CCMP ; 
+ scalar_t__ IW_ENCODE_ALG_NONE ; 
+ int IW_ENCODE_DISABLED ; 
+ int IW_ENCODE_EXT_GROUP_KEY ; 
+ int IW_ENCODE_INDEX ; 
+ scalar_t__ IW_MODE_ADHOC ; 
+ int KEY_TYPE_CCMP ; 
+ int KEY_TYPE_NA ; 
+ int KEY_TYPE_WEP104 ; 
+ int KEY_TYPE_WEP40 ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ struct r8192_priv* FUNC3 (struct net_device*) ; 
+ int FUNC4 (struct ieee80211_device*,struct iw_request_info*,union iwreq_data*,char*) ; 
+ int /*<<< orphan*/  FUNC5 (int*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC6 (struct net_device*,int,int,int,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC8(struct net_device *dev,
+                                        struct iw_request_info *info,
+                                        union iwreq_data *wrqu, char *extra)
+{
+	int ret=0;
+	struct r8192_priv *priv = FUNC3(dev);
+	struct ieee80211_device* ieee = priv->ieee80211;
+	//printk("===>%s()\n", __FUNCTION__);
+
+
+	FUNC2(&priv->wx_sem);
+	ret = FUNC4(priv->ieee80211, info, wrqu, extra);
+
+	{
+		u8 broadcast_addr[6] = {0xff,0xff,0xff,0xff,0xff,0xff};
+		u8 zero[6] = {0};
+		u32 key[4] = {0};
+		struct iw_encode_ext *ext = (struct iw_encode_ext *)extra;
+		struct iw_point *encoding = &wrqu->encoding;
+		u8 idx = 0, alg = 0, group = 0;
+		if ((encoding->flags & IW_ENCODE_DISABLED) ||
+		ext->alg == IW_ENCODE_ALG_NONE) //none is not allowed to use hwsec WB 2008.07.01
+		{
+			ieee->pairwise_key_type = ieee->group_key_type = KEY_TYPE_NA;
+			FUNC0(dev);
+			goto end_hw_sec;
+		}
+		alg =  (ext->alg == IW_ENCODE_ALG_CCMP)?KEY_TYPE_CCMP:ext->alg; // as IW_ENCODE_ALG_CCMP is defined to be 3 and KEY_TYPE_CCMP is defined to 4;
+		idx = encoding->flags & IW_ENCODE_INDEX;
+		if (idx)
+			idx --;
+		group = ext->ext_flags & IW_ENCODE_EXT_GROUP_KEY;
+
+		if ((!group) || (IW_MODE_ADHOC == ieee->iw_mode) || (alg ==  KEY_TYPE_WEP40))
+		{
+			if ((ext->key_len == 13) && (alg == KEY_TYPE_WEP40) )
+				alg = KEY_TYPE_WEP104;
+			ieee->pairwise_key_type = alg;
+			FUNC1(dev);
+		}
+		FUNC5((u8*)key, ext->key, 16); //we only get 16 bytes key.why? WB 2008.7.1
+
+		if ((alg & KEY_TYPE_WEP40) && (ieee->auth_mode !=2) )
+		{
+
+			FUNC6( dev,
+					idx,//EntryNo
+					idx, //KeyIndex
+					alg,  //KeyType
+					zero, //MacAddr
+					0,              //DefaultKey
+					key);           //KeyContent
+		}
+		else if (group)
+		{
+			ieee->group_key_type = alg;
+			FUNC6( dev,
+					idx,//EntryNo
+					idx, //KeyIndex
+					alg,  //KeyType
+					broadcast_addr, //MacAddr
+					0,              //DefaultKey
+					key);           //KeyContent
+		}
+		else //pairwise key
+		{
+			FUNC6( dev,
+					4,//EntryNo
+					idx, //KeyIndex
+					alg,  //KeyType
+					(u8*)ieee->ap_mac_addr, //MacAddr
+					0,              //DefaultKey
+					key);           //KeyContent
+		}
+
+
+	}
+
+end_hw_sec:
+
+	FUNC7(&priv->wx_sem);
+	return ret;
+}

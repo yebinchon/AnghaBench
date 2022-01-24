@@ -1,0 +1,80 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  int /*<<< orphan*/  u32 ;
+typedef  int u16 ;
+struct dvb_usb_device {struct dibusb_device_state* priv; } ;
+struct dibusb_device_state {int old_toggle; int /*<<< orphan*/  last_repeat_count; } ;
+struct TYPE_5__ {int /*<<< orphan*/  event; } ;
+
+/* Variables and functions */
+ int FUNC0 (TYPE_1__*) ; 
+#define  DIBUSB_RC_HAUPPAUGE_KEY_EMPTY 129 
+#define  DIBUSB_RC_HAUPPAUGE_KEY_PRESSED 128 
+ int DIBUSB_REQ_POLL_REMOTE ; 
+ int REMOTE_KEY_PRESSED ; 
+ int REMOTE_NO_KEY_PRESSED ; 
+ int /*<<< orphan*/  FUNC1 (char*,int,int,...) ; 
+ int /*<<< orphan*/  FUNC2 (struct dvb_usb_device*,int*,int,int*,int,int /*<<< orphan*/ ) ; 
+ int FUNC3 (TYPE_1__*) ; 
+ int FUNC4 (TYPE_1__*) ; 
+ TYPE_1__* rc_map_haupp_table ; 
+
+__attribute__((used)) static int FUNC5(struct dvb_usb_device *d, u32 *event, int *state)
+{
+	u8 key[5],cmd[2] = { DIBUSB_REQ_POLL_REMOTE, 0x35 }, data,toggle,custom;
+	u16 raw;
+	int i;
+	struct dibusb_device_state *st = d->priv;
+
+	FUNC2(d,cmd,2,key,5,0);
+
+	*state = REMOTE_NO_KEY_PRESSED;
+	switch (key[0]) {
+		case DIBUSB_RC_HAUPPAUGE_KEY_PRESSED:
+			raw = ((key[1] << 8) | key[2]) >> 3;
+			toggle = !!(raw & 0x800);
+			data = raw & 0x3f;
+			custom = (raw >> 6) & 0x1f;
+
+			FUNC1("raw key code 0x%02x, 0x%02x, 0x%02x to c: %02x d: %02x toggle: %d\n",key[1],key[2],key[3],custom,data,toggle);
+
+			for (i = 0; i < FUNC0(rc_map_haupp_table); i++) {
+				if (FUNC4(&rc_map_haupp_table[i]) == data &&
+					FUNC3(&rc_map_haupp_table[i]) == custom) {
+
+					FUNC1("c: %x, d: %x\n", FUNC4(&rc_map_haupp_table[i]),
+								 FUNC3(&rc_map_haupp_table[i]));
+
+					*event = rc_map_haupp_table[i].event;
+					*state = REMOTE_KEY_PRESSED;
+					if (st->old_toggle == toggle) {
+						if (st->last_repeat_count++ < 2)
+							*state = REMOTE_NO_KEY_PRESSED;
+					} else {
+						st->last_repeat_count = 0;
+						st->old_toggle = toggle;
+					}
+					break;
+				}
+			}
+
+			break;
+		case DIBUSB_RC_HAUPPAUGE_KEY_EMPTY:
+		default:
+			break;
+	}
+
+	return 0;
+}

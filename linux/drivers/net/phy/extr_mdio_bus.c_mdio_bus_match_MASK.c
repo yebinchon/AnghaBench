@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct mdio_device {int (* bus_match ) (struct device*,struct device_driver*) ;} ;
+struct device_driver {int dummy; } ;
+struct device {int dummy; } ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (struct device*,struct device_driver*) ; 
+ int FUNC1 (struct device*,struct device_driver*) ; 
+ struct mdio_device* FUNC2 (struct device*) ; 
+
+__attribute__((used)) static int FUNC3(struct device *dev, struct device_driver *drv)
+{
+	struct mdio_device *mdio = FUNC2(dev);
+
+	if (FUNC0(dev, drv))
+		return 1;
+
+	if (mdio->bus_match)
+		return mdio->bus_match(dev, drv);
+
+	return 0;
+}

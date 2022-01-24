@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  buf ;
+
+/* Variables and functions */
+ int BUFSIZ ; 
+ scalar_t__ PRELIM ; 
+ scalar_t__ FUNC0 (char*,char*) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (char*,char*,int) ; 
+ int /*<<< orphan*/  FUNC3 (char*,char*,int) ; 
+
+void
+FUNC4(char *initial, int argc, char **argv)
+{
+    int i;
+    char buf[BUFSIZ];		/* must be >= sizeof(line) */
+
+    FUNC3(buf, initial, sizeof(buf));
+    for(i = 1; i < argc; i++) {
+	if(i > 1)
+	    FUNC2(buf, " ", sizeof(buf));
+	FUNC2(buf, argv[i], sizeof(buf));
+    }
+    if (FUNC0("%s", buf) == PRELIM) {
+	while (FUNC1(0) == PRELIM)
+	    continue;
+    }
+}

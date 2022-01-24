@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_3__ {int /*<<< orphan*/ * message; int /*<<< orphan*/ * cond; } ;
+typedef  TYPE_1__ PLpgSQL_stmt_assert ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 () ; 
+ int dump_indent ; 
+ int /*<<< orphan*/  FUNC2 (char*) ; 
+
+__attribute__((used)) static void
+FUNC3(PLpgSQL_stmt_assert *stmt)
+{
+	FUNC1();
+	FUNC2("ASSERT ");
+	FUNC0(stmt->cond);
+	FUNC2("\n");
+
+	dump_indent += 2;
+	if (stmt->message != NULL)
+	{
+		FUNC1();
+		FUNC2("    MESSAGE = ");
+		FUNC0(stmt->message);
+		FUNC2("\n");
+	}
+	dump_indent -= 2;
+}

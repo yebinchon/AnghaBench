@@ -1,0 +1,155 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {int port_state; } ;
+struct port {scalar_t__ sm_mux_state; int sm_vars; int actor_oper_port_state; int ntt; int /*<<< orphan*/  sm_mux_timer_counter; int /*<<< orphan*/  actor_port_number; TYPE_2__* aggregator; TYPE_1__ partner_oper; } ;
+typedef  scalar_t__ mux_states_t ;
+struct TYPE_5__ {int /*<<< orphan*/  is_active; } ;
+
+/* Variables and functions */
+#define  AD_MUX_ATTACHED 131 
+#define  AD_MUX_COLLECTING_DISTRIBUTING 130 
+#define  AD_MUX_DETACHED 129 
+#define  AD_MUX_WAITING 128 
+ int AD_PORT_BEGIN ; 
+ int AD_PORT_READY ; 
+ int AD_PORT_READY_N ; 
+ int AD_PORT_SELECTED ; 
+ int AD_PORT_STANDBY ; 
+ int AD_STATE_COLLECTING ; 
+ int AD_STATE_DISTRIBUTING ; 
+ int AD_STATE_SYNCHRONIZATION ; 
+ int /*<<< orphan*/  AD_WAIT_WHILE_TIMER ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (TYPE_2__*) ; 
+ int /*<<< orphan*/  FUNC2 (struct port*) ; 
+ int /*<<< orphan*/  FUNC3 (struct port*) ; 
+ int /*<<< orphan*/  FUNC4 (struct port*) ; 
+ int /*<<< orphan*/  FUNC5 (struct port*) ; 
+ int /*<<< orphan*/  FUNC6 (struct port*) ; 
+ int /*<<< orphan*/  FUNC7 (TYPE_2__*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC8 (struct port*) ; 
+ int /*<<< orphan*/  FUNC9 (struct port*) ; 
+ int /*<<< orphan*/  FUNC10 (char*,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
+
+__attribute__((used)) static void FUNC11(struct port *port)
+{
+	mux_states_t last_state;
+
+	// keep current State Machine state to compare later if it was changed
+	last_state = port->sm_mux_state;
+
+	if (port->sm_vars & AD_PORT_BEGIN) {
+		port->sm_mux_state = AD_MUX_DETACHED;		 // next state
+	} else {
+		switch (port->sm_mux_state) {
+		case AD_MUX_DETACHED:
+			if ((port->sm_vars & AD_PORT_SELECTED) || (port->sm_vars & AD_PORT_STANDBY)) { // if SELECTED or STANDBY
+				port->sm_mux_state = AD_MUX_WAITING; // next state
+			}
+			break;
+		case AD_MUX_WAITING:
+			// if SELECTED == FALSE return to DETACH state
+			if (!(port->sm_vars & AD_PORT_SELECTED)) { // if UNSELECTED
+				port->sm_vars &= ~AD_PORT_READY_N;
+				// in order to withhold the Selection Logic to check all ports READY_N value
+				// every callback cycle to update ready variable, we check READY_N and update READY here
+				FUNC7(port->aggregator, FUNC1(port->aggregator));
+				port->sm_mux_state = AD_MUX_DETACHED;	 // next state
+				break;
+			}
+
+			// check if the wait_while_timer expired
+			if (port->sm_mux_timer_counter && !(--port->sm_mux_timer_counter)) {
+				port->sm_vars |= AD_PORT_READY_N;
+			}
+
+			// in order to withhold the selection logic to check all ports READY_N value
+			// every callback cycle to update ready variable, we check READY_N and update READY here
+			FUNC7(port->aggregator, FUNC1(port->aggregator));
+
+			// if the wait_while_timer expired, and the port is in READY state, move to ATTACHED state
+			if ((port->sm_vars & AD_PORT_READY) && !port->sm_mux_timer_counter) {
+				port->sm_mux_state = AD_MUX_ATTACHED;	 // next state
+			}
+			break;
+		case AD_MUX_ATTACHED:
+			// check also if agg_select_timer expired(so the edable port will take place only after this timer)
+			if ((port->sm_vars & AD_PORT_SELECTED) && (port->partner_oper.port_state & AD_STATE_SYNCHRONIZATION) && !FUNC3(port)) {
+				port->sm_mux_state = AD_MUX_COLLECTING_DISTRIBUTING;// next state
+			} else if (!(port->sm_vars & AD_PORT_SELECTED) || (port->sm_vars & AD_PORT_STANDBY)) {	  // if UNSELECTED or STANDBY
+				port->sm_vars &= ~AD_PORT_READY_N;
+				// in order to withhold the selection logic to check all ports READY_N value
+				// every callback cycle to update ready variable, we check READY_N and update READY here
+				FUNC7(port->aggregator, FUNC1(port->aggregator));
+				port->sm_mux_state = AD_MUX_DETACHED;// next state
+			}
+			break;
+		case AD_MUX_COLLECTING_DISTRIBUTING:
+			if (!(port->sm_vars & AD_PORT_SELECTED) || (port->sm_vars & AD_PORT_STANDBY) ||
+			    !(port->partner_oper.port_state & AD_STATE_SYNCHRONIZATION)
+			   ) {
+				port->sm_mux_state = AD_MUX_ATTACHED;// next state
+
+			} else {
+				// if port state hasn't changed make
+				// sure that a collecting distributing
+				// port in an active aggregator is enabled
+				if (port->aggregator &&
+				    port->aggregator->is_active &&
+				    !FUNC6(port)) {
+
+					FUNC5(port);
+				}
+			}
+			break;
+		default:    //to silence the compiler
+			break;
+		}
+	}
+
+	// check if the state machine was changed
+	if (port->sm_mux_state != last_state) {
+		FUNC10("Mux Machine: Port=%d, Last State=%d, Curr State=%d\n", port->actor_port_number, last_state, port->sm_mux_state);
+		switch (port->sm_mux_state) {
+		case AD_MUX_DETACHED:
+			FUNC4(port);
+			port->actor_oper_port_state &= ~AD_STATE_SYNCHRONIZATION;
+			FUNC8(port);
+			port->actor_oper_port_state &= ~AD_STATE_COLLECTING;
+			port->actor_oper_port_state &= ~AD_STATE_DISTRIBUTING;
+			port->ntt = true;
+			break;
+		case AD_MUX_WAITING:
+			port->sm_mux_timer_counter = FUNC0(AD_WAIT_WHILE_TIMER, 0);
+			break;
+		case AD_MUX_ATTACHED:
+			FUNC2(port);
+			port->actor_oper_port_state |= AD_STATE_SYNCHRONIZATION;
+			port->actor_oper_port_state &= ~AD_STATE_COLLECTING;
+			port->actor_oper_port_state &= ~AD_STATE_DISTRIBUTING;
+			FUNC8(port);
+			port->ntt = true;
+			break;
+		case AD_MUX_COLLECTING_DISTRIBUTING:
+			port->actor_oper_port_state |= AD_STATE_COLLECTING;
+			port->actor_oper_port_state |= AD_STATE_DISTRIBUTING;
+			FUNC9(port);
+			port->ntt = true;
+			break;
+		default:    //to silence the compiler
+			break;
+		}
+	}
+}

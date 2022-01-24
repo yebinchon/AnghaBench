@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct input_dev {int dummy; } ;
+struct ep93xx_keypad {int enabled; int /*<<< orphan*/  clk; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct ep93xx_keypad*) ; 
+ struct ep93xx_keypad* FUNC2 (struct input_dev*) ; 
+
+__attribute__((used)) static int FUNC3(struct input_dev *pdev)
+{
+	struct ep93xx_keypad *keypad = FUNC2(pdev);
+
+	if (!keypad->enabled) {
+		FUNC1(keypad);
+		FUNC0(keypad->clk);
+		keypad->enabled = 1;
+	}
+
+	return 0;
+}

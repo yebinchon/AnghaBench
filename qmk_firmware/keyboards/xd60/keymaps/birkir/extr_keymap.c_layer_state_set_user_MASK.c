@@ -1,0 +1,56 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ uint32_t ;
+
+/* Variables and functions */
+ int FUNC0 (scalar_t__) ; 
+ int edit ; 
+ int /*<<< orphan*/  hue ; 
+ int mode ; 
+ int /*<<< orphan*/  FUNC1 () ; 
+ int FUNC2 () ; 
+ int /*<<< orphan*/  FUNC3 () ; 
+ int /*<<< orphan*/  FUNC4 () ; 
+ int /*<<< orphan*/  FUNC5 (int) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (int,int,int) ; 
+ int /*<<< orphan*/  sat ; 
+ int /*<<< orphan*/  val ; 
+
+uint32_t FUNC8(uint32_t state) {
+
+  if (state == 0 && edit == true) {
+    mode = FUNC2();
+    hue = FUNC1();
+    sat = FUNC3();
+    val = FUNC4();
+    edit = false;
+  }
+
+  switch (FUNC0(state)) {
+    case 1:
+      FUNC5(1);
+      FUNC7(0xD3, 0x7F, 0xED);
+      break;
+    case 2:
+      FUNC5(1);
+      FUNC7(0xFF, 0x00, 0x00);
+      edit = true;
+      break;
+    default:
+      FUNC5(mode);
+      FUNC6(hue, sat, val);
+      break;
+  }
+  return state;
+}

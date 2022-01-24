@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_3__ {int /*<<< orphan*/  flags; } ;
+struct buffer {int dummy; } ;
+struct test_tls_crypt_context {TYPE_1__ co; int /*<<< orphan*/  unwrapped; struct buffer ciphertext; struct buffer source; } ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (struct buffer*) ; 
+ int /*<<< orphan*/  CO_IGNORE_PACKET_ID ; 
+ int /*<<< orphan*/  FUNC1 (int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (struct test_tls_crypt_context*) ; 
+ int FUNC4 (struct buffer*,int /*<<< orphan*/ *,TYPE_1__*) ; 
+ int FUNC5 (struct buffer*,struct buffer*,TYPE_1__*) ; 
+
+__attribute__((used)) static void
+FUNC6(void **state) {
+    struct test_tls_crypt_context *ctx = (struct test_tls_crypt_context *) *state;
+
+    FUNC3(ctx);
+
+    ctx->co.flags |= CO_IGNORE_PACKET_ID;
+
+    FUNC1(FUNC5(&ctx->source, &ctx->ciphertext, &ctx->co));
+    FUNC1(FUNC0(&ctx->source) < FUNC0(&ctx->ciphertext));
+    struct buffer tmp = ctx->ciphertext;
+    FUNC1(FUNC4(&tmp, &ctx->unwrapped, &ctx->co));
+    FUNC2(&ctx->unwrapped);
+    FUNC1(FUNC4(&ctx->ciphertext, &ctx->unwrapped, &ctx->co));
+}

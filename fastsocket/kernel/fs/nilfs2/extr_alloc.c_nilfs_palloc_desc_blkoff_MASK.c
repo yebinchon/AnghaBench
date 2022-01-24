@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct inode {int dummy; } ;
+struct TYPE_2__ {unsigned long mi_blocks_per_desc_block; } ;
+
+/* Variables and functions */
+ TYPE_1__* FUNC0 (struct inode const*) ; 
+ unsigned long FUNC1 (struct inode const*) ; 
+
+__attribute__((used)) static unsigned long
+FUNC2(const struct inode *inode, unsigned long group)
+{
+	unsigned long desc_block =
+		group / FUNC1(inode);
+	return desc_block * FUNC0(inode)->mi_blocks_per_desc_block;
+}

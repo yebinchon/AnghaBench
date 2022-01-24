@@ -1,0 +1,65 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  scalar_t__ uint8_t ;
+typedef  scalar_t__ uint32_t ;
+struct timing_generator {int /*<<< orphan*/  ctx; TYPE_1__* funcs; } ;
+struct dce110_timing_generator {int dummy; } ;
+struct TYPE_2__ {int /*<<< orphan*/  (* get_scanoutpos ) (struct timing_generator*,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*) ;} ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  CRTC_VERTICAL_INTERRUPT0_LINE_END ; 
+ int /*<<< orphan*/  CRTC_VERTICAL_INTERRUPT0_LINE_START ; 
+ int /*<<< orphan*/  CRTC_VERTICAL_INTERRUPT0_POSITION ; 
+ struct dce110_timing_generator* FUNC1 (struct timing_generator*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+ int /*<<< orphan*/  mmCRTC_VERTICAL_INTERRUPT0_POSITION ; 
+ int /*<<< orphan*/  FUNC3 (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (struct timing_generator*,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*) ; 
+
+bool FUNC5(struct timing_generator *tg, uint8_t width)
+{
+	struct dce110_timing_generator *tg110 = FUNC1(tg);
+	uint32_t v_blank_start = 0;
+	uint32_t v_blank_end = 0;
+	uint32_t val = 0;
+	uint32_t h_position, v_position;
+
+	tg->funcs->get_scanoutpos(
+			tg,
+			&v_blank_start,
+			&v_blank_end,
+			&h_position,
+			&v_position);
+
+	if (v_blank_start == 0 || v_blank_end == 0)
+		return false;
+
+	FUNC3(
+		val,
+		v_blank_start,
+		CRTC_VERTICAL_INTERRUPT0_POSITION,
+		CRTC_VERTICAL_INTERRUPT0_LINE_START);
+
+	/* Set interval width for interrupt to fire to 1 scanline */
+	FUNC3(
+		val,
+		v_blank_start + width,
+		CRTC_VERTICAL_INTERRUPT0_POSITION,
+		CRTC_VERTICAL_INTERRUPT0_LINE_END);
+
+	FUNC2(tg->ctx, FUNC0(mmCRTC_VERTICAL_INTERRUPT0_POSITION), val);
+
+	return true;
+}

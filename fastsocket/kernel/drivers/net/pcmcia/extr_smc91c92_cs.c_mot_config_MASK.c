@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct smc_private {scalar_t__ base; } ;
+struct TYPE_2__ {unsigned int BasePort2; } ;
+struct pcmcia_device {TYPE_1__ io; struct net_device* priv; } ;
+struct net_device {unsigned int base_addr; } ;
+
+/* Variables and functions */
+ scalar_t__ CISREG_COR ; 
+ scalar_t__ CISREG_IOBASE_0 ; 
+ scalar_t__ CISREG_IOBASE_1 ; 
+ scalar_t__ MOT_LAN ; 
+ unsigned int MOT_NORMAL ; 
+ scalar_t__ MOT_UART ; 
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ struct smc_private* FUNC1 (struct net_device*) ; 
+ int /*<<< orphan*/  FUNC2 (unsigned int,scalar_t__) ; 
+
+__attribute__((used)) static void FUNC3(struct pcmcia_device *link)
+{
+    struct net_device *dev = link->priv;
+    struct smc_private *smc = FUNC1(dev);
+    unsigned int ioaddr = dev->base_addr;
+    unsigned int iouart = link->io.BasePort2;
+
+    /* Set UART base address and force map with COR bit 1 */
+    FUNC2(iouart & 0xff,        smc->base + MOT_UART + CISREG_IOBASE_0);
+    FUNC2((iouart >> 8) & 0xff, smc->base + MOT_UART + CISREG_IOBASE_1);
+    FUNC2(MOT_NORMAL,           smc->base + MOT_UART + CISREG_COR);
+
+    /* Set SMC base address and force map with COR bit 1 */
+    FUNC2(ioaddr & 0xff,        smc->base + MOT_LAN + CISREG_IOBASE_0);
+    FUNC2((ioaddr >> 8) & 0xff, smc->base + MOT_LAN + CISREG_IOBASE_1);
+    FUNC2(MOT_NORMAL,           smc->base + MOT_LAN + CISREG_COR);
+
+    /* Wait for things to settle down */
+    FUNC0(100);
+}

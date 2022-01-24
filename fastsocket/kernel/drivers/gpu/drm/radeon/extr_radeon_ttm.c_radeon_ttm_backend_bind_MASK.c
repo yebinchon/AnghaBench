@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct ttm_tt {int /*<<< orphan*/  num_pages; int /*<<< orphan*/  pages; } ;
+struct ttm_mem_reg {int start; } ;
+struct TYPE_2__ {int /*<<< orphan*/  dma_address; } ;
+struct radeon_ttm_tt {unsigned long offset; TYPE_1__ ttm; int /*<<< orphan*/  rdev; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char*,int /*<<< orphan*/ ,unsigned int) ; 
+ int PAGE_SHIFT ; 
+ int /*<<< orphan*/  FUNC1 (int,char*,int /*<<< orphan*/ ,struct ttm_mem_reg*,struct ttm_tt*) ; 
+ int FUNC2 (int /*<<< orphan*/ ,unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC3(struct ttm_tt *ttm,
+				   struct ttm_mem_reg *bo_mem)
+{
+	struct radeon_ttm_tt *gtt = (void*)ttm;
+	int r;
+
+	gtt->offset = (unsigned long)(bo_mem->start << PAGE_SHIFT);
+	if (!ttm->num_pages) {
+		FUNC1(1, "nothing to bind %lu pages for mreg %p back %p!\n",
+		     ttm->num_pages, bo_mem, ttm);
+	}
+	r = FUNC2(gtt->rdev, gtt->offset,
+			     ttm->num_pages, ttm->pages, gtt->ttm.dma_address);
+	if (r) {
+		FUNC0("failed to bind %lu pages at 0x%08X\n",
+			  ttm->num_pages, (unsigned)gtt->offset);
+		return r;
+	}
+	return 0;
+}

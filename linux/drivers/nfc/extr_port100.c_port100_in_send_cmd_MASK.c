@@ -1,0 +1,54 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u16 ;
+struct sk_buff {int dummy; } ;
+struct port100_cb_arg {void* complete_arg; int /*<<< orphan*/  complete_cb; } ;
+struct port100 {int dummy; } ;
+struct nfc_digital_dev {int dummy; } ;
+typedef  int /*<<< orphan*/  nfc_digital_cmd_complete_t ;
+typedef  int /*<<< orphan*/  __le16 ;
+
+/* Variables and functions */
+ int ENOMEM ; 
+ int /*<<< orphan*/  GFP_KERNEL ; 
+ int /*<<< orphan*/  PORT100_CMD_IN_COMM_RF ; 
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ struct port100_cb_arg* FUNC1 (int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+ struct port100* FUNC3 (struct nfc_digital_dev*) ; 
+ int /*<<< orphan*/  port100_in_comm_rf_complete ; 
+ int FUNC4 (struct port100*,int /*<<< orphan*/ ,struct sk_buff*,int /*<<< orphan*/ ,struct port100_cb_arg*) ; 
+ int /*<<< orphan*/  FUNC5 (struct sk_buff*,int) ; 
+
+__attribute__((used)) static int FUNC6(struct nfc_digital_dev *ddev,
+			       struct sk_buff *skb, u16 _timeout,
+			       nfc_digital_cmd_complete_t cb, void *arg)
+{
+	struct port100 *dev = FUNC3(ddev);
+	struct port100_cb_arg *cb_arg;
+	__le16 timeout;
+
+	cb_arg = FUNC1(sizeof(struct port100_cb_arg), GFP_KERNEL);
+	if (!cb_arg)
+		return -ENOMEM;
+
+	cb_arg->complete_cb = cb;
+	cb_arg->complete_arg = arg;
+
+	timeout = FUNC0(_timeout * 10);
+
+	FUNC2(FUNC5(skb, sizeof(__le16)), &timeout, sizeof(__le16));
+
+	return FUNC4(dev, PORT100_CMD_IN_COMM_RF, skb,
+				      port100_in_comm_rf_complete, cb_arg);
+}

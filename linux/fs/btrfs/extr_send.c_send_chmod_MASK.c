@@ -1,0 +1,62 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u64 ;
+struct send_ctx {TYPE_1__* send_root; } ;
+struct fs_path {int dummy; } ;
+struct btrfs_fs_info {int dummy; } ;
+struct TYPE_2__ {struct btrfs_fs_info* fs_info; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  BTRFS_SEND_A_MODE ; 
+ int /*<<< orphan*/  BTRFS_SEND_A_PATH ; 
+ int /*<<< orphan*/  BTRFS_SEND_C_CHMOD ; 
+ int ENOMEM ; 
+ int /*<<< orphan*/  FUNC0 (struct send_ctx*,int /*<<< orphan*/ ,struct fs_path*) ; 
+ int /*<<< orphan*/  FUNC1 (struct send_ctx*,int /*<<< orphan*/ ,int) ; 
+ int FUNC2 (struct send_ctx*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (struct btrfs_fs_info*,char*,int,int) ; 
+ struct fs_path* FUNC4 () ; 
+ int /*<<< orphan*/  FUNC5 (struct fs_path*) ; 
+ int FUNC6 (struct send_ctx*,int,int,struct fs_path*) ; 
+ int FUNC7 (struct send_ctx*) ; 
+
+__attribute__((used)) static int FUNC8(struct send_ctx *sctx, u64 ino, u64 gen, u64 mode)
+{
+	struct btrfs_fs_info *fs_info = sctx->send_root->fs_info;
+	int ret = 0;
+	struct fs_path *p;
+
+	FUNC3(fs_info, "send_chmod %llu mode=%llu", ino, mode);
+
+	p = FUNC4();
+	if (!p)
+		return -ENOMEM;
+
+	ret = FUNC2(sctx, BTRFS_SEND_C_CHMOD);
+	if (ret < 0)
+		goto out;
+
+	ret = FUNC6(sctx, ino, gen, p);
+	if (ret < 0)
+		goto out;
+	FUNC0(sctx, BTRFS_SEND_A_PATH, p);
+	FUNC1(sctx, BTRFS_SEND_A_MODE, mode & 07777);
+
+	ret = FUNC7(sctx);
+
+tlv_put_failure:
+out:
+	FUNC5(p);
+	return ret;
+}

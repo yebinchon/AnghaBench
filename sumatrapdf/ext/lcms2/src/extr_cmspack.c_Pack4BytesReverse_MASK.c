@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  cmsUInt8Number ;
+typedef  int /*<<< orphan*/ * cmsUInt32Number ;
+typedef  int /*<<< orphan*/  cmsUInt16Number ;
+typedef  int /*<<< orphan*/  cmsContext ;
+typedef  int /*<<< orphan*/  _cmsTRANSFORM ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ void* FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static
+cmsUInt8Number* FUNC3(cmsContext ContextID, register _cmsTRANSFORM* info,
+                                  register cmsUInt16Number wOut[],
+                                  register cmsUInt8Number* output,
+                                  register cmsUInt32Number Stride)
+{
+    *output++ = FUNC1(FUNC0(wOut[0]));
+    *output++ = FUNC1(FUNC0(wOut[1]));
+    *output++ = FUNC1(FUNC0(wOut[2]));
+    *output++ = FUNC1(FUNC0(wOut[3]));
+
+    return output;
+
+    FUNC2(info);
+    FUNC2(Stride);
+}

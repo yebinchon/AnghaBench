@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {scalar_t__ esp0; } ;
+struct task_struct {TYPE_1__ thread; } ;
+
+/* Variables and functions */
+ unsigned long THREAD_SIZE ; 
+ int kstack_depth_to_print ; 
+ int /*<<< orphan*/  FUNC0 (char*,...) ; 
+ int /*<<< orphan*/  FUNC1 (char*,unsigned long) ; 
+ int /*<<< orphan*/  FUNC2 (unsigned long*) ; 
+
+void FUNC3(struct task_struct *task, unsigned long *stack)
+{
+	unsigned long *p;
+	unsigned long *endstack;
+	int i;
+
+	if (!stack) {
+		if (task)
+			stack = (unsigned long *)task->thread.esp0;
+		else
+			stack = (unsigned long *)&stack;
+	}
+	endstack = (unsigned long *)(((unsigned long)stack + THREAD_SIZE - 1) & -THREAD_SIZE);
+
+	FUNC1("Stack from %08lx:", (unsigned long)stack);
+	p = stack;
+	for (i = 0; i < kstack_depth_to_print; i++) {
+		if (p + 1 > endstack)
+			break;
+		if (i % 8 == 0)
+			FUNC0("\n       ");
+		FUNC0(" %08lx", *p++);
+	}
+	FUNC0("\n");
+	FUNC2(stack);
+}

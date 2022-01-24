@@ -1,0 +1,59 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct video_device {scalar_t__ vfl_type; } ;
+struct v4l2_tuner {scalar_t__ index; } ;
+struct file {int dummy; } ;
+struct dvb_usb_device {struct cxusb_medion_dev* priv; } ;
+struct cxusb_medion_dev {int /*<<< orphan*/  cx25840; struct v4l2_tuner const* norm; int /*<<< orphan*/  tuner; int /*<<< orphan*/  tda9887; } ;
+
+/* Variables and functions */
+ int EINVAL ; 
+ scalar_t__ VFL_TYPE_GRABBER ; 
+ int /*<<< orphan*/  s_radio ; 
+ int /*<<< orphan*/  s_std ; 
+ int /*<<< orphan*/  s_tuner ; 
+ int FUNC0 (int /*<<< orphan*/ ,struct v4l2_tuner const*,int /*<<< orphan*/ ,...) ; 
+ struct v4l2_tuner const* video ; 
+ struct video_device* FUNC1 (struct file*) ; 
+ struct dvb_usb_device* FUNC2 (struct file*) ; 
+
+__attribute__((used)) static int FUNC3(struct file *file, void *fh,
+				const struct v4l2_tuner *tuner)
+{
+	struct dvb_usb_device *dvbdev = FUNC2(file);
+	struct cxusb_medion_dev *cxdev = dvbdev->priv;
+	struct video_device *vdev = FUNC1(file);
+	int ret;
+
+	if (tuner->index != 0)
+		return -EINVAL;
+
+	ret = FUNC0(cxdev->tda9887, tuner, s_tuner, tuner);
+	if (ret != 0)
+		return ret;
+
+	ret = FUNC0(cxdev->tuner, tuner, s_tuner, tuner);
+	if (ret != 0)
+		return ret;
+
+	/*
+	 * make sure that cx25840 is in a correct TV / radio mode,
+	 * since calls above may have changed it for tuner / IF demod
+	 */
+	if (vdev->vfl_type == VFL_TYPE_GRABBER)
+		FUNC0(cxdev->cx25840, video, s_std, cxdev->norm);
+	else
+		FUNC0(cxdev->cx25840, tuner, s_radio);
+
+	return FUNC0(cxdev->cx25840, tuner, s_tuner, tuner);
+}

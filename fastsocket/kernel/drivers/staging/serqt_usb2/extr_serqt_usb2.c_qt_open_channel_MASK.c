@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct usb_serial {int /*<<< orphan*/  dev; } ;
+struct qt_open_channel_data {int dummy; } ;
+typedef  int /*<<< orphan*/  __u16 ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  QT_OPEN_CLOSE_CHANNEL ; 
+ int /*<<< orphan*/  USBD_TRANSFER_DIRECTION_IN ; 
+ int FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct qt_open_channel_data*,int,int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC2(struct usb_serial *serial, __u16 Uart_Number,
+			   struct qt_open_channel_data *pDeviceData)
+{
+	int result;
+
+	result = FUNC0(serial->dev, FUNC1(serial->dev, 0),
+				 QT_OPEN_CLOSE_CHANNEL,
+				 USBD_TRANSFER_DIRECTION_IN, 1, Uart_Number,
+				 pDeviceData,
+				 sizeof(struct qt_open_channel_data), 300);
+
+	return result;
+
+}

@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct pci9111_private_data {int /*<<< orphan*/  lcr_io_base; } ;
+struct comedi_subdevice {int dummy; } ;
+struct comedi_device {scalar_t__ iobase; struct pci9111_private_data* private; } ;
+
+/* Variables and functions */
+ scalar_t__ PCI9111_AI_TRIG_CTRL_REG ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,scalar_t__) ; 
+ int /*<<< orphan*/  FUNC1 (struct comedi_device*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int,int,int,int,int) ; 
+
+__attribute__((used)) static int FUNC3(struct comedi_device *dev,
+			     struct comedi_subdevice *s)
+{
+	struct pci9111_private_data *dev_private = dev->private;
+
+	/*  Disable interrupts */
+	FUNC2(dev_private->lcr_io_base, true, true, true,
+				  true, false);
+
+	/* disable A/D triggers (software trigger mode) and auto scan off */
+	FUNC0(0, dev->iobase + PCI9111_AI_TRIG_CTRL_REG);
+
+	FUNC1(dev);
+
+	return 0;
+}

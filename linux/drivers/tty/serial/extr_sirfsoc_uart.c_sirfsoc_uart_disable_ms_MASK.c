@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct uart_port {int dummy; } ;
+struct sirfsoc_uart_port {int ms_enabled; int /*<<< orphan*/  cts_gpio; int /*<<< orphan*/  is_atlas7; TYPE_1__* uart_reg; int /*<<< orphan*/  hw_flow_ctrl; } ;
+struct sirfsoc_register {int /*<<< orphan*/  sirfsoc_int_en_clr_reg; int /*<<< orphan*/  sirfsoc_int_en_reg; int /*<<< orphan*/  sirfsoc_afc_ctrl; } ;
+struct sirfsoc_int_en {int sirfsoc_cts_en; } ;
+struct TYPE_2__ {scalar_t__ uart_type; struct sirfsoc_int_en uart_int_en; struct sirfsoc_register uart_reg; } ;
+
+/* Variables and functions */
+ scalar_t__ SIRF_REAL_UART ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int FUNC2 (struct uart_port*,int /*<<< orphan*/ ) ; 
+ struct sirfsoc_uart_port* FUNC3 (struct uart_port*) ; 
+ int /*<<< orphan*/  FUNC4 (struct uart_port*,int /*<<< orphan*/ ,int) ; 
+
+__attribute__((used)) static void FUNC5(struct uart_port *port)
+{
+	struct sirfsoc_uart_port *sirfport = FUNC3(port);
+	struct sirfsoc_register *ureg = &sirfport->uart_reg->uart_reg;
+	struct sirfsoc_int_en *uint_en = &sirfport->uart_reg->uart_int_en;
+
+	if (!sirfport->hw_flow_ctrl)
+		return;
+	sirfport->ms_enabled = false;
+	if (sirfport->uart_reg->uart_type == SIRF_REAL_UART) {
+		FUNC4(port, ureg->sirfsoc_afc_ctrl,
+				FUNC2(port, ureg->sirfsoc_afc_ctrl) & ~0x3FF);
+		if (!sirfport->is_atlas7)
+			FUNC4(port, ureg->sirfsoc_int_en_reg,
+					FUNC2(port, ureg->sirfsoc_int_en_reg)&
+					~uint_en->sirfsoc_cts_en);
+		else
+			FUNC4(port, ureg->sirfsoc_int_en_clr_reg,
+					uint_en->sirfsoc_cts_en);
+	} else
+		FUNC0(FUNC1(sirfport->cts_gpio));
+}

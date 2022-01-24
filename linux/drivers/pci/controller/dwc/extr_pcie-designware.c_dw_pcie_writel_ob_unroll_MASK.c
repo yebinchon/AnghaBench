@@ -1,0 +1,26 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ u32 ;
+struct dw_pcie {int dummy; } ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC1 (struct dw_pcie*,scalar_t__,scalar_t__) ; 
+
+__attribute__((used)) static void FUNC2(struct dw_pcie *pci, u32 index, u32 reg,
+				     u32 val)
+{
+	u32 offset = FUNC0(index);
+
+	FUNC1(pci, offset + reg, val);
+}

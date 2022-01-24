@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u32 ;
+struct reset_controller_dev {int dummy; } ;
+struct regmap {int dummy; } ;
+struct hi6220_reset_data {struct regmap* regmap; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int PERIPH_ASSERT_OFFSET ; 
+ int FUNC1 (struct regmap*,int,int /*<<< orphan*/ ) ; 
+ struct hi6220_reset_data* FUNC2 (struct reset_controller_dev*) ; 
+
+__attribute__((used)) static int FUNC3(struct reset_controller_dev *rc_dev,
+				    unsigned long idx)
+{
+	struct hi6220_reset_data *data = FUNC2(rc_dev);
+	struct regmap *regmap = data->regmap;
+	u32 bank = idx >> 8;
+	u32 offset = idx & 0xff;
+	u32 reg = PERIPH_ASSERT_OFFSET + bank * 0x10;
+
+	return FUNC1(regmap, reg, FUNC0(offset));
+}

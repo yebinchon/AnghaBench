@@ -1,0 +1,62 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct sk_buff {int dummy; } ;
+struct listen_ctx {scalar_t__ state; TYPE_1__* lsk; } ;
+struct cpl_pass_open_rpl {scalar_t__ status; } ;
+struct chtls_dev {int /*<<< orphan*/  tids; } ;
+struct TYPE_2__ {int /*<<< orphan*/  sk_family; } ;
+
+/* Variables and functions */
+ scalar_t__ CPL_ERR_NONE ; 
+ int CPL_RET_BUF_DONE ; 
+ unsigned int FUNC0 (struct cpl_pass_open_rpl*) ; 
+ int RSS_HDR ; 
+ scalar_t__ T4_LISTEN_STARTED ; 
+ scalar_t__ T4_LISTEN_START_PENDING ; 
+ int /*<<< orphan*/  THIS_MODULE ; 
+ struct cpl_pass_open_rpl* FUNC1 (struct sk_buff*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (struct listen_ctx*) ; 
+ scalar_t__ FUNC4 (int /*<<< orphan*/ ,unsigned int) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (char*,scalar_t__,unsigned int) ; 
+ int /*<<< orphan*/  FUNC7 (TYPE_1__*) ; 
+
+__attribute__((used)) static int FUNC8(struct chtls_dev *cdev, struct sk_buff *skb)
+{
+	struct cpl_pass_open_rpl *rpl = FUNC1(skb) + RSS_HDR;
+	unsigned int stid = FUNC0(rpl);
+	struct listen_ctx *listen_ctx;
+
+	listen_ctx = (struct listen_ctx *)FUNC4(cdev->tids, stid);
+	if (!listen_ctx)
+		return CPL_RET_BUF_DONE;
+
+	if (listen_ctx->state == T4_LISTEN_START_PENDING) {
+		listen_ctx->state = T4_LISTEN_STARTED;
+		return CPL_RET_BUF_DONE;
+	}
+
+	if (rpl->status != CPL_ERR_NONE) {
+		FUNC6("Unexpected PASS_OPEN_RPL status %u for STID %u\n",
+			rpl->status, stid);
+		return CPL_RET_BUF_DONE;
+	}
+	FUNC2(cdev->tids, stid, listen_ctx->lsk->sk_family);
+	FUNC7(listen_ctx->lsk);
+	FUNC3(listen_ctx);
+	FUNC5(THIS_MODULE);
+
+	return 0;
+}

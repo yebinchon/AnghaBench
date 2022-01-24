@@ -1,0 +1,48 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {scalar_t__ volname; } ;
+struct grub_iso9660_data {TYPE_1__ voldesc; scalar_t__ joliet; } ;
+typedef  int /*<<< orphan*/  grub_uint16_t ;
+typedef  int /*<<< orphan*/  grub_err_t ;
+typedef  TYPE_2__* grub_device_t ;
+struct TYPE_5__ {int /*<<< orphan*/  disk; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  grub_errno ; 
+ int /*<<< orphan*/  FUNC0 (struct grub_iso9660_data*) ; 
+ char* FUNC1 (int /*<<< orphan*/ *,int) ; 
+ struct grub_iso9660_data* FUNC2 (int /*<<< orphan*/ ) ; 
+ char* FUNC3 (char*,int) ; 
+
+__attribute__((used)) static grub_err_t
+FUNC4 (grub_device_t device, char **label)
+{
+  struct grub_iso9660_data *data;
+  data = FUNC2 (device->disk);
+
+  if (data)
+    {
+      if (data->joliet)
+        *label = FUNC1
+                 ((grub_uint16_t *) &data->voldesc.volname, 16);
+      else
+        *label = FUNC3 ((char *) data->voldesc.volname, 32);
+      FUNC0 (data);
+    }
+  else
+    *label = 0;
+
+  return grub_errno;
+}

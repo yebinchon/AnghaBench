@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  int u16 ;
+struct nouveau_bios {int dummy; } ;
+
+/* Variables and functions */
+ int FUNC0 (struct nouveau_bios*,int*,int*,int*,int*) ; 
+ int FUNC1 (struct nouveau_bios*,int,int*,int*,int*,int*) ; 
+
+u16
+FUNC2(struct nouveau_bios *bios, int idx, int ent, u8 *ver, u8 *len)
+{
+	u8  hdr, cnt, xver; /* use gpio version for xpio entry parsing */
+	u16 gpio;
+
+	if (!idx--)
+		gpio = FUNC0(bios, ver, &hdr, &cnt, len);
+	else
+		gpio = FUNC1(bios, idx, &xver, &hdr, &cnt, len);
+
+	if (gpio && ent < cnt)
+		return gpio + hdr + (ent * *len);
+	return 0x0000;
+}

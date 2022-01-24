@@ -1,0 +1,61 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {int /*<<< orphan*/  data_addr; } ;
+struct ata_port {TYPE_2__ ioaddr; } ;
+struct ata_device {TYPE_1__* link; int /*<<< orphan*/  id; } ;
+typedef  unsigned char __le32 ;
+struct TYPE_3__ {struct ata_port* ap; } ;
+
+/* Variables and functions */
+ int READ ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ) ; 
+ unsigned int FUNC1 (struct ata_device*,unsigned char*,unsigned int,int) ; 
+ unsigned char FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ,unsigned char*,unsigned int) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ ,unsigned char*,unsigned int) ; 
+ int /*<<< orphan*/  FUNC7 (unsigned char) ; 
+ int /*<<< orphan*/  FUNC8 (unsigned char*,unsigned char*,int) ; 
+ scalar_t__ FUNC9 (int) ; 
+
+__attribute__((used)) static unsigned int FUNC10(struct ata_device *dev, unsigned char *buf,
+				  unsigned int buflen, int rw)
+{
+	if (FUNC0(dev->id)) {
+		struct ata_port *ap = dev->link->ap;
+		int slop = buflen & 3;
+
+		if (rw == READ)
+			FUNC4(ap->ioaddr.data_addr, buf, buflen >> 2);
+		else
+			FUNC6(ap->ioaddr.data_addr, buf, buflen >> 2);
+
+		if (FUNC9(slop)) {
+			__le32 pad;
+			if (rw == READ) {
+				pad = FUNC2(FUNC3(ap->ioaddr.data_addr));
+				FUNC8(buf + buflen - slop, &pad, slop);
+			} else {
+				FUNC8(&pad, buf + buflen - slop, slop);
+				FUNC5(FUNC7(pad), ap->ioaddr.data_addr);
+			}
+			buflen += 4 - slop;
+		}
+	} else
+		buflen = FUNC1(dev, buf, buflen, rw);
+
+	return buflen;
+}

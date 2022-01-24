@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_3__ {scalar_t__ a_is_minus3; int /*<<< orphan*/ * b; int /*<<< orphan*/ * a; int /*<<< orphan*/ * field; } ;
+typedef  TYPE_1__ EC_GROUP ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ void* FUNC1 () ; 
+
+int FUNC2(EC_GROUP *group)
+{
+    group->field = FUNC1();
+    group->a = FUNC1();
+    group->b = FUNC1();
+    if (group->field == NULL || group->a == NULL || group->b == NULL) {
+        FUNC0(group->field);
+        FUNC0(group->a);
+        FUNC0(group->b);
+        return 0;
+    }
+    group->a_is_minus3 = 0;
+    return 1;
+}

@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  SYS_RETURNTOMENU ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  SYS_SHUTDOWN ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 () ; 
+ int /*<<< orphan*/  reload ; 
+
+void FUNC3(int status)
+{
+	if(FUNC2()) {
+		FUNC0(SYS_SHUTDOWN,0,0);
+		FUNC1(reload);
+	}
+	FUNC0(SYS_RETURNTOMENU, 0, 0);
+}

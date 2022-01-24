@@ -1,0 +1,220 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  lua_State ;
+
+/* Variables and functions */
+ int NGX_HTTP_ACCEPTED ; 
+ int NGX_HTTP_BAD_GATEWAY ; 
+ int NGX_HTTP_BAD_REQUEST ; 
+ int NGX_HTTP_CLOSE ; 
+ int NGX_HTTP_CONFLICT ; 
+ int NGX_HTTP_CONTINUE ; 
+ int NGX_HTTP_COPY ; 
+ int NGX_HTTP_CREATED ; 
+ int NGX_HTTP_DELETE ; 
+ int NGX_HTTP_FORBIDDEN ; 
+ int NGX_HTTP_GATEWAY_TIME_OUT ; 
+ int NGX_HTTP_GET ; 
+ int NGX_HTTP_HEAD ; 
+ int NGX_HTTP_INSUFFICIENT_STORAGE ; 
+ int NGX_HTTP_INTERNAL_SERVER_ERROR ; 
+ int NGX_HTTP_LOCK ; 
+ int NGX_HTTP_MKCOL ; 
+ int NGX_HTTP_MOVE ; 
+ int NGX_HTTP_MOVED_PERMANENTLY ; 
+ int NGX_HTTP_MOVED_TEMPORARILY ; 
+ int NGX_HTTP_NOT_ALLOWED ; 
+ int NGX_HTTP_NOT_FOUND ; 
+ int NGX_HTTP_NOT_IMPLEMENTED ; 
+ int NGX_HTTP_NOT_MODIFIED ; 
+ int NGX_HTTP_NO_CONTENT ; 
+ int NGX_HTTP_OK ; 
+ int NGX_HTTP_OPTIONS ; 
+ int NGX_HTTP_PARTIAL_CONTENT ; 
+ int NGX_HTTP_PATCH ; 
+ int NGX_HTTP_PERMANENT_REDIRECT ; 
+ int NGX_HTTP_POST ; 
+ int NGX_HTTP_PROPFIND ; 
+ int NGX_HTTP_PROPPATCH ; 
+ int NGX_HTTP_PUT ; 
+ int NGX_HTTP_REQUEST_TIME_OUT ; 
+ int NGX_HTTP_SEE_OTHER ; 
+ int NGX_HTTP_SERVICE_UNAVAILABLE ; 
+ int NGX_HTTP_SPECIAL_RESPONSE ; 
+ int NGX_HTTP_SWITCHING_PROTOCOLS ; 
+ int NGX_HTTP_TEMPORARY_REDIRECT ; 
+ int NGX_HTTP_TRACE ; 
+ int NGX_HTTP_UNAUTHORIZED ; 
+ int NGX_HTTP_UNLOCK ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int,char*) ; 
+
+void
+FUNC2(lua_State *L)
+{
+    /* {{{ HTTP status constants */
+    FUNC0(L, NGX_HTTP_GET);
+    FUNC1(L, -2, "HTTP_GET");
+
+    FUNC0(L, NGX_HTTP_POST);
+    FUNC1(L, -2, "HTTP_POST");
+
+    FUNC0(L, NGX_HTTP_PUT);
+    FUNC1(L, -2, "HTTP_PUT");
+
+    FUNC0(L, NGX_HTTP_HEAD);
+    FUNC1(L, -2, "HTTP_HEAD");
+
+    FUNC0(L, NGX_HTTP_DELETE);
+    FUNC1(L, -2, "HTTP_DELETE");
+
+    FUNC0(L, NGX_HTTP_OPTIONS);
+    FUNC1(L, -2, "HTTP_OPTIONS");
+
+    FUNC0(L, NGX_HTTP_MKCOL);
+    FUNC1(L, -2, "HTTP_MKCOL");
+
+    FUNC0(L, NGX_HTTP_COPY);
+    FUNC1(L, -2, "HTTP_COPY");
+
+    FUNC0(L, NGX_HTTP_MOVE);
+    FUNC1(L, -2, "HTTP_MOVE");
+
+    FUNC0(L, NGX_HTTP_PROPFIND);
+    FUNC1(L, -2, "HTTP_PROPFIND");
+
+    FUNC0(L, NGX_HTTP_PROPPATCH);
+    FUNC1(L, -2, "HTTP_PROPPATCH");
+
+    FUNC0(L, NGX_HTTP_LOCK);
+    FUNC1(L, -2, "HTTP_LOCK");
+
+    FUNC0(L, NGX_HTTP_UNLOCK);
+    FUNC1(L, -2, "HTTP_UNLOCK");
+
+    FUNC0(L, NGX_HTTP_PATCH);
+    FUNC1(L, -2, "HTTP_PATCH");
+
+    FUNC0(L, NGX_HTTP_TRACE);
+    FUNC1(L, -2, "HTTP_TRACE");
+    /* }}} */
+
+    FUNC0(L, NGX_HTTP_CONTINUE);
+    FUNC1(L, -2, "HTTP_CONTINUE");
+
+    FUNC0(L, NGX_HTTP_SWITCHING_PROTOCOLS);
+    FUNC1(L, -2, "HTTP_SWITCHING_PROTOCOLS");
+
+    FUNC0(L, NGX_HTTP_OK);
+    FUNC1(L, -2, "HTTP_OK");
+
+    FUNC0(L, NGX_HTTP_CREATED);
+    FUNC1(L, -2, "HTTP_CREATED");
+
+    FUNC0(L, NGX_HTTP_ACCEPTED);
+    FUNC1(L, -2, "HTTP_ACCEPTED");
+
+    FUNC0(L, NGX_HTTP_NO_CONTENT);
+    FUNC1(L, -2, "HTTP_NO_CONTENT");
+
+    FUNC0(L, NGX_HTTP_PARTIAL_CONTENT);
+    FUNC1(L, -2, "HTTP_PARTIAL_CONTENT");
+
+    FUNC0(L, NGX_HTTP_SPECIAL_RESPONSE);
+    FUNC1(L, -2, "HTTP_SPECIAL_RESPONSE");
+
+    FUNC0(L, NGX_HTTP_MOVED_PERMANENTLY);
+    FUNC1(L, -2, "HTTP_MOVED_PERMANENTLY");
+
+    FUNC0(L, NGX_HTTP_MOVED_TEMPORARILY);
+    FUNC1(L, -2, "HTTP_MOVED_TEMPORARILY");
+
+#if defined(nginx_version) && nginx_version >= 8042
+    lua_pushinteger(L, NGX_HTTP_SEE_OTHER);
+    lua_setfield(L, -2, "HTTP_SEE_OTHER");
+#endif
+
+    FUNC0(L, NGX_HTTP_PERMANENT_REDIRECT);
+    FUNC1(L, -2, "HTTP_PERMANENT_REDIRECT");
+
+    FUNC0(L, NGX_HTTP_NOT_MODIFIED);
+    FUNC1(L, -2, "HTTP_NOT_MODIFIED");
+
+    FUNC0(L, NGX_HTTP_TEMPORARY_REDIRECT);
+    FUNC1(L, -2, "HTTP_TEMPORARY_REDIRECT");
+
+    FUNC0(L, NGX_HTTP_BAD_REQUEST);
+    FUNC1(L, -2, "HTTP_BAD_REQUEST");
+
+    FUNC0(L, NGX_HTTP_UNAUTHORIZED);
+    FUNC1(L, -2, "HTTP_UNAUTHORIZED");
+
+    FUNC0(L, 402);
+    FUNC1(L, -2, "HTTP_PAYMENT_REQUIRED");
+
+    FUNC0(L, NGX_HTTP_FORBIDDEN);
+    FUNC1(L, -2, "HTTP_FORBIDDEN");
+
+    FUNC0(L, NGX_HTTP_NOT_FOUND);
+    FUNC1(L, -2, "HTTP_NOT_FOUND");
+
+    FUNC0(L, NGX_HTTP_NOT_ALLOWED);
+    FUNC1(L, -2, "HTTP_NOT_ALLOWED");
+
+    FUNC0(L, 406);
+    FUNC1(L, -2, "HTTP_NOT_ACCEPTABLE");
+
+    FUNC0(L, NGX_HTTP_REQUEST_TIME_OUT);
+    FUNC1(L, -2, "HTTP_REQUEST_TIMEOUT");
+
+    FUNC0(L, NGX_HTTP_CONFLICT);
+    FUNC1(L, -2, "HTTP_CONFLICT");
+
+    FUNC0(L, 410);
+    FUNC1(L, -2, "HTTP_GONE");
+
+    FUNC0(L, 426);
+    FUNC1(L, -2, "HTTP_UPGRADE_REQUIRED");
+
+    FUNC0(L, 429);
+    FUNC1(L, -2, "HTTP_TOO_MANY_REQUESTS");
+
+    FUNC0(L, 451);
+    FUNC1(L, -2, "HTTP_ILLEGAL");
+
+    FUNC0(L, NGX_HTTP_CLOSE);
+    FUNC1(L, -2, "HTTP_CLOSE");
+
+    FUNC0(L, NGX_HTTP_INTERNAL_SERVER_ERROR);
+    FUNC1(L, -2, "HTTP_INTERNAL_SERVER_ERROR");
+
+    FUNC0(L, NGX_HTTP_NOT_IMPLEMENTED);
+    FUNC1(L, -2, "HTTP_METHOD_NOT_IMPLEMENTED");
+
+    FUNC0(L, NGX_HTTP_BAD_GATEWAY);
+    FUNC1(L, -2, "HTTP_BAD_GATEWAY");
+
+    FUNC0(L, NGX_HTTP_SERVICE_UNAVAILABLE);
+    FUNC1(L, -2, "HTTP_SERVICE_UNAVAILABLE");
+
+    FUNC0(L, NGX_HTTP_GATEWAY_TIME_OUT);
+    FUNC1(L, -2, "HTTP_GATEWAY_TIMEOUT");
+
+    FUNC0(L, 505);
+    FUNC1(L, -2, "HTTP_VERSION_NOT_SUPPORTED");
+
+    FUNC0(L, NGX_HTTP_INSUFFICIENT_STORAGE);
+    FUNC1(L, -2, "HTTP_INSUFFICIENT_STORAGE");
+
+    /* }}} */
+}

@@ -1,0 +1,81 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct rsa_key {int n_sz; int /*<<< orphan*/  e_sz; int /*<<< orphan*/  d_sz; int /*<<< orphan*/  n; int /*<<< orphan*/  e; int /*<<< orphan*/  d; int /*<<< orphan*/ * member_0; } ;
+struct crypto_akcipher {int dummy; } ;
+struct caam_rsa_key {int n_sz; int /*<<< orphan*/  e_sz; int /*<<< orphan*/  d_sz; int /*<<< orphan*/  n; void* e; void* d; } ;
+struct caam_rsa_ctx {struct caam_rsa_key key; } ;
+
+/* Variables and functions */
+ int EINVAL ; 
+ int ENOMEM ; 
+ int GFP_DMA ; 
+ int GFP_KERNEL ; 
+ struct caam_rsa_ctx* FUNC0 (struct crypto_akcipher*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int*) ; 
+ scalar_t__ FUNC2 (int) ; 
+ int /*<<< orphan*/  FUNC3 (struct caam_rsa_key*) ; 
+ int /*<<< orphan*/  FUNC4 (struct caam_rsa_ctx*,struct rsa_key*) ; 
+ void* FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int FUNC6 (struct rsa_key*,void const*,unsigned int) ; 
+
+__attribute__((used)) static int FUNC7(struct crypto_akcipher *tfm, const void *key,
+				 unsigned int keylen)
+{
+	struct caam_rsa_ctx *ctx = FUNC0(tfm);
+	struct rsa_key raw_key = {NULL};
+	struct caam_rsa_key *rsa_key = &ctx->key;
+	int ret;
+
+	/* Free the old RSA key if any */
+	FUNC3(rsa_key);
+
+	ret = FUNC6(&raw_key, key, keylen);
+	if (ret)
+		return ret;
+
+	/* Copy key in DMA zone */
+	rsa_key->d = FUNC5(raw_key.d, raw_key.d_sz, GFP_DMA | GFP_KERNEL);
+	if (!rsa_key->d)
+		goto err;
+
+	rsa_key->e = FUNC5(raw_key.e, raw_key.e_sz, GFP_DMA | GFP_KERNEL);
+	if (!rsa_key->e)
+		goto err;
+
+	/*
+	 * Skip leading zeros and copy the positive integer to a buffer
+	 * allocated in the GFP_DMA | GFP_KERNEL zone. The decryption descriptor
+	 * expects a positive integer for the RSA modulus and uses its length as
+	 * decryption output length.
+	 */
+	rsa_key->n = FUNC1(raw_key.n, &raw_key.n_sz);
+	if (!rsa_key->n)
+		goto err;
+
+	if (FUNC2(raw_key.n_sz << 3)) {
+		FUNC3(rsa_key);
+		return -EINVAL;
+	}
+
+	rsa_key->d_sz = raw_key.d_sz;
+	rsa_key->e_sz = raw_key.e_sz;
+	rsa_key->n_sz = raw_key.n_sz;
+
+	FUNC4(ctx, &raw_key);
+
+	return 0;
+
+err:
+	FUNC3(rsa_key);
+	return -ENOMEM;
+}

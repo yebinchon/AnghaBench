@@ -1,0 +1,65 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_6__   TYPE_3__ ;
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+typedef  int /*<<< orphan*/  u32 ;
+struct TYPE_4__ {int ignore_higher; int /*<<< orphan*/  flags; int /*<<< orphan*/  request_from; struct dlm_lock_resource* lockres; } ;
+struct TYPE_5__ {TYPE_1__ am; } ;
+struct dlm_work_item {int /*<<< orphan*/  list; TYPE_2__ u; } ;
+struct TYPE_6__ {int /*<<< orphan*/  name; int /*<<< orphan*/  len; } ;
+struct dlm_lock_resource {TYPE_3__ lockname; } ;
+struct dlm_ctxt {int /*<<< orphan*/  dispatched_work; int /*<<< orphan*/  dlm_worker; int /*<<< orphan*/  work_lock; int /*<<< orphan*/  work_list; } ;
+
+/* Variables and functions */
+ int ENOMEM ; 
+ int /*<<< orphan*/  GFP_ATOMIC ; 
+ int /*<<< orphan*/  dlm_assert_master_worker ; 
+ int /*<<< orphan*/  FUNC0 (struct dlm_ctxt*,struct dlm_work_item*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ struct dlm_work_item* FUNC1 (int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *) ; 
+
+int FUNC7(struct dlm_ctxt *dlm,
+			       struct dlm_lock_resource *res,
+			       int ignore_higher, u8 request_from, u32 flags)
+{
+	struct dlm_work_item *item;
+	item = FUNC1(sizeof(*item), GFP_ATOMIC);
+	if (!item)
+		return -ENOMEM;
+
+
+	/* queue up work for dlm_assert_master_worker */
+	FUNC0(dlm, item, dlm_assert_master_worker, NULL);
+	item->u.am.lockres = res; /* already have a ref */
+	/* can optionally ignore node numbers higher than this node */
+	item->u.am.ignore_higher = ignore_higher;
+	item->u.am.request_from = request_from;
+	item->u.am.flags = flags;
+
+	if (ignore_higher)
+		FUNC3(0, "IGNORE HIGHER: %.*s\n", res->lockname.len,
+		     res->lockname.name);
+
+	FUNC5(&dlm->work_lock);
+	FUNC2(&item->list, &dlm->work_list);
+	FUNC6(&dlm->work_lock);
+
+	FUNC4(dlm->dlm_worker, &dlm->dispatched_work);
+	return 0;
+}

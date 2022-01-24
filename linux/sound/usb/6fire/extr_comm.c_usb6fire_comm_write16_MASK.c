@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+struct comm_runtime {TYPE_1__* chip; } ;
+struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+
+/* Variables and functions */
+ int ENOMEM ; 
+ int /*<<< orphan*/  GFP_KERNEL ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC1 (int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FUNC3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC4(struct comm_runtime *rt, u8 request,
+		u8 reg, u8 vl, u8 vh)
+{
+	u8 *buffer;
+	int ret;
+
+	/* 13: maximum length of message */
+	buffer = FUNC1(13, GFP_KERNEL);
+	if (!buffer)
+		return -ENOMEM;
+
+	FUNC2(buffer, 0x00, request, reg, vl, vh);
+	ret = FUNC3(buffer, rt->chip->dev);
+
+	FUNC0(buffer);
+	return ret;
+}

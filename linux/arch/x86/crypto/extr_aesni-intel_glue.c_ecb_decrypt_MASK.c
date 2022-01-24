@@ -1,0 +1,58 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_8__   TYPE_4__ ;
+typedef  struct TYPE_7__   TYPE_3__ ;
+typedef  struct TYPE_6__   TYPE_2__ ;
+typedef  struct TYPE_5__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_5__ {int /*<<< orphan*/  addr; } ;
+struct TYPE_6__ {TYPE_1__ virt; } ;
+struct TYPE_7__ {int /*<<< orphan*/  addr; } ;
+struct TYPE_8__ {TYPE_3__ virt; } ;
+struct skcipher_walk {unsigned int nbytes; TYPE_2__ src; TYPE_4__ dst; } ;
+struct skcipher_request {int dummy; } ;
+struct crypto_skcipher {int dummy; } ;
+struct crypto_aes_ctx {int dummy; } ;
+
+/* Variables and functions */
+ unsigned int AES_BLOCK_MASK ; 
+ int AES_BLOCK_SIZE ; 
+ struct crypto_aes_ctx* FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct crypto_aes_ctx*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
+ int /*<<< orphan*/  FUNC2 (struct crypto_skcipher*) ; 
+ struct crypto_skcipher* FUNC3 (struct skcipher_request*) ; 
+ int /*<<< orphan*/  FUNC4 () ; 
+ int /*<<< orphan*/  FUNC5 () ; 
+ int FUNC6 (struct skcipher_walk*,unsigned int) ; 
+ int FUNC7 (struct skcipher_walk*,struct skcipher_request*,int) ; 
+
+__attribute__((used)) static int FUNC8(struct skcipher_request *req)
+{
+	struct crypto_skcipher *tfm = FUNC3(req);
+	struct crypto_aes_ctx *ctx = FUNC0(FUNC2(tfm));
+	struct skcipher_walk walk;
+	unsigned int nbytes;
+	int err;
+
+	err = FUNC7(&walk, req, true);
+
+	FUNC4();
+	while ((nbytes = walk.nbytes)) {
+		FUNC1(ctx, walk.dst.virt.addr, walk.src.virt.addr,
+			      nbytes & AES_BLOCK_MASK);
+		nbytes &= AES_BLOCK_SIZE - 1;
+		err = FUNC6(&walk, nbytes);
+	}
+	FUNC5();
+
+	return err;
+}

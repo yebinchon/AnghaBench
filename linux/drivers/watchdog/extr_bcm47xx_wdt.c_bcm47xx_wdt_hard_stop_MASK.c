@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct watchdog_device {int dummy; } ;
+struct bcm47xx_wdt {int /*<<< orphan*/  (* timer_set ) (struct bcm47xx_wdt*,int /*<<< orphan*/ ) ;} ;
+
+/* Variables and functions */
+ struct bcm47xx_wdt* FUNC0 (struct watchdog_device*) ; 
+ int /*<<< orphan*/  FUNC1 (struct bcm47xx_wdt*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC2(struct watchdog_device *wdd)
+{
+	struct bcm47xx_wdt *wdt = FUNC0(wdd);
+
+	wdt->timer_set(wdt, 0);
+
+	return 0;
+}

@@ -1,0 +1,67 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct inode {int dummy; } ;
+struct firedtv_tuner_status {int dummy; } ;
+struct firedtv {int /*<<< orphan*/  device; } ;
+struct file {struct dvb_device* private_data; } ;
+struct dvb_device {struct firedtv* priv; } ;
+
+/* Variables and functions */
+#define  CA_GET_CAP 132 
+#define  CA_GET_MSG 131 
+#define  CA_GET_SLOT_INFO 130 
+#define  CA_RESET 129 
+#define  CA_SEND_MSG 128 
+ int EOPNOTSUPP ; 
+ int /*<<< orphan*/  FUNC0 (struct firedtv*,struct firedtv_tuner_status*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,char*,unsigned int) ; 
+ int FUNC2 (void*) ; 
+ int FUNC3 (struct firedtv*,void*) ; 
+ int FUNC4 (struct firedtv*,void*) ; 
+ int FUNC5 (struct firedtv*) ; 
+ int FUNC6 (struct firedtv*,void*) ; 
+
+__attribute__((used)) static int FUNC7(struct inode *inode, struct file *file,
+			    unsigned int cmd, void *arg)
+{
+	struct dvb_device *dvbdev = file->private_data;
+	struct firedtv *fdtv = dvbdev->priv;
+	struct firedtv_tuner_status stat;
+	int err;
+
+	switch (cmd) {
+	case CA_RESET:
+		err = FUNC5(fdtv);
+		break;
+	case CA_GET_CAP:
+		err = FUNC2(arg);
+		break;
+	case CA_GET_SLOT_INFO:
+		err = FUNC4(fdtv, arg);
+		break;
+	case CA_GET_MSG:
+		err = FUNC3(fdtv, arg);
+		break;
+	case CA_SEND_MSG:
+		err = FUNC6(fdtv, arg);
+		break;
+	default:
+		FUNC1(fdtv->device, "unhandled CA ioctl %u\n", cmd);
+		err = -EOPNOTSUPP;
+	}
+
+	/* FIXME Is this necessary? */
+	FUNC0(fdtv, &stat);
+
+	return err;
+}

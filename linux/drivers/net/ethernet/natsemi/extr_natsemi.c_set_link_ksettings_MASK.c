@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct netdev_private {int /*<<< orphan*/  lock; } ;
+struct net_device {int dummy; } ;
+struct ethtool_link_ksettings {int dummy; } ;
+
+/* Variables and functions */
+ struct netdev_private* FUNC0 (struct net_device*) ; 
+ int FUNC1 (struct net_device*,struct ethtool_link_ksettings const*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC4(struct net_device *dev,
+			      const struct ethtool_link_ksettings *ecmd)
+{
+	struct netdev_private *np = FUNC0(dev);
+	int res;
+	FUNC2(&np->lock);
+	res = FUNC1(dev, ecmd);
+	FUNC3(&np->lock);
+	return res;
+}

@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct pwm_imx27_chip {int /*<<< orphan*/  clk_ipg; int /*<<< orphan*/  clk_per; } ;
+struct pwm_chip {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int FUNC1 (int /*<<< orphan*/ ) ; 
+ struct pwm_imx27_chip* FUNC2 (struct pwm_chip*) ; 
+
+__attribute__((used)) static int FUNC3(struct pwm_chip *chip)
+{
+	struct pwm_imx27_chip *imx = FUNC2(chip);
+	int ret;
+
+	ret = FUNC1(imx->clk_ipg);
+	if (ret)
+		return ret;
+
+	ret = FUNC1(imx->clk_per);
+	if (ret) {
+		FUNC0(imx->clk_ipg);
+		return ret;
+	}
+
+	return 0;
+}

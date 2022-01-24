@@ -1,0 +1,74 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ size_t FUNC0 (char**) ; 
+ char** page_flag_names ; 
+ int /*<<< orphan*/  FUNC1 (unsigned long long) ; 
+ int /*<<< orphan*/  FUNC2 (char*,...) ; 
+ int /*<<< orphan*/  FUNC3 (char) ; 
+
+__attribute__((used)) static void FUNC4(void)
+{
+	size_t i, j;
+
+	FUNC2(
+"page-types [options]\n"
+"            -r|--raw                   Raw mode, for kernel developers\n"
+"            -d|--describe flags        Describe flags\n"
+"            -a|--addr    addr-spec     Walk a range of pages\n"
+"            -b|--bits    bits-spec     Walk pages with specified bits\n"
+"            -c|--cgroup  path|@inode   Walk pages within memory cgroup\n"
+"            -p|--pid     pid           Walk process address space\n"
+"            -f|--file    filename      Walk file address space\n"
+"            -i|--mark-idle             Mark pages idle\n"
+"            -l|--list                  Show page details in ranges\n"
+"            -L|--list-each             Show page details one by one\n"
+"            -C|--list-cgroup           Show cgroup inode for pages\n"
+"            -M|--list-mapcnt           Show page map count\n"
+"            -N|--no-summary            Don't show summary info\n"
+"            -X|--hwpoison              hwpoison pages\n"
+"            -x|--unpoison              unpoison pages\n"
+"            -F|--kpageflags filename   kpageflags file to parse\n"
+"            -h|--help                  Show this usage message\n"
+"flags:\n"
+"            0x10                       bitfield format, e.g.\n"
+"            anon                       bit-name, e.g.\n"
+"            0x10,anon                  comma-separated list, e.g.\n"
+"addr-spec:\n"
+"            N                          one page at offset N (unit: pages)\n"
+"            N+M                        pages range from N to N+M-1\n"
+"            N,M                        pages range from N to M-1\n"
+"            N,                         pages range from N to end\n"
+"            ,M                         pages range from 0 to M-1\n"
+"bits-spec:\n"
+"            bit1,bit2                  (flags & (bit1|bit2)) != 0\n"
+"            bit1,bit2=bit1             (flags & (bit1|bit2)) == bit1\n"
+"            bit1,~bit2                 (flags & (bit1|bit2)) == bit1\n"
+"            =bit1,bit2                 flags == (bit1|bit2)\n"
+"bit-names:\n"
+	);
+
+	for (i = 0, j = 0; i < FUNC0(page_flag_names); i++) {
+		if (!page_flag_names[i])
+			continue;
+		FUNC2("%16s%s", page_flag_names[i] + 2,
+				 FUNC1(1ULL << i));
+		if (++j > 3) {
+			j = 0;
+			FUNC3('\n');
+		}
+	}
+	FUNC2("\n                                   "
+		"(r) raw mode bits  (o) overloaded bits\n");
+}

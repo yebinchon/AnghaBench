@@ -1,0 +1,68 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u64 ;
+typedef  int u32 ;
+struct skb_shared_hwtstamps {int /*<<< orphan*/  hwtstamp; } ;
+struct sk_buff {int dummy; } ;
+struct ixgbe_q_vector {struct ixgbe_adapter* adapter; } ;
+struct ixgbe_hw {int dummy; } ;
+struct ixgbe_adapter {int /*<<< orphan*/  tmreg_lock; int /*<<< orphan*/  tc; struct ixgbe_hw hw; } ;
+
+/* Variables and functions */
+ int FUNC0 (struct ixgbe_hw*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  IXGBE_RXSTMPH ; 
+ int /*<<< orphan*/  IXGBE_RXSTMPL ; 
+ int /*<<< orphan*/  IXGBE_TSYNCRXCTL ; 
+ int IXGBE_TSYNCRXCTL_VALID ; 
+ int /*<<< orphan*/  FUNC1 (int) ; 
+ struct skb_shared_hwtstamps* FUNC2 (struct sk_buff*) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *,unsigned long) ; 
+ int FUNC5 (int /*<<< orphan*/ *,int) ; 
+
+void FUNC6(struct ixgbe_q_vector *q_vector,
+			     struct sk_buff *skb)
+{
+	struct ixgbe_adapter *adapter;
+	struct ixgbe_hw *hw;
+	struct skb_shared_hwtstamps *shhwtstamps;
+	u64 regval = 0, ns;
+	u32 tsyncrxctl;
+	unsigned long flags;
+
+	/* we cannot process timestamps on a ring without a q_vector */
+	if (!q_vector || !q_vector->adapter)
+		return;
+
+	adapter = q_vector->adapter;
+	hw = &adapter->hw;
+
+	/*
+	 * Read the tsyncrxctl register afterwards in order to prevent taking an
+	 * I/O hit on every packet.
+	 */
+	tsyncrxctl = FUNC0(hw, IXGBE_TSYNCRXCTL);
+	if (!(tsyncrxctl & IXGBE_TSYNCRXCTL_VALID))
+		return;
+
+	regval |= (u64)FUNC0(hw, IXGBE_RXSTMPL);
+	regval |= (u64)FUNC0(hw, IXGBE_RXSTMPH) << 32;
+
+
+	FUNC3(&adapter->tmreg_lock, flags);
+	ns = FUNC5(&adapter->tc, regval);
+	FUNC4(&adapter->tmreg_lock, flags);
+
+	shhwtstamps = FUNC2(skb);
+	shhwtstamps->hwtstamp = FUNC1(ns);
+}

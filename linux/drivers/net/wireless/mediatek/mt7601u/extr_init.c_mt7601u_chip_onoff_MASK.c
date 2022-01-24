@@ -1,0 +1,59 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u32 ;
+struct mt7601u_dev {int /*<<< orphan*/  hw_atomic_mutex; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  MT_WLAN_FUN_CTRL ; 
+ int MT_WLAN_FUN_CTRL_FRC_WL_ANT_SEL ; 
+ int MT_WLAN_FUN_CTRL_GPIO_OUT_EN ; 
+ int MT_WLAN_FUN_CTRL_WLAN_EN ; 
+ int MT_WLAN_FUN_CTRL_WLAN_RESET ; 
+ int MT_WLAN_FUN_CTRL_WLAN_RESET_RF ; 
+ int FUNC0 (struct mt7601u_dev*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct mt7601u_dev*,int,int) ; 
+ int /*<<< orphan*/  FUNC2 (struct mt7601u_dev*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (int) ; 
+
+__attribute__((used)) static void FUNC6(struct mt7601u_dev *dev, bool enable, bool reset)
+{
+	u32 val;
+
+	FUNC3(&dev->hw_atomic_mutex);
+
+	val = FUNC0(dev, MT_WLAN_FUN_CTRL);
+
+	if (reset) {
+		val |= MT_WLAN_FUN_CTRL_GPIO_OUT_EN;
+		val &= ~MT_WLAN_FUN_CTRL_FRC_WL_ANT_SEL;
+
+		if (val & MT_WLAN_FUN_CTRL_WLAN_EN) {
+			val |= (MT_WLAN_FUN_CTRL_WLAN_RESET |
+				MT_WLAN_FUN_CTRL_WLAN_RESET_RF);
+			FUNC2(dev, MT_WLAN_FUN_CTRL, val);
+			FUNC5(20);
+
+			val &= ~(MT_WLAN_FUN_CTRL_WLAN_RESET |
+				 MT_WLAN_FUN_CTRL_WLAN_RESET_RF);
+		}
+	}
+
+	FUNC2(dev, MT_WLAN_FUN_CTRL, val);
+	FUNC5(20);
+
+	FUNC1(dev, val, enable);
+
+	FUNC4(&dev->hw_atomic_mutex);
+}

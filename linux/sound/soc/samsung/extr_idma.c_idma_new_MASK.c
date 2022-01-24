@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct snd_soc_pcm_runtime {struct snd_pcm* pcm; TYPE_1__* card; } ;
+struct snd_pcm {TYPE_2__* streams; } ;
+struct snd_card {int /*<<< orphan*/  dev; } ;
+struct TYPE_4__ {scalar_t__ substream; } ;
+struct TYPE_3__ {struct snd_card* snd_card; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ size_t SNDRV_PCM_STREAM_PLAYBACK ; 
+ int FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FUNC2 (struct snd_pcm*,size_t) ; 
+
+__attribute__((used)) static int FUNC3(struct snd_soc_pcm_runtime *rtd)
+{
+	struct snd_card *card = rtd->card->snd_card;
+	struct snd_pcm *pcm = rtd->pcm;
+	int ret;
+
+	ret = FUNC1(card->dev, FUNC0(32));
+	if (ret)
+		return ret;
+
+	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
+		ret = FUNC2(pcm,
+				SNDRV_PCM_STREAM_PLAYBACK);
+	}
+
+	return ret;
+}

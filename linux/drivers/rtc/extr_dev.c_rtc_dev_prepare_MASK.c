@@ -1,0 +1,51 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {int /*<<< orphan*/  owner; } ;
+struct TYPE_3__ {int /*<<< orphan*/  devt; } ;
+struct rtc_device {scalar_t__ id; int /*<<< orphan*/  owner; TYPE_2__ char_dev; int /*<<< orphan*/  uie_timer; int /*<<< orphan*/  uie_task; TYPE_1__ dev; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,scalar_t__) ; 
+ scalar_t__ RTC_DEV_MAX ; 
+ int /*<<< orphan*/  FUNC3 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 (TYPE_1__*,char*) ; 
+ int /*<<< orphan*/  rtc_dev_fops ; 
+ int /*<<< orphan*/  rtc_devt ; 
+ int /*<<< orphan*/  rtc_uie_task ; 
+ int /*<<< orphan*/  rtc_uie_timer ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+void FUNC6(struct rtc_device *rtc)
+{
+	if (!rtc_devt)
+		return;
+
+	if (rtc->id >= RTC_DEV_MAX) {
+		FUNC4(&rtc->dev, "too many RTC devices\n");
+		return;
+	}
+
+	rtc->dev.devt = FUNC2(FUNC1(rtc_devt), rtc->id);
+
+#ifdef CONFIG_RTC_INTF_DEV_UIE_EMUL
+	INIT_WORK(&rtc->uie_task, rtc_uie_task);
+	timer_setup(&rtc->uie_timer, rtc_uie_timer, 0);
+#endif
+
+	FUNC3(&rtc->char_dev, &rtc_dev_fops);
+	rtc->char_dev.owner = rtc->owner;
+}

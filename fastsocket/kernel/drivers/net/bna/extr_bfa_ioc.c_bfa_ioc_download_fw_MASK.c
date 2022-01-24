@@ -1,0 +1,91 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  scalar_t__ u32 ;
+struct TYPE_2__ {scalar_t__ host_page_num_fn; scalar_t__ smem_page_start; } ;
+struct bfa_ioc {TYPE_1__ ioc_regs; int /*<<< orphan*/  port1_mode; int /*<<< orphan*/  port0_mode; int /*<<< orphan*/  asic_mode; int /*<<< orphan*/  asic_gen; } ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (scalar_t__) ; 
+ scalar_t__ FUNC1 (scalar_t__) ; 
+ size_t FUNC2 (scalar_t__) ; 
+ scalar_t__ FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ scalar_t__ BFI_FWBOOT_DEVMODE_OFF ; 
+ scalar_t__ BFI_FWBOOT_ENV_OFF ; 
+ scalar_t__ BFI_FWBOOT_TYPE_OFF ; 
+ scalar_t__ FUNC4 (scalar_t__) ; 
+ scalar_t__* FUNC5 (int /*<<< orphan*/ ,scalar_t__) ; 
+ scalar_t__ FUNC6 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (struct bfa_ioc*) ; 
+ scalar_t__ FUNC8 (struct bfa_ioc*,scalar_t__) ; 
+ scalar_t__ FUNC9 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC10 (scalar_t__,scalar_t__) ; 
+
+__attribute__((used)) static void
+FUNC11(struct bfa_ioc *ioc, u32 boot_type,
+		    u32 boot_env)
+{
+	u32 *fwimg;
+	u32 pgnum;
+	u32 loff = 0;
+	u32 chunkno = 0;
+	u32 i;
+	u32 asicmode;
+
+	fwimg = FUNC5(FUNC7(ioc), chunkno);
+
+	pgnum = FUNC8(ioc, loff);
+
+	FUNC10(pgnum, ioc->ioc_regs.host_page_num_fn);
+
+	for (i = 0; i < FUNC6(FUNC7(ioc)); i++) {
+		if (FUNC1(i) != chunkno) {
+			chunkno = FUNC1(i);
+			fwimg = FUNC5(FUNC7(ioc),
+					FUNC0(chunkno));
+		}
+
+		/**
+		 * write smem
+		 */
+		FUNC10((FUNC9(fwimg[FUNC2(i)])),
+			      ((ioc->ioc_regs.smem_page_start) + (loff)));
+
+		loff += sizeof(u32);
+
+		/**
+		 * handle page offset wrap around
+		 */
+		loff = FUNC4(loff);
+		if (loff == 0) {
+			pgnum++;
+			FUNC10(pgnum,
+				      ioc->ioc_regs.host_page_num_fn);
+		}
+	}
+
+	FUNC10(FUNC8(ioc, 0),
+		      ioc->ioc_regs.host_page_num_fn);
+
+	/*
+	 * Set boot type, env and device mode at the end.
+	*/
+	asicmode = FUNC3(ioc->asic_gen, ioc->asic_mode,
+					ioc->port0_mode, ioc->port1_mode);
+	FUNC10(asicmode, ((ioc->ioc_regs.smem_page_start)
+			+ BFI_FWBOOT_DEVMODE_OFF));
+	FUNC10(boot_type, ((ioc->ioc_regs.smem_page_start)
+			+ (BFI_FWBOOT_TYPE_OFF)));
+	FUNC10(boot_env, ((ioc->ioc_regs.smem_page_start)
+			+ (BFI_FWBOOT_ENV_OFF)));
+}

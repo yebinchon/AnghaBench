@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {scalar_t__ cache_size; int cache_ctrl; } ;
+struct mmc_card {int /*<<< orphan*/  host; TYPE_1__ ext_csd; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  EXT_CSD_CMD_SET_NORMAL ; 
+ int /*<<< orphan*/  EXT_CSD_FLUSH_CACHE ; 
+ scalar_t__ FUNC0 (struct mmc_card*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int FUNC2 (struct mmc_card*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (char*,int /*<<< orphan*/ ,int) ; 
+
+int FUNC4(struct mmc_card *card)
+{
+	int err = 0;
+
+	if (FUNC0(card) &&
+			(card->ext_csd.cache_size > 0) &&
+			(card->ext_csd.cache_ctrl & 1)) {
+		err = FUNC2(card, EXT_CSD_CMD_SET_NORMAL,
+				EXT_CSD_FLUSH_CACHE, 1, 0);
+		if (err)
+			FUNC3("%s: cache flush error %d\n",
+					FUNC1(card->host), err);
+	}
+
+	return err;
+}

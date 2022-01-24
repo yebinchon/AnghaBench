@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  git_reference ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  GIT_HEAD_FILE ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  current_head_target ; 
+ int /*<<< orphan*/  g_repo ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *) ; 
+
+void FUNC6(void)
+{
+	/* lookup the master branch and then the HEAD */
+	git_reference *reference, *master_ref, *resolved_ref;
+
+	FUNC1(FUNC3(&master_ref, g_repo, current_head_target));
+	FUNC1(FUNC3(&reference, g_repo, GIT_HEAD_FILE));
+
+	FUNC1(FUNC4(&resolved_ref, reference));
+	FUNC0(FUNC5(master_ref), FUNC5(resolved_ref));
+
+	FUNC2(reference);
+	FUNC2(resolved_ref);
+	FUNC2(master_ref);
+}

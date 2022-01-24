@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u64 ;
+struct aq_hw_s {int dummy; } ;
+
+/* Variables and functions */
+ unsigned int HW_ATL_A0_ERR_INT ; 
+ unsigned int FUNC0 (int /*<<< orphan*/ ) ; 
+ int FUNC1 (struct aq_hw_s*) ; 
+ int /*<<< orphan*/  FUNC2 (struct aq_hw_s*,unsigned int) ; 
+
+__attribute__((used)) static int FUNC3(struct aq_hw_s *self, u64 mask)
+{
+	FUNC2(self, FUNC0(mask) |
+			       (1U << HW_ATL_A0_ERR_INT));
+	return FUNC1(self);
+}

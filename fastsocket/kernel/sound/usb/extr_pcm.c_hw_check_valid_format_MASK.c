@@ -1,0 +1,77 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  void* u32 ;
+struct snd_usb_substream {int /*<<< orphan*/  dev; } ;
+struct snd_pcm_hw_params {int dummy; } ;
+struct snd_mask {void** bits; } ;
+struct snd_interval {scalar_t__ min; scalar_t__ max; scalar_t__ openmax; scalar_t__ openmin; } ;
+struct audioformat {int formats; scalar_t__ channels; scalar_t__ rate_min; scalar_t__ rate_max; int datainterval; int /*<<< orphan*/  format; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_CHANNELS ; 
+ int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_FORMAT ; 
+ int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_PERIOD_TIME ; 
+ int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_RATE ; 
+ scalar_t__ USB_SPEED_FULL ; 
+ struct snd_interval* FUNC0 (struct snd_pcm_hw_params*,int /*<<< orphan*/ ) ; 
+ struct snd_mask* FUNC1 (struct snd_pcm_hw_params*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (char*,unsigned int,...) ; 
+ scalar_t__ FUNC3 (struct snd_mask*) ; 
+ int /*<<< orphan*/  FUNC4 (struct snd_mask*,struct snd_mask*) ; 
+ int /*<<< orphan*/  FUNC5 (struct snd_mask*) ; 
+ scalar_t__ FUNC6 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC7(struct snd_usb_substream *subs,
+				 struct snd_pcm_hw_params *params,
+				 struct audioformat *fp)
+{
+	struct snd_interval *it = FUNC0(params, SNDRV_PCM_HW_PARAM_RATE);
+	struct snd_interval *ct = FUNC0(params, SNDRV_PCM_HW_PARAM_CHANNELS);
+	struct snd_mask *fmts = FUNC1(params, SNDRV_PCM_HW_PARAM_FORMAT);
+	struct snd_interval *pt = FUNC0(params, SNDRV_PCM_HW_PARAM_PERIOD_TIME);
+	struct snd_mask check_fmts;
+	unsigned int ptime;
+
+	/* check the format */
+	FUNC5(&check_fmts);
+	check_fmts.bits[0] = (u32)fp->formats;
+	check_fmts.bits[1] = (u32)(fp->formats >> 32);
+	FUNC4(&check_fmts, fmts);
+	if (FUNC3(&check_fmts)) {
+		FUNC2("   > check: no supported format %d\n", fp->format);
+		return 0;
+	}
+	/* check the channels */
+	if (fp->channels < ct->min || fp->channels > ct->max) {
+		FUNC2("   > check: no valid channels %d (%d/%d)\n", fp->channels, ct->min, ct->max);
+		return 0;
+	}
+	/* check the rate is within the range */
+	if (fp->rate_min > it->max || (fp->rate_min == it->max && it->openmax)) {
+		FUNC2("   > check: rate_min %d > max %d\n", fp->rate_min, it->max);
+		return 0;
+	}
+	if (fp->rate_max < it->min || (fp->rate_max == it->min && it->openmin)) {
+		FUNC2("   > check: rate_max %d < min %d\n", fp->rate_max, it->min);
+		return 0;
+	}
+	/* check whether the period time is >= the data packet interval */
+	if (FUNC6(subs->dev) != USB_SPEED_FULL) {
+		ptime = 125 * (1 << fp->datainterval);
+		if (ptime > pt->max || (ptime == pt->max && pt->openmax)) {
+			FUNC2("   > check: ptime %u > max %u\n", ptime, pt->max);
+			return 0;
+		}
+	}
+	return 1;
+}

@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u32 ;
+struct xlgmac_pdata {unsigned int rx_q_count; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  MTL_Q_RQFCR ; 
+ int /*<<< orphan*/  MTL_Q_RQFCR_RFA_LEN ; 
+ int /*<<< orphan*/  MTL_Q_RQFCR_RFA_POS ; 
+ int /*<<< orphan*/  MTL_Q_RQFCR_RFD_LEN ; 
+ int /*<<< orphan*/  MTL_Q_RQFCR_RFD_POS ; 
+ int /*<<< orphan*/  FUNC0 (struct xlgmac_pdata*,unsigned int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC4(struct xlgmac_pdata *pdata)
+{
+	unsigned int i;
+	u32 regval;
+
+	for (i = 0; i < pdata->rx_q_count; i++) {
+		regval = FUNC2(FUNC0(pdata, i, MTL_Q_RQFCR));
+		/* Activate flow control when less than 4k left in fifo */
+		regval = FUNC1(regval, MTL_Q_RQFCR_RFA_POS,
+					     MTL_Q_RQFCR_RFA_LEN, 2);
+		/* De-activate flow control when more than 6k left in fifo */
+		regval = FUNC1(regval, MTL_Q_RQFCR_RFD_POS,
+					     MTL_Q_RQFCR_RFD_LEN, 4);
+		FUNC3(regval, FUNC0(pdata, i, MTL_Q_RQFCR));
+	}
+}

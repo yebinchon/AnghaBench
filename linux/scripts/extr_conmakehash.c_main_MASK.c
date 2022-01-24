@@ -1,0 +1,253 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  buffer ;
+typedef  int /*<<< orphan*/  FILE ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  EX_DATAERR ; 
+ int /*<<< orphan*/  EX_NOINPUT ; 
+ int /*<<< orphan*/  EX_OK ; 
+ int /*<<< orphan*/  FUNC0 (int,int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC3 (char*,int,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC4 (char*,char*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ,char*,char*,...) ; 
+ int FUNC6 (char**) ; 
+ int /*<<< orphan*/  FUNC7 (char*) ; 
+ int /*<<< orphan*/  FUNC8 (char*,...) ; 
+ int /*<<< orphan*/  stderr ; 
+ int /*<<< orphan*/ * stdin ; 
+ char* FUNC9 (char*,char) ; 
+ int /*<<< orphan*/  FUNC10 (char*,char*) ; 
+ int /*<<< orphan*/  FUNC11 (char*,char*,int) ; 
+ int FUNC12 (char*,char**,int /*<<< orphan*/ ) ; 
+ int* unicount ; 
+ int** unitable ; 
+ int /*<<< orphan*/  FUNC13 (char*) ; 
+
+int FUNC14(int argc, char *argv[])
+{
+  FILE *ctbl;
+  char *tblname;
+  char buffer[65536];
+  int fontlen;
+  int i, nuni, nent;
+  int fp0, fp1, un0, un1;
+  char *p, *p1;
+
+  if ( argc < 2 || argc > 5 )
+    FUNC13(argv[0]);
+
+  if ( !FUNC10(argv[1],"-") )
+    {
+      ctbl = stdin;
+      tblname = "stdin";
+    }
+  else
+    {
+      ctbl = FUNC4(tblname = argv[1], "r");
+      if ( !ctbl )
+	{
+	  FUNC7(tblname);
+	  FUNC1(EX_NOINPUT);
+	}
+    }
+
+  /* For now we assume the default font is always 256 characters. */
+  fontlen = 256;
+
+  /* Initialize table */
+
+  for ( i = 0 ; i < fontlen ; i++ )
+    unicount[i] = 0;
+
+  /* Now we come to the tricky part.  Parse the input table. */
+
+  while ( FUNC3(buffer, sizeof(buffer), ctbl) != NULL )
+    {
+      if ( (p = FUNC9(buffer, '\n')) != NULL )
+	*p = '\0';
+      else
+	FUNC5(stderr, "%s: Warning: line too long\n", tblname);
+
+      p = buffer;
+
+/*
+ * Syntax accepted:
+ *	<fontpos>	<unicode> <unicode> ...
+ *	<range>		idem
+ *	<range>		<unicode range>
+ *
+ * where <range> ::= <fontpos>-<fontpos>
+ * and <unicode> ::= U+<h><h><h><h>
+ * and <h> ::= <hexadecimal digit>
+ */
+
+      while (*p == ' ' || *p == '\t')
+	p++;
+      if (!*p || *p == '#')
+	continue;	/* skip comment or blank line */
+
+      fp0 = FUNC12(p, &p1, 0);
+      if (p1 == p)
+	{
+	  FUNC5(stderr, "Bad input line: %s\n", buffer);
+	  FUNC1(EX_DATAERR);
+        }
+      p = p1;
+
+      while (*p == ' ' || *p == '\t')
+	p++;
+      if (*p == '-')
+	{
+	  p++;
+	  fp1 = FUNC12(p, &p1, 0);
+	  if (p1 == p)
+	    {
+	      FUNC5(stderr, "Bad input line: %s\n", buffer);
+	      FUNC1(EX_DATAERR);
+	    }
+	  p = p1;
+        }
+      else
+	fp1 = 0;
+
+      if ( fp0 < 0 || fp0 >= fontlen )
+	{
+	    FUNC5(stderr,
+		    "%s: Glyph number (0x%x) larger than font length\n",
+		    tblname, fp0);
+	    FUNC1(EX_DATAERR);
+	}
+      if ( fp1 && (fp1 < fp0 || fp1 >= fontlen) )
+	{
+	    FUNC5(stderr,
+		    "%s: Bad end of range (0x%x)\n",
+		    tblname, fp1);
+	    FUNC1(EX_DATAERR);
+	}
+
+      if (fp1)
+	{
+	  /* we have a range; expect the word "idem" or a Unicode range of the
+	     same length */
+	  while (*p == ' ' || *p == '\t')
+	    p++;
+	  if (!FUNC11(p, "idem", 4))
+	    {
+	      for (i=fp0; i<=fp1; i++)
+		FUNC0(i,i);
+	      p += 4;
+	    }
+	  else
+	    {
+	      un0 = FUNC6(&p);
+	      while (*p == ' ' || *p == '\t')
+		p++;
+	      if (*p != '-')
+		{
+		  FUNC5(stderr,
+"%s: Corresponding to a range of font positions, there should be a Unicode range\n",
+			  tblname);
+		  FUNC1(EX_DATAERR);
+	        }
+	      p++;
+	      un1 = FUNC6(&p);
+	      if (un0 < 0 || un1 < 0)
+		{
+		  FUNC5(stderr,
+"%s: Bad Unicode range corresponding to font position range 0x%x-0x%x\n",
+			  tblname, fp0, fp1);
+		  FUNC1(EX_DATAERR);
+	        }
+	      if (un1 - un0 != fp1 - fp0)
+		{
+		  FUNC5(stderr,
+"%s: Unicode range U+%x-U+%x not of the same length as font position range 0x%x-0x%x\n",
+			  tblname, un0, un1, fp0, fp1);
+		  FUNC1(EX_DATAERR);
+	        }
+	      for(i=fp0; i<=fp1; i++)
+		FUNC0(i,un0-fp0+i);
+	    }
+        }
+      else
+	{
+	    /* no range; expect a list of unicode values for a single font position */
+
+	    while ( (un0 = FUNC6(&p)) >= 0 )
+	      FUNC0(fp0, un0);
+	}
+      while (*p == ' ' || *p == '\t')
+	p++;
+      if (*p && *p != '#')
+	FUNC5(stderr, "%s: trailing junk (%s) ignored\n", tblname, p);
+    }
+
+  /* Okay, we hit EOF, now output hash table */
+
+  FUNC2(ctbl);
+
+
+  /* Compute total size of Unicode list */
+  nuni = 0;
+  for ( i = 0 ; i < fontlen ; i++ )
+    nuni += unicount[i];
+
+  FUNC8("\
+/*\n\
+ * Do not edit this file; it was automatically generated by\n\
+ *\n\
+ * conmakehash %s > [this file]\n\
+ *\n\
+ */\n\
+\n\
+#include <linux/types.h>\n\
+\n\
+u8 dfont_unicount[%d] = \n\
+{\n\t", argv[1], fontlen);
+
+  for ( i = 0 ; i < fontlen ; i++ )
+    {
+      FUNC8("%3d", unicount[i]);
+      if ( i == fontlen-1 )
+        FUNC8("\n};\n");
+      else if ( i % 8 == 7 )
+        FUNC8(",\n\t");
+      else
+        FUNC8(", ");
+    }
+
+  FUNC8("\nu16 dfont_unitable[%d] = \n{\n\t", nuni);
+
+  fp0 = 0;
+  nent = 0;
+  for ( i = 0 ; i < nuni ; i++ )
+    {
+      while ( nent >= unicount[fp0] )
+	{
+	  fp0++;
+	  nent = 0;
+	}
+      FUNC8("0x%04x", unitable[fp0][nent++]);
+      if ( i == nuni-1 )
+         FUNC8("\n};\n");
+       else if ( i % 8 == 7 )
+         FUNC8(",\n\t");
+       else
+         FUNC8(", ");
+    }
+
+  FUNC1(EX_OK);
+}

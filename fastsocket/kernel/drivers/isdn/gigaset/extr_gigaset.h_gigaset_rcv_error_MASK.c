@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sk_buff {int dummy; } ;
+struct cardstate {int dummy; } ;
+struct bc_state {int /*<<< orphan*/  corrupted; scalar_t__ ignore; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct sk_buff*) ; 
+ int /*<<< orphan*/  FUNC1 (struct bc_state*) ; 
+
+__attribute__((used)) static inline void FUNC2(struct sk_buff *procskb,
+				     struct cardstate *cs,
+				     struct bc_state *bcs)
+{
+	if (procskb)
+		FUNC0(procskb);
+
+	if (bcs->ignore)
+		--bcs->ignore;
+	else {
+		++bcs->corrupted;
+		FUNC1(bcs);
+	}
+}

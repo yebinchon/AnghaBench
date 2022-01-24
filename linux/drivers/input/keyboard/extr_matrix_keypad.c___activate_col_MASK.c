@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct matrix_keypad_platform_data {int /*<<< orphan*/ * col_gpios; int /*<<< orphan*/  drive_inactive_cols; int /*<<< orphan*/  active_low; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int) ; 
+
+__attribute__((used)) static void FUNC3(const struct matrix_keypad_platform_data *pdata,
+			   int col, bool on)
+{
+	bool level_on = !pdata->active_low;
+
+	if (on) {
+		FUNC1(pdata->col_gpios[col], level_on);
+	} else {
+		FUNC2(pdata->col_gpios[col], !level_on);
+		if (!pdata->drive_inactive_cols)
+			FUNC0(pdata->col_gpios[col]);
+	}
+}

@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct net_device {int dummy; } ;
+struct mv88e6xxx_chip {int dummy; } ;
+struct dsa_switch {int /*<<< orphan*/  dev; struct mv88e6xxx_chip* priv; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC1 (struct mv88e6xxx_chip*) ; 
+ scalar_t__ FUNC2 (struct mv88e6xxx_chip*,int,int) ; 
+ int /*<<< orphan*/  FUNC3 (struct mv88e6xxx_chip*) ; 
+ int /*<<< orphan*/  FUNC4 (struct mv88e6xxx_chip*) ; 
+
+__attribute__((used)) static void FUNC5(struct dsa_switch *ds, int dev,
+					     int port, struct net_device *br)
+{
+	struct mv88e6xxx_chip *chip = ds->priv;
+
+	if (!FUNC1(chip))
+		return;
+
+	FUNC3(chip);
+	if (FUNC2(chip, dev, port))
+		FUNC0(ds->dev, "failed to remap cross-chip Port VLAN\n");
+	FUNC4(chip);
+}

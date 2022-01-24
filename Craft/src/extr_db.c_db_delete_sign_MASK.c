@@ -1,0 +1,31 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  db_enabled ; 
+ int /*<<< orphan*/  delete_sign_stmt ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int,int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+
+void FUNC3(int x, int y, int z, int face) {
+    if (!db_enabled) {
+        return;
+    }
+    FUNC1(delete_sign_stmt);
+    FUNC0(delete_sign_stmt, 1, x);
+    FUNC0(delete_sign_stmt, 2, y);
+    FUNC0(delete_sign_stmt, 3, z);
+    FUNC0(delete_sign_stmt, 4, face);
+    FUNC2(delete_sign_stmt);
+}

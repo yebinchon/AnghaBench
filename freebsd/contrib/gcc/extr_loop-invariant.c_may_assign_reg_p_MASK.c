@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  rtx ;
+
+/* Variables and functions */
+ scalar_t__ BLKmode ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ scalar_t__ NO_REGS ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ) ; 
+ scalar_t__ VOIDmode ; 
+ scalar_t__ FUNC5 (scalar_t__) ; 
+
+__attribute__((used)) static bool
+FUNC6 (rtx x)
+{
+  return (FUNC0 (x) != VOIDmode
+	  && FUNC0 (x) != BLKmode
+	  && FUNC5 (FUNC0 (x))
+	  && (!FUNC4 (x)
+	      || !FUNC1 (x)
+	      || FUNC3 (FUNC2 (x)) != NO_REGS));
+}

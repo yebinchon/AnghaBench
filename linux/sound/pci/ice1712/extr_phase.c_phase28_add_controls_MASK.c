@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct snd_ice1712 {int /*<<< orphan*/  card; } ;
+
+/* Variables and functions */
+ unsigned int FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * phase28_dac_controls ; 
+ int FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,struct snd_ice1712*) ; 
+ int /*<<< orphan*/ * wm_controls ; 
+
+__attribute__((used)) static int FUNC3(struct snd_ice1712 *ice)
+{
+	unsigned int i, counts;
+	int err;
+
+	counts = FUNC0(phase28_dac_controls);
+	for (i = 0; i < counts; i++) {
+		err = FUNC1(ice->card,
+					FUNC2(&phase28_dac_controls[i],
+							ice));
+		if (err < 0)
+			return err;
+	}
+
+	for (i = 0; i < FUNC0(wm_controls); i++) {
+		err = FUNC1(ice->card,
+					FUNC2(&wm_controls[i], ice));
+		if (err < 0)
+			return err;
+	}
+
+	return 0;
+}

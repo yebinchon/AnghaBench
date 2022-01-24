@@ -1,0 +1,313 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  __le32 ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
+ int /*<<< orphan*/  WMI_SERVICE_11AC ; 
+ int /*<<< orphan*/  WMI_SERVICE_ADAPTIVE_OCS ; 
+ int /*<<< orphan*/  WMI_SERVICE_AP_DFS ; 
+ int /*<<< orphan*/  WMI_SERVICE_AP_PS_DETECT_OUT_OF_SYNC ; 
+ int /*<<< orphan*/  WMI_SERVICE_AP_UAPSD ; 
+ int /*<<< orphan*/  WMI_SERVICE_ARPNS_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_BATCH_SCAN ; 
+ int /*<<< orphan*/  WMI_SERVICE_BA_SSN_SUPPORT ; 
+ int /*<<< orphan*/  WMI_SERVICE_BCN_FILTER ; 
+ int /*<<< orphan*/  WMI_SERVICE_BCN_MISS_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_BCN_TXRATE_OVERRIDE ; 
+ int /*<<< orphan*/  WMI_SERVICE_BEACON_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_BLOCKACK ; 
+ int /*<<< orphan*/  WMI_SERVICE_BURST ; 
+ int /*<<< orphan*/  WMI_SERVICE_CHATTER ; 
+ int /*<<< orphan*/  WMI_SERVICE_COEX_FREQAVOID ; 
+ int /*<<< orphan*/  WMI_SERVICE_COEX_SAR ; 
+ int /*<<< orphan*/  WMI_SERVICE_CSA_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_D0WOW ; 
+ int /*<<< orphan*/  WMI_SERVICE_DHCP_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_EARLY_RX ; 
+ int /*<<< orphan*/  WMI_SERVICE_ESTIMATE_LINKSPEED ; 
+ int /*<<< orphan*/  WMI_SERVICE_EXTSCAN ; 
+ int /*<<< orphan*/  WMI_SERVICE_FILTER_IPSEC_NATKEEPALIVE ; 
+ int /*<<< orphan*/  WMI_SERVICE_FORCE_FW_HANG ; 
+ int /*<<< orphan*/  WMI_SERVICE_FWTEST ; 
+ int /*<<< orphan*/  WMI_SERVICE_GPIO ; 
+ int /*<<< orphan*/  WMI_SERVICE_GTK_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_HSOFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_IBSS_PWRSAVE ; 
+ int /*<<< orphan*/  WMI_SERVICE_IRAM_TIDS ; 
+ int /*<<< orphan*/  WMI_SERVICE_L1SS_STAT ; 
+ int /*<<< orphan*/  WMI_SERVICE_LPASS ; 
+ int /*<<< orphan*/  WMI_SERVICE_LTE_ANT_SHARE_SUPPORT ; 
+ int /*<<< orphan*/  WMI_SERVICE_MCC_BCN_INTERVAL_CHANGE ; 
+ int /*<<< orphan*/  WMI_SERVICE_MDNS_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_MESH_11S ; 
+ int /*<<< orphan*/  WMI_SERVICE_MGMT_TX_WMI ; 
+ int /*<<< orphan*/  WMI_SERVICE_MHF_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_NAN ; 
+ int /*<<< orphan*/  WMI_SERVICE_NLO ; 
+ int /*<<< orphan*/  WMI_SERVICE_OBSS_SCAN ; 
+ int /*<<< orphan*/  WMI_SERVICE_PACKET_POWER_SAVE ; 
+ int /*<<< orphan*/  WMI_SERVICE_PHYERR ; 
+ int /*<<< orphan*/  WMI_SERVICE_PLMREQ ; 
+ int /*<<< orphan*/  WMI_SERVICE_QPOWER ; 
+ int /*<<< orphan*/  WMI_SERVICE_RATECTRL_CACHE ; 
+ int /*<<< orphan*/  WMI_SERVICE_RMC ; 
+ int /*<<< orphan*/  WMI_SERVICE_ROAM_HO_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_ROAM_SCAN_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_RTT ; 
+ int /*<<< orphan*/  WMI_SERVICE_RX_FULL_REORDER ; 
+ int /*<<< orphan*/  WMI_SERVICE_SAP_AUTH_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_SCAN_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_SERVICE_SCAN_SCH ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_ADVANCED_PWRSAVE ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_DTIM_PS_MODULATED_DTIM ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_KEEP_ALIVE ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_PWRSAVE ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_RX_IPA_OFFLOAD_SUPPORT ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_SMPS ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_UAPSD_BASIC_AUTO_TRIG ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_UAPSD_VAR_AUTO_TRIG ; 
+ int /*<<< orphan*/  WMI_SERVICE_STA_WMMAC ; 
+ int /*<<< orphan*/  WMI_SERVICE_SYNC_DELETE_CMDS ; 
+ int /*<<< orphan*/  WMI_SERVICE_TDLS ; 
+ int /*<<< orphan*/  WMI_SERVICE_TDLS_OFFCHAN ; 
+ int /*<<< orphan*/  WMI_SERVICE_TDLS_UAPSD_BUFFER_STA ; 
+ int /*<<< orphan*/  WMI_SERVICE_TDLS_UAPSD_SLEEP_STA ; 
+ int /*<<< orphan*/  WMI_SERVICE_THERMAL_MGMT ; 
+ int /*<<< orphan*/  WMI_SERVICE_TX_ENCAP ; 
+ int /*<<< orphan*/  WMI_SERVICE_WLAN_HB ; 
+ int /*<<< orphan*/  WMI_SERVICE_WOW ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_11AC ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_ADAPTIVE_OCS ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_AP_DFS ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_AP_PS_DETECT_OUT_OF_SYNC ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_AP_UAPSD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_ARPNS_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_BATCH_SCAN ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_BA_SSN_SUPPORT ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_BCN_FILTER ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_BCN_MISS_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_BCN_TXRATE_OVERRIDE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_BEACON_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_BLOCKACK ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_BURST ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_CHATTER ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_COEX_FREQAVOID ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_COEX_SAR ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_CSA_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_D0WOW ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_DHCP_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_EARLY_RX ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_ESTIMATE_LINKSPEED ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_EXTSCAN ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_FILTER_IPSEC_NATKEEPALIVE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_FORCE_FW_HANG ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_FWTEST ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_GPIO ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_GTK_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_HSOFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_IBSS_PWRSAVE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_IRAM_TIDS ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_L1SS_STAT ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_LPASS ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_LTE_ANT_SHARE_SUPPORT ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_MCC_BCN_INTERVAL_CHANGE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_MDNS_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_MESH_11S ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_MGMT_TX_WMI ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_MHF_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_NAN ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_NLO ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_OBSS_SCAN ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_PACKET_POWER_SAVE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_PHYERR ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_PLMREQ ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_QPOWER ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_RATECTRL_CACHE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_RMC ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_ROAM_HO_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_ROAM_SCAN_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_RTT ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_RX_FULL_REORDER ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_SAP_AUTH_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_SCAN_OFFLOAD ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_SCAN_SCH ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_ADVANCED_PWRSAVE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_DTIM_PS_MODULATED_DTIM ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_KEEP_ALIVE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_PWRSAVE ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_RX_IPA_OFFLOAD_SUPPORT ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_SMPS ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_UAPSD_BASIC_AUTO_TRIG ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_UAPSD_VAR_AUTO_TRIG ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_STA_WMMAC ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_SYNC_DELETE_CMDS ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_TDLS ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_TDLS_OFFCHAN ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_TDLS_UAPSD_BUFFER_STA ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_TDLS_UAPSD_SLEEP_STA ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_THERMAL_MGMT ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_TX_ENCAP ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_WLAN_HB ; 
+ int /*<<< orphan*/  WMI_TLV_SERVICE_WOW ; 
+
+__attribute__((used)) static inline void
+FUNC1(const __le32 *in, unsigned long *out, size_t len)
+{
+	FUNC0(WMI_TLV_SERVICE_BEACON_OFFLOAD,
+	       WMI_SERVICE_BEACON_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_SCAN_OFFLOAD,
+	       WMI_SERVICE_SCAN_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_ROAM_SCAN_OFFLOAD,
+	       WMI_SERVICE_ROAM_SCAN_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_BCN_MISS_OFFLOAD,
+	       WMI_SERVICE_BCN_MISS_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_STA_PWRSAVE,
+	       WMI_SERVICE_STA_PWRSAVE, len);
+	FUNC0(WMI_TLV_SERVICE_STA_ADVANCED_PWRSAVE,
+	       WMI_SERVICE_STA_ADVANCED_PWRSAVE, len);
+	FUNC0(WMI_TLV_SERVICE_AP_UAPSD,
+	       WMI_SERVICE_AP_UAPSD, len);
+	FUNC0(WMI_TLV_SERVICE_AP_DFS,
+	       WMI_SERVICE_AP_DFS, len);
+	FUNC0(WMI_TLV_SERVICE_11AC,
+	       WMI_SERVICE_11AC, len);
+	FUNC0(WMI_TLV_SERVICE_BLOCKACK,
+	       WMI_SERVICE_BLOCKACK, len);
+	FUNC0(WMI_TLV_SERVICE_PHYERR,
+	       WMI_SERVICE_PHYERR, len);
+	FUNC0(WMI_TLV_SERVICE_BCN_FILTER,
+	       WMI_SERVICE_BCN_FILTER, len);
+	FUNC0(WMI_TLV_SERVICE_RTT,
+	       WMI_SERVICE_RTT, len);
+	FUNC0(WMI_TLV_SERVICE_WOW,
+	       WMI_SERVICE_WOW, len);
+	FUNC0(WMI_TLV_SERVICE_RATECTRL_CACHE,
+	       WMI_SERVICE_RATECTRL_CACHE, len);
+	FUNC0(WMI_TLV_SERVICE_IRAM_TIDS,
+	       WMI_SERVICE_IRAM_TIDS, len);
+	FUNC0(WMI_TLV_SERVICE_ARPNS_OFFLOAD,
+	       WMI_SERVICE_ARPNS_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_NLO,
+	       WMI_SERVICE_NLO, len);
+	FUNC0(WMI_TLV_SERVICE_GTK_OFFLOAD,
+	       WMI_SERVICE_GTK_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_SCAN_SCH,
+	       WMI_SERVICE_SCAN_SCH, len);
+	FUNC0(WMI_TLV_SERVICE_CSA_OFFLOAD,
+	       WMI_SERVICE_CSA_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_CHATTER,
+	       WMI_SERVICE_CHATTER, len);
+	FUNC0(WMI_TLV_SERVICE_COEX_FREQAVOID,
+	       WMI_SERVICE_COEX_FREQAVOID, len);
+	FUNC0(WMI_TLV_SERVICE_PACKET_POWER_SAVE,
+	       WMI_SERVICE_PACKET_POWER_SAVE, len);
+	FUNC0(WMI_TLV_SERVICE_FORCE_FW_HANG,
+	       WMI_SERVICE_FORCE_FW_HANG, len);
+	FUNC0(WMI_TLV_SERVICE_GPIO,
+	       WMI_SERVICE_GPIO, len);
+	FUNC0(WMI_TLV_SERVICE_STA_DTIM_PS_MODULATED_DTIM,
+	       WMI_SERVICE_STA_DTIM_PS_MODULATED_DTIM, len);
+	FUNC0(WMI_TLV_SERVICE_STA_UAPSD_BASIC_AUTO_TRIG,
+	       WMI_SERVICE_STA_UAPSD_BASIC_AUTO_TRIG, len);
+	FUNC0(WMI_TLV_SERVICE_STA_UAPSD_VAR_AUTO_TRIG,
+	       WMI_SERVICE_STA_UAPSD_VAR_AUTO_TRIG, len);
+	FUNC0(WMI_TLV_SERVICE_STA_KEEP_ALIVE,
+	       WMI_SERVICE_STA_KEEP_ALIVE, len);
+	FUNC0(WMI_TLV_SERVICE_TX_ENCAP,
+	       WMI_SERVICE_TX_ENCAP, len);
+	FUNC0(WMI_TLV_SERVICE_AP_PS_DETECT_OUT_OF_SYNC,
+	       WMI_SERVICE_AP_PS_DETECT_OUT_OF_SYNC, len);
+	FUNC0(WMI_TLV_SERVICE_EARLY_RX,
+	       WMI_SERVICE_EARLY_RX, len);
+	FUNC0(WMI_TLV_SERVICE_STA_SMPS,
+	       WMI_SERVICE_STA_SMPS, len);
+	FUNC0(WMI_TLV_SERVICE_FWTEST,
+	       WMI_SERVICE_FWTEST, len);
+	FUNC0(WMI_TLV_SERVICE_STA_WMMAC,
+	       WMI_SERVICE_STA_WMMAC, len);
+	FUNC0(WMI_TLV_SERVICE_TDLS,
+	       WMI_SERVICE_TDLS, len);
+	FUNC0(WMI_TLV_SERVICE_BURST,
+	       WMI_SERVICE_BURST, len);
+	FUNC0(WMI_TLV_SERVICE_MCC_BCN_INTERVAL_CHANGE,
+	       WMI_SERVICE_MCC_BCN_INTERVAL_CHANGE, len);
+	FUNC0(WMI_TLV_SERVICE_ADAPTIVE_OCS,
+	       WMI_SERVICE_ADAPTIVE_OCS, len);
+	FUNC0(WMI_TLV_SERVICE_BA_SSN_SUPPORT,
+	       WMI_SERVICE_BA_SSN_SUPPORT, len);
+	FUNC0(WMI_TLV_SERVICE_FILTER_IPSEC_NATKEEPALIVE,
+	       WMI_SERVICE_FILTER_IPSEC_NATKEEPALIVE, len);
+	FUNC0(WMI_TLV_SERVICE_WLAN_HB,
+	       WMI_SERVICE_WLAN_HB, len);
+	FUNC0(WMI_TLV_SERVICE_LTE_ANT_SHARE_SUPPORT,
+	       WMI_SERVICE_LTE_ANT_SHARE_SUPPORT, len);
+	FUNC0(WMI_TLV_SERVICE_BATCH_SCAN,
+	       WMI_SERVICE_BATCH_SCAN, len);
+	FUNC0(WMI_TLV_SERVICE_QPOWER,
+	       WMI_SERVICE_QPOWER, len);
+	FUNC0(WMI_TLV_SERVICE_PLMREQ,
+	       WMI_SERVICE_PLMREQ, len);
+	FUNC0(WMI_TLV_SERVICE_THERMAL_MGMT,
+	       WMI_SERVICE_THERMAL_MGMT, len);
+	FUNC0(WMI_TLV_SERVICE_RMC,
+	       WMI_SERVICE_RMC, len);
+	FUNC0(WMI_TLV_SERVICE_MHF_OFFLOAD,
+	       WMI_SERVICE_MHF_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_COEX_SAR,
+	       WMI_SERVICE_COEX_SAR, len);
+	FUNC0(WMI_TLV_SERVICE_BCN_TXRATE_OVERRIDE,
+	       WMI_SERVICE_BCN_TXRATE_OVERRIDE, len);
+	FUNC0(WMI_TLV_SERVICE_NAN,
+	       WMI_SERVICE_NAN, len);
+	FUNC0(WMI_TLV_SERVICE_L1SS_STAT,
+	       WMI_SERVICE_L1SS_STAT, len);
+	FUNC0(WMI_TLV_SERVICE_ESTIMATE_LINKSPEED,
+	       WMI_SERVICE_ESTIMATE_LINKSPEED, len);
+	FUNC0(WMI_TLV_SERVICE_OBSS_SCAN,
+	       WMI_SERVICE_OBSS_SCAN, len);
+	FUNC0(WMI_TLV_SERVICE_TDLS_OFFCHAN,
+	       WMI_SERVICE_TDLS_OFFCHAN, len);
+	FUNC0(WMI_TLV_SERVICE_TDLS_UAPSD_BUFFER_STA,
+	       WMI_SERVICE_TDLS_UAPSD_BUFFER_STA, len);
+	FUNC0(WMI_TLV_SERVICE_TDLS_UAPSD_SLEEP_STA,
+	       WMI_SERVICE_TDLS_UAPSD_SLEEP_STA, len);
+	FUNC0(WMI_TLV_SERVICE_IBSS_PWRSAVE,
+	       WMI_SERVICE_IBSS_PWRSAVE, len);
+	FUNC0(WMI_TLV_SERVICE_LPASS,
+	       WMI_SERVICE_LPASS, len);
+	FUNC0(WMI_TLV_SERVICE_EXTSCAN,
+	       WMI_SERVICE_EXTSCAN, len);
+	FUNC0(WMI_TLV_SERVICE_D0WOW,
+	       WMI_SERVICE_D0WOW, len);
+	FUNC0(WMI_TLV_SERVICE_HSOFFLOAD,
+	       WMI_SERVICE_HSOFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_ROAM_HO_OFFLOAD,
+	       WMI_SERVICE_ROAM_HO_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_RX_FULL_REORDER,
+	       WMI_SERVICE_RX_FULL_REORDER, len);
+	FUNC0(WMI_TLV_SERVICE_DHCP_OFFLOAD,
+	       WMI_SERVICE_DHCP_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_STA_RX_IPA_OFFLOAD_SUPPORT,
+	       WMI_SERVICE_STA_RX_IPA_OFFLOAD_SUPPORT, len);
+	FUNC0(WMI_TLV_SERVICE_MDNS_OFFLOAD,
+	       WMI_SERVICE_MDNS_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_SAP_AUTH_OFFLOAD,
+	       WMI_SERVICE_SAP_AUTH_OFFLOAD, len);
+	FUNC0(WMI_TLV_SERVICE_MGMT_TX_WMI,
+	       WMI_SERVICE_MGMT_TX_WMI, len);
+	FUNC0(WMI_TLV_SERVICE_MESH_11S,
+	       WMI_SERVICE_MESH_11S, len);
+	FUNC0(WMI_TLV_SERVICE_SYNC_DELETE_CMDS,
+	       WMI_SERVICE_SYNC_DELETE_CMDS, len);
+}

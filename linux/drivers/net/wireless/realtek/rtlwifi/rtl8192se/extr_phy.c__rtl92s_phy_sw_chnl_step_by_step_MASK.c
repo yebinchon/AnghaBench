@@ -1,0 +1,146 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  scalar_t__ u32 ;
+typedef  int /*<<< orphan*/  u16 ;
+struct swchnlcmd {int cmdid; int para2; scalar_t__ msdelay; int /*<<< orphan*/  para1; } ;
+struct rtl_phy {int num_total_rfpath; int* rfreg_chnlval; } ;
+struct rtl_priv {struct rtl_phy phy; } ;
+struct ieee80211_hw {int dummy; } ;
+typedef  enum radio_path { ____Placeholder_radio_path } radio_path ;
+
+/* Variables and functions */
+ int CMDID_END ; 
+#define  CMDID_RF_WRITEREG 132 
+#define  CMDID_SET_TXPOWEROWER_LEVEL 131 
+#define  CMDID_WRITEPORT_UCHAR 130 
+#define  CMDID_WRITEPORT_ULONG 129 
+#define  CMDID_WRITEPORT_USHORT 128 
+ int MAX_POSTCMD_CNT ; 
+ int MAX_PRECMD_CNT ; 
+ int MAX_RFDEPENDCMD_CNT ; 
+ int /*<<< orphan*/  RFREG_OFFSET_MASK ; 
+ int /*<<< orphan*/  RF_CHNLBW ; 
+ int /*<<< orphan*/  FUNC0 (int,char*,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct swchnlcmd*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int,int) ; 
+ int /*<<< orphan*/  FUNC2 (char*,int) ; 
+ int /*<<< orphan*/  FUNC3 (struct ieee80211_hw*,int) ; 
+ struct rtl_priv* FUNC4 (struct ieee80211_hw*) ; 
+ int /*<<< orphan*/  FUNC5 (struct ieee80211_hw*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC6 (struct rtl_priv*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC7 (struct rtl_priv*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC8 (struct rtl_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static bool FUNC9(struct ieee80211_hw *hw,
+	     u8 channel, u8 *stage, u8 *step, u32 *delay)
+{
+	struct rtl_priv *rtlpriv = FUNC4(hw);
+	struct rtl_phy *rtlphy = &(rtlpriv->phy);
+	struct swchnlcmd precommoncmd[MAX_PRECMD_CNT];
+	u32 precommoncmdcnt;
+	struct swchnlcmd postcommoncmd[MAX_POSTCMD_CNT];
+	u32 postcommoncmdcnt;
+	struct swchnlcmd rfdependcmd[MAX_RFDEPENDCMD_CNT];
+	u32 rfdependcmdcnt;
+	struct swchnlcmd *currentcmd = NULL;
+	u8 rfpath;
+	u8 num_total_rfpath = rtlphy->num_total_rfpath;
+
+	precommoncmdcnt = 0;
+	FUNC1(precommoncmd, precommoncmdcnt++,
+			MAX_PRECMD_CNT, CMDID_SET_TXPOWEROWER_LEVEL, 0, 0, 0);
+	FUNC1(precommoncmd, precommoncmdcnt++,
+			MAX_PRECMD_CNT, CMDID_END, 0, 0, 0);
+
+	postcommoncmdcnt = 0;
+
+	FUNC1(postcommoncmd, postcommoncmdcnt++,
+			MAX_POSTCMD_CNT, CMDID_END, 0, 0, 0);
+
+	rfdependcmdcnt = 0;
+
+	FUNC0((channel < 1 || channel > 14),
+		  "rtl8192se: invalid channel for Zebra: %d\n", channel);
+
+	FUNC1(rfdependcmd, rfdependcmdcnt++,
+					 MAX_RFDEPENDCMD_CNT, CMDID_RF_WRITEREG,
+					 RF_CHNLBW, channel, 10);
+
+	FUNC1(rfdependcmd, rfdependcmdcnt++,
+			MAX_RFDEPENDCMD_CNT, CMDID_END, 0, 0, 0);
+
+	do {
+		switch (*stage) {
+		case 0:
+			currentcmd = &precommoncmd[*step];
+			break;
+		case 1:
+			currentcmd = &rfdependcmd[*step];
+			break;
+		case 2:
+			currentcmd = &postcommoncmd[*step];
+			break;
+		default:
+			return true;
+		}
+
+		if (currentcmd->cmdid == CMDID_END) {
+			if ((*stage) == 2) {
+				return true;
+			} else {
+				(*stage)++;
+				(*step) = 0;
+				continue;
+			}
+		}
+
+		switch (currentcmd->cmdid) {
+		case CMDID_SET_TXPOWEROWER_LEVEL:
+			FUNC3(hw, channel);
+			break;
+		case CMDID_WRITEPORT_ULONG:
+			FUNC7(rtlpriv, currentcmd->para1,
+					currentcmd->para2);
+			break;
+		case CMDID_WRITEPORT_USHORT:
+			FUNC8(rtlpriv, currentcmd->para1,
+				       (u16)currentcmd->para2);
+			break;
+		case CMDID_WRITEPORT_UCHAR:
+			FUNC6(rtlpriv, currentcmd->para1,
+				       (u8)currentcmd->para2);
+			break;
+		case CMDID_RF_WRITEREG:
+			for (rfpath = 0; rfpath < num_total_rfpath; rfpath++) {
+				rtlphy->rfreg_chnlval[rfpath] =
+					 ((rtlphy->rfreg_chnlval[rfpath] &
+					 0xfffffc00) | currentcmd->para2);
+				FUNC5(hw, (enum radio_path)rfpath,
+					      currentcmd->para1,
+					      RFREG_OFFSET_MASK,
+					      rtlphy->rfreg_chnlval[rfpath]);
+			}
+			break;
+		default:
+			FUNC2("switch case %#x not processed\n",
+			       currentcmd->cmdid);
+			break;
+		}
+
+		break;
+	} while (true);
+
+	(*delay) = currentcmd->msdelay;
+	(*step)++;
+	return false;
+}

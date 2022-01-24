@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct platform_device {int /*<<< orphan*/  dev; } ;
+struct fsi_master {int /*<<< orphan*/  fsib; int /*<<< orphan*/  fsia; } ;
+
+/* Variables and functions */
+ struct fsi_master* FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC3(struct platform_device *pdev)
+{
+	struct fsi_master *master;
+
+	master = FUNC0(&pdev->dev);
+
+	FUNC2(&pdev->dev);
+
+	FUNC1(&master->fsia);
+	FUNC1(&master->fsib);
+
+	return 0;
+}

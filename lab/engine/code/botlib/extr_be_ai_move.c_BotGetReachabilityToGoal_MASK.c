@@ -1,0 +1,111 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_10__   TYPE_3__ ;
+typedef  struct TYPE_9__   TYPE_2__ ;
+typedef  struct TYPE_8__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  vec3_t ;
+struct bot_avoidspot_s {int dummy; } ;
+struct TYPE_8__ {int areanum; } ;
+typedef  TYPE_1__ bot_goal_t ;
+struct TYPE_9__ {int areanum; scalar_t__ traveltime; int /*<<< orphan*/  end; } ;
+typedef  TYPE_2__ aas_reachability_t ;
+struct TYPE_10__ {int /*<<< orphan*/  (* Print ) (int /*<<< orphan*/ ,char*,int) ;} ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (int) ; 
+ int FUNC1 (int,int /*<<< orphan*/ ,int,int) ; 
+ int FUNC2 (int,int) ; 
+ int /*<<< orphan*/  FUNC3 (int,TYPE_2__*) ; 
+ float FUNC4 () ; 
+ int AVOIDREACH_TRIES ; 
+ scalar_t__ FUNC5 (int /*<<< orphan*/ ,TYPE_2__*,struct bot_avoidspot_s*,int) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
+ int MAX_AVOIDREACH ; 
+ int MOVERESULT_BLOCKEDBYAVOIDSPOT ; 
+ int /*<<< orphan*/  PRT_MESSAGE ; 
+ int TFL_DONOTENTER ; 
+ scalar_t__ botDeveloper ; 
+ TYPE_3__ botimport ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ ,char*,int) ; 
+
+int FUNC8(vec3_t origin, int areanum,
+									  int lastgoalareanum, int lastareanum,
+									  int *avoidreach, float *avoidreachtimes, int *avoidreachtries,
+									  bot_goal_t *goal, int travelflags,
+									  struct bot_avoidspot_s *avoidspots, int numavoidspots, int *flags)
+{
+	int i, t, besttime, bestreachnum, reachnum;
+	aas_reachability_t reach;
+
+	//if not in a valid area
+	if (!areanum) return 0;
+	//
+	if (FUNC0(areanum) || FUNC0(goal->areanum))
+	{
+		travelflags |= TFL_DONOTENTER;
+	} //end if
+	//use the routing to find the next area to go to
+	besttime = 0;
+	bestreachnum = 0;
+	//
+	for (reachnum = FUNC2(areanum, 0); reachnum;
+		reachnum = FUNC2(areanum, reachnum))
+	{
+#ifdef AVOIDREACH
+		//check if it isn't a reachability to avoid
+		for (i = 0; i < MAX_AVOIDREACH; i++)
+		{
+			if (avoidreach[i] == reachnum && avoidreachtimes[i] >= AAS_Time()) break;
+		} //end for
+		if (i != MAX_AVOIDREACH && avoidreachtries[i] > AVOIDREACH_TRIES)
+		{
+#ifdef DEBUG
+			if (botDeveloper)
+			{
+				botimport.Print(PRT_MESSAGE, "avoiding reachability %d\n", avoidreach[i]);
+			} //end if
+#endif //DEBUG
+			continue;
+		} //end if
+#endif //AVOIDREACH
+		//get the reachability from the number
+		FUNC3(reachnum, &reach);
+		//NOTE: do not go back to the previous area if the goal didn't change
+		//NOTE: is this actually avoidance of local routing minima between two areas???
+		if (lastgoalareanum == goal->areanum && reach.areanum == lastareanum) continue;
+		//if (AAS_AreaContentsTravelFlags(reach.areanum) & ~travelflags) continue;
+		//if the travel isn't valid
+		if (!FUNC6(origin, &reach, travelflags)) continue;
+		//get the travel time
+		t = FUNC1(reach.areanum, reach.end, goal->areanum, travelflags);
+		//if the goal area isn't reachable from the reachable area
+		if (!t) continue;
+		//if the bot should not use this reachability to avoid bad spots
+		if (FUNC5(origin, &reach, avoidspots, numavoidspots)) {
+			if (flags) {
+				*flags |= MOVERESULT_BLOCKEDBYAVOIDSPOT;
+			}
+			continue;
+		}
+		//add the travel time towards the area
+		t += reach.traveltime;// + AAS_AreaTravelTime(areanum, origin, reach.start);
+		//if the travel time is better than the ones already found
+		if (!besttime || t < besttime)
+		{
+			besttime = t;
+			bestreachnum = reachnum;
+		} //end if
+	} //end for
+	//
+	return bestreachnum;
+}

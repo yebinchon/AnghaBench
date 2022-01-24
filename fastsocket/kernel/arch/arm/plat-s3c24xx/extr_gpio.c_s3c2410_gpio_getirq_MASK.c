@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int EINVAL ; 
+ unsigned int IRQ_EINT0 ; 
+ unsigned int IRQ_EINT4 ; 
+ unsigned int IRQ_EINT8 ; 
+ unsigned int FUNC0 (int) ; 
+ unsigned int FUNC1 (int) ; 
+
+int FUNC2(unsigned int pin)
+{
+	if (pin < FUNC0(0) || pin > FUNC1(15))
+		return -EINVAL;	/* not valid interrupts */
+
+	if (pin < FUNC1(0) && pin > FUNC0(7))
+		return -EINVAL;	/* not valid pin */
+
+	if (pin < FUNC0(4))
+		return (pin - FUNC0(0)) + IRQ_EINT0;
+
+	if (pin < FUNC1(0))
+		return (pin - FUNC0(4)) + IRQ_EINT4;
+
+	return (pin - FUNC1(0)) + IRQ_EINT8;
+}

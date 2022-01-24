@@ -1,0 +1,46 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {int indep_hp; int keep_eapd_on; int /*<<< orphan*/  pcm_playback_hook; } ;
+struct via_spec {scalar_t__ codec_type; int no_pin_power_ctl; TYPE_1__ gen; } ;
+struct hda_codec {struct via_spec* spec; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  GFP_KERNEL ; 
+ scalar_t__ VT1708BCE ; 
+ scalar_t__ VT1708S ; 
+ scalar_t__ FUNC0 (struct hda_codec*) ; 
+ struct via_spec* FUNC1 (int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (TYPE_1__*) ; 
+ int /*<<< orphan*/  via_playback_pcm_hook ; 
+
+__attribute__((used)) static struct via_spec *FUNC3(struct hda_codec *codec)
+{
+	struct via_spec *spec;
+
+	spec = FUNC1(sizeof(*spec), GFP_KERNEL);
+	if (spec == NULL)
+		return NULL;
+
+	codec->spec = spec;
+	FUNC2(&spec->gen);
+	spec->codec_type = FUNC0(codec);
+	/* VT1708BCE & VT1708S are almost same */
+	if (spec->codec_type == VT1708BCE)
+		spec->codec_type = VT1708S;
+	spec->no_pin_power_ctl = 1;
+	spec->gen.indep_hp = 1;
+	spec->gen.keep_eapd_on = 1;
+	spec->gen.pcm_playback_hook = via_playback_pcm_hook;
+	return spec;
+}

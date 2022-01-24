@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ctlr_info {int interrupts_enabled; scalar_t__ vaddr; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  SA5_INTR_OFF ; 
+ scalar_t__ SA5_REPLY_INTR_MASK_OFFSET ; 
+ int /*<<< orphan*/  FUNC0 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,scalar_t__) ; 
+
+__attribute__((used)) static void FUNC2(struct ctlr_info *h, unsigned long val)
+{
+	if (val) { /* Turn interrupts on */
+		h->interrupts_enabled = 1;
+		FUNC1(0, h->vaddr + SA5_REPLY_INTR_MASK_OFFSET);
+		(void) FUNC0(h->vaddr + SA5_REPLY_INTR_MASK_OFFSET);
+	} else { /* Turn them off */
+		h->interrupts_enabled = 0;
+		FUNC1(SA5_INTR_OFF,
+			h->vaddr + SA5_REPLY_INTR_MASK_OFFSET);
+		(void) FUNC0(h->vaddr + SA5_REPLY_INTR_MASK_OFFSET);
+	}
+}

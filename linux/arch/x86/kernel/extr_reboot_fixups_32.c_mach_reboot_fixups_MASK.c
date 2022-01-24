@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct pci_dev {int dummy; } ;
+struct device_fixup {int /*<<< orphan*/  (* reboot_fixup ) (struct pci_dev*) ;int /*<<< orphan*/  device; int /*<<< orphan*/  vendor; } ;
+
+/* Variables and functions */
+ int FUNC0 (struct device_fixup*) ; 
+ struct device_fixup* fixups_table ; 
+ scalar_t__ FUNC1 () ; 
+ int /*<<< orphan*/  FUNC2 (struct pci_dev*) ; 
+ struct pci_dev* FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 (struct pci_dev*) ; 
+
+void FUNC5(void)
+{
+	const struct device_fixup *cur;
+	struct pci_dev *dev;
+	int i;
+
+	/* we can be called from sysrq-B code. In such a case it is
+	 * prohibited to dig PCI */
+	if (FUNC1())
+		return;
+
+	for (i=0; i < FUNC0(fixups_table); i++) {
+		cur = &(fixups_table[i]);
+		dev = FUNC3(cur->vendor, cur->device, NULL);
+		if (!dev)
+			continue;
+
+		cur->reboot_fixup(dev);
+		FUNC2(dev);
+	}
+}

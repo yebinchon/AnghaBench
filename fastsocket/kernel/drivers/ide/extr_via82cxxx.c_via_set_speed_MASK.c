@@ -1,0 +1,68 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u8 ;
+struct via82cxxx_dev {TYPE_1__* via_config; } ;
+struct pci_dev {int dummy; } ;
+struct ide_timing {int /*<<< orphan*/  udma; int /*<<< orphan*/  recover; int /*<<< orphan*/  active; int /*<<< orphan*/  rec8b; int /*<<< orphan*/  act8b; int /*<<< orphan*/  setup; } ;
+struct ide_host {struct via82cxxx_dev* host_priv; } ;
+struct TYPE_5__ {int /*<<< orphan*/  dev; } ;
+typedef  TYPE_2__ ide_hwif_t ;
+struct TYPE_4__ {int flags; int udma_mask; } ;
+
+/* Variables and functions */
+#define  ATA_UDMA2 131 
+#define  ATA_UDMA4 130 
+#define  ATA_UDMA5 129 
+#define  ATA_UDMA6 128 
+ int VIA_8BIT_TIMING ; 
+ int VIA_ADDRESS_SETUP ; 
+ int VIA_BAD_AST ; 
+ int VIA_DRIVE_TIMING ; 
+ int VIA_UDMA_TIMING ; 
+ int FUNC0 (int /*<<< orphan*/ ,int,int) ; 
+ struct ide_host* FUNC1 (struct pci_dev*) ; 
+ int /*<<< orphan*/  FUNC2 (struct pci_dev*,int,int*) ; 
+ int /*<<< orphan*/  FUNC3 (struct pci_dev*,int,int) ; 
+ struct pci_dev* FUNC4 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC5(ide_hwif_t *hwif, u8 dn, struct ide_timing *timing)
+{
+	struct pci_dev *dev = FUNC4(hwif->dev);
+	struct ide_host *host = FUNC1(dev);
+	struct via82cxxx_dev *vdev = host->host_priv;
+	u8 t;
+
+	if (~vdev->via_config->flags & VIA_BAD_AST) {
+		FUNC2(dev, VIA_ADDRESS_SETUP, &t);
+		t = (t & ~(3 << ((3 - dn) << 1))) | ((FUNC0(timing->setup, 1, 4) - 1) << ((3 - dn) << 1));
+		FUNC3(dev, VIA_ADDRESS_SETUP, t);
+	}
+
+	FUNC3(dev, VIA_8BIT_TIMING + (1 - (dn >> 1)),
+		((FUNC0(timing->act8b, 1, 16) - 1) << 4) | (FUNC0(timing->rec8b, 1, 16) - 1));
+
+	FUNC3(dev, VIA_DRIVE_TIMING + (3 - dn),
+		((FUNC0(timing->active, 1, 16) - 1) << 4) | (FUNC0(timing->recover, 1, 16) - 1));
+
+	switch (vdev->via_config->udma_mask) {
+	case ATA_UDMA2: t = timing->udma ? (0xe0 | (FUNC0(timing->udma, 2, 5) - 2)) : 0x03; break;
+	case ATA_UDMA4: t = timing->udma ? (0xe8 | (FUNC0(timing->udma, 2, 9) - 2)) : 0x0f; break;
+	case ATA_UDMA5: t = timing->udma ? (0xe0 | (FUNC0(timing->udma, 2, 9) - 2)) : 0x07; break;
+	case ATA_UDMA6: t = timing->udma ? (0xe0 | (FUNC0(timing->udma, 2, 9) - 2)) : 0x07; break;
+	default: return;
+	}
+
+	FUNC3(dev, VIA_UDMA_TIMING + (3 - dn), t);
+}

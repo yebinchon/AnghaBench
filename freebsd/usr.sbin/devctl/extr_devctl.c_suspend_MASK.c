@@ -1,0 +1,28 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (char*) ; 
+ int /*<<< orphan*/  FUNC1 (int,char*,char*) ; 
+ int /*<<< orphan*/  FUNC2 () ; 
+
+__attribute__((used)) static int
+FUNC3(int ac, char **av)
+{
+
+	if (ac != 2)
+		FUNC2();
+	if (FUNC0(av[1]) < 0)
+		FUNC1(1, "Failed to suspend %s", av[1]);
+	return (0);
+}

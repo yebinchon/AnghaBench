@@ -1,0 +1,60 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  size_t uint32_t ;
+struct lpfc_hbq_entry {int dummy; } ;
+struct lpfc_hba {size_t* hbq_get; struct hbq_s* hbqs; int /*<<< orphan*/  link_state; } ;
+struct hbq_s {scalar_t__ next_hbqPutIdx; scalar_t__ hbqPutIdx; scalar_t__ entry_count; scalar_t__ local_hbqGetIdx; scalar_t__ hbq_virt; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  KERN_ERR ; 
+ int LOG_SLI ; 
+ int LOG_VPORT ; 
+ int /*<<< orphan*/  LPFC_HBA_ERROR ; 
+ size_t FUNC0 (size_t) ; 
+ int /*<<< orphan*/  FUNC1 (struct lpfc_hba*,int /*<<< orphan*/ ,int,char*,size_t,scalar_t__,scalar_t__) ; 
+ scalar_t__ FUNC2 (int) ; 
+
+__attribute__((used)) static struct lpfc_hbq_entry *
+FUNC3(struct lpfc_hba *phba, uint32_t hbqno)
+{
+	struct hbq_s *hbqp = &phba->hbqs[hbqno];
+
+	if (hbqp->next_hbqPutIdx == hbqp->hbqPutIdx &&
+	    ++hbqp->next_hbqPutIdx >= hbqp->entry_count)
+		hbqp->next_hbqPutIdx = 0;
+
+	if (FUNC2(hbqp->local_hbqGetIdx == hbqp->next_hbqPutIdx)) {
+		uint32_t raw_index = phba->hbq_get[hbqno];
+		uint32_t getidx = FUNC0(raw_index);
+
+		hbqp->local_hbqGetIdx = getidx;
+
+		if (FUNC2(hbqp->local_hbqGetIdx >= hbqp->entry_count)) {
+			FUNC1(phba, KERN_ERR,
+					LOG_SLI | LOG_VPORT,
+					"1802 HBQ %d: local_hbqGetIdx "
+					"%u is > than hbqp->entry_count %u\n",
+					hbqno, hbqp->local_hbqGetIdx,
+					hbqp->entry_count);
+
+			phba->link_state = LPFC_HBA_ERROR;
+			return NULL;
+		}
+
+		if (hbqp->local_hbqGetIdx == hbqp->next_hbqPutIdx)
+			return NULL;
+	}
+
+	return (struct lpfc_hbq_entry *) phba->hbqs[hbqno].hbq_virt +
+			hbqp->hbqPutIdx;
+}

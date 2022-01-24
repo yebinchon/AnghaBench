@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  int /*<<< orphan*/  u32 ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int,int,int,int) ; 
+ int FUNC1 (int /*<<< orphan*/ ) ; 
+ int FUNC2 (int /*<<< orphan*/ ) ; 
+ int FUNC3 (int /*<<< orphan*/ ) ; 
+ int FUNC4 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static u32 FUNC5(u32 top, u32 bottom)
+{
+   u8 alpha, ralpha, tr, tg, tb, br, bg, bb;
+
+   alpha = (FUNC1(top) << 2) + 3;
+   ralpha = 0xFF - alpha;
+
+   tr = (FUNC4(top) * alpha) / 0xFF;
+   tg = (FUNC3(top) * alpha) / 0xFF;
+   tb = (FUNC2(top) * alpha) / 0xFF;
+
+   br = (FUNC4(bottom) * ralpha) / 0xFF;
+   bg = (FUNC3(bottom) * ralpha) / 0xFF;
+   bb = (FUNC2(bottom) * ralpha) / 0xFF;
+
+   return FUNC0(0x3F, tr + br, tg + bg, tb + bb);
+}

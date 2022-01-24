@@ -1,0 +1,83 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct snd_pcm_sw_params {scalar_t__ tstamp_mode; scalar_t__ avail_min; scalar_t__ silence_size; scalar_t__ silence_threshold; scalar_t__ boundary; int /*<<< orphan*/  stop_threshold; int /*<<< orphan*/  start_threshold; int /*<<< orphan*/  period_step; } ;
+struct snd_pcm_substream {scalar_t__ stream; struct snd_pcm_runtime* runtime; } ;
+struct snd_pcm_runtime {scalar_t__ boundary; scalar_t__ buffer_size; scalar_t__ tstamp_mode; scalar_t__ silence_threshold; scalar_t__ silence_size; int /*<<< orphan*/  stop_threshold; int /*<<< orphan*/  start_threshold; TYPE_2__* control; int /*<<< orphan*/  period_step; TYPE_1__* status; } ;
+struct TYPE_4__ {scalar_t__ avail_min; } ;
+struct TYPE_3__ {scalar_t__ state; } ;
+
+/* Variables and functions */
+ int EBADFD ; 
+ int EINVAL ; 
+ int ENXIO ; 
+ scalar_t__ FUNC0 (struct snd_pcm_substream*) ; 
+ scalar_t__ SNDRV_PCM_STATE_OPEN ; 
+ scalar_t__ SNDRV_PCM_STREAM_PLAYBACK ; 
+ scalar_t__ SNDRV_PCM_TSTAMP_LAST ; 
+ int /*<<< orphan*/  ULONG_MAX ; 
+ int /*<<< orphan*/  FUNC1 (struct snd_pcm_substream*,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 (struct snd_pcm_substream*) ; 
+ int /*<<< orphan*/  FUNC3 (struct snd_pcm_substream*) ; 
+ int /*<<< orphan*/  FUNC4 (struct snd_pcm_substream*) ; 
+ int FUNC5 (struct snd_pcm_substream*,struct snd_pcm_runtime*) ; 
+
+__attribute__((used)) static int FUNC6(struct snd_pcm_substream *substream,
+			     struct snd_pcm_sw_params *params)
+{
+	struct snd_pcm_runtime *runtime;
+	int err;
+
+	if (FUNC0(substream))
+		return -ENXIO;
+	runtime = substream->runtime;
+	FUNC3(substream);
+	if (runtime->status->state == SNDRV_PCM_STATE_OPEN) {
+		FUNC4(substream);
+		return -EBADFD;
+	}
+	FUNC4(substream);
+
+	if (params->tstamp_mode > SNDRV_PCM_TSTAMP_LAST)
+		return -EINVAL;
+	if (params->avail_min == 0)
+		return -EINVAL;
+	if (params->silence_size >= runtime->boundary) {
+		if (params->silence_threshold != 0)
+			return -EINVAL;
+	} else {
+		if (params->silence_size > params->silence_threshold)
+			return -EINVAL;
+		if (params->silence_threshold > runtime->buffer_size)
+			return -EINVAL;
+	}
+	err = 0;
+	FUNC3(substream);
+	runtime->tstamp_mode = params->tstamp_mode;
+	runtime->period_step = params->period_step;
+	runtime->control->avail_min = params->avail_min;
+	runtime->start_threshold = params->start_threshold;
+	runtime->stop_threshold = params->stop_threshold;
+	runtime->silence_threshold = params->silence_threshold;
+	runtime->silence_size = params->silence_size;
+        params->boundary = runtime->boundary;
+	if (FUNC2(substream)) {
+		if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK &&
+		    runtime->silence_size > 0)
+			FUNC1(substream, ULONG_MAX);
+		err = FUNC5(substream, runtime);
+	}
+	FUNC4(substream);
+	return err;
+}

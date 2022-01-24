@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct vmspace {int dummy; } ;
+struct thread {int dummy; } ;
+struct image_args {int /*<<< orphan*/  fd; } ;
+struct freebsd32_fexecve_args {int /*<<< orphan*/  fd; int /*<<< orphan*/  envv; int /*<<< orphan*/  argv; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  UIO_SYSSPACE ; 
+ int FUNC0 (struct image_args*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FUNC1 (struct thread*,struct image_args*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (struct thread*,int,struct vmspace*) ; 
+ int FUNC3 (struct thread*,struct vmspace**) ; 
+
+int
+FUNC4(struct thread *td, struct freebsd32_fexecve_args *uap)
+{
+	struct image_args eargs;
+	struct vmspace *oldvmspace;
+	int error;
+
+	error = FUNC3(td, &oldvmspace);
+	if (error != 0)
+		return (error);
+	error = FUNC0(&eargs, NULL, UIO_SYSSPACE,
+	    uap->argv, uap->envv);
+	if (error == 0) {
+		eargs.fd = uap->fd;
+		error = FUNC1(td, &eargs, NULL);
+	}
+	FUNC2(td, error, oldvmspace);
+	return (error);
+}

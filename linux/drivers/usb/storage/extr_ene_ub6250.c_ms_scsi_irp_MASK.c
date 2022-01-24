@@ -1,0 +1,72 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct us_data {scalar_t__ extra; } ;
+struct scsi_cmnd {int* cmnd; } ;
+struct ene_ub6250_info {int /*<<< orphan*/  SrbStatus; } ;
+
+/* Variables and functions */
+#define  INQUIRY 134 
+#define  MODE_SENSE 133 
+#define  READ_10 132 
+#define  READ_CAPACITY 131 
+#define  REQUEST_SENSE 130 
+ int /*<<< orphan*/  SS_ILLEGAL_REQUEST ; 
+ int /*<<< orphan*/  SS_SUCCESS ; 
+#define  TEST_UNIT_READY 129 
+ int USB_STOR_TRANSPORT_FAILED ; 
+ int USB_STOR_TRANSPORT_GOOD ; 
+#define  WRITE_10 128 
+ int FUNC0 (struct us_data*,struct scsi_cmnd*) ; 
+ int FUNC1 (struct us_data*,struct scsi_cmnd*) ; 
+ int FUNC2 (struct us_data*,struct scsi_cmnd*) ; 
+ int FUNC3 (struct us_data*,struct scsi_cmnd*) ; 
+ int FUNC4 (struct us_data*,struct scsi_cmnd*) ; 
+ int FUNC5 (struct us_data*,struct scsi_cmnd*) ; 
+ int FUNC6 (struct us_data*,struct scsi_cmnd*) ; 
+
+__attribute__((used)) static int FUNC7(struct us_data *us, struct scsi_cmnd *srb)
+{
+	int result;
+	struct ene_ub6250_info *info = (struct ene_ub6250_info *)us->extra;
+
+	switch (srb->cmnd[0]) {
+	case TEST_UNIT_READY:
+		result = FUNC5(us, srb);
+		break; /* 0x00 */
+	case REQUEST_SENSE:
+		result = FUNC1(us, srb);
+		break; /* 0x03 */
+	case INQUIRY:
+		result = FUNC0(us, srb);
+		break; /* 0x12 */
+	case MODE_SENSE:
+		result = FUNC2(us, srb);
+		break; /* 0x1A */
+	case READ_CAPACITY:
+		result = FUNC4(us, srb);
+		break; /* 0x25 */
+	case READ_10:
+		result = FUNC3(us, srb);
+		break; /* 0x28 */
+	case WRITE_10:
+		result = FUNC6(us, srb);
+		break;  /* 0x2A */
+	default:
+		info->SrbStatus = SS_ILLEGAL_REQUEST;
+		result = USB_STOR_TRANSPORT_FAILED;
+		break;
+	}
+	if (result == USB_STOR_TRANSPORT_GOOD)
+		info->SrbStatus = SS_SUCCESS;
+	return result;
+}

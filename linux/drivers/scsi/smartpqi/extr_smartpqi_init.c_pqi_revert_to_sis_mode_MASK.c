@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct pqi_ctrl_info {TYPE_1__* pci_dev; } ;
+struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  IRQ_MODE_NONE ; 
+ int /*<<< orphan*/  SIS_MODE ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,char*,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct pqi_ctrl_info*,int /*<<< orphan*/ ) ; 
+ int FUNC2 (struct pqi_ctrl_info*) ; 
+ int /*<<< orphan*/  FUNC3 (struct pqi_ctrl_info*,int /*<<< orphan*/ ) ; 
+ int FUNC4 (struct pqi_ctrl_info*) ; 
+
+__attribute__((used)) static int FUNC5(struct pqi_ctrl_info *ctrl_info)
+{
+	int rc;
+
+	FUNC1(ctrl_info, IRQ_MODE_NONE);
+	rc = FUNC2(ctrl_info);
+	if (rc)
+		return rc;
+	rc = FUNC4(ctrl_info);
+	if (rc) {
+		FUNC0(&ctrl_info->pci_dev->dev,
+			"re-enabling SIS mode failed with error %d\n", rc);
+		return rc;
+	}
+	FUNC3(ctrl_info, SIS_MODE);
+
+	return 0;
+}

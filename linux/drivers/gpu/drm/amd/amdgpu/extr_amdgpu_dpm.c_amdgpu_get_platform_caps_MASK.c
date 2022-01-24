@@ -1,0 +1,54 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_8__   TYPE_4__ ;
+typedef  struct TYPE_7__   TYPE_3__ ;
+typedef  struct TYPE_6__   TYPE_2__ ;
+typedef  struct TYPE_5__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_7__ {int /*<<< orphan*/  usVoltageTime; int /*<<< orphan*/  usBackbiasTime; int /*<<< orphan*/  ulPlatformCaps; } ;
+union power_info {TYPE_3__ pplib; } ;
+typedef  int /*<<< orphan*/  u8 ;
+typedef  scalar_t__ u16 ;
+struct amdgpu_mode_info {TYPE_4__* atom_context; } ;
+struct TYPE_5__ {void* voltage_response_time; void* backbias_response_time; int /*<<< orphan*/  platform_caps; } ;
+struct TYPE_6__ {TYPE_1__ dpm; } ;
+struct amdgpu_device {TYPE_2__ pm; struct amdgpu_mode_info mode_info; } ;
+struct TYPE_8__ {scalar_t__ bios; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  DATA ; 
+ int EINVAL ; 
+ int FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  PowerPlayInfo ; 
+ int /*<<< orphan*/  FUNC1 (TYPE_4__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
+ void* FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+
+int FUNC4(struct amdgpu_device *adev)
+{
+	struct amdgpu_mode_info *mode_info = &adev->mode_info;
+	union power_info *power_info;
+	int index = FUNC0(DATA, PowerPlayInfo);
+	u16 data_offset;
+	u8 frev, crev;
+
+	if (!FUNC1(mode_info->atom_context, index, NULL,
+				   &frev, &crev, &data_offset))
+		return -EINVAL;
+	power_info = (union power_info *)(mode_info->atom_context->bios + data_offset);
+
+	adev->pm.dpm.platform_caps = FUNC3(power_info->pplib.ulPlatformCaps);
+	adev->pm.dpm.backbias_response_time = FUNC2(power_info->pplib.usBackbiasTime);
+	adev->pm.dpm.voltage_response_time = FUNC2(power_info->pplib.usVoltageTime);
+
+	return 0;
+}

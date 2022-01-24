@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC1 (char*) ; 
+ int FUNC2 () ; 
+ char* progname ; 
+ int /*<<< orphan*/  FUNC3 () ; 
+ int /*<<< orphan*/  test_ReadASCIIKeys ; 
+ int /*<<< orphan*/  test_ReadEmptyKeyFile ; 
+ int /*<<< orphan*/  test_ReadHexKeys ; 
+ int /*<<< orphan*/  test_ReadKeyFileWithComments ; 
+ int /*<<< orphan*/  test_ReadKeyFileWithInvalidHex ; 
+
+int FUNC4(int argc, char *argv[])
+{
+  progname = argv[0];
+  FUNC3();
+  FUNC1("keyFile.c");
+  FUNC0(test_ReadEmptyKeyFile, 12);
+  FUNC0(test_ReadASCIIKeys, 13);
+  FUNC0(test_ReadHexKeys, 14);
+  FUNC0(test_ReadKeyFileWithComments, 15);
+  FUNC0(test_ReadKeyFileWithInvalidHex, 16);
+
+  return (FUNC2());
+}

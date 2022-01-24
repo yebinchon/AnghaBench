@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u64 ;
+typedef  int u32 ;
+struct TYPE_2__ {struct kvm_lapic* apic; } ;
+struct kvm_vcpu {TYPE_1__ arch; } ;
+struct kvm_lapic {int dummy; } ;
+
+/* Variables and functions */
+ int APIC_BASE_MSR ; 
+ int APIC_ICR ; 
+ int APIC_ICR2 ; 
+ int /*<<< orphan*/  FUNC0 (struct kvm_lapic*) ; 
+ int FUNC1 (struct kvm_lapic*,int,int) ; 
+ int /*<<< orphan*/  FUNC2 (struct kvm_vcpu*) ; 
+
+int FUNC3(struct kvm_vcpu *vcpu, u32 msr, u64 data)
+{
+	struct kvm_lapic *apic = vcpu->arch.apic;
+	u32 reg = (msr - APIC_BASE_MSR) << 4;
+
+	if (!FUNC2(vcpu) || !FUNC0(apic))
+		return 1;
+
+	if (reg == APIC_ICR2)
+		return 1;
+
+	/* if this is ICR write vector before command */
+	if (reg == APIC_ICR)
+		FUNC1(apic, APIC_ICR2, (u32)(data >> 32));
+	return FUNC1(apic, reg, (u32)data);
+}

@@ -1,0 +1,93 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct device {int dummy; } ;
+struct usb_interface {struct device dev; } ;
+struct i2400m {scalar_t__ updown; scalar_t__ state; } ;
+struct i2400mu {int /*<<< orphan*/  do_autopm; struct i2400m i2400m; } ;
+struct TYPE_4__ {int /*<<< orphan*/  event; } ;
+typedef  TYPE_1__ pm_message_t ;
+
+/* Variables and functions */
+ int EBADF ; 
+ scalar_t__ I2400M_SS_DATA_PATH_CONNECTED ; 
+ scalar_t__ FUNC0 (TYPE_1__) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int,struct device*,char*,struct usb_interface*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC4 (int,struct device*,char*,struct usb_interface*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC5 (int,struct device*,char*) ; 
+ int /*<<< orphan*/  FUNC6 (struct device*,char*) ; 
+ int FUNC7 (struct i2400m*) ; 
+ int /*<<< orphan*/  FUNC8 (struct i2400mu*) ; 
+ int /*<<< orphan*/  FUNC9 () ; 
+ struct i2400mu* FUNC10 (struct usb_interface*) ; 
+
+__attribute__((used)) static
+int FUNC11(struct usb_interface *iface, pm_message_t pm_msg)
+{
+	int result = 0;
+	struct device *dev = &iface->dev;
+	struct i2400mu *i2400mu = FUNC10(iface);
+	unsigned is_autosuspend = 0;
+	struct i2400m *i2400m = &i2400mu->i2400m;
+
+#ifdef CONFIG_PM
+	if (PMSG_IS_AUTO(pm_msg))
+		is_autosuspend = 1;
+#endif
+
+	FUNC4(3, dev, "(iface %p pm_msg %u)\n", iface, pm_msg.event);
+	FUNC9();		/* see i2400m->updown's documentation  */
+	if (i2400m->updown == 0)
+		goto no_firmware;
+	if (i2400m->state == I2400M_SS_DATA_PATH_CONNECTED && is_autosuspend) {
+		/* ugh -- the device is connected and this suspend
+		 * request is an autosuspend one (not a system standby
+		 * / hibernate).
+		 *
+		 * The only way the device can go to standby is if the
+		 * link with the base station is in IDLE mode; that
+		 * were the case, we'd be in status
+		 * I2400M_SS_CONNECTED_IDLE. But we are not.
+		 *
+		 * If we *tell* him to go power save now, it'll reset
+		 * as a precautionary measure, so if this is an
+		 * autosuspend thing, say no and it'll come back
+		 * later, when the link is IDLE
+		 */
+		result = -EBADF;
+		FUNC5(1, dev, "fw up, link up, not-idle, autosuspend: "
+			 "not entering powersave\n");
+		goto error_not_now;
+	}
+	FUNC5(1, dev, "fw up: entering powersave\n");
+	FUNC1(&i2400mu->do_autopm);
+	result = FUNC7(i2400m);
+	FUNC2(&i2400mu->do_autopm);
+	if (result < 0 && !is_autosuspend) {
+		/* System suspend, can't fail */
+		FUNC6(dev, "failed to suspend, will reset on resume\n");
+		result = 0;
+	}
+	if (result < 0)
+		goto error_enter_powersave;
+	FUNC8(i2400mu);
+	FUNC5(1, dev, "powersave requested\n");
+error_enter_powersave:
+error_not_now:
+no_firmware:
+	FUNC3(3, dev, "(iface %p pm_msg %u) = %d\n",
+		iface, pm_msg.event, result);
+	return result;
+}

@@ -1,0 +1,51 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  int u16 ;
+struct eeprom_93cx6 {int const width; } ;
+
+/* Variables and functions */
+ int const PCI_EEPROM_READ_OPCODE ; 
+ scalar_t__ PCI_EEPROM_WIDTH_OPCODE ; 
+ int /*<<< orphan*/  FUNC0 (struct eeprom_93cx6*) ; 
+ int /*<<< orphan*/  FUNC1 (struct eeprom_93cx6*,int*,int) ; 
+ int /*<<< orphan*/  FUNC2 (struct eeprom_93cx6*) ; 
+ int /*<<< orphan*/  FUNC3 (struct eeprom_93cx6*,int,scalar_t__) ; 
+
+void FUNC4(struct eeprom_93cx6 *eeprom, const u8 word,
+	u16 *data)
+{
+	u16 command;
+
+	/*
+	 * Initialize the eeprom register
+	 */
+	FUNC2(eeprom);
+
+	/*
+	 * Select the read opcode and the word to be read.
+	 */
+	command = (PCI_EEPROM_READ_OPCODE << eeprom->width) | word;
+	FUNC3(eeprom, command,
+		PCI_EEPROM_WIDTH_OPCODE + eeprom->width);
+
+	/*
+	 * Read the requested 16 bits.
+	 */
+	FUNC1(eeprom, data, 16);
+
+	/*
+	 * Cleanup eeprom register.
+	 */
+	FUNC0(eeprom);
+}

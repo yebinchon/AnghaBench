@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {scalar_t__ sp_enqueue; } ;
+struct rte_ring {TYPE_1__ prod; } ;
+
+/* Variables and functions */
+ int FUNC0 (struct rte_ring*,void* const*,unsigned int) ; 
+ int FUNC1 (struct rte_ring*,void* const*,unsigned int) ; 
+
+__attribute__((used)) static inline int
+FUNC2(struct rte_ring *r, void * const *obj_table,
+              unsigned n)
+{
+    if (r->prod.sp_enqueue)
+        return FUNC1(r, obj_table, n);
+    else
+        return FUNC0(r, obj_table, n);
+}

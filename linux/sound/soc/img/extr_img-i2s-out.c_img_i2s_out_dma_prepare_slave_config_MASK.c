@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct snd_soc_pcm_runtime {int /*<<< orphan*/  cpu_dai; } ;
+struct snd_pcm_substream {struct snd_soc_pcm_runtime* private_data; } ;
+struct snd_pcm_hw_params {int dummy; } ;
+struct snd_dmaengine_dai_dma_data {int /*<<< orphan*/  addr_width; int /*<<< orphan*/  addr; } ;
+struct dma_slave_config {int dst_maxburst; int /*<<< orphan*/  dst_addr_width; int /*<<< orphan*/  dst_addr; } ;
+
+/* Variables and functions */
+ int FUNC0 (struct snd_pcm_hw_params*) ; 
+ int FUNC1 (struct snd_pcm_substream*,struct snd_pcm_hw_params*,struct dma_slave_config*) ; 
+ struct snd_dmaengine_dai_dma_data* FUNC2 (int /*<<< orphan*/ ,struct snd_pcm_substream*) ; 
+
+__attribute__((used)) static int FUNC3(struct snd_pcm_substream *st,
+	struct snd_pcm_hw_params *params, struct dma_slave_config *sc)
+{
+	unsigned int i2s_channels = FUNC0(params) / 2;
+	struct snd_soc_pcm_runtime *rtd = st->private_data;
+	struct snd_dmaengine_dai_dma_data *dma_data;
+	int ret;
+
+	dma_data = FUNC2(rtd->cpu_dai, st);
+
+	ret = FUNC1(st, params, sc);
+	if (ret)
+		return ret;
+
+	sc->dst_addr = dma_data->addr;
+	sc->dst_addr_width = dma_data->addr_width;
+	sc->dst_maxburst = 4 * i2s_channels;
+
+	return 0;
+}

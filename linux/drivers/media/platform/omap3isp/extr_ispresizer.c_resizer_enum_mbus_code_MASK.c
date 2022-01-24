@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct v4l2_subdev_pad_config {int dummy; } ;
+struct v4l2_subdev_mbus_code_enum {scalar_t__ pad; size_t index; int /*<<< orphan*/  code; int /*<<< orphan*/  which; } ;
+struct v4l2_subdev {int dummy; } ;
+struct v4l2_mbus_framefmt {int /*<<< orphan*/  code; } ;
+struct isp_res_device {int dummy; } ;
+
+/* Variables and functions */
+ size_t FUNC0 (int /*<<< orphan*/ *) ; 
+ int EINVAL ; 
+ scalar_t__ RESZ_PAD_SINK ; 
+ struct v4l2_mbus_framefmt* FUNC1 (struct isp_res_device*,struct v4l2_subdev_pad_config*,scalar_t__,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/ * resizer_formats ; 
+ struct isp_res_device* FUNC2 (struct v4l2_subdev*) ; 
+
+__attribute__((used)) static int FUNC3(struct v4l2_subdev *sd,
+				  struct v4l2_subdev_pad_config *cfg,
+				  struct v4l2_subdev_mbus_code_enum *code)
+{
+	struct isp_res_device *res = FUNC2(sd);
+	struct v4l2_mbus_framefmt *format;
+
+	if (code->pad == RESZ_PAD_SINK) {
+		if (code->index >= FUNC0(resizer_formats))
+			return -EINVAL;
+
+		code->code = resizer_formats[code->index];
+	} else {
+		if (code->index != 0)
+			return -EINVAL;
+
+		format = FUNC1(res, cfg, RESZ_PAD_SINK,
+					      code->which);
+		code->code = format->code;
+	}
+
+	return 0;
+}

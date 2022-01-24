@@ -1,0 +1,100 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_10__   TYPE_5__ ;
+typedef  struct TYPE_9__   TYPE_4__ ;
+typedef  struct TYPE_8__   TYPE_3__ ;
+typedef  struct TYPE_7__   TYPE_2__ ;
+typedef  struct TYPE_6__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  scalar_t__ u32 ;
+struct TYPE_10__ {int private_aperture_start; int shared_aperture_start; } ;
+struct TYPE_9__ {TYPE_3__* id_mgr; } ;
+struct TYPE_6__ {int /*<<< orphan*/  db_debug2; } ;
+struct TYPE_7__ {TYPE_1__ config; int /*<<< orphan*/  cu_info; } ;
+struct amdgpu_device {int /*<<< orphan*/  srbm_mutex; TYPE_5__ gmc; TYPE_4__ vm_manager; TYPE_2__ gfx; } ;
+struct TYPE_8__ {int num_ids; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ALIGNMENT_MODE ; 
+ size_t AMDGPU_GFXHUB_0 ; 
+ int /*<<< orphan*/  GC ; 
+ int /*<<< orphan*/  GRBM_CNTL ; 
+ int /*<<< orphan*/  PRIVATE_BASE ; 
+ int /*<<< orphan*/  READ_TIMEOUT ; 
+ scalar_t__ FUNC0 (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  RETRY_DISABLE ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  SHARED_BASE ; 
+ int SH_MEM_ALIGNMENT_MODE_UNALIGNED ; 
+ int /*<<< orphan*/  SH_MEM_BASES ; 
+ int /*<<< orphan*/  SH_MEM_CONFIG ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+ int /*<<< orphan*/  amdgpu_noretry ; 
+ int /*<<< orphan*/  FUNC4 (struct amdgpu_device*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (struct amdgpu_device*) ; 
+ int /*<<< orphan*/  FUNC6 (struct amdgpu_device*) ; 
+ int /*<<< orphan*/  FUNC7 (struct amdgpu_device*) ; 
+ int /*<<< orphan*/  FUNC8 (struct amdgpu_device*) ; 
+ int /*<<< orphan*/  mmDB_DEBUG2 ; 
+ int /*<<< orphan*/  mmSH_MEM_BASES ; 
+ int /*<<< orphan*/  mmSH_MEM_CONFIG ; 
+ int /*<<< orphan*/  FUNC9 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC10 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC11 (struct amdgpu_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+__attribute__((used)) static void FUNC12(struct amdgpu_device *adev)
+{
+	u32 tmp;
+	int i;
+
+	FUNC2(GC, 0, GRBM_CNTL, READ_TIMEOUT, 0xff);
+
+	FUNC8(adev);
+
+	FUNC7(adev);
+	FUNC4(adev, &adev->gfx.cu_info);
+	adev->gfx.config.db_debug2 = FUNC1(GC, 0, mmDB_DEBUG2);
+
+	/* XXX SH_MEM regs */
+	/* where to put LDS, scratch, GPUVM in FSA64 space */
+	FUNC9(&adev->srbm_mutex);
+	for (i = 0; i < adev->vm_manager.id_mgr[AMDGPU_GFXHUB_0].num_ids; i++) {
+		FUNC11(adev, 0, 0, 0, i);
+		/* CP and shaders */
+		if (i == 0) {
+			tmp = FUNC0(0, SH_MEM_CONFIG, ALIGNMENT_MODE,
+					    SH_MEM_ALIGNMENT_MODE_UNALIGNED);
+			tmp = FUNC0(tmp, SH_MEM_CONFIG, RETRY_DISABLE,
+					    !!amdgpu_noretry);
+			FUNC3(GC, 0, mmSH_MEM_CONFIG, tmp);
+			FUNC3(GC, 0, mmSH_MEM_BASES, 0);
+		} else {
+			tmp = FUNC0(0, SH_MEM_CONFIG, ALIGNMENT_MODE,
+					    SH_MEM_ALIGNMENT_MODE_UNALIGNED);
+			tmp = FUNC0(tmp, SH_MEM_CONFIG, RETRY_DISABLE,
+					    !!amdgpu_noretry);
+			FUNC3(GC, 0, mmSH_MEM_CONFIG, tmp);
+			tmp = FUNC0(0, SH_MEM_BASES, PRIVATE_BASE,
+				(adev->gmc.private_aperture_start >> 48));
+			tmp = FUNC0(tmp, SH_MEM_BASES, SHARED_BASE,
+				(adev->gmc.shared_aperture_start >> 48));
+			FUNC3(GC, 0, mmSH_MEM_BASES, tmp);
+		}
+	}
+	FUNC11(adev, 0, 0, 0, 0);
+
+	FUNC10(&adev->srbm_mutex);
+
+	FUNC5(adev);
+	FUNC6(adev);
+}

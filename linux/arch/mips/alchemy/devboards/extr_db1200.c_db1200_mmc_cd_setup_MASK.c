@@ -1,0 +1,55 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int BCSR_INT_SD0INSERT ; 
+ int /*<<< orphan*/  BCSR_SIGSTAT ; 
+ int /*<<< orphan*/  DB1200_SD0_EJECT_INT ; 
+ int /*<<< orphan*/  DB1200_SD0_INSERT_INT ; 
+ int FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  db1200_mmc_cd ; 
+ int /*<<< orphan*/  db1200_mmc_cdfn ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,void*) ; 
+ int FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,void*) ; 
+
+__attribute__((used)) static int FUNC4(void *mmc_host, int en)
+{
+	int ret;
+
+	if (en) {
+		ret = FUNC3(DB1200_SD0_INSERT_INT, db1200_mmc_cd,
+				db1200_mmc_cdfn, 0, "sd_insert", mmc_host);
+		if (ret)
+			goto out;
+
+		ret = FUNC3(DB1200_SD0_EJECT_INT, db1200_mmc_cd,
+				db1200_mmc_cdfn, 0, "sd_eject", mmc_host);
+		if (ret) {
+			FUNC2(DB1200_SD0_INSERT_INT, mmc_host);
+			goto out;
+		}
+
+		if (FUNC0(BCSR_SIGSTAT) & BCSR_INT_SD0INSERT)
+			FUNC1(DB1200_SD0_EJECT_INT);
+		else
+			FUNC1(DB1200_SD0_INSERT_INT);
+
+	} else {
+		FUNC2(DB1200_SD0_INSERT_INT, mmc_host);
+		FUNC2(DB1200_SD0_EJECT_INT, mmc_host);
+	}
+	ret = 0;
+out:
+	return ret;
+}

@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+struct s5p_cec_dev {scalar_t__ reg; } ;
+
+/* Variables and functions */
+ scalar_t__ S5P_CEC_RX_CTRL ; 
+ int /*<<< orphan*/  S5P_CEC_RX_CTRL_ENABLE ; 
+ int /*<<< orphan*/  FUNC0 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,scalar_t__) ; 
+
+void FUNC2(struct s5p_cec_dev *cec)
+{
+	u8 reg;
+
+	reg = FUNC0(cec->reg + S5P_CEC_RX_CTRL);
+	reg |= S5P_CEC_RX_CTRL_ENABLE;
+	FUNC1(reg, cec->reg + S5P_CEC_RX_CTRL);
+}

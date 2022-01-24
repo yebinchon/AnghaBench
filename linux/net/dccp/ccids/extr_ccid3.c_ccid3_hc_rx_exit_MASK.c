@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sock {int dummy; } ;
+struct ccid3_hc_rx_sock {int /*<<< orphan*/  rx_li_hist; int /*<<< orphan*/  rx_hist; } ;
+
+/* Variables and functions */
+ struct ccid3_hc_rx_sock* FUNC0 (struct sock*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static void FUNC3(struct sock *sk)
+{
+	struct ccid3_hc_rx_sock *hc = FUNC0(sk);
+
+	FUNC2(&hc->rx_hist);
+	FUNC1(&hc->rx_li_hist);
+}

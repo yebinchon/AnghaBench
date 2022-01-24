@@ -1,0 +1,31 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 () ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  deferred_probe_work ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  probe_count ; 
+ int /*<<< orphan*/  probe_waitqueue ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,int) ; 
+
+void FUNC4(void)
+{
+	/* wait for the deferred probe workqueue to finish */
+	FUNC2(&deferred_probe_work);
+
+	/* wait for the known devices to complete their probing */
+	FUNC3(probe_waitqueue, FUNC1(&probe_count) == 0);
+	FUNC0();
+}

@@ -1,0 +1,47 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct archive_entry {int dummy; } ;
+struct archive {int dummy; } ;
+
+/* Variables and functions */
+ int AE_IFLNK ; 
+ int GID ; 
+ char* GNAME ; 
+ int UID ; 
+ char* UNAME ; 
+ int FUNC0 (struct archive_entry*) ; 
+ int FUNC1 (struct archive_entry*) ; 
+ int /*<<< orphan*/  FUNC2 (struct archive_entry*) ; 
+ int /*<<< orphan*/ * FUNC3 (struct archive_entry*) ; 
+ int FUNC4 (struct archive_entry*) ; 
+ int /*<<< orphan*/  FUNC5 (struct archive_entry*) ; 
+ int /*<<< orphan*/  FUNC6 (struct archive_entry*) ; 
+ int FUNC7 (struct archive_entry*) ; 
+ int /*<<< orphan*/  FUNC8 (struct archive_entry*) ; 
+ int /*<<< orphan*/  FUNC9 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC10 (int,int) ; 
+ int /*<<< orphan*/  FUNC11 (int /*<<< orphan*/ ,char*) ; 
+
+__attribute__((used)) static void FUNC12(struct archive *a, struct archive_entry *ae)
+{
+	(void)a; /* UNUSED */
+	FUNC10(FUNC0(ae), AE_IFLNK);
+	FUNC10(FUNC4(ae) & 0777, 0755);
+	FUNC10(FUNC7(ae), UID);
+	FUNC10(FUNC1(ae), GID);
+	FUNC11(FUNC8(ae), UNAME);
+	FUNC11(FUNC2(ae), GNAME);
+	FUNC11(FUNC5(ae), "symlink");
+	FUNC11(FUNC6(ae), "f1");
+	FUNC9(FUNC3(ae) == NULL);
+}

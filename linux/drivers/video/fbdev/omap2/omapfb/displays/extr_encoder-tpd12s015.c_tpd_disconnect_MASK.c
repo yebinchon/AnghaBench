@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct panel_drv_data {int /*<<< orphan*/  dssdev; int /*<<< orphan*/  ct_cp_hpd_gpio; struct omap_dss_device* in; } ;
+struct TYPE_4__ {TYPE_1__* hdmi; } ;
+struct omap_dss_device {TYPE_2__ ops; struct omap_dss_device* dst; int /*<<< orphan*/ * src; } ;
+struct TYPE_3__ {int /*<<< orphan*/  (* disconnect ) (struct omap_dss_device*,int /*<<< orphan*/ *) ;} ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct omap_dss_device*,int /*<<< orphan*/ *) ; 
+ struct panel_drv_data* FUNC3 (struct omap_dss_device*) ; 
+
+__attribute__((used)) static void FUNC4(struct omap_dss_device *dssdev,
+		struct omap_dss_device *dst)
+{
+	struct panel_drv_data *ddata = FUNC3(dssdev);
+	struct omap_dss_device *in = ddata->in;
+
+	FUNC0(dst != dssdev->dst);
+
+	if (dst != dssdev->dst)
+		return;
+
+	FUNC1(ddata->ct_cp_hpd_gpio, 0);
+
+	dst->src = NULL;
+	dssdev->dst = NULL;
+
+	in->ops.hdmi->disconnect(in, &ddata->dssdev);
+}

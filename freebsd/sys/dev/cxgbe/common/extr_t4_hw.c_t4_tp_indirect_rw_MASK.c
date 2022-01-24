@@ -1,0 +1,64 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u32 ;
+struct adapter {int dummy; } ;
+
+/* Variables and functions */
+#define  A_TP_MIB_INDEX 130 
+#define  A_TP_PIO_ADDR 129 
+#define  A_TP_TM_PIO_ADDR 128 
+ int EINVAL ; 
+ int FW_LDST_ADDRSPC_TP_MIB ; 
+ int FW_LDST_ADDRSPC_TP_PIO ; 
+ int FW_LDST_ADDRSPC_TP_TM_PIO ; 
+ int /*<<< orphan*/  FUNC0 (struct adapter*,int,int,int*,int,int) ; 
+ int FUNC1 (struct adapter*,int,int*,int,int,int,int) ; 
+ scalar_t__ FUNC2 (struct adapter*) ; 
+ int /*<<< orphan*/  FUNC3 (struct adapter*,int,int,int*,int,int) ; 
+
+__attribute__((used)) static void FUNC4(struct adapter *adap, u32 reg_addr, u32 reg_data,
+			      u32 *buff, u32 nregs, u32 start_index, int rw,
+			      bool sleep_ok)
+{
+	int rc = -EINVAL;
+	int cmd;
+
+	switch (reg_addr) {
+	case A_TP_PIO_ADDR:
+		cmd = FW_LDST_ADDRSPC_TP_PIO;
+		break;
+	case A_TP_TM_PIO_ADDR:
+		cmd = FW_LDST_ADDRSPC_TP_TM_PIO;
+		break;
+	case A_TP_MIB_INDEX:
+		cmd = FW_LDST_ADDRSPC_TP_MIB;
+		break;
+	default:
+		goto indirect_access;
+	}
+
+	if (FUNC2(adap))
+		rc = FUNC1(adap, cmd, buff, nregs, start_index, rw,
+				      sleep_ok);
+
+indirect_access:
+
+	if (rc) {
+		if (rw)
+			FUNC0(adap, reg_addr, reg_data, buff, nregs,
+					 start_index);
+		else
+			FUNC3(adap, reg_addr, reg_data, buff, nregs,
+					  start_index);
+	}
+}

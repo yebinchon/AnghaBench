@@ -1,0 +1,45 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u8 ;
+struct TYPE_4__ {int fsr; } ;
+struct inv_mpu6050_state {TYPE_2__ chip_config; TYPE_1__* reg; int /*<<< orphan*/  map; } ;
+struct TYPE_3__ {int /*<<< orphan*/  gyro_config; } ;
+
+/* Variables and functions */
+ int FUNC0 (int*) ; 
+ int EINVAL ; 
+ int INV_MPU6050_GYRO_CONFIG_FSR_SHIFT ; 
+ int* gyro_scale_6050 ; 
+ int FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+__attribute__((used)) static int FUNC2(struct inv_mpu6050_state *st, int val)
+{
+	int result, i;
+	u8 d;
+
+	for (i = 0; i < FUNC0(gyro_scale_6050); ++i) {
+		if (gyro_scale_6050[i] == val) {
+			d = (i << INV_MPU6050_GYRO_CONFIG_FSR_SHIFT);
+			result = FUNC1(st->map, st->reg->gyro_config, d);
+			if (result)
+				return result;
+
+			st->chip_config.fsr = i;
+			return 0;
+		}
+	}
+
+	return -EINVAL;
+}

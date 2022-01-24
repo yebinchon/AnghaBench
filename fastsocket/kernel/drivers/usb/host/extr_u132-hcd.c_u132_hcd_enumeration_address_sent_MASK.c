@@ -1,0 +1,73 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+struct urb {int /*<<< orphan*/  unlinked; } ;
+struct u132_ring {int /*<<< orphan*/  number; } ;
+struct u132_endp {int /*<<< orphan*/  usb_endp; struct u132_ring* ring; scalar_t__ dequeueing; struct u132* u132; } ;
+struct u132 {int going; int /*<<< orphan*/  scheduler_lock; TYPE_1__* platform_dev; } ;
+struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+
+/* Variables and functions */
+ int EINTR ; 
+ int ENODEV ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,char*,...) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  u132_hcd_enumeration_empty_recv ; 
+ int /*<<< orphan*/  FUNC3 (struct u132*,struct u132_endp*,struct urb*,int) ; 
+ int /*<<< orphan*/  FUNC4 (struct u132*,struct u132_endp*,struct urb*,int) ; 
+ int FUNC5 (TYPE_1__*,int /*<<< orphan*/ ,struct u132_endp*,struct urb*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC6(void *data, struct urb *urb,
+	u8 *buf, int len, int toggle_bits, int error_count, int condition_code,
+	int repeat_number, int halted, int skipped, int actual, int non_null)
+{
+	struct u132_endp *endp = data;
+	struct u132 *u132 = endp->u132;
+	FUNC1(&u132->scheduler_lock);
+	if (u132->going > 1) {
+		FUNC0(&u132->platform_dev->dev, "device has been removed %d\n"
+			, u132->going);
+		FUNC2(&u132->scheduler_lock);
+		FUNC3(u132, endp, urb, -ENODEV);
+		return;
+	} else if (endp->dequeueing) {
+		endp->dequeueing = 0;
+		FUNC2(&u132->scheduler_lock);
+		FUNC4(u132, endp, urb, -EINTR);
+		return;
+	} else if (u132->going > 0) {
+		FUNC0(&u132->platform_dev->dev, "device is being removed "
+				"urb=%p\n", urb);
+		FUNC2(&u132->scheduler_lock);
+		FUNC4(u132, endp, urb, -ENODEV);
+		return;
+	} else if (!urb->unlinked) {
+		int retval;
+		struct u132_ring *ring = endp->ring;
+		FUNC2(&u132->scheduler_lock);
+		retval = FUNC5(u132->platform_dev,
+			ring->number, endp, urb, 0, endp->usb_endp, 0,
+			u132_hcd_enumeration_empty_recv);
+		if (retval != 0)
+			FUNC4(u132, endp, urb, retval);
+		return;
+	} else {
+		FUNC0(&u132->platform_dev->dev, "CALLBACK called urb=%p "
+				"unlinked=%d\n", urb, urb->unlinked);
+		FUNC2(&u132->scheduler_lock);
+		FUNC4(u132, endp, urb, 0);
+		return;
+	}
+}

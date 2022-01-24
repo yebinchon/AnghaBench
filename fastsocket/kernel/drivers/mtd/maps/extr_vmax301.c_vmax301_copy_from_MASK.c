@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct map_info {scalar_t__ map_priv_2; } ;
+typedef  long ssize_t ;
+
+/* Variables and functions */
+ unsigned long WINDOW_LENGTH ; 
+ unsigned long WINDOW_MASK ; 
+ int /*<<< orphan*/  FUNC0 (void*,scalar_t__,unsigned long) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (struct map_info*,unsigned long) ; 
+ int /*<<< orphan*/  vmax301_spin ; 
+
+__attribute__((used)) static void FUNC4(struct map_info *map, void *to, unsigned long from, ssize_t len)
+{
+	while(len) {
+		unsigned long thislen = len;
+		if (len > (WINDOW_LENGTH - (from & WINDOW_MASK)))
+			thislen = WINDOW_LENGTH-(from & WINDOW_MASK);
+		FUNC1(&vmax301_spin);
+		FUNC3(map, from);
+		FUNC0(to, map->map_priv_2 + from, thislen);
+		FUNC2(&vmax301_spin);
+		to += thislen;
+		from += thislen;
+		len -= thislen;
+	}
+}

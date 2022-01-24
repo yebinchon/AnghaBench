@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  scalar_t__ xfs_agino_t ;
+struct TYPE_2__ {int /*<<< orphan*/  agi_bp; int /*<<< orphan*/  ino_cur; } ;
+struct xfs_scrub {TYPE_1__ sa; } ;
+struct xfs_agi {int /*<<< orphan*/  agi_freecount; int /*<<< orphan*/  agi_count; } ;
+
+/* Variables and functions */
+ struct xfs_agi* FUNC0 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct xfs_scrub*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (struct xfs_scrub*,int*,int /*<<< orphan*/ *) ; 
+ int FUNC4 (int /*<<< orphan*/ ,scalar_t__*,scalar_t__*) ; 
+
+__attribute__((used)) static inline void
+FUNC5(
+	struct xfs_scrub	*sc)
+{
+	struct xfs_agi		*agi = FUNC0(sc->sa.agi_bp);
+	xfs_agino_t		icount;
+	xfs_agino_t		freecount;
+	int			error;
+
+	if (!sc->sa.ino_cur)
+		return;
+
+	error = FUNC4(sc->sa.ino_cur, &icount, &freecount);
+	if (!FUNC3(sc, &error, &sc->sa.ino_cur))
+		return;
+	if (FUNC1(agi->agi_count) != icount ||
+	    FUNC1(agi->agi_freecount) != freecount)
+		FUNC2(sc, sc->sa.agi_bp);
+}

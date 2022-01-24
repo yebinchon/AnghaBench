@@ -1,0 +1,30 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct timechart {int dummy; } ;
+struct perf_sample {int /*<<< orphan*/  time; int /*<<< orphan*/  tid; } ;
+struct evsel {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  IOTYPE_WRITE ; 
+ long FUNC0 (struct evsel*,struct perf_sample*,char*) ; 
+ int FUNC1 (struct timechart*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
+
+__attribute__((used)) static int
+FUNC2(struct timechart *tchart,
+		   struct evsel *evsel,
+		   struct perf_sample *sample)
+{
+	long ret = FUNC0(evsel, sample, "ret");
+	return FUNC1(tchart, sample->tid, IOTYPE_WRITE,
+				 sample->time, ret);
+}

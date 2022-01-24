@@ -1,0 +1,121 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u32 ;
+struct TYPE_4__ {int gpu_addr; scalar_t__ enabled; } ;
+struct TYPE_3__ {int gpu_addr; int ring_size; } ;
+struct radeon_device {int /*<<< orphan*/  pdev; scalar_t__ msi_enabled; TYPE_2__ wb; TYPE_1__ ih; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  IH_CNTL ; 
+ int IH_DUMMY_RD_OVERRIDE ; 
+ int /*<<< orphan*/  IH_RB_BASE ; 
+ int /*<<< orphan*/  IH_RB_CNTL ; 
+ int /*<<< orphan*/  IH_RB_RPTR ; 
+ int /*<<< orphan*/  IH_RB_WPTR ; 
+ int /*<<< orphan*/  IH_RB_WPTR_ADDR_HI ; 
+ int /*<<< orphan*/  IH_RB_WPTR_ADDR_LO ; 
+ int IH_REQ_NONSNOOP_EN ; 
+ int IH_WPTR_OVERFLOW_CLEAR ; 
+ int IH_WPTR_OVERFLOW_ENABLE ; 
+ int IH_WPTR_WRITEBACK_ENABLE ; 
+ int /*<<< orphan*/  INTERRUPT_CNTL ; 
+ int /*<<< orphan*/  INTERRUPT_CNTL2 ; 
+ int FUNC0 (int /*<<< orphan*/ ) ; 
+ int FUNC1 (int) ; 
+ int FUNC2 (int) ; 
+ int R600_WB_IH_WPTR_OFFSET ; 
+ int RPTR_REARM ; 
+ int FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC5 (struct radeon_device*) ; 
+ int /*<<< orphan*/  FUNC6 (struct radeon_device*) ; 
+ int /*<<< orphan*/  FUNC7 (struct radeon_device*) ; 
+ int FUNC8 (struct radeon_device*) ; 
+ int FUNC9 (int) ; 
+ int /*<<< orphan*/  FUNC10 (int /*<<< orphan*/ ) ; 
+ int FUNC11 (struct radeon_device*) ; 
+ int /*<<< orphan*/  FUNC12 (struct radeon_device*) ; 
+ int FUNC13 (int) ; 
+
+__attribute__((used)) static int FUNC14(struct radeon_device *rdev)
+{
+	int ret = 0;
+	int rb_bufsz;
+	u32 interrupt_cntl, ih_cntl, ih_rb_cntl;
+
+	/* allocate ring */
+	ret = FUNC11(rdev);
+	if (ret)
+		return ret;
+
+	/* disable irqs */
+	FUNC6(rdev);
+
+	/* init rlc */
+	ret = FUNC8(rdev);
+	if (ret) {
+		FUNC12(rdev);
+		return ret;
+	}
+
+	/* setup interrupt control */
+	/* XXX this should actually be a bus address, not an MC address. same on older asics */
+	FUNC4(INTERRUPT_CNTL2, rdev->ih.gpu_addr >> 8);
+	interrupt_cntl = FUNC3(INTERRUPT_CNTL);
+	/* IH_DUMMY_RD_OVERRIDE=0 - dummy read disabled with msi, enabled without msi
+	 * IH_DUMMY_RD_OVERRIDE=1 - dummy read controlled by IH_DUMMY_RD_EN
+	 */
+	interrupt_cntl &= ~IH_DUMMY_RD_OVERRIDE;
+	/* IH_REQ_NONSNOOP_EN=1 if ring is in non-cacheable memory, e.g., vram */
+	interrupt_cntl &= ~IH_REQ_NONSNOOP_EN;
+	FUNC4(INTERRUPT_CNTL, interrupt_cntl);
+
+	FUNC4(IH_RB_BASE, rdev->ih.gpu_addr >> 8);
+	rb_bufsz = FUNC9(rdev->ih.ring_size / 4);
+
+	ih_rb_cntl = (IH_WPTR_OVERFLOW_ENABLE |
+		      IH_WPTR_OVERFLOW_CLEAR |
+		      (rb_bufsz << 1));
+
+	if (rdev->wb.enabled)
+		ih_rb_cntl |= IH_WPTR_WRITEBACK_ENABLE;
+
+	/* set the writeback address whether it's enabled or not */
+	FUNC4(IH_RB_WPTR_ADDR_LO, (rdev->wb.gpu_addr + R600_WB_IH_WPTR_OFFSET) & 0xFFFFFFFC);
+	FUNC4(IH_RB_WPTR_ADDR_HI, FUNC13(rdev->wb.gpu_addr + R600_WB_IH_WPTR_OFFSET) & 0xFF);
+
+	FUNC4(IH_RB_CNTL, ih_rb_cntl);
+
+	/* set rptr, wptr to 0 */
+	FUNC4(IH_RB_RPTR, 0);
+	FUNC4(IH_RB_WPTR, 0);
+
+	/* Default settings for IH_CNTL (disabled at first) */
+	ih_cntl = FUNC1(0x10) | FUNC2(0x10) | FUNC0(0);
+	/* RPTR_REARM only works if msi's are enabled */
+	if (rdev->msi_enabled)
+		ih_cntl |= RPTR_REARM;
+	FUNC4(IH_CNTL, ih_cntl);
+
+	/* force the active interrupt state to all disabled */
+	FUNC5(rdev);
+
+	FUNC10(rdev->pdev);
+
+	/* enable irqs */
+	FUNC7(rdev);
+
+	return ret;
+}

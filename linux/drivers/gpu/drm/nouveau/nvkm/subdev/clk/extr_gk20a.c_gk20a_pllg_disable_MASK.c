@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct nvkm_device {int dummy; } ;
+struct TYPE_3__ {struct nvkm_device* device; } ;
+struct TYPE_4__ {TYPE_1__ subdev; } ;
+struct gk20a_clk {TYPE_2__ base; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  GPCPLL_CFG ; 
+ int /*<<< orphan*/  GPCPLL_CFG_ENABLE ; 
+ int /*<<< orphan*/  SEL_VCO ; 
+ int /*<<< orphan*/  SEL_VCO_GPC2CLK_OUT_SHIFT ; 
+ int /*<<< orphan*/  FUNC1 (struct nvkm_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct nvkm_device*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void
+FUNC3(struct gk20a_clk *clk)
+{
+	struct nvkm_device *device = clk->base.subdev.device;
+
+	/* put PLL in bypass before disabling it */
+	FUNC1(device, SEL_VCO, FUNC0(SEL_VCO_GPC2CLK_OUT_SHIFT), 0);
+
+	FUNC1(device, GPCPLL_CFG, GPCPLL_CFG_ENABLE, 0);
+	FUNC2(device, GPCPLL_CFG);
+}

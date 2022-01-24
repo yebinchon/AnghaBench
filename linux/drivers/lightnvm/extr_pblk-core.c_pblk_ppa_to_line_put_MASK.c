@@ -1,0 +1,28 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ppa_addr {int dummy; } ;
+struct pblk_line {int /*<<< orphan*/  ref; } ;
+struct pblk {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  pblk_line_put_wq ; 
+ struct pblk_line* FUNC1 (struct pblk*,struct ppa_addr) ; 
+
+void FUNC2(struct pblk *pblk, struct ppa_addr ppa)
+{
+	struct pblk_line *line;
+
+	line = FUNC1(pblk, ppa);
+	FUNC0(&line->ref, pblk_line_put_wq);
+}

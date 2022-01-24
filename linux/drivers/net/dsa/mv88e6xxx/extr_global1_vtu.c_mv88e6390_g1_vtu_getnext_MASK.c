@@ -1,0 +1,52 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct mv88e6xxx_vtu_entry {int /*<<< orphan*/  state; int /*<<< orphan*/  member; scalar_t__ valid; } ;
+struct mv88e6xxx_chip {int dummy; } ;
+
+/* Variables and functions */
+ int FUNC0 (struct mv88e6xxx_chip*,int /*<<< orphan*/ ) ; 
+ int FUNC1 (struct mv88e6xxx_chip*,struct mv88e6xxx_vtu_entry*) ; 
+ int FUNC2 (struct mv88e6xxx_chip*,struct mv88e6xxx_vtu_entry*) ; 
+ int FUNC3 (struct mv88e6xxx_chip*,struct mv88e6xxx_vtu_entry*) ; 
+
+int FUNC4(struct mv88e6xxx_chip *chip,
+			     struct mv88e6xxx_vtu_entry *entry)
+{
+	int err;
+
+	/* Fetch VLAN MemberTag data from the VTU */
+	err = FUNC2(chip, entry);
+	if (err)
+		return err;
+
+	if (entry->valid) {
+		err = FUNC0(chip, entry->member);
+		if (err)
+			return err;
+
+		/* Fetch VLAN PortState data from the STU */
+		err = FUNC3(chip, entry);
+		if (err)
+			return err;
+
+		err = FUNC0(chip, entry->state);
+		if (err)
+			return err;
+
+		err = FUNC1(chip, entry);
+		if (err)
+			return err;
+	}
+
+	return 0;
+}

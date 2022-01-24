@@ -1,0 +1,45 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  FILE ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC1 (char const*,char*) ; 
+ int FUNC2 (void*,size_t,int,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (char*,char const*) ; 
+
+__attribute__((used)) static int
+FUNC4(const char *fileName, void *file, size_t fileSize)
+{
+   FILE *f;
+
+   /* Open the file */
+   f = FUNC1(fileName, "wb");
+   if (f == NULL)
+   {
+      FUNC3("Couldn't open file %s for writing!\n", fileName);
+      return -1;
+   }
+
+   /* Write file */
+   if (FUNC2(file, fileSize, 1, f) != 1)
+   {
+      FUNC0(f);
+      FUNC3("Couldn't write file %s!\n", fileName);
+      return -1;
+   }
+
+   /* Close file */
+   FUNC0(f);
+   return 0;
+}

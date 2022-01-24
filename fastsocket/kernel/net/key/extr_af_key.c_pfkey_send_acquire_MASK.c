@@ -1,0 +1,166 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_6__   TYPE_3__ ;
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  uint64_t ;
+struct xfrm_tmpl {int dummy; } ;
+struct TYPE_6__ {scalar_t__ proto; int /*<<< orphan*/  daddr; } ;
+struct TYPE_5__ {int /*<<< orphan*/  family; int /*<<< orphan*/  saddr; } ;
+struct TYPE_4__ {int /*<<< orphan*/  seq; } ;
+struct xfrm_state {TYPE_3__ id; TYPE_2__ props; TYPE_1__ km; struct xfrm_sec_ctx* security; } ;
+struct xfrm_sec_ctx {int /*<<< orphan*/  ctx_len; int /*<<< orphan*/  ctx_str; int /*<<< orphan*/  ctx_alg; int /*<<< orphan*/  ctx_doi; } ;
+struct xfrm_policy {int /*<<< orphan*/  index; } ;
+struct sockaddr {int dummy; } ;
+struct sk_buff {int dummy; } ;
+struct sadb_x_sec_ctx {int sadb_x_sec_len; int /*<<< orphan*/  sadb_x_ctx_len; int /*<<< orphan*/  sadb_x_ctx_alg; int /*<<< orphan*/  sadb_x_ctx_doi; int /*<<< orphan*/  sadb_x_sec_exttype; } ;
+struct sadb_x_policy {int sadb_x_policy_len; int sadb_x_policy_dir; int /*<<< orphan*/  sadb_x_policy_id; int /*<<< orphan*/  sadb_x_policy_type; int /*<<< orphan*/  sadb_x_policy_exttype; } ;
+struct sadb_msg {int sadb_msg_len; scalar_t__ sadb_msg_pid; int /*<<< orphan*/  sadb_msg_seq; scalar_t__ sadb_msg_reserved; scalar_t__ sadb_msg_errno; int /*<<< orphan*/  sadb_msg_satype; int /*<<< orphan*/  sadb_msg_type; int /*<<< orphan*/  sadb_msg_version; } ;
+struct sadb_address {int sadb_address_len; void* sadb_address_prefixlen; scalar_t__ sadb_address_reserved; scalar_t__ sadb_address_proto; int /*<<< orphan*/  sadb_address_exttype; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  BROADCAST_REGISTERED ; 
+ int /*<<< orphan*/  FUNC0 () ; 
+ int EINVAL ; 
+ int ENOMEM ; 
+ int /*<<< orphan*/  GFP_ATOMIC ; 
+ scalar_t__ IPPROTO_AH ; 
+ scalar_t__ IPPROTO_ESP ; 
+ int /*<<< orphan*/  IPSEC_POLICY_IPSEC ; 
+ int FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  PF_KEY_V2 ; 
+ int /*<<< orphan*/  SADB_ACQUIRE ; 
+ int /*<<< orphan*/  SADB_EXT_ADDRESS_DST ; 
+ int /*<<< orphan*/  SADB_EXT_ADDRESS_SRC ; 
+ int /*<<< orphan*/  SADB_X_EXT_POLICY ; 
+ int /*<<< orphan*/  SADB_X_EXT_SEC_CTX ; 
+ struct sk_buff* FUNC2 (int,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC3 (struct xfrm_tmpl*) ; 
+ scalar_t__ FUNC4 (struct xfrm_tmpl*) ; 
+ int /*<<< orphan*/  FUNC5 (struct sk_buff*,struct xfrm_tmpl*) ; 
+ int /*<<< orphan*/  FUNC6 (struct sk_buff*,struct xfrm_tmpl*) ; 
+ int /*<<< orphan*/  FUNC7 () ; 
+ int /*<<< orphan*/  FUNC8 (struct sadb_x_sec_ctx*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FUNC9 (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC10 (scalar_t__) ; 
+ void* FUNC11 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct sockaddr*,int /*<<< orphan*/ ) ; 
+ int FUNC12 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC13 (struct sk_buff*,int) ; 
+ int /*<<< orphan*/  FUNC14 (struct xfrm_state*) ; 
+
+__attribute__((used)) static int FUNC15(struct xfrm_state *x, struct xfrm_tmpl *t, struct xfrm_policy *xp, int dir)
+{
+	struct sk_buff *skb;
+	struct sadb_msg *hdr;
+	struct sadb_address *addr;
+	struct sadb_x_policy *pol;
+	int sockaddr_size;
+	int size;
+	struct sadb_x_sec_ctx *sec_ctx;
+	struct xfrm_sec_ctx *xfrm_ctx;
+	int ctx_size = 0;
+
+	sockaddr_size = FUNC12(x->props.family);
+	if (!sockaddr_size)
+		return -EINVAL;
+
+	size = sizeof(struct sadb_msg) +
+		(sizeof(struct sadb_address) * 2) +
+		(sockaddr_size * 2) +
+		sizeof(struct sadb_x_policy);
+
+	if (x->id.proto == IPPROTO_AH)
+		size += FUNC3(t);
+	else if (x->id.proto == IPPROTO_ESP)
+		size += FUNC4(t);
+
+	if ((xfrm_ctx = x->security)) {
+		ctx_size = FUNC1(xfrm_ctx->ctx_len);
+		size +=  sizeof(struct sadb_x_sec_ctx) + ctx_size;
+	}
+
+	skb =  FUNC2(size + 16, GFP_ATOMIC);
+	if (skb == NULL)
+		return -ENOMEM;
+
+	hdr = (struct sadb_msg *) FUNC13(skb, sizeof(struct sadb_msg));
+	hdr->sadb_msg_version = PF_KEY_V2;
+	hdr->sadb_msg_type = SADB_ACQUIRE;
+	hdr->sadb_msg_satype = FUNC10(x->id.proto);
+	hdr->sadb_msg_len = size / sizeof(uint64_t);
+	hdr->sadb_msg_errno = 0;
+	hdr->sadb_msg_reserved = 0;
+	hdr->sadb_msg_seq = x->km.seq = FUNC7();
+	hdr->sadb_msg_pid = 0;
+
+	/* src address */
+	addr = (struct sadb_address*) FUNC13(skb,
+					      sizeof(struct sadb_address)+sockaddr_size);
+	addr->sadb_address_len =
+		(sizeof(struct sadb_address)+sockaddr_size)/
+			sizeof(uint64_t);
+	addr->sadb_address_exttype = SADB_EXT_ADDRESS_SRC;
+	addr->sadb_address_proto = 0;
+	addr->sadb_address_reserved = 0;
+	addr->sadb_address_prefixlen =
+		FUNC11(&x->props.saddr, 0,
+				    (struct sockaddr *) (addr + 1),
+				    x->props.family);
+	if (!addr->sadb_address_prefixlen)
+		FUNC0();
+
+	/* dst address */
+	addr = (struct sadb_address*) FUNC13(skb,
+					      sizeof(struct sadb_address)+sockaddr_size);
+	addr->sadb_address_len =
+		(sizeof(struct sadb_address)+sockaddr_size)/
+			sizeof(uint64_t);
+	addr->sadb_address_exttype = SADB_EXT_ADDRESS_DST;
+	addr->sadb_address_proto = 0;
+	addr->sadb_address_reserved = 0;
+	addr->sadb_address_prefixlen =
+		FUNC11(&x->id.daddr, 0,
+				    (struct sockaddr *) (addr + 1),
+				    x->props.family);
+	if (!addr->sadb_address_prefixlen)
+		FUNC0();
+
+	pol = (struct sadb_x_policy *)  FUNC13(skb, sizeof(struct sadb_x_policy));
+	pol->sadb_x_policy_len = sizeof(struct sadb_x_policy)/sizeof(uint64_t);
+	pol->sadb_x_policy_exttype = SADB_X_EXT_POLICY;
+	pol->sadb_x_policy_type = IPSEC_POLICY_IPSEC;
+	pol->sadb_x_policy_dir = dir+1;
+	pol->sadb_x_policy_id = xp->index;
+
+	/* Set sadb_comb's. */
+	if (x->id.proto == IPPROTO_AH)
+		FUNC5(skb, t);
+	else if (x->id.proto == IPPROTO_ESP)
+		FUNC6(skb, t);
+
+	/* security context */
+	if (xfrm_ctx) {
+		sec_ctx = (struct sadb_x_sec_ctx *) FUNC13(skb,
+				sizeof(struct sadb_x_sec_ctx) + ctx_size);
+		sec_ctx->sadb_x_sec_len =
+		  (sizeof(struct sadb_x_sec_ctx) + ctx_size) / sizeof(uint64_t);
+		sec_ctx->sadb_x_sec_exttype = SADB_X_EXT_SEC_CTX;
+		sec_ctx->sadb_x_ctx_doi = xfrm_ctx->ctx_doi;
+		sec_ctx->sadb_x_ctx_alg = xfrm_ctx->ctx_alg;
+		sec_ctx->sadb_x_ctx_len = xfrm_ctx->ctx_len;
+		FUNC8(sec_ctx + 1, xfrm_ctx->ctx_str,
+		       xfrm_ctx->ctx_len);
+	}
+
+	return FUNC9(skb, GFP_ATOMIC, BROADCAST_REGISTERED, NULL, FUNC14(x));
+}

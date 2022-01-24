@@ -1,0 +1,52 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int uint32_t ;
+struct drm_device {scalar_t__ switch_power_state; } ;
+struct device_attribute {int dummy; } ;
+struct device {int dummy; } ;
+struct amdgpu_device {int flags; struct drm_device* ddev; } ;
+typedef  int ssize_t ;
+typedef  int /*<<< orphan*/  sclk ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  AMDGPU_PP_SENSOR_GFX_SCLK ; 
+ int AMD_IS_PX ; 
+ scalar_t__ DRM_SWITCH_POWER_ON ; 
+ int EINVAL ; 
+ int /*<<< orphan*/  PAGE_SIZE ; 
+ int FUNC0 (struct amdgpu_device*,int /*<<< orphan*/ ,void*,int*) ; 
+ struct amdgpu_device* FUNC1 (struct device*) ; 
+ int FUNC2 (char*,int /*<<< orphan*/ ,char*,int) ; 
+
+__attribute__((used)) static ssize_t FUNC3(struct device *dev,
+				      struct device_attribute *attr,
+				      char *buf)
+{
+	struct amdgpu_device *adev = FUNC1(dev);
+	struct drm_device *ddev = adev->ddev;
+	uint32_t sclk;
+	int r, size = sizeof(sclk);
+
+	/* Can't get voltage when the card is off */
+	if  ((adev->flags & AMD_IS_PX) &&
+	     (ddev->switch_power_state != DRM_SWITCH_POWER_ON))
+		return -EINVAL;
+
+	/* get the sclk */
+	r = FUNC0(adev, AMDGPU_PP_SENSOR_GFX_SCLK,
+				   (void *)&sclk, &size);
+	if (r)
+		return r;
+
+	return FUNC2(buf, PAGE_SIZE, "%d\n", sclk * 10 * 1000);
+}

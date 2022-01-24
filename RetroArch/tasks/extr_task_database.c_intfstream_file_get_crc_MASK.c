@@ -1,0 +1,91 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  uint8_t ;
+typedef  scalar_t__ uint64_t ;
+typedef  int /*<<< orphan*/  uint32_t ;
+typedef  int /*<<< orphan*/  intfstream_t ;
+typedef  scalar_t__ int64_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
+ int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_READ ; 
+ int /*<<< orphan*/  SEEK_END ; 
+ int /*<<< orphan*/  SEEK_SET ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC3 (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/ * FUNC4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
+ scalar_t__ FUNC5 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
+ int FUNC6 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC7 (int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC8 (size_t) ; 
+
+__attribute__((used)) static bool FUNC9(const char *name,
+      uint64_t offset, size_t size, uint32_t *crc)
+{
+   int rv;
+   intfstream_t *fd  = FUNC3(name,
+         RETRO_VFS_FILE_ACCESS_READ, RETRO_VFS_FILE_ACCESS_HINT_NONE);
+   uint8_t *data     = NULL;
+   int64_t file_size = -1;
+
+   if (!fd)
+      return 0;
+
+   if (FUNC6(fd, 0, SEEK_END) == -1)
+      goto error;
+
+   file_size = FUNC7(fd);
+
+   if (FUNC6(fd, 0, SEEK_SET) == -1)
+      goto error;
+
+   if (file_size < 0)
+      goto error;
+
+   if (offset != 0 || size < (uint64_t) file_size)
+   {
+      if (FUNC6(fd, (int64_t)offset, SEEK_SET) == -1)
+         goto error;
+
+      data = (uint8_t*)FUNC8(size);
+
+      if (FUNC5(fd, data, size) != (int64_t) size)
+         goto error;
+
+      FUNC1(fd);
+      FUNC0(fd);
+      fd = FUNC4(data, RETRO_VFS_FILE_ACCESS_READ,
+            RETRO_VFS_FILE_ACCESS_HINT_NONE, size);
+
+      if (!fd)
+         goto error;
+   }
+
+   rv = FUNC2(fd, crc);
+   FUNC1(fd);
+   FUNC0(fd);
+   FUNC0(data);
+   return rv;
+
+error:
+   if (fd)
+   {
+      FUNC1(fd);
+      FUNC0(fd);
+   }
+   if (data)
+      FUNC0(data);
+   return 0;
+}

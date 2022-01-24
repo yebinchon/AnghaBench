@@ -1,0 +1,80 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ieee80211_channel {scalar_t__ band; int hw_value; } ;
+struct b43_wldev {int dummy; } ;
+struct b43_phy_ht_channeltab_e_phy {int bw1; int bw2; int bw3; int bw4; int bw5; int bw6; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  B43_PHY_HT_BANDCTL ; 
+ int B43_PHY_HT_BANDCTL_5GHZ ; 
+ int B43_PHY_HT_BW1 ; 
+ int B43_PHY_HT_BW2 ; 
+ int B43_PHY_HT_BW3 ; 
+ int B43_PHY_HT_BW4 ; 
+ int B43_PHY_HT_BW5 ; 
+ int B43_PHY_HT_BW6 ; 
+ int /*<<< orphan*/  B43_PHY_HT_CLASS_CTL_OFDM_EN ; 
+ int /*<<< orphan*/  B43_PHY_HT_TEST ; 
+ scalar_t__ NL80211_BAND_2GHZ ; 
+ scalar_t__ NL80211_BAND_5GHZ ; 
+ int /*<<< orphan*/  FUNC0 (struct b43_wldev*,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct b43_wldev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct b43_wldev*,struct ieee80211_channel*) ; 
+ int /*<<< orphan*/  FUNC3 (struct b43_wldev*) ; 
+ int /*<<< orphan*/  FUNC4 (struct b43_wldev*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC5 (struct b43_wldev*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC6 (struct b43_wldev*,int,int) ; 
+
+__attribute__((used)) static void FUNC7(struct b43_wldev *dev,
+				const struct b43_phy_ht_channeltab_e_phy *e,
+				struct ieee80211_channel *new_channel)
+{
+	if (new_channel->band == NL80211_BAND_5GHZ) {
+		/* Switch to 2 GHz for a moment to access B-PHY regs */
+		FUNC4(dev, B43_PHY_HT_BANDCTL, ~B43_PHY_HT_BANDCTL_5GHZ);
+
+		FUNC0(dev, true);
+
+		/* Switch to 5 GHz */
+		FUNC5(dev, B43_PHY_HT_BANDCTL, B43_PHY_HT_BANDCTL_5GHZ);
+	} else {
+		/* Switch to 2 GHz */
+		FUNC4(dev, B43_PHY_HT_BANDCTL, ~B43_PHY_HT_BANDCTL_5GHZ);
+
+		FUNC0(dev, false);
+	}
+
+	FUNC6(dev, B43_PHY_HT_BW1, e->bw1);
+	FUNC6(dev, B43_PHY_HT_BW2, e->bw2);
+	FUNC6(dev, B43_PHY_HT_BW3, e->bw3);
+	FUNC6(dev, B43_PHY_HT_BW4, e->bw4);
+	FUNC6(dev, B43_PHY_HT_BW5, e->bw5);
+	FUNC6(dev, B43_PHY_HT_BW6, e->bw6);
+
+	if (new_channel->hw_value == 14) {
+		FUNC1(dev, B43_PHY_HT_CLASS_CTL_OFDM_EN, 0);
+		FUNC5(dev, B43_PHY_HT_TEST, 0x0800);
+	} else {
+		FUNC1(dev, B43_PHY_HT_CLASS_CTL_OFDM_EN,
+				      B43_PHY_HT_CLASS_CTL_OFDM_EN);
+		if (new_channel->band == NL80211_BAND_2GHZ)
+			FUNC4(dev, B43_PHY_HT_TEST, ~0x840);
+	}
+
+	if (1) /* TODO: On N it's for early devices only, what about HT? */
+		FUNC3(dev);
+
+	FUNC2(dev, new_channel);
+
+	FUNC6(dev, 0x017e, 0x3830);
+}

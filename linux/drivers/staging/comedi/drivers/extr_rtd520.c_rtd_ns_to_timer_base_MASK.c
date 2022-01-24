@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+#define  CMDF_ROUND_DOWN 130 
+ unsigned int CMDF_ROUND_MASK ; 
+#define  CMDF_ROUND_NEAREST 129 
+#define  CMDF_ROUND_UP 128 
+ int FUNC0 (unsigned int,int) ; 
+ int FUNC1 (unsigned int,int) ; 
+
+__attribute__((used)) static int FUNC2(unsigned int *nanosec,
+				unsigned int flags, int base)
+{
+	int divider;
+
+	switch (flags & CMDF_ROUND_MASK) {
+	case CMDF_ROUND_NEAREST:
+	default:
+		divider = FUNC0(*nanosec, base);
+		break;
+	case CMDF_ROUND_DOWN:
+		divider = (*nanosec) / base;
+		break;
+	case CMDF_ROUND_UP:
+		divider = FUNC1(*nanosec, base);
+		break;
+	}
+	if (divider < 2)
+		divider = 2;	/* min is divide by 2 */
+
+	/*
+	 * Note: we don't check for max, because different timers
+	 * have different ranges
+	 */
+
+	*nanosec = base * divider;
+	return divider - 1;	/* countdown is divisor+1 */
+}

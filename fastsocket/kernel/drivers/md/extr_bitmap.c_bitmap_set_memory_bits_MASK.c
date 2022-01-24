@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {int /*<<< orphan*/  lock; } ;
+struct bitmap {TYPE_1__ counts; scalar_t__ allclean; } ;
+typedef  int /*<<< orphan*/  sector_t ;
+typedef  int bitmap_counter_t ;
+
+/* Variables and functions */
+ int NEEDED_MASK ; 
+ int /*<<< orphan*/  FUNC0 (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+ int* FUNC1 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+ int /*<<< orphan*/  FUNC2 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static void FUNC5(struct bitmap *bitmap, sector_t offset, int needed)
+{
+	/* For each chunk covered by any of these sectors, set the
+	 * counter to 2 and possibly set resync_needed.  They should all
+	 * be 0 at this point
+	 */
+
+	sector_t secs;
+	bitmap_counter_t *bmc;
+	FUNC3(&bitmap->counts.lock);
+	bmc = FUNC1(&bitmap->counts, offset, &secs, 1);
+	if (!bmc) {
+		FUNC4(&bitmap->counts.lock);
+		return;
+	}
+	if (!*bmc) {
+		*bmc = 2 | (needed ? NEEDED_MASK : 0);
+		FUNC0(&bitmap->counts, offset, 1);
+		FUNC2(&bitmap->counts, offset);
+		bitmap->allclean = 0;
+	}
+	FUNC4(&bitmap->counts.lock);
+}

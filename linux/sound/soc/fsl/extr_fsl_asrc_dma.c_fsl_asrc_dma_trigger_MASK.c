@@ -1,0 +1,58 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct snd_pcm_substream {struct snd_pcm_runtime* runtime; } ;
+struct snd_pcm_runtime {struct fsl_asrc_pair* private_data; } ;
+struct fsl_asrc_pair {int /*<<< orphan*/ * dma_chan; } ;
+
+/* Variables and functions */
+ int EINVAL ; 
+ size_t IN ; 
+ size_t OUT ; 
+#define  SNDRV_PCM_TRIGGER_PAUSE_PUSH 133 
+#define  SNDRV_PCM_TRIGGER_PAUSE_RELEASE 132 
+#define  SNDRV_PCM_TRIGGER_RESUME 131 
+#define  SNDRV_PCM_TRIGGER_START 130 
+#define  SNDRV_PCM_TRIGGER_STOP 129 
+#define  SNDRV_PCM_TRIGGER_SUSPEND 128 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int FUNC2 (struct snd_pcm_substream*) ; 
+
+__attribute__((used)) static int FUNC3(struct snd_pcm_substream *substream, int cmd)
+{
+	struct snd_pcm_runtime *runtime = substream->runtime;
+	struct fsl_asrc_pair *pair = runtime->private_data;
+	int ret;
+
+	switch (cmd) {
+	case SNDRV_PCM_TRIGGER_START:
+	case SNDRV_PCM_TRIGGER_RESUME:
+	case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
+		ret = FUNC2(substream);
+		if (ret)
+			return ret;
+		FUNC0(pair->dma_chan[IN]);
+		FUNC0(pair->dma_chan[OUT]);
+		break;
+	case SNDRV_PCM_TRIGGER_STOP:
+	case SNDRV_PCM_TRIGGER_SUSPEND:
+	case SNDRV_PCM_TRIGGER_PAUSE_PUSH:
+		FUNC1(pair->dma_chan[OUT]);
+		FUNC1(pair->dma_chan[IN]);
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	return 0;
+}

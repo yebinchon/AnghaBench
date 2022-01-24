@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {int /*<<< orphan*/  fabrics_q; int /*<<< orphan*/  admin_q; } ;
+struct nvme_loop_ctrl {int /*<<< orphan*/  admin_tag_set; TYPE_2__ ctrl; TYPE_1__* queues; } ;
+struct TYPE_3__ {int /*<<< orphan*/  nvme_sq; int /*<<< orphan*/  flags; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  NVME_LOOP_Q_LIVE ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static void FUNC4(struct nvme_loop_ctrl *ctrl)
+{
+	FUNC2(NVME_LOOP_Q_LIVE, &ctrl->queues[0].flags);
+	FUNC3(&ctrl->queues[0].nvme_sq);
+	FUNC0(ctrl->ctrl.admin_q);
+	FUNC0(ctrl->ctrl.fabrics_q);
+	FUNC1(&ctrl->admin_tag_set);
+}

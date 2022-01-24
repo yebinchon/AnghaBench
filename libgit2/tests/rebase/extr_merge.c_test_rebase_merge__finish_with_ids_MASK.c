@@ -1,0 +1,100 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  git_reflog_entry ;
+typedef  int /*<<< orphan*/  git_reflog ;
+typedef  int /*<<< orphan*/  git_reference ;
+typedef  int /*<<< orphan*/  git_rebase_operation ;
+typedef  int /*<<< orphan*/  git_rebase ;
+typedef  int /*<<< orphan*/  git_oid ;
+typedef  int /*<<< orphan*/  git_annotated_commit ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  GIT_ITEROVER ; 
+ int /*<<< orphan*/  GIT_REFERENCE_DIRECT ; 
+ int /*<<< orphan*/  GIT_REPOSITORY_STATE_NONE ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/  const*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (char*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int) ; 
+ int /*<<< orphan*/  FUNC5 (int) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *) ; 
+ int FUNC7 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int FUNC8 (int /*<<< orphan*/ *,char*) ; 
+ int FUNC9 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int FUNC10 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC11 (int /*<<< orphan*/ *) ; 
+ int FUNC12 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int FUNC13 (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC14 (int /*<<< orphan*/ *) ; 
+ int FUNC15 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC16 (int /*<<< orphan*/ *) ; 
+ int FUNC17 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC18 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC19 (int /*<<< orphan*/  const*) ; 
+ int /*<<< orphan*/  FUNC20 (int /*<<< orphan*/  const*) ; 
+ int /*<<< orphan*/  FUNC21 (int /*<<< orphan*/ *) ; 
+ int FUNC22 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*) ; 
+ int FUNC23 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  repo ; 
+ int /*<<< orphan*/  signature ; 
+
+void FUNC24(void)
+{
+	git_rebase *rebase;
+	git_reference *head_ref;
+	git_oid branch_id, upstream_id;
+	git_annotated_commit *branch_head, *upstream_head;
+	git_rebase_operation *rebase_operation;
+	git_oid commit_id;
+	git_reflog *reflog;
+	const git_reflog_entry *reflog_entry;
+	int error;
+
+	FUNC5(FUNC8(&branch_id, "d616d97082eb7bb2dc6f180a7cca940993b7a56f"));
+	FUNC5(FUNC8(&upstream_id, "f87d14a4a236582a0278a916340a793714256864"));
+
+	FUNC5(FUNC7(&branch_head, repo, &branch_id));
+	FUNC5(FUNC7(&upstream_head, repo, &upstream_id));
+
+	FUNC5(FUNC12(&rebase, repo, branch_head, upstream_head, NULL, NULL));
+
+	FUNC5(FUNC13(&rebase_operation, rebase));
+	FUNC5(FUNC9(&commit_id, rebase, NULL, signature,
+		NULL, NULL));
+
+	FUNC4(error = FUNC13(&rebase_operation, rebase));
+	FUNC1(GIT_ITEROVER, error);
+
+	FUNC5(FUNC10(rebase, signature));
+
+	FUNC1(GIT_REPOSITORY_STATE_NONE, FUNC23(repo));
+
+	FUNC5(FUNC15(&head_ref, repo, "HEAD"));
+	FUNC1(GIT_REFERENCE_DIRECT, FUNC17(head_ref));
+	FUNC2(&commit_id, FUNC16(head_ref));
+
+	/* reflogs are not updated as if we were operating on proper
+	 * branches.  check that the last reflog entry is the rebase.
+	 */
+	FUNC5(FUNC22(&reflog, repo, "HEAD"));
+	FUNC0(reflog_entry = FUNC18(reflog, 0));
+	FUNC2(&commit_id, FUNC19(reflog_entry));
+	FUNC3("rebase: Modification 3 to gravy", FUNC20(reflog_entry));
+	FUNC21(reflog);
+
+	FUNC6(branch_head);
+	FUNC6(upstream_head);
+	FUNC14(head_ref);
+	FUNC11(rebase);
+}

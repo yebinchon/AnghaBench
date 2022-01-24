@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct xgbe_prv_data {int an_mode; int /*<<< orphan*/  netdev; } ;
+
+/* Variables and functions */
+#define  XGBE_AN_MODE_CL37 131 
+#define  XGBE_AN_MODE_CL37_SGMII 130 
+#define  XGBE_AN_MODE_CL73 129 
+#define  XGBE_AN_MODE_CL73_REDRV 128 
+ int /*<<< orphan*/  intr ; 
+ int /*<<< orphan*/  FUNC0 (struct xgbe_prv_data*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC1 (struct xgbe_prv_data*) ; 
+ int /*<<< orphan*/  FUNC2 (struct xgbe_prv_data*) ; 
+
+__attribute__((used)) static void FUNC3(unsigned long data)
+{
+	struct xgbe_prv_data *pdata = (struct xgbe_prv_data *)data;
+
+	FUNC0(pdata, intr, pdata->netdev, "AN interrupt received\n");
+
+	switch (pdata->an_mode) {
+	case XGBE_AN_MODE_CL73:
+	case XGBE_AN_MODE_CL73_REDRV:
+		FUNC2(pdata);
+		break;
+	case XGBE_AN_MODE_CL37:
+	case XGBE_AN_MODE_CL37_SGMII:
+		FUNC1(pdata);
+		break;
+	default:
+		break;
+	}
+}

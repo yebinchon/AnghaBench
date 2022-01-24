@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct snd_pcm_substream {int dummy; } ;
+struct snd_ad1816a {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  AD1816A_PLAYBACK_ENABLE ; 
+ int /*<<< orphan*/  SNDRV_PCM_STREAM_PLAYBACK ; 
+ int FUNC0 (struct snd_ad1816a*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+ struct snd_ad1816a* FUNC1 (struct snd_pcm_substream*) ; 
+
+__attribute__((used)) static int FUNC2(struct snd_pcm_substream *substream, int cmd)
+{
+	struct snd_ad1816a *chip = FUNC1(substream);
+	return FUNC0(chip, AD1816A_PLAYBACK_ENABLE,
+				   SNDRV_PCM_STREAM_PLAYBACK, cmd, 0);
+}

@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  void* Oid ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int) ; 
+ void* CurrentUserId ; 
+ int /*<<< orphan*/  FUNC2 (void*) ; 
+ void* OuterUserId ; 
+ scalar_t__ SecurityRestrictionContext ; 
+ void* SessionUserId ; 
+ int SessionUserIsSuperuser ; 
+ int SetRoleIsActive ; 
+
+__attribute__((used)) static void
+FUNC3(Oid userid, bool is_superuser)
+{
+	FUNC1(SecurityRestrictionContext == 0);
+	FUNC0(FUNC2(userid));
+	SessionUserId = userid;
+	SessionUserIsSuperuser = is_superuser;
+	SetRoleIsActive = false;
+
+	/* We force the effective user IDs to match, too */
+	OuterUserId = userid;
+	CurrentUserId = userid;
+}

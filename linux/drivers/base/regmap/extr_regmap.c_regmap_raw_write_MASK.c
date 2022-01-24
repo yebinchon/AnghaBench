@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {size_t val_bytes; } ;
+struct regmap {int /*<<< orphan*/  lock_arg; int /*<<< orphan*/  (* unlock ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* lock ) (int /*<<< orphan*/ ) ;TYPE_1__ format; } ;
+
+/* Variables and functions */
+ int EINVAL ; 
+ int FUNC0 (struct regmap*,unsigned int,void const*,size_t) ; 
+ int /*<<< orphan*/  FUNC1 (struct regmap*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+
+int FUNC4(struct regmap *map, unsigned int reg,
+		     const void *val, size_t val_len)
+{
+	int ret;
+
+	if (!FUNC1(map))
+		return -EINVAL;
+	if (val_len % map->format.val_bytes)
+		return -EINVAL;
+
+	map->lock(map->lock_arg);
+
+	ret = FUNC0(map, reg, val, val_len);
+
+	map->unlock(map->lock_arg);
+
+	return ret;
+}

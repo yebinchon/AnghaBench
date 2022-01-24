@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u32 ;
+struct radeon_ring {int dummy; } ;
+struct radeon_device {int dummy; } ;
+
+/* Variables and functions */
+ int RADEON_RESET_DMA ; 
+ int FUNC0 (struct radeon_device*) ; 
+ int /*<<< orphan*/  FUNC1 (struct radeon_device*,struct radeon_ring*) ; 
+ int FUNC2 (struct radeon_device*,struct radeon_ring*) ; 
+
+bool FUNC3(struct radeon_device *rdev, struct radeon_ring *ring)
+{
+	u32 reset_mask = FUNC0(rdev);
+
+	if (!(reset_mask & RADEON_RESET_DMA)) {
+		FUNC1(rdev, ring);
+		return false;
+	}
+	return FUNC2(rdev, ring);
+}

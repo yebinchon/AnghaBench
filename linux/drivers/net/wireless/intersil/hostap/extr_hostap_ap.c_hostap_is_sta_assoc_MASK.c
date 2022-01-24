@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+struct sta_info {int flags; int /*<<< orphan*/  ap; } ;
+struct ap_data {int /*<<< orphan*/  sta_table_lock; } ;
+
+/* Variables and functions */
+ int WLAN_STA_ASSOC ; 
+ struct sta_info* FUNC0 (struct ap_data*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+
+int FUNC3(struct ap_data *ap, u8 *sta_addr)
+{
+	struct sta_info *sta;
+	int ret = 0;
+
+	FUNC1(&ap->sta_table_lock);
+	sta = FUNC0(ap, sta_addr);
+	if (sta != NULL && (sta->flags & WLAN_STA_ASSOC) && !sta->ap)
+		ret = 1;
+	FUNC2(&ap->sta_table_lock);
+
+	return ret;
+}

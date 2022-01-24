@@ -1,0 +1,57 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int uint64_t ;
+typedef  int /*<<< orphan*/  uchar_t ;
+typedef  int /*<<< orphan*/  objset_t ;
+struct TYPE_3__ {int /*<<< orphan*/  dde_phys; int /*<<< orphan*/  dde_key; } ;
+typedef  TYPE_1__ ddt_entry_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  DDT_KEY_WORDS ; 
+ int /*<<< orphan*/  KM_SLEEP ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
+ int /*<<< orphan*/ * FUNC2 (int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,int) ; 
+ int FUNC4 (int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ,int*,int*) ; 
+ int FUNC5 (int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int
+FUNC6(objset_t *os, uint64_t object, ddt_entry_t *dde)
+{
+	uchar_t *cbuf;
+	uint64_t one, csize;
+	int error;
+
+	cbuf = FUNC2(sizeof (dde->dde_phys) + 1, KM_SLEEP);
+
+	error = FUNC4(os, object, (uint64_t *)&dde->dde_key,
+	    DDT_KEY_WORDS, &one, &csize);
+	if (error)
+		goto out;
+
+	FUNC0(one == 1);
+	FUNC0(csize <= (sizeof (dde->dde_phys) + 1));
+
+	error = FUNC5(os, object, (uint64_t *)&dde->dde_key,
+	    DDT_KEY_WORDS, 1, csize, cbuf);
+	if (error)
+		goto out;
+
+	FUNC1(cbuf, dde->dde_phys, csize, sizeof (dde->dde_phys));
+out:
+	FUNC3(cbuf, sizeof (dde->dde_phys) + 1);
+
+	return (error);
+}

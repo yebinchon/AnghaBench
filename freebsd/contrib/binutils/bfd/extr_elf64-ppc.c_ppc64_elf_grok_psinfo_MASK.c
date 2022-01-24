@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_3__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef  int /*<<< orphan*/  bfd ;
+struct TYPE_5__ {void* core_command; void* core_program; } ;
+struct TYPE_4__ {int descsz; scalar_t__ descdata; } ;
+typedef  TYPE_1__ Elf_Internal_Note ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FALSE ; 
+ int /*<<< orphan*/  TRUE ; 
+ void* FUNC0 (int /*<<< orphan*/ *,scalar_t__,int) ; 
+ TYPE_3__* FUNC1 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static bfd_boolean
+FUNC2 (bfd *abfd, Elf_Internal_Note *note)
+{
+  if (note->descsz != 136)
+    return FALSE;
+
+  FUNC1 (abfd)->core_program
+    = FUNC0 (abfd, note->descdata + 40, 16);
+  FUNC1 (abfd)->core_command
+    = FUNC0 (abfd, note->descdata + 56, 80);
+
+  return TRUE;
+}

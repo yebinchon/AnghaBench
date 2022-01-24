@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u32 ;
+struct efx_nic {int dummy; } ;
+struct efx_mcdi_iface {scalar_t__ state; int /*<<< orphan*/  proxy_rx_wq; int /*<<< orphan*/  proxy_rx_handle; int /*<<< orphan*/  proxy_rx_status; } ;
+
+/* Variables and functions */
+ scalar_t__ MCDI_STATE_PROXY_WAIT ; 
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ struct efx_mcdi_iface* FUNC1 (struct efx_nic*) ; 
+ int /*<<< orphan*/  FUNC2 (int) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 () ; 
+
+__attribute__((used)) static void FUNC5(struct efx_nic *efx,
+				       u32 handle, int status)
+{
+	struct efx_mcdi_iface *mcdi = FUNC1(efx);
+
+	FUNC0(mcdi->state != MCDI_STATE_PROXY_WAIT);
+
+	mcdi->proxy_rx_status = FUNC2(status);
+	/* Ensure the status is written before we update the handle, since the
+	 * latter is used to check if we've finished.
+	 */
+	FUNC4();
+	mcdi->proxy_rx_handle = handle;
+	FUNC3(&mcdi->proxy_rx_wq);
+}

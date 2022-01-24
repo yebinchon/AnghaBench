@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ u32 ;
+typedef  scalar_t__ u16 ;
+struct ecore_rdma_info {int /*<<< orphan*/  lock; int /*<<< orphan*/  cid_map; int /*<<< orphan*/  proto; } ;
+struct ecore_hwfn {struct ecore_rdma_info* p_rdma_info; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (struct ecore_hwfn*,int /*<<< orphan*/ *,scalar_t__) ; 
+ scalar_t__ FUNC3 (struct ecore_hwfn*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC4(struct ecore_hwfn *p_hwfn, u16 icid)
+{
+	struct ecore_rdma_info *p_rdma_info = p_hwfn->p_rdma_info;
+	u32 start_cid, cid;
+
+	start_cid = FUNC3(p_hwfn, p_rdma_info->proto);
+	cid = icid - start_cid;
+
+	FUNC0(&p_rdma_info->lock);
+
+	FUNC2(p_hwfn, &p_rdma_info->cid_map, cid);
+
+	FUNC1(&p_hwfn->p_rdma_info->lock);
+}

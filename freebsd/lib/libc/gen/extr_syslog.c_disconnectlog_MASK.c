@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int LogFile ; 
+ int /*<<< orphan*/  NOCONN ; 
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  status ; 
+
+__attribute__((used)) static void
+FUNC1(void)
+{
+	/*
+	 * If the user closed the FD and opened another in the same slot,
+	 * that's their problem.  They should close it before calling on
+	 * system services.
+	 */
+	if (LogFile != -1) {
+		FUNC0(LogFile);
+		LogFile = -1;
+	}
+	status = NOCONN;			/* retry connect */
+}

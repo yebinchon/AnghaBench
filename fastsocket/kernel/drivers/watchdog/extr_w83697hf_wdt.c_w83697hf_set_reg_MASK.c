@@ -1,0 +1,23 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  W83697HF_EFDR ; 
+ int /*<<< orphan*/  W83697HF_EFIR ; 
+ int /*<<< orphan*/  FUNC0 (unsigned char,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC1(unsigned char reg, unsigned char data)
+{
+	FUNC0(reg, W83697HF_EFIR);
+	FUNC0(data, W83697HF_EFDR);
+}

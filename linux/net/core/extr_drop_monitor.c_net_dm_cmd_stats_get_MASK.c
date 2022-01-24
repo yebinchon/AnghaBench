@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sk_buff {int dummy; } ;
+struct genl_info {int dummy; } ;
+
+/* Variables and functions */
+ int ENOMEM ; 
+ int /*<<< orphan*/  GFP_KERNEL ; 
+ int /*<<< orphan*/  NLMSG_DEFAULT_SIZE ; 
+ int FUNC0 (struct sk_buff*,struct genl_info*) ; 
+ int FUNC1 (struct sk_buff*,struct genl_info*) ; 
+ int /*<<< orphan*/  FUNC2 (struct sk_buff*) ; 
+ struct sk_buff* FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC4(struct sk_buff *skb, struct genl_info *info)
+{
+	struct sk_buff *msg;
+	int rc;
+
+	msg = FUNC3(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+	if (!msg)
+		return -ENOMEM;
+
+	rc = FUNC1(msg, info);
+	if (rc)
+		goto free_msg;
+
+	return FUNC0(msg, info);
+
+free_msg:
+	FUNC2(msg);
+	return rc;
+}

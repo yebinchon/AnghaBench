@@ -1,0 +1,68 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  int u32 ;
+struct max2165_priv {int tf_ntch_low_cfg; int tf_ntch_hi_cfg; int tf_balun_low_ref; int tf_balun_hi_ref; TYPE_1__* config; } ;
+struct TYPE_2__ {int osc_clk; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  REG_NDIV_FRAC0 ; 
+ int /*<<< orphan*/  REG_NDIV_FRAC1 ; 
+ int /*<<< orphan*/  REG_NDIV_FRAC2 ; 
+ int /*<<< orphan*/  REG_NDIV_INT ; 
+ int /*<<< orphan*/  REG_TRACK_FILTER ; 
+ int /*<<< orphan*/  FUNC0 (char*,int) ; 
+ int FUNC1 (int,int,int*,int*) ; 
+ int /*<<< orphan*/  FUNC2 (struct max2165_priv*,int /*<<< orphan*/ ,int,int) ; 
+ int /*<<< orphan*/  FUNC3 (struct max2165_priv*,int /*<<< orphan*/ ,int) ; 
+
+__attribute__((used)) static int FUNC4(struct max2165_priv *priv, u32 freq)
+{
+	u8 tf;
+	u8 tf_ntch;
+	u32 t;
+	u32 quotient, fraction;
+	int ret;
+
+	/* Set PLL divider according to RF frequency */
+	ret = FUNC1(freq / 1000, priv->config->osc_clk * 1000,
+			 &quotient, &fraction);
+	if (ret != 0)
+		return ret;
+
+	/* 20-bit fraction */
+	fraction >>= 12;
+
+	FUNC3(priv, REG_NDIV_INT, quotient);
+	FUNC2(priv, REG_NDIV_FRAC2, 0x0F, fraction >> 16);
+	FUNC3(priv, REG_NDIV_FRAC1, fraction >> 8);
+	FUNC3(priv, REG_NDIV_FRAC0, fraction);
+
+	/* Norch Filter */
+	tf_ntch = (freq < 725000000) ?
+		priv->tf_ntch_low_cfg : priv->tf_ntch_hi_cfg;
+
+	/* Tracking filter balun */
+	t = priv->tf_balun_low_ref;
+	t += (priv->tf_balun_hi_ref - priv->tf_balun_low_ref)
+		* (freq / 1000 - 470000) / (780000 - 470000);
+
+	tf = t;
+	FUNC0("tf = %X\n", tf);
+	tf |= tf_ntch << 4;
+
+	FUNC3(priv, REG_TRACK_FILTER, tf);
+
+	return 0;
+}

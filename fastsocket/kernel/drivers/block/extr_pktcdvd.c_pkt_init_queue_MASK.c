@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct request_queue {struct pktcdvd_device* queuedata; } ;
+struct pktcdvd_device {TYPE_1__* disk; } ;
+struct TYPE_2__ {struct request_queue* queue; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  CD_FRAMESIZE ; 
+ int /*<<< orphan*/  PACKET_MAX_SECTORS ; 
+ int /*<<< orphan*/  FUNC0 (struct request_queue*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct request_queue*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct request_queue*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (struct request_queue*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  pkt_make_request ; 
+ int /*<<< orphan*/  pkt_merge_bvec ; 
+
+__attribute__((used)) static void FUNC4(struct pktcdvd_device *pd)
+{
+	struct request_queue *q = pd->disk->queue;
+
+	FUNC1(q, pkt_make_request);
+	FUNC0(q, CD_FRAMESIZE);
+	FUNC2(q, PACKET_MAX_SECTORS);
+	FUNC3(q, pkt_merge_bvec);
+	q->queuedata = pd;
+}

@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {struct TYPE_4__* symlink_target; struct TYPE_4__* default_instance; int /*<<< orphan*/  also; int /*<<< orphan*/  required_by; int /*<<< orphan*/  wanted_by; int /*<<< orphan*/  aliases; struct TYPE_4__* path; struct TYPE_4__* name; } ;
+typedef  TYPE_1__ UnitFileInstallInfo ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (TYPE_1__*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC2(UnitFileInstallInfo *i) {
+
+        if (!i)
+                return;
+
+        FUNC0(i->name);
+        FUNC0(i->path);
+        FUNC1(i->aliases);
+        FUNC1(i->wanted_by);
+        FUNC1(i->required_by);
+        FUNC1(i->also);
+        FUNC0(i->default_instance);
+        FUNC0(i->symlink_target);
+        FUNC0(i);
+}

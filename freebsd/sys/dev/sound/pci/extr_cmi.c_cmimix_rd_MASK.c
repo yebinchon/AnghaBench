@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u_int8_t ;
+struct sc_info {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  CMPCI_REG_SBADDR ; 
+ int /*<<< orphan*/  CMPCI_REG_SBDATA ; 
+ int /*<<< orphan*/  FUNC0 (struct sc_info*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct sc_info*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+__attribute__((used)) static u_int8_t
+FUNC2(struct sc_info *sc, u_int8_t port)
+{
+	FUNC1(sc, CMPCI_REG_SBADDR, port, 1);
+	return (u_int8_t)FUNC0(sc, CMPCI_REG_SBDATA, 1);
+}

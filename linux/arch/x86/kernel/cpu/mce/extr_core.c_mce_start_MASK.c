@@ -1,0 +1,94 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u64 ;
+struct TYPE_2__ {scalar_t__ monarch_timeout; } ;
+
+/* Variables and functions */
+ int NSEC_PER_USEC ; 
+ int /*<<< orphan*/  SPINUNIT ; 
+ int /*<<< orphan*/  FUNC0 (int,int /*<<< orphan*/ *) ; 
+ int FUNC1 (int /*<<< orphan*/ *) ; 
+ int FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,int) ; 
+ int /*<<< orphan*/  global_nwo ; 
+ TYPE_1__ mca_cfg ; 
+ int /*<<< orphan*/  mce_callin ; 
+ int /*<<< orphan*/  mce_executing ; 
+ scalar_t__ FUNC4 (int*,char*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ) ; 
+ int FUNC6 () ; 
+ int /*<<< orphan*/  FUNC7 () ; 
+
+__attribute__((used)) static int FUNC8(int *no_way_out)
+{
+	int order;
+	int cpus = FUNC6();
+	u64 timeout = (u64)mca_cfg.monarch_timeout * NSEC_PER_USEC;
+
+	if (!timeout)
+		return -1;
+
+	FUNC0(*no_way_out, &global_nwo);
+	/*
+	 * Rely on the implied barrier below, such that global_nwo
+	 * is updated before mce_callin.
+	 */
+	order = FUNC1(&mce_callin);
+
+	/*
+	 * Wait for everyone.
+	 */
+	while (FUNC2(&mce_callin) != cpus) {
+		if (FUNC4(&timeout,
+				  "Timeout: Not all CPUs entered broadcast exception handler")) {
+			FUNC3(&global_nwo, 0);
+			return -1;
+		}
+		FUNC5(SPINUNIT);
+	}
+
+	/*
+	 * mce_callin should be read before global_nwo
+	 */
+	FUNC7();
+
+	if (order == 1) {
+		/*
+		 * Monarch: Starts executing now, the others wait.
+		 */
+		FUNC3(&mce_executing, 1);
+	} else {
+		/*
+		 * Subject: Now start the scanning loop one by one in
+		 * the original callin order.
+		 * This way when there are any shared banks it will be
+		 * only seen by one CPU before cleared, avoiding duplicates.
+		 */
+		while (FUNC2(&mce_executing) < order) {
+			if (FUNC4(&timeout,
+					  "Timeout: Subject CPUs unable to finish machine check processing")) {
+				FUNC3(&global_nwo, 0);
+				return -1;
+			}
+			FUNC5(SPINUNIT);
+		}
+	}
+
+	/*
+	 * Cache the global no_way_out state.
+	 */
+	*no_way_out = FUNC2(&global_nwo);
+
+	return order;
+}

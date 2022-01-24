@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct ib_smp {int /*<<< orphan*/  data; } ;
+struct TYPE_3__ {scalar_t__ mgmt_class; scalar_t__ method; scalar_t__ attr_id; } ;
+struct ib_mad {TYPE_1__ mad_hdr; } ;
+struct ib_device {int /*<<< orphan*/  node_desc; } ;
+struct TYPE_4__ {int /*<<< orphan*/  sm_lock; } ;
+
+/* Variables and functions */
+ scalar_t__ IB_MGMT_CLASS_SUBN_DIRECTED_ROUTE ; 
+ scalar_t__ IB_MGMT_CLASS_SUBN_LID_ROUTED ; 
+ scalar_t__ IB_MGMT_METHOD_GET_RESP ; 
+ scalar_t__ IB_SMP_ATTR_NODE_DESC ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,unsigned long) ; 
+ TYPE_2__* FUNC3 (struct ib_device*) ; 
+
+__attribute__((used)) static void FUNC4(struct ib_device *dev,
+			       struct ib_mad *mad)
+{
+	unsigned long flags;
+
+	if ((mad->mad_hdr.mgmt_class == IB_MGMT_CLASS_SUBN_LID_ROUTED ||
+	     mad->mad_hdr.mgmt_class == IB_MGMT_CLASS_SUBN_DIRECTED_ROUTE) &&
+	    mad->mad_hdr.method == IB_MGMT_METHOD_GET_RESP &&
+	    mad->mad_hdr.attr_id == IB_SMP_ATTR_NODE_DESC) {
+		FUNC1(&FUNC3(dev)->sm_lock, flags);
+		FUNC0(((struct ib_smp *) mad)->data, dev->node_desc, 64);
+		FUNC2(&FUNC3(dev)->sm_lock, flags);
+	}
+}

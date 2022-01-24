@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ u32 ;
+struct set_elem {scalar_t__ id; } ;
+struct list_set {scalar_t__ size; int /*<<< orphan*/  timeout; } ;
+typedef  scalar_t__ ip_set_id_t ;
+
+/* Variables and functions */
+ struct set_elem* FUNC0 (struct list_set const*,scalar_t__) ; 
+ scalar_t__ FUNC1 (struct list_set const*,scalar_t__) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static bool
+FUNC3(const struct list_set *map, u32 i, ip_set_id_t id)
+{
+	const struct set_elem *elem;
+
+	if (i < map->size) {
+		elem = FUNC0(map, i);
+		return !!(elem->id == id &&
+			  !(FUNC2(map->timeout) &&
+			    FUNC1(map, i)));
+	}
+
+	return 0;
+}

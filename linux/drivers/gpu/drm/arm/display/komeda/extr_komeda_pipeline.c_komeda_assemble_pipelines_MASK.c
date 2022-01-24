@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct komeda_pipeline {int dummy; } ;
+struct komeda_dev {int n_pipelines; struct komeda_pipeline** pipelines; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct komeda_pipeline*) ; 
+ int /*<<< orphan*/  FUNC1 (struct komeda_pipeline*) ; 
+
+int FUNC2(struct komeda_dev *mdev)
+{
+	struct komeda_pipeline *pipe;
+	int i;
+
+	for (i = 0; i < mdev->n_pipelines; i++) {
+		pipe = mdev->pipelines[i];
+
+		FUNC0(pipe);
+		FUNC1(pipe);
+	}
+
+	return 0;
+}

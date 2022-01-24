@@ -1,0 +1,57 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ uint32_t ;
+
+/* Variables and functions */
+ scalar_t__ BASE ; 
+#define  _ADJUST 128 
+ int FUNC0 (scalar_t__) ; 
+ int edit ; 
+ int /*<<< orphan*/  hue ; 
+ int /*<<< orphan*/  mode ; 
+ int /*<<< orphan*/  FUNC1 () ; 
+ int /*<<< orphan*/  FUNC2 () ; 
+ int /*<<< orphan*/  FUNC3 () ; 
+ int /*<<< orphan*/  FUNC4 () ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (int) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC8 (int,int,int) ; 
+ int /*<<< orphan*/  sat ; 
+ int /*<<< orphan*/  val ; 
+
+uint32_t FUNC9(uint32_t state)
+{
+  if (state == BASE && edit == true)
+  {
+    hue = FUNC1();
+    sat = FUNC3();
+    val = FUNC4();
+    edit = false;
+  }
+
+  switch (FUNC0(state))
+  {
+  case _ADJUST:
+    mode = FUNC2();
+    FUNC6(1);
+    FUNC8(0xD3, 0x7F, 0xED);
+    edit = true;
+    break;
+  default:
+    FUNC5(mode);
+    FUNC7(hue, sat, val);
+    break;
+  }
+  return state;
+}

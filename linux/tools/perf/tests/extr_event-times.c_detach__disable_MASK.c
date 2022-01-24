@@ -1,0 +1,25 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct evsel {int dummy; } ;
+struct evlist {int dummy; } ;
+
+/* Variables and functions */
+ struct evsel* FUNC0 (struct evlist*) ; 
+ int FUNC1 (struct evsel*) ; 
+
+__attribute__((used)) static int FUNC2(struct evlist *evlist)
+{
+	struct evsel *evsel = FUNC0(evlist);
+
+	return FUNC1(evsel);
+}

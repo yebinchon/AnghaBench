@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct filedesc {int /*<<< orphan*/ * fd_rdir; int /*<<< orphan*/ * fd_cdir; } ;
+struct TYPE_2__ {struct filedesc* p_fd; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct filedesc*) ; 
+ int /*<<< orphan*/  FUNC1 (struct filedesc*) ; 
+ TYPE_1__* curproc ; 
+ void* rootvnode ; 
+ int /*<<< orphan*/  FUNC2 (void*) ; 
+
+void
+FUNC3(void)
+{
+	struct filedesc *fdp;
+
+	fdp = curproc->p_fd;
+	FUNC0(fdp);
+	if (fdp->fd_cdir == NULL) {
+		fdp->fd_cdir = rootvnode;
+		FUNC2(rootvnode);
+	}
+	if (fdp->fd_rdir == NULL) {
+		fdp->fd_rdir = rootvnode;
+		FUNC2(rootvnode);
+	}
+	FUNC1(fdp);
+}

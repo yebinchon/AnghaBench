@@ -1,0 +1,55 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_9__   TYPE_4__ ;
+typedef  struct TYPE_8__   TYPE_3__ ;
+typedef  struct TYPE_7__   TYPE_2__ ;
+typedef  struct TYPE_6__   TYPE_1__ ;
+
+/* Type definitions */
+struct videobuf_queue {struct cx231xx_fh* priv_data; } ;
+struct cx231xx_fh {struct cx231xx* dev; } ;
+struct TYPE_9__ {int /*<<< orphan*/  state; } ;
+struct cx231xx_buffer {TYPE_4__ vb; } ;
+struct TYPE_7__ {struct cx231xx_buffer* buf; } ;
+struct TYPE_6__ {struct cx231xx_buffer* buf; } ;
+struct TYPE_8__ {int /*<<< orphan*/  slock; TYPE_2__ bulk_ctl; TYPE_1__ isoc_ctl; } ;
+struct cx231xx {TYPE_3__ video_mode; scalar_t__ USE_ISO; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  VIDEOBUF_NEEDS_INIT ; 
+ int /*<<< orphan*/  FUNC1 () ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC4 (TYPE_4__*) ; 
+ int /*<<< orphan*/  FUNC5 (struct videobuf_queue*,TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC6(struct videobuf_queue *vq, struct cx231xx_buffer *buf)
+{
+	struct cx231xx_fh *fh = vq->priv_data;
+	struct cx231xx *dev = fh->dev;
+	unsigned long flags = 0;
+
+	FUNC0(FUNC1());
+
+	FUNC2(&dev->video_mode.slock, flags);
+	if (dev->USE_ISO) {
+		if (dev->video_mode.isoc_ctl.buf == buf)
+			dev->video_mode.isoc_ctl.buf = NULL;
+	} else {
+		if (dev->video_mode.bulk_ctl.buf == buf)
+			dev->video_mode.bulk_ctl.buf = NULL;
+	}
+	FUNC3(&dev->video_mode.slock, flags);
+	FUNC5(vq, &buf->vb, 0, 0);
+	FUNC4(&buf->vb);
+	buf->vb.state = VIDEOBUF_NEEDS_INIT;
+}

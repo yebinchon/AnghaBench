@@ -1,0 +1,63 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_10__   TYPE_5__ ;
+typedef  struct TYPE_9__   TYPE_4__ ;
+typedef  struct TYPE_8__   TYPE_3__ ;
+typedef  struct TYPE_7__   TYPE_2__ ;
+typedef  struct TYPE_6__   TYPE_1__ ;
+
+/* Type definitions */
+struct xenbus_device {int /*<<< orphan*/  dev; } ;
+struct TYPE_6__ {int /*<<< orphan*/  id; } ;
+struct TYPE_7__ {TYPE_1__ listen; } ;
+struct xen_pvcalls_response {int ret; TYPE_2__ u; int /*<<< orphan*/  cmd; int /*<<< orphan*/  req_id; } ;
+struct TYPE_8__ {int /*<<< orphan*/  id; int /*<<< orphan*/  backlog; } ;
+struct TYPE_9__ {TYPE_3__ listen; } ;
+struct xen_pvcalls_request {TYPE_4__ u; int /*<<< orphan*/  cmd; int /*<<< orphan*/  req_id; } ;
+struct sockpass_mapping {int /*<<< orphan*/  sock; } ;
+struct TYPE_10__ {int /*<<< orphan*/  rsp_prod_pvt; } ;
+struct pvcalls_fedata {TYPE_5__ ring; int /*<<< orphan*/  socket_lock; int /*<<< orphan*/  socketpass_mappings; } ;
+
+/* Variables and functions */
+ int EINVAL ; 
+ struct xen_pvcalls_response* FUNC0 (TYPE_5__*,int /*<<< orphan*/ ) ; 
+ struct pvcalls_fedata* FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ struct sockpass_mapping* FUNC4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC6(struct xenbus_device *dev,
+			       struct xen_pvcalls_request *req)
+{
+	struct pvcalls_fedata *fedata;
+	int ret = -EINVAL;
+	struct sockpass_mapping *map;
+	struct xen_pvcalls_response *rsp;
+
+	fedata = FUNC1(&dev->dev);
+
+	FUNC2(&fedata->socket_lock);
+	map = FUNC4(&fedata->socketpass_mappings, req->u.listen.id);
+	FUNC5(&fedata->socket_lock);
+	if (map == NULL)
+		goto out;
+
+	ret = FUNC3(map->sock, req->u.listen.backlog);
+
+out:
+	rsp = FUNC0(&fedata->ring, fedata->ring.rsp_prod_pvt++);
+	rsp->req_id = req->req_id;
+	rsp->cmd = req->cmd;
+	rsp->u.listen.id = req->u.listen.id;
+	rsp->ret = ret;
+	return 0;
+}

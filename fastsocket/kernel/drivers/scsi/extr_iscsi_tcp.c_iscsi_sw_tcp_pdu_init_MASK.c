@@ -1,0 +1,52 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {int /*<<< orphan*/  nents; int /*<<< orphan*/  sgl; } ;
+struct scsi_data_buffer {TYPE_1__ table; } ;
+struct iscsi_task {int /*<<< orphan*/  sc; int /*<<< orphan*/  data; int /*<<< orphan*/  hdr_len; int /*<<< orphan*/  hdr; struct iscsi_conn* conn; } ;
+struct iscsi_conn {int dummy; } ;
+
+/* Variables and functions */
+ int EIO ; 
+ int FUNC0 (struct iscsi_conn*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
+ int /*<<< orphan*/  FUNC1 (struct iscsi_conn*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct iscsi_conn*,int /*<<< orphan*/ ,unsigned int) ; 
+ struct scsi_data_buffer* FUNC3 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC4(struct iscsi_task *task,
+				 unsigned int offset, unsigned int count)
+{
+	struct iscsi_conn *conn = task->conn;
+	int err = 0;
+
+	FUNC1(conn, task->hdr, task->hdr_len);
+
+	if (!count)
+		return 0;
+
+	if (!task->sc)
+		FUNC2(conn, task->data, count);
+	else {
+		struct scsi_data_buffer *sdb = FUNC3(task->sc);
+
+		err = FUNC0(conn, sdb->table.sgl,
+						  sdb->table.nents, offset,
+						  count);
+	}
+
+	if (err) {
+		/* got invalid offset/len */
+		return -EIO;
+	}
+	return 0;
+}

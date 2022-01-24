@@ -1,0 +1,25 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct net_device {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct net_device*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (struct net_device*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  vmxnet3_ethtool_ops ; 
+ int /*<<< orphan*/  vmxnet3_ethtool_ops_ext ; 
+
+void FUNC2(struct net_device *netdev)
+{
+	FUNC0(netdev, &vmxnet3_ethtool_ops);
+	FUNC1(netdev, &vmxnet3_ethtool_ops_ext);
+}

@@ -1,0 +1,66 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  value ;
+struct isst_clos_config {int epp; int clos_prop_prio; int clos_min; int clos_max; int clos_desired; } ;
+typedef  int /*<<< orphan*/  header ;
+typedef  int /*<<< orphan*/  FILE ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int,char*,char*) ; 
+ int FUNC1 (int) ; 
+ int FUNC2 (int) ; 
+ int /*<<< orphan*/  FUNC3 (char*,int,char*,...) ; 
+
+void FUNC4(int cpu, FILE *outf, int clos,
+				   struct isst_clos_config *clos_config)
+{
+	char header[256];
+	char value[256];
+
+	FUNC3(header, sizeof(header), "package-%d",
+		 FUNC2(cpu));
+	FUNC0(outf, 1, header, NULL);
+	FUNC3(header, sizeof(header), "die-%d", FUNC1(cpu));
+	FUNC0(outf, 2, header, NULL);
+	FUNC3(header, sizeof(header), "cpu-%d", cpu);
+	FUNC0(outf, 3, header, NULL);
+
+	FUNC3(header, sizeof(header), "core-power");
+	FUNC0(outf, 4, header, NULL);
+
+	FUNC3(header, sizeof(header), "clos");
+	FUNC3(value, sizeof(value), "%d", clos);
+	FUNC0(outf, 5, header, value);
+
+	FUNC3(header, sizeof(header), "epp");
+	FUNC3(value, sizeof(value), "%d", clos_config->epp);
+	FUNC0(outf, 5, header, value);
+
+	FUNC3(header, sizeof(header), "clos-proportional-priority");
+	FUNC3(value, sizeof(value), "%d", clos_config->clos_prop_prio);
+	FUNC0(outf, 5, header, value);
+
+	FUNC3(header, sizeof(header), "clos-min");
+	FUNC3(value, sizeof(value), "%d", clos_config->clos_min);
+	FUNC0(outf, 5, header, value);
+
+	FUNC3(header, sizeof(header), "clos-max");
+	FUNC3(value, sizeof(value), "%d", clos_config->clos_max);
+	FUNC0(outf, 5, header, value);
+
+	FUNC3(header, sizeof(header), "clos-desired");
+	FUNC3(value, sizeof(value), "%d", clos_config->clos_desired);
+	FUNC0(outf, 5, header, value);
+
+	FUNC0(outf, 1, NULL, NULL);
+}

@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  jv ;
+typedef  int /*<<< orphan*/  errbuf ;
+typedef  int /*<<< orphan*/  block ;
+
+/* Variables and functions */
+ scalar_t__ JV_KIND_STRING ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,char*,int) ; 
+ int /*<<< orphan*/  FUNC4 () ; 
+ int /*<<< orphan*/  FUNC5 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC6 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static jv FUNC7(block k) {
+  if (FUNC2(k) && FUNC1(k) != JV_KIND_STRING) {
+    char errbuf[15];
+    return FUNC6("Cannot use %s (%s) as object key",
+        FUNC5(FUNC1(k)),
+        FUNC3(FUNC0(k), errbuf, sizeof(errbuf)));
+  }
+  return FUNC4();
+}

@@ -1,0 +1,47 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {int /*<<< orphan*/  flush_count; } ;
+struct mm_struct {TYPE_1__ context; } ;
+typedef  int /*<<< orphan*/  pmd_t ;
+
+/* Variables and functions */
+ scalar_t__ MACHINE_HAS_TLB_LC ; 
+ int _SEGMENT_ENTRY_INVALID ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (struct mm_struct*) ; 
+ int FUNC5 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (struct mm_struct*,unsigned long,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC7 (struct mm_struct*,unsigned long,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC8 () ; 
+
+__attribute__((used)) static inline pmd_t FUNC9(struct mm_struct *mm,
+				      unsigned long addr, pmd_t *pmdp)
+{
+	pmd_t old;
+
+	old = *pmdp;
+	if (FUNC5(old) & _SEGMENT_ENTRY_INVALID)
+		return old;
+	FUNC1(&mm->context.flush_count);
+	if (MACHINE_HAS_TLB_LC &&
+	    FUNC2(FUNC4(mm), FUNC3(FUNC8())))
+		FUNC7(mm, addr, pmdp);
+	else
+		FUNC6(mm, addr, pmdp);
+	FUNC0(&mm->context.flush_count);
+	return old;
+}

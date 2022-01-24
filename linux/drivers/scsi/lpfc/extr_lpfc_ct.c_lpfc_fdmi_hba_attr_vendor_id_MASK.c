@@ -1,0 +1,47 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int uint32_t ;
+struct lpfc_vport {int dummy; } ;
+struct TYPE_2__ {int /*<<< orphan*/  AttrString; } ;
+struct lpfc_fdmi_attr_entry {TYPE_1__ un; } ;
+struct lpfc_fdmi_attr_def {void* AttrType; void* AttrLen; int /*<<< orphan*/  AttrValue; } ;
+
+/* Variables and functions */
+ int FOURBYTES ; 
+ int RHBA_VENDOR_ID ; 
+ void* FUNC0 (int) ; 
+ int /*<<< orphan*/  FUNC1 (struct lpfc_fdmi_attr_entry*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,char*,int) ; 
+ int FUNC3 (int /*<<< orphan*/ ,int) ; 
+
+__attribute__((used)) static int
+FUNC4(struct lpfc_vport *vport,
+			     struct lpfc_fdmi_attr_def *ad)
+{
+	struct lpfc_fdmi_attr_entry *ae;
+	uint32_t len, size;
+
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	FUNC1(ae, 0, 256);
+
+	FUNC2(ae->un.AttrString, "EMULEX",
+		sizeof(ae->un.AttrString));
+	len = FUNC3(ae->un.AttrString,
+			  sizeof(ae->un.AttrString));
+	len += (len & 3) ? (4 - (len & 3)) : 4;
+	size = FOURBYTES + len;
+	ad->AttrLen = FUNC0(size);
+	ad->AttrType = FUNC0(RHBA_VENDOR_ID);
+	return size;
+}

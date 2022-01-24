@@ -1,0 +1,46 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct knav_reg_acc_command {int command; } ;
+struct TYPE_2__ {int /*<<< orphan*/  pdsp; } ;
+struct knav_range_info {TYPE_1__ acc_info; struct knav_acc_channel* acc; } ;
+struct knav_device {int /*<<< orphan*/  dev; } ;
+struct knav_acc_channel {int /*<<< orphan*/  name; } ;
+typedef  enum knav_acc_result { ____Placeholder_knav_acc_result } knav_acc_result ;
+
+/* Variables and functions */
+ int ACC_CMD_ENABLE_CHANNEL ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int) ; 
+ int /*<<< orphan*/  FUNC2 (struct knav_device*,struct knav_range_info*,struct knav_reg_acc_command*,int) ; 
+ int FUNC3 (struct knav_device*,int /*<<< orphan*/ ,struct knav_reg_acc_command*) ; 
+
+__attribute__((used)) static enum knav_acc_result FUNC4(struct knav_device *kdev,
+						struct knav_range_info *range,
+						int queue)
+{
+	struct knav_reg_acc_command cmd;
+	struct knav_acc_channel *acc;
+	enum knav_acc_result result;
+
+	acc = range->acc + queue;
+
+	FUNC2(kdev, range, &cmd, queue);
+	cmd.command |= ACC_CMD_ENABLE_CHANNEL << 8;
+	result = FUNC3(kdev, range->acc_info.pdsp, &cmd);
+
+	FUNC0(kdev->dev, "started acc channel %s, result %s\n",
+		acc->name, FUNC1(result));
+
+	return result;
+}

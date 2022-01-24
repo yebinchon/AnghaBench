@@ -1,0 +1,72 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ uint32_t ;
+struct ifdrv {int ifd_len; int /*<<< orphan*/  ifd_cmd; struct ifbreq* ifd_data; int /*<<< orphan*/  ifd_name; } ;
+struct ifbreq {int /*<<< orphan*/  ifbr_ifsflags; int /*<<< orphan*/  ifbr_ifsname; } ;
+struct bridge_port {scalar_t__ enable; char const* p_name; } ;
+typedef  int /*<<< orphan*/  b_req ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  BRDGGIFFLGS ; 
+ int /*<<< orphan*/  BRDGSIFFLGS ; 
+ int /*<<< orphan*/  IFBIF_STP ; 
+ int /*<<< orphan*/  LOG_ERR ; 
+ int /*<<< orphan*/  SIOCGDRVSPEC ; 
+ int /*<<< orphan*/  SIOCSDRVSPEC ; 
+ int /*<<< orphan*/  FUNC0 (struct ifbreq*,int) ; 
+ scalar_t__ dot1dStpPortEnable_enabled ; 
+ int /*<<< orphan*/  errno ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ifdrv*) ; 
+ int /*<<< orphan*/  sock ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,char const*,int) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ) ; 
+
+int
+FUNC5(const char *bif_name, struct bridge_port *bp,
+	uint32_t enable)
+{
+	struct ifdrv ifd;
+	struct ifbreq b_req;
+
+	if (bp->enable == enable)
+		return (0);
+
+	FUNC0(&b_req, sizeof(b_req));
+	FUNC3(ifd.ifd_name, bif_name, sizeof(ifd.ifd_name));
+	ifd.ifd_len = sizeof(b_req);
+	ifd.ifd_data = &b_req;
+	FUNC3(b_req.ifbr_ifsname, bp->p_name, sizeof(b_req.ifbr_ifsname));
+	ifd.ifd_cmd = BRDGGIFFLGS;
+
+	if (FUNC1(sock, SIOCGDRVSPEC, &ifd) < 0) {
+		FUNC4(LOG_ERR, "get member %s param: ioctl(BRDGGIFFLGS) "
+		    "failed: %s", bp->p_name, FUNC2(errno));
+		return (-1);
+	}
+
+	if (enable == dot1dStpPortEnable_enabled)
+		b_req.ifbr_ifsflags |= IFBIF_STP;
+	else
+		b_req.ifbr_ifsflags &= ~IFBIF_STP;
+
+	ifd.ifd_cmd = BRDGSIFFLGS;
+	if (FUNC1(sock, SIOCSDRVSPEC, &ifd) < 0) {
+		FUNC4(LOG_ERR, "set member %s param: ioctl(BRDGSIFFLGS) "
+		    "failed: %s", bp->p_name, FUNC2(errno));
+		return (-1);
+	}
+
+	bp->enable = enable;
+	return (0);
+}

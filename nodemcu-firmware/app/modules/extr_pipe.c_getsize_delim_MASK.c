@@ -1,0 +1,45 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  lua_State ;
+
+/* Variables and functions */
+ int CHAR_DELIM ; 
+ int CHAR_DELIM_KEEP ; 
+ scalar_t__ LUA_TNUMBER ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int,int,char*) ; 
+ int FUNC1 (int /*<<< orphan*/ *,int) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ *,int) ; 
+ char* FUNC3 (int /*<<< orphan*/ *,int,size_t*) ; 
+ scalar_t__ FUNC4 (int /*<<< orphan*/ *,int) ; 
+
+__attribute__((used)) static char FUNC5 (lua_State *L, int ndx, int *len) {     // [-0, +0, v]
+  char delim;
+  int  n;
+  if( FUNC4( L, ndx ) == LUA_TNUMBER ) {
+    n = FUNC1( L, ndx );
+    FUNC0(L, n > 0, ndx, "invalid chunk size");
+    delim = '\0';
+  } else if (FUNC2(L, ndx)) {
+    n = CHAR_DELIM;
+    delim = '\n';
+  } else {
+    size_t ldelim;
+    const char *s = FUNC3( L, 2, &ldelim);
+    n = ldelim == 2 && s[1] == '+' ? CHAR_DELIM_KEEP : CHAR_DELIM ;
+    FUNC0(L, ldelim + n == 0, ndx, "invalid delimiter");
+    delim = s[0];
+  }
+  if (len)
+    *len = n;
+  return delim;
+}

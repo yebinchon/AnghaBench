@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct gnutar {size_t entry_bytes_remaining; } ;
+struct archive_write {scalar_t__ format_data; } ;
+typedef  int ssize_t ;
+
+/* Variables and functions */
+ int ARCHIVE_OK ; 
+ int FUNC0 (struct archive_write*,void const*,size_t) ; 
+
+__attribute__((used)) static ssize_t
+FUNC1(struct archive_write *a, const void *buff, size_t s)
+{
+	struct gnutar *gnutar;
+	int ret;
+
+	gnutar = (struct gnutar *)a->format_data;
+	if (s > gnutar->entry_bytes_remaining)
+		s = (size_t)gnutar->entry_bytes_remaining;
+	ret = FUNC0(a, buff, s);
+	gnutar->entry_bytes_remaining -= s;
+	if (ret != ARCHIVE_OK)
+		return (ret);
+	return (s);
+}

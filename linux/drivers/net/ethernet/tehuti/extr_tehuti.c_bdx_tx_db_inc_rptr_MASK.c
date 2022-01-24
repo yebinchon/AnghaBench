@@ -1,0 +1,23 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct txdb {scalar_t__ rptr; scalar_t__ wptr; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  FUNC1 (struct txdb*,scalar_t__*) ; 
+
+__attribute__((used)) static inline void FUNC2(struct txdb *db)
+{
+	FUNC0(db->rptr == db->wptr);	/* can't read from empty db */
+	FUNC1(db, &db->rptr);
+}

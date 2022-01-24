@@ -1,0 +1,46 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ unsigned int XICS_IRQ_SPURIOUS ; 
+ unsigned int FUNC0 () ; 
+ int /*<<< orphan*/  FUNC1 (unsigned int) ; 
+ unsigned int FUNC2 (int /*<<< orphan*/ ,unsigned int) ; 
+ scalar_t__ FUNC3 (unsigned int) ; 
+ int /*<<< orphan*/  xics_host ; 
+ int /*<<< orphan*/  FUNC4 (unsigned int) ; 
+ int /*<<< orphan*/  FUNC5 (unsigned int) ; 
+
+__attribute__((used)) static unsigned int FUNC6(void)
+{
+	unsigned int xirr = FUNC0();
+	unsigned int vec = xirr & 0x00ffffff;
+	unsigned int irq;
+
+	if (vec == XICS_IRQ_SPURIOUS)
+		return 0;
+
+	irq = FUNC2(xics_host, vec);
+	if (FUNC3(irq)) {
+		FUNC5(vec);
+		return irq;
+	}
+
+	/* We don't have a linux mapping, so have rtas mask it. */
+	FUNC4(vec);
+
+	/* We might learn about it later, so EOI it */
+	FUNC1(xirr);
+
+	return 0;
+}

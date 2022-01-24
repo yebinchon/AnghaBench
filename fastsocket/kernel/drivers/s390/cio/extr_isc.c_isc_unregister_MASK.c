@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ unsigned int MAX_ISC ; 
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  FUNC1 (int,int) ; 
+ int /*<<< orphan*/  isc_ref_lock ; 
+ int* isc_refs ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+
+void FUNC4(unsigned int isc)
+{
+	FUNC2(&isc_ref_lock);
+	/* check for misuse */
+	if (isc > MAX_ISC || isc_refs[isc] == 0) {
+		FUNC0(1);
+		goto out_unlock;
+	}
+	if (isc_refs[isc] == 1)
+		FUNC1(6, 31 - isc);
+	isc_refs[isc]--;
+out_unlock:
+	FUNC3(&isc_ref_lock);
+}

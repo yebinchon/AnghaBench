@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sw_flow_mask {int /*<<< orphan*/  list; int /*<<< orphan*/  ref_count; } ;
+struct flow_table {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 () ; 
+ int /*<<< orphan*/  FUNC1 (int) ; 
+ int /*<<< orphan*/  FUNC2 (struct sw_flow_mask*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  rcu ; 
+
+__attribute__((used)) static void FUNC4(struct flow_table *tbl, struct sw_flow_mask *mask)
+{
+	if (mask) {
+		/* ovs-lock is required to protect mask-refcount and
+		 * mask list.
+		 */
+		FUNC0();
+		FUNC1(!mask->ref_count);
+		mask->ref_count--;
+
+		if (!mask->ref_count) {
+			FUNC3(&mask->list);
+			FUNC2(mask, rcu);
+		}
+	}
+}

@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int code ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ char* formname ; 
+ int /*<<< orphan*/  FUNC1 (char*,char*) ; 
+ int /*<<< orphan*/  stdout ; 
+
+void FUNC2(int argc, const char *argv[])
+{
+
+	FUNC1("We only support %s format, sorry.\n", formname);
+	(void) FUNC0(stdout);
+	code = -1;
+}

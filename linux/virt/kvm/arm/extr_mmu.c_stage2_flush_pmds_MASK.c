@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct kvm {int dummy; } ;
+typedef  int /*<<< orphan*/  pud_t ;
+typedef  int /*<<< orphan*/  pmd_t ;
+typedef  scalar_t__ phys_addr_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (struct kvm*,int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
+ scalar_t__ FUNC4 (struct kvm*,scalar_t__,scalar_t__) ; 
+ int /*<<< orphan*/ * FUNC5 (struct kvm*,int /*<<< orphan*/ *,scalar_t__) ; 
+
+__attribute__((used)) static void FUNC6(struct kvm *kvm, pud_t *pud,
+			      phys_addr_t addr, phys_addr_t end)
+{
+	pmd_t *pmd;
+	phys_addr_t next;
+
+	pmd = FUNC5(kvm, pud, addr);
+	do {
+		next = FUNC4(kvm, addr, end);
+		if (!FUNC1(*pmd)) {
+			if (FUNC2(*pmd))
+				FUNC0(*pmd);
+			else
+				FUNC3(kvm, pmd, addr, next);
+		}
+	} while (pmd++, addr = next, addr != end);
+}

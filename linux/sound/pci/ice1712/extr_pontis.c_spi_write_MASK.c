@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {int write_mask; int direction; } ;
+struct snd_ice1712 {TYPE_1__ gpio; } ;
+
+/* Variables and functions */
+ int PONTIS_CS_CLK ; 
+ int PONTIS_CS_CS ; 
+ int PONTIS_CS_WDATA ; 
+ int /*<<< orphan*/  FUNC0 (struct snd_ice1712*,int,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct snd_ice1712*,int) ; 
+ int /*<<< orphan*/  FUNC2 (struct snd_ice1712*,int) ; 
+ int /*<<< orphan*/  FUNC3 (struct snd_ice1712*,unsigned int) ; 
+ int /*<<< orphan*/  FUNC4 (int) ; 
+
+__attribute__((used)) static void FUNC5(struct snd_ice1712 *ice, unsigned int dev, unsigned int reg, unsigned int data)
+{
+	FUNC1(ice, PONTIS_CS_CS|PONTIS_CS_WDATA|PONTIS_CS_CLK);
+	FUNC2(ice, ~(PONTIS_CS_CS|PONTIS_CS_WDATA|PONTIS_CS_CLK));
+	FUNC0(ice, PONTIS_CS_CS, 0);
+	FUNC3(ice, dev & ~1); /* WRITE */
+	FUNC3(ice, reg); /* MAP */
+	FUNC3(ice, data); /* DATA */
+	/* trigger */
+	FUNC0(ice, PONTIS_CS_CS, 1);
+	FUNC4(1);
+	/* restore */
+	FUNC2(ice, ice->gpio.write_mask);
+	FUNC1(ice, ice->gpio.direction);
+}

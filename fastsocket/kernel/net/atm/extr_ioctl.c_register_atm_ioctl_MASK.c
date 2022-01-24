@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct atm_ioctl {int /*<<< orphan*/  list; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ioctl_list ; 
+ int /*<<< orphan*/  ioctl_mutex ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+
+void FUNC3(struct atm_ioctl *ioctl)
+{
+	FUNC1(&ioctl_mutex);
+	FUNC0(&ioctl->list, &ioctl_list);
+	FUNC2(&ioctl_mutex);
+}

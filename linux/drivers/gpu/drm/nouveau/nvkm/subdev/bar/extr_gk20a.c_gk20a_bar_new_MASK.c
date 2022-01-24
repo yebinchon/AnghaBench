@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct nvkm_device {int dummy; } ;
+struct nvkm_bar {int iomap_uncached; } ;
+
+/* Variables and functions */
+ int FUNC0 (int /*<<< orphan*/ *,struct nvkm_device*,int,struct nvkm_bar**) ; 
+ int /*<<< orphan*/  gk20a_bar_func ; 
+
+int
+FUNC1(struct nvkm_device *device, int index, struct nvkm_bar **pbar)
+{
+	int ret = FUNC0(&gk20a_bar_func, device, index, pbar);
+	if (ret == 0)
+		(*pbar)->iomap_uncached = true;
+	return ret;
+}

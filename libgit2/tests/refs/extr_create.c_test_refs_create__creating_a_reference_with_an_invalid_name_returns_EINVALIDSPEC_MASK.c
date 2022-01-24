@@ -1,0 +1,30 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char*) ; 
+
+void FUNC1(void)
+{
+	FUNC0("refs/heads/inv@{id");
+	FUNC0("refs/heads/back\\slash");
+
+	FUNC0("refs/heads/foo ");
+	FUNC0("refs/heads/foo /bar");
+	FUNC0("refs/heads/com1:bar/foo");
+
+	FUNC0("refs/heads/e:");
+	FUNC0("refs/heads/c:/foo");
+
+	FUNC0("refs/heads/foo.");
+}

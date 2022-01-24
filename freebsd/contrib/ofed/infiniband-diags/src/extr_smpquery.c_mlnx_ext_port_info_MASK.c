@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  ib_portid_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  IB_ATTR_MLNX_EXT_PORT_INFO ; 
+ int IB_SMP_DATA_SIZE ; 
+ int /*<<< orphan*/  FUNC0 (char*,int,char*,int) ; 
+ char* FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (char*,char*,int,char*) ; 
+ int /*<<< orphan*/  FUNC3 (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  srcport ; 
+ int FUNC4 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static char *FUNC5(ib_portid_t * dest, char **argv, int argc)
+{
+	char buf[2300];
+	char data[IB_SMP_DATA_SIZE];
+	int portnum = 0;
+
+	if (argc > 0)
+		portnum = FUNC4(argv[0], 0, 0);
+
+	if (!FUNC3(data, dest, IB_ATTR_MLNX_EXT_PORT_INFO, portnum, 0, srcport))
+		return "Mellanox ext port info query failed";
+
+	FUNC0(buf, sizeof buf, data, sizeof data);
+
+	FUNC2("# MLNX ext Port info: %s port %d\n%s", FUNC1(dest), portnum, buf);
+	return 0;
+}

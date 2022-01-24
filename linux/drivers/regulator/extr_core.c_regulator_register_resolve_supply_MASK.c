@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct regulator_dev {int dummy; } ;
+struct device {int dummy; } ;
+
+/* Variables and functions */
+ struct regulator_dev* FUNC0 (struct device*) ; 
+ int /*<<< orphan*/  FUNC1 (struct regulator_dev*,char*) ; 
+ scalar_t__ FUNC2 (struct regulator_dev*) ; 
+
+__attribute__((used)) static int FUNC3(struct device *dev, void *data)
+{
+	struct regulator_dev *rdev = FUNC0(dev);
+
+	if (FUNC2(rdev))
+		FUNC1(rdev, "unable to resolve supply\n");
+
+	return 0;
+}

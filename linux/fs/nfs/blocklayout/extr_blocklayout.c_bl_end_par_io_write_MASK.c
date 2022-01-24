@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_6__   TYPE_3__ ;
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_5__ {int /*<<< orphan*/  tk_work; } ;
+struct TYPE_6__ {TYPE_2__ u; int /*<<< orphan*/  tk_status; } ;
+struct TYPE_4__ {int /*<<< orphan*/  committed; } ;
+struct nfs_pgio_header {TYPE_3__ task; TYPE_1__ verf; int /*<<< orphan*/  pnfs_error; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  NFS_FILE_SYNC ; 
+ int /*<<< orphan*/  bl_write_cleanup ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static void FUNC2(void *data)
+{
+	struct nfs_pgio_header *hdr = data;
+
+	hdr->task.tk_status = hdr->pnfs_error;
+	hdr->verf.committed = NFS_FILE_SYNC;
+	FUNC0(&hdr->task.u.tk_work, bl_write_cleanup);
+	FUNC1(&hdr->task.u.tk_work);
+}

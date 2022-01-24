@@ -1,0 +1,52 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  WCHAR ;
+typedef  int /*<<< orphan*/  IActiveScriptParse ;
+typedef  int /*<<< orphan*/  IActiveScript ;
+typedef  int /*<<< orphan*/  HRESULT ;
+typedef  int /*<<< orphan*/  BSTR ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int SCRIPTITEM_ISVISIBLE ; 
+ int /*<<< orphan*/  SCRIPTSTATE_STARTED ; 
+ int SCRIPTTEXT_HOSTMANAGESSOURCE ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (char*,...) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/  const*) ; 
+
+__attribute__((used)) static void FUNC6(const WCHAR *filename, IActiveScript *script, IActiveScriptParse *parser)
+{
+    BSTR text;
+    HRESULT hres;
+
+    text = FUNC5(filename);
+    if(!text) {
+        FUNC4("Could not get script text\n");
+        return;
+    }
+
+    hres = FUNC1(parser, text, NULL, NULL, NULL, 1, 1,
+            SCRIPTTEXT_HOSTMANAGESSOURCE|SCRIPTITEM_ISVISIBLE, NULL, NULL);
+    FUNC3(text);
+    if(FUNC0(hres)) {
+        FUNC4("ParseScriptText failed: %08x\n", hres);
+        return;
+    }
+
+    hres = FUNC2(script, SCRIPTSTATE_STARTED);
+    if(FUNC0(hres))
+        FUNC4("SetScriptState failed: %08x\n", hres);
+}

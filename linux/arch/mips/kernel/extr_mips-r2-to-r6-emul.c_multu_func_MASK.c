@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u64 ;
+typedef  int u32 ;
+struct pt_regs {int* regs; void* hi; void* lo; } ;
+typedef  void* s64 ;
+typedef  scalar_t__ s32 ;
+
+/* Variables and functions */
+ size_t FUNC0 (int) ; 
+ size_t FUNC1 (int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  muls ; 
+
+__attribute__((used)) static int FUNC3(struct pt_regs *regs, u32 ir)
+{
+	u64 res;
+	u32 rt, rs;
+
+	rt = regs->regs[FUNC1(ir)];
+	rs = regs->regs[FUNC0(ir)];
+	res = (u64)rt * (u64)rs;
+	rt = res;
+	regs->lo = (s64)(s32)rt;
+	regs->hi = (s64)(s32)(res >> 32);
+
+	FUNC2(muls);
+
+	return 0;
+}

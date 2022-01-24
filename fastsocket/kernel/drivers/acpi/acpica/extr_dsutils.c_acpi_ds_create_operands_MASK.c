@@ -1,0 +1,102 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {union acpi_parse_object* next; } ;
+union acpi_parse_object {TYPE_1__ common; } ;
+typedef  scalar_t__ u8 ;
+typedef  int u32 ;
+struct acpi_walk_state {int num_operands; scalar_t__ operand_index; int /*<<< orphan*/ ** operands; } ;
+typedef  int /*<<< orphan*/  acpi_status ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ACPI_DB_DISPATCH ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,union acpi_parse_object*) ; 
+ int ACPI_OBJ_NUM_OPERANDS ; 
+ int /*<<< orphan*/  AE_BAD_DATA ; 
+ int /*<<< orphan*/  AE_INFO ; 
+ int /*<<< orphan*/  AE_OK ; 
+ int /*<<< orphan*/  FUNC4 (struct acpi_walk_state*,union acpi_parse_object*,int) ; 
+ int /*<<< orphan*/  FUNC5 (int,struct acpi_walk_state*) ; 
+ int /*<<< orphan*/  ds_create_operands ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ ) ; 
+
+acpi_status
+FUNC7(struct acpi_walk_state *walk_state,
+			union acpi_parse_object *first_arg)
+{
+	acpi_status status = AE_OK;
+	union acpi_parse_object *arg;
+	union acpi_parse_object *arguments[ACPI_OBJ_NUM_OPERANDS];
+	u32 arg_count = 0;
+	u32 index = walk_state->num_operands;
+	u32 i;
+
+	FUNC3(ds_create_operands, first_arg);
+
+	/* Get all arguments in the list */
+
+	arg = first_arg;
+	while (arg) {
+		if (index >= ACPI_OBJ_NUM_OPERANDS) {
+			FUNC6(AE_BAD_DATA);
+		}
+
+		arguments[index] = arg;
+		walk_state->operands[index] = NULL;
+
+		/* Move on to next argument, if any */
+
+		arg = arg->common.next;
+		arg_count++;
+		index++;
+	}
+
+	index--;
+
+	/* It is the appropriate order to get objects from the Result stack */
+
+	for (i = 0; i < arg_count; i++) {
+		arg = arguments[index];
+
+		/* Force the filling of the operand stack in inverse order */
+
+		walk_state->operand_index = (u8) index;
+
+		status = FUNC4(walk_state, arg, index);
+		if (FUNC2(status)) {
+			goto cleanup;
+		}
+
+		index--;
+
+		FUNC0((ACPI_DB_DISPATCH,
+				  "Arg #%d (%p) done, Arg1=%p\n", index, arg,
+				  first_arg));
+	}
+
+	FUNC6(status);
+
+      cleanup:
+	/*
+	 * We must undo everything done above; meaning that we must
+	 * pop everything off of the operand stack and delete those
+	 * objects
+	 */
+	FUNC5(arg_count, walk_state);
+
+	FUNC1((AE_INFO, status, "While creating Arg %d", index));
+	FUNC6(status);
+}

@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct zfcp_port {struct fc_rport* rport; int /*<<< orphan*/  adapter; } ;
+struct fc_rport {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ZFCP_PSEUDO_ERP_ACTION_RPORT_DEL ; 
+ int /*<<< orphan*/  FUNC0 (struct fc_rport*) ; 
+ int /*<<< orphan*/  FUNC1 (char*,int /*<<< orphan*/ ,struct zfcp_port*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC2(struct zfcp_port *port)
+{
+	struct fc_rport *rport = port->rport;
+
+	if (rport) {
+		FUNC1("scpdely", port->adapter, port, NULL,
+				       ZFCP_PSEUDO_ERP_ACTION_RPORT_DEL,
+				       ZFCP_PSEUDO_ERP_ACTION_RPORT_DEL);
+		FUNC0(rport);
+		port->rport = NULL;
+	}
+}

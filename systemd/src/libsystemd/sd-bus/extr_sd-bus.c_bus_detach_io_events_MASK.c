@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {void* output_io_event_source; void* input_io_event_source; } ;
+typedef  TYPE_1__ sd_bus ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  SD_EVENT_OFF ; 
+ int /*<<< orphan*/  FUNC0 (TYPE_1__*) ; 
+ int /*<<< orphan*/  FUNC1 (void*,int /*<<< orphan*/ ) ; 
+ void* FUNC2 (void*) ; 
+
+__attribute__((used)) static void FUNC3(sd_bus *bus) {
+        FUNC0(bus);
+
+        if (bus->input_io_event_source) {
+                FUNC1(bus->input_io_event_source, SD_EVENT_OFF);
+                bus->input_io_event_source = FUNC2(bus->input_io_event_source);
+        }
+
+        if (bus->output_io_event_source) {
+                FUNC1(bus->output_io_event_source, SD_EVENT_OFF);
+                bus->output_io_event_source = FUNC2(bus->output_io_event_source);
+        }
+}

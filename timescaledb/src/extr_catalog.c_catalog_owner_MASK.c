@@ -1,0 +1,53 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {int /*<<< orphan*/  nspowner; } ;
+typedef  int /*<<< orphan*/  Oid ;
+typedef  int /*<<< orphan*/  HeapTuple ;
+typedef  TYPE_1__* Form_pg_namespace ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  CATALOG_SCHEMA_NAME ; 
+ int /*<<< orphan*/  ERRCODE_UNDEFINED_SCHEMA ; 
+ int /*<<< orphan*/  ERROR ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  NAMESPACEOID ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (char*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ ,int) ; 
+
+__attribute__((used)) static Oid
+FUNC9(void)
+{
+	HeapTuple tuple;
+	Oid owner_oid;
+	Oid nsp_oid = FUNC8(CATALOG_SCHEMA_NAME, false);
+
+	tuple = FUNC4(NAMESPACEOID, FUNC2(nsp_oid));
+
+	if (!FUNC1(tuple))
+		FUNC5(ERROR,
+				(FUNC6(ERRCODE_UNDEFINED_SCHEMA),
+				 FUNC7("schema with OID %u does not exist", nsp_oid)));
+
+	owner_oid = ((Form_pg_namespace) FUNC0(tuple))->nspowner;
+
+	FUNC3(tuple);
+
+	return owner_oid;
+}

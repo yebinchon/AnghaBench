@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct nilfs_btnode_chkey_ctxt {scalar_t__ oldkey; scalar_t__ newkey; TYPE_1__* bh; struct buffer_head* newbh; } ;
+struct buffer_head {int dummy; } ;
+struct address_space {int /*<<< orphan*/  tree_lock; int /*<<< orphan*/  page_tree; } ;
+typedef  scalar_t__ __u64 ;
+struct TYPE_2__ {int /*<<< orphan*/  b_page; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct buffer_head*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,scalar_t__) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ) ; 
+
+void FUNC5(struct address_space *btnc,
+				   struct nilfs_btnode_chkey_ctxt *ctxt)
+{
+	struct buffer_head *nbh = ctxt->newbh;
+	__u64 oldkey = ctxt->oldkey, newkey = ctxt->newkey;
+
+	if (oldkey == newkey)
+		return;
+
+	if (nbh == NULL) {	/* blocksize == pagesize */
+		FUNC2(&btnc->tree_lock);
+		FUNC1(&btnc->page_tree, newkey);
+		FUNC3(&btnc->tree_lock);
+		FUNC4(ctxt->bh->b_page);
+	} else
+		FUNC0(nbh);
+}

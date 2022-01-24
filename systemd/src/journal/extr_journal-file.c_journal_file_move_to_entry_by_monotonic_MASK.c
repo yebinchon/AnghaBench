@@ -1,0 +1,58 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_7__   TYPE_2__ ;
+typedef  struct TYPE_6__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  uint64_t ;
+typedef  int /*<<< orphan*/  sd_id128_t ;
+typedef  int /*<<< orphan*/  direction_t ;
+struct TYPE_6__ {int /*<<< orphan*/  n_entries; int /*<<< orphan*/  entry_array_offset; int /*<<< orphan*/  entry_offset; } ;
+struct TYPE_7__ {TYPE_1__ data; } ;
+typedef  TYPE_2__ Object ;
+typedef  int /*<<< orphan*/  JournalFile ;
+
+/* Variables and functions */
+ int ENOENT ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**,int /*<<< orphan*/ *) ; 
+ int FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  test_object_monotonic ; 
+
+int FUNC4(
+                JournalFile *f,
+                sd_id128_t boot_id,
+                uint64_t monotonic,
+                direction_t direction,
+                Object **ret,
+                uint64_t *offset) {
+
+        Object *o;
+        int r;
+
+        FUNC0(f);
+
+        r = FUNC1(f, boot_id, &o, NULL);
+        if (r < 0)
+                return r;
+        if (r == 0)
+                return -ENOENT;
+
+        return FUNC2(f,
+                                             FUNC3(o->data.entry_offset),
+                                             FUNC3(o->data.entry_array_offset),
+                                             FUNC3(o->data.n_entries),
+                                             monotonic,
+                                             test_object_monotonic,
+                                             direction,
+                                             ret, offset, NULL);
+}

@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct clk_hw {int dummy; } ;
+struct TYPE_3__ {struct clk_hw hw; } ;
+struct tegra_clk_super_mux {TYPE_2__* div_ops; TYPE_1__ frac_div; } ;
+struct TYPE_4__ {int (* set_rate ) (struct clk_hw*,unsigned long,unsigned long) ;} ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct clk_hw*,struct clk_hw*) ; 
+ int FUNC1 (struct clk_hw*,unsigned long,unsigned long) ; 
+ struct tegra_clk_super_mux* FUNC2 (struct clk_hw*) ; 
+
+__attribute__((used)) static int FUNC3(struct clk_hw *hw, unsigned long rate,
+			      unsigned long parent_rate)
+{
+	struct tegra_clk_super_mux *super = FUNC2(hw);
+	struct clk_hw *div_hw = &super->frac_div.hw;
+
+	FUNC0(div_hw, hw);
+
+	return super->div_ops->set_rate(div_hw, rate, parent_rate);
+}

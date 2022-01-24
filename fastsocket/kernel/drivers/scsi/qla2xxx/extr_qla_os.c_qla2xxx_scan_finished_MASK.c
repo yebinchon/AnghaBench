@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct Scsi_Host {int dummy; } ;
+struct TYPE_5__ {int /*<<< orphan*/  loop_state; TYPE_1__* hw; int /*<<< orphan*/  host; } ;
+typedef  TYPE_2__ scsi_qla_host_t ;
+struct TYPE_4__ {unsigned long loop_reset_delay; } ;
+
+/* Variables and functions */
+ unsigned long HZ ; 
+ scalar_t__ LOOP_READY ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ *) ; 
+ TYPE_2__* FUNC1 (struct Scsi_Host*) ; 
+
+__attribute__((used)) static int
+FUNC2(struct Scsi_Host *shost, unsigned long time)
+{
+	scsi_qla_host_t *vha = FUNC1(shost);
+
+	if (!vha->host)
+		return 1;
+	if (time > vha->hw->loop_reset_delay * HZ)
+		return 1;
+
+	return FUNC0(&vha->loop_state) == LOOP_READY;
+}

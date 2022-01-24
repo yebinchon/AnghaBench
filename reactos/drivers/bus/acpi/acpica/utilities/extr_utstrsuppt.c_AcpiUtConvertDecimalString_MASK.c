@@ -1,0 +1,59 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  UINT64 ;
+typedef  int /*<<< orphan*/  ACPI_STATUS ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  AE_DECIMAL_OVERFLOW ; 
+ int /*<<< orphan*/  AE_OK ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int,char) ; 
+ int /*<<< orphan*/  FUNC2 (char) ; 
+
+ACPI_STATUS
+FUNC3 (
+    char                    *String,
+    UINT64                  *ReturnValuePtr)
+{
+    UINT64                  AccumulatedValue = 0;
+    ACPI_STATUS             Status = AE_OK;
+
+
+    /* Convert each ASCII byte in the input string */
+
+    while (*String)
+    {
+        /* Character must be ASCII 0-9, otherwise terminate with no error */
+
+        if (!FUNC2 (*String))
+        {
+           break;
+        }
+
+        /* Convert and insert this decimal digit into the accumulator */
+
+        Status = FUNC1 (&AccumulatedValue, 10, *String);
+        if (FUNC0 (Status))
+        {
+            Status = AE_DECIMAL_OVERFLOW;
+            break;
+        }
+
+        String++;
+    }
+
+    /* Always return the value that has been accumulated */
+
+    *ReturnValuePtr = AccumulatedValue;
+    return (Status);
+}

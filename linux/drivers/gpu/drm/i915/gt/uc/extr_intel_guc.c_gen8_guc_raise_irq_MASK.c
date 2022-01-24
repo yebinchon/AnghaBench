@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct intel_guc {int dummy; } ;
+struct intel_gt {int /*<<< orphan*/  uncore; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  GUC_SEND_INTERRUPT ; 
+ int /*<<< orphan*/  GUC_SEND_TRIGGER ; 
+ struct intel_gt* FUNC0 (struct intel_guc*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC2(struct intel_guc *guc)
+{
+	struct intel_gt *gt = FUNC0(guc);
+
+	FUNC1(gt->uncore, GUC_SEND_INTERRUPT, GUC_SEND_TRIGGER);
+}

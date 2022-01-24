@@ -1,0 +1,28 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct serio {int dummy; } ;
+struct atkbd {int /*<<< orphan*/  ps2dev; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ATKBD_CMD_RESET_BAT ; 
+ int /*<<< orphan*/  FUNC0 (struct atkbd*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ struct atkbd* FUNC2 (struct serio*) ; 
+
+__attribute__((used)) static void FUNC3(struct serio *serio)
+{
+	struct atkbd *atkbd = FUNC2(serio);
+
+	FUNC0(atkbd);
+	FUNC1(&atkbd->ps2dev, NULL, ATKBD_CMD_RESET_BAT);
+}

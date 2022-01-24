@@ -1,0 +1,71 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct timeval {int /*<<< orphan*/  tv_usec; scalar_t__ tv_sec; } ;
+struct event {int dummy; } ;
+typedef  int /*<<< orphan*/  WSADATA ;
+typedef  int /*<<< orphan*/  WORD ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int,int) ; 
+ int NEVENT ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int called ; 
+ int /*<<< orphan*/ ** ev ; 
+ int /*<<< orphan*/  FUNC3 () ; 
+ int /*<<< orphan*/  FUNC4 () ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,struct timeval*) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/ * FUNC8 (int) ; 
+ int /*<<< orphan*/  FUNC9 (char*,int,int) ; 
+ int /*<<< orphan*/  FUNC10 (int) ; 
+ int /*<<< orphan*/  time_cb ; 
+ int /*<<< orphan*/  weakrand_state ; 
+
+int
+FUNC11(int argc, char **argv)
+{
+	struct timeval tv;
+	int i;
+#ifdef _WIN32
+	WORD wVersionRequested;
+	WSADATA wsaData;
+
+	wVersionRequested = MAKEWORD(2, 2);
+
+	(void) WSAStartup(wVersionRequested, &wsaData);
+#endif
+
+	FUNC7(&weakrand_state, 0);
+
+	/* Initalize the event library */
+	FUNC4();
+
+	for (i = 0; i < NEVENT; i++) {
+		ev[i] = FUNC8(sizeof(struct event));
+		FUNC2(ev[i] != NULL);
+
+		/* Initalize one event */
+		FUNC6(ev[i], time_cb, ev[i]);
+		tv.tv_sec = 0;
+		tv.tv_usec = FUNC10(50000);
+		FUNC5(ev[i], &tv);
+	}
+
+	FUNC3();
+
+
+	FUNC9("%d, %d\n", called, NEVENT);
+	return (called < NEVENT);
+}

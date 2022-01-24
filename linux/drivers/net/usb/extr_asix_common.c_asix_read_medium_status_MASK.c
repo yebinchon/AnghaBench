@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u16 ;
+struct usbnet {int /*<<< orphan*/  net; } ;
+typedef  int /*<<< orphan*/  __le16 ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  AX_CMD_READ_MEDIUM_STATUS ; 
+ int FUNC0 (struct usbnet*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
+ int FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,char*,int) ; 
+
+u16 FUNC3(struct usbnet *dev, int in_pm)
+{
+	__le16 v;
+	int ret = FUNC0(dev, AX_CMD_READ_MEDIUM_STATUS,
+				0, 0, 2, &v, in_pm);
+
+	if (ret < 0) {
+		FUNC2(dev->net, "Error reading Medium Status register: %02x\n",
+			   ret);
+		return ret;	/* TODO: callers not checking for error ret */
+	}
+
+	return FUNC1(v);
+
+}

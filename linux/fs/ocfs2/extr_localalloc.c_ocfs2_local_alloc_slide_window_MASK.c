@@ -1,0 +1,140 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {int /*<<< orphan*/  moves; } ;
+struct ocfs2_super {TYPE_1__ alloc_stats; TYPE_2__* local_alloc_bh; } ;
+struct ocfs2_dinode {int dummy; } ;
+struct ocfs2_alloc_context {int dummy; } ;
+struct inode {int dummy; } ;
+struct buffer_head {int dummy; } ;
+typedef  int /*<<< orphan*/  handle_t ;
+struct TYPE_5__ {int /*<<< orphan*/  b_size; scalar_t__ b_data; } ;
+
+/* Variables and functions */
+ int ENOMEM ; 
+ int ENOSPC ; 
+ int /*<<< orphan*/  GFP_NOFS ; 
+ int /*<<< orphan*/  FUNC0 (struct inode*) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  OCFS2_JOURNAL_ACCESS_WRITE ; 
+ int /*<<< orphan*/  OCFS2_LA_EVENT_SLIDE ; 
+ int /*<<< orphan*/  OCFS2_WINDOW_MOVE_CREDITS ; 
+ int FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 (struct buffer_head*) ; 
+ int /*<<< orphan*/  FUNC5 (struct inode*) ; 
+ int /*<<< orphan*/  FUNC6 (struct ocfs2_dinode*) ; 
+ struct ocfs2_dinode* FUNC7 (struct ocfs2_dinode*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC8 (int) ; 
+ int /*<<< orphan*/  FUNC9 (struct ocfs2_dinode*) ; 
+ int /*<<< orphan*/  FUNC10 (struct ocfs2_super*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC11 (struct ocfs2_alloc_context*) ; 
+ int FUNC12 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC13 (int /*<<< orphan*/ *,TYPE_2__*) ; 
+ int FUNC14 (struct ocfs2_super*,int /*<<< orphan*/ *,struct ocfs2_alloc_context*) ; 
+ int FUNC15 (struct ocfs2_super*,struct ocfs2_alloc_context**,struct inode**,struct buffer_head**) ; 
+ int /*<<< orphan*/  FUNC16 (struct ocfs2_super*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/ * FUNC17 (struct ocfs2_super*,int /*<<< orphan*/ ) ; 
+ int FUNC18 (struct ocfs2_super*,int /*<<< orphan*/ *,struct ocfs2_dinode*,struct inode*,struct buffer_head*) ; 
+
+__attribute__((used)) static int FUNC19(struct ocfs2_super *osb,
+					  struct inode *local_alloc_inode)
+{
+	int status = 0;
+	struct buffer_head *main_bm_bh = NULL;
+	struct inode *main_bm_inode = NULL;
+	handle_t *handle = NULL;
+	struct ocfs2_dinode *alloc;
+	struct ocfs2_dinode *alloc_copy = NULL;
+	struct ocfs2_alloc_context *ac = NULL;
+
+	FUNC16(osb, OCFS2_LA_EVENT_SLIDE);
+
+	/* This will lock the main bitmap for us. */
+	status = FUNC15(osb,
+						      &ac,
+						      &main_bm_inode,
+						      &main_bm_bh);
+	if (status < 0) {
+		if (status != -ENOSPC)
+			FUNC8(status);
+		goto bail;
+	}
+
+	handle = FUNC17(osb, OCFS2_WINDOW_MOVE_CREDITS);
+	if (FUNC1(handle)) {
+		status = FUNC2(handle);
+		handle = NULL;
+		FUNC8(status);
+		goto bail;
+	}
+
+	alloc = (struct ocfs2_dinode *) osb->local_alloc_bh->b_data;
+
+	/* We want to clear the local alloc before doing anything
+	 * else, so that if we error later during this operation,
+	 * local alloc shutdown won't try to double free main bitmap
+	 * bits. Make a copy so the sync function knows which bits to
+	 * free. */
+	alloc_copy = FUNC7(alloc, osb->local_alloc_bh->b_size, GFP_NOFS);
+	if (!alloc_copy) {
+		status = -ENOMEM;
+		FUNC8(status);
+		goto bail;
+	}
+
+	status = FUNC12(handle,
+					 FUNC0(local_alloc_inode),
+					 osb->local_alloc_bh,
+					 OCFS2_JOURNAL_ACCESS_WRITE);
+	if (status < 0) {
+		FUNC8(status);
+		goto bail;
+	}
+
+	FUNC9(alloc);
+	FUNC13(handle, osb->local_alloc_bh);
+
+	status = FUNC18(osb, handle, alloc_copy,
+					  main_bm_inode, main_bm_bh);
+	if (status < 0) {
+		FUNC8(status);
+		goto bail;
+	}
+
+	status = FUNC14(osb, handle, ac);
+	if (status < 0) {
+		if (status != -ENOSPC)
+			FUNC8(status);
+		goto bail;
+	}
+
+	FUNC3(&osb->alloc_stats.moves);
+
+bail:
+	if (handle)
+		FUNC10(osb, handle);
+
+	FUNC4(main_bm_bh);
+
+	FUNC5(main_bm_inode);
+	FUNC6(alloc_copy);
+
+	if (ac)
+		FUNC11(ac);
+
+	if (status)
+		FUNC8(status);
+	return status;
+}

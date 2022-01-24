@@ -1,0 +1,68 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_12__   TYPE_6__ ;
+typedef  struct TYPE_11__   TYPE_5__ ;
+typedef  struct TYPE_10__   TYPE_4__ ;
+typedef  struct TYPE_9__   TYPE_3__ ;
+typedef  struct TYPE_8__   TYPE_2__ ;
+typedef  struct TYPE_7__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_11__ {int /*<<< orphan*/  diagnose_308; } ;
+struct TYPE_8__ {TYPE_1__* sie_block; } ;
+struct kvm_vcpu {TYPE_6__* run; int /*<<< orphan*/  kvm; TYPE_5__ stat; TYPE_2__ arch; } ;
+struct TYPE_9__ {int* gprs; } ;
+struct TYPE_10__ {TYPE_3__ regs; } ;
+struct TYPE_12__ {unsigned long s390_reset_flags; int /*<<< orphan*/  exit_reason; TYPE_4__ s; } ;
+struct TYPE_7__ {int ipa; } ;
+
+/* Variables and functions */
+ int EOPNOTSUPP ; 
+ int EREMOTE ; 
+ int /*<<< orphan*/  KVM_EXIT_S390_RESET ; 
+ unsigned long KVM_S390_RESET_CLEAR ; 
+ unsigned long KVM_S390_RESET_CPU_INIT ; 
+ unsigned long KVM_S390_RESET_IPL ; 
+ unsigned long KVM_S390_RESET_SUBSYSTEM ; 
+ int /*<<< orphan*/  FUNC0 (struct kvm_vcpu*,int,char*,unsigned long) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct kvm_vcpu*) ; 
+ int /*<<< orphan*/  FUNC3 (unsigned long) ; 
+
+__attribute__((used)) static int FUNC4(struct kvm_vcpu *vcpu)
+{
+	unsigned int reg = vcpu->arch.sie_block->ipa & 0xf;
+	unsigned long subcode = vcpu->run->s.regs.gprs[reg] & 0xffff;
+
+	FUNC0(vcpu, 3, "diag ipl functions, subcode %lx", subcode);
+	vcpu->stat.diagnose_308++;
+	switch (subcode) {
+	case 3:
+		vcpu->run->s390_reset_flags = KVM_S390_RESET_CLEAR;
+		break;
+	case 4:
+		vcpu->run->s390_reset_flags = 0;
+		break;
+	default:
+		return -EOPNOTSUPP;
+	}
+
+	if (!FUNC1(vcpu->kvm))
+		FUNC2(vcpu);
+	vcpu->run->s390_reset_flags |= KVM_S390_RESET_SUBSYSTEM;
+	vcpu->run->s390_reset_flags |= KVM_S390_RESET_IPL;
+	vcpu->run->s390_reset_flags |= KVM_S390_RESET_CPU_INIT;
+	vcpu->run->exit_reason = KVM_EXIT_S390_RESET;
+	FUNC0(vcpu, 3, "requesting userspace resets %llx",
+	  vcpu->run->s390_reset_flags);
+	FUNC3(vcpu->run->s390_reset_flags);
+	return -EREMOTE;
+}

@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  pam_handle_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 () ; 
+ int PAM_BAD_CONSTANT ; 
+ int PAM_DELETE_CRED ; 
+ int PAM_ESTABLISH_CRED ; 
+ int PAM_REFRESH_CRED ; 
+ int PAM_REINITIALIZE_CRED ; 
+ int PAM_SILENT ; 
+ int /*<<< orphan*/  PAM_SM_SETCRED ; 
+ int /*<<< orphan*/  FUNC1 (int) ; 
+ int FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+int
+FUNC3(pam_handle_t *pamh,
+	int flags)
+{
+	int r;
+
+	FUNC0();
+	if (flags & ~(PAM_SILENT|PAM_ESTABLISH_CRED|PAM_DELETE_CRED|
+		PAM_REINITIALIZE_CRED|PAM_REFRESH_CRED))
+		FUNC1(PAM_BAD_CONSTANT);
+	/* XXX enforce exclusivity */
+	r = FUNC2(pamh, PAM_SM_SETCRED, flags);
+	FUNC1(r);
+}

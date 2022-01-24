@@ -1,0 +1,50 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  uint32_t ;
+struct ti_sdma_softc {int sc_active_channels; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (unsigned int) ; 
+ int EINVAL ; 
+ int ENOMEM ; 
+ int /*<<< orphan*/  FUNC1 (struct ti_sdma_softc*) ; 
+ int /*<<< orphan*/  FUNC2 (struct ti_sdma_softc*) ; 
+ int /*<<< orphan*/  FUNC3 (struct ti_sdma_softc*,int /*<<< orphan*/ ) ; 
+ struct ti_sdma_softc* ti_sdma_sc ; 
+
+int
+FUNC4(unsigned int ch, uint32_t *status)
+{
+	struct ti_sdma_softc *sc = ti_sdma_sc;
+	uint32_t csr;
+
+	/* Sanity check */
+	if (sc == NULL)
+		return (ENOMEM);
+
+	FUNC1(sc);
+
+	if ((sc->sc_active_channels & (1 << ch)) == 0) {
+		FUNC2(sc);
+		return (EINVAL);
+	}
+
+	FUNC2(sc);
+
+	csr = FUNC3(sc, FUNC0(ch));
+
+	if (status != NULL)
+		*status = csr;
+
+	return (0);
+}

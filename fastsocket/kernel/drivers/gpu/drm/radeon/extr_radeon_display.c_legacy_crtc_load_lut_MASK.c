@@ -1,0 +1,51 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int uint32_t ;
+struct radeon_device {int dummy; } ;
+struct radeon_crtc {scalar_t__ crtc_id; int* lut_r; int* lut_g; int* lut_b; } ;
+struct drm_device {struct radeon_device* dev_private; } ;
+struct drm_crtc {struct drm_device* dev; } ;
+
+/* Variables and functions */
+ int RADEON_DAC2_PALETTE_ACC_CTL ; 
+ int /*<<< orphan*/  RADEON_DAC_CNTL2 ; 
+ int /*<<< orphan*/  RADEON_PALETTE_30_DATA ; 
+ int /*<<< orphan*/  RADEON_PALETTE_INDEX ; 
+ int FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ struct radeon_crtc* FUNC3 (struct drm_crtc*) ; 
+
+__attribute__((used)) static void FUNC4(struct drm_crtc *crtc)
+{
+	struct radeon_crtc *radeon_crtc = FUNC3(crtc);
+	struct drm_device *dev = crtc->dev;
+	struct radeon_device *rdev = dev->dev_private;
+	int i;
+	uint32_t dac2_cntl;
+
+	dac2_cntl = FUNC0(RADEON_DAC_CNTL2);
+	if (radeon_crtc->crtc_id == 0)
+		dac2_cntl &= (uint32_t)~RADEON_DAC2_PALETTE_ACC_CTL;
+	else
+		dac2_cntl |= RADEON_DAC2_PALETTE_ACC_CTL;
+	FUNC1(RADEON_DAC_CNTL2, dac2_cntl);
+
+	FUNC2(RADEON_PALETTE_INDEX, 0);
+	for (i = 0; i < 256; i++) {
+		FUNC1(RADEON_PALETTE_30_DATA,
+			     (radeon_crtc->lut_r[i] << 20) |
+			     (radeon_crtc->lut_g[i] << 10) |
+			     (radeon_crtc->lut_b[i] << 0));
+	}
+}

@@ -1,0 +1,74 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct vm_area_struct {scalar_t__ vm_mm; } ;
+typedef  int /*<<< orphan*/  pte_t ;
+struct TYPE_2__ {scalar_t__ active_mm; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  BARRIER ; 
+ unsigned long PAGE_MASK ; 
+ int /*<<< orphan*/  cpu ; 
+ unsigned long FUNC0 (int /*<<< orphan*/ *) ; 
+ unsigned long FUNC1 (int /*<<< orphan*/ ,scalar_t__) ; 
+ TYPE_1__* current ; 
+ int /*<<< orphan*/  current_cpu_data ; 
+ int /*<<< orphan*/  FUNC2 (unsigned long) ; 
+ int /*<<< orphan*/  FUNC3 (unsigned long) ; 
+ int /*<<< orphan*/  FUNC4 (char*,unsigned long,int) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ) ; 
+ unsigned long FUNC6 () ; 
+ int FUNC7 () ; 
+ int /*<<< orphan*/  FUNC8 () ; 
+ int /*<<< orphan*/  FUNC9 () ; 
+ int /*<<< orphan*/  FUNC10 () ; 
+ int /*<<< orphan*/  FUNC11 (int) ; 
+ int /*<<< orphan*/  FUNC12 (int /*<<< orphan*/ ) ; 
+
+void FUNC13(struct vm_area_struct *vma, unsigned long address, pte_t pte)
+{
+	unsigned long asid_mask = FUNC0(&current_cpu_data);
+	unsigned long flags;
+	int idx, pid;
+
+	/*
+	 * Handle debugger faulting in for debugee.
+	 */
+	if (current->active_mm != vma->vm_mm)
+		return;
+
+	pid = FUNC6() & asid_mask;
+
+#ifdef DEBUG_TLB
+	if ((pid != (cpu_context(cpu, vma->vm_mm) & asid_mask)) || (cpu_context(cpu, vma->vm_mm) == 0)) {
+		printk("update_mmu_cache: Wheee, bogus tlbpid mmpid=%lu tlbpid=%d\n",
+		       (cpu_context(cpu, vma->vm_mm)), pid);
+	}
+#endif
+
+	FUNC3(flags);
+	address &= PAGE_MASK;
+	FUNC11(address | pid);
+	BARRIER;
+	FUNC8();
+	idx = FUNC7();
+	FUNC12(FUNC5(pte));
+	FUNC11(address | pid);
+	if (idx < 0) {					/* BARRIER */
+		FUNC10();
+	} else {
+		FUNC9();
+	}
+	FUNC11(pid);
+	FUNC2(flags);
+}

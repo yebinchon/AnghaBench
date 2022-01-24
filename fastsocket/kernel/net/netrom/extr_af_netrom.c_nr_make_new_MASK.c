@@ -1,0 +1,72 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sock {scalar_t__ sk_type; int /*<<< orphan*/  sk_state; int /*<<< orphan*/  sk_sndbuf; int /*<<< orphan*/  sk_rcvbuf; int /*<<< orphan*/  sk_protocol; int /*<<< orphan*/  sk_priority; int /*<<< orphan*/  sk_prot; } ;
+struct nr_sock {int /*<<< orphan*/  bpqext; int /*<<< orphan*/  device; int /*<<< orphan*/  window; int /*<<< orphan*/  idle; int /*<<< orphan*/  t4; int /*<<< orphan*/  n2; int /*<<< orphan*/  t2; int /*<<< orphan*/  t1; int /*<<< orphan*/  frag_queue; int /*<<< orphan*/  reseq_queue; int /*<<< orphan*/  ack_queue; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  GFP_ATOMIC ; 
+ int /*<<< orphan*/  PF_NETROM ; 
+ scalar_t__ SOCK_SEQPACKET ; 
+ int /*<<< orphan*/  TCP_ESTABLISHED ; 
+ int /*<<< orphan*/  FUNC0 (struct sock*) ; 
+ struct nr_sock* FUNC1 (struct sock*) ; 
+ struct sock* FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 (struct sock*,struct sock*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,struct sock*) ; 
+ int /*<<< orphan*/  FUNC6 (struct sock*) ; 
+
+__attribute__((used)) static struct sock *FUNC7(struct sock *osk)
+{
+	struct sock *sk;
+	struct nr_sock *nr, *onr;
+
+	if (osk->sk_type != SOCK_SEQPACKET)
+		return NULL;
+
+	sk = FUNC2(FUNC6(osk), PF_NETROM, GFP_ATOMIC, osk->sk_prot);
+	if (sk == NULL)
+		return NULL;
+
+	nr = FUNC1(sk);
+
+	FUNC5(NULL, sk);
+
+	sk->sk_type     = osk->sk_type;
+	sk->sk_priority = osk->sk_priority;
+	sk->sk_protocol = osk->sk_protocol;
+	sk->sk_rcvbuf   = osk->sk_rcvbuf;
+	sk->sk_sndbuf   = osk->sk_sndbuf;
+	sk->sk_state    = TCP_ESTABLISHED;
+	FUNC4(sk, osk);
+
+	FUNC3(&nr->ack_queue);
+	FUNC3(&nr->reseq_queue);
+	FUNC3(&nr->frag_queue);
+
+	FUNC0(sk);
+
+	onr = FUNC1(osk);
+
+	nr->t1      = onr->t1;
+	nr->t2      = onr->t2;
+	nr->n2      = onr->n2;
+	nr->t4      = onr->t4;
+	nr->idle    = onr->idle;
+	nr->window  = onr->window;
+
+	nr->device  = onr->device;
+	nr->bpqext  = onr->bpqext;
+
+	return sk;
+}

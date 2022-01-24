@@ -1,0 +1,73 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+struct station_info {int dummy; } ;
+struct sk_buff {int dummy; } ;
+struct net_device {TYPE_1__* ops; } ;
+struct genl_info {int /*<<< orphan*/  snd_seq; int /*<<< orphan*/  snd_pid; int /*<<< orphan*/ * attrs; struct net_device** user_ptr; } ;
+struct cfg80211_registered_device {TYPE_1__* ops; } ;
+typedef  int /*<<< orphan*/  sinfo ;
+struct TYPE_2__ {int /*<<< orphan*/  get_station; } ;
+
+/* Variables and functions */
+ int EINVAL ; 
+ int ENOBUFS ; 
+ int ENOMEM ; 
+ int EOPNOTSUPP ; 
+ int /*<<< orphan*/  GFP_KERNEL ; 
+ size_t NL80211_ATTR_MAC ; 
+ int /*<<< orphan*/  NLMSG_DEFAULT_SIZE ; 
+ int FUNC0 (struct sk_buff*,struct genl_info*) ; 
+ int /*<<< orphan*/  FUNC1 (struct station_info*,int /*<<< orphan*/ ,int) ; 
+ scalar_t__ FUNC2 (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct net_device*,struct net_device*,int /*<<< orphan*/ *,struct station_info*) ; 
+ int /*<<< orphan*/ * FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (struct sk_buff*) ; 
+ struct sk_buff* FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FUNC6 (struct net_device*,struct net_device*,int /*<<< orphan*/ *,struct station_info*) ; 
+
+__attribute__((used)) static int FUNC7(struct sk_buff *skb, struct genl_info *info)
+{
+	struct cfg80211_registered_device *rdev = info->user_ptr[0];
+	struct net_device *dev = info->user_ptr[1];
+	struct station_info sinfo;
+	struct sk_buff *msg;
+	u8 *mac_addr = NULL;
+	int err;
+
+	FUNC1(&sinfo, 0, sizeof(sinfo));
+
+	if (!info->attrs[NL80211_ATTR_MAC])
+		return -EINVAL;
+
+	mac_addr = FUNC3(info->attrs[NL80211_ATTR_MAC]);
+
+	if (!rdev->ops->get_station)
+		return -EOPNOTSUPP;
+
+	err = FUNC6(rdev, dev, mac_addr, &sinfo);
+	if (err)
+		return err;
+
+	msg = FUNC5(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
+	if (!msg)
+		return -ENOMEM;
+
+	if (FUNC2(msg, info->snd_pid, info->snd_seq, 0,
+				 rdev, dev, mac_addr, &sinfo) < 0) {
+		FUNC4(msg);
+		return -ENOBUFS;
+	}
+
+	return FUNC0(msg, info);
+}

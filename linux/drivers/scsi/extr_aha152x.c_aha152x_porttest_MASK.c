@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int FUNC0 (scalar_t__) ; 
+ scalar_t__ O_DMACNTRL1 ; 
+ scalar_t__ O_STACK ; 
+ int /*<<< orphan*/  FUNC1 (scalar_t__,int) ; 
+
+__attribute__((used)) static int FUNC2(int io_port)
+{
+	int i;
+
+	FUNC1(io_port + O_DMACNTRL1, 0);	/* reset stack pointer */
+	for (i = 0; i < 16; i++)
+		FUNC1(io_port + O_STACK, i);
+
+	FUNC1(io_port + O_DMACNTRL1, 0);	/* reset stack pointer */
+	for (i = 0; i < 16 && FUNC0(io_port + O_STACK) == i; i++)
+		;
+
+	return (i == 16);
+}

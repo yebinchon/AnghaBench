@@ -1,0 +1,51 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct hda_codec {struct ad198x_spec* spec; } ;
+struct TYPE_2__ {int mixer_nid; int mixer_merge_nid; int beep_nid; } ;
+struct ad198x_spec {TYPE_1__ gen; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  HDA_OUTPUT ; 
+ int FUNC0 (struct hda_codec*) ; 
+ int FUNC1 (struct hda_codec*) ; 
+ int FUNC2 (struct hda_codec*) ; 
+ int /*<<< orphan*/  FUNC3 (struct ad198x_spec*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (struct hda_codec*) ; 
+
+__attribute__((used)) static int FUNC5(struct hda_codec *codec)
+{
+	struct ad198x_spec *spec;
+	int err;
+
+	err = FUNC2(codec);
+	if (err < 0)
+		return err;
+	spec = codec->spec;
+
+	spec->gen.mixer_nid = 0x20;
+	spec->gen.mixer_merge_nid = 0x21;
+	spec->gen.beep_nid = 0x10;
+	FUNC3(spec, 0x10, 0, HDA_OUTPUT);
+	err = FUNC1(codec);
+	if (err < 0)
+		goto error;
+	err = FUNC0(codec);
+	if (err < 0)
+		goto error;
+	return 0;
+
+ error:
+	FUNC4(codec);
+	return err;
+}

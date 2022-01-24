@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  int u32 ;
+struct qlcnic_hardware_context {int dummy; } ;
+struct qlcnic_bc_hdr {int dummy; } ;
+struct qlcnic_adapter {struct qlcnic_hardware_context* ahw; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct qlcnic_hardware_context*,int) ; 
+ void* FUNC1 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC2(struct qlcnic_adapter *adapter,
+				     u32 *hdr, u32 *pay, u32 size)
+{
+	struct qlcnic_hardware_context *ahw = adapter->ahw;
+	u32 fw_mbx;
+	u8 i, max = 2, hdr_size, j;
+
+	hdr_size = (sizeof(struct qlcnic_bc_hdr) / sizeof(u32));
+	max = (size / sizeof(u32)) + hdr_size;
+
+	fw_mbx = FUNC1(FUNC0(ahw, 0));
+	for (i = 2, j = 0; j < hdr_size; i++, j++)
+		*(hdr++) = FUNC1(FUNC0(ahw, i));
+	for (; j < max; i++, j++)
+		*(pay++) = FUNC1(FUNC0(ahw, i));
+}

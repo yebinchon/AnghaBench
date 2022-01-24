@@ -1,0 +1,56 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct nk_vec2i {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
+struct nk_color {int dummy; } ;
+typedef  int /*<<< orphan*/ * HPEN ;
+typedef  int /*<<< orphan*/  HDC ;
+typedef  int /*<<< orphan*/  COLORREF ;
+
+/* Variables and functions */
+ int /*<<< orphan*/ * FUNC0 (int /*<<< orphan*/ ,unsigned short,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  DC_PEN ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  PS_SOLID ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (struct nk_color) ; 
+
+__attribute__((used)) static void
+FUNC8(HDC dc, const struct nk_vec2i *pnts, int count,
+    unsigned short line_thickness, struct nk_color col)
+{
+    COLORREF color = FUNC7(col);
+    HPEN pen = NULL;
+    if (line_thickness == 1) {
+        FUNC6(dc, color);
+    } else {
+        pen = FUNC0(PS_SOLID, line_thickness, color);
+        FUNC5(dc, pen);
+    }
+
+    if (count > 0) {
+        int i;
+        FUNC4(dc, pnts[0].x, pnts[0].y, NULL);
+        for (i = 1; i < count; ++i)
+            FUNC3(dc, pnts[i].x, pnts[i].y);
+        FUNC3(dc, pnts[0].x, pnts[0].y);
+    }
+
+    if (pen) {
+        FUNC5(dc, FUNC2(DC_PEN));
+        FUNC1(pen);
+    }
+}

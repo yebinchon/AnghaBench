@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct kvm_ioapic {int /*<<< orphan*/  irq_eoi; scalar_t__ id; scalar_t__ irr_delivered; scalar_t__ irr; scalar_t__ ioregsel; int /*<<< orphan*/  base_address; TYPE_2__* redirtbl; int /*<<< orphan*/  eoi_inject; } ;
+struct TYPE_3__ {int mask; } ;
+struct TYPE_4__ {TYPE_1__ fields; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  IOAPIC_DEFAULT_BASE_ADDRESS ; 
+ int IOAPIC_NUM_PINS ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int,int) ; 
+ int /*<<< orphan*/  FUNC2 (struct kvm_ioapic*) ; 
+
+__attribute__((used)) static void FUNC3(struct kvm_ioapic *ioapic)
+{
+	int i;
+
+	FUNC0(&ioapic->eoi_inject);
+	for (i = 0; i < IOAPIC_NUM_PINS; i++)
+		ioapic->redirtbl[i].fields.mask = 1;
+	ioapic->base_address = IOAPIC_DEFAULT_BASE_ADDRESS;
+	ioapic->ioregsel = 0;
+	ioapic->irr = 0;
+	ioapic->irr_delivered = 0;
+	ioapic->id = 0;
+	FUNC1(ioapic->irq_eoi, 0x00, sizeof(ioapic->irq_eoi));
+	FUNC2(ioapic);
+}

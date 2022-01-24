@@ -1,0 +1,80 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  size_t u32 ;
+typedef  int u16 ;
+struct TYPE_2__ {int max_cmd_size; size_t* cmd_buf; scalar_t__ done_sent; } ;
+struct ath6kl {TYPE_1__ bmi; } ;
+typedef  int /*<<< orphan*/  param ;
+typedef  int /*<<< orphan*/  cid ;
+typedef  int /*<<< orphan*/  addr ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ATH6KL_DBG_BMI ; 
+ size_t BMI_EXECUTE ; 
+ int EACCES ; 
+ int EINVAL ; 
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,char*,size_t,size_t) ; 
+ int /*<<< orphan*/  FUNC2 (char*,int) ; 
+ int FUNC3 (struct ath6kl*,size_t*,int) ; 
+ int FUNC4 (struct ath6kl*,size_t*,size_t) ; 
+ int /*<<< orphan*/  FUNC5 (size_t*,size_t*,int) ; 
+ int /*<<< orphan*/  FUNC6 (size_t*,int /*<<< orphan*/ ,int) ; 
+
+int FUNC7(struct ath6kl *ar, u32 addr, u32 *param)
+{
+	u32 cid = BMI_EXECUTE;
+	int ret;
+	u32 offset;
+	u16 size;
+
+	if (ar->bmi.done_sent) {
+		FUNC2("bmi done sent already, cmd %d disallowed\n", cid);
+		return -EACCES;
+	}
+
+	size = sizeof(cid) + sizeof(addr) + sizeof(param);
+	if (size > ar->bmi.max_cmd_size) {
+		FUNC0(1);
+		return -EINVAL;
+	}
+	FUNC6(ar->bmi.cmd_buf, 0, size);
+
+	FUNC1(ATH6KL_DBG_BMI, "bmi execute: addr: 0x%x, param: %d)\n",
+		   addr, *param);
+
+	offset = 0;
+	FUNC5(&(ar->bmi.cmd_buf[offset]), &cid, sizeof(cid));
+	offset += sizeof(cid);
+	FUNC5(&(ar->bmi.cmd_buf[offset]), &addr, sizeof(addr));
+	offset += sizeof(addr);
+	FUNC5(&(ar->bmi.cmd_buf[offset]), param, sizeof(*param));
+	offset += sizeof(*param);
+
+	ret = FUNC4(ar, ar->bmi.cmd_buf, offset);
+	if (ret) {
+		FUNC2("Unable to write to the device: %d\n", ret);
+		return ret;
+	}
+
+	ret = FUNC3(ar, ar->bmi.cmd_buf, sizeof(*param));
+	if (ret) {
+		FUNC2("Unable to read from the device: %d\n", ret);
+		return ret;
+	}
+
+	FUNC5(param, ar->bmi.cmd_buf, sizeof(*param));
+
+	return 0;
+}

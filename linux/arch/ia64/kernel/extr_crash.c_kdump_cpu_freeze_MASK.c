@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct unw_frame_info {scalar_t__ sw; } ;
+typedef  scalar_t__ __u64 ;
+struct TYPE_3__ {scalar_t__ ksp; } ;
+struct TYPE_4__ {TYPE_1__ thread; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 () ; 
+ int /*<<< orphan*/  FUNC2 () ; 
+ TYPE_2__* current ; 
+ int /*<<< orphan*/  FUNC3 () ; 
+ int /*<<< orphan*/  kdump_cpu_frozen ; 
+ int* kdump_status ; 
+ int /*<<< orphan*/  FUNC4 () ; 
+ int /*<<< orphan*/  FUNC5 () ; 
+ int FUNC6 () ; 
+
+void
+FUNC7(struct unw_frame_info *info, void *arg)
+{
+	int cpuid;
+
+	FUNC4();
+	cpuid = FUNC6();
+	FUNC2();
+	current->thread.ksp = (__u64)info->sw - 16;
+
+	FUNC3();	/* mask MCA/INIT and stop reentrance */
+
+	FUNC0(&kdump_cpu_frozen);
+	kdump_status[cpuid] = 1;
+	FUNC5();
+	for (;;)
+		FUNC1();
+}

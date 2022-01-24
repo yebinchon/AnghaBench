@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct uart_port {int dummy; } ;
+struct serial_private {int dummy; } ;
+struct pciserial_board {unsigned int first_offset; int uart_offset; int /*<<< orphan*/  reg_shift; int /*<<< orphan*/  flags; } ;
+
+/* Variables and functions */
+ unsigned int FUNC0 (int /*<<< orphan*/ ) ; 
+ int FUNC1 (struct serial_private*,struct uart_port*,unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int
+FUNC2(struct serial_private *priv, const struct pciserial_board *board,
+	      struct uart_port *port, int idx)
+{
+	unsigned int bar, offset = board->first_offset;
+
+	bar = FUNC0(board->flags);
+	if (idx < 4)
+		bar += idx;
+	else {
+		bar = 4;
+		offset += (idx - 4) * board->uart_offset;
+	}
+
+	return FUNC1(priv, port, bar, offset, board->reg_shift);
+}

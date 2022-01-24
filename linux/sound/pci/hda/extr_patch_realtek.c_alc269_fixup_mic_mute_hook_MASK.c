@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct hda_codec {struct alc_spec* spec; } ;
+struct alc_spec {scalar_t__ mute_led_nid; scalar_t__ mute_led_polarity; } ;
+
+/* Variables and functions */
+ unsigned int AC_PINCTL_VREFEN ; 
+ unsigned int AC_PINCTL_VREF_80 ; 
+ unsigned int AC_PINCTL_VREF_HIZ ; 
+ unsigned int FUNC0 (struct hda_codec*,scalar_t__) ; 
+ int /*<<< orphan*/  FUNC1 (struct hda_codec*) ; 
+ int /*<<< orphan*/  FUNC2 (struct hda_codec*) ; 
+ int /*<<< orphan*/  FUNC3 (struct hda_codec*,scalar_t__,unsigned int) ; 
+
+__attribute__((used)) static void FUNC4(void *private_data, int enabled)
+{
+	struct hda_codec *codec = private_data;
+	struct alc_spec *spec = codec->spec;
+	unsigned int pinval;
+
+	if (spec->mute_led_polarity)
+		enabled = !enabled;
+	pinval = FUNC0(codec, spec->mute_led_nid);
+	pinval &= ~AC_PINCTL_VREFEN;
+	pinval |= enabled ? AC_PINCTL_VREF_HIZ : AC_PINCTL_VREF_80;
+	if (spec->mute_led_nid) {
+		/* temporarily power up/down for setting VREF */
+		FUNC2(codec);
+		FUNC3(codec, spec->mute_led_nid, pinval);
+		FUNC1(codec);
+	}
+}

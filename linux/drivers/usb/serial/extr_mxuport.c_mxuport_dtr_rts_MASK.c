@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u8 ;
+struct usb_serial_port {int dummy; } ;
+struct mxuport_port {int mcr_state; int /*<<< orphan*/  mutex; } ;
+
+/* Variables and functions */
+ int UART_MCR_DTR ; 
+ int UART_MCR_RTS ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int FUNC2 (struct usb_serial_port*,int) ; 
+ struct mxuport_port* FUNC3 (struct usb_serial_port*) ; 
+
+__attribute__((used)) static void FUNC4(struct usb_serial_port *port, int on)
+{
+	struct mxuport_port *mxport = FUNC3(port);
+	u8 mcr_state;
+	int err;
+
+	FUNC0(&mxport->mutex);
+	mcr_state = mxport->mcr_state;
+
+	if (on)
+		mcr_state |= (UART_MCR_RTS | UART_MCR_DTR);
+	else
+		mcr_state &= ~(UART_MCR_RTS | UART_MCR_DTR);
+
+	err = FUNC2(port, mcr_state);
+	if (!err)
+		mxport->mcr_state = mcr_state;
+
+	FUNC1(&mxport->mutex);
+}

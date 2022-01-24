@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  lua_State ;
+typedef  int /*<<< orphan*/  lua_Debug ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int,int,char*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int,char*) ; 
+ int FUNC2 (int /*<<< orphan*/ *,int) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,char*,int) ; 
+ int FUNC4 (int /*<<< orphan*/ *,int,int) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC6 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC7 (int /*<<< orphan*/ *,int) ; 
+ scalar_t__ FUNC8 (int /*<<< orphan*/ *,int) ; 
+ int /*<<< orphan*/  FUNC9 (int /*<<< orphan*/ *,int) ; 
+
+__attribute__((used)) static void FUNC10(lua_State*L,int opt){
+if(FUNC7(L,1))FUNC9(L,1);
+else{
+lua_Debug ar;
+int level=opt?FUNC4(L,1,1):FUNC2(L,1);
+FUNC0(L,level>=0,1,"level must be non-negative");
+if(FUNC6(L,level,&ar)==0)
+FUNC1(L,1,"invalid level");
+FUNC5(L,"f",&ar);
+if(FUNC8(L,-1))
+FUNC3(L,"no function environment for tail call at level %d",
+level);
+}
+}

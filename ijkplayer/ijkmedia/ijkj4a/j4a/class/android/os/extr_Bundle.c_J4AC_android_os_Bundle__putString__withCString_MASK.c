@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_8__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/ * jstring ;
+typedef  int /*<<< orphan*/  jobject ;
+struct TYPE_8__ {int /*<<< orphan*/ * (* NewStringUTF ) (TYPE_1__**,char const*) ;} ;
+typedef  TYPE_1__* JNIEnv ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (TYPE_1__**,int /*<<< orphan*/ **) ; 
+ scalar_t__ FUNC2 (TYPE_1__**) ; 
+ int /*<<< orphan*/ * FUNC3 (TYPE_1__**,char const*) ; 
+ int /*<<< orphan*/ * FUNC4 (TYPE_1__**,char const*) ; 
+
+void FUNC5(JNIEnv *env, jobject thiz, const char *key_cstr__, const char *value_cstr__)
+{
+    jstring key = NULL;
+    jstring value = NULL;
+
+    key = (*env)->NewStringUTF(env, key_cstr__);
+    if (FUNC2(env) || !key)
+        goto fail;
+    value = (*env)->NewStringUTF(env, value_cstr__);
+    if (FUNC2(env) || !value)
+        goto fail;
+
+    FUNC0(env, thiz, key, value);
+
+fail:
+    FUNC1(env, &key);
+    FUNC1(env, &value);
+}

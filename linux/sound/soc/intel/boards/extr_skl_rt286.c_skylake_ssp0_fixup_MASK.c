@@ -1,0 +1,45 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct snd_soc_pcm_runtime {int dummy; } ;
+struct snd_pcm_hw_params {int dummy; } ;
+struct snd_mask {int dummy; } ;
+struct snd_interval {int min; int max; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  SNDRV_PCM_FORMAT_S24_LE ; 
+ int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_CHANNELS ; 
+ int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_FORMAT ; 
+ int /*<<< orphan*/  SNDRV_PCM_HW_PARAM_RATE ; 
+ struct snd_interval* FUNC0 (struct snd_pcm_hw_params*,int /*<<< orphan*/ ) ; 
+ struct snd_mask* FUNC1 (struct snd_pcm_hw_params*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct snd_mask*) ; 
+ int /*<<< orphan*/  FUNC3 (struct snd_mask*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC4(struct snd_soc_pcm_runtime *rtd,
+			struct snd_pcm_hw_params *params)
+{
+	struct snd_interval *rate = FUNC0(params,
+			SNDRV_PCM_HW_PARAM_RATE);
+	struct snd_interval *channels = FUNC0(params,
+						SNDRV_PCM_HW_PARAM_CHANNELS);
+	struct snd_mask *fmt = FUNC1(params, SNDRV_PCM_HW_PARAM_FORMAT);
+
+	/* The output is 48KHz, stereo, 16bits */
+	rate->min = rate->max = 48000;
+	channels->min = channels->max = 2;
+
+	/* set SSP0 to 24 bit */
+	FUNC2(fmt);
+	FUNC3(fmt, SNDRV_PCM_FORMAT_S24_LE);
+	return 0;
+}

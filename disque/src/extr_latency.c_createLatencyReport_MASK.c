@@ -1,0 +1,271 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct latencyTimeSeries {scalar_t__ max; } ;
+struct latencyStats {double samples; scalar_t__ period; scalar_t__ mad; scalar_t__ avg; } ;
+typedef  int /*<<< orphan*/  sds ;
+typedef  int /*<<< orphan*/  dictIterator ;
+typedef  int /*<<< orphan*/  dictEntry ;
+struct TYPE_2__ {int latency_monitor_threshold; int stat_fork_rate; int slowlog_log_slower_than; scalar_t__ aof_fsync; int hz; int /*<<< orphan*/  latency_events; } ;
+
+/* Variables and functions */
+ scalar_t__ AOF_FSYNC_ALWAYS ; 
+ int /*<<< orphan*/  FUNC0 (char*,struct latencyStats*) ; 
+ char* FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC2 (int /*<<< orphan*/ ) ; 
+ struct latencyTimeSeries* FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC6 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ ,char*,int) ; 
+ int /*<<< orphan*/  FUNC9 (int /*<<< orphan*/ ,char*,unsigned long long,...) ; 
+ int /*<<< orphan*/  FUNC10 () ; 
+ TYPE_1__ server ; 
+ int /*<<< orphan*/  FUNC11 (char*,char*) ; 
+
+sds FUNC12(void) {
+    sds report = FUNC10();
+    int advise_better_vm = 0;       /* Better virtual machines. */
+    int advise_slowlog_enabled = 0; /* Enable slowlog. */
+    int advise_slowlog_tuning = 0;  /* Reconfigure slowlog. */
+    int advise_slowlog_inspect = 0; /* Check your slowlog. */
+    int advise_disk_contention = 0; /* Try to lower disk contention. */
+    int advise_scheduler = 0;       /* Intrinsic latency. */
+    int advise_data_writeback = 0;  /* data=writeback. */
+    int advise_no_appendfsync = 0;  /* don't fsync during rewrites. */
+    int advise_local_disk = 0;      /* Avoid remote disks. */
+    int advise_ssd = 0;             /* Use an SSD drive. */
+    int advise_write_load_info = 0; /* Print info about AOF and write load. */
+    int advise_hz = 0;              /* Use higher HZ. */
+    int advise_large_objects = 0;   /* Deletion of large objects. */
+    int advise_relax_fsync_policy = 0; /* appendfsync always is slow. */
+    int advices = 0;
+
+    /* Return ASAP if the latency engine is disabled and it looks like it
+     * was never enabled so far. */
+    if (FUNC6(server.latency_events) == 0 &&
+        server.latency_monitor_threshold == 0)
+    {
+        report = FUNC7(report,"I'm sorry, Dave, I can't do that. Latency monitoring is disabled in this Disque instance. You may use \"CONFIG SET latency-monitor-threshold <milliseconds>.\" in order to enable it. If we weren't in a deep space mission I'd suggest to take a look at http://disque.io/topics/latency-monitor.\n");
+        return report;
+    }
+
+    /* Show all the events stats and add for each event some event-related
+     * comment depending on the values. */
+    dictIterator *di;
+    dictEntry *de;
+    int eventnum = 0;
+
+    di = FUNC2(server.latency_events);
+    while((de = FUNC4(di)) != NULL) {
+        char *event = FUNC1(de);
+        struct latencyTimeSeries *ts = FUNC3(de);
+        struct latencyStats ls;
+
+        if (ts == NULL) continue;
+        eventnum++;
+        if (eventnum == 1) {
+            report = FUNC7(report,"Dave, I have observed latency spikes in this Disque instance. You don't mind talking about it, do you Dave?\n\n");
+        }
+        FUNC0(event,&ls);
+
+        report = FUNC9(report,
+            "%d. %s: %d latency spikes (average %lums, mean deviation %lums, period %.2f sec). Worst all time event %lums.",
+            eventnum, event,
+            ls.samples,
+            (unsigned long) ls.avg,
+            (unsigned long) ls.mad,
+            (double) ls.period/ls.samples,
+            (unsigned long) ts->max);
+
+        /* Fork */
+        if (!FUNC11(event,"fork")) {
+            char *fork_quality;
+            if (server.stat_fork_rate < 10) {
+                fork_quality = "terrible";
+                advise_better_vm = 1;
+                advices++;
+            } else if (server.stat_fork_rate < 25) {
+                fork_quality = "poor";
+                advise_better_vm = 1;
+                advices++;
+            } else if (server.stat_fork_rate < 100) {
+                fork_quality = "good";
+            } else {
+                fork_quality = "excellent";
+            }
+            report = FUNC9(report,
+                " Fork rate is %.2f GB/sec (%s).", server.stat_fork_rate,
+                fork_quality);
+        }
+
+        /* Potentially commands. */
+        if (!FUNC11(event,"command")) {
+            if (server.slowlog_log_slower_than == 0) {
+                advise_slowlog_enabled = 1;
+                advices++;
+            } else if (server.slowlog_log_slower_than/1000 >
+                       server.latency_monitor_threshold)
+            {
+                advise_slowlog_tuning = 1;
+                advices++;
+            }
+            advise_slowlog_inspect = 1;
+            advise_large_objects = 1;
+            advices += 2;
+        }
+
+        /* fast-command. */
+        if (!FUNC11(event,"fast-command")) {
+            advise_scheduler = 1;
+            advices++;
+        }
+
+        /* AOF and I/O. */
+        if (!FUNC11(event,"aof-write-pending-fsync")) {
+            advise_local_disk = 1;
+            advise_disk_contention = 1;
+            advise_ssd = 1;
+            advise_data_writeback = 1;
+            advices += 4;
+        }
+
+        if (!FUNC11(event,"aof-write-active-child")) {
+            advise_no_appendfsync = 1;
+            advise_data_writeback = 1;
+            advise_ssd = 1;
+            advices += 3;
+        }
+
+        if (!FUNC11(event,"aof-write-alone")) {
+            advise_local_disk = 1;
+            advise_data_writeback = 1;
+            advise_ssd = 1;
+            advices += 3;
+        }
+
+        if (!FUNC11(event,"aof-fsync-always")) {
+            advise_relax_fsync_policy = 1;
+            advices++;
+        }
+
+        if (!FUNC11(event,"aof-fstat") ||
+            !FUNC11(event,"rdb-unlik-temp-file")) {
+            advise_disk_contention = 1;
+            advise_local_disk = 1;
+            advices += 2;
+        }
+
+        if (!FUNC11(event,"aof-rewrite-diff-write") ||
+            !FUNC11(event,"aof-rename")) {
+            advise_write_load_info = 1;
+            advise_data_writeback = 1;
+            advise_ssd = 1;
+            advise_local_disk = 1;
+            advices += 4;
+        }
+
+        /* Expire cycle. */
+        if (!FUNC11(event,"expire-cycle")) {
+            advise_hz = 1;
+            advise_large_objects = 1;
+            advices += 2;
+        }
+
+        /* Eviction cycle. */
+        if (!FUNC11(event,"eviction-cycle")) {
+            advise_large_objects = 1;
+            advices++;
+        }
+
+        report = FUNC8(report,"\n",1);
+    }
+    FUNC5(di);
+
+    if (eventnum == 0) {
+        report = FUNC7(report,"Dave, no latency spike was observed during the lifetime of this Disque instance, not in the slightest bit. I honestly think you ought to sit down calmly, take a stress pill, and think things over.\n");
+    } else if (advices == 0) {
+        report = FUNC7(report,"\nWhile there are latency events logged, I'm not able to suggest any easy fix. Please use the Disque community to get some help, providing this report in your help request.\n");
+    } else {
+        /* Add all the suggestions accumulated so far. */
+
+        /* Better VM. */
+        report = FUNC7(report,"\nI have a few advices for you:\n\n");
+        if (advise_better_vm) {
+            report = FUNC7(report,"- If you are using a virtual machine, consider upgrading it with a faster one using an hypervisior that provides less latency during fork() calls. Xen is known to have poor fork() performance. Even in the context of the same VM provider, certain kinds of instances can execute fork faster than others.\n");
+        }
+
+        /* Slow log. */
+        if (advise_slowlog_enabled) {
+            report = FUNC9(report,"- There are latency issues with potentially slow commands you are using. Try to enable the Slow Log Disque feature using the command 'CONFIG SET slowlog-log-slower-than %llu'. If the Slow log is disabled Disque is not able to log slow commands execution for you.\n", (unsigned long long)server.latency_monitor_threshold*1000);
+        }
+
+        if (advise_slowlog_tuning) {
+            report = FUNC9(report,"- Your current Slow Log configuration only logs events that are slower than your configured latency monitor threshold. Please use 'CONFIG SET slowlog-log-slower-than %llu'.\n", (unsigned long long)server.latency_monitor_threshold*1000);
+        }
+
+        if (advise_slowlog_inspect) {
+            report = FUNC7(report,"- Check your Slow Log to understand what are the commands you are running which are too slow to execute. Please check http://disque.io/commands/slowlog for more information.\n");
+        }
+
+        /* Intrinsic latency. */
+        if (advise_scheduler) {
+            report = FUNC7(report,"- The system is slow to execute Disque code paths not containing system calls. This usually means the system does not provide Disque CPU time to run for long periods. You should try to:\n"
+            "  1) Lower the system load.\n"
+            "  2) Use a computer / VM just for Disque if you are running other softawre in the same system.\n"
+            "  3) Check if you have a \"noisy neighbour\" problem.\n"
+            "  4) Check with 'disque-cli --intrinsic-latency 100' what is the intrinsic latency in your system.\n"
+            "  5) Check if the problem is allocator-related by recompiling Disque with MALLOC=libc, if you are using Jemalloc. However this may create fragmentation problems.\n");
+        }
+
+        /* AOF / Disk latency. */
+        if (advise_local_disk) {
+            report = FUNC7(report,"- It is strongly advised to use local disks for persistence, especially if you are using AOF. Remote disks provided by platform-as-a-service providers are known to be slow.\n");
+        }
+
+        if (advise_ssd) {
+            report = FUNC7(report,"- SSD disks are able to reduce fsync latency, and total time needed for snapshotting and AOF log rewriting (resulting in smaller memory usage and smaller final AOF rewrite buffer flushes). With extremely high write load SSD disks can be a good option. However Disque should perform reasonably with high load using normal disks. Use this advice as a last resort.\n");
+        }
+
+        if (advise_data_writeback) {
+            report = FUNC7(report,"- Mounting ext3/4 filesystems with data=writeback can provide a performance boost compared to data=ordered, however this mode of operation provides less guarantees, and sometimes it can happen that after a hard crash the AOF file will have an half-written command at the end and will require to be repaired before Disque restarts.\n");
+        }
+
+        if (advise_disk_contention) {
+            report = FUNC7(report,"- Try to lower the disk contention. This is often caused by other disk intensive processes running in the same computer (including other Disque instances).\n");
+        }
+
+        if (advise_no_appendfsync) {
+            report = FUNC7(report,"- Assuming from the point of view of data safety this is viable in your environment, you could try to enable the 'no-appendfsync-on-rewrite' option, so that fsync will not be performed while there is a child rewriting the AOF file or producing an RDB file (the moment where there is high disk contention).\n");
+        }
+
+        if (advise_relax_fsync_policy && server.aof_fsync == AOF_FSYNC_ALWAYS) {
+            report = FUNC7(report,"- Your fsync policy is set to 'always'. It is very hard to get good performances with such a setup, if possible try to relax the fsync policy to 'onesec'.\n");
+        }
+
+        if (advise_write_load_info) {
+            report = FUNC7(report,"- Latency during the AOF atomic rename operation or when the final difference is flushed to the AOF file at the end of the rewrite, sometimes is caused by very high write load, causing the AOF buffer to get very large. If possible try to send less commands to accomplish the same work, or use Lua scripts to group multiple operations into a single EVALSHA call.\n");
+        }
+
+        if (advise_hz && server.hz < 100) {
+            report = FUNC7(report,"- In order to make the Disque keys expiring process more incremental, try to set the 'hz' configuration parameter to 100 using 'CONFIG SET hz 100'.\n");
+        }
+
+        if (advise_large_objects) {
+            report = FUNC7(report,"- Deleting, expiring or evicting (because of maxmemory policy) large objects is a blocking operation. If you have very large objects that are often deleted, expired, or evicted, try to fragment those objects into multiple smaller objects.\n");
+        }
+    }
+
+    return report;
+}

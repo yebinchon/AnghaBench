@@ -1,0 +1,64 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ CURLcode ;
+typedef  int /*<<< orphan*/  CURL ;
+
+/* Variables and functions */
+ scalar_t__ CURLE_OK ; 
+ int /*<<< orphan*/  CURLOPT_CUSTOMREQUEST ; 
+ int /*<<< orphan*/  CURLOPT_NOBODY ; 
+ int /*<<< orphan*/  CURLOPT_PASSWORD ; 
+ int /*<<< orphan*/  CURLOPT_URL ; 
+ int /*<<< orphan*/  CURLOPT_USERNAME ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC1 () ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+ char* FUNC4 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ,char*,char*) ; 
+ int /*<<< orphan*/  stderr ; 
+
+int FUNC6(void)
+{
+  CURL *curl;
+  CURLcode res = CURLE_OK;
+
+  curl = FUNC1();
+  if(curl) {
+    /* Set username and password */
+    FUNC3(curl, CURLOPT_USERNAME, "user");
+    FUNC3(curl, CURLOPT_PASSWORD, "secret");
+
+    /* This is just the server URL */
+    FUNC3(curl, CURLOPT_URL, "pop3://pop.example.com");
+
+    /* Set the STAT command */
+    FUNC3(curl, CURLOPT_CUSTOMREQUEST, "STAT");
+
+    /* Do not perform a transfer as the data is in the response */
+    FUNC3(curl, CURLOPT_NOBODY, 1L);
+
+    /* Perform the custom request */
+    res = FUNC2(curl);
+
+    /* Check for errors */
+    if(res != CURLE_OK)
+      FUNC5(stderr, "curl_easy_perform() failed: %s\n",
+              FUNC4(res));
+
+    /* Always cleanup */
+    FUNC0(curl);
+  }
+
+  return (int)res;
+}

@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ti_type {scalar_t__ ti_vid; scalar_t__ ti_did; int /*<<< orphan*/ * ti_name; } ;
+typedef  int /*<<< orphan*/  device_t ;
+
+/* Variables and functions */
+ int BUS_PROBE_DEFAULT ; 
+ int ENXIO ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ) ; 
+ struct ti_type* ti_devs ; 
+
+__attribute__((used)) static int
+FUNC3(device_t dev)
+{
+	const struct ti_type *t;
+
+	t = ti_devs;
+
+	while (t->ti_name != NULL) {
+		if ((FUNC2(dev) == t->ti_vid) &&
+		    (FUNC1(dev) == t->ti_did)) {
+			FUNC0(dev, t->ti_name);
+			return (BUS_PROBE_DEFAULT);
+		}
+		t++;
+	}
+
+	return (ENXIO);
+}

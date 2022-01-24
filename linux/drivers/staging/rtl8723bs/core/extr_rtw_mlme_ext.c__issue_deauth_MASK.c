@@ -1,0 +1,105 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  unsigned char u8 ;
+struct xmit_priv {int dummy; } ;
+struct pkt_attrib {int retry_ctrl; int pktlen; int last_txcmdsz; } ;
+struct xmit_frame {scalar_t__ buf_addr; struct pkt_attrib attrib; } ;
+struct mlme_ext_info {int /*<<< orphan*/  network; } ;
+struct mlme_ext_priv {int /*<<< orphan*/  mgnt_seq; struct mlme_ext_info mlmext_info; } ;
+struct ieee80211_hdr_3addr {int dummy; } ;
+struct ieee80211_hdr {int /*<<< orphan*/  addr3; int /*<<< orphan*/  addr2; int /*<<< orphan*/  addr1; scalar_t__ frame_control; } ;
+struct adapter {int /*<<< orphan*/  eeprompriv; struct mlme_ext_priv mlmeextpriv; struct xmit_priv xmitpriv; } ;
+typedef  scalar_t__ __le16 ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ETH_ALEN ; 
+ int /*<<< orphan*/  FUNC0 (unsigned char*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct ieee80211_hdr*,int /*<<< orphan*/ ) ; 
+ int TXDESC_OFFSET ; 
+ int /*<<< orphan*/  WIFI_DEAUTH ; 
+ int WLANHDR_OFFSET ; 
+ int _FAIL ; 
+ int /*<<< orphan*/  _RSON_CODE_ ; 
+ int _SUCCESS ; 
+ struct xmit_frame* FUNC2 (struct xmit_priv*) ; 
+ scalar_t__ FUNC3 (unsigned short) ; 
+ int /*<<< orphan*/  FUNC4 (struct adapter*,struct xmit_frame*) ; 
+ int FUNC5 (struct adapter*,struct xmit_frame*) ; 
+ unsigned char* FUNC6 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC8 (scalar_t__,int /*<<< orphan*/ ,int) ; 
+ unsigned char* FUNC9 (int /*<<< orphan*/ *) ; 
+ unsigned char* FUNC10 (unsigned char*,int /*<<< orphan*/ ,unsigned char*,int*) ; 
+ int /*<<< orphan*/  FUNC11 (struct adapter*,struct pkt_attrib*) ; 
+
+__attribute__((used)) static int FUNC12(struct adapter *padapter, unsigned char *da,
+			 unsigned short reason, bool wait_ack)
+{
+	struct xmit_frame			*pmgntframe;
+	struct pkt_attrib			*pattrib;
+	unsigned char 				*pframe;
+	struct ieee80211_hdr	*pwlanhdr;
+	__le16 *fctrl;
+	struct xmit_priv 		*pxmitpriv = &(padapter->xmitpriv);
+	struct mlme_ext_priv *pmlmeext = &(padapter->mlmeextpriv);
+	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
+	int ret = _FAIL;
+	__le16 le_tmp;
+
+	/* DBG_871X("%s to "MAC_FMT"\n", __func__, MAC_ARG(da)); */
+
+	pmgntframe = FUNC2(pxmitpriv);
+	if (pmgntframe == NULL) {
+		goto exit;
+	}
+
+	/* update attribute */
+	pattrib = &pmgntframe->attrib;
+	FUNC11(padapter, pattrib);
+	pattrib->retry_ctrl = false;
+
+	FUNC8(pmgntframe->buf_addr, 0, WLANHDR_OFFSET + TXDESC_OFFSET);
+
+	pframe = (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
+	pwlanhdr = (struct ieee80211_hdr *)pframe;
+
+	fctrl = &(pwlanhdr->frame_control);
+	*(fctrl) = 0;
+
+	FUNC7(pwlanhdr->addr1, da, ETH_ALEN);
+	FUNC7(pwlanhdr->addr2, FUNC9(&(padapter->eeprompriv)), ETH_ALEN);
+	FUNC7(pwlanhdr->addr3, FUNC6(&(pmlmeinfo->network)), ETH_ALEN);
+
+	FUNC1(pwlanhdr, pmlmeext->mgnt_seq);
+	pmlmeext->mgnt_seq++;
+	FUNC0(pframe, WIFI_DEAUTH);
+
+	pframe += sizeof(struct ieee80211_hdr_3addr);
+	pattrib->pktlen = sizeof(struct ieee80211_hdr_3addr);
+
+	le_tmp = FUNC3(reason);
+	pframe = FUNC10(pframe, _RSON_CODE_, (unsigned char *)&le_tmp, &(pattrib->pktlen));
+
+	pattrib->last_txcmdsz = pattrib->pktlen;
+
+
+	if (wait_ack) {
+		ret = FUNC5(padapter, pmgntframe);
+	} else {
+		FUNC4(padapter, pmgntframe);
+		ret = _SUCCESS;
+	}
+
+exit:
+	return ret;
+}

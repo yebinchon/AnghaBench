@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct btc_coexist {int /*<<< orphan*/  (* btc_set ) (struct btc_coexist*,int /*<<< orphan*/ ,int*) ;} ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  BTC_SET_ACT_DISABLE_LOW_POWER ; 
+ int /*<<< orphan*/  NORMAL_EXEC ; 
+ int /*<<< orphan*/  FUNC0 (struct btc_coexist*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct btc_coexist*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct btc_coexist*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC3 (struct btc_coexist*,int /*<<< orphan*/ ,int,int) ; 
+ int /*<<< orphan*/  FUNC4 (struct btc_coexist*,int,int,int,int) ; 
+ int /*<<< orphan*/  FUNC5 (struct btc_coexist*,int,int,int,int) ; 
+ int /*<<< orphan*/  FUNC6 (struct btc_coexist*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC7 (struct btc_coexist*,int /*<<< orphan*/ ,int*) ; 
+
+__attribute__((used)) static void FUNC8(struct btc_coexist *btcoexist)
+{
+	bool low_pwr_disable = true;
+
+	btcoexist->btc_set(btcoexist, BTC_SET_ACT_DISABLE_LOW_POWER,
+			   &low_pwr_disable);
+
+	FUNC6(btcoexist, NORMAL_EXEC, 1);
+
+	FUNC0(btcoexist, NORMAL_EXEC, 2);
+	FUNC3(btcoexist, NORMAL_EXEC, true, 3);
+	FUNC2(btcoexist, NORMAL_EXEC, 6);
+	FUNC1(btcoexist, NORMAL_EXEC, 0);
+
+	FUNC4(btcoexist, false, false, false, false);
+	FUNC5(btcoexist, false, false, false, 0x18);
+}

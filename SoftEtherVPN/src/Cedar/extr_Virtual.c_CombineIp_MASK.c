@@ -1,0 +1,174 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_15__   TYPE_3__ ;
+typedef  struct TYPE_14__   TYPE_2__ ;
+typedef  struct TYPE_13__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_13__ {int /*<<< orphan*/  IpCombine; int /*<<< orphan*/  CurrentIpQuota; } ;
+typedef  TYPE_1__ VH ;
+typedef  int UINT ;
+typedef  int /*<<< orphan*/  UCHAR ;
+struct TYPE_15__ {int Size; int HeadIpHeaderDataSize; int DataReserved; int /*<<< orphan*/  MaxL3Size; int /*<<< orphan*/  SrcIsLocalMacAddr; int /*<<< orphan*/ * HeadIpHeaderData; int /*<<< orphan*/  Ttl; int /*<<< orphan*/  MacBroadcast; scalar_t__ Data; int /*<<< orphan*/  Protocol; int /*<<< orphan*/  DestIP; int /*<<< orphan*/  SrcIP; int /*<<< orphan*/  IpParts; } ;
+struct TYPE_14__ {int Offset; int Size; } ;
+typedef  TYPE_2__ IP_PART ;
+typedef  TYPE_3__ IP_COMBINE ;
+typedef  int /*<<< orphan*/  IPV4_HEADER ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,TYPE_2__*) ; 
+ int /*<<< orphan*/ * FUNC1 (int /*<<< orphan*/ *,int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,void*,int) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,TYPE_3__*) ; 
+ int /*<<< orphan*/  FUNC4 (TYPE_1__*,TYPE_3__*) ; 
+ int /*<<< orphan*/  FUNC5 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ TYPE_2__* FUNC6 (int /*<<< orphan*/ ,int) ; 
+ int FUNC7 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC8 (scalar_t__,int) ; 
+ TYPE_2__* FUNC9 (int) ; 
+
+void FUNC10(VH *v, IP_COMBINE *c, UINT offset, void *data, UINT size, bool last_packet, UCHAR *head_ip_header_data, UINT head_ip_header_size)
+{
+	UINT i;
+	IP_PART *p;
+	UINT need_size;
+	UINT data_size_delta;
+	// Validate arguments
+	if (c == NULL || data == NULL)
+	{
+		return;
+	}
+
+	// Check the size and offset
+	if ((offset + size) > 65535)
+	{
+		// Do not process packet larger than 64Kbytes
+		return;
+	}
+
+	if (last_packet == false && c->Size != 0)
+	{
+		if ((offset + size) > c->Size)
+		{
+			// Do not process the packet larger than the packet size
+			return;
+		}
+	}
+
+	if (head_ip_header_data != NULL && head_ip_header_size >= sizeof(IPV4_HEADER))
+	{
+		if (c->HeadIpHeaderData == NULL)
+		{
+			c->HeadIpHeaderData = FUNC1(head_ip_header_data, head_ip_header_size);
+			c->HeadIpHeaderDataSize = head_ip_header_size;
+		}
+	}
+
+	need_size = offset + size;
+	data_size_delta = c->DataReserved;
+	// Ensure sufficient if the buffer is insufficient
+	while (c->DataReserved < need_size)
+	{
+		c->DataReserved = c->DataReserved * 4;
+		c->Data = FUNC8(c->Data, c->DataReserved);
+	}
+	data_size_delta = c->DataReserved - data_size_delta;
+	v->CurrentIpQuota += data_size_delta;
+
+	// Overwrite the data into the buffer
+	FUNC2(((UCHAR *)c->Data) + offset, data, size);
+
+	if (last_packet)
+	{
+		// If No More Fragment packet arrives, the size of this datagram is finalized
+		c->Size = offset + size;
+	}
+
+	// Check the overlap between the region which is represented by the offset and size of the
+	// existing received list and the region which is represented by the offset and size
+	for (i = 0;i < FUNC7(c->IpParts);i++)
+	{
+		UINT moving_size;
+		IP_PART *p = FUNC6(c->IpParts, i);
+
+		// Check the overlapping between the existing area and head area
+		if ((p->Offset <= offset) && ((p->Offset + p->Size) > offset))
+		{
+			// Compress behind the offset of this packet since a duplication is
+			// found in the first part with the existing packet and this packet
+
+			if ((offset + size) <= (p->Offset + p->Size))
+			{
+				// This packet is buried in the existing packet
+				size = 0;
+			}
+			else
+			{
+				// Retral region is not overlapped
+				moving_size = p->Offset + p->Size - offset;
+				offset += moving_size;
+				size -= moving_size;
+			}
+		}
+		if ((p->Offset < (offset + size)) && ((p->Offset + p->Size) >= (offset + size)))
+		{
+			// Compress the size of this packet forward because a duplication is
+			// found between the posterior portion the existing packet and this packet
+
+			moving_size = p->Offset + p->Size - offset - size;
+			size -= moving_size;
+		}
+
+		if ((p->Offset >= offset) && ((p->Offset + p->Size) <= (offset + size)))
+		{
+			// This packet was overwritten to completely cover an existing packet
+			p->Size = 0;
+		}
+	}
+
+	if (size != 0)
+	{
+		// Register this packet
+		p = FUNC9(sizeof(IP_PART));
+
+		p->Offset = offset;
+		p->Size = size;
+
+		FUNC0(c->IpParts, p);
+	}
+
+	if (c->Size != 0)
+	{
+		// Get the total size of the data portion list already received
+		UINT total_size = 0;
+		UINT i;
+
+		for (i = 0;i < FUNC7(c->IpParts);i++)
+		{
+			IP_PART *p = FUNC6(c->IpParts, i);
+
+			total_size += p->Size;
+		}
+
+		if (total_size == c->Size)
+		{
+			// Received all of the IP packet
+			FUNC5(v, c->SrcIP, c->DestIP, c->Protocol, c->Data, c->Size, c->MacBroadcast, c->Ttl,
+				c->HeadIpHeaderData, c->HeadIpHeaderDataSize, c->SrcIsLocalMacAddr, c->MaxL3Size);
+
+			// Release the combining object
+			FUNC4(v, c);
+
+			// Remove from the combining object list
+			FUNC3(v->IpCombine, c);
+		}
+	}
+}

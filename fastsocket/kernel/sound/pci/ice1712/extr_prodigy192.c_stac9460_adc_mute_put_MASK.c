@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct snd_kcontrol {int dummy; } ;
+struct snd_ice1712 {int dummy; } ;
+struct TYPE_3__ {int* value; } ;
+struct TYPE_4__ {TYPE_1__ integer; } ;
+struct snd_ctl_elem_value {TYPE_2__ value; } ;
+
+/* Variables and functions */
+ int STAC946X_MIC_L_VOLUME ; 
+ struct snd_ice1712* FUNC0 (struct snd_kcontrol*) ; 
+ unsigned char FUNC1 (struct snd_ice1712*,int) ; 
+ int /*<<< orphan*/  FUNC2 (struct snd_ice1712*,int,unsigned char) ; 
+
+__attribute__((used)) static int FUNC3(struct snd_kcontrol *kcontrol, struct snd_ctl_elem_value *ucontrol)
+{
+	struct snd_ice1712 *ice = FUNC0(kcontrol);
+	unsigned char new, old;
+	int i, reg;
+	int change;
+
+	for (i = 0; i < 2; ++i) {
+		reg = STAC946X_MIC_L_VOLUME + i;
+		old = FUNC1(ice, reg);
+		new = (~ucontrol->value.integer.value[i]<<7&0x80) | (old&~0x80);
+		change = (new != old);
+		if (change)
+			FUNC2(ice, reg, new);
+	}
+
+	return change;
+}

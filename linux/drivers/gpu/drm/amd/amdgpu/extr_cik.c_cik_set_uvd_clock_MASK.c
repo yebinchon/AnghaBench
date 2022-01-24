@@ -1,0 +1,57 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int uint32_t ;
+typedef  int /*<<< orphan*/  u32 ;
+struct atom_clock_dividers {int post_divider; } ;
+struct amdgpu_device {int dummy; } ;
+
+/* Variables and functions */
+ int CG_DCLK_CNTL__DCLK_DIR_CNTL_EN_MASK ; 
+ int CG_DCLK_CNTL__DCLK_DIVIDER_MASK ; 
+ int CG_DCLK_STATUS__DCLK_STATUS_MASK ; 
+ int /*<<< orphan*/  COMPUTE_GPUCLK_INPUT_FLAG_DEFAULT_GPUCLK ; 
+ int ETIMEDOUT ; 
+ int FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int) ; 
+ int FUNC2 (struct amdgpu_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct atom_clock_dividers*) ; 
+ int /*<<< orphan*/  FUNC3 (int) ; 
+
+__attribute__((used)) static int FUNC4(struct amdgpu_device *adev, u32 clock,
+			      u32 cntl_reg, u32 status_reg)
+{
+	int r, i;
+	struct atom_clock_dividers dividers;
+	uint32_t tmp;
+
+	r = FUNC2(adev,
+					       COMPUTE_GPUCLK_INPUT_FLAG_DEFAULT_GPUCLK,
+					       clock, false, &dividers);
+	if (r)
+		return r;
+
+	tmp = FUNC0(cntl_reg);
+	tmp &= ~(CG_DCLK_CNTL__DCLK_DIR_CNTL_EN_MASK |
+		CG_DCLK_CNTL__DCLK_DIVIDER_MASK);
+	tmp |= dividers.post_divider;
+	FUNC1(cntl_reg, tmp);
+
+	for (i = 0; i < 100; i++) {
+		if (FUNC0(status_reg) & CG_DCLK_STATUS__DCLK_STATUS_MASK)
+			break;
+		FUNC3(10);
+	}
+	if (i == 100)
+		return -ETIMEDOUT;
+
+	return 0;
+}

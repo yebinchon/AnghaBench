@@ -1,0 +1,557 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int uint32_t ;
+struct TYPE_2__ {int vram_width; } ;
+struct radeon_device {int flags; scalar_t__ family; TYPE_1__ mc; } ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (struct radeon_device*) ; 
+ scalar_t__ CHIP_R300 ; 
+ scalar_t__ CHIP_R350 ; 
+ scalar_t__ CHIP_RS400 ; 
+ scalar_t__ CHIP_RS480 ; 
+ scalar_t__ CHIP_RV100 ; 
+ scalar_t__ CHIP_RV200 ; 
+ scalar_t__ CHIP_RV250 ; 
+ scalar_t__ CHIP_RV280 ; 
+ scalar_t__ CHIP_RV350 ; 
+ int R300_DISABLE_MC_MCLKA ; 
+ int R300_DISABLE_MC_MCLKB ; 
+ int R300_DISP_DAC_PIXCLK_DAC2_BLANK_OFF ; 
+ int R300_DISP_DAC_PIXCLK_DAC_BLANK_OFF ; 
+ int R300_DVOCLK_ALWAYS_ONb ; 
+ int R300_MEM_USE_CD_CH_ONLY ; 
+ int R300_P2G2CLK_ALWAYS_ONb ; 
+ int R300_P2G2CLK_DAC_ALWAYS_ONb ; 
+ int R300_PIXCLK_DVO_ALWAYS_ONb ; 
+ int R300_PIXCLK_TRANS_ALWAYS_ONb ; 
+ int R300_PIXCLK_TVO_ALWAYS_ONb ; 
+ int R300_SCLK_CBA_MAX_DYN_STOP_LAT ; 
+ int /*<<< orphan*/  R300_SCLK_CNTL2 ; 
+ int R300_SCLK_FORCE_CBA ; 
+ int R300_SCLK_FORCE_GA ; 
+ int R300_SCLK_FORCE_PX ; 
+ int R300_SCLK_FORCE_SR ; 
+ int R300_SCLK_FORCE_SU ; 
+ int R300_SCLK_FORCE_TCL ; 
+ int R300_SCLK_FORCE_TX ; 
+ int R300_SCLK_FORCE_US ; 
+ int R300_SCLK_FORCE_VAP ; 
+ int R300_SCLK_GA_MAX_DYN_STOP_LAT ; 
+ int R300_SCLK_TCL_MAX_DYN_STOP_LAT ; 
+ int RADEON_ACTIVE_HILO_LAT_MASK ; 
+ int RADEON_ACTIVE_HILO_LAT_SHIFT ; 
+ int RADEON_CFG_ATI_REV_A13 ; 
+ int RADEON_CFG_ATI_REV_ID_MASK ; 
+ int /*<<< orphan*/  RADEON_CLK_PIN_CNTL ; 
+ int /*<<< orphan*/  RADEON_CLK_PWRMGT_CNTL ; 
+ int /*<<< orphan*/  RADEON_CONFIG_CNTL ; 
+ int RADEON_DISP_DYN_STOP_LAT_MASK ; 
+ int RADEON_DISP_TVOUT_PIXCLK_TV_ALWAYS_ONb ; 
+ int RADEON_DYN_STOP_LAT_MASK ; 
+ int RADEON_DYN_STOP_MODE_MASK ; 
+ int RADEON_ENGIN_DYNCLK_MODE ; 
+ int RADEON_FORCEON_MC ; 
+ int RADEON_FORCEON_MCLKA ; 
+ int RADEON_FORCEON_MCLKB ; 
+ int RADEON_FORCEON_YCLKA ; 
+ int RADEON_FORCEON_YCLKB ; 
+ int RADEON_IO_MCLK_DYN_ENABLE ; 
+ int RADEON_IS_IGP ; 
+ int /*<<< orphan*/  RADEON_MCLK_CNTL ; 
+ int /*<<< orphan*/  RADEON_MCLK_MISC ; 
+ int RADEON_MC_MCLK_DYN_ENABLE ; 
+ int /*<<< orphan*/  RADEON_MEM_CNTL ; 
+ int RADEON_PIX2CLK_ALWAYS_ONb ; 
+ int RADEON_PIX2CLK_DAC_ALWAYS_ONb ; 
+ int /*<<< orphan*/  RADEON_PIXCLKS_CNTL ; 
+ int RADEON_PIXCLK_ALWAYS_ONb ; 
+ int RADEON_PIXCLK_BLEND_ALWAYS_ONb ; 
+ int RADEON_PIXCLK_DAC_ALWAYS_ONb ; 
+ int RADEON_PIXCLK_DIG_TMDS_ALWAYS_ONb ; 
+ int RADEON_PIXCLK_GV_ALWAYS_ONb ; 
+ int RADEON_PIXCLK_LVDS_ALWAYS_ONb ; 
+ int RADEON_PIXCLK_TMDS_ALWAYS_ONb ; 
+ int /*<<< orphan*/  RADEON_PLL_PWRMGT_CNTL ; 
+ int /*<<< orphan*/  RADEON_SCLK_CNTL ; 
+ int RADEON_SCLK_DYN_START_CNTL ; 
+ int RADEON_SCLK_FORCEON_MASK ; 
+ int RADEON_SCLK_FORCE_CP ; 
+ int RADEON_SCLK_FORCE_DISP1 ; 
+ int RADEON_SCLK_FORCE_DISP2 ; 
+ int RADEON_SCLK_FORCE_E2 ; 
+ int RADEON_SCLK_FORCE_HDP ; 
+ int RADEON_SCLK_FORCE_IDCT ; 
+ int RADEON_SCLK_FORCE_OV0 ; 
+ int RADEON_SCLK_FORCE_PB ; 
+ int RADEON_SCLK_FORCE_RB ; 
+ int RADEON_SCLK_FORCE_RE ; 
+ int RADEON_SCLK_FORCE_SE ; 
+ int RADEON_SCLK_FORCE_TAM ; 
+ int RADEON_SCLK_FORCE_TDM ; 
+ int RADEON_SCLK_FORCE_TOP ; 
+ int RADEON_SCLK_FORCE_TV_SCLK ; 
+ int RADEON_SCLK_FORCE_VIP ; 
+ int /*<<< orphan*/  RADEON_SCLK_MORE_CNTL ; 
+ int RADEON_SCLK_MORE_FORCEON ; 
+ int RADEON_SCLK_MORE_MAX_DYN_STOP_LAT ; 
+ int RADEON_SINGLE_CRTC ; 
+ int RADEON_TCL_BYPASS_DISABLE ; 
+ int /*<<< orphan*/  RADEON_VCLK_ECP_CNTL ; 
+ int FUNC1 (int /*<<< orphan*/ ) ; 
+ int FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC4 (int) ; 
+
+void FUNC5(struct radeon_device *rdev, int enable)
+{
+	uint32_t tmp;
+
+	if (enable) {
+		if (rdev->flags & RADEON_SINGLE_CRTC) {
+			tmp = FUNC2(RADEON_SCLK_CNTL);
+			if ((FUNC1(RADEON_CONFIG_CNTL) &
+			     RADEON_CFG_ATI_REV_ID_MASK) >
+			    RADEON_CFG_ATI_REV_A13) {
+				tmp &=
+				    ~(RADEON_SCLK_FORCE_CP |
+				      RADEON_SCLK_FORCE_RB);
+			}
+			tmp &=
+			    ~(RADEON_SCLK_FORCE_HDP | RADEON_SCLK_FORCE_DISP1 |
+			      RADEON_SCLK_FORCE_TOP | RADEON_SCLK_FORCE_SE |
+			      RADEON_SCLK_FORCE_IDCT | RADEON_SCLK_FORCE_RE |
+			      RADEON_SCLK_FORCE_PB | RADEON_SCLK_FORCE_TAM |
+			      RADEON_SCLK_FORCE_TDM);
+			FUNC3(RADEON_SCLK_CNTL, tmp);
+		} else if (FUNC0(rdev)) {
+			if ((rdev->family == CHIP_RS400) ||
+			    (rdev->family == CHIP_RS480)) {
+				tmp = FUNC2(RADEON_SCLK_CNTL);
+				tmp &=
+				    ~(RADEON_SCLK_FORCE_DISP2 |
+				      RADEON_SCLK_FORCE_CP |
+				      RADEON_SCLK_FORCE_HDP |
+				      RADEON_SCLK_FORCE_DISP1 |
+				      RADEON_SCLK_FORCE_TOP |
+				      RADEON_SCLK_FORCE_E2 | R300_SCLK_FORCE_VAP
+				      | RADEON_SCLK_FORCE_IDCT |
+				      RADEON_SCLK_FORCE_VIP | R300_SCLK_FORCE_SR
+				      | R300_SCLK_FORCE_PX | R300_SCLK_FORCE_TX
+				      | R300_SCLK_FORCE_US |
+				      RADEON_SCLK_FORCE_TV_SCLK |
+				      R300_SCLK_FORCE_SU |
+				      RADEON_SCLK_FORCE_OV0);
+				tmp |= RADEON_DYN_STOP_LAT_MASK;
+				tmp |=
+				    RADEON_SCLK_FORCE_TOP |
+				    RADEON_SCLK_FORCE_VIP;
+				FUNC3(RADEON_SCLK_CNTL, tmp);
+
+				tmp = FUNC2(RADEON_SCLK_MORE_CNTL);
+				tmp &= ~RADEON_SCLK_MORE_FORCEON;
+				tmp |= RADEON_SCLK_MORE_MAX_DYN_STOP_LAT;
+				FUNC3(RADEON_SCLK_MORE_CNTL, tmp);
+
+				tmp = FUNC2(RADEON_VCLK_ECP_CNTL);
+				tmp |= (RADEON_PIXCLK_ALWAYS_ONb |
+					RADEON_PIXCLK_DAC_ALWAYS_ONb);
+				FUNC3(RADEON_VCLK_ECP_CNTL, tmp);
+
+				tmp = FUNC2(RADEON_PIXCLKS_CNTL);
+				tmp |= (RADEON_PIX2CLK_ALWAYS_ONb |
+					RADEON_PIX2CLK_DAC_ALWAYS_ONb |
+					RADEON_DISP_TVOUT_PIXCLK_TV_ALWAYS_ONb |
+					R300_DVOCLK_ALWAYS_ONb |
+					RADEON_PIXCLK_BLEND_ALWAYS_ONb |
+					RADEON_PIXCLK_GV_ALWAYS_ONb |
+					R300_PIXCLK_DVO_ALWAYS_ONb |
+					RADEON_PIXCLK_LVDS_ALWAYS_ONb |
+					RADEON_PIXCLK_TMDS_ALWAYS_ONb |
+					R300_PIXCLK_TRANS_ALWAYS_ONb |
+					R300_PIXCLK_TVO_ALWAYS_ONb |
+					R300_P2G2CLK_ALWAYS_ONb |
+					R300_P2G2CLK_DAC_ALWAYS_ONb);
+				FUNC3(RADEON_PIXCLKS_CNTL, tmp);
+			} else if (rdev->family >= CHIP_RV350) {
+				tmp = FUNC2(R300_SCLK_CNTL2);
+				tmp &= ~(R300_SCLK_FORCE_TCL |
+					 R300_SCLK_FORCE_GA |
+					 R300_SCLK_FORCE_CBA);
+				tmp |= (R300_SCLK_TCL_MAX_DYN_STOP_LAT |
+					R300_SCLK_GA_MAX_DYN_STOP_LAT |
+					R300_SCLK_CBA_MAX_DYN_STOP_LAT);
+				FUNC3(R300_SCLK_CNTL2, tmp);
+
+				tmp = FUNC2(RADEON_SCLK_CNTL);
+				tmp &=
+				    ~(RADEON_SCLK_FORCE_DISP2 |
+				      RADEON_SCLK_FORCE_CP |
+				      RADEON_SCLK_FORCE_HDP |
+				      RADEON_SCLK_FORCE_DISP1 |
+				      RADEON_SCLK_FORCE_TOP |
+				      RADEON_SCLK_FORCE_E2 | R300_SCLK_FORCE_VAP
+				      | RADEON_SCLK_FORCE_IDCT |
+				      RADEON_SCLK_FORCE_VIP | R300_SCLK_FORCE_SR
+				      | R300_SCLK_FORCE_PX | R300_SCLK_FORCE_TX
+				      | R300_SCLK_FORCE_US |
+				      RADEON_SCLK_FORCE_TV_SCLK |
+				      R300_SCLK_FORCE_SU |
+				      RADEON_SCLK_FORCE_OV0);
+				tmp |= RADEON_DYN_STOP_LAT_MASK;
+				FUNC3(RADEON_SCLK_CNTL, tmp);
+
+				tmp = FUNC2(RADEON_SCLK_MORE_CNTL);
+				tmp &= ~RADEON_SCLK_MORE_FORCEON;
+				tmp |= RADEON_SCLK_MORE_MAX_DYN_STOP_LAT;
+				FUNC3(RADEON_SCLK_MORE_CNTL, tmp);
+
+				tmp = FUNC2(RADEON_VCLK_ECP_CNTL);
+				tmp |= (RADEON_PIXCLK_ALWAYS_ONb |
+					RADEON_PIXCLK_DAC_ALWAYS_ONb);
+				FUNC3(RADEON_VCLK_ECP_CNTL, tmp);
+
+				tmp = FUNC2(RADEON_PIXCLKS_CNTL);
+				tmp |= (RADEON_PIX2CLK_ALWAYS_ONb |
+					RADEON_PIX2CLK_DAC_ALWAYS_ONb |
+					RADEON_DISP_TVOUT_PIXCLK_TV_ALWAYS_ONb |
+					R300_DVOCLK_ALWAYS_ONb |
+					RADEON_PIXCLK_BLEND_ALWAYS_ONb |
+					RADEON_PIXCLK_GV_ALWAYS_ONb |
+					R300_PIXCLK_DVO_ALWAYS_ONb |
+					RADEON_PIXCLK_LVDS_ALWAYS_ONb |
+					RADEON_PIXCLK_TMDS_ALWAYS_ONb |
+					R300_PIXCLK_TRANS_ALWAYS_ONb |
+					R300_PIXCLK_TVO_ALWAYS_ONb |
+					R300_P2G2CLK_ALWAYS_ONb |
+					R300_P2G2CLK_DAC_ALWAYS_ONb);
+				FUNC3(RADEON_PIXCLKS_CNTL, tmp);
+
+				tmp = FUNC2(RADEON_MCLK_MISC);
+				tmp |= (RADEON_MC_MCLK_DYN_ENABLE |
+					RADEON_IO_MCLK_DYN_ENABLE);
+				FUNC3(RADEON_MCLK_MISC, tmp);
+
+				tmp = FUNC2(RADEON_MCLK_CNTL);
+				tmp |= (RADEON_FORCEON_MCLKA |
+					RADEON_FORCEON_MCLKB);
+
+				tmp &= ~(RADEON_FORCEON_YCLKA |
+					 RADEON_FORCEON_YCLKB |
+					 RADEON_FORCEON_MC);
+
+				/* Some releases of vbios have set DISABLE_MC_MCLKA
+				   and DISABLE_MC_MCLKB bits in the vbios table.  Setting these
+				   bits will cause H/W hang when reading video memory with dynamic clocking
+				   enabled. */
+				if ((tmp & R300_DISABLE_MC_MCLKA) &&
+				    (tmp & R300_DISABLE_MC_MCLKB)) {
+					/* If both bits are set, then check the active channels */
+					tmp = FUNC2(RADEON_MCLK_CNTL);
+					if (rdev->mc.vram_width == 64) {
+						if (FUNC1(RADEON_MEM_CNTL) &
+						    R300_MEM_USE_CD_CH_ONLY)
+							tmp &=
+							    ~R300_DISABLE_MC_MCLKB;
+						else
+							tmp &=
+							    ~R300_DISABLE_MC_MCLKA;
+					} else {
+						tmp &= ~(R300_DISABLE_MC_MCLKA |
+							 R300_DISABLE_MC_MCLKB);
+					}
+				}
+
+				FUNC3(RADEON_MCLK_CNTL, tmp);
+			} else {
+				tmp = FUNC2(RADEON_SCLK_CNTL);
+				tmp &= ~(R300_SCLK_FORCE_VAP);
+				tmp |= RADEON_SCLK_FORCE_CP;
+				FUNC3(RADEON_SCLK_CNTL, tmp);
+				FUNC4(15);
+
+				tmp = FUNC2(R300_SCLK_CNTL2);
+				tmp &= ~(R300_SCLK_FORCE_TCL |
+					 R300_SCLK_FORCE_GA |
+					 R300_SCLK_FORCE_CBA);
+				FUNC3(R300_SCLK_CNTL2, tmp);
+			}
+		} else {
+			tmp = FUNC2(RADEON_CLK_PWRMGT_CNTL);
+
+			tmp &= ~(RADEON_ACTIVE_HILO_LAT_MASK |
+				 RADEON_DISP_DYN_STOP_LAT_MASK |
+				 RADEON_DYN_STOP_MODE_MASK);
+
+			tmp |= (RADEON_ENGIN_DYNCLK_MODE |
+				(0x01 << RADEON_ACTIVE_HILO_LAT_SHIFT));
+			FUNC3(RADEON_CLK_PWRMGT_CNTL, tmp);
+			FUNC4(15);
+
+			tmp = FUNC2(RADEON_CLK_PIN_CNTL);
+			tmp |= RADEON_SCLK_DYN_START_CNTL;
+			FUNC3(RADEON_CLK_PIN_CNTL, tmp);
+			FUNC4(15);
+
+			/* When DRI is enabled, setting DYN_STOP_LAT to zero can cause some R200
+			   to lockup randomly, leave them as set by BIOS.
+			 */
+			tmp = FUNC2(RADEON_SCLK_CNTL);
+			/*tmp &= RADEON_SCLK_SRC_SEL_MASK; */
+			tmp &= ~RADEON_SCLK_FORCEON_MASK;
+
+			/*RAGE_6::A11 A12 A12N1 A13, RV250::A11 A12, R300 */
+			if (((rdev->family == CHIP_RV250) &&
+			     ((FUNC1(RADEON_CONFIG_CNTL) &
+			       RADEON_CFG_ATI_REV_ID_MASK) <
+			      RADEON_CFG_ATI_REV_A13))
+			    || ((rdev->family == CHIP_RV100)
+				&&
+				((FUNC1(RADEON_CONFIG_CNTL) &
+				  RADEON_CFG_ATI_REV_ID_MASK) <=
+				 RADEON_CFG_ATI_REV_A13))) {
+				tmp |= RADEON_SCLK_FORCE_CP;
+				tmp |= RADEON_SCLK_FORCE_VIP;
+			}
+
+			FUNC3(RADEON_SCLK_CNTL, tmp);
+
+			if ((rdev->family == CHIP_RV200) ||
+			    (rdev->family == CHIP_RV250) ||
+			    (rdev->family == CHIP_RV280)) {
+				tmp = FUNC2(RADEON_SCLK_MORE_CNTL);
+				tmp &= ~RADEON_SCLK_MORE_FORCEON;
+
+				/* RV200::A11 A12 RV250::A11 A12 */
+				if (((rdev->family == CHIP_RV200) ||
+				     (rdev->family == CHIP_RV250)) &&
+				    ((FUNC1(RADEON_CONFIG_CNTL) &
+				      RADEON_CFG_ATI_REV_ID_MASK) <
+				     RADEON_CFG_ATI_REV_A13)) {
+					tmp |= RADEON_SCLK_MORE_FORCEON;
+				}
+				FUNC3(RADEON_SCLK_MORE_CNTL, tmp);
+				FUNC4(15);
+			}
+
+			/* RV200::A11 A12, RV250::A11 A12 */
+			if (((rdev->family == CHIP_RV200) ||
+			     (rdev->family == CHIP_RV250)) &&
+			    ((FUNC1(RADEON_CONFIG_CNTL) &
+			      RADEON_CFG_ATI_REV_ID_MASK) <
+			     RADEON_CFG_ATI_REV_A13)) {
+				tmp = FUNC2(RADEON_PLL_PWRMGT_CNTL);
+				tmp |= RADEON_TCL_BYPASS_DISABLE;
+				FUNC3(RADEON_PLL_PWRMGT_CNTL, tmp);
+			}
+			FUNC4(15);
+
+			/*enable dynamic mode for display clocks (PIXCLK and PIX2CLK) */
+			tmp = FUNC2(RADEON_PIXCLKS_CNTL);
+			tmp |= (RADEON_PIX2CLK_ALWAYS_ONb |
+				RADEON_PIX2CLK_DAC_ALWAYS_ONb |
+				RADEON_PIXCLK_BLEND_ALWAYS_ONb |
+				RADEON_PIXCLK_GV_ALWAYS_ONb |
+				RADEON_PIXCLK_DIG_TMDS_ALWAYS_ONb |
+				RADEON_PIXCLK_LVDS_ALWAYS_ONb |
+				RADEON_PIXCLK_TMDS_ALWAYS_ONb);
+
+			FUNC3(RADEON_PIXCLKS_CNTL, tmp);
+			FUNC4(15);
+
+			tmp = FUNC2(RADEON_VCLK_ECP_CNTL);
+			tmp |= (RADEON_PIXCLK_ALWAYS_ONb |
+				RADEON_PIXCLK_DAC_ALWAYS_ONb);
+
+			FUNC3(RADEON_VCLK_ECP_CNTL, tmp);
+			FUNC4(15);
+		}
+	} else {
+		/* Turn everything OFF (ForceON to everything) */
+		if (rdev->flags & RADEON_SINGLE_CRTC) {
+			tmp = FUNC2(RADEON_SCLK_CNTL);
+			tmp |= (RADEON_SCLK_FORCE_CP | RADEON_SCLK_FORCE_HDP |
+				RADEON_SCLK_FORCE_DISP1 | RADEON_SCLK_FORCE_TOP
+				| RADEON_SCLK_FORCE_E2 | RADEON_SCLK_FORCE_SE |
+				RADEON_SCLK_FORCE_IDCT | RADEON_SCLK_FORCE_VIP |
+				RADEON_SCLK_FORCE_RE | RADEON_SCLK_FORCE_PB |
+				RADEON_SCLK_FORCE_TAM | RADEON_SCLK_FORCE_TDM |
+				RADEON_SCLK_FORCE_RB);
+			FUNC3(RADEON_SCLK_CNTL, tmp);
+		} else if ((rdev->family == CHIP_RS400) ||
+			   (rdev->family == CHIP_RS480)) {
+			tmp = FUNC2(RADEON_SCLK_CNTL);
+			tmp |= (RADEON_SCLK_FORCE_DISP2 | RADEON_SCLK_FORCE_CP |
+				RADEON_SCLK_FORCE_HDP | RADEON_SCLK_FORCE_DISP1
+				| RADEON_SCLK_FORCE_TOP | RADEON_SCLK_FORCE_E2 |
+				R300_SCLK_FORCE_VAP | RADEON_SCLK_FORCE_IDCT |
+				RADEON_SCLK_FORCE_VIP | R300_SCLK_FORCE_SR |
+				R300_SCLK_FORCE_PX | R300_SCLK_FORCE_TX |
+				R300_SCLK_FORCE_US | RADEON_SCLK_FORCE_TV_SCLK |
+				R300_SCLK_FORCE_SU | RADEON_SCLK_FORCE_OV0);
+			FUNC3(RADEON_SCLK_CNTL, tmp);
+
+			tmp = FUNC2(RADEON_SCLK_MORE_CNTL);
+			tmp |= RADEON_SCLK_MORE_FORCEON;
+			FUNC3(RADEON_SCLK_MORE_CNTL, tmp);
+
+			tmp = FUNC2(RADEON_VCLK_ECP_CNTL);
+			tmp &= ~(RADEON_PIXCLK_ALWAYS_ONb |
+				 RADEON_PIXCLK_DAC_ALWAYS_ONb |
+				 R300_DISP_DAC_PIXCLK_DAC_BLANK_OFF);
+			FUNC3(RADEON_VCLK_ECP_CNTL, tmp);
+
+			tmp = FUNC2(RADEON_PIXCLKS_CNTL);
+			tmp &= ~(RADEON_PIX2CLK_ALWAYS_ONb |
+				 RADEON_PIX2CLK_DAC_ALWAYS_ONb |
+				 RADEON_DISP_TVOUT_PIXCLK_TV_ALWAYS_ONb |
+				 R300_DVOCLK_ALWAYS_ONb |
+				 RADEON_PIXCLK_BLEND_ALWAYS_ONb |
+				 RADEON_PIXCLK_GV_ALWAYS_ONb |
+				 R300_PIXCLK_DVO_ALWAYS_ONb |
+				 RADEON_PIXCLK_LVDS_ALWAYS_ONb |
+				 RADEON_PIXCLK_TMDS_ALWAYS_ONb |
+				 R300_PIXCLK_TRANS_ALWAYS_ONb |
+				 R300_PIXCLK_TVO_ALWAYS_ONb |
+				 R300_P2G2CLK_ALWAYS_ONb |
+				 R300_P2G2CLK_DAC_ALWAYS_ONb |
+				 R300_DISP_DAC_PIXCLK_DAC2_BLANK_OFF);
+			FUNC3(RADEON_PIXCLKS_CNTL, tmp);
+		} else if (rdev->family >= CHIP_RV350) {
+			/* for RV350/M10, no delays are required. */
+			tmp = FUNC2(R300_SCLK_CNTL2);
+			tmp |= (R300_SCLK_FORCE_TCL |
+				R300_SCLK_FORCE_GA | R300_SCLK_FORCE_CBA);
+			FUNC3(R300_SCLK_CNTL2, tmp);
+
+			tmp = FUNC2(RADEON_SCLK_CNTL);
+			tmp |= (RADEON_SCLK_FORCE_DISP2 | RADEON_SCLK_FORCE_CP |
+				RADEON_SCLK_FORCE_HDP | RADEON_SCLK_FORCE_DISP1
+				| RADEON_SCLK_FORCE_TOP | RADEON_SCLK_FORCE_E2 |
+				R300_SCLK_FORCE_VAP | RADEON_SCLK_FORCE_IDCT |
+				RADEON_SCLK_FORCE_VIP | R300_SCLK_FORCE_SR |
+				R300_SCLK_FORCE_PX | R300_SCLK_FORCE_TX |
+				R300_SCLK_FORCE_US | RADEON_SCLK_FORCE_TV_SCLK |
+				R300_SCLK_FORCE_SU | RADEON_SCLK_FORCE_OV0);
+			FUNC3(RADEON_SCLK_CNTL, tmp);
+
+			tmp = FUNC2(RADEON_SCLK_MORE_CNTL);
+			tmp |= RADEON_SCLK_MORE_FORCEON;
+			FUNC3(RADEON_SCLK_MORE_CNTL, tmp);
+
+			tmp = FUNC2(RADEON_MCLK_CNTL);
+			tmp |= (RADEON_FORCEON_MCLKA |
+				RADEON_FORCEON_MCLKB |
+				RADEON_FORCEON_YCLKA |
+				RADEON_FORCEON_YCLKB | RADEON_FORCEON_MC);
+			FUNC3(RADEON_MCLK_CNTL, tmp);
+
+			tmp = FUNC2(RADEON_VCLK_ECP_CNTL);
+			tmp &= ~(RADEON_PIXCLK_ALWAYS_ONb |
+				 RADEON_PIXCLK_DAC_ALWAYS_ONb |
+				 R300_DISP_DAC_PIXCLK_DAC_BLANK_OFF);
+			FUNC3(RADEON_VCLK_ECP_CNTL, tmp);
+
+			tmp = FUNC2(RADEON_PIXCLKS_CNTL);
+			tmp &= ~(RADEON_PIX2CLK_ALWAYS_ONb |
+				 RADEON_PIX2CLK_DAC_ALWAYS_ONb |
+				 RADEON_DISP_TVOUT_PIXCLK_TV_ALWAYS_ONb |
+				 R300_DVOCLK_ALWAYS_ONb |
+				 RADEON_PIXCLK_BLEND_ALWAYS_ONb |
+				 RADEON_PIXCLK_GV_ALWAYS_ONb |
+				 R300_PIXCLK_DVO_ALWAYS_ONb |
+				 RADEON_PIXCLK_LVDS_ALWAYS_ONb |
+				 RADEON_PIXCLK_TMDS_ALWAYS_ONb |
+				 R300_PIXCLK_TRANS_ALWAYS_ONb |
+				 R300_PIXCLK_TVO_ALWAYS_ONb |
+				 R300_P2G2CLK_ALWAYS_ONb |
+				 R300_P2G2CLK_DAC_ALWAYS_ONb |
+				 R300_DISP_DAC_PIXCLK_DAC2_BLANK_OFF);
+			FUNC3(RADEON_PIXCLKS_CNTL, tmp);
+		} else {
+			tmp = FUNC2(RADEON_SCLK_CNTL);
+			tmp |= (RADEON_SCLK_FORCE_CP | RADEON_SCLK_FORCE_E2);
+			tmp |= RADEON_SCLK_FORCE_SE;
+
+			if (rdev->flags & RADEON_SINGLE_CRTC) {
+				tmp |= (RADEON_SCLK_FORCE_RB |
+					RADEON_SCLK_FORCE_TDM |
+					RADEON_SCLK_FORCE_TAM |
+					RADEON_SCLK_FORCE_PB |
+					RADEON_SCLK_FORCE_RE |
+					RADEON_SCLK_FORCE_VIP |
+					RADEON_SCLK_FORCE_IDCT |
+					RADEON_SCLK_FORCE_TOP |
+					RADEON_SCLK_FORCE_DISP1 |
+					RADEON_SCLK_FORCE_DISP2 |
+					RADEON_SCLK_FORCE_HDP);
+			} else if ((rdev->family == CHIP_R300) ||
+				   (rdev->family == CHIP_R350)) {
+				tmp |= (RADEON_SCLK_FORCE_HDP |
+					RADEON_SCLK_FORCE_DISP1 |
+					RADEON_SCLK_FORCE_DISP2 |
+					RADEON_SCLK_FORCE_TOP |
+					RADEON_SCLK_FORCE_IDCT |
+					RADEON_SCLK_FORCE_VIP);
+			}
+			FUNC3(RADEON_SCLK_CNTL, tmp);
+
+			FUNC4(16);
+
+			if ((rdev->family == CHIP_R300) ||
+			    (rdev->family == CHIP_R350)) {
+				tmp = FUNC2(R300_SCLK_CNTL2);
+				tmp |= (R300_SCLK_FORCE_TCL |
+					R300_SCLK_FORCE_GA |
+					R300_SCLK_FORCE_CBA);
+				FUNC3(R300_SCLK_CNTL2, tmp);
+				FUNC4(16);
+			}
+
+			if (rdev->flags & RADEON_IS_IGP) {
+				tmp = FUNC2(RADEON_MCLK_CNTL);
+				tmp &= ~(RADEON_FORCEON_MCLKA |
+					 RADEON_FORCEON_YCLKA);
+				FUNC3(RADEON_MCLK_CNTL, tmp);
+				FUNC4(16);
+			}
+
+			if ((rdev->family == CHIP_RV200) ||
+			    (rdev->family == CHIP_RV250) ||
+			    (rdev->family == CHIP_RV280)) {
+				tmp = FUNC2(RADEON_SCLK_MORE_CNTL);
+				tmp |= RADEON_SCLK_MORE_FORCEON;
+				FUNC3(RADEON_SCLK_MORE_CNTL, tmp);
+				FUNC4(16);
+			}
+
+			tmp = FUNC2(RADEON_PIXCLKS_CNTL);
+			tmp &= ~(RADEON_PIX2CLK_ALWAYS_ONb |
+				 RADEON_PIX2CLK_DAC_ALWAYS_ONb |
+				 RADEON_PIXCLK_BLEND_ALWAYS_ONb |
+				 RADEON_PIXCLK_GV_ALWAYS_ONb |
+				 RADEON_PIXCLK_DIG_TMDS_ALWAYS_ONb |
+				 RADEON_PIXCLK_LVDS_ALWAYS_ONb |
+				 RADEON_PIXCLK_TMDS_ALWAYS_ONb);
+
+			FUNC3(RADEON_PIXCLKS_CNTL, tmp);
+			FUNC4(16);
+
+			tmp = FUNC2(RADEON_VCLK_ECP_CNTL);
+			tmp &= ~(RADEON_PIXCLK_ALWAYS_ONb |
+				 RADEON_PIXCLK_DAC_ALWAYS_ONb);
+			FUNC3(RADEON_VCLK_ECP_CNTL, tmp);
+		}
+	}
+}

@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {int (* mtkswitch_read ) (struct mtkswitch_softc*,int /*<<< orphan*/ ) ;} ;
+struct mtkswitch_softc {TYPE_1__ hal; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  MA_OWNED ; 
+ int /*<<< orphan*/  FUNC0 (struct mtkswitch_softc*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int) ; 
+ int FUNC2 (int) ; 
+ int FUNC3 (struct mtkswitch_softc*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int
+FUNC4(struct mtkswitch_softc *sc, int port, int *pvid)
+{
+
+	FUNC0(sc, MA_OWNED);
+
+	*pvid = sc->hal.mtkswitch_read(sc, FUNC1(port));
+	*pvid = FUNC2(*pvid);
+
+	return (0); 
+}

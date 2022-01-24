@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sonic_local {int /*<<< orphan*/  descriptors_laddr; int /*<<< orphan*/  descriptors; int /*<<< orphan*/  dma_bitmode; int /*<<< orphan*/  device; } ;
+struct platform_device {int dummy; } ;
+struct net_device {int /*<<< orphan*/  base_addr; } ;
+
+/* Variables and functions */
+ int SIZEOF_SONIC_DESC ; 
+ int FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  SONIC_MEM_SIZE ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct net_device*) ; 
+ struct sonic_local* FUNC3 (struct net_device*) ; 
+ struct net_device* FUNC4 (struct platform_device*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (struct net_device*) ; 
+
+__attribute__((used)) static int FUNC7(struct platform_device *pdev)
+{
+	struct net_device *dev = FUNC4(pdev);
+	struct sonic_local* lp = FUNC3(dev);
+
+	FUNC6(dev);
+	FUNC1(lp->device, SIZEOF_SONIC_DESC * FUNC0(lp->dma_bitmode),
+	                  lp->descriptors, lp->descriptors_laddr);
+	FUNC5(dev->base_addr, SONIC_MEM_SIZE);
+	FUNC2(dev);
+
+	return 0;
+}

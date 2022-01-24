@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct vm_area_struct {scalar_t__ vm_start; scalar_t__ vm_end; } ;
+struct drm_vma_entry {int /*<<< orphan*/  head; int /*<<< orphan*/  pid; struct vm_area_struct* vma; } ;
+struct drm_device {int /*<<< orphan*/  vmalist; int /*<<< orphan*/  vma_count; } ;
+struct TYPE_2__ {int /*<<< orphan*/  pid; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char*,scalar_t__,scalar_t__) ; 
+ int /*<<< orphan*/  GFP_KERNEL ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ TYPE_1__* current ; 
+ struct drm_vma_entry* FUNC2 (int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+void FUNC4(struct drm_device *dev,
+		struct vm_area_struct *vma)
+{
+	struct drm_vma_entry *vma_entry;
+
+	FUNC0("0x%08lx,0x%08lx\n",
+		  vma->vm_start, vma->vm_end - vma->vm_start);
+	FUNC1(&dev->vma_count);
+
+	vma_entry = FUNC2(sizeof(*vma_entry), GFP_KERNEL);
+	if (vma_entry) {
+		vma_entry->vma = vma;
+		vma_entry->pid = current->pid;
+		FUNC3(&vma_entry->head, &dev->vmalist);
+	}
+}

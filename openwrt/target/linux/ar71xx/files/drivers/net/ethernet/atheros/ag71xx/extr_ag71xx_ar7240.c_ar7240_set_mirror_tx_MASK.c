@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {int i; } ;
+struct switch_val {int port_vlan; TYPE_1__ value; } ;
+struct switch_dev {int ports; } ;
+struct switch_attr {int dummy; } ;
+struct mii_bus {int dummy; } ;
+struct ar7240sw {struct mii_bus* mii_bus; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  AR7240_PORT_CTRL_MIRROR_TX ; 
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int EINVAL ; 
+ int /*<<< orphan*/  FUNC1 (struct mii_bus*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct mii_bus*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ struct ar7240sw* FUNC3 (struct switch_dev*) ; 
+
+__attribute__((used)) static int
+FUNC4(struct switch_dev *dev, const struct switch_attr *attr,
+		      struct switch_val *val)
+{
+	struct ar7240sw *as = FUNC3(dev);
+	struct mii_bus *mii = as->mii_bus;
+
+	int port = val->port_vlan;
+
+	if (port >= dev->ports)
+		return -EINVAL;
+
+	if (val && val->value.i == 1)
+		FUNC2(mii, FUNC0(port),
+			AR7240_PORT_CTRL_MIRROR_TX);
+	else
+		FUNC1(mii, FUNC0(port),
+			AR7240_PORT_CTRL_MIRROR_TX, 0);
+
+	return 0;
+}

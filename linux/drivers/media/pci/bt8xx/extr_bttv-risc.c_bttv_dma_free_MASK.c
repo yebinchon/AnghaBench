@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct videobuf_queue {int /*<<< orphan*/  dev; } ;
+struct videobuf_dmabuf {int dummy; } ;
+struct TYPE_5__ {int /*<<< orphan*/  state; } ;
+struct bttv_buffer {TYPE_2__ vb; int /*<<< orphan*/  top; int /*<<< orphan*/  bottom; } ;
+struct TYPE_4__ {int /*<<< orphan*/  pci; } ;
+struct bttv {TYPE_1__ c; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  VIDEOBUF_NEEDS_INIT ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 () ; 
+ int /*<<< orphan*/  FUNC3 (struct videobuf_dmabuf*) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ,struct videobuf_dmabuf*) ; 
+ struct videobuf_dmabuf* FUNC5 (TYPE_2__*) ; 
+ int /*<<< orphan*/  FUNC6 (struct videobuf_queue*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+void
+FUNC7(struct videobuf_queue *q,struct bttv *btv, struct bttv_buffer *buf)
+{
+	struct videobuf_dmabuf *dma=FUNC5(&buf->vb);
+
+	FUNC0(FUNC2());
+	FUNC6(q, &buf->vb, 0, 0);
+	FUNC4(q->dev, dma);
+	FUNC3(dma);
+	FUNC1(btv->c.pci,&buf->bottom);
+	FUNC1(btv->c.pci,&buf->top);
+	buf->vb.state = VIDEOBUF_NEEDS_INIT;
+}

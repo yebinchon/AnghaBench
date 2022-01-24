@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u32 ;
+struct seq_tab {scalar_t__ data; } ;
+struct inode {struct adapter* i_private; } ;
+struct file {int dummy; } ;
+struct adapter {int dummy; } ;
+
+/* Variables and functions */
+ int CIM_MALA_SIZE ; 
+ int ENOMEM ; 
+ int /*<<< orphan*/  cim_ma_la_show ; 
+ struct seq_tab* FUNC0 (struct file*,int,int,int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct adapter*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC2(struct inode *inode, struct file *file)
+{
+	struct seq_tab *p;
+	struct adapter *adap = inode->i_private;
+
+	p = FUNC0(file, 2 * CIM_MALA_SIZE, 5 * sizeof(u32), 1,
+			 cim_ma_la_show);
+	if (!p)
+		return -ENOMEM;
+
+	FUNC1(adap, (u32 *)p->data,
+			  (u32 *)p->data + 5 * CIM_MALA_SIZE);
+	return 0;
+}

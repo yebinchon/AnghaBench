@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct thermal_data {int /*<<< orphan*/  regmap; } ;
+struct sensor_device_attribute {int /*<<< orphan*/  index; } ;
+struct device_attribute {int dummy; } ;
+struct device {int dummy; } ;
+typedef  int ssize_t ;
+
+/* Variables and functions */
+ struct thermal_data* FUNC0 (struct device*) ; 
+ int FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*) ; 
+ int FUNC2 (char*,char*,unsigned int) ; 
+ struct sensor_device_attribute* FUNC3 (struct device_attribute*) ; 
+
+__attribute__((used)) static ssize_t FUNC4(struct device *dev, struct device_attribute *attr,
+			 char *buf)
+{
+	struct sensor_device_attribute *sda = FUNC3(attr);
+	struct thermal_data *data = FUNC0(dev);
+	unsigned int val;
+	int retval;
+
+	retval = FUNC1(data->regmap, sda->index, &val);
+	if (retval < 0)
+		return retval;
+	return FUNC2(buf, "%d000\n", val);
+}

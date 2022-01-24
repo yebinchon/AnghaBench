@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct vmci_handle {int dummy; } ;
+struct vmci_ctx {int /*<<< orphan*/  queue_pair_array; } ;
+
+/* Variables and functions */
+ int VMCI_ERROR_DUPLICATE_ENTRY ; 
+ int VMCI_ERROR_INVALID_ARGS ; 
+ int FUNC0 (int /*<<< orphan*/ *,struct vmci_handle) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,struct vmci_handle) ; 
+ scalar_t__ FUNC2 (struct vmci_handle) ; 
+
+int FUNC3(struct vmci_ctx *context, struct vmci_handle handle)
+{
+	int result;
+
+	if (context == NULL || FUNC2(handle))
+		return VMCI_ERROR_INVALID_ARGS;
+
+	if (!FUNC1(context->queue_pair_array, handle))
+		result = FUNC0(
+			&context->queue_pair_array, handle);
+	else
+		result = VMCI_ERROR_DUPLICATE_ENTRY;
+
+	return result;
+}

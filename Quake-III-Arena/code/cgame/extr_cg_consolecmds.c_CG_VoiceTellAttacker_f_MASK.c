@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int FUNC0 () ; 
+ int /*<<< orphan*/  FUNC1 (char*,int,char*,int,char*) ; 
+ int /*<<< orphan*/  FUNC2 (char*,int) ; 
+ int /*<<< orphan*/  FUNC3 (char*) ; 
+
+__attribute__((used)) static void FUNC4( void ) {
+	int		clientNum;
+	char	command[128];
+	char	message[128];
+
+	clientNum = FUNC0();
+	if ( clientNum == -1 ) {
+		return;
+	}
+
+	FUNC2( message, 128 );
+	FUNC1( command, 128, "vtell %i %s", clientNum, message );
+	FUNC3( command );
+}

@@ -1,0 +1,58 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct ocrdma_mqe {int dummy; } ;
+struct TYPE_4__ {TYPE_1__* pdev; } ;
+struct ocrdma_dev {TYPE_2__ nic_info; } ;
+struct ocrdma_destroy_cq {int bypass_flush_qid; int /*<<< orphan*/  req; } ;
+struct ocrdma_cq {int id; int /*<<< orphan*/  pa; int /*<<< orphan*/  va; int /*<<< orphan*/  len; int /*<<< orphan*/  eqn; } ;
+struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
+
+/* Variables and functions */
+ int ENOMEM ; 
+ int /*<<< orphan*/  OCRDMA_CMD_DELETE_CQ ; 
+ int OCRDMA_DESTROY_CQ_QID_MASK ; 
+ int OCRDMA_DESTROY_CQ_QID_SHIFT ; 
+ int /*<<< orphan*/  OCRDMA_SUBSYS_COMMON ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct ocrdma_destroy_cq*) ; 
+ struct ocrdma_destroy_cq* FUNC2 (int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int FUNC4 (struct ocrdma_dev*,struct ocrdma_mqe*) ; 
+ int /*<<< orphan*/  FUNC5 (struct ocrdma_dev*,int /*<<< orphan*/ ) ; 
+
+int FUNC6(struct ocrdma_dev *dev, struct ocrdma_cq *cq)
+{
+	int status = -ENOMEM;
+	struct ocrdma_destroy_cq *cmd;
+
+	cmd = FUNC2(OCRDMA_CMD_DELETE_CQ, sizeof(*cmd));
+	if (!cmd)
+		return status;
+	FUNC3(&cmd->req, OCRDMA_CMD_DELETE_CQ,
+			OCRDMA_SUBSYS_COMMON, sizeof(*cmd));
+
+	cmd->bypass_flush_qid |=
+	    (cq->id << OCRDMA_DESTROY_CQ_QID_SHIFT) &
+	    OCRDMA_DESTROY_CQ_QID_MASK;
+
+	FUNC5(dev, cq->eqn);
+	status = FUNC4(dev, (struct ocrdma_mqe *)cmd);
+	if (status)
+		goto mbx_err;
+	FUNC0(&dev->nic_info.pdev->dev, cq->len, cq->va, cq->pa);
+mbx_err:
+	FUNC1(cmd);
+	return status;
+}

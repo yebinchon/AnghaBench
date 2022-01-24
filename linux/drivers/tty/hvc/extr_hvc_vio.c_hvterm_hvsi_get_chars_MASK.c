@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  size_t uint32_t ;
+struct hvterm_priv {int /*<<< orphan*/  hvsi; } ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (int) ; 
+ int FUNC1 (int /*<<< orphan*/ *,char*,int) ; 
+ struct hvterm_priv** hvterm_privs ; 
+
+__attribute__((used)) static int FUNC2(uint32_t vtermno, char *buf, int count)
+{
+	struct hvterm_priv *pv = hvterm_privs[vtermno];
+
+	if (FUNC0(!pv))
+		return 0;
+
+	return FUNC1(&pv->hvsi, buf, count);
+}

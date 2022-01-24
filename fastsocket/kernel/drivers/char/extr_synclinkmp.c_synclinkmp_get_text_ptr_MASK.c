@@ -1,0 +1,1 @@
+__attribute__((used)) static void* FUNC0(void) {return synclinkmp_get_text_ptr;}

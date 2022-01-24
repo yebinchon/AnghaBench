@@ -1,0 +1,65 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ieee80211_rx_stats {int dummy; } ;
+struct ieee80211_probe_response {int dummy; } ;
+struct ieee80211_hdr_4addr {int /*<<< orphan*/  frame_ctl; } ;
+struct ieee80211_device {scalar_t__ ps; scalar_t__ iw_mode; scalar_t__ state; int /*<<< orphan*/  last_rx_ps_time; int /*<<< orphan*/  ps_task; scalar_t__ sta_sleep; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char*,int) ; 
+ int /*<<< orphan*/  FUNC1 (char*) ; 
+ scalar_t__ IEEE80211_LINKED ; 
+ scalar_t__ IEEE80211_PS_DISABLED ; 
+#define  IEEE80211_STYPE_BEACON 129 
+#define  IEEE80211_STYPE_PROBE_RESP 128 
+ scalar_t__ IW_MODE_INFRA ; 
+ int FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (struct ieee80211_device*,struct ieee80211_probe_response*,struct ieee80211_rx_stats*) ; 
+ int /*<<< orphan*/  jiffies ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+
+void FUNC5(struct ieee80211_device *ieee,
+		      struct ieee80211_hdr_4addr *header,
+		      struct ieee80211_rx_stats *stats)
+{
+	if(ieee->sta_sleep || (ieee->ps != IEEE80211_PS_DISABLED &&
+				ieee->iw_mode == IW_MODE_INFRA &&
+				ieee->state == IEEE80211_LINKED))
+	{
+		FUNC4(&ieee->ps_task);
+	}
+
+	if(FUNC2(header->frame_ctl) != IEEE80211_STYPE_PROBE_RESP &&
+		FUNC2(header->frame_ctl) != IEEE80211_STYPE_BEACON)
+		ieee->last_rx_ps_time = jiffies;
+
+	switch (FUNC2(header->frame_ctl)) {
+
+	case IEEE80211_STYPE_BEACON:
+		FUNC0("received BEACON (%d)\n",
+				     FUNC2(header->frame_ctl));
+		FUNC1("Beacon\n");
+		FUNC3(
+			ieee, (struct ieee80211_probe_response *)header, stats);
+		break;
+
+	case IEEE80211_STYPE_PROBE_RESP:
+		FUNC0("received PROBE RESPONSE (%d)\n",
+				     FUNC2(header->frame_ctl));
+		FUNC1("Probe response\n");
+		FUNC3(
+			ieee, (struct ieee80211_probe_response *)header, stats);
+		break;
+
+	}
+}

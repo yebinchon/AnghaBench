@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  UT_string ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  DBL_DIG ; 
+ double const FUNC0 (double) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,char*,double,...) ; 
+
+__attribute__((used)) static int
+FUNC2 (double val, void *ud)
+{
+	UT_string *buf = ud;
+	const double delta = 0.0000001;
+
+	if (val == (double)(int)val) {
+		FUNC1 (buf, "%.1lf", val);
+	}
+	else if (FUNC0 (val - (double)(int)val) < delta) {
+		/* Write at maximum precision */
+		FUNC1 (buf, "%.*lg", DBL_DIG, val);
+	}
+	else {
+		FUNC1 (buf, "%lf", val);
+	}
+
+	return 0;
+}

@@ -1,0 +1,69 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u8 ;
+struct rtl_priv {int dummy; } ;
+struct btc_coexist {int (* btc_read_1byte ) (struct btc_coexist*,int) ;int auto_report_2ant; int /*<<< orphan*/  (* btc_write_1byte_bitmask ) (struct btc_coexist*,int,int,int) ;int /*<<< orphan*/  (* btc_write_1byte ) (struct btc_coexist*,int,int) ;int /*<<< orphan*/  (* btc_get_rf_reg ) (struct btc_coexist*,int /*<<< orphan*/ ,int,int) ;struct rtl_priv* adapter; } ;
+struct TYPE_4__ {int /*<<< orphan*/  bt_rf0x1e_backup; } ;
+struct TYPE_3__ {scalar_t__ dis_ver_info_cnt; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  BTC_ANT_WIFI_AT_MAIN ; 
+ int /*<<< orphan*/  BTC_RF_A ; 
+ int /*<<< orphan*/  COMP_BT_COEXIST ; 
+ int /*<<< orphan*/  DBG_LOUD ; 
+ int /*<<< orphan*/  FORCE_EXEC ; 
+ int /*<<< orphan*/  FUNC0 (struct rtl_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC1 (struct btc_coexist*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct btc_coexist*,int /*<<< orphan*/ ,int,int) ; 
+ TYPE_2__* coex_dm ; 
+ TYPE_1__* coex_sta ; 
+ int /*<<< orphan*/  FUNC3 (struct btc_coexist*,int /*<<< orphan*/ ,int,int) ; 
+ int FUNC4 (struct btc_coexist*,int) ; 
+ int /*<<< orphan*/  FUNC5 (struct btc_coexist*,int,int) ; 
+ int /*<<< orphan*/  FUNC6 (struct btc_coexist*,int,int) ; 
+ int /*<<< orphan*/  FUNC7 (struct btc_coexist*,int,int) ; 
+ int /*<<< orphan*/  FUNC8 (struct btc_coexist*,int,int,int) ; 
+
+void FUNC9(struct btc_coexist *btcoexist)
+{
+	struct rtl_priv *rtlpriv = btcoexist->adapter;
+	u8 u8tmp = 0;
+
+	FUNC0(rtlpriv, COMP_BT_COEXIST, DBG_LOUD,
+		 "[BTCoex], 2Ant Init HW Config!!\n");
+	coex_dm->bt_rf0x1e_backup =
+		btcoexist->btc_get_rf_reg(btcoexist, BTC_RF_A, 0x1e, 0xfffff);
+
+	/* 0x790[5:0] = 0x5 */
+	u8tmp = btcoexist->btc_read_1byte(btcoexist, 0x790);
+	u8tmp &= 0xc0;
+	u8tmp |= 0x5;
+	btcoexist->btc_write_1byte(btcoexist, 0x790, u8tmp);
+
+	/* Antenna config */
+	FUNC2(btcoexist, BTC_ANT_WIFI_AT_MAIN,
+				  true, false);
+	coex_sta->dis_ver_info_cnt = 0;
+
+	/* PTA parameter */
+	FUNC1(btcoexist, FORCE_EXEC, 0);
+
+	/* Enable counter statistics */
+	/* 0x76e[3] = 1, WLAN_ACT controlled by PTA */
+	btcoexist->btc_write_1byte(btcoexist, 0x76e, 0x4);
+	btcoexist->btc_write_1byte(btcoexist, 0x778, 0x3);
+	btcoexist->btc_write_1byte_bitmask(btcoexist, 0x40, 0x20, 0x1);
+	btcoexist->auto_report_2ant = true;
+}

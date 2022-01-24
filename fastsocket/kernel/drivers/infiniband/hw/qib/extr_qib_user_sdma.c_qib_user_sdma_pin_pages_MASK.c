@@ -1,0 +1,79 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct qib_user_sdma_pkt {int /*<<< orphan*/  naddr; } ;
+struct qib_devdata {TYPE_1__* pcidev; } ;
+struct page {int dummy; } ;
+typedef  int /*<<< orphan*/  dma_addr_t ;
+struct TYPE_5__ {int /*<<< orphan*/  mm; } ;
+struct TYPE_4__ {int /*<<< orphan*/  dev; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  DMA_TO_DEVICE ; 
+ int ENOMEM ; 
+ unsigned long PAGE_MASK ; 
+ TYPE_2__* current ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,struct page*,int /*<<< orphan*/ ,int const,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int FUNC2 (TYPE_2__*,int /*<<< orphan*/ ,unsigned long,int,int /*<<< orphan*/ ,int,struct page**,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (struct page*) ; 
+ int /*<<< orphan*/  FUNC4 (struct page*) ; 
+ int /*<<< orphan*/  FUNC5 (struct qib_user_sdma_pkt*,int /*<<< orphan*/ ,unsigned long,int const,int,int,struct page*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FUNC6 (unsigned long,int) ; 
+
+__attribute__((used)) static int FUNC7(const struct qib_devdata *dd,
+				   struct qib_user_sdma_pkt *pkt,
+				   unsigned long addr, int tlen, int npages)
+{
+	struct page *pages[2];
+	int j;
+	int ret;
+
+	ret = FUNC2(current, current->mm, addr,
+			     npages, 0, 1, pages, NULL);
+
+	if (ret != npages) {
+		int i;
+
+		for (i = 0; i < ret; i++)
+			FUNC4(pages[i]);
+
+		ret = -ENOMEM;
+		goto done;
+	}
+
+	for (j = 0; j < npages; j++) {
+		/* map the pages... */
+		const int flen = FUNC6(addr, tlen);
+		dma_addr_t dma_addr =
+			FUNC0(&dd->pcidev->dev,
+				     pages[j], 0, flen, DMA_TO_DEVICE);
+		unsigned long fofs = addr & ~PAGE_MASK;
+
+		if (FUNC1(&dd->pcidev->dev, dma_addr)) {
+			ret = -ENOMEM;
+			goto done;
+		}
+
+		FUNC5(pkt, pkt->naddr, fofs, flen, 1, 1,
+					pages[j], FUNC3(pages[j]), dma_addr);
+
+		pkt->naddr++;
+		addr += flen;
+		tlen -= flen;
+	}
+
+done:
+	return ret;
+}

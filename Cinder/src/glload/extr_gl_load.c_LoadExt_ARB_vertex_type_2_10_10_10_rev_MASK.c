@@ -1,0 +1,173 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ PFNGLVERTEXP4UIVPROC ;
+typedef  scalar_t__ PFNGLVERTEXP4UIPROC ;
+typedef  scalar_t__ PFNGLVERTEXP3UIVPROC ;
+typedef  scalar_t__ PFNGLVERTEXP3UIPROC ;
+typedef  scalar_t__ PFNGLVERTEXP2UIVPROC ;
+typedef  scalar_t__ PFNGLVERTEXP2UIPROC ;
+typedef  scalar_t__ PFNGLVERTEXATTRIBP4UIVPROC ;
+typedef  scalar_t__ PFNGLVERTEXATTRIBP4UIPROC ;
+typedef  scalar_t__ PFNGLVERTEXATTRIBP3UIVPROC ;
+typedef  scalar_t__ PFNGLVERTEXATTRIBP3UIPROC ;
+typedef  scalar_t__ PFNGLVERTEXATTRIBP2UIVPROC ;
+typedef  scalar_t__ PFNGLVERTEXATTRIBP2UIPROC ;
+typedef  scalar_t__ PFNGLVERTEXATTRIBP1UIVPROC ;
+typedef  scalar_t__ PFNGLVERTEXATTRIBP1UIPROC ;
+typedef  scalar_t__ PFNGLTEXCOORDP4UIVPROC ;
+typedef  scalar_t__ PFNGLTEXCOORDP4UIPROC ;
+typedef  scalar_t__ PFNGLTEXCOORDP3UIVPROC ;
+typedef  scalar_t__ PFNGLTEXCOORDP3UIPROC ;
+typedef  scalar_t__ PFNGLTEXCOORDP2UIVPROC ;
+typedef  scalar_t__ PFNGLTEXCOORDP2UIPROC ;
+typedef  scalar_t__ PFNGLTEXCOORDP1UIVPROC ;
+typedef  scalar_t__ PFNGLTEXCOORDP1UIPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLORP3UIVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLORP3UIPROC ;
+typedef  scalar_t__ PFNGLNORMALP3UIVPROC ;
+typedef  scalar_t__ PFNGLNORMALP3UIPROC ;
+typedef  scalar_t__ PFNGLMULTITEXCOORDP4UIVPROC ;
+typedef  scalar_t__ PFNGLMULTITEXCOORDP4UIPROC ;
+typedef  scalar_t__ PFNGLMULTITEXCOORDP3UIVPROC ;
+typedef  scalar_t__ PFNGLMULTITEXCOORDP3UIPROC ;
+typedef  scalar_t__ PFNGLMULTITEXCOORDP2UIVPROC ;
+typedef  scalar_t__ PFNGLMULTITEXCOORDP2UIPROC ;
+typedef  scalar_t__ PFNGLMULTITEXCOORDP1UIVPROC ;
+typedef  scalar_t__ PFNGLMULTITEXCOORDP1UIPROC ;
+typedef  scalar_t__ PFNGLCOLORP4UIVPROC ;
+typedef  scalar_t__ PFNGLCOLORP4UIPROC ;
+typedef  scalar_t__ PFNGLCOLORP3UIVPROC ;
+typedef  scalar_t__ PFNGLCOLORP3UIPROC ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (char*) ; 
+ scalar_t__ _funcptr_glColorP3ui ; 
+ scalar_t__ _funcptr_glColorP3uiv ; 
+ scalar_t__ _funcptr_glColorP4ui ; 
+ scalar_t__ _funcptr_glColorP4uiv ; 
+ scalar_t__ _funcptr_glMultiTexCoordP1ui ; 
+ scalar_t__ _funcptr_glMultiTexCoordP1uiv ; 
+ scalar_t__ _funcptr_glMultiTexCoordP2ui ; 
+ scalar_t__ _funcptr_glMultiTexCoordP2uiv ; 
+ scalar_t__ _funcptr_glMultiTexCoordP3ui ; 
+ scalar_t__ _funcptr_glMultiTexCoordP3uiv ; 
+ scalar_t__ _funcptr_glMultiTexCoordP4ui ; 
+ scalar_t__ _funcptr_glMultiTexCoordP4uiv ; 
+ scalar_t__ _funcptr_glNormalP3ui ; 
+ scalar_t__ _funcptr_glNormalP3uiv ; 
+ scalar_t__ _funcptr_glSecondaryColorP3ui ; 
+ scalar_t__ _funcptr_glSecondaryColorP3uiv ; 
+ scalar_t__ _funcptr_glTexCoordP1ui ; 
+ scalar_t__ _funcptr_glTexCoordP1uiv ; 
+ scalar_t__ _funcptr_glTexCoordP2ui ; 
+ scalar_t__ _funcptr_glTexCoordP2uiv ; 
+ scalar_t__ _funcptr_glTexCoordP3ui ; 
+ scalar_t__ _funcptr_glTexCoordP3uiv ; 
+ scalar_t__ _funcptr_glTexCoordP4ui ; 
+ scalar_t__ _funcptr_glTexCoordP4uiv ; 
+ scalar_t__ _funcptr_glVertexAttribP1ui ; 
+ scalar_t__ _funcptr_glVertexAttribP1uiv ; 
+ scalar_t__ _funcptr_glVertexAttribP2ui ; 
+ scalar_t__ _funcptr_glVertexAttribP2uiv ; 
+ scalar_t__ _funcptr_glVertexAttribP3ui ; 
+ scalar_t__ _funcptr_glVertexAttribP3uiv ; 
+ scalar_t__ _funcptr_glVertexAttribP4ui ; 
+ scalar_t__ _funcptr_glVertexAttribP4uiv ; 
+ scalar_t__ _funcptr_glVertexP2ui ; 
+ scalar_t__ _funcptr_glVertexP2uiv ; 
+ scalar_t__ _funcptr_glVertexP3ui ; 
+ scalar_t__ _funcptr_glVertexP3uiv ; 
+ scalar_t__ _funcptr_glVertexP4ui ; 
+ scalar_t__ _funcptr_glVertexP4uiv ; 
+
+__attribute__((used)) static int FUNC1()
+{
+	int numFailed = 0;
+	_funcptr_glColorP3ui = (PFNGLCOLORP3UIPROC)FUNC0("glColorP3ui");
+	if(!_funcptr_glColorP3ui) ++numFailed;
+	_funcptr_glColorP3uiv = (PFNGLCOLORP3UIVPROC)FUNC0("glColorP3uiv");
+	if(!_funcptr_glColorP3uiv) ++numFailed;
+	_funcptr_glColorP4ui = (PFNGLCOLORP4UIPROC)FUNC0("glColorP4ui");
+	if(!_funcptr_glColorP4ui) ++numFailed;
+	_funcptr_glColorP4uiv = (PFNGLCOLORP4UIVPROC)FUNC0("glColorP4uiv");
+	if(!_funcptr_glColorP4uiv) ++numFailed;
+	_funcptr_glMultiTexCoordP1ui = (PFNGLMULTITEXCOORDP1UIPROC)FUNC0("glMultiTexCoordP1ui");
+	if(!_funcptr_glMultiTexCoordP1ui) ++numFailed;
+	_funcptr_glMultiTexCoordP1uiv = (PFNGLMULTITEXCOORDP1UIVPROC)FUNC0("glMultiTexCoordP1uiv");
+	if(!_funcptr_glMultiTexCoordP1uiv) ++numFailed;
+	_funcptr_glMultiTexCoordP2ui = (PFNGLMULTITEXCOORDP2UIPROC)FUNC0("glMultiTexCoordP2ui");
+	if(!_funcptr_glMultiTexCoordP2ui) ++numFailed;
+	_funcptr_glMultiTexCoordP2uiv = (PFNGLMULTITEXCOORDP2UIVPROC)FUNC0("glMultiTexCoordP2uiv");
+	if(!_funcptr_glMultiTexCoordP2uiv) ++numFailed;
+	_funcptr_glMultiTexCoordP3ui = (PFNGLMULTITEXCOORDP3UIPROC)FUNC0("glMultiTexCoordP3ui");
+	if(!_funcptr_glMultiTexCoordP3ui) ++numFailed;
+	_funcptr_glMultiTexCoordP3uiv = (PFNGLMULTITEXCOORDP3UIVPROC)FUNC0("glMultiTexCoordP3uiv");
+	if(!_funcptr_glMultiTexCoordP3uiv) ++numFailed;
+	_funcptr_glMultiTexCoordP4ui = (PFNGLMULTITEXCOORDP4UIPROC)FUNC0("glMultiTexCoordP4ui");
+	if(!_funcptr_glMultiTexCoordP4ui) ++numFailed;
+	_funcptr_glMultiTexCoordP4uiv = (PFNGLMULTITEXCOORDP4UIVPROC)FUNC0("glMultiTexCoordP4uiv");
+	if(!_funcptr_glMultiTexCoordP4uiv) ++numFailed;
+	_funcptr_glNormalP3ui = (PFNGLNORMALP3UIPROC)FUNC0("glNormalP3ui");
+	if(!_funcptr_glNormalP3ui) ++numFailed;
+	_funcptr_glNormalP3uiv = (PFNGLNORMALP3UIVPROC)FUNC0("glNormalP3uiv");
+	if(!_funcptr_glNormalP3uiv) ++numFailed;
+	_funcptr_glSecondaryColorP3ui = (PFNGLSECONDARYCOLORP3UIPROC)FUNC0("glSecondaryColorP3ui");
+	if(!_funcptr_glSecondaryColorP3ui) ++numFailed;
+	_funcptr_glSecondaryColorP3uiv = (PFNGLSECONDARYCOLORP3UIVPROC)FUNC0("glSecondaryColorP3uiv");
+	if(!_funcptr_glSecondaryColorP3uiv) ++numFailed;
+	_funcptr_glTexCoordP1ui = (PFNGLTEXCOORDP1UIPROC)FUNC0("glTexCoordP1ui");
+	if(!_funcptr_glTexCoordP1ui) ++numFailed;
+	_funcptr_glTexCoordP1uiv = (PFNGLTEXCOORDP1UIVPROC)FUNC0("glTexCoordP1uiv");
+	if(!_funcptr_glTexCoordP1uiv) ++numFailed;
+	_funcptr_glTexCoordP2ui = (PFNGLTEXCOORDP2UIPROC)FUNC0("glTexCoordP2ui");
+	if(!_funcptr_glTexCoordP2ui) ++numFailed;
+	_funcptr_glTexCoordP2uiv = (PFNGLTEXCOORDP2UIVPROC)FUNC0("glTexCoordP2uiv");
+	if(!_funcptr_glTexCoordP2uiv) ++numFailed;
+	_funcptr_glTexCoordP3ui = (PFNGLTEXCOORDP3UIPROC)FUNC0("glTexCoordP3ui");
+	if(!_funcptr_glTexCoordP3ui) ++numFailed;
+	_funcptr_glTexCoordP3uiv = (PFNGLTEXCOORDP3UIVPROC)FUNC0("glTexCoordP3uiv");
+	if(!_funcptr_glTexCoordP3uiv) ++numFailed;
+	_funcptr_glTexCoordP4ui = (PFNGLTEXCOORDP4UIPROC)FUNC0("glTexCoordP4ui");
+	if(!_funcptr_glTexCoordP4ui) ++numFailed;
+	_funcptr_glTexCoordP4uiv = (PFNGLTEXCOORDP4UIVPROC)FUNC0("glTexCoordP4uiv");
+	if(!_funcptr_glTexCoordP4uiv) ++numFailed;
+	_funcptr_glVertexAttribP1ui = (PFNGLVERTEXATTRIBP1UIPROC)FUNC0("glVertexAttribP1ui");
+	if(!_funcptr_glVertexAttribP1ui) ++numFailed;
+	_funcptr_glVertexAttribP1uiv = (PFNGLVERTEXATTRIBP1UIVPROC)FUNC0("glVertexAttribP1uiv");
+	if(!_funcptr_glVertexAttribP1uiv) ++numFailed;
+	_funcptr_glVertexAttribP2ui = (PFNGLVERTEXATTRIBP2UIPROC)FUNC0("glVertexAttribP2ui");
+	if(!_funcptr_glVertexAttribP2ui) ++numFailed;
+	_funcptr_glVertexAttribP2uiv = (PFNGLVERTEXATTRIBP2UIVPROC)FUNC0("glVertexAttribP2uiv");
+	if(!_funcptr_glVertexAttribP2uiv) ++numFailed;
+	_funcptr_glVertexAttribP3ui = (PFNGLVERTEXATTRIBP3UIPROC)FUNC0("glVertexAttribP3ui");
+	if(!_funcptr_glVertexAttribP3ui) ++numFailed;
+	_funcptr_glVertexAttribP3uiv = (PFNGLVERTEXATTRIBP3UIVPROC)FUNC0("glVertexAttribP3uiv");
+	if(!_funcptr_glVertexAttribP3uiv) ++numFailed;
+	_funcptr_glVertexAttribP4ui = (PFNGLVERTEXATTRIBP4UIPROC)FUNC0("glVertexAttribP4ui");
+	if(!_funcptr_glVertexAttribP4ui) ++numFailed;
+	_funcptr_glVertexAttribP4uiv = (PFNGLVERTEXATTRIBP4UIVPROC)FUNC0("glVertexAttribP4uiv");
+	if(!_funcptr_glVertexAttribP4uiv) ++numFailed;
+	_funcptr_glVertexP2ui = (PFNGLVERTEXP2UIPROC)FUNC0("glVertexP2ui");
+	if(!_funcptr_glVertexP2ui) ++numFailed;
+	_funcptr_glVertexP2uiv = (PFNGLVERTEXP2UIVPROC)FUNC0("glVertexP2uiv");
+	if(!_funcptr_glVertexP2uiv) ++numFailed;
+	_funcptr_glVertexP3ui = (PFNGLVERTEXP3UIPROC)FUNC0("glVertexP3ui");
+	if(!_funcptr_glVertexP3ui) ++numFailed;
+	_funcptr_glVertexP3uiv = (PFNGLVERTEXP3UIVPROC)FUNC0("glVertexP3uiv");
+	if(!_funcptr_glVertexP3uiv) ++numFailed;
+	_funcptr_glVertexP4ui = (PFNGLVERTEXP4UIPROC)FUNC0("glVertexP4ui");
+	if(!_funcptr_glVertexP4ui) ++numFailed;
+	_funcptr_glVertexP4uiv = (PFNGLVERTEXP4UIVPROC)FUNC0("glVertexP4uiv");
+	if(!_funcptr_glVertexP4uiv) ++numFailed;
+	return numFailed;
+}

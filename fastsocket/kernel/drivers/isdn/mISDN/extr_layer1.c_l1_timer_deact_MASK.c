@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct layer1 {int /*<<< orphan*/  dch; int /*<<< orphan*/  (* dcb ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  Flags; } ;
+struct FsmInst {struct layer1* userdata; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FLG_L1_ACTIVATED ; 
+ int /*<<< orphan*/  FLG_L1_DBLOCKED ; 
+ int /*<<< orphan*/  FLG_L1_DEACTTIMER ; 
+ int /*<<< orphan*/  HW_DEACT_REQ ; 
+ int /*<<< orphan*/  HW_D_NOBLOCKED ; 
+ int /*<<< orphan*/  PH_DEACTIVATE_IND ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static void
+FUNC4(struct FsmInst *fi, int event, void *arg)
+{
+	struct layer1 *l1 = fi->userdata;
+
+	FUNC3(FLG_L1_DEACTTIMER, &l1->Flags);
+	FUNC3(FLG_L1_ACTIVATED, &l1->Flags);
+	if (FUNC3(FLG_L1_DBLOCKED, &l1->Flags))
+		l1->dcb(l1->dch, HW_D_NOBLOCKED);
+	l1->dcb(l1->dch, PH_DEACTIVATE_IND);
+	l1->dcb(l1->dch, HW_DEACT_REQ);
+}

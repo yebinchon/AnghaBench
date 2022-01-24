@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct regulator_dev {int dummy; } ;
+struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct dbx500_regulator_info {int is_enabled; int /*<<< orphan*/  exclude_from_power_state; TYPE_1__ desc; } ;
+
+/* Variables and functions */
+ int EINVAL ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+ int FUNC1 () ; 
+ int /*<<< orphan*/  FUNC2 (struct regulator_dev*) ; 
+ struct dbx500_regulator_info* FUNC3 (struct regulator_dev*) ; 
+
+__attribute__((used)) static int FUNC4(struct regulator_dev *rdev)
+{
+	struct dbx500_regulator_info *info = FUNC3(rdev);
+	int ret = 0;
+
+	if (info == NULL)
+		return -EINVAL;
+
+	FUNC0(FUNC2(rdev), "regulator-%s-disable\n",
+		info->desc.name);
+
+	if (info->is_enabled) {
+		info->is_enabled = false;
+		if (!info->exclude_from_power_state)
+			ret = FUNC1();
+	}
+
+	return ret;
+}

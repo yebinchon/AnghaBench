@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  s64 ;
+typedef  int /*<<< orphan*/  raw_spinlock_t ;
+struct TYPE_4__ {int /*<<< orphan*/  counter; } ;
+typedef  TYPE_1__ atomic64_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/ * FUNC0 (TYPE_1__*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,unsigned long) ; 
+
+void FUNC3(atomic64_t *v, s64 i)
+{
+	unsigned long flags;
+	raw_spinlock_t *lock = FUNC0(v);
+
+	FUNC1(lock, flags);
+	v->counter = i;
+	FUNC2(lock, flags);
+}

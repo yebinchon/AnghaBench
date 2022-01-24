@@ -1,0 +1,53 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {int fake_broadcast; } ;
+struct qeth_card {scalar_t__ state; int /*<<< orphan*/  conf_mutex; TYPE_1__ options; } ;
+struct device_attribute {int dummy; } ;
+struct device {int dummy; } ;
+typedef  int ssize_t ;
+
+/* Variables and functions */
+ scalar_t__ CARD_STATE_DOWN ; 
+ int EINVAL ; 
+ int EPERM ; 
+ struct qeth_card* FUNC0 (struct device*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int FUNC3 (char const*,char**,int) ; 
+
+__attribute__((used)) static ssize_t FUNC4(struct device *dev,
+		struct device_attribute *attr, const char *buf, size_t count)
+{
+	struct qeth_card *card = FUNC0(dev);
+	char *tmp;
+	int i, rc = 0;
+
+	if (!card)
+		return -EINVAL;
+
+	FUNC1(&card->conf_mutex);
+	if (card->state != CARD_STATE_DOWN) {
+		rc = -EPERM;
+		goto out;
+	}
+
+	i = FUNC3(buf, &tmp, 16);
+	if ((i == 0) || (i == 1))
+		card->options.fake_broadcast = i;
+	else
+		rc = -EINVAL;
+out:
+	FUNC2(&card->conf_mutex);
+	return rc ? rc : count;
+}

@@ -1,0 +1,80 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct snd_soc_device {TYPE_1__* card; } ;
+struct snd_soc_codec {int /*<<< orphan*/  dev; int /*<<< orphan*/  mutex; } ;
+struct platform_device {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {struct snd_soc_codec* codec; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int ENODEV ; 
+ int /*<<< orphan*/  SNDRV_DEFAULT_IDX1 ; 
+ int /*<<< orphan*/  SNDRV_DEFAULT_STR1 ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,char*,...) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ struct snd_soc_device* FUNC3 (struct platform_device*) ; 
+ int FUNC4 (struct snd_soc_codec*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC5 (struct snd_soc_device*) ; 
+ int /*<<< orphan*/  FUNC6 (struct snd_soc_device*) ; 
+ int FUNC7 (struct snd_soc_device*) ; 
+ int FUNC8 (struct snd_soc_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FUNC9 (struct snd_soc_codec*) ; 
+ struct snd_soc_codec* wm8940_codec ; 
+ int /*<<< orphan*/  wm8940_snd_controls ; 
+
+__attribute__((used)) static int FUNC10(struct platform_device *pdev)
+{
+	struct snd_soc_device *socdev = FUNC3(pdev);
+	struct snd_soc_codec *codec;
+
+	int ret = 0;
+
+	if (wm8940_codec == NULL) {
+		FUNC1(pdev->dev, "Codec device not registered\n");
+		return -ENODEV;
+	}
+
+	socdev->card->codec = wm8940_codec;
+	codec = wm8940_codec;
+
+	FUNC2(&codec->mutex);
+	/* register pcms */
+	ret = FUNC8(socdev, SNDRV_DEFAULT_IDX1, SNDRV_DEFAULT_STR1);
+	if (ret < 0) {
+		FUNC1(codec->dev, "failed to create pcms: %d\n", ret);
+		goto pcm_err;
+	}
+
+	ret = FUNC4(codec, wm8940_snd_controls,
+			     FUNC0(wm8940_snd_controls));
+	if (ret)
+		goto error_free_pcms;
+	ret = FUNC9(codec);
+	if (ret)
+		goto error_free_pcms;
+
+	ret = FUNC7(socdev);
+	if (ret < 0) {
+		FUNC1(codec->dev, "failed to register card: %d\n", ret);
+		goto error_free_pcms;
+	}
+
+	return ret;
+
+error_free_pcms:
+	FUNC6(socdev);
+	FUNC5(socdev);
+pcm_err:
+	return ret;
+}

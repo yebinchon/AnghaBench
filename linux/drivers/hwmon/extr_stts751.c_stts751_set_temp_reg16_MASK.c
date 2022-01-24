@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+struct stts751_priv {int /*<<< orphan*/  client; } ;
+typedef  int s32 ;
+
+/* Variables and functions */
+ int FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int FUNC1 (int) ; 
+
+__attribute__((used)) static int FUNC2(struct stts751_priv *priv, int temp,
+				  u8 hreg, u8 lreg)
+{
+	s32 hwval;
+	int ret;
+
+	hwval = FUNC1(temp);
+
+	ret = FUNC0(priv->client, hreg, hwval >> 8);
+	if (ret)
+		return ret;
+
+	return FUNC0(priv->client, lreg, hwval & 0xff);
+}

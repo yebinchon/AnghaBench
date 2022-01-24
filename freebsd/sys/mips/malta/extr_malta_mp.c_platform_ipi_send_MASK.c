@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  uint32_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  C_SW1 ; 
+ int /*<<< orphan*/  FUNC0 (int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int) ; 
+
+void
+FUNC3(int cpuid)
+{
+	uint32_t reg;
+
+	FUNC2(cpuid);
+
+	/* Set cause */
+	reg = FUNC0(13, 0);
+	reg |= (C_SW1);
+	FUNC1(13, 0, reg);
+}

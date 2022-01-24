@@ -1,0 +1,45 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u32 ;
+struct snd_kcontrol {int dummy; } ;
+struct TYPE_3__ {scalar_t__* value; } ;
+struct TYPE_4__ {TYPE_1__ integer; } ;
+struct snd_ctl_elem_value {TYPE_2__ value; } ;
+struct snd_bt87x {int reg_control; int /*<<< orphan*/  reg_lock; } ;
+
+/* Variables and functions */
+ int CTL_A_G2X ; 
+ int /*<<< orphan*/  REG_GPIO_DMA_CTL ; 
+ int /*<<< orphan*/  FUNC0 (struct snd_bt87x*,int /*<<< orphan*/ ,int) ; 
+ struct snd_bt87x* FUNC1 (struct snd_kcontrol*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC4(struct snd_kcontrol *kcontrol,
+				       struct snd_ctl_elem_value *value)
+{
+	struct snd_bt87x *chip = FUNC1(kcontrol);
+	u32 old_control;
+	int changed;
+
+	FUNC2(&chip->reg_lock);
+	old_control = chip->reg_control;
+	chip->reg_control = (chip->reg_control & ~CTL_A_G2X)
+		| (value->value.integer.value[0] ? CTL_A_G2X : 0);
+	FUNC0(chip, REG_GPIO_DMA_CTL, chip->reg_control);
+	changed = chip->reg_control != old_control;
+	FUNC3(&chip->reg_lock);
+	return changed;
+}

@@ -1,0 +1,122 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct super_block {int dummy; } ;
+struct inode {unsigned long i_blocks; int /*<<< orphan*/  i_ino; struct super_block* i_sb; } ;
+struct buffer_head {int dummy; } ;
+struct bfs_sb_info {unsigned long si_blocks; unsigned long si_lf_eblk; int /*<<< orphan*/  bfs_lock; int /*<<< orphan*/  si_freeb; struct buffer_head* si_sbh; } ;
+struct bfs_inode_info {unsigned long i_sblock; unsigned long i_eblock; } ;
+typedef  unsigned long sector_t ;
+
+/* Variables and functions */
+ struct bfs_inode_info* FUNC0 (struct inode*) ; 
+ struct bfs_sb_info* FUNC1 (struct super_block*) ; 
+ int ENOSPC ; 
+ int FUNC2 (struct super_block*,long,unsigned long,unsigned long) ; 
+ int /*<<< orphan*/  FUNC3 (char*,int,...) ; 
+ int /*<<< orphan*/  FUNC4 (struct buffer_head*,struct super_block*,unsigned long) ; 
+ int /*<<< orphan*/  FUNC5 (struct buffer_head*) ; 
+ int /*<<< orphan*/  FUNC6 (struct inode*) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC9(struct inode *inode, sector_t block,
+			struct buffer_head *bh_result, int create)
+{
+	unsigned long phys;
+	int err;
+	struct super_block *sb = inode->i_sb;
+	struct bfs_sb_info *info = FUNC1(sb);
+	struct bfs_inode_info *bi = FUNC0(inode);
+	struct buffer_head *sbh = info->si_sbh;
+
+	phys = bi->i_sblock + block;
+	if (!create) {
+		if (phys <= bi->i_eblock) {
+			FUNC3("c=%d, b=%08lx, phys=%09lx (granted)\n",
+                                create, (unsigned long)block, phys);
+			FUNC4(bh_result, sb, phys);
+		}
+		return 0;
+	}
+
+	/*
+	 * If the file is not empty and the requested block is within the
+	 * range of blocks allocated for this file, we can grant it.
+	 */
+	if (bi->i_sblock && (phys <= bi->i_eblock)) {
+		FUNC3("c=%d, b=%08lx, phys=%08lx (interim block granted)\n", 
+				create, (unsigned long)block, phys);
+		FUNC4(bh_result, sb, phys);
+		return 0;
+	}
+
+	/* The file will be extended, so let's see if there is enough space. */
+	if (phys >= info->si_blocks)
+		return -ENOSPC;
+
+	/* The rest has to be protected against itself. */
+	FUNC7(&info->bfs_lock);
+
+	/*
+	 * If the last data block for this file is the last allocated
+	 * block, we can extend the file trivially, without moving it
+	 * anywhere.
+	 */
+	if (bi->i_eblock == info->si_lf_eblk) {
+		FUNC3("c=%d, b=%08lx, phys=%08lx (simple extension)\n", 
+				create, (unsigned long)block, phys);
+		FUNC4(bh_result, sb, phys);
+		info->si_freeb -= phys - bi->i_eblock;
+		info->si_lf_eblk = bi->i_eblock = phys;
+		FUNC6(inode);
+		FUNC5(sbh);
+		err = 0;
+		goto out;
+	}
+
+	/* Ok, we have to move this entire file to the next free block. */
+	phys = info->si_lf_eblk + 1;
+	if (phys + block >= info->si_blocks) {
+		err = -ENOSPC;
+		goto out;
+	}
+
+	if (bi->i_sblock) {
+		err = FUNC2(inode->i_sb, bi->i_sblock, 
+						bi->i_eblock, phys);
+		if (err) {
+			FUNC3("failed to move ino=%08lx -> fs corruption\n",
+								inode->i_ino);
+			goto out;
+		}
+	} else
+		err = 0;
+
+	FUNC3("c=%d, b=%08lx, phys=%08lx (moved)\n",
+                create, (unsigned long)block, phys);
+	bi->i_sblock = phys;
+	phys += block;
+	info->si_lf_eblk = bi->i_eblock = phys;
+
+	/*
+	 * This assumes nothing can write the inode back while we are here
+	 * and thus update inode->i_blocks! (XXX)
+	 */
+	info->si_freeb -= bi->i_eblock - bi->i_sblock + 1 - inode->i_blocks;
+	FUNC6(inode);
+	FUNC5(sbh);
+	FUNC4(bh_result, sb, phys);
+out:
+	FUNC8(&info->bfs_lock);
+	return err;
+}

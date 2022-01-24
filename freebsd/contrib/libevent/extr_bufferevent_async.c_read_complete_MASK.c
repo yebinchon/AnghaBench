@@ -1,0 +1,75 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct event_overlapped {int dummy; } ;
+struct bufferevent {int /*<<< orphan*/  input; } ;
+struct TYPE_2__ {struct bufferevent bev; } ;
+struct bufferevent_async {int read_in_progress; scalar_t__ ok; TYPE_1__ bev; } ;
+typedef  int /*<<< orphan*/  ev_uintptr_t ;
+typedef  int ev_ssize_t ;
+
+/* Variables and functions */
+ short BEV_EVENT_EOF ; 
+ short BEV_EVENT_ERROR ; 
+ short BEV_EVENT_READING ; 
+ int /*<<< orphan*/  FUNC0 (struct bufferevent*) ; 
+ int /*<<< orphan*/  FUNC1 (struct bufferevent*) ; 
+ int /*<<< orphan*/  FUNC2 (int) ; 
+ int /*<<< orphan*/  EV_READ ; 
+ int /*<<< orphan*/  FUNC3 (struct bufferevent_async*) ; 
+ int /*<<< orphan*/  FUNC4 (struct bufferevent*,struct event_overlapped*) ; 
+ int /*<<< orphan*/  FUNC5 (struct bufferevent*) ; 
+ int /*<<< orphan*/  FUNC6 (TYPE_1__*,int) ; 
+ int /*<<< orphan*/  FUNC7 (struct bufferevent*,short,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC8 (struct bufferevent*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC9 (int /*<<< orphan*/ ,int) ; 
+ struct bufferevent_async* FUNC10 (struct event_overlapped*) ; 
+
+__attribute__((used)) static void
+FUNC11(struct event_overlapped *eo, ev_uintptr_t key,
+    ev_ssize_t nbytes, int ok)
+{
+	struct bufferevent_async *bev_a = FUNC10(eo);
+	struct bufferevent *bev = &bev_a->bev.bev;
+	short what = BEV_EVENT_READING;
+	ev_ssize_t amount_unread;
+	FUNC0(bev);
+	FUNC2(bev_a->read_in_progress);
+
+	amount_unread = bev_a->read_in_progress - nbytes;
+	FUNC9(bev->input, nbytes);
+	bev_a->read_in_progress = 0;
+	if (amount_unread)
+		FUNC6(&bev_a->bev, -amount_unread);
+
+	if (!ok)
+		FUNC4(bev, eo);
+
+	if (bev_a->ok) {
+		if (ok && nbytes) {
+			FUNC1(bev);
+			FUNC8(bev, EV_READ, 0);
+			FUNC3(bev_a);
+		} else if (!ok) {
+			what |= BEV_EVENT_ERROR;
+			bev_a->ok = 0;
+			FUNC7(bev, what, 0);
+		} else if (!nbytes) {
+			what |= BEV_EVENT_EOF;
+			bev_a->ok = 0;
+			FUNC7(bev, what, 0);
+		}
+	}
+
+	FUNC5(bev);
+}

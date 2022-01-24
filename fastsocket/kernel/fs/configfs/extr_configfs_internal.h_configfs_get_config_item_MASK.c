@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct dentry {struct configfs_dirent* d_fsdata; } ;
+struct configfs_symlink {struct configfs_symlink* sl_target; } ;
+struct configfs_dirent {int s_type; struct configfs_symlink* s_element; } ;
+struct config_item {int dummy; } ;
+
+/* Variables and functions */
+ int CONFIGFS_ITEM_LINK ; 
+ struct config_item* FUNC0 (struct configfs_symlink*) ; 
+ int /*<<< orphan*/  FUNC1 (struct dentry*) ; 
+ int /*<<< orphan*/  dcache_lock ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static inline struct config_item *FUNC4(struct dentry *dentry)
+{
+	struct config_item * item = NULL;
+
+	FUNC2(&dcache_lock);
+	if (!FUNC1(dentry)) {
+		struct configfs_dirent * sd = dentry->d_fsdata;
+		if (sd->s_type & CONFIGFS_ITEM_LINK) {
+			struct configfs_symlink * sl = sd->s_element;
+			item = FUNC0(sl->sl_target);
+		} else
+			item = FUNC0(sd->s_element);
+	}
+	FUNC3(&dcache_lock);
+
+	return item;
+}

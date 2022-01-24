@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  fz_context ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FZ_ERROR_MEMORY ; 
+ size_t SIZE_MAX ; 
+ void* FUNC0 (int /*<<< orphan*/ *,size_t) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,size_t,size_t) ; 
+ int /*<<< orphan*/  FUNC2 (void*,int /*<<< orphan*/ ,size_t) ; 
+
+void *
+FUNC3(fz_context *ctx, size_t count, size_t size)
+{
+	void *p;
+	if (count == 0 || size == 0)
+		return NULL;
+	if (count > SIZE_MAX / size)
+		FUNC1(ctx, FZ_ERROR_MEMORY, "calloc (%zu x %zu bytes) failed (size_t overflow)", count, size);
+	p = FUNC0(ctx, count * size);
+	if (!p)
+		FUNC1(ctx, FZ_ERROR_MEMORY, "calloc (%zu x %zu bytes) failed", count, size);
+	FUNC2(p, 0, count*size);
+	return p;
+}

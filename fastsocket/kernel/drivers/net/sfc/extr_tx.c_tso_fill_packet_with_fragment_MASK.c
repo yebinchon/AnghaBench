@@ -1,0 +1,64 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct tso_state {scalar_t__ in_len; scalar_t__ packet_space; scalar_t__ out_len; int dma_addr; scalar_t__ unmap_len; int /*<<< orphan*/  dma_flags; } ;
+struct sk_buff {int dummy; } ;
+struct efx_tx_queue {int dummy; } ;
+struct efx_tx_buffer {int /*<<< orphan*/  flags; scalar_t__ unmap_len; struct sk_buff const* skb; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  EFX_TX_BUF_CONT ; 
+ int /*<<< orphan*/  EFX_TX_BUF_SKB ; 
+ int /*<<< orphan*/  FUNC1 (struct efx_tx_queue*,int,int,struct efx_tx_buffer**) ; 
+ int FUNC2 (scalar_t__,scalar_t__) ; 
+
+__attribute__((used)) static void FUNC3(struct efx_tx_queue *tx_queue,
+					  const struct sk_buff *skb,
+					  struct tso_state *st)
+{
+	struct efx_tx_buffer *buffer;
+	int n;
+
+	if (st->in_len == 0)
+		return;
+	if (st->packet_space == 0)
+		return;
+
+	FUNC0(st->in_len <= 0);
+	FUNC0(st->packet_space <= 0);
+
+	n = FUNC2(st->in_len, st->packet_space);
+
+	st->packet_space -= n;
+	st->out_len -= n;
+	st->in_len -= n;
+
+	FUNC1(tx_queue, st->dma_addr, n, &buffer);
+
+	if (st->out_len == 0) {
+		/* Transfer ownership of the skb */
+		buffer->skb = skb;
+		buffer->flags = EFX_TX_BUF_SKB;
+	} else if (st->packet_space != 0) {
+		buffer->flags = EFX_TX_BUF_CONT;
+	}
+
+	if (st->in_len == 0) {
+		/* Transfer ownership of the DMA mapping */
+		buffer->unmap_len = st->unmap_len;
+		buffer->flags |= st->dma_flags;
+		st->unmap_len = 0;
+	}
+
+	st->dma_addr += n;
+}

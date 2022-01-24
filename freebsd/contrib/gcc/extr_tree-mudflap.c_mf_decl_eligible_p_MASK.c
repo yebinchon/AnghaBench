@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  tree ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ scalar_t__ PARM_DECL ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ ) ; 
+ scalar_t__ VAR_DECL ; 
+
+__attribute__((used)) static int
+FUNC5 (tree decl)
+{
+  return ((FUNC3 (decl) == VAR_DECL || FUNC3 (decl) == PARM_DECL)
+          /* The decl must have its address taken.  In the case of
+             arrays, this flag is also set if the indexes are not
+             compile-time known valid constants.  */
+          && FUNC2 (decl)    /* XXX: not sufficient: return-by-value structs! */
+          /* The type of the variable must be complete.  */
+          && FUNC0 (FUNC4 (decl))
+	  /* The decl hasn't been decomposed somehow.  */
+	  && !FUNC1 (decl));
+}

@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct inode {int /*<<< orphan*/  i_ino; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  NFSD_FILE_HASH_BITS ; 
+ int /*<<< orphan*/  FUNC1 (struct inode*,unsigned int,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  dispose ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (struct inode*,unsigned int,int) ; 
+
+void
+FUNC6(struct inode *inode)
+{
+	unsigned int		hashval = (unsigned int)FUNC2(inode->i_ino,
+						NFSD_FILE_HASH_BITS);
+	FUNC0(dispose);
+
+	FUNC1(inode, hashval, &dispose);
+	FUNC5(inode, hashval, !FUNC3(&dispose));
+	FUNC4(&dispose);
+}

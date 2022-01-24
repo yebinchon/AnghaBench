@@ -1,0 +1,59 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_5__ {TYPE_1__* help; int /*<<< orphan*/ * name; } ;
+struct TYPE_4__ {char* name; char valtype; } ;
+typedef  TYPE_1__ OPTIONS ;
+typedef  TYPE_2__ FUNCTION ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,char*,...) ; 
+ char* OPT_HELP_STR ; 
+ char* OPT_MORE_STR ; 
+ char* OPT_SECTION_STR ; 
+ int /*<<< orphan*/  bio_err ; 
+ int /*<<< orphan*/  bio_out ; 
+ TYPE_2__* functions ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ *,char const*) ; 
+
+__attribute__((used)) static void FUNC2(const char *command)
+{
+    const FUNCTION *fp;
+    const OPTIONS *o;
+
+    for (fp = functions; fp->name != NULL; fp++)
+        if (FUNC1(fp->name, command) == 0)
+            break;
+    if (fp->name == NULL) {
+        FUNC0(bio_err, "Invalid command '%s'; type \"help\" for a list.\n",
+                command);
+        return;
+    }
+
+    if ((o = fp->help) == NULL)
+        return;
+
+    for ( ; o->name != NULL; o++) {
+        char c = o->valtype;
+
+        if (o->name == OPT_HELP_STR
+                || o->name == OPT_MORE_STR
+                || o->name == OPT_SECTION_STR
+                || o->name[0] == '\0')
+            continue;
+        FUNC0(bio_out, "%s %c\n", o->name, c == '\0' ? '-' : c);
+    }
+    /* Always output the -- marker since it is sometimes documented. */
+    FUNC0(bio_out, "- -\n");
+}

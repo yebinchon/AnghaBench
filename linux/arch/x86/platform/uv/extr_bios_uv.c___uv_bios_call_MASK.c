@@ -1,0 +1,51 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u64 ;
+struct uv_systab {int /*<<< orphan*/  function; } ;
+typedef  int /*<<< orphan*/  s64 ;
+typedef  enum uv_bios_cmd { ____Placeholder_uv_bios_cmd } uv_bios_cmd ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  BIOS_STATUS_UNIMPLEMENTED ; 
+ int /*<<< orphan*/  EFI_OLD_MEMMAP ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct uv_systab*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  function ; 
+ scalar_t__ FUNC4 (int /*<<< orphan*/ ) ; 
+ struct uv_systab* uv_systab ; 
+
+__attribute__((used)) static s64 FUNC5(enum uv_bios_cmd which, u64 a1, u64 a2, u64 a3,
+			u64 a4, u64 a5)
+{
+	struct uv_systab *tab = uv_systab;
+	s64 ret;
+
+	if (!tab || !tab->function)
+		/*
+		 * BIOS does not support UV systab
+		 */
+		return BIOS_STATUS_UNIMPLEMENTED;
+
+	/*
+	 * If EFI_OLD_MEMMAP is set, we need to fall back to using our old EFI
+	 * callback method, which uses efi_call() directly, with the kernel page tables:
+	 */
+	if (FUNC4(FUNC3(EFI_OLD_MEMMAP)))
+		ret = FUNC1((void *)FUNC0(tab->function), (u64)which, a1, a2, a3, a4, a5);
+	else
+		ret = FUNC2(tab, function, (u64)which, a1, a2, a3, a4, a5);
+
+	return ret;
+}

@@ -1,0 +1,64 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct vb2_dc_buf {int dma_sgt; unsigned long size; int /*<<< orphan*/ * vaddr; int /*<<< orphan*/  dma_addr; int /*<<< orphan*/  dma_dir; int /*<<< orphan*/  db_attach; } ;
+struct sg_table {int /*<<< orphan*/  sgl; } ;
+
+/* Variables and functions */
+ int EFAULT ; 
+ int EINVAL ; 
+ scalar_t__ FUNC0 (struct sg_table*) ; 
+ scalar_t__ FUNC1 (int) ; 
+ struct sg_table* FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,struct sg_table*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (char*,...) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ) ; 
+ unsigned long FUNC6 (struct sg_table*) ; 
+
+__attribute__((used)) static int FUNC7(void *mem_priv)
+{
+	struct vb2_dc_buf *buf = mem_priv;
+	struct sg_table *sgt;
+	unsigned long contig_size;
+
+	if (FUNC1(!buf->db_attach)) {
+		FUNC4("trying to pin a non attached buffer\n");
+		return -EINVAL;
+	}
+
+	if (FUNC1(buf->dma_sgt)) {
+		FUNC4("dmabuf buffer is already pinned\n");
+		return 0;
+	}
+
+	/* get the associated scatterlist for this buffer */
+	sgt = FUNC2(buf->db_attach, buf->dma_dir);
+	if (FUNC0(sgt)) {
+		FUNC4("Error getting dmabuf scatterlist\n");
+		return -EINVAL;
+	}
+
+	/* checking if dmabuf is big enough to store contiguous chunk */
+	contig_size = FUNC6(sgt);
+	if (contig_size < buf->size) {
+		FUNC4("contiguous chunk is too small %lu/%lu b\n",
+			contig_size, buf->size);
+		FUNC3(buf->db_attach, sgt, buf->dma_dir);
+		return -EFAULT;
+	}
+
+	buf->dma_addr = FUNC5(sgt->sgl);
+	buf->dma_sgt = sgt;
+	buf->vaddr = NULL;
+
+	return 0;
+}

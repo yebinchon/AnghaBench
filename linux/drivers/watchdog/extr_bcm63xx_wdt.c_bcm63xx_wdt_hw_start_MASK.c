@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {scalar_t__ regs; } ;
+
+/* Variables and functions */
+ scalar_t__ WDT_CTL_REG ; 
+ scalar_t__ WDT_DEFVAL_REG ; 
+ int WDT_START_1 ; 
+ int WDT_START_2 ; 
+ TYPE_1__ bcm63xx_wdt_device ; 
+ int /*<<< orphan*/  FUNC0 (int,scalar_t__) ; 
+
+__attribute__((used)) static void FUNC1(void)
+{
+	FUNC0(0xfffffffe, bcm63xx_wdt_device.regs + WDT_DEFVAL_REG);
+	FUNC0(WDT_START_1, bcm63xx_wdt_device.regs + WDT_CTL_REG);
+	FUNC0(WDT_START_2, bcm63xx_wdt_device.regs + WDT_CTL_REG);
+}

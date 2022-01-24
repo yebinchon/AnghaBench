@@ -1,0 +1,85 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int uint32_t ;
+struct psb_mmu_pt {int /*<<< orphan*/  count; } ;
+struct psb_mmu_pd {int hw_context; TYPE_1__* driver; } ;
+struct TYPE_2__ {int /*<<< orphan*/  sem; } ;
+
+/* Variables and functions */
+ int PAGE_SHIFT ; 
+ int PAGE_SIZE ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (TYPE_1__*) ; 
+ int /*<<< orphan*/  FUNC2 (struct psb_mmu_pd*,unsigned long,int,int,int) ; 
+ int /*<<< orphan*/  FUNC3 (struct psb_mmu_pt*,unsigned long) ; 
+ struct psb_mmu_pt* FUNC4 (struct psb_mmu_pd*,unsigned long) ; 
+ int /*<<< orphan*/  FUNC5 (struct psb_mmu_pt*) ; 
+ unsigned long FUNC6 (unsigned long,unsigned long) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ *) ; 
+
+void FUNC8(struct psb_mmu_pd *pd, unsigned long address,
+			  uint32_t num_pages, uint32_t desired_tile_stride,
+			  uint32_t hw_tile_stride)
+{
+	struct psb_mmu_pt *pt;
+	uint32_t rows = 1;
+	uint32_t i;
+	unsigned long addr;
+	unsigned long end;
+	unsigned long next;
+	unsigned long add;
+	unsigned long row_add;
+	unsigned long f_address = address;
+
+	if (hw_tile_stride)
+		rows = num_pages / desired_tile_stride;
+	else
+		desired_tile_stride = num_pages;
+
+	add = desired_tile_stride << PAGE_SHIFT;
+	row_add = hw_tile_stride << PAGE_SHIFT;
+
+	FUNC0(&pd->driver->sem);
+
+	/* Make sure we only need to flush this processor's cache */
+
+	for (i = 0; i < rows; ++i) {
+
+		addr = address;
+		end = addr + add;
+
+		do {
+			next = FUNC6(addr, end);
+			pt = FUNC4(pd, addr);
+			if (!pt)
+				continue;
+			do {
+				FUNC3(pt, addr);
+				--pt->count;
+
+			} while (addr += PAGE_SIZE, addr < next);
+			FUNC5(pt);
+
+		} while (addr = next, next != end);
+		address += row_add;
+	}
+	if (pd->hw_context != -1)
+		FUNC2(pd, f_address, num_pages,
+				   desired_tile_stride, hw_tile_stride);
+
+	FUNC7(&pd->driver->sem);
+
+	if (pd->hw_context != -1)
+		FUNC1(pd->driver);
+}

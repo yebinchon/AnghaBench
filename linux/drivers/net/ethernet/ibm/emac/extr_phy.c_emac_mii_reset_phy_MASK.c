@@ -1,0 +1,46 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct mii_phy {int dummy; } ;
+
+/* Variables and functions */
+ int BMCR_ANENABLE ; 
+ int BMCR_ISOLATE ; 
+ int BMCR_RESET ; 
+ int /*<<< orphan*/  MII_BMCR ; 
+ int FUNC0 (struct mii_phy*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct mii_phy*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC2 (int) ; 
+
+int FUNC3(struct mii_phy *phy)
+{
+	int val;
+	int limit = 10000;
+
+	val = FUNC0(phy, MII_BMCR);
+	val &= ~(BMCR_ISOLATE | BMCR_ANENABLE);
+	val |= BMCR_RESET;
+	FUNC1(phy, MII_BMCR, val);
+
+	FUNC2(300);
+
+	while (--limit) {
+		val = FUNC0(phy, MII_BMCR);
+		if (val >= 0 && (val & BMCR_RESET) == 0)
+			break;
+		FUNC2(10);
+	}
+	if ((val & BMCR_ISOLATE) && limit > 0)
+		FUNC1(phy, MII_BMCR, val & ~BMCR_ISOLATE);
+
+	return limit <= 0;
+}

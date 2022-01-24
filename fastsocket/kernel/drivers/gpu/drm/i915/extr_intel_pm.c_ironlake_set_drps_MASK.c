@@ -1,0 +1,54 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  int u16 ;
+struct drm_i915_private {int dummy; } ;
+struct drm_device {struct drm_i915_private* dev_private; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char*) ; 
+ int FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int) ; 
+ int MEMCTL_CMD_CHFREQ ; 
+ int MEMCTL_CMD_SHIFT ; 
+ int MEMCTL_CMD_STS ; 
+ int MEMCTL_FREQ_SHIFT ; 
+ int MEMCTL_SFCAVM ; 
+ int /*<<< orphan*/  MEMSWCTL ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  mchdev_lock ; 
+
+bool FUNC5(struct drm_device *dev, u8 val)
+{
+	struct drm_i915_private *dev_priv = dev->dev_private;
+	u16 rgvswctl;
+
+	FUNC4(&mchdev_lock);
+
+	rgvswctl = FUNC1(MEMSWCTL);
+	if (rgvswctl & MEMCTL_CMD_STS) {
+		FUNC0("gpu busy, RCS change rejected\n");
+		return false; /* still busy with another command */
+	}
+
+	rgvswctl = (MEMCTL_CMD_CHFREQ << MEMCTL_CMD_SHIFT) |
+		(val << MEMCTL_FREQ_SHIFT) | MEMCTL_SFCAVM;
+	FUNC2(MEMSWCTL, rgvswctl);
+	FUNC3(MEMSWCTL);
+
+	rgvswctl |= MEMCTL_CMD_STS;
+	FUNC2(MEMSWCTL, rgvswctl);
+
+	return true;
+}

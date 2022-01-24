@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  KC_DEL ; 
+ int /*<<< orphan*/  KC_LALT ; 
+ int /*<<< orphan*/  KC_LEFT ; 
+ int /*<<< orphan*/  KC_LSHIFT ; 
+ int /*<<< orphan*/  KC_NO ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (char*) ; 
+
+void FUNC5(void) {
+  FUNC4("\e[31mb\e[0m");
+  FUNC3(KC_NO);
+  FUNC0(KC_LALT);
+    FUNC2(KC_LEFT); // select to start of word
+    FUNC2(KC_DEL); // delete selection
+  FUNC1(KC_LSHIFT);
+}

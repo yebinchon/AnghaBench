@@ -1,0 +1,45 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sockaddr {int /*<<< orphan*/  sa_data; int /*<<< orphan*/  sa_family; } ;
+struct orinoco_private {int dummy; } ;
+struct net_device {int dummy; } ;
+struct iw_request_info {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ARPHRD_ETHER ; 
+ int EBUSY ; 
+ struct orinoco_private* FUNC0 (struct net_device*) ; 
+ int FUNC1 (struct orinoco_private*,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 (struct orinoco_private*,unsigned long*) ; 
+ int /*<<< orphan*/  FUNC3 (struct orinoco_private*,unsigned long*) ; 
+
+__attribute__((used)) static int FUNC4(struct net_device *dev,
+				struct iw_request_info *info,
+				struct sockaddr *ap_addr,
+				char *extra)
+{
+	struct orinoco_private *priv = FUNC0(dev);
+
+	int err = 0;
+	unsigned long flags;
+
+	if (FUNC2(priv, &flags) != 0)
+		return -EBUSY;
+
+	ap_addr->sa_family = ARPHRD_ETHER;
+	err = FUNC1(priv, ap_addr->sa_data);
+
+	FUNC3(priv, &flags);
+
+	return err;
+}

@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  scalar_t__ u32 ;
+struct TYPE_3__ {scalar_t__ full; } ;
+struct dce8_wm_params {scalar_t__ lb_size; scalar_t__ src_width; scalar_t__ active_time; scalar_t__ blank_time; scalar_t__ vtaps; TYPE_1__ vsc; } ;
+struct TYPE_4__ {scalar_t__ full; } ;
+typedef  TYPE_2__ fixed20_12 ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (struct dce8_wm_params*) ; 
+ scalar_t__ FUNC1 (int) ; 
+
+__attribute__((used)) static bool FUNC2(struct dce8_wm_params *wm)
+{
+	u32 lb_partitions = wm->lb_size / wm->src_width;
+	u32 line_time = wm->active_time + wm->blank_time;
+	u32 latency_tolerant_lines;
+	u32 latency_hiding;
+	fixed20_12 a;
+
+	a.full = FUNC1(1);
+	if (wm->vsc.full > a.full)
+		latency_tolerant_lines = 1;
+	else {
+		if (lb_partitions <= (wm->vtaps + 1))
+			latency_tolerant_lines = 1;
+		else
+			latency_tolerant_lines = 2;
+	}
+
+	latency_hiding = (latency_tolerant_lines * line_time + wm->blank_time);
+
+	if (FUNC0(wm) <= latency_hiding)
+		return true;
+	else
+		return false;
+}

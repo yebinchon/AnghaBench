@@ -1,0 +1,57 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sy8106a_reg_sc {int /*<<< orphan*/  param; int /*<<< orphan*/  xref; int /*<<< orphan*/  base_dev; struct regnode* regnode; } ;
+struct regnode_init_def {int /*<<< orphan*/  ofw_node; scalar_t__ id; } ;
+struct regnode {int dummy; } ;
+typedef  int /*<<< orphan*/  phandle_t ;
+typedef  int /*<<< orphan*/  initdef ;
+typedef  int /*<<< orphan*/  device_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC2 (struct regnode_init_def*,int /*<<< orphan*/ ,int) ; 
+ struct regnode* FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct regnode_init_def*) ; 
+ struct sy8106a_reg_sc* FUNC4 (struct regnode*) ; 
+ int /*<<< orphan*/  FUNC5 (struct regnode*) ; 
+ int /*<<< orphan*/  FUNC6 (struct regnode*) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct regnode_init_def*) ; 
+ int /*<<< orphan*/  sy8106a_regnode_class ; 
+
+__attribute__((used)) static struct sy8106a_reg_sc *
+FUNC8(device_t dev, phandle_t node)
+{
+	struct sy8106a_reg_sc *reg_sc;
+	struct regnode_init_def initdef;
+	struct regnode *regnode;
+
+	FUNC2(&initdef, 0, sizeof(initdef));
+	FUNC7(dev, node, &initdef);
+	initdef.id = 0;
+	initdef.ofw_node = node;
+	regnode = FUNC3(dev, &sy8106a_regnode_class, &initdef);
+	if (regnode == NULL) {
+		FUNC1(dev, "cannot create regulator\n");
+		return (NULL);
+	}
+
+	reg_sc = FUNC4(regnode);
+	reg_sc->regnode = regnode;
+	reg_sc->base_dev = dev;
+	reg_sc->xref = FUNC0(node);
+	reg_sc->param = FUNC5(regnode);
+
+	FUNC6(regnode);
+
+	return (reg_sc);
+}

@@ -1,0 +1,78 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_10__   TYPE_5__ ;
+typedef  struct TYPE_9__   TYPE_4__ ;
+typedef  struct TYPE_8__   TYPE_3__ ;
+typedef  struct TYPE_7__   TYPE_2__ ;
+typedef  struct TYPE_6__   TYPE_1__ ;
+
+/* Type definitions */
+struct sk_buff {int dummy; } ;
+struct TYPE_9__ {scalar_t__ type; int /*<<< orphan*/  addr; } ;
+struct TYPE_7__ {int flags; int /*<<< orphan*/  bssid; } ;
+struct TYPE_8__ {TYPE_2__ mgd; } ;
+struct ieee80211_sub_if_data {TYPE_4__ vif; TYPE_3__ u; } ;
+struct TYPE_6__ {int /*<<< orphan*/  extra_tx_headroom; } ;
+struct ieee80211_local {TYPE_1__ hw; } ;
+struct ieee80211_hdr {int /*<<< orphan*/  addr4; int /*<<< orphan*/  addr3; int /*<<< orphan*/  addr2; int /*<<< orphan*/  addr1; int /*<<< orphan*/  frame_control; } ;
+typedef  int /*<<< orphan*/  __le16 ;
+struct TYPE_10__ {int /*<<< orphan*/  flags; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ETH_ALEN ; 
+ int IEEE80211_FCTL_FROMDS ; 
+ int IEEE80211_FCTL_TODS ; 
+ int IEEE80211_FTYPE_DATA ; 
+ TYPE_5__* FUNC0 (struct sk_buff*) ; 
+ int IEEE80211_STA_DISABLE_HE ; 
+ int IEEE80211_STYPE_NULLFUNC ; 
+ int /*<<< orphan*/  IEEE80211_TX_INTFL_DONT_ENCRYPT ; 
+ scalar_t__ NL80211_IFTYPE_STATION ; 
+ scalar_t__ FUNC1 (int) ; 
+ int /*<<< orphan*/  FUNC2 (int) ; 
+ struct sk_buff* FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (struct ieee80211_sub_if_data*,struct sk_buff*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ struct ieee80211_hdr* FUNC6 (struct sk_buff*,int) ; 
+ int /*<<< orphan*/  FUNC7 (struct sk_buff*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC8(struct ieee80211_local *local,
+					  struct ieee80211_sub_if_data *sdata)
+{
+	struct sk_buff *skb;
+	struct ieee80211_hdr *nullfunc;
+	__le16 fc;
+
+	if (FUNC1(sdata->vif.type != NL80211_IFTYPE_STATION))
+		return;
+
+	/* Don't send NDPs when connected HE */
+	if (!(sdata->u.mgd.flags & IEEE80211_STA_DISABLE_HE))
+		return;
+
+	skb = FUNC3(local->hw.extra_tx_headroom + 30);
+	if (!skb)
+		return;
+
+	FUNC7(skb, local->hw.extra_tx_headroom);
+
+	nullfunc = FUNC6(skb, 30);
+	fc = FUNC2(IEEE80211_FTYPE_DATA | IEEE80211_STYPE_NULLFUNC |
+			 IEEE80211_FCTL_FROMDS | IEEE80211_FCTL_TODS);
+	nullfunc->frame_control = fc;
+	FUNC5(nullfunc->addr1, sdata->u.mgd.bssid, ETH_ALEN);
+	FUNC5(nullfunc->addr2, sdata->vif.addr, ETH_ALEN);
+	FUNC5(nullfunc->addr3, sdata->u.mgd.bssid, ETH_ALEN);
+	FUNC5(nullfunc->addr4, sdata->vif.addr, ETH_ALEN);
+
+	FUNC0(skb)->flags |= IEEE80211_TX_INTFL_DONT_ENCRYPT;
+	FUNC4(sdata, skb);
+}

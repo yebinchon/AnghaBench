@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int ino_t ;
+
+/* Variables and functions */
+ int EAGAIN ; 
+ int ENOMEM ; 
+ int /*<<< orphan*/  GFP_KERNEL ; 
+ int FUNC0 (int /*<<< orphan*/ *,int,int*) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  sysfs_ino_ida ; 
+ int /*<<< orphan*/  sysfs_ino_lock ; 
+
+__attribute__((used)) static int FUNC4(ino_t *pino)
+{
+	int ino, rc;
+
+ retry:
+	FUNC2(&sysfs_ino_lock);
+	rc = FUNC0(&sysfs_ino_ida, 2, &ino);
+	FUNC3(&sysfs_ino_lock);
+
+	if (rc == -EAGAIN) {
+		if (FUNC1(&sysfs_ino_ida, GFP_KERNEL))
+			goto retry;
+		rc = -ENOMEM;
+	}
+
+	*pino = ino;
+	return rc;
+}

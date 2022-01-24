@@ -1,0 +1,25 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  String ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char**) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,char*) ; 
+
+__attribute__((used)) static int FUNC2(void *pCData, int argc, char **argv, char **azCol){
+  String *p = (String*)pCData;
+  int i;
+  FUNC0(azCol);
+  for(i=0; i<argc; i++) FUNC1(p, argv[i]);
+  return 0;
+}

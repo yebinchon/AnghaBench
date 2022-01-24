@@ -1,0 +1,79 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  scalar_t__ u64 ;
+typedef  scalar_t__ u32 ;
+struct qib_pportdata {int led_override; struct qib_devdata* dd; } ;
+struct qib_devdata {TYPE_1__* cspec; scalar_t__ diag_client; } ;
+struct TYPE_2__ {scalar_t__ extctrl; int /*<<< orphan*/  gpio_lock; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  EXTCtrl ; 
+ scalar_t__ IB_PHYSPORTSTATE_DISABLED ; 
+ scalar_t__ IB_PHYSPORTSTATE_LINKUP ; 
+ scalar_t__ IB_PORT_ACTIVE ; 
+ scalar_t__ IB_PORT_DOWN ; 
+ int /*<<< orphan*/  LEDPriPortGreenOn ; 
+ int /*<<< orphan*/  LEDPriPortYellowOn ; 
+ int QIB_LED_LOG ; 
+ int QIB_LED_PHYS ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  kr_extctrl ; 
+ int /*<<< orphan*/  kr_ibcstatus ; 
+ scalar_t__ FUNC1 (scalar_t__) ; 
+ scalar_t__ FUNC2 (scalar_t__) ; 
+ scalar_t__ FUNC3 (struct qib_devdata*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (struct qib_devdata*,int /*<<< orphan*/ ,scalar_t__) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *,unsigned long) ; 
+
+__attribute__((used)) static void FUNC7(struct qib_pportdata *ppd, u32 on)
+{
+	u64 extctl, val, lst, ltst;
+	unsigned long flags;
+	struct qib_devdata *dd = ppd->dd;
+
+	/*
+	 * The diags use the LED to indicate diag info, so we leave
+	 * the external LED alone when the diags are running.
+	 */
+	if (dd->diag_client)
+		return;
+
+	/* Allow override of LED display for, e.g. Locating system in rack */
+	if (ppd->led_override) {
+		ltst = (ppd->led_override & QIB_LED_PHYS) ?
+			IB_PHYSPORTSTATE_LINKUP : IB_PHYSPORTSTATE_DISABLED,
+		lst = (ppd->led_override & QIB_LED_LOG) ?
+			IB_PORT_ACTIVE : IB_PORT_DOWN;
+	} else if (on) {
+		val = FUNC3(dd, kr_ibcstatus);
+		ltst = FUNC2(val);
+		lst = FUNC1(val);
+	} else {
+		ltst = 0;
+		lst = 0;
+	}
+
+	FUNC5(&dd->cspec->gpio_lock, flags);
+	extctl = dd->cspec->extctrl & ~(FUNC0(EXTCtrl, LEDPriPortGreenOn) |
+				 FUNC0(EXTCtrl, LEDPriPortYellowOn));
+
+	if (ltst == IB_PHYSPORTSTATE_LINKUP)
+		extctl |= FUNC0(EXTCtrl, LEDPriPortYellowOn);
+	if (lst == IB_PORT_ACTIVE)
+		extctl |= FUNC0(EXTCtrl, LEDPriPortGreenOn);
+	dd->cspec->extctrl = extctl;
+	FUNC4(dd, kr_extctrl, extctl);
+	FUNC6(&dd->cspec->gpio_lock, flags);
+}

@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct v4l2_subdev {int /*<<< orphan*/  ctrl_handler; int /*<<< orphan*/  entity; } ;
+struct i2c_client {int dummy; } ;
+struct adv7842_state {int /*<<< orphan*/  delayed_work_enable_hotplug; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct v4l2_subdev*,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct v4l2_subdev*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ struct v4l2_subdev* FUNC3 (struct i2c_client*) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ struct adv7842_state* FUNC5 (struct v4l2_subdev*) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (struct v4l2_subdev*) ; 
+
+__attribute__((used)) static int FUNC8(struct i2c_client *client)
+{
+	struct v4l2_subdev *sd = FUNC3(client);
+	struct adv7842_state *state = FUNC5(sd);
+
+	FUNC0(sd, false);
+	FUNC2(&state->delayed_work_enable_hotplug);
+	FUNC7(sd);
+	FUNC4(&sd->entity);
+	FUNC1(sd);
+	FUNC6(sd->ctrl_handler);
+	return 0;
+}

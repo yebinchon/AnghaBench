@@ -1,0 +1,46 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ time64_t ;
+
+/* Variables and functions */
+ scalar_t__ HZ ; 
+ int /*<<< orphan*/  KEY_GC_REAP_KEYTYPE ; 
+ scalar_t__ jiffies ; 
+ int /*<<< orphan*/  FUNC0 (char*) ; 
+ int /*<<< orphan*/  FUNC1 (char*,scalar_t__) ; 
+ int /*<<< orphan*/  key_gc_flags ; 
+ scalar_t__ key_gc_next_run ; 
+ int /*<<< orphan*/  key_gc_timer ; 
+ int /*<<< orphan*/  key_gc_work ; 
+ scalar_t__ FUNC2 () ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+void FUNC6(time64_t gc_at)
+{
+	unsigned long expires;
+	time64_t now = FUNC2();
+
+	FUNC1("%lld", gc_at - now);
+
+	if (gc_at <= now || FUNC5(KEY_GC_REAP_KEYTYPE, &key_gc_flags)) {
+		FUNC0("IMMEDIATE");
+		FUNC4(&key_gc_work);
+	} else if (gc_at < key_gc_next_run) {
+		FUNC0("DEFERRED");
+		key_gc_next_run = gc_at;
+		expires = jiffies + (gc_at - now) * HZ;
+		FUNC3(&key_gc_timer, expires);
+	}
+}

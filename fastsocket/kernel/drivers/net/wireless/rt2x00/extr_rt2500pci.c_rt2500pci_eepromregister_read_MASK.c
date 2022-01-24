@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u32 ;
+struct rt2x00_dev {int dummy; } ;
+struct eeprom_93cx6 {int reg_data_in; int reg_data_out; int reg_data_clock; int reg_chip_select; struct rt2x00_dev* data; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  CSR21 ; 
+ int /*<<< orphan*/  CSR21_EEPROM_CHIP_SELECT ; 
+ int /*<<< orphan*/  CSR21_EEPROM_DATA_CLOCK ; 
+ int /*<<< orphan*/  CSR21_EEPROM_DATA_IN ; 
+ int /*<<< orphan*/  CSR21_EEPROM_DATA_OUT ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct rt2x00_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static void FUNC2(struct eeprom_93cx6 *eeprom)
+{
+	struct rt2x00_dev *rt2x00dev = eeprom->data;
+	u32 reg;
+
+	FUNC1(rt2x00dev, CSR21, &reg);
+
+	eeprom->reg_data_in = !!FUNC0(reg, CSR21_EEPROM_DATA_IN);
+	eeprom->reg_data_out = !!FUNC0(reg, CSR21_EEPROM_DATA_OUT);
+	eeprom->reg_data_clock =
+	    !!FUNC0(reg, CSR21_EEPROM_DATA_CLOCK);
+	eeprom->reg_chip_select =
+	    !!FUNC0(reg, CSR21_EEPROM_CHIP_SELECT);
+}

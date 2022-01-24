@@ -1,0 +1,47 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct inode {int /*<<< orphan*/  i_sb; int /*<<< orphan*/  i_mode; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 () ; 
+ int /*<<< orphan*/  DATA_FLAGS ; 
+ int /*<<< orphan*/  DELALLOC ; 
+ int /*<<< orphan*/  EXT4_INODE_JOURNAL_DATA ; 
+ int EXT4_INODE_JOURNAL_DATA_MODE ; 
+ int EXT4_INODE_ORDER_DATA_MODE ; 
+ int EXT4_INODE_WRITEBACK_DATA_MODE ; 
+ int /*<<< orphan*/ * FUNC1 (struct inode*) ; 
+ scalar_t__ EXT4_MOUNT_JOURNAL_DATA ; 
+ scalar_t__ EXT4_MOUNT_ORDERED_DATA ; 
+ scalar_t__ EXT4_MOUNT_WRITEBACK_DATA ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC3 (struct inode*,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static inline int FUNC5(struct inode *inode)
+{
+	if (FUNC1(inode) == NULL)
+		return EXT4_INODE_WRITEBACK_DATA_MODE;	/* writeback */
+	/* We do not support data journalling with delayed allocation */
+	if ((!FUNC2(inode->i_mode)) ||
+	   (FUNC4(inode->i_sb, DATA_FLAGS) == EXT4_MOUNT_JOURNAL_DATA) ||
+	   (FUNC3(inode, EXT4_INODE_JOURNAL_DATA) &&
+	   (!FUNC4(inode->i_sb, DELALLOC))))
+		return EXT4_INODE_JOURNAL_DATA_MODE;	/* journal data */
+	if (FUNC4(inode->i_sb, DATA_FLAGS) == EXT4_MOUNT_ORDERED_DATA)
+		return EXT4_INODE_ORDER_DATA_MODE;		/* ordered */
+	if (FUNC4(inode->i_sb, DATA_FLAGS) == EXT4_MOUNT_WRITEBACK_DATA)
+		return EXT4_INODE_WRITEBACK_DATA_MODE;	/* writeback */
+	else
+		FUNC0();
+}

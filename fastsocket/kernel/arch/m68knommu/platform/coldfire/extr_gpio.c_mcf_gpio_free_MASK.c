@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct mcf_gpio_chip {int /*<<< orphan*/ * gpio_to_pinmux; } ;
+struct gpio_chip {int dummy; } ;
+
+/* Variables and functions */
+ struct mcf_gpio_chip* FUNC0 (struct gpio_chip*) ; 
+ int /*<<< orphan*/  FUNC1 (struct gpio_chip*,unsigned int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+void FUNC3(struct gpio_chip *chip, unsigned offset)
+{
+	struct mcf_gpio_chip *mcf_chip = FUNC0(chip);
+
+	FUNC1(chip, offset);
+
+	if (mcf_chip->gpio_to_pinmux)
+		FUNC2(mcf_chip->gpio_to_pinmux[offset], 0);
+}

@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_4__ {int /*<<< orphan*/  rDspSettings; } ;
+typedef  TYPE_1__ THINKPAD_BD_DATA ;
+typedef  int /*<<< orphan*/  DSP_3780I_CONFIG_SETTINGS ;
+
+/* Variables and functions */
+ int EIO ; 
+ int /*<<< orphan*/  FUNC0 (TYPE_1__*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,char*,...) ; 
+ int /*<<< orphan*/  TRACE_TP3780I ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ *) ; 
+
+int FUNC3(THINKPAD_BD_DATA * pBDData)
+{
+	int retval = 0;
+	DSP_3780I_CONFIG_SETTINGS *pSettings = &pBDData->rDspSettings;
+
+	FUNC1(TRACE_TP3780I, "tp3780i::tp3780I_ResetDSP entry pBDData %p\n",
+		pBDData);
+
+	if (FUNC2(pSettings) == 0) {
+		FUNC0(pBDData);
+	} else {
+		retval = -EIO;
+	}
+
+	FUNC1(TRACE_TP3780I, "tp3780i::tp3780I_ResetDSP exit retval %x\n", retval);
+
+	return retval;
+}

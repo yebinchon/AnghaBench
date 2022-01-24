@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct eap_sm {int dummy; } ;
+struct eap_aka_data {int /*<<< orphan*/  autn; int /*<<< orphan*/  rand; } ;
+typedef  int /*<<< orphan*/  req ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  EAP_AKA_AUTN_LEN ; 
+ int /*<<< orphan*/  EAP_AKA_RAND_LEN ; 
+ int /*<<< orphan*/  MSG_DEBUG ; 
+ int /*<<< orphan*/  FUNC0 (struct eap_sm*,char*) ; 
+ int /*<<< orphan*/  FUNC1 (char*,int,char*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC3 (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC4(struct eap_sm *sm, struct eap_aka_data *data)
+{
+	char req[200], *pos, *end;
+
+	FUNC2(MSG_DEBUG, "EAP-AKA: Use external USIM processing");
+	pos = req;
+	end = pos + sizeof(req);
+	pos += FUNC1(pos, end - pos, "UMTS-AUTH");
+	pos += FUNC1(pos, end - pos, ":");
+	pos += FUNC3(pos, end - pos, data->rand, EAP_AKA_RAND_LEN);
+	pos += FUNC1(pos, end - pos, ":");
+	FUNC3(pos, end - pos, data->autn, EAP_AKA_AUTN_LEN);
+
+	FUNC0(sm, req);
+	return 1;
+}

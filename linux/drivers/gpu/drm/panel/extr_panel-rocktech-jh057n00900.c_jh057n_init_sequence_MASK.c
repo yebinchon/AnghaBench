@@ -1,0 +1,110 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct mipi_dsi_device {int dummy; } ;
+struct jh057n {struct device* dev; } ;
+struct device {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct device*,char*) ; 
+ int /*<<< orphan*/  FUNC1 (struct device*,char*,int) ; 
+ int /*<<< orphan*/  ST7703_CMD_SETBGP ; 
+ int /*<<< orphan*/  ST7703_CMD_SETCYC ; 
+ int /*<<< orphan*/  ST7703_CMD_SETDISP ; 
+ int /*<<< orphan*/  ST7703_CMD_SETEQ ; 
+ int /*<<< orphan*/  ST7703_CMD_SETEXTC ; 
+ int /*<<< orphan*/  ST7703_CMD_SETGAMMA ; 
+ int /*<<< orphan*/  ST7703_CMD_SETGIP1 ; 
+ int /*<<< orphan*/  ST7703_CMD_SETGIP2 ; 
+ int /*<<< orphan*/  ST7703_CMD_SETPANEL ; 
+ int /*<<< orphan*/  ST7703_CMD_SETRGBIF ; 
+ int /*<<< orphan*/  ST7703_CMD_SETSCR ; 
+ int /*<<< orphan*/  ST7703_CMD_SETVCOM ; 
+ int /*<<< orphan*/  ST7703_CMD_SETVDC ; 
+ int /*<<< orphan*/  ST7703_CMD_UNKNOWN0 ; 
+ int /*<<< orphan*/  FUNC2 (struct mipi_dsi_device*,int /*<<< orphan*/ ,int,...) ; 
+ int FUNC3 (struct mipi_dsi_device*) ; 
+ int FUNC4 (struct mipi_dsi_device*) ; 
+ int /*<<< orphan*/  FUNC5 (int) ; 
+ struct mipi_dsi_device* FUNC6 (struct device*) ; 
+
+__attribute__((used)) static int FUNC7(struct jh057n *ctx)
+{
+	struct mipi_dsi_device *dsi = FUNC6(ctx->dev);
+	struct device *dev = ctx->dev;
+	int ret;
+
+	/*
+	 * Init sequence was supplied by the panel vendor. Most of the commands
+	 * resemble the ST7703 but the number of parameters often don't match
+	 * so it's likely a clone.
+	 */
+	FUNC2(dsi, ST7703_CMD_SETEXTC,
+			      0xF1, 0x12, 0x83);
+	FUNC2(dsi, ST7703_CMD_SETRGBIF,
+			      0x10, 0x10, 0x05, 0x05, 0x03, 0xFF, 0x00, 0x00,
+			      0x00, 0x00);
+	FUNC2(dsi, ST7703_CMD_SETSCR,
+			      0x73, 0x73, 0x50, 0x50, 0x00, 0x00, 0x08, 0x70,
+			      0x00);
+	FUNC2(dsi, ST7703_CMD_SETVDC, 0x4E);
+	FUNC2(dsi, ST7703_CMD_SETPANEL, 0x0B);
+	FUNC2(dsi, ST7703_CMD_SETCYC, 0x80);
+	FUNC2(dsi, ST7703_CMD_SETDISP, 0xF0, 0x12, 0x30);
+	FUNC2(dsi, ST7703_CMD_SETEQ,
+			      0x07, 0x07, 0x0B, 0x0B, 0x03, 0x0B, 0x00, 0x00,
+			      0x00, 0x00, 0xFF, 0x00, 0xC0, 0x10);
+	FUNC2(dsi, ST7703_CMD_SETBGP, 0x08, 0x08);
+	FUNC5(20);
+
+	FUNC2(dsi, ST7703_CMD_SETVCOM, 0x3F, 0x3F);
+	FUNC2(dsi, ST7703_CMD_UNKNOWN0, 0x02, 0x11, 0x00);
+	FUNC2(dsi, ST7703_CMD_SETGIP1,
+			      0x82, 0x10, 0x06, 0x05, 0x9E, 0x0A, 0xA5, 0x12,
+			      0x31, 0x23, 0x37, 0x83, 0x04, 0xBC, 0x27, 0x38,
+			      0x0C, 0x00, 0x03, 0x00, 0x00, 0x00, 0x0C, 0x00,
+			      0x03, 0x00, 0x00, 0x00, 0x75, 0x75, 0x31, 0x88,
+			      0x88, 0x88, 0x88, 0x88, 0x88, 0x13, 0x88, 0x64,
+			      0x64, 0x20, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88,
+			      0x02, 0x88, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+			      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
+	FUNC2(dsi, ST7703_CMD_SETGIP2,
+			      0x02, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+			      0x00, 0x00, 0x00, 0x00, 0x02, 0x46, 0x02, 0x88,
+			      0x88, 0x88, 0x88, 0x88, 0x88, 0x64, 0x88, 0x13,
+			      0x57, 0x13, 0x88, 0x88, 0x88, 0x88, 0x88, 0x88,
+			      0x75, 0x88, 0x23, 0x14, 0x00, 0x00, 0x02, 0x00,
+			      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+			      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x0A,
+			      0xA5, 0x00, 0x00, 0x00, 0x00);
+	FUNC2(dsi, ST7703_CMD_SETGAMMA,
+			      0x00, 0x09, 0x0E, 0x29, 0x2D, 0x3C, 0x41, 0x37,
+			      0x07, 0x0B, 0x0D, 0x10, 0x11, 0x0F, 0x10, 0x11,
+			      0x18, 0x00, 0x09, 0x0E, 0x29, 0x2D, 0x3C, 0x41,
+			      0x37, 0x07, 0x0B, 0x0D, 0x10, 0x11, 0x0F, 0x10,
+			      0x11, 0x18);
+	FUNC5(20);
+
+	ret = FUNC3(dsi);
+	if (ret < 0) {
+		FUNC1(dev, "Failed to exit sleep mode: %d\n", ret);
+		return ret;
+	}
+	/* Panel is operational 120 msec after reset */
+	FUNC5(60);
+	ret = FUNC4(dsi);
+	if (ret)
+		return ret;
+
+	FUNC0(dev, "Panel init sequence done\n");
+	return 0;
+}

@@ -1,0 +1,31 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char*) ; 
+ int /*<<< orphan*/  FUNC1 (char*,char const*) ; 
+ int /*<<< orphan*/  FUNC2 () ; 
+ int /*<<< orphan*/  FUNC3 () ; 
+ int reset_timing ; 
+
+void FUNC4(const char *msg)
+{
+	FUNC2();
+	FUNC1("", msg);
+	FUNC3();
+	FUNC0("");
+
+	/* assumption: msg_busy_next gets called only when
+	 * something slow is about to happen */
+	reset_timing = 1;
+}

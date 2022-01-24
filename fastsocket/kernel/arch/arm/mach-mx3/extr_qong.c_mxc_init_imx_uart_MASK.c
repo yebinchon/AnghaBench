@@ -1,0 +1,27 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  mxc_uart_device0 ; 
+ int /*<<< orphan*/  uart_pdata ; 
+ int /*<<< orphan*/  uart_pins ; 
+
+__attribute__((used)) static inline void FUNC3(void)
+{
+	FUNC1(uart_pins, FUNC0(uart_pins),
+			"uart-0");
+	FUNC2(&mxc_uart_device0, &uart_pdata);
+}

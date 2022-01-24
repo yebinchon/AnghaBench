@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct dc_state {int stream_count; int /*<<< orphan*/ ** streams; TYPE_1__* stream_status; } ;
+struct TYPE_2__ {int plane_count; int /*<<< orphan*/ * plane_states; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+
+void FUNC2(struct dc_state *context)
+{
+	int i, j;
+
+	for (i = 0; i < context->stream_count; i++) {
+		for (j = 0; j < context->stream_status[i].plane_count; j++)
+			FUNC0(
+				context->stream_status[i].plane_states[j]);
+
+		context->stream_status[i].plane_count = 0;
+		FUNC1(context->streams[i]);
+		context->streams[i] = NULL;
+	}
+}

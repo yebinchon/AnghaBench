@@ -1,0 +1,54 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_7__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  sd_netlink_message ;
+typedef  int /*<<< orphan*/  sd_netlink ;
+struct TYPE_7__ {int /*<<< orphan*/  manager; int /*<<< orphan*/  state; } ;
+typedef  TYPE_1__ Link ;
+
+/* Variables and functions */
+ int EEXIST ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  LINK_STATE_FAILED ; 
+ int /*<<< orphan*/  LINK_STATE_LINGER ; 
+ int /*<<< orphan*/  FUNC1 (TYPE_1__*) ; 
+ int /*<<< orphan*/  FUNC2 (TYPE_1__*) ; 
+ int FUNC3 (TYPE_1__*) ; 
+ int /*<<< orphan*/  FUNC4 (TYPE_1__*,int,char*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int FUNC6 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC7(sd_netlink *rtnl, sd_netlink_message *m, Link *link) {
+        int r;
+
+        FUNC1(link);
+
+        if (FUNC0(link->state, LINK_STATE_FAILED, LINK_STATE_LINGER))
+                return 1;
+
+        r = FUNC6(m);
+        if (r < 0 && r != -EEXIST) {
+                FUNC4(link, r, "Could not set DHCPv6 address: %m");
+                FUNC2(link);
+                return 1;
+        } else if (r >= 0)
+                (void) FUNC5(rtnl, m, link->manager);
+
+        r = FUNC3(link);
+        if (r < 0) {
+                FUNC2(link);
+                return 1;
+        }
+
+        return 1;
+}

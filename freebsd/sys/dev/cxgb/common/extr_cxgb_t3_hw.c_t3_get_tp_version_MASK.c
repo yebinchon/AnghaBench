@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u32 ;
+typedef  int /*<<< orphan*/  adapter_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  A_TP_EMBED_OP_FIELD0 ; 
+ int /*<<< orphan*/  A_TP_EMBED_OP_FIELD1 ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+int FUNC3(adapter_t *adapter, u32 *vers)
+{
+	int ret;
+
+	/* Get version loaded in SRAM */
+	FUNC2(adapter, A_TP_EMBED_OP_FIELD0, 0);
+	ret = FUNC1(adapter, A_TP_EMBED_OP_FIELD0,
+			      1, 1, 5, 1);
+	if (ret)
+		return ret;
+
+	*vers = FUNC0(adapter, A_TP_EMBED_OP_FIELD1);
+
+	return 0;
+}

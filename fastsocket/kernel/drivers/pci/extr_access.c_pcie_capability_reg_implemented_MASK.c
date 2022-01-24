@@ -1,0 +1,74 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct pci_dev {int dummy; } ;
+
+/* Variables and functions */
+#define  PCI_EXP_DEVCAP 145 
+#define  PCI_EXP_DEVCAP2 144 
+#define  PCI_EXP_DEVCTL 143 
+#define  PCI_EXP_DEVCTL2 142 
+#define  PCI_EXP_DEVSTA 141 
+#define  PCI_EXP_FLAGS 140 
+#define  PCI_EXP_LNKCAP 139 
+#define  PCI_EXP_LNKCAP2 138 
+#define  PCI_EXP_LNKCTL 137 
+#define  PCI_EXP_LNKCTL2 136 
+#define  PCI_EXP_LNKSTA 135 
+#define  PCI_EXP_LNKSTA2 134 
+#define  PCI_EXP_RTCAP 133 
+#define  PCI_EXP_RTCTL 132 
+#define  PCI_EXP_RTSTA 131 
+#define  PCI_EXP_SLTCAP 130 
+#define  PCI_EXP_SLTCTL 129 
+#define  PCI_EXP_SLTSTA 128 
+ int /*<<< orphan*/  FUNC0 (struct pci_dev*) ; 
+ int FUNC1 (struct pci_dev*) ; 
+ int FUNC2 (struct pci_dev*) ; 
+ int FUNC3 (struct pci_dev*) ; 
+ int FUNC4 (struct pci_dev*) ; 
+ int FUNC5 (struct pci_dev*) ; 
+
+__attribute__((used)) static bool FUNC6(struct pci_dev *dev, int pos)
+{
+	if (!FUNC0(dev))
+		return false;
+
+	switch (pos) {
+	case PCI_EXP_FLAGS:
+		return true;
+	case PCI_EXP_DEVCAP:
+	case PCI_EXP_DEVCTL:
+	case PCI_EXP_DEVSTA:
+		return FUNC1(dev);
+	case PCI_EXP_LNKCAP:
+	case PCI_EXP_LNKCTL:
+	case PCI_EXP_LNKSTA:
+		return FUNC2(dev);
+	case PCI_EXP_SLTCAP:
+	case PCI_EXP_SLTCTL:
+	case PCI_EXP_SLTSTA:
+		return FUNC4(dev);
+	case PCI_EXP_RTCTL:
+	case PCI_EXP_RTCAP:
+	case PCI_EXP_RTSTA:
+		return FUNC3(dev);
+	case PCI_EXP_DEVCAP2:
+	case PCI_EXP_DEVCTL2:
+	case PCI_EXP_LNKCAP2:
+	case PCI_EXP_LNKCTL2:
+	case PCI_EXP_LNKSTA2:
+		return FUNC5(dev) > 1;
+	default:
+		return false;
+	}
+}

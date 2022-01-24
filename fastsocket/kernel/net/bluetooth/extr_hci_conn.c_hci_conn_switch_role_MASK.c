@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct hci_cp_switch_role {scalar_t__ role; int /*<<< orphan*/  bdaddr; } ;
+struct hci_conn {int link_mode; int /*<<< orphan*/  hdev; int /*<<< orphan*/  dst; int /*<<< orphan*/  pend; } ;
+typedef  int /*<<< orphan*/  cp ;
+typedef  scalar_t__ __u8 ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char*,struct hci_conn*) ; 
+ int /*<<< orphan*/  HCI_CONN_RSWITCH_PEND ; 
+ int HCI_LM_MASTER ; 
+ int /*<<< orphan*/  HCI_OP_SWITCH_ROLE ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct hci_cp_switch_role*) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+int FUNC4(struct hci_conn *conn, __u8 role)
+{
+	FUNC0("conn %p", conn);
+
+	if (!role && conn->link_mode & HCI_LM_MASTER)
+		return 1;
+
+	if (!FUNC3(HCI_CONN_RSWITCH_PEND, &conn->pend)) {
+		struct hci_cp_switch_role cp;
+		FUNC1(&cp.bdaddr, &conn->dst);
+		cp.role = role;
+		FUNC2(conn->hdev, HCI_OP_SWITCH_ROLE, sizeof(cp), &cp);
+	}
+
+	return 0;
+}

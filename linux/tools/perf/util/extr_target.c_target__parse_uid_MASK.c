@@ -1,0 +1,58 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct target {char* uid_str; int /*<<< orphan*/  uid; } ;
+struct passwd {int /*<<< orphan*/  pw_uid; } ;
+typedef  enum target_errno { ____Placeholder_target_errno } target_errno ;
+typedef  int /*<<< orphan*/  buf ;
+
+/* Variables and functions */
+ int TARGET_ERRNO__INVALID_UID ; 
+ int TARGET_ERRNO__SUCCESS ; 
+ int TARGET_ERRNO__USER_NOT_FOUND ; 
+ int /*<<< orphan*/  UINT_MAX ; 
+ int /*<<< orphan*/  FUNC0 (char const*,struct passwd*,char*,int,struct passwd**) ; 
+ int /*<<< orphan*/  FUNC1 (int,struct passwd*,char*,int,struct passwd**) ; 
+ int FUNC2 (char const*,char**,int) ; 
+
+enum target_errno FUNC3(struct target *target)
+{
+	struct passwd pwd, *result;
+	char buf[1024];
+	const char *str = target->uid_str;
+
+	target->uid = UINT_MAX;
+	if (str == NULL)
+		return TARGET_ERRNO__SUCCESS;
+
+	/* Try user name first */
+	FUNC0(str, &pwd, buf, sizeof(buf), &result);
+
+	if (result == NULL) {
+		/*
+		 * The user name not found. Maybe it's a UID number.
+		 */
+		char *endptr;
+		int uid = FUNC2(str, &endptr, 10);
+
+		if (*endptr != '\0')
+			return TARGET_ERRNO__INVALID_UID;
+
+		FUNC1(uid, &pwd, buf, sizeof(buf), &result);
+
+		if (result == NULL)
+			return TARGET_ERRNO__USER_NOT_FOUND;
+	}
+
+	target->uid = result->pw_uid;
+	return TARGET_ERRNO__SUCCESS;
+}

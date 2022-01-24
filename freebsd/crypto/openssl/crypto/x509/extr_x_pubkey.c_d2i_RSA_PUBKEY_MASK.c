@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  RSA ;
+typedef  int /*<<< orphan*/  EVP_PKEY ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC3 (int /*<<< orphan*/ *,unsigned char const**,long) ; 
+
+RSA *FUNC4(RSA **a, const unsigned char **pp, long length)
+{
+    EVP_PKEY *pkey;
+    RSA *key;
+    const unsigned char *q;
+    q = *pp;
+    pkey = FUNC3(NULL, &q, length);
+    if (!pkey)
+        return NULL;
+    key = FUNC1(pkey);
+    FUNC0(pkey);
+    if (!key)
+        return NULL;
+    *pp = q;
+    if (a) {
+        FUNC2(*a);
+        *a = key;
+    }
+    return key;
+}

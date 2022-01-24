@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ili9322 {int /*<<< orphan*/  dev; int /*<<< orphan*/  regmap; } ;
+struct drm_panel {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ILI9322_POW_CTRL ; 
+ int /*<<< orphan*/  ILI9322_POW_CTRL_STANDBY ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,char*) ; 
+ struct ili9322* FUNC1 (struct drm_panel*) ; 
+ int FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC3(struct drm_panel *panel)
+{
+	struct ili9322 *ili = FUNC1(panel);
+	int ret;
+
+	ret = FUNC2(ili->regmap, ILI9322_POW_CTRL,
+			   ILI9322_POW_CTRL_STANDBY);
+	if (ret) {
+		FUNC0(ili->dev, "unable to go to standby mode\n");
+		return ret;
+	}
+
+	return 0;
+}

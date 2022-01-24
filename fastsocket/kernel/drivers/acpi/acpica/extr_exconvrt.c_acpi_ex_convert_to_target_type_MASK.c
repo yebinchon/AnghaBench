@@ -1,0 +1,169 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_3__ {int /*<<< orphan*/  type; } ;
+union acpi_operand_object {TYPE_1__ common; } ;
+struct acpi_walk_state {int /*<<< orphan*/  opcode; TYPE_2__* op_info; } ;
+typedef  scalar_t__ acpi_status ;
+typedef  int /*<<< orphan*/  acpi_object_type ;
+struct TYPE_4__ {int /*<<< orphan*/  runtime_args; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ACPI_DB_INFO ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  ACPI_IMPLICIT_CONVERT_HEX ; 
+#define  ACPI_TYPE_BUFFER 139 
+#define  ACPI_TYPE_BUFFER_FIELD 138 
+#define  ACPI_TYPE_INTEGER 137 
+#define  ACPI_TYPE_LOCAL_BANK_FIELD 136 
+#define  ACPI_TYPE_LOCAL_INDEX_FIELD 135 
+#define  ACPI_TYPE_LOCAL_REGION_FIELD 134 
+#define  ACPI_TYPE_STRING 133 
+ scalar_t__ AE_AML_INTERNAL ; 
+ int /*<<< orphan*/  AE_INFO ; 
+ scalar_t__ AE_OK ; 
+ scalar_t__ AE_TYPE ; 
+#define  ARGI_FIXED_TARGET 132 
+#define  ARGI_INTEGER_REF 131 
+#define  ARGI_REFERENCE 130 
+#define  ARGI_SIMPLE_TARGET 129 
+#define  ARGI_TARGETREF 128 
+ int FUNC3 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC4 (union acpi_operand_object*,union acpi_operand_object**) ; 
+ scalar_t__ FUNC5 (union acpi_operand_object*,union acpi_operand_object**,int) ; 
+ scalar_t__ FUNC6 (union acpi_operand_object*,union acpi_operand_object**,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (union acpi_operand_object*) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  ex_convert_to_target_type ; 
+ int /*<<< orphan*/  FUNC9 (scalar_t__) ; 
+
+acpi_status
+FUNC10(acpi_object_type destination_type,
+			       union acpi_operand_object *source_desc,
+			       union acpi_operand_object **result_desc,
+			       struct acpi_walk_state *walk_state)
+{
+	acpi_status status = AE_OK;
+
+	FUNC2(ex_convert_to_target_type);
+
+	/* Default behavior */
+
+	*result_desc = source_desc;
+
+	/*
+	 * If required by the target,
+	 * perform implicit conversion on the source before we store it.
+	 */
+	switch (FUNC3(walk_state->op_info->runtime_args)) {
+	case ARGI_SIMPLE_TARGET:
+	case ARGI_FIXED_TARGET:
+	case ARGI_INTEGER_REF:	/* Handles Increment, Decrement cases */
+
+		switch (destination_type) {
+		case ACPI_TYPE_LOCAL_REGION_FIELD:
+			/*
+			 * Named field can always handle conversions
+			 */
+			break;
+
+		default:
+			/* No conversion allowed for these types */
+
+			if (destination_type != source_desc->common.type) {
+				FUNC0((ACPI_DB_INFO,
+						  "Explicit operator, will store (%s) over existing type (%s)\n",
+						  FUNC7
+						  (source_desc),
+						  FUNC8
+						  (destination_type)));
+				status = AE_TYPE;
+			}
+		}
+		break;
+
+	case ARGI_TARGETREF:
+
+		switch (destination_type) {
+		case ACPI_TYPE_INTEGER:
+		case ACPI_TYPE_BUFFER_FIELD:
+		case ACPI_TYPE_LOCAL_BANK_FIELD:
+		case ACPI_TYPE_LOCAL_INDEX_FIELD:
+			/*
+			 * These types require an Integer operand. We can convert
+			 * a Buffer or a String to an Integer if necessary.
+			 */
+			status =
+			    FUNC5(source_desc, result_desc,
+						       16);
+			break;
+
+		case ACPI_TYPE_STRING:
+			/*
+			 * The operand must be a String. We can convert an
+			 * Integer or Buffer if necessary
+			 */
+			status =
+			    FUNC6(source_desc, result_desc,
+						      ACPI_IMPLICIT_CONVERT_HEX);
+			break;
+
+		case ACPI_TYPE_BUFFER:
+			/*
+			 * The operand must be a Buffer. We can convert an
+			 * Integer or String if necessary
+			 */
+			status =
+			    FUNC4(source_desc, result_desc);
+			break;
+
+		default:
+			FUNC1((AE_INFO,
+				    "Bad destination type during conversion: %X",
+				    destination_type));
+			status = AE_AML_INTERNAL;
+			break;
+		}
+		break;
+
+	case ARGI_REFERENCE:
+		/*
+		 * create_xxxx_field cases - we are storing the field object into the name
+		 */
+		break;
+
+	default:
+		FUNC1((AE_INFO,
+			    "Unknown Target type ID 0x%X AmlOpcode %X DestType %s",
+			    FUNC3(walk_state->op_info->
+						 runtime_args),
+			    walk_state->opcode,
+			    FUNC8(destination_type)));
+		status = AE_AML_INTERNAL;
+	}
+
+	/*
+	 * Source-to-Target conversion semantics:
+	 *
+	 * If conversion to the target type cannot be performed, then simply
+	 * overwrite the target with the new object and type.
+	 */
+	if (status == AE_TYPE) {
+		status = AE_OK;
+	}
+
+	FUNC9(status);
+}

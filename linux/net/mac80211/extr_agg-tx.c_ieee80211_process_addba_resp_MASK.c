@@ -1,0 +1,151 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_16__   TYPE_8__ ;
+typedef  struct TYPE_15__   TYPE_7__ ;
+typedef  struct TYPE_14__   TYPE_6__ ;
+typedef  struct TYPE_13__   TYPE_5__ ;
+typedef  struct TYPE_12__   TYPE_4__ ;
+typedef  struct TYPE_11__   TYPE_3__ ;
+typedef  struct TYPE_10__   TYPE_2__ ;
+typedef  struct TYPE_9__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u16 ;
+struct tid_ampdu_tx {scalar_t__ dialog_token; int buf_size; int amsdu; int /*<<< orphan*/  last_tx; scalar_t__ timeout; int /*<<< orphan*/  session_timer; int /*<<< orphan*/  state; int /*<<< orphan*/  addba_resp_timer; } ;
+struct TYPE_15__ {int /*<<< orphan*/  mtx; scalar_t__* addba_req_num; } ;
+struct TYPE_10__ {int /*<<< orphan*/  addr; struct ieee80211_txq** txq; } ;
+struct sta_info {TYPE_7__ ampdu_mlme; TYPE_2__ sta; int /*<<< orphan*/  sdata; } ;
+struct ieee80211_txq {int dummy; } ;
+struct TYPE_11__ {scalar_t__ dialog_token; int /*<<< orphan*/  timeout; int /*<<< orphan*/  status; int /*<<< orphan*/  capab; } ;
+struct TYPE_12__ {TYPE_3__ addba_resp; } ;
+struct TYPE_13__ {TYPE_4__ u; } ;
+struct TYPE_14__ {TYPE_5__ action; } ;
+struct ieee80211_mgmt {TYPE_6__ u; } ;
+struct TYPE_9__ {int /*<<< orphan*/  max_tx_aggregation_subframes; } ;
+struct ieee80211_local {TYPE_1__ hw; } ;
+struct TYPE_16__ {int /*<<< orphan*/  flags; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  AGG_STOP_DECLINED ; 
+ int /*<<< orphan*/  HT_AGG_STATE_DRV_READY ; 
+ int /*<<< orphan*/  HT_AGG_STATE_RESPONSE_RECEIVED ; 
+ int /*<<< orphan*/  HT_AGG_STATE_STOPPING ; 
+ int /*<<< orphan*/  HT_AGG_STATE_WANT_STOP ; 
+ int IEEE80211_ADDBA_PARAM_AMSDU_MASK ; 
+ int IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK ; 
+ int IEEE80211_ADDBA_PARAM_TID_MASK ; 
+ int /*<<< orphan*/  IEEE80211_TXQ_NO_AMSDU ; 
+ int /*<<< orphan*/  FUNC0 (scalar_t__) ; 
+ scalar_t__ WLAN_STATUS_SUCCESS ; 
+ int /*<<< orphan*/  FUNC1 (struct sta_info*,int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC4 (struct ieee80211_local*,struct sta_info*,int) ; 
+ int /*<<< orphan*/  jiffies ; 
+ scalar_t__ FUNC5 (int /*<<< orphan*/ ) ; 
+ int FUNC6 (int,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC9 (int /*<<< orphan*/ *) ; 
+ struct tid_ampdu_tx* FUNC10 (struct sta_info*,int) ; 
+ int /*<<< orphan*/  FUNC11 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC12 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ scalar_t__ FUNC13 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ TYPE_8__* FUNC14 (struct ieee80211_txq*) ; 
+
+void FUNC15(struct ieee80211_local *local,
+				  struct sta_info *sta,
+				  struct ieee80211_mgmt *mgmt,
+				  size_t len)
+{
+	struct tid_ampdu_tx *tid_tx;
+	struct ieee80211_txq *txq;
+	u16 capab, tid, buf_size;
+	bool amsdu;
+
+	capab = FUNC5(mgmt->u.action.u.addba_resp.capab);
+	amsdu = capab & IEEE80211_ADDBA_PARAM_AMSDU_MASK;
+	tid = (capab & IEEE80211_ADDBA_PARAM_TID_MASK) >> 2;
+	buf_size = (capab & IEEE80211_ADDBA_PARAM_BUF_SIZE_MASK) >> 6;
+	buf_size = FUNC6(buf_size, local->hw.max_tx_aggregation_subframes);
+
+	txq = sta->sta.txq[tid];
+	if (!amsdu && txq)
+		FUNC11(IEEE80211_TXQ_NO_AMSDU, &FUNC14(txq)->flags);
+
+	FUNC8(&sta->ampdu_mlme.mtx);
+
+	tid_tx = FUNC10(sta, tid);
+	if (!tid_tx)
+		goto out;
+
+	if (mgmt->u.action.u.addba_resp.dialog_token != tid_tx->dialog_token) {
+		FUNC3(sta->sdata, "wrong addBA response token, %pM tid %d\n",
+		       sta->sta.addr, tid);
+		goto out;
+	}
+
+	FUNC2(&tid_tx->addba_resp_timer);
+
+	FUNC3(sta->sdata, "switched off addBA timer for %pM tid %d\n",
+	       sta->sta.addr, tid);
+
+	/*
+	 * addba_resp_timer may have fired before we got here, and
+	 * caused WANT_STOP to be set. If the stop then was already
+	 * processed further, STOPPING might be set.
+	 */
+	if (FUNC13(HT_AGG_STATE_WANT_STOP, &tid_tx->state) ||
+	    FUNC13(HT_AGG_STATE_STOPPING, &tid_tx->state)) {
+		FUNC3(sta->sdata,
+		       "got addBA resp for %pM tid %d but we already gave up\n",
+		       sta->sta.addr, tid);
+		goto out;
+	}
+
+	/*
+	 * IEEE 802.11-2007 7.3.1.14:
+	 * In an ADDBA Response frame, when the Status Code field
+	 * is set to 0, the Buffer Size subfield is set to a value
+	 * of at least 1.
+	 */
+	if (FUNC5(mgmt->u.action.u.addba_resp.status)
+			== WLAN_STATUS_SUCCESS && buf_size) {
+		if (FUNC12(HT_AGG_STATE_RESPONSE_RECEIVED,
+				     &tid_tx->state)) {
+			/* ignore duplicate response */
+			goto out;
+		}
+
+		tid_tx->buf_size = buf_size;
+		tid_tx->amsdu = amsdu;
+
+		if (FUNC13(HT_AGG_STATE_DRV_READY, &tid_tx->state))
+			FUNC4(local, sta, tid);
+
+		sta->ampdu_mlme.addba_req_num[tid] = 0;
+
+		tid_tx->timeout =
+			FUNC5(mgmt->u.action.u.addba_resp.timeout);
+
+		if (tid_tx->timeout) {
+			FUNC7(&tid_tx->session_timer,
+				  FUNC0(tid_tx->timeout));
+			tid_tx->last_tx = jiffies;
+		}
+
+	} else {
+		FUNC1(sta, tid, AGG_STOP_DECLINED);
+	}
+
+ out:
+	FUNC9(&sta->ampdu_mlme.mtx);
+}

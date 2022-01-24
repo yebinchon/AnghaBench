@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u64 ;
+struct TYPE_2__ {int /*<<< orphan*/  addr; int /*<<< orphan*/  len; scalar_t__ dma_addr; } ;
+struct ef4_special_buffer {scalar_t__ entries; TYPE_1__ buf; scalar_t__ index; } ;
+struct ef4_nic {int /*<<< orphan*/  net_dev; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct ef4_nic*,TYPE_1__*) ; 
+ int /*<<< orphan*/  hw ; 
+ int /*<<< orphan*/  FUNC1 (struct ef4_nic*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void
+FUNC3(struct ef4_nic *efx, struct ef4_special_buffer *buffer)
+{
+	if (!buffer->buf.addr)
+		return;
+
+	FUNC1(efx, hw, efx->net_dev,
+		  "deallocating special buffers %d-%d at %llx+%x "
+		  "(virt %p phys %llx)\n", buffer->index,
+		  buffer->index + buffer->entries - 1,
+		  (u64)buffer->buf.dma_addr, buffer->buf.len,
+		  buffer->buf.addr, (u64)FUNC2(buffer->buf.addr));
+
+	FUNC0(efx, &buffer->buf);
+	buffer->entries = 0;
+}

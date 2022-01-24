@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ar8xxx_priv {struct ar8327_data* chip_data; } ;
+struct ar8327_led {int dummy; } ;
+struct ar8327_data {unsigned int num_leds; struct ar8327_led** leds; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  CONFIG_AR8216_PHY_LEDS ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct ar8327_led*) ; 
+ int /*<<< orphan*/  FUNC2 (struct ar8327_led**) ; 
+
+__attribute__((used)) static void
+FUNC3(struct ar8xxx_priv *priv)
+{
+	struct ar8327_data *data = priv->chip_data;
+	unsigned i;
+
+	if (!FUNC0(CONFIG_AR8216_PHY_LEDS))
+		return;
+
+	for (i = 0; i < data->num_leds; i++) {
+		struct ar8327_led *aled;
+
+		aled = data->leds[i];
+		FUNC1(aled);
+	}
+
+	FUNC2(data->leds);
+}

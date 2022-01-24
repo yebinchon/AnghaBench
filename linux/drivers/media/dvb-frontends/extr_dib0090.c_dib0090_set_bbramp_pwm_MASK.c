@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u32 ;
+typedef  int u16 ;
+struct dib0090_state {int const* bb_ramp; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct dib0090_state*,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct dib0090_state*,int) ; 
+ int /*<<< orphan*/  FUNC2 (struct dib0090_state*,int,int) ; 
+ int /*<<< orphan*/  FUNC3 (struct dib0090_state*,int,int const*,int) ; 
+ int /*<<< orphan*/  FUNC4 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC5(struct dib0090_state *state, const u16 * cfg)
+{
+	state->bb_ramp = cfg;
+
+	FUNC1(state, cfg[0] > 500);	/* we want the boost if the gain is higher that 50dB */
+
+	FUNC2(state, 0x33, 0xffff);
+	FUNC4("total BB gain: %ddB, step: %d\n", (u32) cfg[0], FUNC0(state, 0x33));
+	FUNC3(state, 0x35, cfg + 3, 4);
+}

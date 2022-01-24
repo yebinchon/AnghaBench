@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_2__ {scalar_t__ attisdropped; } ;
+typedef  int /*<<< orphan*/  Oid ;
+typedef  int /*<<< orphan*/ * HeapTuple ;
+typedef  TYPE_1__* Form_pg_attribute ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ATTNAME ; 
+ int /*<<< orphan*/  FUNC0 (char const*) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+HeapTuple
+FUNC6(Oid relid, const char *attname)
+{
+	HeapTuple	tuple;
+
+	tuple = FUNC5(ATTNAME,
+							FUNC3(relid),
+							FUNC0(attname));
+	if (!FUNC2(tuple))
+		return NULL;
+	if (((Form_pg_attribute) FUNC1(tuple))->attisdropped)
+	{
+		FUNC4(tuple);
+		return NULL;
+	}
+	return tuple;
+}

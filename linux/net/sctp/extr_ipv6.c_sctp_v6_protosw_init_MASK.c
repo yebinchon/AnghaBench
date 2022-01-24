@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int FUNC1 (int /*<<< orphan*/ *,int) ; 
+ int /*<<< orphan*/  sctpv6_prot ; 
+ int /*<<< orphan*/  sctpv6_seqpacket_protosw ; 
+ int /*<<< orphan*/  sctpv6_stream_protosw ; 
+
+int FUNC2(void)
+{
+	int rc;
+
+	rc = FUNC1(&sctpv6_prot, 1);
+	if (rc)
+		return rc;
+
+	/* Add SCTPv6(UDP and TCP style) to inetsw6 linked list. */
+	FUNC0(&sctpv6_seqpacket_protosw);
+	FUNC0(&sctpv6_stream_protosw);
+
+	return 0;
+}

@@ -1,0 +1,97 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u16 ;
+struct switchdev_trans {int dummy; } ;
+struct TYPE_2__ {struct net_device* orig_dev; } ;
+struct switchdev_obj_port_mdb {int /*<<< orphan*/  addr; int /*<<< orphan*/  vid; TYPE_1__ obj; } ;
+struct net_device {int dummy; } ;
+struct mlxsw_sp_port_vlan {int /*<<< orphan*/  fid; } ;
+struct mlxsw_sp_port {int /*<<< orphan*/  local_port; struct net_device* dev; struct mlxsw_sp* mlxsw_sp; } ;
+struct mlxsw_sp_mid {int /*<<< orphan*/  mid; int /*<<< orphan*/  ports_in_mid; } ;
+struct mlxsw_sp_bridge_port {scalar_t__ mrouter; struct mlxsw_sp_bridge_device* bridge_device; } ;
+struct mlxsw_sp_bridge_device {int /*<<< orphan*/  multicast_enabled; } ;
+struct mlxsw_sp {int /*<<< orphan*/  bridge; } ;
+
+/* Variables and functions */
+ int ENOMEM ; 
+ struct mlxsw_sp_mid* FUNC0 (struct mlxsw_sp*,struct mlxsw_sp_bridge_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ struct mlxsw_sp_mid* FUNC1 (struct mlxsw_sp_bridge_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ struct mlxsw_sp_bridge_port* FUNC2 (int /*<<< orphan*/ ,struct net_device*) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (struct mlxsw_sp_port*,struct mlxsw_sp_mid*) ; 
+ int FUNC5 (struct mlxsw_sp_port*,int /*<<< orphan*/ ,int) ; 
+ struct mlxsw_sp_port_vlan* FUNC6 (struct mlxsw_sp_port*,struct mlxsw_sp_bridge_device*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (struct net_device*,char*) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC9 (struct switchdev_trans*) ; 
+
+__attribute__((used)) static int FUNC10(struct mlxsw_sp_port *mlxsw_sp_port,
+				 const struct switchdev_obj_port_mdb *mdb,
+				 struct switchdev_trans *trans)
+{
+	struct mlxsw_sp *mlxsw_sp = mlxsw_sp_port->mlxsw_sp;
+	struct net_device *orig_dev = mdb->obj.orig_dev;
+	struct mlxsw_sp_port_vlan *mlxsw_sp_port_vlan;
+	struct net_device *dev = mlxsw_sp_port->dev;
+	struct mlxsw_sp_bridge_device *bridge_device;
+	struct mlxsw_sp_bridge_port *bridge_port;
+	struct mlxsw_sp_mid *mid;
+	u16 fid_index;
+	int err = 0;
+
+	if (FUNC9(trans))
+		return 0;
+
+	bridge_port = FUNC2(mlxsw_sp->bridge, orig_dev);
+	if (!bridge_port)
+		return 0;
+
+	bridge_device = bridge_port->bridge_device;
+	mlxsw_sp_port_vlan = FUNC6(mlxsw_sp_port,
+							       bridge_device,
+							       mdb->vid);
+	if (!mlxsw_sp_port_vlan)
+		return 0;
+
+	fid_index = FUNC3(mlxsw_sp_port_vlan->fid);
+
+	mid = FUNC1(bridge_device, mdb->addr, fid_index);
+	if (!mid) {
+		mid = FUNC0(mlxsw_sp, bridge_device, mdb->addr,
+					  fid_index);
+		if (!mid) {
+			FUNC7(dev, "Unable to allocate MC group\n");
+			return -ENOMEM;
+		}
+	}
+	FUNC8(mlxsw_sp_port->local_port, mid->ports_in_mid);
+
+	if (!bridge_device->multicast_enabled)
+		return 0;
+
+	if (bridge_port->mrouter)
+		return 0;
+
+	err = FUNC5(mlxsw_sp_port, mid->mid, true);
+	if (err) {
+		FUNC7(dev, "Unable to set SMID\n");
+		goto err_out;
+	}
+
+	return 0;
+
+err_out:
+	FUNC4(mlxsw_sp_port, mid);
+	return err;
+}

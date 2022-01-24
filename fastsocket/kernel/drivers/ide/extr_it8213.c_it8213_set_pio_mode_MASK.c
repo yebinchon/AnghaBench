@@ -1,0 +1,82 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_6__   TYPE_2__ ;
+typedef  struct TYPE_5__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u8 ;
+typedef  int u16 ;
+struct pci_dev {int dummy; } ;
+struct TYPE_5__ {int /*<<< orphan*/  dev; } ;
+typedef  TYPE_1__ ide_hwif_t ;
+struct TYPE_6__ {int dn; scalar_t__ media; TYPE_1__* hwif; } ;
+typedef  TYPE_2__ ide_drive_t ;
+typedef  int /*<<< orphan*/  DEFINE_SPINLOCK ;
+
+/* Variables and functions */
+ scalar_t__ ide_disk ; 
+ scalar_t__ FUNC0 (TYPE_2__*,int const) ; 
+ int /*<<< orphan*/  FUNC1 (struct pci_dev*,int,int*) ; 
+ int /*<<< orphan*/  FUNC2 (struct pci_dev*,int,int*) ; 
+ int /*<<< orphan*/  FUNC3 (struct pci_dev*,int,int) ; 
+ int /*<<< orphan*/  FUNC4 (struct pci_dev*,int,int) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *,unsigned long) ; 
+ struct pci_dev* FUNC7 (int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC8(ide_drive_t *drive, const u8 pio)
+{
+	ide_hwif_t *hwif	= drive->hwif;
+	struct pci_dev *dev	= FUNC7(hwif->dev);
+	int is_slave		= drive->dn & 1;
+	int master_port		= 0x40;
+	int slave_port		= 0x44;
+	unsigned long flags;
+	u16 master_data;
+	u8 slave_data;
+	static DEFINE_SPINLOCK(tune_lock);
+	int control = 0;
+
+	static const u8 timings[][2] = {
+					{ 0, 0 },
+					{ 0, 0 },
+					{ 1, 0 },
+					{ 2, 1 },
+					{ 2, 3 }, };
+
+	FUNC5(&tune_lock, flags);
+	FUNC2(dev, master_port, &master_data);
+
+	if (pio > 1)
+		control |= 1;	/* Programmable timing on */
+	if (drive->media != ide_disk)
+		control |= 4;	/* ATAPI */
+	if (FUNC0(drive, pio))
+		control |= 2;	/* IORDY */
+	if (is_slave) {
+		master_data |=  0x4000;
+		master_data &= ~0x0070;
+		if (pio > 1)
+			master_data = master_data | (control << 4);
+		FUNC1(dev, slave_port, &slave_data);
+		slave_data = slave_data & 0xf0;
+		slave_data = slave_data | (timings[pio][0] << 2) | timings[pio][1];
+	} else {
+		master_data &= ~0x3307;
+		if (pio > 1)
+			master_data = master_data | control;
+		master_data = master_data | (timings[pio][0] << 12) | (timings[pio][1] << 8);
+	}
+	FUNC4(dev, master_port, master_data);
+	if (is_slave)
+		FUNC3(dev, slave_port, slave_data);
+	FUNC6(&tune_lock, flags);
+}

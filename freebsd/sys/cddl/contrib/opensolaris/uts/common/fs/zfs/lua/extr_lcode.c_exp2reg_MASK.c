@@ -1,0 +1,55 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_7__   TYPE_2__ ;
+typedef  struct TYPE_6__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_6__ {int info; } ;
+struct TYPE_7__ {scalar_t__ k; TYPE_1__ u; void* t; void* f; } ;
+typedef  TYPE_2__ expdesc ;
+typedef  int /*<<< orphan*/  FuncState ;
+
+/* Variables and functions */
+ void* NO_JUMP ; 
+ scalar_t__ VJMP ; 
+ scalar_t__ VNONRELOC ; 
+ int FUNC0 (int /*<<< orphan*/ *,int,int,int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
+ scalar_t__ FUNC2 (TYPE_2__*) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,void**,int) ; 
+ int FUNC4 (int /*<<< orphan*/ *) ; 
+ void* FUNC5 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *,int) ; 
+ scalar_t__ FUNC7 (int /*<<< orphan*/ *,void*) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ *,void*,int,int,int) ; 
+
+__attribute__((used)) static void FUNC9 (FuncState *fs, expdesc *e, int reg) {
+  FUNC1(fs, e, reg);
+  if (e->k == VJMP)
+    FUNC3(fs, &e->t, e->u.info);  /* put this jump in `t' list */
+  if (FUNC2(e)) {
+    int final;  /* position after whole expression */
+    int p_f = NO_JUMP;  /* position of an eventual LOAD false */
+    int p_t = NO_JUMP;  /* position of an eventual LOAD true */
+    if (FUNC7(fs, e->t) || FUNC7(fs, e->f)) {
+      int fj = (e->k == VJMP) ? NO_JUMP : FUNC5(fs);
+      p_f = FUNC0(fs, reg, 0, 1);
+      p_t = FUNC0(fs, reg, 1, 0);
+      FUNC6(fs, fj);
+    }
+    final = FUNC4(fs);
+    FUNC8(fs, e->f, final, reg, p_f);
+    FUNC8(fs, e->t, final, reg, p_t);
+  }
+  e->f = e->t = NO_JUMP;
+  e->u.info = reg;
+  e->k = VNONRELOC;
+}

@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct scm_device {int /*<<< orphan*/  lock; int /*<<< orphan*/  dev; } ;
+struct scm_blk_dev {int dummy; } ;
+
+/* Variables and functions */
+ struct scm_blk_dev* FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (struct scm_blk_dev*) ; 
+ int /*<<< orphan*/  FUNC3 (struct scm_blk_dev*) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC6(struct scm_device *scmdev)
+{
+	struct scm_blk_dev *bdev;
+
+	FUNC4(&scmdev->lock);
+	bdev = FUNC0(&scmdev->dev);
+	FUNC5(&scmdev->lock);
+	FUNC3(bdev);
+	FUNC4(&scmdev->lock);
+	FUNC1(&scmdev->dev, NULL);
+	FUNC5(&scmdev->lock);
+	FUNC2(bdev);
+
+	return 0;
+}

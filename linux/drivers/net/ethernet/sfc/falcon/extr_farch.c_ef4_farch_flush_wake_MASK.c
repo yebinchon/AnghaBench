@@ -1,0 +1,28 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ef4_nic {int /*<<< orphan*/  rxq_flush_pending; int /*<<< orphan*/  rxq_flush_outstanding; int /*<<< orphan*/  active_queues; } ;
+
+/* Variables and functions */
+ scalar_t__ EF4_RX_FLUSH_COUNT ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 () ; 
+
+__attribute__((used)) static bool FUNC2(struct ef4_nic *efx)
+{
+	/* Ensure that all updates are visible to ef4_farch_flush_queues() */
+	FUNC1();
+
+	return (FUNC0(&efx->active_queues) == 0 ||
+		(FUNC0(&efx->rxq_flush_outstanding) < EF4_RX_FLUSH_COUNT
+		 && FUNC0(&efx->rxq_flush_pending) > 0));
+}

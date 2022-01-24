@@ -1,0 +1,52 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_7__   TYPE_2__ ;
+typedef  struct TYPE_6__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_6__ {int /*<<< orphan*/  zpool_name; int /*<<< orphan*/ * zpool_hdl; } ;
+typedef  TYPE_1__ zpool_handle_t ;
+struct TYPE_7__ {int zc_cookie; int /*<<< orphan*/  zc_name; } ;
+typedef  TYPE_2__ zfs_cmd_t ;
+typedef  int /*<<< orphan*/  zc ;
+typedef  int /*<<< orphan*/  msg ;
+typedef  int /*<<< orphan*/  libzfs_handle_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  TEXT_DOMAIN ; 
+ int /*<<< orphan*/  ZFS_IOC_VDEV_REMOVE ; 
+ int /*<<< orphan*/  FUNC0 (TYPE_2__*,int) ; 
+ char* FUNC1 (int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  errno ; 
+ int /*<<< orphan*/  FUNC2 (char*,int,char*) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ scalar_t__ FUNC4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
+ int FUNC5 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+int
+FUNC6(zpool_handle_t *zhp)
+{
+	zfs_cmd_t zc;
+	char msg[1024];
+	libzfs_handle_t *hdl = zhp->zpool_hdl;
+
+	(void) FUNC2(msg, sizeof (msg),
+	    FUNC1(TEXT_DOMAIN, "cannot cancel removal"));
+
+	FUNC0(&zc, sizeof (zc));
+	(void) FUNC3(zc.zc_name, zhp->zpool_name, sizeof (zc.zc_name));
+	zc.zc_cookie = 1;
+
+	if (FUNC4(hdl, ZFS_IOC_VDEV_REMOVE, &zc) == 0)
+		return (0);
+
+	return (FUNC5(hdl, errno, msg));
+}

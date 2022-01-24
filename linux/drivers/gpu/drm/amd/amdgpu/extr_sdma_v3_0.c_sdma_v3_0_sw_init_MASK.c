@@ -1,0 +1,86 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_6__   TYPE_3__ ;
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct amdgpu_ring {int use_doorbell; int use_pollmem; int /*<<< orphan*/  name; int /*<<< orphan*/  doorbell_index; int /*<<< orphan*/ * ring_obj; } ;
+struct TYPE_6__ {int num_instances; int /*<<< orphan*/  trap_irq; TYPE_1__* instance; int /*<<< orphan*/  illegal_inst_irq; } ;
+struct TYPE_5__ {int /*<<< orphan*/ * sdma_engine; } ;
+struct amdgpu_device {TYPE_3__ sdma; TYPE_2__ doorbell_index; } ;
+struct TYPE_4__ {struct amdgpu_ring ring; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  AMDGPU_IRQ_CLIENTID_LEGACY ; 
+ int /*<<< orphan*/  AMDGPU_SDMA_IRQ_INSTANCE0 ; 
+ int /*<<< orphan*/  AMDGPU_SDMA_IRQ_INSTANCE1 ; 
+ int /*<<< orphan*/  FUNC0 (char*) ; 
+ int VISLANDS30_IV_SRCID_SDMA_SRBM_WRITE ; 
+ int VISLANDS30_IV_SRCID_SDMA_TRAP ; 
+ int FUNC1 (struct amdgpu_device*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+ int FUNC2 (struct amdgpu_device*,struct amdgpu_ring*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (struct amdgpu_device*) ; 
+ int FUNC4 (struct amdgpu_device*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ,char*,int) ; 
+
+__attribute__((used)) static int FUNC6(void *handle)
+{
+	struct amdgpu_ring *ring;
+	int r, i;
+	struct amdgpu_device *adev = (struct amdgpu_device *)handle;
+
+	/* SDMA trap event */
+	r = FUNC1(adev, AMDGPU_IRQ_CLIENTID_LEGACY, VISLANDS30_IV_SRCID_SDMA_TRAP,
+			      &adev->sdma.trap_irq);
+	if (r)
+		return r;
+
+	/* SDMA Privileged inst */
+	r = FUNC1(adev, AMDGPU_IRQ_CLIENTID_LEGACY, 241,
+			      &adev->sdma.illegal_inst_irq);
+	if (r)
+		return r;
+
+	/* SDMA Privileged inst */
+	r = FUNC1(adev, AMDGPU_IRQ_CLIENTID_LEGACY, VISLANDS30_IV_SRCID_SDMA_SRBM_WRITE,
+			      &adev->sdma.illegal_inst_irq);
+	if (r)
+		return r;
+
+	r = FUNC4(adev);
+	if (r) {
+		FUNC0("Failed to load sdma firmware!\n");
+		return r;
+	}
+
+	for (i = 0; i < adev->sdma.num_instances; i++) {
+		ring = &adev->sdma.instance[i].ring;
+		ring->ring_obj = NULL;
+		if (!FUNC3(adev)) {
+			ring->use_doorbell = true;
+			ring->doorbell_index = adev->doorbell_index.sdma_engine[i];
+		} else {
+			ring->use_pollmem = true;
+		}
+
+		FUNC5(ring->name, "sdma%d", i);
+		r = FUNC2(adev, ring, 1024,
+				     &adev->sdma.trap_irq,
+				     (i == 0) ?
+				     AMDGPU_SDMA_IRQ_INSTANCE0 :
+				     AMDGPU_SDMA_IRQ_INSTANCE1);
+		if (r)
+			return r;
+	}
+
+	return r;
+}

@@ -1,0 +1,91 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct super_block {int dummy; } ;
+struct TYPE_2__ {struct list_head* next; } ;
+struct reiserfs_journal_list {unsigned int j_trans_id; scalar_t__ j_len; int j_state; TYPE_1__ j_list; int /*<<< orphan*/  j_commit_left; } ;
+struct list_head {int dummy; } ;
+struct reiserfs_journal {int /*<<< orphan*/  j_flush_mutex; struct list_head j_journal_list; } ;
+struct buffer_chunk {scalar_t__ nr; } ;
+
+/* Variables and functions */
+ struct reiserfs_journal_list* FUNC0 (struct list_head*) ; 
+ int LIST_DIRTY ; 
+ int LIST_TOUCHED ; 
+ struct reiserfs_journal* FUNC1 (struct super_block*) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (struct super_block*,struct reiserfs_journal_list*) ; 
+ int /*<<< orphan*/  FUNC4 (struct super_block*,unsigned int) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC7 (struct buffer_chunk*) ; 
+ int FUNC8 (struct super_block*,struct reiserfs_journal_list*,struct buffer_chunk*) ; 
+
+__attribute__((used)) static int FUNC9(struct super_block *s,
+				struct reiserfs_journal_list *jl,
+				struct reiserfs_journal_list **next_jl,
+				unsigned int *next_trans_id,
+				int num_blocks, int num_trans)
+{
+	int ret = 0;
+	int written = 0;
+	int transactions_flushed = 0;
+	unsigned int orig_trans_id = jl->j_trans_id;
+	struct buffer_chunk chunk;
+	struct list_head *entry;
+	struct reiserfs_journal *journal = FUNC1(s);
+	chunk.nr = 0;
+
+	FUNC5(&journal->j_flush_mutex);
+	if (!FUNC4(s, orig_trans_id)) {
+		goto done;
+	}
+
+	/* we've got j_flush_mutex held, nobody is going to delete any
+	 * of these lists out from underneath us
+	 */
+	while ((num_trans && transactions_flushed < num_trans) ||
+	       (!num_trans && written < num_blocks)) {
+
+		if (jl->j_len == 0 || (jl->j_state & LIST_TOUCHED) ||
+		    FUNC2(&jl->j_commit_left)
+		    || !(jl->j_state & LIST_DIRTY)) {
+			FUNC3(s, jl);
+			break;
+		}
+		ret = FUNC8(s, jl, &chunk);
+
+		if (ret < 0)
+			goto done;
+		transactions_flushed++;
+		written += ret;
+		entry = jl->j_list.next;
+
+		/* did we wrap? */
+		if (entry == &journal->j_journal_list) {
+			break;
+		}
+		jl = FUNC0(entry);
+
+		/* don't bother with older transactions */
+		if (jl->j_trans_id <= orig_trans_id)
+			break;
+	}
+	if (chunk.nr) {
+		FUNC7(&chunk);
+	}
+
+      done:
+	FUNC6(&journal->j_flush_mutex);
+	return ret;
+}

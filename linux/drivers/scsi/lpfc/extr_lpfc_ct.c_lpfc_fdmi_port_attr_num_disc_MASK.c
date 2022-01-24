@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int uint32_t ;
+struct lpfc_vport {int /*<<< orphan*/  fdmi_num_disc; } ;
+struct TYPE_2__ {int /*<<< orphan*/  AttrInt; } ;
+struct lpfc_fdmi_attr_entry {TYPE_1__ un; } ;
+struct lpfc_fdmi_attr_def {void* AttrType; void* AttrLen; int /*<<< orphan*/  AttrValue; } ;
+
+/* Variables and functions */
+ int FOURBYTES ; 
+ int RPRT_DISC_PORT ; 
+ void* FUNC0 (int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (struct lpfc_vport*) ; 
+
+__attribute__((used)) static int
+FUNC3(struct lpfc_vport *vport,
+			     struct lpfc_fdmi_attr_def *ad)
+{
+	struct lpfc_fdmi_attr_entry *ae;
+	uint32_t size;
+
+	ae = (struct lpfc_fdmi_attr_entry *)&ad->AttrValue;
+	vport->fdmi_num_disc = FUNC2(vport);
+	ae->un.AttrInt = FUNC1(vport->fdmi_num_disc);
+	size = FOURBYTES + sizeof(uint32_t);
+	ad->AttrLen = FUNC0(size);
+	ad->AttrType = FUNC0(RPRT_DISC_PORT);
+	return size;
+}

@@ -1,0 +1,50 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int u32 ;
+struct udc {TYPE_1__* regs; } ;
+struct TYPE_2__ {int /*<<< orphan*/  ep_irqmsk; int /*<<< orphan*/  irqmsk; } ;
+
+/* Variables and functions */
+ int FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  UDC_DEVINT_ENUM ; 
+ int /*<<< orphan*/  UDC_DEVINT_ES ; 
+ int /*<<< orphan*/  UDC_DEVINT_SC ; 
+ int /*<<< orphan*/  UDC_DEVINT_SI ; 
+ int /*<<< orphan*/  UDC_DEVINT_SOF ; 
+ int /*<<< orphan*/  UDC_DEVINT_SVC ; 
+ int /*<<< orphan*/  UDC_DEVINT_UR ; 
+ int /*<<< orphan*/  UDC_DEVINT_US ; 
+ int UDC_EPINT_MSK_DISABLE_ALL ; 
+ int /*<<< orphan*/  FUNC1 (int,int /*<<< orphan*/ *) ; 
+
+int FUNC2(struct udc *dev)
+{
+	u32 tmp;
+
+	/* mask all dev interrupts */
+	tmp =	FUNC0(UDC_DEVINT_SVC) |
+		FUNC0(UDC_DEVINT_ENUM) |
+		FUNC0(UDC_DEVINT_US) |
+		FUNC0(UDC_DEVINT_UR) |
+		FUNC0(UDC_DEVINT_ES) |
+		FUNC0(UDC_DEVINT_SI) |
+		FUNC0(UDC_DEVINT_SOF)|
+		FUNC0(UDC_DEVINT_SC);
+	FUNC1(tmp, &dev->regs->irqmsk);
+
+	/* mask all ep interrupts */
+	FUNC1(UDC_EPINT_MSK_DISABLE_ALL, &dev->regs->ep_irqmsk);
+
+	return 0;
+}

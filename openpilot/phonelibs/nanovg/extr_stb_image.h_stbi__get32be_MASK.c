@@ -1,0 +1,23 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int stbi__uint32 ;
+typedef  int /*<<< orphan*/  stbi__context ;
+
+/* Variables and functions */
+ int FUNC0 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static stbi__uint32 FUNC1(stbi__context *s)
+{
+   stbi__uint32 z = FUNC0(s);
+   return (z << 16) + FUNC0(s);
+}

@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct max6875_data {int /*<<< orphan*/ * data; } ;
+struct kobject {int dummy; } ;
+struct i2c_client {int dummy; } ;
+struct file {int dummy; } ;
+struct bin_attribute {int dummy; } ;
+typedef  size_t ssize_t ;
+typedef  size_t loff_t ;
+
+/* Variables and functions */
+ size_t SLICE_BITS ; 
+ struct max6875_data* FUNC0 (struct i2c_client*) ; 
+ struct i2c_client* FUNC1 (struct kobject*) ; 
+ int /*<<< orphan*/  FUNC2 (struct i2c_client*,int) ; 
+ int /*<<< orphan*/  FUNC3 (char*,int /*<<< orphan*/ *,size_t) ; 
+
+__attribute__((used)) static ssize_t FUNC4(struct file *filp, struct kobject *kobj,
+			    struct bin_attribute *bin_attr,
+			    char *buf, loff_t off, size_t count)
+{
+	struct i2c_client *client = FUNC1(kobj);
+	struct max6875_data *data = FUNC0(client);
+	int slice, max_slice;
+
+	/* refresh slices which contain requested bytes */
+	max_slice = (off + count - 1) >> SLICE_BITS;
+	for (slice = (off >> SLICE_BITS); slice <= max_slice; slice++)
+		FUNC2(client, slice);
+
+	FUNC3(buf, &data->data[off], count);
+
+	return count;
+}

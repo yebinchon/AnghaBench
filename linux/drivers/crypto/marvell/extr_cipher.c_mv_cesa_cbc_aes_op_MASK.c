@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct skcipher_request {int /*<<< orphan*/  iv; } ;
+struct TYPE_3__ {int /*<<< orphan*/  iv; } ;
+struct TYPE_4__ {TYPE_1__ blkcipher; } ;
+struct mv_cesa_op_ctx {TYPE_2__ ctx; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  AES_BLOCK_SIZE ; 
+ int /*<<< orphan*/  CESA_SA_DESC_CFG_CRYPTCM_CBC ; 
+ int /*<<< orphan*/  CESA_SA_DESC_CFG_CRYPTCM_MSK ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FUNC1 (struct skcipher_request*,struct mv_cesa_op_ctx*) ; 
+ int /*<<< orphan*/  FUNC2 (struct mv_cesa_op_ctx*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC3(struct skcipher_request *req,
+			      struct mv_cesa_op_ctx *tmpl)
+{
+	FUNC2(tmpl, CESA_SA_DESC_CFG_CRYPTCM_CBC,
+			      CESA_SA_DESC_CFG_CRYPTCM_MSK);
+	FUNC0(tmpl->ctx.blkcipher.iv, req->iv, AES_BLOCK_SIZE);
+
+	return FUNC1(req, tmpl);
+}

@@ -1,0 +1,47 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct panel_drv_data {struct omap_dss_device* in; } ;
+struct TYPE_4__ {TYPE_1__* atv; } ;
+struct omap_dss_device {struct omap_dss_device* dst; struct omap_dss_device* src; TYPE_2__ ops; int /*<<< orphan*/  dev; } ;
+struct TYPE_3__ {int (* connect ) (struct omap_dss_device*,struct omap_dss_device*) ;} ;
+
+/* Variables and functions */
+ int EBUSY ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,char*) ; 
+ scalar_t__ FUNC1 (struct omap_dss_device*) ; 
+ int FUNC2 (struct omap_dss_device*,struct omap_dss_device*) ; 
+ struct panel_drv_data* FUNC3 (struct omap_dss_device*) ; 
+
+__attribute__((used)) static int FUNC4(struct omap_dss_device *dssdev,
+		struct omap_dss_device *dst)
+{
+	struct panel_drv_data *ddata = FUNC3(dssdev);
+	struct omap_dss_device *in = ddata->in;
+	int r;
+
+	FUNC0(dssdev->dev, "connect\n");
+
+	if (FUNC1(dssdev))
+		return -EBUSY;
+
+	r = in->ops.atv->connect(in, dssdev);
+	if (r)
+		return r;
+
+	dst->src = dssdev;
+	dssdev->dst = dst;
+
+	return 0;
+}

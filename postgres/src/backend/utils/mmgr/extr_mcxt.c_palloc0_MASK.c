@@ -1,0 +1,71 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_9__   TYPE_2__ ;
+typedef  struct TYPE_8__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_9__ {int isReset; int /*<<< orphan*/  name; TYPE_1__* methods; } ;
+struct TYPE_8__ {void* (* alloc ) (TYPE_2__*,int /*<<< orphan*/ ) ;} ;
+typedef  int /*<<< orphan*/  Size ;
+typedef  TYPE_2__* MemoryContext ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (TYPE_2__*) ; 
+ TYPE_2__* CurrentMemoryContext ; 
+ int /*<<< orphan*/  ERRCODE_OUT_OF_MEMORY ; 
+ int /*<<< orphan*/  ERROR ; 
+ int /*<<< orphan*/  FUNC3 (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC4 (TYPE_2__*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  TopMemoryContext ; 
+ int /*<<< orphan*/  FUNC6 (TYPE_2__*,void*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC9 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC10 (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC11 (char*) ; 
+ void* FUNC12 (TYPE_2__*,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC13 (int /*<<< orphan*/ ) ; 
+
+void *
+FUNC14(Size size)
+{
+	/* duplicates MemoryContextAllocZero to avoid increased overhead */
+	void	   *ret;
+	MemoryContext context = CurrentMemoryContext;
+
+	FUNC1(FUNC4(context));
+	FUNC2(context);
+
+	if (!FUNC0(size))
+		FUNC7(ERROR, "invalid memory alloc request size %zu", size);
+
+	context->isReset = false;
+
+	ret = context->methods->alloc(context, size);
+	if (FUNC13(ret == NULL))
+	{
+		FUNC5(TopMemoryContext);
+		FUNC8(ERROR,
+				(FUNC9(ERRCODE_OUT_OF_MEMORY),
+				 FUNC11("out of memory"),
+				 FUNC10("Failed on request of size %zu in memory context \"%s\".",
+						   size, context->name)));
+	}
+
+	FUNC6(context, ret, size);
+
+	FUNC3(ret, 0, size);
+
+	return ret;
+}

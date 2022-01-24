@@ -1,0 +1,45 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct efx_nic {int dummy; } ;
+struct efx_mcdi_iface {scalar_t__ mode; } ;
+
+/* Variables and functions */
+ scalar_t__ EFX_REV_SIENA_A0 ; 
+ scalar_t__ MCDI_MODE_POLL ; 
+ struct efx_mcdi_iface* FUNC0 (struct efx_nic*) ; 
+ int /*<<< orphan*/  FUNC1 (struct efx_mcdi_iface*) ; 
+ scalar_t__ FUNC2 (struct efx_nic*) ; 
+
+void FUNC3(struct efx_nic *efx)
+{
+	struct efx_mcdi_iface *mcdi;
+
+	if (FUNC2(efx) < EFX_REV_SIENA_A0)
+		return;
+
+	mcdi = FUNC0(efx);
+	if (mcdi->mode == MCDI_MODE_POLL)
+		return;
+
+	/* We can switch from event completion to polled completion, because
+	 * mcdi requests are always completed in shared memory. We do this by
+	 * switching the mode to POLL'd then completing the request.
+	 * efx_mcdi_await_completion() will then call efx_mcdi_poll().
+	 *
+	 * We need an smp_wmb() to synchronise with efx_mcdi_await_completion(),
+	 * which efx_mcdi_complete() provides for us.
+	 */
+	mcdi->mode = MCDI_MODE_POLL;
+
+	FUNC1(mcdi);
+}

@@ -1,0 +1,24 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  dbuf ;
+typedef  int /*<<< orphan*/  client ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,char*,int) ; 
+ int FUNC1 (char*,int,char*,double) ; 
+
+void FUNC2(client *c, double d) {
+    char dbuf[128];
+    int dlen = FUNC1(dbuf, sizeof(dbuf), "%.4f", d);
+    FUNC0(c, dbuf, dlen);
+}

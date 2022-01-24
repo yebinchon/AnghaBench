@@ -1,0 +1,143 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_13__   TYPE_2__ ;
+typedef  struct TYPE_12__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  X509_NAME ;
+struct TYPE_13__ {int /*<<< orphan*/ * freeText; int /*<<< orphan*/ * transactionID; int /*<<< orphan*/ * recipNonce; int /*<<< orphan*/ * clCert; int /*<<< orphan*/ * oldCert; int /*<<< orphan*/ * issuer; int /*<<< orphan*/ * recipient; int /*<<< orphan*/ * expected_sender; int /*<<< orphan*/ * srvCert; int /*<<< orphan*/ * referenceValue; int /*<<< orphan*/ * subjectName; } ;
+struct TYPE_12__ {int /*<<< orphan*/ * senderNonce; int /*<<< orphan*/  transactionID; int /*<<< orphan*/  recipNonce; } ;
+typedef  TYPE_1__ OSSL_CMP_PKIHEADER ;
+typedef  TYPE_2__ OSSL_CMP_CTX ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  CMP_R_MISSING_SENDER_IDENTIFICATION ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  OSSL_CMP_PVNO ; 
+ int /*<<< orphan*/  OSSL_CMP_SENDERNONCE_LENGTH ; 
+ int /*<<< orphan*/  OSSL_CMP_TRANSACTIONID_LENGTH ; 
+ int /*<<< orphan*/ * FUNC3 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC5 (int) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC7 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC8 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC9 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC10 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC11 (TYPE_1__*) ; 
+ int /*<<< orphan*/  FUNC12 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+int FUNC13(OSSL_CMP_CTX *ctx, OSSL_CMP_PKIHEADER *hdr)
+{
+    X509_NAME *sender;
+    X509_NAME *rcp = NULL;
+
+    if (!FUNC5(ctx != NULL && hdr != NULL))
+        return 0;
+
+    /* set the CMP version */
+    if (!FUNC10(hdr, OSSL_CMP_PVNO))
+        return 0;
+
+    sender = ctx->clCert != NULL ?
+        FUNC4(ctx->clCert) : ctx->subjectName;
+    /*
+     * The sender name is copied from the subject of the client cert, if any,
+     * or else from the the subject name provided for certification requests.
+     * As required by RFC 4210 section 5.1.1., if the sender name is not known
+     * to the client it set to NULL-DN. In this case for identification at least
+     * the senderKID must be set, which we take from any referenceValue given.
+     */
+    if (sender == NULL && ctx->referenceValue == NULL) {
+        FUNC0(0, CMP_R_MISSING_SENDER_IDENTIFICATION);
+        return 0;
+    }
+    if (!FUNC9(hdr, sender))
+        return 0;
+
+    /* determine recipient entry in PKIHeader */
+    if (ctx->srvCert != NULL) {
+        rcp = FUNC4(ctx->srvCert);
+        /* set also as expected_sender of responses unless set explicitly */
+        if (ctx->expected_sender == NULL && rcp != NULL
+                && !FUNC1(ctx, rcp))
+            return 0;
+    } else if (ctx->recipient != NULL) {
+        rcp = ctx->recipient;
+    } else if (ctx->issuer != NULL) {
+        rcp = ctx->issuer;
+    } else if (ctx->oldCert != NULL) {
+        rcp = FUNC3(ctx->oldCert);
+    } else if (ctx->clCert != NULL) {
+        rcp = FUNC3(ctx->clCert);
+    }
+    if (!FUNC8(hdr, rcp))
+        return 0;
+
+    /* set current time as message time */
+    if (!FUNC11(hdr))
+        return 0;
+
+    if (ctx->recipNonce != NULL
+            && !FUNC6(&hdr->recipNonce,
+                                                ctx->recipNonce))
+        return 0;
+
+    /*
+     * set ctx->transactionID in CMP header
+     * if ctx->transactionID is NULL, a random one is created with 128 bit
+     * according to section 5.1.1:
+     *
+     * It is RECOMMENDED that the clients fill the transactionID field with
+     * 128 bits of (pseudo-) random data for the start of a transaction to
+     * reduce the probability of having the transactionID in use at the server.
+     */
+    if (ctx->transactionID == NULL
+            && !FUNC12(&ctx->transactionID, NULL,
+                                       OSSL_CMP_TRANSACTIONID_LENGTH))
+        return 0;
+    if (!FUNC6(&hdr->transactionID,
+                                         ctx->transactionID))
+        return 0;
+
+    /*-
+     * set random senderNonce
+     * according to section 5.1.1:
+     *
+     * senderNonce                  present
+     *         -- 128 (pseudo-)random bits
+     * The senderNonce and recipNonce fields protect the PKIMessage against
+     * replay attacks. The senderNonce will typically be 128 bits of
+     * (pseudo-) random data generated by the sender, whereas the recipNonce
+     * is copied from the senderNonce of the previous message in the
+     * transaction.
+     */
+    if (!FUNC12(&hdr->senderNonce, NULL,
+                                OSSL_CMP_SENDERNONCE_LENGTH))
+        return 0;
+
+    /* store senderNonce - for cmp with recipNonce in next outgoing msg */
+    if (!FUNC2(ctx, hdr->senderNonce))
+        return 0;
+
+    /*-
+     * freeText                [7] PKIFreeText OPTIONAL,
+     * -- this may be used to indicate context-specific instructions
+     * -- (this field is intended for human consumption)
+     */
+    if (ctx->freeText != NULL
+            && !FUNC7(hdr, ctx->freeText))
+        return 0;
+
+    return 1;
+}

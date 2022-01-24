@@ -1,0 +1,30 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct slab_rcu {int /*<<< orphan*/  addr; struct kmem_cache* cachep; } ;
+struct rcu_head {int dummy; } ;
+struct kmem_cache {int /*<<< orphan*/  slabp_cache; } ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (struct kmem_cache*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,struct slab_rcu*) ; 
+ int /*<<< orphan*/  FUNC2 (struct kmem_cache*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC3(struct rcu_head *head)
+{
+	struct slab_rcu *slab_rcu = (struct slab_rcu *)head;
+	struct kmem_cache *cachep = slab_rcu->cachep;
+
+	FUNC2(cachep, slab_rcu->addr);
+	if (FUNC0(cachep))
+		FUNC1(cachep->slabp_cache, slab_rcu);
+}

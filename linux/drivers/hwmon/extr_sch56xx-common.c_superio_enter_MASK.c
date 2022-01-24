@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int EBUSY ; 
+ int /*<<< orphan*/  SIO_UNLOCK_KEY ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,int) ; 
+ int /*<<< orphan*/  FUNC1 (char*,int) ; 
+ int /*<<< orphan*/  FUNC2 (int,int,char*) ; 
+
+__attribute__((used)) static inline int FUNC3(int base)
+{
+	/* Don't step on other drivers' I/O space by accident */
+	if (!FUNC2(base, 2, "sch56xx")) {
+		FUNC1("I/O address 0x%04x already in use\n", base);
+		return -EBUSY;
+	}
+
+	FUNC0(SIO_UNLOCK_KEY, base);
+
+	return 0;
+}

@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct perf_thread_map {int dummy; } ;
+struct perf_record_thread_map {int /*<<< orphan*/  nr; } ;
+
+/* Variables and functions */
+ struct perf_thread_map* FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct perf_thread_map*,struct perf_record_thread_map*) ; 
+
+struct perf_thread_map *FUNC2(struct perf_record_thread_map *event)
+{
+	struct perf_thread_map *threads;
+
+	threads = FUNC0(event->nr);
+	if (threads)
+		FUNC1(threads, event);
+
+	return threads;
+}

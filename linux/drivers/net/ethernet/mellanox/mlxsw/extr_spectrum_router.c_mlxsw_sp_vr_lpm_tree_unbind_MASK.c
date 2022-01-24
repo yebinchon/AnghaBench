@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct mlxsw_sp_fib {scalar_t__ proto; TYPE_1__* vr; } ;
+struct mlxsw_sp {int /*<<< orphan*/  core; } ;
+typedef  enum mlxsw_reg_ralxx_protocol { ____Placeholder_mlxsw_reg_ralxx_protocol } mlxsw_reg_ralxx_protocol ;
+struct TYPE_2__ {int /*<<< orphan*/  id; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int MLXSW_REG_RALTB_LEN ; 
+ int /*<<< orphan*/  FUNC1 (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+ int FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  raltb ; 
+
+__attribute__((used)) static int FUNC3(struct mlxsw_sp *mlxsw_sp,
+				       const struct mlxsw_sp_fib *fib)
+{
+	char raltb_pl[MLXSW_REG_RALTB_LEN];
+
+	/* Bind to tree 0 which is default */
+	FUNC1(raltb_pl, fib->vr->id,
+			     (enum mlxsw_reg_ralxx_protocol) fib->proto, 0);
+	return FUNC2(mlxsw_sp->core, FUNC0(raltb), raltb_pl);
+}

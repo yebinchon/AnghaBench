@@ -1,0 +1,42 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct sway_input_device {int dummy; } ;
+typedef  int /*<<< orphan*/  json_object ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  IPC_EVENT_INPUT ; 
+ int /*<<< orphan*/  SWAY_DEBUG ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct sway_input_device*) ; 
+ int /*<<< orphan*/  FUNC2 (char const*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/ * FUNC3 () ; 
+ int /*<<< orphan*/  FUNC4 (char const*) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ *) ; 
+ char* FUNC7 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC8 (int /*<<< orphan*/ ,char*) ; 
+
+void FUNC9(const char *change, struct sway_input_device *device) {
+	if (!FUNC0(IPC_EVENT_INPUT)) {
+		return;
+	}
+	FUNC8(SWAY_DEBUG, "Sending input event");
+
+	json_object *json = FUNC3();
+	FUNC5(json, "change", FUNC4(change));
+	FUNC5(json, "input", FUNC1(device));
+
+	const char *json_string = FUNC7(json);
+	FUNC2(json_string, IPC_EVENT_INPUT);
+	FUNC6(json);
+}

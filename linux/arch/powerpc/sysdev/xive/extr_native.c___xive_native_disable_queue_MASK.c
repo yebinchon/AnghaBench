@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+typedef  int /*<<< orphan*/  u32 ;
+struct xive_q {int dummy; } ;
+typedef  scalar_t__ s64 ;
+
+/* Variables and functions */
+ scalar_t__ OPAL_BUSY ; 
+ int /*<<< orphan*/  OPAL_BUSY_DELAY_MS ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (char*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC3(u32 vp_id, struct xive_q *q, u8 prio)
+{
+	s64 rc;
+
+	/* Disable the queue in HW */
+	for (;;) {
+		rc = FUNC1(vp_id, prio, 0, 0, 0);
+		if (rc != OPAL_BUSY)
+			break;
+		FUNC0(OPAL_BUSY_DELAY_MS);
+	}
+	if (rc)
+		FUNC2("Error %lld disabling queue for prio %d\n", rc, prio);
+}

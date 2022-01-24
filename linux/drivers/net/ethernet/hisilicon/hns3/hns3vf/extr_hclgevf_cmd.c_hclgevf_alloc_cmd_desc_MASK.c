@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct hclgevf_desc {int dummy; } ;
+struct hclgevf_cmq_ring {int desc_num; int /*<<< orphan*/  desc; int /*<<< orphan*/  desc_dma_addr; } ;
+
+/* Variables and functions */
+ int ENOMEM ; 
+ int /*<<< orphan*/  GFP_KERNEL ; 
+ int /*<<< orphan*/  FUNC0 (struct hclgevf_cmq_ring*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC2(struct hclgevf_cmq_ring *ring)
+{
+	int size = ring->desc_num * sizeof(struct hclgevf_desc);
+
+	ring->desc = FUNC1(FUNC0(ring), size,
+					&ring->desc_dma_addr, GFP_KERNEL);
+	if (!ring->desc)
+		return -ENOMEM;
+
+	return 0;
+}

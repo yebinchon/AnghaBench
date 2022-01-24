@@ -1,0 +1,50 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u32 ;
+struct platform_device {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  DSI_TIMING2 ; 
+ int /*<<< orphan*/  FUNC1 (char*,unsigned long,unsigned int,char*,char*,unsigned long) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,unsigned int,int,int) ; 
+ unsigned long FUNC3 (struct platform_device*) ; 
+ int /*<<< orphan*/  FUNC4 (struct platform_device*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC5 (struct platform_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC6(struct platform_device *dsidev,
+		unsigned ticks, bool x4, bool x16)
+{
+	unsigned long fck;
+	unsigned long total_ticks;
+	u32 r;
+
+	FUNC0(ticks > 0x1fff);
+
+	/* ticks in TxByteClkHS */
+	fck = FUNC3(dsidev);
+
+	r = FUNC4(dsidev, DSI_TIMING2);
+	r = FUNC2(r, 1, 31, 31);	/* HS_TX_TO */
+	r = FUNC2(r, x16 ? 1 : 0, 30, 30);	/* HS_TX_TO_X16 */
+	r = FUNC2(r, x4 ? 1 : 0, 29, 29);	/* HS_TX_TO_X8 (4 really) */
+	r = FUNC2(r, ticks, 28, 16);	/* HS_TX_TO_COUNTER */
+	FUNC5(dsidev, DSI_TIMING2, r);
+
+	total_ticks = ticks * (x16 ? 16 : 1) * (x4 ? 4 : 1);
+
+	FUNC1("HS_TX_TO %lu ticks (%#x%s%s) = %lu ns\n",
+			total_ticks,
+			ticks, x4 ? " x4" : "", x16 ? " x16" : "",
+			(total_ticks * 1000) / (fck / 1000 / 1000));
+}

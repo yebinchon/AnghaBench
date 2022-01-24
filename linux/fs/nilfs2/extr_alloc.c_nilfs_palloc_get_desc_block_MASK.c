@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct nilfs_palloc_cache {int /*<<< orphan*/  lock; int /*<<< orphan*/  prev_desc; } ;
+struct inode {int dummy; } ;
+struct buffer_head {int dummy; } ;
+struct TYPE_2__ {struct nilfs_palloc_cache* mi_palloc_cache; } ;
+
+/* Variables and functions */
+ TYPE_1__* FUNC0 (struct inode*) ; 
+ int /*<<< orphan*/  FUNC1 (struct inode*,unsigned long) ; 
+ int /*<<< orphan*/  nilfs_palloc_desc_block_init ; 
+ int FUNC2 (struct inode*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct buffer_head**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC3(struct inode *inode,
+				       unsigned long group,
+				       int create, struct buffer_head **bhp)
+{
+	struct nilfs_palloc_cache *cache = FUNC0(inode)->mi_palloc_cache;
+
+	return FUNC2(inode,
+				      FUNC1(inode, group),
+				      create, nilfs_palloc_desc_block_init,
+				      bhp, &cache->prev_desc, &cache->lock);
+}

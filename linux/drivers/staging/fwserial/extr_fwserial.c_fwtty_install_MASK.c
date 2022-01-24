@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct tty_struct {struct fwtty_port* driver_data; int /*<<< orphan*/  index; } ;
+struct tty_driver {int dummy; } ;
+struct fwtty_port {int dummy; } ;
+
+/* Variables and functions */
+ struct fwtty_port* FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct fwtty_port*) ; 
+ int FUNC2 (struct tty_driver*,struct tty_struct*) ; 
+
+__attribute__((used)) static int FUNC3(struct tty_driver *driver, struct tty_struct *tty)
+{
+	struct fwtty_port *port = FUNC0(tty->index);
+	int err;
+
+	err = FUNC2(driver, tty);
+	if (!err)
+		tty->driver_data = port;
+	else
+		FUNC1(port);
+	return err;
+}

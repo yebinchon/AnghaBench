@@ -1,0 +1,59 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_2__ ;
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+struct TYPE_3__ {unsigned int bits_per_pixel; } ;
+struct fb_info {TYPE_1__ var; } ;
+struct TYPE_4__ {int /*<<< orphan*/  lut; int /*<<< orphan*/  addr; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (unsigned long) ; 
+ int /*<<< orphan*/  FUNC1 (unsigned long) ; 
+ int /*<<< orphan*/  FUNC2 () ; 
+ int /*<<< orphan*/  FUNC3 (unsigned char,int /*<<< orphan*/ *) ; 
+ TYPE_2__* v8_brazil_cmap_regs ; 
+
+__attribute__((used)) static int FUNC4 (unsigned int regno, unsigned int red,
+				 unsigned int green, unsigned int blue,
+				 struct fb_info *info)	
+{
+	unsigned int bpp = info->var.bits_per_pixel;
+	unsigned char _red  =red>>8;
+	unsigned char _green=green>>8;
+	unsigned char _blue =blue>>8;
+	unsigned char _regno;
+	unsigned long flags;
+
+	if (bpp > 8) return 1; /* failsafe */
+
+	FUNC1(flags);
+
+	/* On these chips, the CLUT register numbers are spread out
+	   across the register space.  Thus:
+
+	   In 8bpp, all regnos are valid.
+	   
+	   In 4bpp, the regnos are 0x0f, 0x1f, 0x2f, etc, etc
+	   
+	   In 2bpp, the regnos are 0x3f, 0x7f, 0xbf, 0xff */
+  	_regno = (regno << (8 - bpp)) | (0xFF >> bpp);
+	FUNC3(_regno, &v8_brazil_cmap_regs->addr); FUNC2();
+
+	/* send one color channel at a time */
+	FUNC3(_red, &v8_brazil_cmap_regs->lut); FUNC2();
+	FUNC3(_green, &v8_brazil_cmap_regs->lut); FUNC2();
+	FUNC3(_blue, &v8_brazil_cmap_regs->lut);
+
+	FUNC0(flags);	
+	return 0;
+}

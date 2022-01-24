@@ -1,0 +1,37 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int u32 ;
+struct sdhci_host {int dummy; } ;
+
+/* Variables and functions */
+ unsigned char XENON_SDCLK_IDLEOFF_ENABLE_SHIFT ; 
+ int /*<<< orphan*/  XENON_SYS_OP_CTRL ; 
+ int FUNC0 (struct sdhci_host*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct sdhci_host*,int,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC2(struct sdhci_host *host,
+				     unsigned char sdhc_id, bool enable)
+{
+	u32 reg;
+	u32 mask;
+
+	reg = FUNC0(host, XENON_SYS_OP_CTRL);
+	/* Get the bit shift basing on the SDHC index */
+	mask = (0x1 << (XENON_SDCLK_IDLEOFF_ENABLE_SHIFT + sdhc_id));
+	if (enable)
+		reg |= mask;
+	else
+		reg &= ~mask;
+
+	FUNC1(host, reg, XENON_SYS_OP_CTRL);
+}

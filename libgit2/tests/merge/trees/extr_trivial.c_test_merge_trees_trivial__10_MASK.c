@@ -1,0 +1,43 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  git_index_reuc_entry ;
+typedef  int /*<<< orphan*/  git_index_entry ;
+typedef  int /*<<< orphan*/  git_index ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC3 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+ int FUNC4 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/ * FUNC5 (int /*<<< orphan*/ *,char*) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ **,char*,char*) ; 
+ scalar_t__ FUNC7 (int /*<<< orphan*/ *) ; 
+
+void FUNC8(void)
+{
+	git_index *result;
+	const git_index_entry *entry;
+	const git_index_reuc_entry *reuc;
+
+	FUNC1(FUNC6(&result, "trivial-10", "trivial-10-branch"));
+
+	FUNC0((entry = FUNC3(result, "removed-in-10-branch.txt", 0)) == NULL);
+
+	FUNC0(FUNC4(result) == 1);
+	FUNC0(reuc = FUNC5(result, "removed-in-10-branch.txt"));
+
+	FUNC0(FUNC7(result) == 0);
+
+	FUNC2(result);
+}

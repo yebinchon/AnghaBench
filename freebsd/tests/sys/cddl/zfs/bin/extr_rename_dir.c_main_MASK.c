@@ -1,0 +1,65 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int) ; 
+ int FUNC1 () ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ,char*,int) ; 
+ int /*<<< orphan*/  FUNC3 (char*) ; 
+ int /*<<< orphan*/  FUNC4 (char*,char*) ; 
+ int /*<<< orphan*/  stderr ; 
+ int /*<<< orphan*/  FUNC5 (char*,char*,int) ; 
+
+int
+FUNC6()
+{
+	int i = 1;
+	char buf[256];
+	char *msg = "rename() fails to handle race situation\n";
+
+	switch (FUNC1()) {
+	case -1:
+		FUNC3("fork");
+		FUNC0(1);
+		break;
+	case 0:
+		while (i > 0) {
+			int c_count = 0;
+			if (FUNC4("a/b/c", "1/2/3/c") == 0)
+				c_count++;
+			if (FUNC4("1/2/3/c", "a/b/c") == 0)
+				c_count++;
+			if (c_count) {
+				(void) FUNC5(buf, "c_count: %d,", 256);
+				(void) FUNC5(buf, msg, 256);
+				(void) FUNC2(stderr, buf, c_count);
+			}
+		}
+		break;
+	default:
+		while (i > 0) {
+			int p_count = 0;
+			if (FUNC4("1", "a/b/c/d/e/1") == 0)
+				p_count++;
+			if (FUNC4("a/b/c/d/e/1", "1") == 0)
+				p_count++;
+			if (p_count) {
+				(void) FUNC5(buf, "p_count: %d,", 256);
+				(void) FUNC5(buf, msg, 256);
+				(void) FUNC2(stderr, buf, p_count);
+			}
+		}
+		break;
+	}
+	return (0);
+}

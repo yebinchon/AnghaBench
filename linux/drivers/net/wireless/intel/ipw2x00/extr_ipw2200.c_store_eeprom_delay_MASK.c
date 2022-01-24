@@ -1,0 +1,30 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct ipw_priv {int /*<<< orphan*/  eeprom_delay; } ;
+struct device_attribute {int dummy; } ;
+struct device {int dummy; } ;
+typedef  int /*<<< orphan*/  ssize_t ;
+
+/* Variables and functions */
+ struct ipw_priv* FUNC0 (struct device*) ; 
+ int /*<<< orphan*/  FUNC1 (char const*,char*,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (char const*,size_t) ; 
+
+__attribute__((used)) static ssize_t FUNC3(struct device *d,
+				  struct device_attribute *attr,
+				  const char *buf, size_t count)
+{
+	struct ipw_priv *p = FUNC0(d);
+	FUNC1(buf, "%i", &p->eeprom_delay);
+	return FUNC2(buf, count);
+}

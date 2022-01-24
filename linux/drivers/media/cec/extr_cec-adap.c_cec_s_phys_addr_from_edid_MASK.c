@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+typedef  int /*<<< orphan*/  u16 ;
+struct edid {int extensions; } ;
+struct cec_adapter {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  CEC_PHYS_ADDR_INVALID ; 
+ int EDID_LENGTH ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (struct cec_adapter*,int /*<<< orphan*/ ,int) ; 
+
+void FUNC2(struct cec_adapter *adap,
+			       const struct edid *edid)
+{
+	u16 pa = CEC_PHYS_ADDR_INVALID;
+
+	if (edid && edid->extensions)
+		pa = FUNC0((const u8 *)edid,
+				EDID_LENGTH * (edid->extensions + 1), NULL);
+	FUNC1(adap, pa, false);
+}

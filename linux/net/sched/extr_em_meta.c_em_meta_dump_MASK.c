@@ -1,0 +1,55 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct tcf_meta_hdr {int /*<<< orphan*/  right; int /*<<< orphan*/  left; } ;
+struct tcf_ematch {scalar_t__ data; } ;
+struct sk_buff {int dummy; } ;
+struct meta_type_ops {scalar_t__ (* dump ) (struct sk_buff*,TYPE_1__*,int /*<<< orphan*/ ) ;} ;
+struct TYPE_4__ {int /*<<< orphan*/  hdr; } ;
+struct meta_match {TYPE_1__ rvalue; TYPE_1__ lvalue; } ;
+typedef  int /*<<< orphan*/  hdr ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  TCA_EM_META_HDR ; 
+ int /*<<< orphan*/  TCA_EM_META_LVALUE ; 
+ int /*<<< orphan*/  TCA_EM_META_RVALUE ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct tcf_meta_hdr*,int /*<<< orphan*/ ,int) ; 
+ struct meta_type_ops* FUNC2 (TYPE_1__*) ; 
+ scalar_t__ FUNC3 (struct sk_buff*,int /*<<< orphan*/ ,int,struct tcf_meta_hdr*) ; 
+ scalar_t__ FUNC4 (struct sk_buff*,TYPE_1__*,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC5 (struct sk_buff*,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC6(struct sk_buff *skb, struct tcf_ematch *em)
+{
+	struct meta_match *meta = (struct meta_match *) em->data;
+	struct tcf_meta_hdr hdr;
+	const struct meta_type_ops *ops;
+
+	FUNC1(&hdr, 0, sizeof(hdr));
+	FUNC0(&hdr.left, &meta->lvalue.hdr, sizeof(hdr.left));
+	FUNC0(&hdr.right, &meta->rvalue.hdr, sizeof(hdr.right));
+
+	if (FUNC3(skb, TCA_EM_META_HDR, sizeof(hdr), &hdr))
+		goto nla_put_failure;
+
+	ops = FUNC2(&meta->lvalue);
+	if (ops->dump(skb, &meta->lvalue, TCA_EM_META_LVALUE) < 0 ||
+	    ops->dump(skb, &meta->rvalue, TCA_EM_META_RVALUE) < 0)
+		goto nla_put_failure;
+
+	return 0;
+
+nla_put_failure:
+	return -1;
+}

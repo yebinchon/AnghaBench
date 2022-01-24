@@ -1,0 +1,28 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct x509_parse_context {TYPE_1__* cert; } ;
+struct TYPE_2__ {size_t raw_subject_size; int /*<<< orphan*/  subject; void const* raw_subject; } ;
+
+/* Variables and functions */
+ int FUNC0 (struct x509_parse_context*,size_t,unsigned char,int /*<<< orphan*/ *,size_t) ; 
+
+int FUNC1(void *context, size_t hdrlen,
+		      unsigned char tag,
+		      const void *value, size_t vlen)
+{
+	struct x509_parse_context *ctx = context;
+	ctx->cert->raw_subject = value;
+	ctx->cert->raw_subject_size = vlen;
+	return FUNC0(ctx, hdrlen, tag, &ctx->cert->subject, vlen);
+}

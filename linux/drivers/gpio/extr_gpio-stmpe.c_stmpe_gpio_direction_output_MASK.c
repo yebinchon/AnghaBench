@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u8 ;
+struct stmpe_gpio {struct stmpe* stmpe; } ;
+struct stmpe {int /*<<< orphan*/ * regs; } ;
+struct gpio_chip {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (unsigned int) ; 
+ unsigned int STMPE_IDX_GPDR_LSB ; 
+ struct stmpe_gpio* FUNC1 (struct gpio_chip*) ; 
+ int /*<<< orphan*/  FUNC2 (struct gpio_chip*,unsigned int,int) ; 
+ int FUNC3 (struct stmpe*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC4(struct gpio_chip *chip,
+					 unsigned offset, int val)
+{
+	struct stmpe_gpio *stmpe_gpio = FUNC1(chip);
+	struct stmpe *stmpe = stmpe_gpio->stmpe;
+	u8 reg = stmpe->regs[STMPE_IDX_GPDR_LSB + (offset / 8)];
+	u8 mask = FUNC0(offset % 8);
+
+	FUNC2(chip, offset, val);
+
+	return FUNC3(stmpe, reg, mask, mask);
+}

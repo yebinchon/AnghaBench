@@ -1,0 +1,40 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct mrb_dir {int /*<<< orphan*/ * dir; } ;
+typedef  int /*<<< orphan*/  mrb_value ;
+typedef  int /*<<< orphan*/  mrb_state ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  E_IO_ERROR ; 
+ int FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  mrb_dir_type ; 
+ scalar_t__ FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 () ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *,char*) ; 
+
+mrb_value
+FUNC5(mrb_state *mrb, mrb_value self)
+{
+  struct mrb_dir *mdir;
+  mdir = (struct mrb_dir *)FUNC1(mrb, self, &mrb_dir_type);
+  if (!mdir) return FUNC2();
+  if (!mdir->dir) {
+    FUNC3(mrb, E_IO_ERROR, "closed directory");
+  }
+  if (FUNC0(mdir->dir) == -1) {
+    FUNC4(mrb, "closedir");
+  }
+  mdir->dir = NULL;
+  return FUNC2();
+}

@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct spufs_inode_info {scalar_t__ i_gang; scalar_t__ i_ctx; } ;
+struct inode {int dummy; } ;
+
+/* Variables and functions */
+ struct spufs_inode_info* FUNC0 (struct inode*) ; 
+ int /*<<< orphan*/  FUNC1 (struct inode*) ; 
+ int /*<<< orphan*/  FUNC2 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC3 (scalar_t__) ; 
+
+__attribute__((used)) static void
+FUNC4(struct inode *inode)
+{
+	struct spufs_inode_info *ei = FUNC0(inode);
+
+	if (ei->i_ctx)
+		FUNC2(ei->i_ctx);
+	if (ei->i_gang)
+		FUNC3(ei->i_gang);
+	FUNC1(inode);
+}

@@ -1,0 +1,34 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct nouveau_fence {int /*<<< orphan*/  sequence; struct nouveau_channel* channel; } ;
+struct nouveau_channel {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (struct nouveau_channel*,int /*<<< orphan*/ ,int,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct nouveau_channel*) ; 
+ int /*<<< orphan*/  NvSubSw ; 
+ int /*<<< orphan*/  FUNC2 (struct nouveau_channel*,int /*<<< orphan*/ ) ; 
+ int FUNC3 (struct nouveau_channel*,int) ; 
+
+__attribute__((used)) static int
+FUNC4(struct nouveau_fence *fence)
+{
+	struct nouveau_channel *chan = fence->channel;
+	int ret = FUNC3(chan, 2);
+	if (ret == 0) {
+		FUNC0(chan, NvSubSw, 0x0150, 1);
+		FUNC2  (chan, fence->sequence);
+		FUNC1 (chan);
+	}
+	return ret;
+}

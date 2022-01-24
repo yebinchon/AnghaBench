@@ -1,0 +1,173 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  scalar_t__ PFNGLWINDOWPOS3SVPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS3SPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS3IVPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS3IPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS3FVPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS3FPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS3DVPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS3DPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS2SVPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS2SPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS2IVPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS2IPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS2FVPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS2FPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS2DVPROC ;
+typedef  scalar_t__ PFNGLWINDOWPOS2DPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLORPOINTERPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3USVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3USPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3UIVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3UIPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3UBVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3UBPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3SVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3SPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3IVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3IPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3FVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3FPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3DVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3DPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3BVPROC ;
+typedef  scalar_t__ PFNGLSECONDARYCOLOR3BPROC ;
+typedef  scalar_t__ PFNGLFOGCOORDPOINTERPROC ;
+typedef  scalar_t__ PFNGLFOGCOORDFVPROC ;
+typedef  scalar_t__ PFNGLFOGCOORDFPROC ;
+typedef  scalar_t__ PFNGLFOGCOORDDVPROC ;
+typedef  scalar_t__ PFNGLFOGCOORDDPROC ;
+
+/* Variables and functions */
+ scalar_t__ FUNC0 (char*) ; 
+ scalar_t__ _funcptr_glFogCoordPointer ; 
+ scalar_t__ _funcptr_glFogCoordd ; 
+ scalar_t__ _funcptr_glFogCoorddv ; 
+ scalar_t__ _funcptr_glFogCoordf ; 
+ scalar_t__ _funcptr_glFogCoordfv ; 
+ scalar_t__ _funcptr_glSecondaryColor3b ; 
+ scalar_t__ _funcptr_glSecondaryColor3bv ; 
+ scalar_t__ _funcptr_glSecondaryColor3d ; 
+ scalar_t__ _funcptr_glSecondaryColor3dv ; 
+ scalar_t__ _funcptr_glSecondaryColor3f ; 
+ scalar_t__ _funcptr_glSecondaryColor3fv ; 
+ scalar_t__ _funcptr_glSecondaryColor3i ; 
+ scalar_t__ _funcptr_glSecondaryColor3iv ; 
+ scalar_t__ _funcptr_glSecondaryColor3s ; 
+ scalar_t__ _funcptr_glSecondaryColor3sv ; 
+ scalar_t__ _funcptr_glSecondaryColor3ub ; 
+ scalar_t__ _funcptr_glSecondaryColor3ubv ; 
+ scalar_t__ _funcptr_glSecondaryColor3ui ; 
+ scalar_t__ _funcptr_glSecondaryColor3uiv ; 
+ scalar_t__ _funcptr_glSecondaryColor3us ; 
+ scalar_t__ _funcptr_glSecondaryColor3usv ; 
+ scalar_t__ _funcptr_glSecondaryColorPointer ; 
+ scalar_t__ _funcptr_glWindowPos2d ; 
+ scalar_t__ _funcptr_glWindowPos2dv ; 
+ scalar_t__ _funcptr_glWindowPos2f ; 
+ scalar_t__ _funcptr_glWindowPos2fv ; 
+ scalar_t__ _funcptr_glWindowPos2i ; 
+ scalar_t__ _funcptr_glWindowPos2iv ; 
+ scalar_t__ _funcptr_glWindowPos2s ; 
+ scalar_t__ _funcptr_glWindowPos2sv ; 
+ scalar_t__ _funcptr_glWindowPos3d ; 
+ scalar_t__ _funcptr_glWindowPos3dv ; 
+ scalar_t__ _funcptr_glWindowPos3f ; 
+ scalar_t__ _funcptr_glWindowPos3fv ; 
+ scalar_t__ _funcptr_glWindowPos3i ; 
+ scalar_t__ _funcptr_glWindowPos3iv ; 
+ scalar_t__ _funcptr_glWindowPos3s ; 
+ scalar_t__ _funcptr_glWindowPos3sv ; 
+
+__attribute__((used)) static int FUNC1()
+{
+	int numFailed = 0;
+	_funcptr_glFogCoordPointer = (PFNGLFOGCOORDPOINTERPROC)FUNC0("glFogCoordPointer");
+	if(!_funcptr_glFogCoordPointer) ++numFailed;
+	_funcptr_glFogCoordd = (PFNGLFOGCOORDDPROC)FUNC0("glFogCoordd");
+	if(!_funcptr_glFogCoordd) ++numFailed;
+	_funcptr_glFogCoorddv = (PFNGLFOGCOORDDVPROC)FUNC0("glFogCoorddv");
+	if(!_funcptr_glFogCoorddv) ++numFailed;
+	_funcptr_glFogCoordf = (PFNGLFOGCOORDFPROC)FUNC0("glFogCoordf");
+	if(!_funcptr_glFogCoordf) ++numFailed;
+	_funcptr_glFogCoordfv = (PFNGLFOGCOORDFVPROC)FUNC0("glFogCoordfv");
+	if(!_funcptr_glFogCoordfv) ++numFailed;
+	_funcptr_glSecondaryColor3b = (PFNGLSECONDARYCOLOR3BPROC)FUNC0("glSecondaryColor3b");
+	if(!_funcptr_glSecondaryColor3b) ++numFailed;
+	_funcptr_glSecondaryColor3bv = (PFNGLSECONDARYCOLOR3BVPROC)FUNC0("glSecondaryColor3bv");
+	if(!_funcptr_glSecondaryColor3bv) ++numFailed;
+	_funcptr_glSecondaryColor3d = (PFNGLSECONDARYCOLOR3DPROC)FUNC0("glSecondaryColor3d");
+	if(!_funcptr_glSecondaryColor3d) ++numFailed;
+	_funcptr_glSecondaryColor3dv = (PFNGLSECONDARYCOLOR3DVPROC)FUNC0("glSecondaryColor3dv");
+	if(!_funcptr_glSecondaryColor3dv) ++numFailed;
+	_funcptr_glSecondaryColor3f = (PFNGLSECONDARYCOLOR3FPROC)FUNC0("glSecondaryColor3f");
+	if(!_funcptr_glSecondaryColor3f) ++numFailed;
+	_funcptr_glSecondaryColor3fv = (PFNGLSECONDARYCOLOR3FVPROC)FUNC0("glSecondaryColor3fv");
+	if(!_funcptr_glSecondaryColor3fv) ++numFailed;
+	_funcptr_glSecondaryColor3i = (PFNGLSECONDARYCOLOR3IPROC)FUNC0("glSecondaryColor3i");
+	if(!_funcptr_glSecondaryColor3i) ++numFailed;
+	_funcptr_glSecondaryColor3iv = (PFNGLSECONDARYCOLOR3IVPROC)FUNC0("glSecondaryColor3iv");
+	if(!_funcptr_glSecondaryColor3iv) ++numFailed;
+	_funcptr_glSecondaryColor3s = (PFNGLSECONDARYCOLOR3SPROC)FUNC0("glSecondaryColor3s");
+	if(!_funcptr_glSecondaryColor3s) ++numFailed;
+	_funcptr_glSecondaryColor3sv = (PFNGLSECONDARYCOLOR3SVPROC)FUNC0("glSecondaryColor3sv");
+	if(!_funcptr_glSecondaryColor3sv) ++numFailed;
+	_funcptr_glSecondaryColor3ub = (PFNGLSECONDARYCOLOR3UBPROC)FUNC0("glSecondaryColor3ub");
+	if(!_funcptr_glSecondaryColor3ub) ++numFailed;
+	_funcptr_glSecondaryColor3ubv = (PFNGLSECONDARYCOLOR3UBVPROC)FUNC0("glSecondaryColor3ubv");
+	if(!_funcptr_glSecondaryColor3ubv) ++numFailed;
+	_funcptr_glSecondaryColor3ui = (PFNGLSECONDARYCOLOR3UIPROC)FUNC0("glSecondaryColor3ui");
+	if(!_funcptr_glSecondaryColor3ui) ++numFailed;
+	_funcptr_glSecondaryColor3uiv = (PFNGLSECONDARYCOLOR3UIVPROC)FUNC0("glSecondaryColor3uiv");
+	if(!_funcptr_glSecondaryColor3uiv) ++numFailed;
+	_funcptr_glSecondaryColor3us = (PFNGLSECONDARYCOLOR3USPROC)FUNC0("glSecondaryColor3us");
+	if(!_funcptr_glSecondaryColor3us) ++numFailed;
+	_funcptr_glSecondaryColor3usv = (PFNGLSECONDARYCOLOR3USVPROC)FUNC0("glSecondaryColor3usv");
+	if(!_funcptr_glSecondaryColor3usv) ++numFailed;
+	_funcptr_glSecondaryColorPointer = (PFNGLSECONDARYCOLORPOINTERPROC)FUNC0("glSecondaryColorPointer");
+	if(!_funcptr_glSecondaryColorPointer) ++numFailed;
+	_funcptr_glWindowPos2d = (PFNGLWINDOWPOS2DPROC)FUNC0("glWindowPos2d");
+	if(!_funcptr_glWindowPos2d) ++numFailed;
+	_funcptr_glWindowPos2dv = (PFNGLWINDOWPOS2DVPROC)FUNC0("glWindowPos2dv");
+	if(!_funcptr_glWindowPos2dv) ++numFailed;
+	_funcptr_glWindowPos2f = (PFNGLWINDOWPOS2FPROC)FUNC0("glWindowPos2f");
+	if(!_funcptr_glWindowPos2f) ++numFailed;
+	_funcptr_glWindowPos2fv = (PFNGLWINDOWPOS2FVPROC)FUNC0("glWindowPos2fv");
+	if(!_funcptr_glWindowPos2fv) ++numFailed;
+	_funcptr_glWindowPos2i = (PFNGLWINDOWPOS2IPROC)FUNC0("glWindowPos2i");
+	if(!_funcptr_glWindowPos2i) ++numFailed;
+	_funcptr_glWindowPos2iv = (PFNGLWINDOWPOS2IVPROC)FUNC0("glWindowPos2iv");
+	if(!_funcptr_glWindowPos2iv) ++numFailed;
+	_funcptr_glWindowPos2s = (PFNGLWINDOWPOS2SPROC)FUNC0("glWindowPos2s");
+	if(!_funcptr_glWindowPos2s) ++numFailed;
+	_funcptr_glWindowPos2sv = (PFNGLWINDOWPOS2SVPROC)FUNC0("glWindowPos2sv");
+	if(!_funcptr_glWindowPos2sv) ++numFailed;
+	_funcptr_glWindowPos3d = (PFNGLWINDOWPOS3DPROC)FUNC0("glWindowPos3d");
+	if(!_funcptr_glWindowPos3d) ++numFailed;
+	_funcptr_glWindowPos3dv = (PFNGLWINDOWPOS3DVPROC)FUNC0("glWindowPos3dv");
+	if(!_funcptr_glWindowPos3dv) ++numFailed;
+	_funcptr_glWindowPos3f = (PFNGLWINDOWPOS3FPROC)FUNC0("glWindowPos3f");
+	if(!_funcptr_glWindowPos3f) ++numFailed;
+	_funcptr_glWindowPos3fv = (PFNGLWINDOWPOS3FVPROC)FUNC0("glWindowPos3fv");
+	if(!_funcptr_glWindowPos3fv) ++numFailed;
+	_funcptr_glWindowPos3i = (PFNGLWINDOWPOS3IPROC)FUNC0("glWindowPos3i");
+	if(!_funcptr_glWindowPos3i) ++numFailed;
+	_funcptr_glWindowPos3iv = (PFNGLWINDOWPOS3IVPROC)FUNC0("glWindowPos3iv");
+	if(!_funcptr_glWindowPos3iv) ++numFailed;
+	_funcptr_glWindowPos3s = (PFNGLWINDOWPOS3SPROC)FUNC0("glWindowPos3s");
+	if(!_funcptr_glWindowPos3s) ++numFailed;
+	_funcptr_glWindowPos3sv = (PFNGLWINDOWPOS3SVPROC)FUNC0("glWindowPos3sv");
+	if(!_funcptr_glWindowPos3sv) ++numFailed;
+	return numFailed;
+}

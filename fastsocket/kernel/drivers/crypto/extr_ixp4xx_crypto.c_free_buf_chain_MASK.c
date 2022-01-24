@@ -1,0 +1,35 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  u32 ;
+struct device {int dummy; } ;
+struct buffer_desc {int /*<<< orphan*/  dir; int /*<<< orphan*/  buf_len; int /*<<< orphan*/  phys_next; struct buffer_desc* next; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  buffer_pool ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ,struct buffer_desc*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 (struct device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC2(struct device *dev, struct buffer_desc *buf,u32 phys)
+{
+	while (buf) {
+		struct buffer_desc *buf1;
+		u32 phys1;
+
+		buf1 = buf->next;
+		phys1 = buf->phys_next;
+		FUNC1(dev, buf->phys_next, buf->buf_len, buf->dir);
+		FUNC0(buffer_pool, buf, phys);
+		buf = buf1;
+		phys = phys1;
+	}
+}

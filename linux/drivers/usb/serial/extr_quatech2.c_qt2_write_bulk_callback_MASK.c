@@ -1,0 +1,39 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct usb_serial_port {int dummy; } ;
+struct urb {struct usb_serial_port* context; } ;
+struct qt2_port_private {int urb_in_use; int /*<<< orphan*/  urb_lock; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,unsigned long) ; 
+ struct qt2_port_private* FUNC2 (struct usb_serial_port*) ; 
+ int /*<<< orphan*/  FUNC3 (struct usb_serial_port*) ; 
+
+__attribute__((used)) static void FUNC4(struct urb *urb)
+{
+	struct usb_serial_port *port;
+	struct qt2_port_private *port_priv;
+	unsigned long flags;
+
+	port = urb->context;
+	port_priv = FUNC2(port);
+
+	FUNC0(&port_priv->urb_lock, flags);
+
+	port_priv->urb_in_use = false;
+	FUNC3(port);
+
+	FUNC1(&port_priv->urb_lock, flags);
+
+}

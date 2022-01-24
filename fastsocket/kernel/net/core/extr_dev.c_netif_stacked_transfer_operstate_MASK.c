@@ -1,0 +1,38 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  struct net_device {scalar_t__ operstate; } const net_device ;
+
+/* Variables and functions */
+ scalar_t__ IF_OPER_DORMANT ; 
+ int /*<<< orphan*/  FUNC0 (struct net_device const*) ; 
+ scalar_t__ FUNC1 (struct net_device const*) ; 
+ int /*<<< orphan*/  FUNC2 (struct net_device const*) ; 
+ int /*<<< orphan*/  FUNC3 (struct net_device const*) ; 
+ int /*<<< orphan*/  FUNC4 (struct net_device const*) ; 
+
+void FUNC5(const struct net_device *rootdev,
+					struct net_device *dev)
+{
+	if (rootdev->operstate == IF_OPER_DORMANT)
+		FUNC4(dev);
+	else
+		FUNC3(dev);
+
+	if (FUNC1(rootdev)) {
+		if (!FUNC1(dev))
+			FUNC2(dev);
+	} else {
+		if (FUNC1(dev))
+			FUNC0(dev);
+	}
+}

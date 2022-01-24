@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct mlxsw_sp_acl_atcam_region {TYPE_1__* region; } ;
+struct mlxsw_sp {int /*<<< orphan*/  core; } ;
+struct TYPE_2__ {int /*<<< orphan*/  id; struct mlxsw_sp* mlxsw_sp; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int MLXSW_REG_PERCR_LEN ; 
+ int /*<<< orphan*/  FUNC1 (char*,int /*<<< orphan*/ ) ; 
+ int FUNC2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+ int /*<<< orphan*/  percr ; 
+
+__attribute__((used)) static int
+FUNC3(struct mlxsw_sp_acl_atcam_region *aregion)
+{
+	struct mlxsw_sp *mlxsw_sp = aregion->region->mlxsw_sp;
+	char percr_pl[MLXSW_REG_PERCR_LEN];
+
+	FUNC1(percr_pl, aregion->region->id);
+	return FUNC2(mlxsw_sp->core, FUNC0(percr), percr_pl);
+}

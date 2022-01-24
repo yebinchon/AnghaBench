@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct task_struct {int dummy; } ;
+struct TYPE_2__ {int /*<<< orphan*/  flags; } ;
+
+/* Variables and functions */
+ unsigned long DEBUGCTLMSR_BTF ; 
+ int /*<<< orphan*/  TIF_BLOCKSTEP ; 
+ int /*<<< orphan*/  TIF_FORCED_TF ; 
+ int /*<<< orphan*/  TIF_SINGLESTEP ; 
+ int /*<<< orphan*/  X86_EFLAGS_TF ; 
+ int /*<<< orphan*/  FUNC0 (struct task_struct*,int /*<<< orphan*/ ) ; 
+ unsigned long FUNC1 () ; 
+ TYPE_1__* FUNC2 (struct task_struct*) ; 
+ scalar_t__ FUNC3 (struct task_struct*,int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC4 (struct task_struct*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC5 (unsigned long) ; 
+
+void FUNC6(struct task_struct *child)
+{
+	/*
+	 * Make sure block stepping (BTF) is disabled.
+	 */
+	if (FUNC4(child, TIF_BLOCKSTEP)) {
+		unsigned long debugctl = FUNC1();
+
+		debugctl &= ~DEBUGCTLMSR_BTF;
+		FUNC5(debugctl);
+		FUNC0(child, TIF_BLOCKSTEP);
+	}
+
+	/* Always clear TIF_SINGLESTEP... */
+	FUNC0(child, TIF_SINGLESTEP);
+
+	/* But touch TF only if it was set by us.. */
+	if (FUNC3(child, TIF_FORCED_TF))
+		FUNC2(child)->flags &= ~X86_EFLAGS_TF;
+}

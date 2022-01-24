@@ -1,0 +1,36 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct pci_device_id {scalar_t__ class_mask; scalar_t__ subvendor; scalar_t__ vendor; } ;
+struct pci_dev {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC1 () ; 
+ struct pci_dev* FUNC2 (struct pci_device_id const*,int /*<<< orphan*/ *) ; 
+
+int FUNC3(const struct pci_device_id *ids)
+{
+	struct pci_dev *found = NULL;
+
+	FUNC0(FUNC1());
+	while (ids->vendor || ids->subvendor || ids->class_mask) {
+		found = FUNC2(ids, NULL);
+		if (found)
+			goto exit;
+		ids++;
+	}
+exit:
+	if (found)
+		return 1;
+	return 0;
+}

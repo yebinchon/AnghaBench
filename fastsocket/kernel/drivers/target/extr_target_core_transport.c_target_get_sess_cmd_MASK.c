@@ -1,0 +1,53 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct se_session {int /*<<< orphan*/  sess_cmd_lock; int /*<<< orphan*/  sess_cmd_list; scalar_t__ sess_tearing_down; } ;
+struct se_cmd {int check_release; int /*<<< orphan*/  se_cmd_list; int /*<<< orphan*/  se_cmd_flags; int /*<<< orphan*/  cmd_kref; } ;
+
+/* Variables and functions */
+ int ESHUTDOWN ; 
+ int /*<<< orphan*/  SCF_ACK_KREF ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,unsigned long) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *,unsigned long) ; 
+
+__attribute__((used)) static int FUNC5(struct se_session *se_sess, struct se_cmd *se_cmd,
+			       bool ack_kref)
+{
+	unsigned long flags;
+	int ret = 0;
+
+	FUNC1(&se_cmd->cmd_kref);
+	/*
+	 * Add a second kref if the fabric caller is expecting to handle
+	 * fabric acknowledgement that requires two target_put_sess_cmd()
+	 * invocations before se_cmd descriptor release.
+	 */
+	if (ack_kref == true) {
+		FUNC0(&se_cmd->cmd_kref);
+		se_cmd->se_cmd_flags |= SCF_ACK_KREF;
+	}
+
+	FUNC3(&se_sess->sess_cmd_lock, flags);
+	if (se_sess->sess_tearing_down) {
+		ret = -ESHUTDOWN;
+		goto out;
+	}
+	FUNC2(&se_cmd->se_cmd_list, &se_sess->sess_cmd_list);
+	se_cmd->check_release = 1;
+
+out:
+	FUNC4(&se_sess->sess_cmd_lock, flags);
+	return ret;
+}

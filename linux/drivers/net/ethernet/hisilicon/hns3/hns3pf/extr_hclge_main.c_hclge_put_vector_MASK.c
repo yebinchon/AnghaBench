@@ -1,0 +1,41 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct hnae3_handle {int dummy; } ;
+struct hclge_vport {struct hclge_dev* back; } ;
+struct hclge_dev {TYPE_1__* pdev; } ;
+struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,char*,int) ; 
+ int /*<<< orphan*/  FUNC1 (struct hclge_dev*,int) ; 
+ int FUNC2 (struct hclge_dev*,int) ; 
+ struct hclge_vport* FUNC3 (struct hnae3_handle*) ; 
+
+__attribute__((used)) static int FUNC4(struct hnae3_handle *handle, int vector)
+{
+	struct hclge_vport *vport = FUNC3(handle);
+	struct hclge_dev *hdev = vport->back;
+	int vector_id;
+
+	vector_id = FUNC2(hdev, vector);
+	if (vector_id < 0) {
+		FUNC0(&hdev->pdev->dev,
+			"Get vector index fail. vector_id =%d\n", vector_id);
+		return vector_id;
+	}
+
+	FUNC1(hdev, vector_id);
+
+	return 0;
+}

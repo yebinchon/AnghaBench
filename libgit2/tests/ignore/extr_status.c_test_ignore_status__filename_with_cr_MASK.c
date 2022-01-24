@@ -1,0 +1,53 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int,int) ; 
+ int /*<<< orphan*/  FUNC1 (char*,char*) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC3 (char*) ; 
+ int /*<<< orphan*/  g_repo ; 
+ int /*<<< orphan*/  FUNC4 (int*,int /*<<< orphan*/ ,char*) ; 
+
+void FUNC5(void)
+{
+	int ignored;
+
+	g_repo = FUNC3("empty_standard_repo");
+	FUNC1("empty_standard_repo/.gitignore", "Icon\r\r\n");
+
+	FUNC2(FUNC4(&ignored, g_repo, "Icon\r"));
+	FUNC0(1, ignored);
+
+	FUNC1("empty_standard_repo/.gitignore", "Ico\rn\n");
+	FUNC2(FUNC4(&ignored, g_repo, "Ico\rn"));
+	FUNC0(1, ignored);
+
+	FUNC1("empty_standard_repo/.gitignore", "Ico\rn\r\n");
+	FUNC2(FUNC4(&ignored, g_repo, "Ico\rn"));
+	FUNC0(1, ignored);
+	FUNC2(FUNC4(&ignored, g_repo, "Ico\rn\r"));
+	FUNC0(0, ignored);
+
+	FUNC1("empty_standard_repo/.gitignore", "Ico\rn\r\r\n");
+	FUNC2(FUNC4(&ignored, g_repo, "Ico\rn\r"));
+	FUNC0(1, ignored);
+	FUNC2(FUNC4(&ignored, g_repo, "Icon\r"));
+	FUNC0(0, ignored);
+
+	FUNC1("empty_standard_repo/.gitignore", "Icon\r\n");
+	FUNC2(FUNC4(&ignored, g_repo, "Icon\r"));
+	FUNC0(0, ignored);
+	FUNC2(FUNC4(&ignored, g_repo, "Icon"));
+	FUNC0(1, ignored);
+}

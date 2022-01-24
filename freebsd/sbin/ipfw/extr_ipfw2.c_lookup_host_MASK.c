@@ -1,0 +1,31 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct in_addr {int dummy; } ;
+struct hostent {scalar_t__* h_addr_list; } ;
+
+/* Variables and functions */
+ struct hostent* FUNC0 (char*) ; 
+ int /*<<< orphan*/  FUNC1 (char*,struct in_addr*) ; 
+
+__attribute__((used)) static int
+FUNC2 (char *host, struct in_addr *ipaddr)
+{
+	struct hostent *he;
+
+	if (!FUNC1(host, ipaddr)) {
+		if ((he = FUNC0(host)) == NULL)
+			return(-1);
+		*ipaddr = *(struct in_addr *)he->h_addr_list[0];
+	}
+	return(0);
+}

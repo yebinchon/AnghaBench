@@ -1,0 +1,52 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_6__   TYPE_3__ ;
+typedef  struct TYPE_5__   TYPE_2__ ;
+typedef  struct TYPE_4__   TYPE_1__ ;
+
+/* Type definitions */
+struct udphdr {int dummy; } ;
+struct sk_buff {scalar_t__ len; scalar_t__ protocol; } ;
+struct iphdr {int dummy; } ;
+struct efx_nic {TYPE_1__* ptp_data; } ;
+struct TYPE_6__ {scalar_t__ protocol; } ;
+struct TYPE_5__ {scalar_t__ dest; } ;
+struct TYPE_4__ {scalar_t__ enabled; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ETH_P_IP ; 
+ scalar_t__ IPPROTO_UDP ; 
+ scalar_t__ MC_CMD_PTP_IN_TRANSMIT_PACKET_MAXNUM ; 
+ int /*<<< orphan*/  PTP_EVENT_PORT ; 
+ scalar_t__ PTP_MIN_LENGTH ; 
+ scalar_t__ FUNC0 (int /*<<< orphan*/ ) ; 
+ TYPE_3__* FUNC1 (struct sk_buff*) ; 
+ scalar_t__ FUNC2 (int) ; 
+ scalar_t__ FUNC3 (struct sk_buff*) ; 
+ int FUNC4 (struct sk_buff*) ; 
+ scalar_t__ FUNC5 (struct sk_buff*) ; 
+ scalar_t__ FUNC6 (struct sk_buff*) ; 
+ TYPE_2__* FUNC7 (struct sk_buff*) ; 
+
+bool FUNC8(struct efx_nic *efx, struct sk_buff *skb)
+{
+	return efx->ptp_data &&
+		efx->ptp_data->enabled &&
+		skb->len >= PTP_MIN_LENGTH &&
+		skb->len <= MC_CMD_PTP_IN_TRANSMIT_PACKET_MAXNUM &&
+		FUNC2(skb->protocol == FUNC0(ETH_P_IP)) &&
+		FUNC5(skb) &&
+		FUNC4(skb) >= sizeof(struct iphdr) &&
+		FUNC1(skb)->protocol == IPPROTO_UDP &&
+		FUNC3(skb) >=
+		FUNC6(skb) + sizeof(struct udphdr) &&
+		FUNC7(skb)->dest == FUNC0(PTP_EVENT_PORT);
+}

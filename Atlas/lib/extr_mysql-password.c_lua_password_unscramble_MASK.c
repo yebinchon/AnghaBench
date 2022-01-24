@@ -1,0 +1,46 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  int /*<<< orphan*/  lua_State ;
+typedef  int /*<<< orphan*/  GString ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  TRUE ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/ * FUNC2 (int /*<<< orphan*/ *) ; 
+ char* FUNC3 (int /*<<< orphan*/ *,int,size_t*) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC5 (int /*<<< orphan*/ *,char const*,size_t,char const*,size_t,char const*,size_t) ; 
+
+__attribute__((used)) static int FUNC6(lua_State *L) {
+	size_t challenge_len;
+	const char *challenge = FUNC3(L, 1, &challenge_len);
+	size_t response_len;
+	const char *response = FUNC3(L, 2, &response_len);
+	size_t dbl_hashed_password_len;
+	const char *dbl_hashed_password = FUNC3(L, 3, &dbl_hashed_password_len);
+
+	GString *hashed_password = FUNC2(NULL);
+
+	FUNC5(
+			hashed_password,
+			challenge, challenge_len,
+			response, response_len,
+			dbl_hashed_password, dbl_hashed_password_len);
+	
+	FUNC4(L, FUNC0(hashed_password));
+
+	FUNC1(hashed_password, TRUE);
+	
+	return 1;
+}

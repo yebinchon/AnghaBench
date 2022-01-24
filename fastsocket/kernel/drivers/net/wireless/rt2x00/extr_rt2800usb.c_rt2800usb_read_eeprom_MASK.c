@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct rt2x00_dev {int /*<<< orphan*/  eeprom; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  EEPROM_SIZE ; 
+ scalar_t__ FUNC0 (struct rt2x00_dev*) ; 
+ int FUNC1 (struct rt2x00_dev*) ; 
+ int FUNC2 (struct rt2x00_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static int FUNC3(struct rt2x00_dev *rt2x00dev)
+{
+	int retval;
+
+	if (FUNC0(rt2x00dev))
+		retval = FUNC1(rt2x00dev);
+	else
+		retval = FUNC2(rt2x00dev, rt2x00dev->eeprom,
+					       EEPROM_SIZE);
+
+	return retval;
+}

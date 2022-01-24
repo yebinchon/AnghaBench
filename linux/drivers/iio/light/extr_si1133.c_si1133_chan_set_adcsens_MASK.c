@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+typedef  size_t u8 ;
+struct si1133_data {size_t* adc_sens; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (size_t) ; 
+ int FUNC1 (struct si1133_data*,int /*<<< orphan*/ ,size_t) ; 
+
+__attribute__((used)) static int FUNC2(struct si1133_data *data, u8 adc,
+				   u8 adc_sens)
+{
+	int err;
+
+	err = FUNC1(data, FUNC0(adc), adc_sens);
+	if (err)
+		return err;
+
+	data->adc_sens[adc] = adc_sens;
+
+	return 0;
+}

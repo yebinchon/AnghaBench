@@ -1,0 +1,25 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct uni_msg {int dummy; } ;
+struct ccconn {int dummy; } ;
+typedef  enum conn_sig { ____Placeholder_conn_sig } conn_sig ;
+
+/* Variables and functions */
+ int FUNC0 (struct ccconn*,int,int /*<<< orphan*/ ,struct uni_msg*) ; 
+
+int
+FUNC1(struct ccconn *conn, enum conn_sig sig, struct uni_msg *msg)
+{
+
+	return (FUNC0(conn, sig, (msg != NULL), msg));
+}

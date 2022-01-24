@@ -1,0 +1,121 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct rt2x00_dev {int dummy; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  REV_RT5390F ; 
+ int /*<<< orphan*/  RT5390 ; 
+ int /*<<< orphan*/  FUNC0 (struct rt2x00_dev*) ; 
+ int /*<<< orphan*/  FUNC1 (struct rt2x00_dev*) ; 
+ int /*<<< orphan*/  FUNC2 (struct rt2x00_dev*,int) ; 
+ int /*<<< orphan*/  FUNC3 (struct rt2x00_dev*,int,int) ; 
+ scalar_t__ FUNC4 (struct rt2x00_dev*) ; 
+ scalar_t__ FUNC5 (struct rt2x00_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static void FUNC6(struct rt2x00_dev *rt2x00dev)
+{
+	FUNC2(rt2x00dev, 2);
+
+	FUNC3(rt2x00dev, 1, 0x0f);
+	FUNC3(rt2x00dev, 2, 0x80);
+	FUNC3(rt2x00dev, 3, 0x88);
+	FUNC3(rt2x00dev, 5, 0x10);
+	if (FUNC5(rt2x00dev, RT5390, REV_RT5390F))
+		FUNC3(rt2x00dev, 6, 0xe0);
+	else
+		FUNC3(rt2x00dev, 6, 0xa0);
+	FUNC3(rt2x00dev, 7, 0x00);
+	FUNC3(rt2x00dev, 10, 0x53);
+	FUNC3(rt2x00dev, 11, 0x4a);
+	FUNC3(rt2x00dev, 12, 0x46);
+	FUNC3(rt2x00dev, 13, 0x9f);
+	FUNC3(rt2x00dev, 14, 0x00);
+	FUNC3(rt2x00dev, 15, 0x00);
+	FUNC3(rt2x00dev, 16, 0x00);
+	FUNC3(rt2x00dev, 18, 0x03);
+	FUNC3(rt2x00dev, 19, 0x00);
+
+	FUNC3(rt2x00dev, 20, 0x00);
+	FUNC3(rt2x00dev, 21, 0x00);
+	FUNC3(rt2x00dev, 22, 0x20);
+	FUNC3(rt2x00dev, 23, 0x00);
+	FUNC3(rt2x00dev, 24, 0x00);
+	if (FUNC4(rt2x00dev) &&
+	    FUNC5(rt2x00dev, RT5390, REV_RT5390F))
+		FUNC3(rt2x00dev, 25, 0x80);
+	else
+		FUNC3(rt2x00dev, 25, 0xc0);
+	FUNC3(rt2x00dev, 26, 0x00);
+	FUNC3(rt2x00dev, 27, 0x09);
+	FUNC3(rt2x00dev, 28, 0x00);
+	FUNC3(rt2x00dev, 29, 0x10);
+
+	FUNC3(rt2x00dev, 30, 0x10);
+	FUNC3(rt2x00dev, 31, 0x80);
+	FUNC3(rt2x00dev, 32, 0x80);
+	FUNC3(rt2x00dev, 33, 0x00);
+	FUNC3(rt2x00dev, 34, 0x07);
+	FUNC3(rt2x00dev, 35, 0x12);
+	FUNC3(rt2x00dev, 36, 0x00);
+	FUNC3(rt2x00dev, 37, 0x08);
+	FUNC3(rt2x00dev, 38, 0x85);
+	FUNC3(rt2x00dev, 39, 0x1b);
+
+	FUNC3(rt2x00dev, 40, 0x0b);
+	FUNC3(rt2x00dev, 41, 0xbb);
+	FUNC3(rt2x00dev, 42, 0xd2);
+	FUNC3(rt2x00dev, 43, 0x9a);
+	FUNC3(rt2x00dev, 44, 0x0e);
+	FUNC3(rt2x00dev, 45, 0xa2);
+	if (FUNC5(rt2x00dev, RT5390, REV_RT5390F))
+		FUNC3(rt2x00dev, 46, 0x73);
+	else
+		FUNC3(rt2x00dev, 46, 0x7b);
+	FUNC3(rt2x00dev, 47, 0x00);
+	FUNC3(rt2x00dev, 48, 0x10);
+	FUNC3(rt2x00dev, 49, 0x94);
+
+	FUNC3(rt2x00dev, 52, 0x38);
+	if (FUNC5(rt2x00dev, RT5390, REV_RT5390F))
+		FUNC3(rt2x00dev, 53, 0x00);
+	else
+		FUNC3(rt2x00dev, 53, 0x84);
+	FUNC3(rt2x00dev, 54, 0x78);
+	FUNC3(rt2x00dev, 55, 0x44);
+	if (FUNC5(rt2x00dev, RT5390, REV_RT5390F))
+		FUNC3(rt2x00dev, 56, 0x42);
+	else
+		FUNC3(rt2x00dev, 56, 0x22);
+	FUNC3(rt2x00dev, 57, 0x80);
+	FUNC3(rt2x00dev, 58, 0x7f);
+	FUNC3(rt2x00dev, 59, 0x8f);
+
+	FUNC3(rt2x00dev, 60, 0x45);
+	if (FUNC5(rt2x00dev, RT5390, REV_RT5390F)) {
+		if (FUNC4(rt2x00dev))
+			FUNC3(rt2x00dev, 61, 0xd1);
+		else
+			FUNC3(rt2x00dev, 61, 0xd5);
+	} else {
+		if (FUNC4(rt2x00dev))
+			FUNC3(rt2x00dev, 61, 0xdd);
+		else
+			FUNC3(rt2x00dev, 61, 0xb5);
+	}
+	FUNC3(rt2x00dev, 62, 0x00);
+	FUNC3(rt2x00dev, 63, 0x00);
+
+	FUNC1(rt2x00dev);
+
+	FUNC0(rt2x00dev);
+}

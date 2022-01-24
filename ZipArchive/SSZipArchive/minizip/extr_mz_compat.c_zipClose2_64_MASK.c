@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_3__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  scalar_t__ zipFile ;
+typedef  int /*<<< orphan*/  uint16_t ;
+struct TYPE_3__ {int /*<<< orphan*/ * stream; int /*<<< orphan*/ * handle; } ;
+typedef  TYPE_1__ mz_compat ;
+typedef  int int32_t ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (TYPE_1__*) ; 
+ int MZ_OK ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ **) ; 
+ int FUNC3 (scalar_t__,char const*,int /*<<< orphan*/ ) ; 
+
+int FUNC4(zipFile file, const char *global_comment, uint16_t version_madeby)
+{
+    mz_compat *compat = (mz_compat *)file;
+    int32_t err = MZ_OK;
+
+    if (compat->handle != NULL)
+        err = FUNC3(file, global_comment, version_madeby);
+
+    if (compat->stream != NULL)
+    {
+        FUNC1(compat->stream);
+        FUNC2(&compat->stream);
+    }
+
+    FUNC0(compat);
+
+    return err;
+}

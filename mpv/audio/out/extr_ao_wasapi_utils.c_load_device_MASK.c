@@ -1,0 +1,49 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct mp_log {int dummy; } ;
+typedef  int /*<<< orphan*/  LPWSTR ;
+typedef  int /*<<< orphan*/  IMMDeviceEnumerator ;
+typedef  int /*<<< orphan*/  IMMDevice ;
+typedef  int /*<<< orphan*/  HRESULT ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  CLSCTX_ALL ; 
+ int /*<<< orphan*/  CLSID_MMDeviceEnumerator ; 
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ ) ; 
+ scalar_t__ FUNC2 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  IID_IMMDeviceEnumerator ; 
+ int /*<<< orphan*/  FUNC3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+ int /*<<< orphan*/  FUNC4 (int /*<<< orphan*/ *) ; 
+ int FUNC5 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC7 (struct mp_log*,char*,int /*<<< orphan*/ ) ; 
+
+__attribute__((used)) static bool FUNC8(struct mp_log *l,
+                           IMMDevice **ppDevice, LPWSTR deviceID)
+{
+    IMMDeviceEnumerator *pEnumerator = NULL;
+    HRESULT hr = FUNC0(&CLSID_MMDeviceEnumerator, NULL, CLSCTX_ALL,
+                                  &IID_IMMDeviceEnumerator,
+                                  (void **)&pEnumerator);
+    FUNC1(hr);
+
+    hr = FUNC3(pEnumerator, deviceID, ppDevice);
+    FUNC1(hr);
+
+exit_label:
+    if (FUNC2(hr))
+        FUNC7(l, "Error loading selected device: %s\n", FUNC6(hr));
+    FUNC4(pEnumerator);
+    return FUNC5(hr);
+}

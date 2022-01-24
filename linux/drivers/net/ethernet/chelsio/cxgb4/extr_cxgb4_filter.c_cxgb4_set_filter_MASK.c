@@ -1,0 +1,44 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct net_device {int dummy; } ;
+struct filter_ctx {int result; int /*<<< orphan*/  completion; } ;
+struct ch_filter_specification {int dummy; } ;
+
+/* Variables and functions */
+ int ETIMEDOUT ; 
+ int HZ ; 
+ int FUNC0 (struct net_device*,int,struct ch_filter_specification*,struct filter_ctx*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int FUNC2 (int /*<<< orphan*/ *,int) ; 
+
+int FUNC3(struct net_device *dev, int filter_id,
+		     struct ch_filter_specification *fs)
+{
+	struct filter_ctx ctx;
+	int ret;
+
+	FUNC1(&ctx.completion);
+
+	ret = FUNC0(dev, filter_id, fs, &ctx);
+	if (ret)
+		goto out;
+
+	/* Wait for reply */
+	ret = FUNC2(&ctx.completion, 10 * HZ);
+	if (!ret)
+		return -ETIMEDOUT;
+
+	ret = ctx.result;
+out:
+	return ret;
+}

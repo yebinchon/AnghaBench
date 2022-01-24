@@ -1,0 +1,29 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct rfkill_data {int /*<<< orphan*/  mtx; int /*<<< orphan*/  events; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static bool FUNC3(struct rfkill_data *data)
+{
+	bool r;
+
+	FUNC1(&data->mtx);
+	r = !FUNC0(&data->events);
+	FUNC2(&data->mtx);
+
+	return r;
+}

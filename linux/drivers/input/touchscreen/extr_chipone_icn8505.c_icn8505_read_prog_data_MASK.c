@@ -1,0 +1,25 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct icn8505_data {int /*<<< orphan*/  client; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  ICN8505_PROG_I2C_ADDR ; 
+ int /*<<< orphan*/  ICN8505_PROG_REG_ADDR_WIDTH ; 
+ int FUNC0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,void*,int,int) ; 
+
+__attribute__((used)) static int FUNC1(struct icn8505_data *icn8505, int reg,
+				  void *buf, int len)
+{
+	return FUNC0(icn8505->client, ICN8505_PROG_I2C_ADDR, reg,
+				 ICN8505_PROG_REG_ADDR_WIDTH, buf, len, false);
+}

@@ -1,0 +1,32 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct snd_rme9652 {int capture_pid; int /*<<< orphan*/  lock; int /*<<< orphan*/ * capture_substream; } ;
+struct snd_pcm_substream {int dummy; } ;
+
+/* Variables and functions */
+ struct snd_rme9652* FUNC0 (struct snd_pcm_substream*) ; 
+ int /*<<< orphan*/  FUNC1 (int /*<<< orphan*/ *) ; 
+ int /*<<< orphan*/  FUNC2 (int /*<<< orphan*/ *) ; 
+
+__attribute__((used)) static int FUNC3(struct snd_pcm_substream *substream)
+{
+	struct snd_rme9652 *rme9652 = FUNC0(substream);
+
+	FUNC1(&rme9652->lock);
+
+	rme9652->capture_pid = -1;
+	rme9652->capture_substream = NULL;
+
+	FUNC2(&rme9652->lock);
+	return 0;
+}

@@ -1,0 +1,94 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+typedef  scalar_t__ u8 ;
+typedef  int u32 ;
+struct TYPE_2__ {scalar_t__ rar_entry_count; } ;
+struct e1000_hw {TYPE_1__ mac; } ;
+typedef  scalar_t__ s32 ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (char*) ; 
+ int /*<<< orphan*/  FUNC1 (char*,int) ; 
+ int /*<<< orphan*/  FUNC2 (char*,int,int) ; 
+ int E1000_ERR_CONFIG ; 
+ int /*<<< orphan*/  E1000_FWSM ; 
+ int /*<<< orphan*/  FUNC3 (int) ; 
+ int E1000_RAH_AV ; 
+ int /*<<< orphan*/  FUNC4 (int) ; 
+ int FUNC5 (struct e1000_hw*,int /*<<< orphan*/ ) ; 
+ int /*<<< orphan*/  FUNC6 (int) ; 
+ int /*<<< orphan*/  FUNC7 (int) ; 
+ int E1000_SUCCESS ; 
+ int /*<<< orphan*/  FUNC8 (struct e1000_hw*) ; 
+ int /*<<< orphan*/  FUNC9 (struct e1000_hw*,int /*<<< orphan*/ ,int) ; 
+ scalar_t__ FUNC10 (struct e1000_hw*) ; 
+ int /*<<< orphan*/  FUNC11 (struct e1000_hw*) ; 
+
+__attribute__((used)) static int FUNC12(struct e1000_hw *hw, u8 *addr, u32 index)
+{
+	u32 rar_low, rar_high;
+
+	FUNC0("e1000_rar_set_pch2lan");
+
+	/* HW expects these in little endian so we reverse the byte order
+	 * from network order (big endian) to little endian
+	 */
+	rar_low = ((u32) addr[0] |
+		   ((u32) addr[1] << 8) |
+		   ((u32) addr[2] << 16) | ((u32) addr[3] << 24));
+
+	rar_high = ((u32) addr[4] | ((u32) addr[5] << 8));
+
+	/* If MAC address zero, no need to set the AV bit */
+	if (rar_low || rar_high)
+		rar_high |= E1000_RAH_AV;
+
+	if (index == 0) {
+		FUNC9(hw, FUNC4(index), rar_low);
+		FUNC8(hw);
+		FUNC9(hw, FUNC3(index), rar_high);
+		FUNC8(hw);
+		return E1000_SUCCESS;
+	}
+
+	/* RAR[1-6] are owned by manageability.  Skip those and program the
+	 * next address into the SHRA register array.
+	 */
+	if (index < (u32) (hw->mac.rar_entry_count)) {
+		s32 ret_val;
+
+		ret_val = FUNC10(hw);
+		if (ret_val)
+			goto out;
+
+		FUNC9(hw, FUNC7(index - 1), rar_low);
+		FUNC8(hw);
+		FUNC9(hw, FUNC6(index - 1), rar_high);
+		FUNC8(hw);
+
+		FUNC11(hw);
+
+		/* verify the register updates */
+		if ((FUNC5(hw, FUNC7(index - 1)) == rar_low) &&
+		    (FUNC5(hw, FUNC6(index - 1)) == rar_high))
+			return E1000_SUCCESS;
+
+		FUNC2("SHRA[%d] might be locked by ME - FWSM=0x%8.8x\n",
+			 (index - 1), FUNC5(hw, E1000_FWSM));
+	}
+
+out:
+	FUNC1("Failed to write receive address at index %d\n", index);
+	return -E1000_ERR_CONFIG;
+}

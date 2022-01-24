@@ -1,0 +1,33 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+
+/* Type definitions */
+struct stm_drvdata {int stmspscr; int stmsper; scalar_t__ base; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  FUNC0 (scalar_t__) ; 
+ int /*<<< orphan*/  FUNC1 (scalar_t__) ; 
+ scalar_t__ STMSPER ; 
+ scalar_t__ STMSPSCR ; 
+ scalar_t__ STMSPTRIGCSR ; 
+ int /*<<< orphan*/  FUNC2 (int,scalar_t__) ; 
+
+__attribute__((used)) static void FUNC3(struct stm_drvdata *drvdata)
+{
+	FUNC1(drvdata->base);
+	/* ATB trigger enable on direct writes to TRIG locations */
+	FUNC2(0x10,
+		       drvdata->base + STMSPTRIGCSR);
+	FUNC2(drvdata->stmspscr, drvdata->base + STMSPSCR);
+	FUNC2(drvdata->stmsper, drvdata->base + STMSPER);
+
+	FUNC0(drvdata->base);
+}

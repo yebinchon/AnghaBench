@@ -1,0 +1,71 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct xfrm_tmpl {int dummy; } ;
+struct TYPE_2__ {int /*<<< orphan*/  sadb_alg_maxbits; int /*<<< orphan*/  sadb_alg_minbits; int /*<<< orphan*/  sadb_alg_id; } ;
+struct xfrm_algo_desc {TYPE_1__ desc; scalar_t__ available; } ;
+struct sk_buff {int dummy; } ;
+struct sadb_prop {int sadb_prop_len; int sadb_prop_replay; struct sadb_comb* sadb_prop_reserved; int /*<<< orphan*/  sadb_prop_exttype; } ;
+struct sadb_comb {int sadb_comb_hard_addtime; int sadb_comb_soft_addtime; int sadb_comb_hard_usetime; int sadb_comb_soft_usetime; int /*<<< orphan*/  sadb_comb_encrypt_maxbits; int /*<<< orphan*/  sadb_comb_encrypt_minbits; int /*<<< orphan*/  sadb_comb_encrypt; int /*<<< orphan*/  sadb_comb_auth_maxbits; int /*<<< orphan*/  sadb_comb_auth_minbits; int /*<<< orphan*/  sadb_comb_auth; } ;
+
+/* Variables and functions */
+ int /*<<< orphan*/  SADB_EXT_PROPOSAL ; 
+ scalar_t__ FUNC0 (struct xfrm_tmpl*,struct xfrm_algo_desc*) ; 
+ scalar_t__ FUNC1 (struct xfrm_tmpl*,struct xfrm_algo_desc*) ; 
+ int /*<<< orphan*/  FUNC2 (struct sadb_comb*,int /*<<< orphan*/ ,int) ; 
+ scalar_t__ FUNC3 (struct sk_buff*,int) ; 
+ struct xfrm_algo_desc* FUNC4 (int) ; 
+ struct xfrm_algo_desc* FUNC5 (int) ; 
+
+__attribute__((used)) static void FUNC6(struct sk_buff *skb, struct xfrm_tmpl *t)
+{
+	struct sadb_prop *p;
+	int i, k;
+
+	p = (struct sadb_prop*)FUNC3(skb, sizeof(struct sadb_prop));
+	p->sadb_prop_len = sizeof(struct sadb_prop)/8;
+	p->sadb_prop_exttype = SADB_EXT_PROPOSAL;
+	p->sadb_prop_replay = 32;
+	FUNC2(p->sadb_prop_reserved, 0, sizeof(p->sadb_prop_reserved));
+
+	for (i=0; ; i++) {
+		struct xfrm_algo_desc *ealg = FUNC5(i);
+		if (!ealg)
+			break;
+
+		if (!(FUNC1(t, ealg) && ealg->available))
+			continue;
+
+		for (k = 1; ; k++) {
+			struct sadb_comb *c;
+			struct xfrm_algo_desc *aalg = FUNC4(k);
+			if (!aalg)
+				break;
+			if (!(FUNC0(t, aalg) && aalg->available))
+				continue;
+			c = (struct sadb_comb*)FUNC3(skb, sizeof(struct sadb_comb));
+			FUNC2(c, 0, sizeof(*c));
+			p->sadb_prop_len += sizeof(struct sadb_comb)/8;
+			c->sadb_comb_auth = aalg->desc.sadb_alg_id;
+			c->sadb_comb_auth_minbits = aalg->desc.sadb_alg_minbits;
+			c->sadb_comb_auth_maxbits = aalg->desc.sadb_alg_maxbits;
+			c->sadb_comb_encrypt = ealg->desc.sadb_alg_id;
+			c->sadb_comb_encrypt_minbits = ealg->desc.sadb_alg_minbits;
+			c->sadb_comb_encrypt_maxbits = ealg->desc.sadb_alg_maxbits;
+			c->sadb_comb_hard_addtime = 24*60*60;
+			c->sadb_comb_soft_addtime = 20*60*60;
+			c->sadb_comb_hard_usetime = 8*60*60;
+			c->sadb_comb_soft_usetime = 7*60*60;
+		}
+	}
+}

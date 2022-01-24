@@ -1,0 +1,56 @@
+#define NULL ((void*)0)
+typedef unsigned long size_t;  // Customize by platform.
+typedef long intptr_t; typedef unsigned long uintptr_t;
+typedef long scalar_t__;  // Either arithmetic or pointer type.
+/* By default, we understand bool (as a convenience). */
+typedef int bool;
+#define false 0
+#define true 1
+
+/* Forward declarations */
+typedef  struct TYPE_2__   TYPE_1__ ;
+
+/* Type definitions */
+struct inode {int /*<<< orphan*/  i_ctime; } ;
+struct btrfs_trans_handle {int dummy; } ;
+struct btrfs_root {int dummy; } ;
+struct TYPE_2__ {struct btrfs_root* root; } ;
+
+/* Variables and functions */
+ TYPE_1__* FUNC0 (struct inode*) ; 
+ int /*<<< orphan*/  FUNC1 (int) ; 
+ int /*<<< orphan*/  CURRENT_TIME ; 
+ scalar_t__ FUNC2 (struct btrfs_trans_handle*) ; 
+ int FUNC3 (struct btrfs_trans_handle*) ; 
+ int /*<<< orphan*/  FUNC4 (struct btrfs_trans_handle*,struct btrfs_root*) ; 
+ struct btrfs_trans_handle* FUNC5 (struct btrfs_root*,int) ; 
+ int FUNC6 (struct btrfs_trans_handle*,struct btrfs_root*,struct inode*) ; 
+ int FUNC7 (struct btrfs_trans_handle*,struct inode*,char const*,void const*,size_t,int) ; 
+ int /*<<< orphan*/  FUNC8 (struct inode*) ; 
+
+int FUNC9(struct btrfs_trans_handle *trans,
+		     struct inode *inode, const char *name,
+		     const void *value, size_t size, int flags)
+{
+	struct btrfs_root *root = FUNC0(inode)->root;
+	int ret;
+
+	if (trans)
+		return FUNC7(trans, inode, name, value, size, flags);
+
+	trans = FUNC5(root, 2);
+	if (FUNC2(trans))
+		return FUNC3(trans);
+
+	ret = FUNC7(trans, inode, name, value, size, flags);
+	if (ret)
+		goto out;
+
+	FUNC8(inode);
+	inode->i_ctime = CURRENT_TIME;
+	ret = FUNC6(trans, root, inode);
+	FUNC1(ret);
+out:
+	FUNC4(trans, root);
+	return ret;
+}
